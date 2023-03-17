@@ -1,10 +1,10 @@
 CREATE TABLE `board` (
-  `board_no` int NOT NULL,
-  `board_writer` varchar(50) NOT NULL,
-  `board_title` varchar(50) NOT NULL,
-  `board_content` varchar(2400) NOT NULL,
-  `board_viewcnt` int DEFAULT '0',
-  `board_pwd` varchar(100) NOT NULL,
+  `board_no` number NOT NULL,
+  `board_writer` varchar2(50) NOT NULL,
+  `board_title` varchar2(50) NOT NULL,
+  `board_content` varchar2(2400) NOT NULL,
+  `board_viewcnt` number DEFAULT '0',
+  `board_pwd` varchar2(100) NOT NULL,
   `board_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `board_newdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`board_no`),
@@ -14,10 +14,10 @@ CREATE TABLE `board` (
 
 
 CREATE TABLE `comment` (
-  `idx` int NOT NULL,
-  `board_id` int DEFAULT NULL,
-  `member_id` varchar(50) DEFAULT NULL,
-  `content` varchar(100) DEFAULT NULL,
+  `idx` number NOT NULL,
+  `board_id` number DEFAULT NULL,
+  `member_id` varchar2(50) DEFAULT NULL,
+  `content` varchar2(100) DEFAULT NULL,
   PRIMARY KEY (`idx`),
   KEY `board_id_fk_idx` (`board_id`),
   KEY `member_id_fk_idx` (`member_id`),
@@ -27,9 +27,9 @@ CREATE TABLE `comment` (
 
 
 CREATE TABLE `likecnt` (
-  `board_id` int DEFAULT NULL,
-  `member_id` varchar(50) DEFAULT NULL,
-  `count` int DEFAULT NULL,
+  `board_id` number DEFAULT NULL,
+  `member_id` varchar2(50) DEFAULT NULL,
+  `count` number DEFAULT NULL,
   KEY `board_fk_id_idx` (`board_id`),
   KEY `member_fk_id_idx` (`member_id`),
   CONSTRAINT `board_fk_id` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_no`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -38,10 +38,10 @@ CREATE TABLE `likecnt` (
 
 
 CREATE TABLE `member` (
-  `id` varchar(50) NOT NULL,
-  `pwd` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `phone` varchar(150) NOT NULL,
-  `addr` varchar(200) DEFAULT NULL,
+  `id` varchar2(50) NOT NULL,
+  `pwd` varchar2(200) NOT NULL,
+  `email` varchar2(200) NOT NULL,
+  `phone` varchar2(150) NOT NULL,
+  `addr` varchar2(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
