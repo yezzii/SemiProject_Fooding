@@ -1,4 +1,4 @@
-package model;
+package com.name.model;
 
 public class MemberDAO {
 
