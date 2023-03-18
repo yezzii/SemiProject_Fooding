@@ -1,4 +1,4 @@
-package com.name.model;
+package com.board.model;
 
 public class BoardDAO {
 

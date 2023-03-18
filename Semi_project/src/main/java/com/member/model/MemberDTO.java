@@ -1,4 +1,4 @@
-package com.name.model;
+package com.member.model;
 
 public class MemberDTO {
 
