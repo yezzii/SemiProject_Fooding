@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.member.model.MemberDAO;
 
@@ -23,17 +24,17 @@ public class BoardDAO {
 
 	   // 2단계 : MemberDAO 클래스를 정적(static) 멤버로 선언 해 주어야 한다.
 
-	   private static MemberDAO instance;
+	   private static BoardDAO instance;
 
-	   private MemberDAO() {
+	   private BoardDAO() {
 	   } // 기본 생성자
 
 	   // 3단계 : 기본생성자 대신에 싱글턴 객체를 return 해 주는 getInstance() 메서드를 만들어서
 	   // 해당 getInstance() 메서드를 외부에서 접근할 수 있도록 해주면 됨.
-	   public static MemberDAO getInstance() {
+	   public static BoardDAO getInstance() {
 
 	      if (instance == null) {
-	         instance = new MemberDAO();
+	         instance = new BoardDAO();
 	      }
 
 	      return instance;
@@ -43,7 +44,7 @@ public class BoardDAO {
 	   public void openConn() {
 	      String driver = "com.mysql.cj.jdbc.Driver";
 
-	      String url = "jdbc:mysql://localhost/exam?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+	      String url = "jdbc:mysql://localhost/semi?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 
 	      String user = "web";
 
@@ -82,4 +83,43 @@ public class BoardDAO {
 	      }
 
 	   } // closeConn() 메서드 end
+
+	public List<Board_mainDTO> getBoardMainList() {
+		
+		List<Board_mainDTO> list = null;
+		
+		openConn();
+		
+		
+		
+		try {
+			sql = "select * from board_main order by main_idx";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			while(rs.next()) {
+				Board_mainDTO dto = new Board_mainDTO();
+				
+				dto.setMain_idx(rs.getInt("main_idx"));
+				dto.setMain_addr(rs.getString("main_addr"));
+				dto.setMain_name(rs.getString("main_name"));
+				dto.setMain_location(rs.getString("main_location"));
+				dto.setMain_content(rs.getString("main_content"));
+				
+				list.add(dto);
+			}
+			pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		
+		return list;
+	}
+	   
+	   
 }
