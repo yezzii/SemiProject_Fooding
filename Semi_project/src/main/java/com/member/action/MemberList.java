@@ -13,7 +13,6 @@ import com.board.action.Action;
 import com.board.model.BoardDAO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
 public class MemberList implements Action {
 

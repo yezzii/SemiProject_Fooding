@@ -2,10 +2,6 @@ package com.member.model;
 
 public class MemberDTO {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/main
 private String member_id;
 private String member_pwd;
 private String member_email;
