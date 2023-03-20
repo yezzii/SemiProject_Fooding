@@ -35,9 +35,8 @@ public class MemberController extends HttpServlet {
 		//이 사이에 if 문으로 *.do 비교 해야됨 
 		if(command.equals("insert_ok.go")) {
 			action = new MemberWirterOkAction();
-		}
-		if(command.equals("select.do")) {
-			action = MemberList();
+		} else if(command.equals("select.do")) {
+			action = new MemberListAction();
 		}
 		
 		
