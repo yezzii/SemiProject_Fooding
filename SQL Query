@@ -1,47 +1,92 @@
-CREATE TABLE `board` (
-  `board_no` number NOT NULL,
-  `board_writer` varchar2(50) NOT NULL,
-  `board_title` varchar2(50) NOT NULL,
-  `board_content` varchar2(2400) NOT NULL,
-  `board_viewcnt` number DEFAULT '0',
-  `board_pwd` varchar2(100) NOT NULL,
-  `board_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `board_newdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`board_no`),
-  KEY `writer_fk_idx` (`board_writer`),
-  CONSTRAINT `writer_fk` FOREIGN KEY (`board_writer`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-);
+CREATE TABLE `board_main` (
+  `main_idx` int NOT NULL,
+  `main_addr` varchar(100) NOT NULL,
+  `main_name` varchar(50) NOT NULL,
+  `main_location` varchar(50) NOT NULL,
+  `main_content` varchar(500) NOT NULL,
+  PRIMARY KEY (`main_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
 
+CREATE TABLE `board_qna` (
+  `qna_idx` int NOT NULL,
+  `qna_title` varchar(50) NOT NULL,
+  `qna_writer` varchar(50) NOT NULL,
+  `qna_content` varchar(500) NOT NULL,
+  `qna_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`qna_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
+
+CREATE TABLE `board_review` (
+  `review_idx` int NOT NULL,
+  `review_title` varchar(50) NOT NULL,
+  `review_writer` varchar(50) NOT NULL,
+  `review_content` varchar(500) NOT NULL,
+  `review_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `review_viewcnt` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`review_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `comment` (
-  `idx` number NOT NULL,
-  `board_id` number DEFAULT NULL,
-  `member_id` varchar2(50) DEFAULT NULL,
-  `content` varchar2(100) DEFAULT NULL,
-  PRIMARY KEY (`idx`),
-  KEY `board_id_fk_idx` (`board_id`),
-  KEY `member_id_fk_idx` (`member_id`),
-  CONSTRAINT `board_id_fk` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_no`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `member_id_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-);
+  `comment_idx` int NOT NULL,
+  `board_id` varchar(50) NOT NULL,
+  `member_id` varchar(50) NOT NULL,
+  `comment_content` varchar(300) NOT NULL,
+  `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`comment_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `main_likecnt` (
+  `main_idx` int DEFAULT NULL,
+  `member_id` varchar(50) DEFAULT NULL,
+  `main_cnt` int DEFAULT NULL,
+  KEY `main_id_idx` (`main_idx`),
+  KEY `member_id_idx` (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `likecnt` (
-  `board_id` number DEFAULT NULL,
-  `member_id` varchar2(50) DEFAULT NULL,
-  `count` number DEFAULT NULL,
-  KEY `board_fk_id_idx` (`board_id`),
-  KEY `member_fk_id_idx` (`member_id`),
-  CONSTRAINT `board_fk_id` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_no`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `member_fk_id` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-);
+CREATE TABLE `main_menu` (
+  `main_idx` int DEFAULT NULL,
+  `menu_name` varchar(50) DEFAULT NULL,
+  `menu_price` int DEFAULT NULL,
+  KEY `main_idx_idx` (`main_idx`),
+  CONSTRAINT `main_idx` FOREIGN KEY (`main_idx`) REFERENCES `board_main` (`main_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE `member` (
-  `id` varchar2(50) NOT NULL,
-  `pwd` varchar2(200) NOT NULL,
-  `email` varchar2(200) NOT NULL,
-  `phone` varchar2(150) NOT NULL,
-  `addr` varchar2(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+  `member_id` varchar(50) NOT NULL,
+  `member_name` varchar(50) NOT NULL,
+  `member_pwd` varchar(50) NOT NULL,
+  `member_email` varchar(100) NOT NULL,
+  `member_phone` varchar(100) NOT NULL,
+  `member_account` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `reservation` (
+  `booking_idx` int NOT NULL,
+  `member_id` varchar(50) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `main_idx` int NOT NULL,
+  `member_cnt` int NOT NULL,
+  `price` int NOT NULL,
+  PRIMARY KEY (`booking_idx`),
+  KEY `member_id_idx` (`member_id`),
+  KEY `main_idx_idx` (`main_idx`),
+  CONSTRAINT `mainIDX` FOREIGN KEY (`main_idx`) REFERENCES `board_main` (`main_idx`),
+  CONSTRAINT `memberID` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `review_likecnt` (
+  `review_id` int NOT NULL,
+  `member_id` varchar(50) NOT NULL,
+  `review_cnt` int NOT NULL,
+  KEY `review_id_idx` (`review_id`),
+  KEY `member_id_idx` (`member_id`),
+  CONSTRAINT `member_id` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`),
+  CONSTRAINT `review_id` FOREIGN KEY (`review_id`) REFERENCES `board_review` (`review_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+
