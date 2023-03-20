@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.member.action.Action;
+import com.member.action.MemberWirterOkAction;
 
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +33,9 @@ public class MemberController extends HttpServlet {
 		Action action = null;
 		
 		//이 사이에 if 문으로 *.do 비교 해야됨 
+		if(command.equals("insert_ok.go")) {
+			action = new MemberWirterOkAction();
+		}
 		
 		String path1 = action.execute(request, response);
 		
