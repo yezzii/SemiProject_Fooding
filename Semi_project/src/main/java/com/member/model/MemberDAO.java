@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDAO {
   Connection con = null;
@@ -107,5 +109,45 @@ public class MemberDAO {
 		
 		return result;
 	}//delete member 메서드 End
+	
+	
+	public List<MemberDTO> getMemberList() {
+		
+		List<MemberDTO> list = new ArrayList<MemberDTO>();
+		
+		openConn();
+	
+		
+		try {
+			sql = "select * from member order by member_id";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				MemberDTO dto = new MemberDTO();
+				
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_pwd(rs.getString("pwd"));
+				dto.setMember_email(rs.getString("member_email"));
+				dto.setMember_phone(rs.getString("member_phone"));
+				
+				list.add(dto);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+		
+		
+	} // member_list() end
 	
 }

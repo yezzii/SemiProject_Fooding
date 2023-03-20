@@ -29,7 +29,7 @@ public class MemberController extends HttpServlet {
 		String path = request.getContextPath();
 
 		String command = uri.substring(path.length() + 1);
-		
+	
 		Action action = null;
 		
 		//이 사이에 if 문으로 *.do 비교 해야됨 
@@ -39,7 +39,7 @@ public class MemberController extends HttpServlet {
 		}
 =======
 		if(command.equals("select.do")) {
-			action = MemberSelect();
+			action = MemberList();
 		}
 		
 		
