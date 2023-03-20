@@ -97,6 +97,7 @@ public class BoardDAO {
 			
 			pstmt = con.prepareStatement(sql);
 			
+			pstmt.executeQuery();
 			while(rs.next()) {
 				Board_mainDTO dto = new Board_mainDTO();
 				
@@ -108,7 +109,7 @@ public class BoardDAO {
 				
 				list.add(dto);
 			}
-			pstmt.executeQuery();
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
