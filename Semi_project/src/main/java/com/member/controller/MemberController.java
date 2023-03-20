@@ -33,6 +33,9 @@ public class MemberController extends HttpServlet {
 		
 		//이 사이에 if 문으로 *.do 비교 해야됨 
 		
+		
+		
+		
 		String path1 = action.execute(request, response);
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path1);
