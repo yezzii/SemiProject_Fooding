@@ -2,11 +2,7 @@ package com.member.model;
 
 public class MemberDTO {
 
-<<<<<<< HEAD
-	
-	
-	
-=======
+
 private String member_id;
 private String member_pwd;
 private String member_email;
@@ -53,5 +49,4 @@ public void setMember_accout(String member_accout) {
 
 
 
->>>>>>> refs/remotes/origin/main
 }

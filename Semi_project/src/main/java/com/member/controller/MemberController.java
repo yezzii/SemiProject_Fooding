@@ -32,6 +32,9 @@ public class MemberController extends HttpServlet {
 		Action action = null;
 		
 		//이 사이에 if 문으로 *.do 비교 해야됨 
+		if(command.equals("select.do")) {
+			action = MemberSelect();
+		}
 		
 		String path1 = action.execute(request, response);
 		
