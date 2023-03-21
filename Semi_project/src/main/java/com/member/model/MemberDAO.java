@@ -83,25 +83,40 @@ public class MemberDAO {
    } // closeConn() 메서드 end
    
    
-//delete member 메서드
-	public int DeleteMember(int num) {
+   //delete member 메서드
+	public int DeleteMember(int no, String pwd) {
 		
 		int result = 0;
 		
-		
 		try {
-			
 			openConn();
-		
-			sql = "delete from member where member_id = ?";
+			
+			sql = "select * from board "
+					+ " where board_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, no);
 			
-			result = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(pwd.equals(rs.getString("board_pwd"))) {
+					sql = "delete from board "
+							+ " where board_no = ?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, no);
+					
+					result = pstmt.executeUpdate();
+				}else {   // 비밀번호가 틀린 경우
+					result = -1;
+				}
+			}
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeConn(rs, pstmt, con);
@@ -109,6 +124,8 @@ public class MemberDAO {
 		
 		return result;
 	}//delete member 메서드 End
+	
+	
 	
 	
 	public List<MemberDTO> getMemberList() {
@@ -150,5 +167,32 @@ public class MemberDAO {
 		
 		
 	} // member_list() end
+	
+	
+	// board 테이블에서 중간의 게시글이 삭제된 경우
+		// 게시글 번호를 재정렬 하는 메서드.
+		public void updateSequence(int no) {
+			
+			try {
+				openConn();
+				
+				sql = "update board "
+						+ " set board_no = board_no - 1 "
+						+ " where board_no > ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, no);
+				
+				pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+		}  // updateSequence() 메서드 end
 	
 }

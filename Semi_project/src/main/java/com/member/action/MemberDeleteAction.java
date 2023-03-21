@@ -3,38 +3,31 @@ package com.member.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.action.Action;
-import com.board.model.BoardDAO;
+import com.member.model.MemberDAO;
 
 public class MemberDeleteAction implements Action {
-
 	
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String board_pwd = 
+		String member_pwd = 
 				request.getParameter("pwd").trim();
 		
-		int board_no = 
+		int member_no = 
 			Integer.parseInt(request.getParameter("no").trim());
 		
-		BoardDAO dao = BoardDAO.getInstance();
+		MemberDAO dao = MemberDAO.getInstance();
 		
 		int check = 
-				dao.deleteBoard(board_no, board_pwd);
+				dao.DeleteMember(member_no, member_pwd);
 		
 		PrintWriter out = response.getWriter();
 		
 		if(check > 0) {
-			dao.updateSequence(board_no);
+			dao.updateSequence(member_no);
 			out.println("<script>");
 			out.println("alert('게시글 삭제 성공!!!')");
 			out.println("location.href='select.do'");
