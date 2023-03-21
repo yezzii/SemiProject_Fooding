@@ -173,7 +173,7 @@ public class MemberDAO {
 		int result = 0 ;
 		
 		try {
-			sql="insert into member values(?,?,?,?,?,sysdate)";
+			sql="insert into member(member_email,member_id,memder_name,member_phone,member_pwd) values(?,?,?,?,?,default)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getMember_email());
 			pstmt.setString(2, dto.getMember_id());

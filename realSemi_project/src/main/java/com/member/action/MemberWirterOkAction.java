@@ -16,7 +16,7 @@ public class MemberWirterOkAction implements Action{
 		//회원등록 폼 페이지에서 넘어온 데이터들을 등록시키는 비지니스 로직.
 
 		int member_accout =
-				Integer.parseInt(request.getParameter("mem_accout").trim());
+				Integer.parseInt(request.getParameter("member_accout").trim());
 		String member_id = 
 				request.getParameter("member_id").trim();
 		String member_name = 

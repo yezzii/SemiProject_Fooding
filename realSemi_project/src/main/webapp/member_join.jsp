@@ -18,23 +18,23 @@
 
 <tr>
 	<th>회원아이디</th>
-	<td><input type="text" name="mem_id"></td>
+	<td><input type="text" name="member_id"></td>
 </tr>
 <tr>
 	<th>회원이름</th>
-	<td><input type="text" name="mem_name"></td>
+	<td><input type="text" name="member_name"></td>
 </tr>
 <tr>
 	<th>회원비밀번호</th>
-	<td><input type="text" name="mem_pwd"></td>
+	<td><input type="text" name="member_pwd"></td>
 </tr>
 <tr>
 	<th>회원이메일</th>
-	<td><input type="text" name="mem_email"></td>
+	<td><input type="text" name="member_email"></td>
 </tr>
 <tr>
 	<th>회원연락처</th>
-	<td><input type="text" name="mem_phone"></td>
+	<td><input type="text" name="member_phone"></td>
 </tr>
 
 <tr>
