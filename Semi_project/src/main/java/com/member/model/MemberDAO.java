@@ -148,7 +148,29 @@ public class MemberDAO {
 		}
 		return list;
 		
+		} // member_list() end
+	
+	public int insertMember(MemberDTO dto) {
+		int result=0 ;
 		
-	} // member_list() end
+		
+		try {
+			sql="insert into member values(?,?,?,?,?,sysdate)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getMember_email());
+			pstmt.setString(2, dto.getMember_id());
+			pstmt.setString(3, dto.getMember_name());
+			pstmt.setString(4, dto.getMember_phone());
+			pstmt.setString(5, dto.getMember_pwd());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}// insertMember()메서드 end
 	
 }
