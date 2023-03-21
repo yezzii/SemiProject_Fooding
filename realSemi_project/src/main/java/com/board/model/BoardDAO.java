@@ -10,7 +10,10 @@ import java.util.List;
 
 
 public class BoardDAO {
-
+	
+	   PreparedStatement pstmt = null;
+	   
+	   Connection con = null;
 
 	   ResultSet rs = null;
 
@@ -190,8 +193,4 @@ public class BoardDAO {
 		
 	}  // updateSequence() 메서드 end
 	   
-	   
-=======
-	
->>>>>>> Stashed changes
 }
