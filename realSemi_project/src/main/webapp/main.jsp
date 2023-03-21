@@ -13,6 +13,7 @@
 </script>
 
 <style>
+
 .flexTop {
 	display: flex;
     flex-direction: row;
@@ -21,6 +22,7 @@
     justify-content: space-between;
     align-items: center;
 }
+
 </style>
 </head>
 <body>
@@ -46,17 +48,17 @@
 		</a></div>  <!-- 검색 -->
 		
 		
-		<div><a href="#">	
+		<div><a href="<%=request.getContextPath() %>/로그인.go">	
 		<button type="button" class="login"><span class="">로그인</span></button>
 		</a></div> <!--  로그인 -->
 		
 		
-		<div><a href="#">	
+		<div><a href="<%=request.getContextPath() %>/insert.go">	
 		<button type="button" class="join"><span class="">회원가입</span></button>
 		</a></div>  <!-- 회원가입 -->
 		
 		
-		<div><a href="#">	
+		<div><a href="<%=request.getContextPath() %>/insert_main.go">	
 		<button type="button" class="write"><span class="">글쓰기</span></button>
 		</a></div>  <!-- 글쓰기 -->
 	</div> 
