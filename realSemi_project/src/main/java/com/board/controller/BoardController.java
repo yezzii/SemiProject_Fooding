@@ -35,11 +35,11 @@ public class BoardController extends HttpServlet {
 		Action action = null;
 		
 		//이 사이에 if 문으로 *.go 비교 해야됨 
-		if(command.equals("select_main.go")) {
+		if(command.equals("select_main.do")) {
 			action = new BoardMainListAction();
-		}else if(command.equals("insert_main.go")) {
+		}else if(command.equals("insert_main.do")) {
 			action = new BoardMainInsertAction();
-		}else if(command.equals("insert_mainOk.go")) {
+		}else if(command.equals("insert_mainOk.do")) {
 			action = new BoardMainInsertOkAction();
 		}
 		
