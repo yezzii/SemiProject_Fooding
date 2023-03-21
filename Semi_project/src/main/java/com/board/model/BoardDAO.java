@@ -81,7 +81,7 @@ public class BoardDAO {
 	         // TODO Auto-generated catch block
 	         e.printStackTrace();
 	      }
-
+////
 	   } // closeConn() 메서드 end
 
 	public List<Board_mainDTO> getBoardMainList() {
@@ -120,6 +120,34 @@ public class BoardDAO {
 		
 		
 		return list;
+	}
+
+	public void Insert_main(Board_mainDTO dto) {
+		int count;
+		openConn();
+		
+		sql = "select max(num) from member10";
+
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		
+		sql = "insert into board_main values(?,?,?,?,?)";
+		
+		
+		
 	}
 	   
 	   
