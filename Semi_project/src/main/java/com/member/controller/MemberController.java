@@ -37,6 +37,8 @@ public class MemberController extends HttpServlet {
 			action = new MemberWirterOkAction();
 		} else if(command.equals("select.do")) {
 			action = new MemberListAction();
+		} else if(command.equals("delete.do")) {
+			action = new MemberDeleteAction();
 		}
 		
 		

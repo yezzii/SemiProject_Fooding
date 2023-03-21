@@ -3,6 +3,7 @@ package com.member.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 
 public class MemberWirterOkAction implements Action {
@@ -10,24 +11,28 @@ public class MemberWirterOkAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		//회원등록 폼 페이지에서 넘어온 데이터들을 등록시키는 비지니스 로직.
-		
+		int member_accout =
+				Integer.parseInt(request.getParameter("mem_accout").trim());
 		String member_id = 
-				request.getParameter("mem_id");
+				request.getParameter("mem_id").trim();
 		String member_name = 
-				request.getParameter("mem_name");
+				request.getParameter("mem_name").trim();
 		String member_pwd = 
-				request.getParameter("mem_pwd");
+				request.getParameter("mem_pwd").trim();
 		String member_email = 
-				request.getParameter("mem_email");
+				request.getParameter("mem_email").trim();
 		String member_phone = 
-				request.getParameter("mem_phone");
+				request.getParameter("mem_phone").trim();
 		
 		MemberDTO dto = new MemberDTO();
 		
+		dto.setMember_accout(member_accout);
 		dto.setMember_name(member_name);
 		dto.setMember_id(member_id);
-		
-		
+		dto.setMember_pwd(member_pwd);
+		dto.setMember_phone(member_phone);
+		dto.setMember_email(member_email);
+
 		return null;
 	}
 
