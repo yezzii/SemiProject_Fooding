@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.board.action.Action;
+import com.board.action.BoardMainInsertAction;
+import com.board.action.BoardMainInsertOkAction;
 import com.board.action.BoardMainListAction;
 
 public class BoardController extends HttpServlet {

@@ -28,7 +28,6 @@ public class MemberList implements Action {
 		
 		rd.forward(request, response);
 		
-		
 		return null;
 	}
 
