@@ -3,9 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%
-    List<MemberDTO> list = (List<MemberDTO>)request.getAttribute("List");
-    %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -20,33 +18,36 @@
     </div>
     
     <table border="1" cellspacing="0">
+    <c:set var="list" value="${List }" />
     <tr>
     <th>멤버 아이디</th> <th>멤버 이름</th>  <th>멤버 비밀번호</th> 
     <th>멤버 이메일</th> <th>멤버 핸드폰 번호</th> 
     </tr>
     
-    <%
-    if(list.size() != 0){
-    	for(int i=0; i<list.size(); i++){
-    		MemberDTO dto = list.get(i);
-    %>
     
+    
+    <c:if test="${!empty list }">
+    <c:forEach items="${list }" var="dto"> 
     <tr>
-    <td><%=dto.getMember_id() %></td>
-    <td><%=dto.getMember_name() %></td>
-    <td><%=dto.getMember_pwd() %></td>
-    <td><%=dto.getMember_email() %></td>
-    <td><%=dto.getMember_phone() %></td>
+    <td>${dto.getMember_id() }</td>
+    <td>${dto.getMember_name() }</td>
+    <td>${dto.getMember_pwd() }</td>
+    <td>${dto.getMember_email() }</td>
+    <td>${dto.getMember_phone() }</td>
     </tr>
- <% }
-  }else{
- %>	  
-         <tr>
-         <td colspan="5" align="center">
-         <h4>회원 없음</h4>
-         </td>
-         </tr>
-  <%} %>
+    </c:forEach>
+    </c:if>
+    
+    <c:if test="${empty list }">
+    <tr>
+    <td colspan="4" align="center">
+    <h3>회원이 없습니다.</h3>
+    </td>
+    </tr>
+    </c:if>
+    </table>
+
+
     
     
     
