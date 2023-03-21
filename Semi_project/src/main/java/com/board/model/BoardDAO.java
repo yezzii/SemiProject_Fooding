@@ -1,18 +1,21 @@
 package com.board.model;
 
+<<<<<<< Updated upstream
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+=======
+
+>>>>>>> Stashed changes
 
 
 public class BoardDAO {
-	   Connection con = null;
 
-	   PreparedStatement pstmt = null;
 
+<<<<<<< Updated upstream
 	   ResultSet rs = null;
 
 	   String sql = null;
@@ -192,4 +195,7 @@ public class BoardDAO {
 	}  // updateSequence() 메서드 end
 	   
 	   
+=======
+	
+>>>>>>> Stashed changes
 }

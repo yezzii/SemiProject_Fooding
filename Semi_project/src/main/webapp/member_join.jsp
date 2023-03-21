@@ -15,6 +15,7 @@
 <form method="post"
 	action="<%=request.getContextPath() %>/insert_ok.go">
 <table border="1" cellspacing="0" width="300">
+
 <tr>
 	<th>회원아이디</th>
 	<td><input type="text" name="mem_id"></td>
