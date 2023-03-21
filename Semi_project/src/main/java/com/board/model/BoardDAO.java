@@ -125,7 +125,7 @@ public class BoardDAO {
 	//보드 게시글 삭제 메서드
 	public int deleteBoard(int no, String pwd) {
 
-int result = 0;
+		int result = 0;
 		
 		try {
 			openConn();

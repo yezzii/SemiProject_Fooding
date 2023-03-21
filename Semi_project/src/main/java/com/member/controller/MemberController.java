@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.member.action.Action;
+import com.member.action.MemberDeleteAction;
 import com.member.action.MemberWirterOkAction;
 
 public class MemberController extends HttpServlet {
@@ -35,9 +36,9 @@ public class MemberController extends HttpServlet {
 		//이 사이에 if 문으로 *.do 비교 해야됨 
 		if(command.equals("insert_ok.go")) {
 			action = new MemberWirterOkAction();
-		} else if(command.equals("select.do")) {
+		} else if(command.equals("select.go")) {
 			action = new MemberListAction();
-		} else if(command.equals("delete.do")) {
+		} else if(command.equals("delete.go")) {		//동현
 			action = new MemberDeleteAction();
 		}
 		

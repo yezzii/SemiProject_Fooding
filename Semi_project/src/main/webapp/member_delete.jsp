@@ -18,7 +18,7 @@
 	   <br>
 	   
 	   <form method="post"
-	      action="<%=request.getContextPath() %>/delete_ok.do">
+	      action="<%=request.getContextPath() %>/delete.go">
 	   
 	      <input type="hidden" name="no" value="<%=board_no %>">
 	      
