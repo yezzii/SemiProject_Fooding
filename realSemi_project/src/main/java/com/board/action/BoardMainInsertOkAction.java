@@ -13,7 +13,7 @@ public class BoardMainInsertOkAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+		{
 		
 		Board_mainDTO dto = new Board_mainDTO();
 		

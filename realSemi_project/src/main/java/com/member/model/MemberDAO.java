@@ -9,218 +9,208 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDAO {
-  Connection con = null;
 
-   PreparedStatement pstmt = null;
+	Connection con = null;
 
-   ResultSet rs = null;
+	PreparedStatement pstmt = null;
 
-   String sql = null;
+	ResultSet rs = null;
 
-   // MemberDAO 클래스를 싱글턴 방식을로 만들어 보자.
-   // 1단계 : 싱글턴 방식을 객체를 만들기 위해서는 우선적으로 기본생성자의 접근 제어자를 public이 아닌
-   // private 으로 바꾸어 주어야 한다. 즉 외부에서는 직접적으로 기본생성자를 호출하지 못하게 하는 방식이다.
+	String sql = null;
 
-   // 2단계 : MemberDAO 클래스를 정적(static) 멤버로 선언 해 주어야 한다.
+	// MemberDAO 클래스를 싱글턴 방식을로 만들어 보자.
+	// 1단계 : 싱글턴 방식을 객체를 만들기 위해서는 우선적으로 기본생성자의 접근 제어자를 public이 아닌
+	// private 으로 바꾸어 주어야 한다. 즉 외부에서는 직접적으로 기본생성자를 호출하지 못하게 하는 방식이다.
 
-   private static MemberDAO instance;
+	// 2단계 : MemberDAO 클래스를 정적(static) 멤버로 선언 해 주어야 한다.
 
-   private MemberDAO() {
-   } // 기본 생성자
+	private static MemberDAO instance;
 
-   // 3단계 : 기본생성자 대신에 싱글턴 객체를 return 해 주는 getInstance() 메서드를 만들어서
-   // 해당 getInstance() 메서드를 외부에서 접근할 수 있도록 해주면 됨.
-   public static MemberDAO getInstance() {
+	private MemberDAO() {
+	} // 기본 생성자
 
-      if (instance == null) {
-         instance = new MemberDAO();
-      }
+	// 3단계 : 기본생성자 대신에 싱글턴 객체를 return 해 주는 getInstance() 메서드를 만들어서
+	// 해당 getInstance() 메서드를 외부에서 접근할 수 있도록 해주면 됨.
+	public static MemberDAO getInstance() {
 
-      return instance;
-   } // getInstance() 메서드 end
+		if (instance == null) {
+			instance = new MemberDAO();
+		}
 
-   // DB를 연동하는 작업을 진행하는 메서드.
-   public void openConn() {
-      String driver = "com.mysql.cj.jdbc.Driver";
+		return instance;
+	} // getInstance() 메서드 end
 
-      String url = "jdbc:mysql://localhost/semi?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+	// DB를 연동하는 작업을 진행하는 메서드.
+	public void openConn() {
+		String driver = "com.mysql.cj.jdbc.Driver";
 
-      String user = "web";
+		String url = "jdbc:mysql://localhost/semi?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 
-      String password = "1234";
+		String user = "web";
 
-      try {
-         // 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.
-         Class.forName(driver);
+		String password = "1234";
 
-         // 2단계 : 오라클 데이터베이스와 연결 작업 진행.
-         con = DriverManager.getConnection(url, user, password);
-
-      } catch (Exception e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
-   } // openConn() 메서드 end
-
-   // DB에 연결되어 있던 자원 종료하는 메서드.
-   public void closeConn(ResultSet rs, PreparedStatement pstmt, Connection con) {
-
-      try {
-         if (rs != null) {
-            rs.close();
-         }
-         if (pstmt != null) {
-            pstmt.close();
-         }
-
-         if (con != null) {
-            con.close();
-         }
-      } catch (SQLException e) {
-         e.printStackTrace();
-      }
-
-   } // closeConn() 메서드 end
-   
-   
- //delete member 메서드
- 	public int DeleteMember(int no, String pwd) {
- 		
- 		int result = 0;
- 		
- 		try {
- 			openConn();
- 			
- 			sql = "select * from board "
- 					+ " where board_no = ?";
- 			
- 			pstmt = con.prepareStatement(sql);
- 			
- 			pstmt.setInt(1, no);
- 			
- 			rs = pstmt.executeQuery();
- 			
- 			if(rs.next()) {
- 				if(pwd.equals(rs.getString("board_pwd"))) {
- 					sql = "delete from board "
- 							+ " where board_no = ?";
- 					
- 					pstmt = con.prepareStatement(sql);
- 					
- 					pstmt.setInt(1, no);
- 					
- 					result = pstmt.executeUpdate();
- 				}else {   // 비밀번호가 틀린 경우
- 					result = -1;
- 				}
- 			}
- 			
- 		} catch (SQLException e) {
- 			// TODO Auto-generated catch block
- 			e.printStackTrace();
- 		} finally {
- 			closeConn(rs, pstmt, con);
- 		}
- 		
- 		return result;
- 	}//delete member 메서드 End
-	
-	
-	public List<MemberDTO> getMemberList() {
-		
-		List<MemberDTO> list = new ArrayList<MemberDTO>();
-		
-		openConn();
-	
-		
 		try {
-			sql = "select * from member order by member_id";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				MemberDTO dto = new MemberDTO();
-				
-				dto.setMember_id(rs.getString("member_id"));
-				dto.setMember_name(rs.getString("member_name"));
-				dto.setMember_pwd(rs.getString("member_pwd"));
-				dto.setMember_email(rs.getString("member_email"));
-				dto.setMember_phone(rs.getString("member_phone"));
-				dto.setMember_accout(rs.getInt("member_account"));
-				
-				list.add(dto);
-				
-			}
-			
-		} catch (SQLException e) {
+			// 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.
+			Class.forName(driver);
+
+			// 2단계 : 오라클 데이터베이스와 연결 작업 진행.
+			con = DriverManager.getConnection(url, user, password);
+
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			closeConn(rs, pstmt, con);
 		}
-		return list;
-		
-		} // member_list() end
-	
-	
-	
-	
-	public int insertMember(MemberDTO dto) {
-		
-		int result = 0 ;
-		
+	} // openConn() 메서드 end
+
+	// DB에 연결되어 있던 자원 종료하는 메서드.
+	public void closeConn(ResultSet rs, PreparedStatement pstmt, Connection con) {
+
 		try {
-			sql="insert into member(member_email,member_id,memder_name,member_phone,member_pwd) values(?,?,?,?,?,default)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getMember_email());
-			pstmt.setString(2, dto.getMember_id());
-			pstmt.setString(3, dto.getMember_name());
-			pstmt.setString(4, dto.getMember_phone());
-			pstmt.setString(5, dto.getMember_pwd());
-			
-			result = pstmt.executeUpdate();
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+
+			if (con != null) {
+				con.close();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			closeConn(rs, pstmt, con);
 		}
-		return result;
-		
-	}// insertMember()메서드 end
-	
-	
-	
-	
-	// board 테이블에서 중간의 게시글이 삭제된 경우
-	// 게시글 번호를 재정렬 하는 메서드.
-	public void updateSequence(int no) {
-		
+
+	} // closeConn() 메서드 end
+
+	// delete member 메서드
+	public int DeleteMember(int no, String pwd) {
+
+		int result = 0;
+
 		try {
 			openConn();
-			
-			sql = "update board "
-					+ " set board_no = board_no - 1 "
-					+ " where board_no > ?";
-			
+
+			sql = "select * from board " + " where board_no = ?";
+
 			pstmt = con.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, no);
-			
-			pstmt.executeUpdate();
-			
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				if (pwd.equals(rs.getString("board_pwd"))) {
+					sql = "delete from board " + " where board_no = ?";
+
+					pstmt = con.prepareStatement(sql);
+
+					pstmt.setInt(1, no);
+
+					result = pstmt.executeUpdate();
+				} else { // 비밀번호가 틀린 경우
+					result = -1;
+				}
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeConn(rs, pstmt, con);
 		}
+
+		return result;
+	}// delete member 메서드 End
+
+	public List<MemberDTO> getMemberList() {
+
+		List<MemberDTO> list = new ArrayList<MemberDTO>();
+
+		openConn();
+
+		try {
+			sql = "select * from member order by member_id";
+
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				MemberDTO dto = new MemberDTO();
+
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_pwd(rs.getString("member_pwd"));
+				dto.setMember_email(rs.getString("member_email"));
+				dto.setMember_phone(rs.getString("member_phone"));
+				dto.setMember_accout(rs.getInt("member_account"));
+
+				list.add(dto);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+
+	} // member_list() end
+
+	public int insertMember(MemberDTO dto) {
+
+		int result = 0;
+
+		openConn();
 		
-	}  // updateSequence() 메서드 end
-	
-	
-	
-	
+		try {
+
+			sql = "insert into member(member_email,member_id,member_name,member_phone,member_pwd,member_account) values(?,?,?,?,?,default)";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getMember_email());
+			pstmt.setString(2, dto.getMember_id());
+			pstmt.setString(3, dto.getMember_name());
+			pstmt.setString(4, dto.getMember_phone());
+			pstmt.setString(5, dto.getMember_pwd());
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+
+	}// insertMember()메서드 end
+
+	// board 테이블에서 중간의 게시글이 삭제된 경우
+	// 게시글 번호를 재정렬 하는 메서드.
+	public void updateSequence(int no) {
+
+		try {
+			openConn();
+
+			sql = "update board " + " set board_no = board_no - 1 " + " where board_no > ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, no);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+	} // updateSequence() 메서드 end
+
 }

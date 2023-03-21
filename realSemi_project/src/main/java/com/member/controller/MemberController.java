@@ -43,9 +43,6 @@ public class MemberController extends HttpServlet {
 			action = new MemberDeleteAction();
 		}
 		
-		
-		
-		
 		String path1 = action.execute(request, response);
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path1);
