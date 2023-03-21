@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.board.action.Action;
+import com.board.action.BoardMainListAction;
 
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +33,13 @@ public class BoardController extends HttpServlet {
 		Action action = null;
 		
 		//이 사이에 if 문으로 *.go 비교 해야됨 
-
+		if(command.equals("select_main.go")) {
+			action = new BoardMainListAction();
+		}else if(command.equals("insert_main.go")) {
+			action = new BoardMainInsertAction();
+		}else if(command.equals("insert_mainOk.go")) {
+			action = new BoardMainInsertOkAction();
+		}
 		
 		String path1 = action.execute(request, response);
 		

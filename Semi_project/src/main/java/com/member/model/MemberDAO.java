@@ -131,9 +131,10 @@ public class MemberDAO {
 				
 				dto.setMember_id(rs.getString("member_id"));
 				dto.setMember_name(rs.getString("member_name"));
-				dto.setMember_pwd(rs.getString("pwd"));
+				dto.setMember_pwd(rs.getString("member_pwd"));
 				dto.setMember_email(rs.getString("member_email"));
 				dto.setMember_phone(rs.getString("member_phone"));
+				dto.setMember_accout(rs.getInt("member_account"));
 				
 				list.add(dto);
 				
