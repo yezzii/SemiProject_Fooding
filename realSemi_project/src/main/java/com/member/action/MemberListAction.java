@@ -8,14 +8,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.action.Action;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 
-public class MemberList implements Action {
+public class MemberListAction implements Action {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		
 		MemberDAO dao = MemberDAO.getInstance();
@@ -32,3 +31,4 @@ public class MemberList implements Action {
 	}
 
 }
+////real

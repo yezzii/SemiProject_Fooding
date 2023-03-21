@@ -17,9 +17,6 @@ public class MemberDeleteAction implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		
 		String member_pwd = 
 				request.getParameter("pwd").trim();
 		
@@ -33,8 +30,8 @@ public class MemberDeleteAction implements Action {
 		
 		PrintWriter out = response.getWriter();
 		
-		if(check > 0) {s
-			dao.UpdateSequence(member_no);
+		if(check > 0) {
+			dao.updateSequence(member_no);
 			out.println("<script>");
 			out.println("alert('게시글 삭제 성공!!!')");
 			out.println("location.href='select.do'");

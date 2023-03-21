@@ -191,7 +191,7 @@ public class MemberDAO {
 	}// insertMember()메서드 end
 	
 	
-	// board 테이블에서 중간의 게시글이 삭제된 경우
+		// board 테이블에서 중간의 게시글이 삭제된 경우
 		// 게시글 번호를 재정렬 하는 메서드.
 		public void updateSequence(int no) {
 			
