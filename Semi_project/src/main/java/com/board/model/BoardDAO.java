@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.member.model.MemberDAO;
 
 public class BoardDAO {
 	   Connection con = null;
@@ -121,6 +120,76 @@ public class BoardDAO {
 		
 		return list;
 	}
+
+	
+	//보드 게시글 삭제 메서드
+	public int deleteBoard(int no, String pwd) {
+
+int result = 0;
+		
+		try {
+			openConn();
+			
+			sql = "select * from board "
+					+ " where board_no = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(pwd.equals(rs.getString("board_pwd"))) {
+					sql = "delete from board "
+							+ " where board_no = ?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, no);
+					
+					result = pstmt.executeUpdate();
+				}else {   // 비밀번호가 틀린 경우
+					result = -1;
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	}/* deleteBoard end */
+
+	
+	
+	// board 테이블의 글번호에 해당하는 게시글을 
+	// 수정하는 메서드.
+	public void updateSequence(int no) {
+		try {
+			openConn();
+			
+			sql = "update board "
+					+ " set board_no = board_no - 1 "
+					+ " where board_no > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+	}  // updateSequence() 메서드 end
 	   
 	   
 }
