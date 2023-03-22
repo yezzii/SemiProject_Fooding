@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,14 +66,15 @@
 	</div> 
 		
 	<div>
-		<a class="searchLine" href="<%=request.getContextPath() %>/main_search.go">	
-			<span class="top_left_aTag-s"><input type="text" class="top_search" value="지역,음식,레스토랑명 검색"></span>
-		</a>
+		<form class="searchLine" action="loaction.href='<%=request.getContextPath() %>/main_search.go'">
+			<span class="top_left_aTag-s"><input type="text" class="top_search" name="searchText" value placeholder="지역,음식,레스토랑명 검색"></span>
+		</form>
 	</div>  <!-- 검색 -->
 		
 		
 	
 		<div class="main1">  <!-- 메인섹션1 -->
+			<c:if test=""></c:if>
 			<div class="card-deck">
 			  <div class="card">
 			    <img src="..." class="card-img-top" alt="...">

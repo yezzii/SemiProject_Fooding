@@ -44,11 +44,11 @@ public class MemberDAO {
 	public void openConn() {
 		String driver = "com.mysql.cj.jdbc.Driver";
 
-		String url = "jdbc:mysql://localhost/semi?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+		String url = "jdbc:mysql://semi-project.c89ttyl10fx8.ap-southeast-2.rds.amazonaws.com:3306/semi";
 
 		String user = "web";
 
-		String password = "1234";
+		String password = "12345678";
 
 		try {
 			// 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.
@@ -152,7 +152,6 @@ public class MemberDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeConn(rs, pstmt, con);
