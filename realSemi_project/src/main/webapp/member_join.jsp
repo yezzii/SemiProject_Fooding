@@ -48,7 +48,7 @@ function check(){
 <hr width="50%" color="pink">
 
 <form method="post" name="f"
-	action="<%=request.getContextPath() %>/insert_ok.go">
+	action="<%=request.getContextPath() %>/insert_ok.go" onsubmit="return check();">
 <table border="1" cellspacing="0" width="300">
 
 <tr>
