@@ -101,7 +101,7 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				if (pwd.equals(rs.getString("board_pwd"))) {
-					sql = "delete from board " + " where board_no = ?";
+					sql = "delete from board where board_no = ?";
 
 					pstmt = con.prepareStatement(sql);
 

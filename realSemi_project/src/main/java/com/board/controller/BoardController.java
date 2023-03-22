@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.board.action.Action;
+import com.board.action.BoardMainDeleteAction;
 import com.board.action.BoardMainInsertAction;
 import com.board.action.BoardMainInsertOkAction;
 import com.board.action.BoardMainListAction;
@@ -34,14 +35,18 @@ public class BoardController extends HttpServlet {
 		
 		Action action = null;
 		
-		//이 사이에 if 문으로 *.go 비교 해야됨 
+		//이 사이에 if 문으로 *.do 비교 해야됨 
 		if(command.equals("select_main.do")) {
 			action = new BoardMainListAction();
-		}else if(command.equals("insert_main.do")) {
-			action = new BoardMainInsertAction();
-		}else if(command.equals("insert_mainOk.do")) {
-			action = new BoardMainInsertOkAction();
 		}
+		
+		/*
+		 * else if(command.equals("insert_main.do")) { action = new
+		 * BoardMainInsertAction(); }else if(command.equals("insert_mainOk.do")) {
+		 * action = new BoardMainInsertOkAction(); }else                                                       
+		 * if(command.equals("delete_main.do")) { action = new BoardMainDeleteAction();
+		 * }
+		 */
 		
 		String path1 = action.execute(request, response);
 		

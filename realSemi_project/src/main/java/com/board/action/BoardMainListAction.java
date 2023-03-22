@@ -19,7 +19,7 @@ public class BoardMainListAction implements Action {
 		
 		request.setAttribute("List", list);
 		
-		return "반환될 페이지 파일명";
+		return "board_main/board_list.jsp";
 	}
 
 }

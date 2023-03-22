@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -87,18 +88,17 @@ public class BoardDAO {
 
 	public List<Board_mainDTO> getBoardMainList() {
 		
-		List<Board_mainDTO> list = null;
+		List<Board_mainDTO> list = new ArrayList<Board_mainDTO>();
 		
 		openConn();
 		
-		
-		
 		try {
-			sql = "select * from board_main order by main_idx";
+			sql = "select * from board_main";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				Board_mainDTO dto = new Board_mainDTO();
 				
@@ -111,13 +111,18 @@ public class BoardDAO {
 				list.add(dto);
 			}
 			
+<<<<<<< Updated upstream
 			
 		} catch (SQLException e) {
+=======
+				
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+>>>>>>> Stashed changes
 			e.printStackTrace();
 		}finally {
 			closeConn(rs, pstmt, con);
 		}
-		
 		
 		return list;
 	}
@@ -131,8 +136,7 @@ public class BoardDAO {
 		try {
 			openConn();
 			
-			sql = "select * from board "
-					+ " where board_no = ?";
+			sql = "select * from board where board_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -142,8 +146,7 @@ public class BoardDAO {
 			
 			if(rs.next()) {
 				if(pwd.equals(rs.getString("board_pwd"))) {
-					sql = "delete from board "
-							+ " where board_no = ?";
+					sql = "delete from board where board_no = ?";
 					
 					pstmt = con.prepareStatement(sql);
 					
@@ -173,9 +176,7 @@ public class BoardDAO {
 		try {
 			openConn();
 			
-			sql = "update board "
-					+ " set board_no = board_no - 1 "
-					+ " where board_no > ?";
+			sql = "update board set board_no = board_no - 1 where board_no > ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -190,6 +191,45 @@ public class BoardDAO {
 			closeConn(rs, pstmt, con);
 		}
 		
-	}  // updateSequence() 메서드 end
+	}  // updateSequence() 메서드 end  
+
+	public int Insert_main(Board_mainDTO dto) {
+		
+		int count = 0, result = 0;
+		
+		openConn();
+		
+		try {
+			
+			sql = "select max(main_idx) from board_main";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			sql = "insert into board_main(main_idx,main_addr,main_name,main_location,main_content) values(?,?,?,?,?)";
+			
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getMain_addr());
+			pstmt.setString(3, dto.getMain_name());
+			pstmt.setString(4, dto.getMain_location());
+			pstmt.setString(5, dto.getMain_content());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	}
 	   
 }
