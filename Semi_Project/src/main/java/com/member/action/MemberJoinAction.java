@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 
+import sha256.Encryption;
+
 public class MemberJoinAction implements MemberAction {
 
 	@Override
@@ -38,8 +40,8 @@ public class MemberJoinAction implements MemberAction {
 
 		if(result > 0) {
 			out.println("<script>");
-			out.println("alert('"+member_id+"님 환영합니다.')");
-			out.println("location.href='select.do'");
+			out.println("alert('"+dto.getMember_id()+"님 환영합니다.')");
+			out.println("location.href='select.go'");
 			out.println("</script>");
 		}else {
 			out.println("<script>");

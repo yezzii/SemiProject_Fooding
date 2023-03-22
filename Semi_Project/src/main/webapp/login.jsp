@@ -10,7 +10,7 @@
    
    <div>
    <form action="">
-   <table border="1" cellspacin="0">
+   <table border="1" cellspacing="0">
    <tr>
    <th>아이디 :</th>
    <td><input type="text"></td>
