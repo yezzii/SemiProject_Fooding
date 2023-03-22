@@ -5,26 +5,20 @@ CREATE TABLE `board_main` (
   `main_location` varchar(50) NOT NULL,
   `main_content` varchar(500) NOT NULL,
   PRIMARY KEY (`main_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
-
-CREATE TABLE `board_qna` (
-  `qna_idx` int NOT NULL,
-  `qna_title` varchar(50) NOT NULL,
-  `qna_writer` varchar(50) NOT NULL,
-  `qna_content` varchar(500) NOT NULL,
-  `qna_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`qna_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
-
-CREATE TABLE `board_review` (
-  `review_idx` int NOT NULL,
-  `review_title` varchar(50) NOT NULL,
-  `review_writer` varchar(50) NOT NULL,
-  `review_content` varchar(500) NOT NULL,
-  `review_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `review_viewcnt` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`review_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `board` (
+  `board_idx` int NOT NULL,
+  `board_title` varchar(50) NOT NULL,
+  `board_writer` varchar(50) NOT NULL,
+  `board_content` varchar(500) NOT NULL,
+  `board_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `board_viewcnt` int NOT NULL DEFAULT '0',
+  `board_type` int NOT NULL,
+  PRIMARY KEY (`board_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 CREATE TABLE `comment` (
   `comment_idx` int NOT NULL,
@@ -33,6 +27,15 @@ CREATE TABLE `comment` (
   `comment_content` varchar(300) NOT NULL,
   `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`comment_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `company` (
+  `company_id` varchar(50) NOT NULL,
+  `company_qwd` varchar(50) NOT NULL,
+  `company_phone` varchar(50) NOT NULL,
+  `company_name` varchar(50) NOT NULL,
+  `company_storenum` varchar(50) NOT NULL,
+  PRIMARY KEY (`company_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `main_likecnt` (
@@ -51,7 +54,6 @@ CREATE TABLE `main_menu` (
   CONSTRAINT `main_idx` FOREIGN KEY (`main_idx`) REFERENCES `board_main` (`main_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
 CREATE TABLE `member` (
   `member_id` varchar(50) NOT NULL,
   `member_name` varchar(50) NOT NULL,
@@ -59,8 +61,10 @@ CREATE TABLE `member` (
   `member_email` varchar(100) NOT NULL,
   `member_phone` varchar(100) NOT NULL,
   `member_account` int NOT NULL DEFAULT '0',
+  `member_mark` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`member_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 CREATE TABLE `reservation` (
   `booking_idx` int NOT NULL,
@@ -76,6 +80,7 @@ CREATE TABLE `reservation` (
   CONSTRAINT `memberID` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 CREATE TABLE `review_likecnt` (
   `review_id` int NOT NULL,
   `member_id` varchar(50) NOT NULL,
@@ -83,10 +88,5 @@ CREATE TABLE `review_likecnt` (
   KEY `review_id_idx` (`review_id`),
   KEY `member_id_idx` (`member_id`),
   CONSTRAINT `member_id` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`),
-  CONSTRAINT `review_id` FOREIGN KEY (`review_id`) REFERENCES `board_review` (`review_idx`)
+  CONSTRAINT `review_id` FOREIGN KEY (`review_id`) REFERENCES `board` (`board_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-
-
-
