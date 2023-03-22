@@ -5,6 +5,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function check(){
+	   
+	   if(f.member_id.value ==""){
+	      alert("아이디를 입력하세요");
+	      f.writer.focus();
+	      return false;
+	   }  
+	   
+	   if(f.member_name.value ==""){
+	      alert("이름를 입력하세요");
+	      f.title.focus();
+	      return false;
+	   }   
+	   
+	   if(f.member_pwd.value ==""){
+	      alert("비밀번호를 입력하세요");
+	      f.cont.focus();
+	      return false;
+	   }   
+	   
+	   if(f.member_email.value ==""){
+	      alert("이메일을 입력하세요");
+	      f.pwd.focus();
+	      return false;
+	   }  
+	   
+	   if(f.member_phone.value ==""){
+	      alert("연락처를 입력하세요");
+	      f.pwd.focus();
+	      return false;
+		   }  
+	   
+	}
+</script>
 </head>
 <body>
 <div align="center">
@@ -12,7 +47,7 @@
 	<h3>회원 가입 페이지</h3>
 <hr width="50%" color="pink">
 
-<form method="post"
+<form method="post" name="f"
 	action="<%=request.getContextPath() %>/insert_ok.go">
 <table border="1" cellspacing="0" width="300">
 
