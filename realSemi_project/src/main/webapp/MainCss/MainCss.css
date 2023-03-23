@@ -5,12 +5,15 @@ body	{
 }
 
 .flexMain	{
+	
 	display: flex;
-	 justify-content: space-between;
+	justify-content: space-between;
     align-items: center;
     margin: 20px 100px;
     padding-left: 60px;
     padding-right: 60px;
+    flex-direction: column;
+    
 }
 
 .flexTop	{
@@ -21,6 +24,8 @@ body	{
     padding-left: 60px;
     padding-right: 60px;
 }
+
+
 
 .top_left	{
 	display: block;

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Pooding 푸딩</title>
+<title>Pooding 푸딩</title> 
 
 <link rel="stylesheet" href="MainCss/MainCss.css">	
 
@@ -27,7 +27,7 @@
 <div class="flexMain">
 	<div class="flexTop">	<!-- 네비바 container -->
 		<div><a href="#">	
-		<img src="https://d1il53drs2cmia.cloudfront.net/resources/img/appicon.svg">
+		<img class="ico_size" src="main_img/fooding type_1.png" style="width:120px">
 		</a></div>	<!-- 로고 -->
 		
 		
@@ -77,7 +77,7 @@
 			<c:if test=""></c:if>
 			<div class="card-deck">
 			  <div class="card">
-			    <img src="..." class="card-img-top" alt="...">
+			    <img src="main_img/1.jpg" class="card-img-top" alt="...">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -85,7 +85,7 @@
 			    </div>
 			  </div>
 			  <div class="card">
-			    <img src="..." class="card-img-top" alt="...">
+			    <img src="main_img/1.jpg" class="card-img-top" alt="...">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -93,7 +93,7 @@
 			    </div>
 			  </div>
 			  <div class="card">
-			    <img src="..." class="card-img-top" alt="...">
+			    <img src="main_img/1.jpg" class="card-img-top" alt="...">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
