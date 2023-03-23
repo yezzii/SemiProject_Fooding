@@ -10,31 +10,31 @@ function check(){
 	   
 	   if(f.member_id.value ==""){
 	      alert("아이디를 입력하세요");
-	      f.writer.focus();
+	      f.member_id.focus();
 	      return false;
 	   }  
 	   
 	   if(f.member_name.value ==""){
 	      alert("이름를 입력하세요");
-	      f.title.focus();
+	      f.member_name.focus();
 	      return false;
 	   }   
 	   
 	   if(f.member_pwd.value ==""){
 	      alert("비밀번호를 입력하세요");
-	      f.cont.focus();
+	      f.member_pwd.focus();
 	      return false;
 	   }   
 	   
 	   if(f.member_email.value ==""){
 	      alert("이메일을 입력하세요");
-	      f.pwd.focus();
+	      f.member_email.focus();
 	      return false;
 	   }  
 	   
 	   if(f.member_phone.value ==""){
 	      alert("연락처를 입력하세요");
-	      f.pwd.focus();
+	      f.member_phone.focus();
 	      return false;
 		   }  
 	   
@@ -48,7 +48,7 @@ function check(){
 <hr width="50%" color="pink">
 
 <form method="post" name="f"
-	action="<%=request.getContextPath() %>/join.go" onsubmit="return check();">
+	action="<%=request.getContextPath() %>/member_join.go" onsubmit="return check();">
 <table border="1" cellspacing="0" width="300">
 
 <tr>

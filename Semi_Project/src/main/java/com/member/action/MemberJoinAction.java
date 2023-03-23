@@ -12,6 +12,7 @@ import com.member.model.MemberDTO;
 
 import sha256.Encryption;
 
+
 public class MemberJoinAction implements MemberAction {
 
 	@Override
@@ -20,7 +21,8 @@ public class MemberJoinAction implements MemberAction {
 
 		String member_id = request.getParameter("member_id");
 		String member_name = request.getParameter("member_name");
-		String member_pwd = request.getParameter("member_pwd");
+		String Raw_pwd = request.getParameter("member_pwd");
+		String member_pwd = Encryption.encodeSha256(Raw_pwd);
 		String member_email = request.getParameter("member_email");
 		String member_phone = request.getParameter("member_phone");
 

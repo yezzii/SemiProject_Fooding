@@ -1,4 +1,4 @@
-package com.member.controller;
+package com.board.controller;
 
 import java.io.IOException;
 
@@ -8,15 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.member.action.CompanyJoinAction;
-import com.member.action.MemberAction;
-import com.member.action.MemberJoinAction;
-import com.member.action.MemberLoginAction;
+import com.board.action.BoardAction;
+import com.board.action.BoardInsertAction;
+import com.board.action.BoardInsertOkAction;
 
-public class MemberController extends HttpServlet {
+public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public MemberController() {
+	public BoardController() {
 		super();
 	}
 
@@ -33,17 +32,13 @@ public class MemberController extends HttpServlet {
 
 		String command = uri.substring(path.length() + 1);
 
-		MemberAction action = null;
+		BoardAction action = null;
 
-		
-		
-		//이 사이에 if 문으로 *.go 비교 해야됨
-		if(command.equals("member_join.go")) {
-			action = new MemberJoinAction();
-		}else if(command.equals("company_join.go")) {
-			action = new CompanyJoinAction();
-		}else if(command.equals("login.go")) {
-			action = new MemberLoginAction();
+		// 이 사이에 if 문으로 *.do 비교 해야됨
+		if (command.equals("write_board.do")) {
+			action = new BoardInsertAction();
+		} else if (command.equals("write_boardOk.do")) {
+			action = new BoardInsertOkAction();
 		}
 
 		String path1 = action.execute(request, response);
@@ -52,5 +47,4 @@ public class MemberController extends HttpServlet {
 
 		rd.forward(request, response);
 	}
-
 }

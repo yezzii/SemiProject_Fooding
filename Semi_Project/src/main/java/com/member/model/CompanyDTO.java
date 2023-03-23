@@ -7,7 +7,7 @@ public class CompanyDTO {
 	private String company_email;
 	private String company_phone;
 	private String company_name;
-	private String company_mark;
+	private String company_storenum;
 	
 	
 	public String getCompany_id() {
@@ -40,10 +40,11 @@ public class CompanyDTO {
 	public void setCompany_name(String company_name) {
 		this.company_name = company_name;
 	}
-	public String getCompany_mark() {
-		return company_mark;
+	public String getCompany_storenum() {
+		return company_storenum;
 	}
-	public void setCompany_mark(String company_mark) {
-		this.company_mark = company_mark;
+	public void setCompany_storenum(String company_storenum) {
+		this.company_storenum = company_storenum;
 	}
+	
 }

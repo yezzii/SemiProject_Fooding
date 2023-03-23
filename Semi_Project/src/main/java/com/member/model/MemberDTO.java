@@ -6,7 +6,7 @@ private String member_id;
 private String member_pwd;
 private String member_email;
 private String member_phone;
-private int member_accout;
+private int member_account;
 private String member_name;
 private String member_mark;
 
@@ -41,11 +41,11 @@ public String getMember_phone() {
 public void setMember_phone(String member_phone) {
 	this.member_phone = member_phone;
 }
-public int getMember_accout() {
-	return member_accout;
+public int getMember_account() {
+	return member_account;
 }
-public void setMember_accout(int member_accout) {
-	this.member_accout = member_accout;
+public void setMember_account(int member_account) {
+	this.member_account = member_account;
 }
 public String getMember_name() {
 	return member_name;
