@@ -114,9 +114,9 @@ public class MemberDAO {
 	public MemberDTO NormalLogin(String member_id, String member_pwd) {
 
 		MemberDTO dto = null;
-		
+
 		openConn();
-		
+
 		try {
 
 			sql = "select * from member where member_id = ? and member_pwd = ?";
@@ -131,13 +131,13 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				dto = new MemberDTO();
-				
+
 				dto.setMember_id(rs.getString("member_id"));
 				dto.setMember_email(rs.getString("member_email"));
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_name(rs.getString("member_name"));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -162,16 +162,16 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				
+
 				dto = new CompanyDTO();
-				
+
 				dto.setCompany_id(rs.getString("company_id"));
 				dto.setCompany_email(rs.getString("company_email"));
 				dto.setCompany_phone(rs.getString("company_phone"));
 				dto.setCompany_name(rs.getString("company_name"));
 				dto.setCompany_storenum(rs.getString("company_storenum"));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -208,5 +208,31 @@ public class MemberDAO {
 		}
 
 		return result;
+	}
+
+	public String MemberFindId(String member_name, String member_email) {
+		String foundId = null;
+		openConn();
+
+		try {
+			String sql = "select member_id from member where member_name=? and member_email=? ";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, member_name);
+			pstmt.setString(2, member_email);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				foundId = rs.getString("member_mid");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return foundId;
 	}
 }

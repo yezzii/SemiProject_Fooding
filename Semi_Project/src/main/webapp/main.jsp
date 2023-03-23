@@ -32,7 +32,10 @@
 	crossorigin="anonymous"></script>
 <!-- 부트스트랩 end-->
 
-<script type="text/javascript"></script>
+<script type="text/javascript">
+
+
+</script>
 
 <%
 String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -85,12 +88,12 @@ if (session.getAttribute("id") != null) {
 					</button>
 				</a>
 				<!--  로그인 -->
-				  <a href="member/find_id.jsp">
-            <button type="button" class="find">
-            <span class="">아이디 찾기</span>
-            </button>
-            </a>
-            <!-- 아이디 찾기 -->
+				<a href="member/find_id.jsp">
+					<button type="button" class="find">
+						<span class="">아이디 찾기</span>
+					</button>
+				</a>
+				<!-- 아이디 찾기 -->
 
 
 				<a href="member/join_select.jsp">
@@ -104,8 +107,9 @@ if (session.getAttribute("id") != null) {
 				// 로그인이 되어있는 사람만 볼수 있는 화면
 				} else {
 				%>
-				<a href="logout.jsp">
-					<button type="button" class="logout">
+				<a href="member/logout.jsp">
+				
+					<button type="button" class="logout"  >
 						<span class="">로그아웃</span>
 					</button>
 				</a>
@@ -119,12 +123,12 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!-- 글쓰기 -->
 
-	
+
 				<a href="<%=request.getContextPath()%>/myprofile.go"> <img
 					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
 					width="30px" height="30px">
 				</a>
-				
+
 				<%
 				}
 				%>

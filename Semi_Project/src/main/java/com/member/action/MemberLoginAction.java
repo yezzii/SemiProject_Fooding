@@ -17,8 +17,7 @@ import sha256.Encryption;
 public class MemberLoginAction implements MemberAction {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		String member_type = request.getParameter("member_chk");
 		String id = request.getParameter("id");
@@ -31,10 +30,11 @@ public class MemberLoginAction implements MemberAction {
 
 		CompanyDTO comdto = null;
 
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
 
 		PrintWriter out = response.getWriter();
 
+		session = request.getSession(true);
 		if (member_type.equals("normal")) {
 			memdto = dao.NormalLogin(id, pwd);
 

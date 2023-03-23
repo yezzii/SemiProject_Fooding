@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.member.action.CompanyJoinAction;
 import com.member.action.MemberAction;
+import com.member.action.MemberFindIdAction;
 import com.member.action.MemberJoinAction;
 import com.member.action.MemberLoginAction;
 
@@ -33,8 +34,9 @@ public class MemberController extends HttpServlet {
 
 		String command = uri.substring(path.length() + 1);
 
+		System.out.println(command);
+		
 		MemberAction action = null;
-
 		
 		
 		//이 사이에 if 문으로 *.go 비교 해야됨
@@ -44,6 +46,8 @@ public class MemberController extends HttpServlet {
 			action = new CompanyJoinAction();
 		}else if(command.equals("login.go")) {
 			action = new MemberLoginAction();
+		}else if(command.equals("find_id.go")) {
+			action = new MemberFindIdAction();
 		}
 
 		String path1 = action.execute(request, response);

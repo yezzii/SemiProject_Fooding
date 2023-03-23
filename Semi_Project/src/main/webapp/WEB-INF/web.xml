@@ -22,7 +22,7 @@
 	</servlet-mapping>
 	
 	
-	<!-- 회원 관련 서블릿 매핑 -->
+	 <!-- 회원 관련 서블릿 매핑 -->
 	<servlet>
 		<servlet-name>MemberController</servlet-name>
 		<servlet-class>com.member.controller.MemberController</servlet-class>
@@ -31,6 +31,6 @@
 	<servlet-mapping>
 		<servlet-name>MemberController</servlet-name>
 		<url-pattern>*.go</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> 
   
 </web-app>
