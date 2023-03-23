@@ -100,11 +100,11 @@ public class BoardDAO {
 				count = rs.getInt(1);
 			}
 			
-			sql = "insert into board(board_idx,board_title,board_writer,board_content,board_type) values(?,?,?,?,default,default,?)";
+			sql = "insert into board(board_idx,board_title,board_writer,board_date,board_viewcnt,board_content,board_type) values(?,?,?,default,default,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, count);
+			pstmt.setInt(1, count+1);
 			pstmt.setString(2, dto.getBoard_title());  
 			pstmt.setString(3, dto.getBoard_writer()); 
 			pstmt.setString(4, dto.getBoard_content());
