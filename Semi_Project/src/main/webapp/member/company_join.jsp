@@ -50,7 +50,7 @@
 <body>
 	<div align="center">
 		<hr width="50%" color="pink">
-		<h3>회원 가입 페이지</h3>
+		<h3>사업자 회원 가입 페이지</h3>
 		<hr width="50%" color="pink">
 
 		<form method="post" name="f"

@@ -83,7 +83,7 @@
 				<!--  로그아웃 -->
 
 
-				<a href="member/member_join.jsp">
+				<a href="member/join_select.jsp">
 					<button type="button" class="join">
 						<span class="">회원가입</span>
 					</button>
