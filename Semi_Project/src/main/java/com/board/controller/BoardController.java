@@ -39,6 +39,8 @@ public class BoardController extends HttpServlet {
 			action = new BoardInsertAction();
 		} else if (command.equals("write_boardOk.do")) {
 			action = new BoardInsertOkAction();
+		} else if (command.equals("Board_content.do")) {
+			action = new BoardGetContentAction();
 		}
 
 		String path1 = action.execute(request, response);

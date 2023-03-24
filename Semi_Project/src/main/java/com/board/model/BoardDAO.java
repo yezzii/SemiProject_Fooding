@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 public class BoardDAO {
@@ -119,4 +122,46 @@ public class BoardDAO {
 		}
 		return result;
 	}
+
+	public List<BoardMainDTO> getContentList() {
+
+		List<BoardMainDTO> contents = new ArrayList<BoardMainDTO>();
+		
+		try {
+ 			openConn();
+ 	 		
+ 	 		sql="select * from board_main order by board_idx desc";
+		
+ 	 		pstmt =con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardMainDTO dto = new BoardMainDTO();
+				
+				dto.setMain_idx(rs.getInt("main_idx"));
+				dto.setMain_addr(rs.getString("main_addr"));
+				dto.setMain_name(rs.getString("main_name"));
+				dto.setMain_location(rs.getString("main_location"));
+				dto.setMain_content(rs.getString("main_content"));
+				
+				contents.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+			
+		}
+ 		return contents;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
