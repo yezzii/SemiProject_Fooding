@@ -11,26 +11,26 @@
   </welcome-file-list>
 
 	<!-- 게시판 관련 서블릿 매핑 -->
-	<servlet>
-		<servlet-name>BoardController</servlet-name>
+	<!-- <servlet>
+		<servlet-name>BoardControkkkkloollokkljijiller</servlet-name>
 		<servlet-class>com.board.controller.BoardController</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>BoardController</servlet-name>
 		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	
 	
-	 <!-- 회원 관련 서블릿 매핑 -->
+	  <!-- 회원 관련 서블릿 매핑 -->
 	<servlet>
-		<servlet-name>MemberController</servlet-name>
-		<servlet-class>com.member.controller.MemberController</servlet-class>
+		<servlet-name>FrontController</servlet-name>
+		<servlet-class>com.member.controller.FrontController</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>MemberController</servlet-name>
-		<url-pattern>*.go</url-pattern>
-	</servlet-mapping> 
+		<servlet-name>FrontController</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
   
 </web-app>

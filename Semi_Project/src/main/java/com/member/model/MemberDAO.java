@@ -89,7 +89,7 @@ public class MemberDAO {
 
 		try {
 
-			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account) values(?,?,?,?,?,default)";
+			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type) values(?,?,?,?,?,default,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -98,6 +98,7 @@ public class MemberDAO {
 			pstmt.setString(3, dto.getMember_pwd());
 			pstmt.setString(4, dto.getMember_email());
 			pstmt.setString(5, dto.getMember_phone());
+			pstmt.setInt(6, dto.getMember_type());
 
 			result = pstmt.executeUpdate();
 
@@ -110,8 +111,41 @@ public class MemberDAO {
 
 		return result;
 	}
+	
+	public int CompanyJoin(MemberDTO dto) {
 
-	public MemberDTO NormalLogin(String member_id, String member_pwd) {
+		int result = 0;
+
+		openConn();
+
+		try {
+
+			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type, member_storenum) values(?,?,?,?,?,default,?,?)";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getMember_id());
+			pstmt.setString(2, dto.getMember_name());
+			pstmt.setString(3, dto.getMember_pwd());
+			pstmt.setString(4, dto.getMember_email());
+			pstmt.setString(5, dto.getMember_phone());
+			pstmt.setInt(6, dto.getMember_type());
+			pstmt.setString(7, dto.getMember_storenum());
+			
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+		return result;
+	}
+
+
+	public MemberDTO MemberLogin(String member_id, String member_pwd) {
 
 		MemberDTO dto = null;
 
@@ -128,14 +162,16 @@ public class MemberDAO {
 			pstmt.setString(2, member_pwd);
 
 			rs = pstmt.executeQuery();
-
+			
 			if (rs.next()) {
+				System.out.println(rs.getString("member_id"));
 				dto = new MemberDTO();
 
 				dto.setMember_id(rs.getString("member_id"));
 				dto.setMember_email(rs.getString("member_email"));
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_type(rs.getInt("member_type"));
 			}
 
 		} catch (SQLException e) {
@@ -145,77 +181,15 @@ public class MemberDAO {
 		return dto;
 	}
 
-	public CompanyDTO CompanyLogin(String company_id, String company_pwd) {
-		CompanyDTO dto = null;
-		openConn();
-
-		try {
-
-			sql = "select * from company where company_id = ? and company_pwd = ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, company_id);
-
-			pstmt.setString(2, company_pwd);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-
-				dto = new CompanyDTO();
-
-				dto.setCompany_id(rs.getString("company_id"));
-				dto.setCompany_email(rs.getString("company_email"));
-				dto.setCompany_phone(rs.getString("company_phone"));
-				dto.setCompany_name(rs.getString("company_name"));
-				dto.setCompany_storenum(rs.getString("company_storenum"));
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return dto;
-	}
-
-	public int CompanyJoin(CompanyDTO dto) {
-
-		int result = 0;
-
-		openConn();
-
-		try {
-
-			sql = "insert into company(company_id, company_name, company_pwd, company_email, company_phone, company_storenum) values(?,?,?,?,?,?)";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, dto.getCompany_id());
-			pstmt.setString(2, dto.getCompany_name());
-			pstmt.setString(3, dto.getCompany_pwd());
-			pstmt.setString(4, dto.getCompany_email());
-			pstmt.setString(5, dto.getCompany_phone());
-			pstmt.setString(6, dto.getCompany_storenum());
-
-			result = pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-
-		return result;
-	}
-
+	
 	public String MemberFindId(String member_name, String member_email) {
+		
 		String foundId = null;
+		
 		openConn();
 
 		try {
-			String sql = "select member_id from member where member_name=? and member_email=? ";
+			String sql = "select member_id from member where member_name = ? and member_email = ? ";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -225,7 +199,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				foundId = rs.getString("member_mid");
+				foundId = rs.getString("member_id");
 			}
 
 		} catch (Exception e) {

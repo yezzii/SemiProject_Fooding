@@ -11,7 +11,7 @@
       <div>
       <h3>멤버 조회 페이지</h3>
       
-      <a href="<%=request.getContextPath() %>/select.go">회원 조회</a>
+      <a href="<%=request.getContextPath() %>/select.do">회원 조회</a>
       </div>
       
       

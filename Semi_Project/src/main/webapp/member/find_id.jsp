@@ -11,7 +11,7 @@
 	<div>
 		<h3>아이디 찾기</h3>
 		<br>
-		<form action="find_id.go" method="post">
+		<form action="<%=request.getContextPath()%>/find_id.do" method="post">
 			<table border="1" cellspacing="0">
 
 				<tr>

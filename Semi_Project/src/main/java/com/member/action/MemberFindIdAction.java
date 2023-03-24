@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.member.model.MemberDAO;
 
-public class MemberFindIdAction implements MemberAction {
+public class MemberFindIdAction implements Action {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
 		String member_name = request.getParameter("send_name");
@@ -31,7 +31,7 @@ public class MemberFindIdAction implements MemberAction {
 			out.println("</script>");
 		}else {
 			out.println("<script>");
-			out.println("alert('"+foundId+"')");
+			out.println("alert('아이디 : "+foundId+"')");
 			out.println("location.href('member/main.jsp')");
 			out.println("</script>");
 		}

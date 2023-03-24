@@ -60,7 +60,7 @@ if (session.getAttribute("id") != null) {
 
 			<div class="top_left">
 				<a class="top_left_aTag"
-					href="<%=request.getContextPath()%>/freeBoard.go"> <span>자유
+					href="<%=request.getContextPath()%>/free_board.do"> <span>자유
 						게시판</span>
 				</a>
 				<!-- 항목1 -->
