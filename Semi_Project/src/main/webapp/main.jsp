@@ -105,7 +105,8 @@ if (session.getAttribute("id") != null) {
 				
 				<a href="<%=request.getContextPath() %>/member_update.do">
 					<button type="button" class="join">
-						<span class="">회원가입</span>
+						<span class="">관리자-회원업데이트 테스트
+						</span>
 					</button>
 				</a>
 				<!-- 회원가입 -->
