@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -33,7 +32,19 @@
 	crossorigin="anonymous"></script>
 <!-- 부트스트랩 end-->
 
-<script type="text/javascript"></script>
+<script type="text/javascript">
+
+
+</script>
+
+<%
+String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
+String userType = null;
+if (session.getAttribute("id") != null) {
+	userID = (String) session.getAttribute("id");
+	userType = (String)session.getAttribute("type");
+}
+%>
 
 </head>
 <body>
@@ -41,8 +52,8 @@
 		<div class="flexTop">
 			<!-- 네비바 container -->
 			<div>
-				<a href="#"> 
-				<img class="ico_size" src="main_img/fooding type_1.png" style="width:120px">
+				<a href="#"> <img class="ico_size"
+					src="main_img/fooding type_1.png" style="width: 120px">
 				</a>
 			</div>
 			<!-- 로고 -->
@@ -50,7 +61,7 @@
 
 			<div class="top_left">
 				<a class="top_left_aTag"
-					href="<%=request.getContextPath()%>/freeBoard.go"> <span>자유
+					href="<%=request.getContextPath()%>/free_board.do"> <span>자유
 						게시판</span>
 				</a>
 				<!-- 항목1 -->
@@ -66,21 +77,24 @@
 				</a>
 			</div>
 			<!-- 항목3 -->
-
-
 			<div>
+				<%
+				// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
+				if (userID == null) {
+				%>
+
 				<a href="member/login.jsp">
 					<button type="button" class="login">
 						<span class="">로그인</span>
 					</button>
 				</a>
 				<!--  로그인 -->
-				<a href="logout.jsp">
-					<button type="button" class="logout">
-						<span class="">로그아웃</span>
+				<a href="member/find_id.jsp">
+					<button type="button" class="find">
+						<span class="">아이디 찾기</span>
 					</button>
 				</a>
-				<!--  로그아웃 -->
+				<!-- 아이디 찾기 -->
 
 
 				<a href="member/join_select.jsp">
@@ -90,18 +104,35 @@
 				</a>
 				<!-- 회원가입 -->
 
+				<%
+				// 로그인이 되어있는 사람만 볼수 있는 화면
+				} else {
+				%>
+				<a href="member/logout.jsp">
+				
+					<button type="button" class="logout"  >
+						<span class="">로그아웃</span>
+					</button>
+				</a>
+				<!--  로그아웃 -->
 
-				<a href="<%=request.getContextPath() %>/write_board.do">
+
+				<a href="board/board_write.jsp">
 					<button type="button" class="write">
 						<span class="">글쓰기</span>
 					</button>
 				</a>
 				<!-- 글쓰기 -->
 
+
 				<a href="<%=request.getContextPath()%>/myprofile.go"> <img
 					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
 					width="30px" height="30px">
 				</a>
+
+				<%
+				}
+				%>
 			</div>
 			<!-- 로고 -->
 
@@ -109,10 +140,14 @@
 		</div>
 
 		<div>
-		<form class="searchLine" action="loaction.href='<%=request.getContextPath() %>/main_search.go'">
-			<span class="top_left_aTag-s"><input type="text" class="top_search" name="searchText" value placeholder="지역,음식,레스토랑명 검색"></span>
-		</form>
-	</div>  <!-- 검색 -->
+			<form class="searchLine"
+				action="loaction.href='<%=request.getContextPath()%>/main_search.go'">
+				<span class="top_left_aTag-s"><input type="text"
+					class="top_search" name="searchText" value
+					placeholder="지역,음식,레스토랑명 검색"></span>
+			</form>
+		</div>
+		<!-- 검색 -->
 	</div>
 
 

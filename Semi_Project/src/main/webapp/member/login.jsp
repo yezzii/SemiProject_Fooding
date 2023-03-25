@@ -9,14 +9,9 @@
 <body>
 
 	<div>
-		<form action="<%=request.getContextPath() %>/login.go" method = "post">
+		<form action="<%=request.getContextPath()%>/login.do" method = "post">
 			<table border="1" cellspacing="0">
-				<tr>
-					<td colspan="3" align="center">
-						<input type="radio" name="member_chk" value="normal" checked>일반회원 
-						<input type="radio" name="member_chk" value="company">사업자
-					</td>
-				</tr>
+				
 				<tr>
 					<th>아이디 :</th>
 					<td><input type="text" name="id"></td>
@@ -32,7 +27,7 @@
 				<tr>
 					<td colspan="2" align="center"><input type="submit"
 						value="로그인"> <input
-						type="button" onclick="location.href='member/member_join'"
+						type="button" onclick="location.href='member_join.jsp'"
 						value="회원가입"></td>
 				</tr>
 

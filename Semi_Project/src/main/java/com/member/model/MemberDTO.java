@@ -9,7 +9,22 @@ private String member_phone;
 private int member_account;
 private String member_name;
 private String member_mark;
+private String member_storenum;
 
+
+public String getMember_storenum() {
+	return member_storenum;
+}
+public void setMember_storenum(String member_storenum) {
+	this.member_storenum = member_storenum;
+}
+public int getMember_type() {
+	return member_type;
+}
+public void setMember_type(int member_type) {
+	this.member_type = member_type;
+}
+private int member_type;
 
 public String getMember_mark() {
 	return member_mark;

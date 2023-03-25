@@ -13,10 +13,10 @@ import com.member.model.MemberDTO;
 import sha256.Encryption;
 
 
-public class MemberJoinAction implements MemberAction {
+public class MemberJoinAction implements Action {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
 		String member_id = request.getParameter("member_id");
@@ -25,6 +25,7 @@ public class MemberJoinAction implements MemberAction {
 		String member_pwd = Encryption.encodeSha256(Raw_pwd);
 		String member_email = request.getParameter("member_email");
 		String member_phone = request.getParameter("member_phone");
+		
 
 		MemberDTO dto = new MemberDTO();
 
@@ -33,6 +34,7 @@ public class MemberJoinAction implements MemberAction {
 		dto.setMember_pwd(member_pwd);
 		dto.setMember_email(member_email);
 		dto.setMember_phone(member_phone);
+		dto.setMember_type(1);
 
 		MemberDAO dao = MemberDAO.getInstance();
 
@@ -43,7 +45,7 @@ public class MemberJoinAction implements MemberAction {
 		if(result > 0) {
 			out.println("<script>");
 			out.println("alert('"+dto.getMember_id()+"님 환영합니다.')");
-			out.println("location.href='select.go'");
+			out.println("location.href='main.jsp'");
 			out.println("</script>");
 		}else {
 			out.println("<script>");
