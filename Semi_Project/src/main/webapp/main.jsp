@@ -42,7 +42,6 @@ String userID = null; // 로그인이 된 사람들은 로그인정보를 담을
 String userType = null;
 if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
-	userType = (String)session.getAttribute("type");
 }
 %>
 
@@ -52,7 +51,7 @@ if (session.getAttribute("id") != null) {
 		<div class="flexTop">
 			<!-- 네비바 container -->
 			<div>
-				<a href="#"> <img class="ico_size"
+				<a href="#" > <img class="ico_size"
 					src="main_img/fooding type_1.png" style="width: 120px">
 				</a>
 			</div>
@@ -103,6 +102,17 @@ if (session.getAttribute("id") != null) {
 					</button>
 				</a>
 				<!-- 회원가입 -->
+				
+				<a href="<%=request.getContextPath() %>/member_update.do">
+					<button type="button" class="join">
+						<span class="">회원가입</span>
+					</button>
+				</a>
+				<!-- 회원가입 -->
+				
+				
+				
+				
 
 				<%
 				// 로그인이 되어있는 사람만 볼수 있는 화면

@@ -209,4 +209,95 @@ public class MemberDAO {
 		}
 		return foundId;
 	}
+
+	
+	
+	
+	
+	
+	//#################Update#####################
+		
+	public int updateMember(MemberDTO dto) {
+
+		int result = 0;
+
+		openConn();
+
+		try {
+
+			sql = "update member set"
+					+ "(member_pwd = ?, member_email = ?, "
+					+ "member_phone = ?, member_storenum = ?) values(?,?,?,?)";
+
+			pstmt = con.prepareStatement(sql);
+
+			
+			pstmt.setString(1, dto.getMember_pwd());
+			pstmt.setString(2, dto.getMember_email());
+			pstmt.setString(3, dto.getMember_phone());
+			pstmt.setString(4, dto.getMember_storenum());
+			
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+		return result;
+	}
+
+	
+
+	//##################UpdateEnd####################
+	
+	public MemberDTO getMemberSelect(String member_id) {
+
+		MemberDTO dto = null;
+		
+		try {
+			openConn();
+			
+			sql = "select * from member "
+					+ " where member_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, member_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto = new MemberDTO();
+				
+				dto.setMember_account(rs.getInt("member_account"));
+				dto.setMember_email(rs.getString("member_email"));
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_mark(rs.getString("member_mark"));
+				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_phone(rs.getString("member_phone"));
+				dto.setMember_pwd(rs.getString("member_pwd"));
+				dto.setMember_storenum(rs.getString("member_storenum"));
+				dto.setMember_type(rs.getInt("member_type"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+	}  // getMemberSelect() 메서드 end	
+	
+	
+	
+	
+	
+	
+	
 }

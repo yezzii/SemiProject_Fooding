@@ -10,6 +10,7 @@ private int member_account;
 private String member_name;
 private String member_mark;
 private String member_storenum;
+private int member_type;
 
 
 public String getMember_storenum() {
@@ -24,7 +25,6 @@ public int getMember_type() {
 public void setMember_type(int member_type) {
 	this.member_type = member_type;
 }
-private int member_type;
 
 public String getMember_mark() {
 	return member_mark;
