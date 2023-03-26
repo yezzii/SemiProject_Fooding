@@ -135,7 +135,7 @@ if (session.getAttribute("id") != null) {
 				<!--  로그아웃 -->
 
 
-				<a href="board/board_write.jsp">
+				<a href="<%=request.getContextPath()%>/write_board.do">
 					<button type="button" class="write">
 						<span class="">글쓰기</span>
 					</button>
