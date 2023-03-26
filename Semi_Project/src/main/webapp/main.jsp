@@ -39,7 +39,6 @@
 
 <%
 String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
-String userType = null;
 if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
 }
