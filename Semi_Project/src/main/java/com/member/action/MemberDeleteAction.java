@@ -16,9 +16,11 @@ public class MemberDeleteAction implements Action {
 			throws IOException, ServletException {
 
 		
-		String member_id ="test";	//request.getParameter("id").trim();
-				
+		String member_id ="test";	 	//request.getParameter("id").trim();
+		String member_name ="test"; 	//request.getParameter("member_name").trim();		
+		
 		request.setAttribute("DeleteMemId", member_id);
+		request.setAttribute("DeleteMemName", member_name);
 		
 		ActionForward forward = new ActionForward();
 		
