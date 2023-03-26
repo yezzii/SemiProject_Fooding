@@ -109,7 +109,15 @@ if (session.getAttribute("id") != null) {
 						</span>
 					</button>
 				</a>
-				<!-- 회원가입 -->
+				<!-- test1 -->
+				
+					<a href="<%=request.getContextPath() %>/member_delete.do">
+					<button type="button" class="join">
+						<span class="">관리자-회원삭제 테스트
+						</span>
+					</button>
+				</a>
+				<!-- test2 -->
 				
 				
 				

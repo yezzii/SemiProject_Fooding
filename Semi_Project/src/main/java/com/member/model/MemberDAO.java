@@ -293,6 +293,49 @@ public class MemberDAO {
 		
 		return dto;
 	}  // getMemberSelect() 메서드 end	
+
+	
+	//MemberDelete()
+	public int MemberDelete(String id, String pwd) {
+
+		int result = 0;
+		
+		try {
+			openConn();
+			
+			sql = "select * from member "
+					+ " where member_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(pwd.equals(rs.getString("member_pwd"))) {
+					
+					sql = "delete from member where member_id = ?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, id);
+					
+					result = pstmt.executeUpdate();
+					
+				}else {  // 비밀번호가 틀린 경우
+					result = -1;
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	}  // deleteMember() 메서드 end
 	
 	
 	

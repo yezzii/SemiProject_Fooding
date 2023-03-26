@@ -9,23 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 
-public class MemberUpdateAction implements Action {
+public class MemberDeleteAction implements Action {
 
-	@Override		//회원정보수정하는 기능.
+	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+
 		
-		String member_id ="111";	//request.getParameter("id").trim();
+		String member_id ="test";	//request.getParameter("id").trim();
 				
-		MemberDAO dao = MemberDAO.getInstance();
-		MemberDTO dto = dao.getMemberSelect(member_id);
-		
-		request.setAttribute("MemInfo", dto);
+		request.setAttribute("DeleteMemId", member_id);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("member/member_update.jsp");
+		forward.setPath("member/member_delete.jsp");
 		
 		return forward;
 	}
