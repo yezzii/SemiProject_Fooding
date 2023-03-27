@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDAO {
 
@@ -211,6 +213,117 @@ public class MemberDAO {
 	}
 
 	
+
+	 public int getMemberCount() {
+	      
+	      int count = 0;
+	      
+	      try {
+	         openConn();
+	         
+	         sql = "select count(*) from member";
+	         
+	         pstmt = con.prepareStatement(sql);
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         if(rs.next()) {
+	            count = rs.getInt(1);
+	         } 
+	         
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         closeConn(rs, pstmt, con);
+	      }
+	      
+	      return count;
+	   } // getBoardCount 메서드 end
+	   
+	   // board 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드
+	
+	//board 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
+	public List<MemberDTO> getMemberList(int page, int rowsize) {
+
+		List<MemberDTO> list = new ArrayList<MemberDTO>();
+		
+		//해당 페이지에서 시작 번호
+		int startNo = (page * rowsize) - (rowsize - 1);
+		
+		//해당 페이지에서 끝 번호
+		int endNo = (page * rowsize);
+		
+		
+		try {
+			
+			openConn();
+			sql = "select * from (select row_number() over(order by member_no ) rnum ,b.* from member b) a where rnum between  ?  and  ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
+			
+			rs = pstmt.executeQuery();
+		
+			while(rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				
+				dto.setMember_account(rs.getInt("member_account"));
+				dto.setMember_email(rs.getString("member_email"));
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_mark(rs.getString("member_mark"));
+				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_phone(rs.getString("member_phone"));
+				dto.setMember_pwd(rs.getString("member_pwd"));
+				dto.setMember_storenum(rs.getString("member_storenum"));
+				dto.setMember_type(rs.getInt("member_type"));
+				System.out.println(dto.getMember_id());
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}	//getMemberCount() 메서드 end
+	
+	
+	
+	
+		//ID 중복체크
+		public int idCheck(String id) {
+		
+		int res = 0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "select count(member_id) from member where member_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				res = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return res;
+	}//ID 중복체크 end
 	
 	
 	
@@ -225,20 +338,30 @@ public class MemberDAO {
 
 		try {
 
-			sql = "update member set"
-					+ "(member_pwd = ?, member_email = ?, "
-					+ "member_phone = ?, member_storenum = ?) values(?,?,?,?)";
+			sql = "select * from member where member_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getMember_id());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+			
+			sql = "update member set member_pwd = ?, member_email = ?, member_phone = ?, member_storenum =?  where member_id = ?";	
 
 			pstmt = con.prepareStatement(sql);
-
 			
 			pstmt.setString(1, dto.getMember_pwd());
 			pstmt.setString(2, dto.getMember_email());
 			pstmt.setString(3, dto.getMember_phone());
 			pstmt.setString(4, dto.getMember_storenum());
+			pstmt.setString(5, dto.getMember_id());
 			
 			result = pstmt.executeUpdate();
 
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

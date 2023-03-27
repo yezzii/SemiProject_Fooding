@@ -11,8 +11,15 @@ private String member_name;
 private String member_mark;
 private String member_storenum;
 private int member_type;
+private int member_no;
 
 
+public int getMember_no() {
+	return member_no;
+}
+public void setMember_no(int member_no) {
+	this.member_no = member_no;
+}
 public String getMember_storenum() {
 	return member_storenum;
 }

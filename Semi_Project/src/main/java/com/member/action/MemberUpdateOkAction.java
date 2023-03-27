@@ -33,7 +33,6 @@ public class MemberUpdateOkAction implements Action {
 		dto.setMember_pwd(member_pwd);
 		dto.setMember_email(member_email);
 		dto.setMember_phone(member_phone);
-		dto.setMember_id(member_id);
 		dto.setMember_name(member_name);
 		dto.setMember_mark(member_mark);
 		dto.setMember_storenum(member_storenum);
@@ -48,7 +47,7 @@ public class MemberUpdateOkAction implements Action {
 			if(check > 0) {
 				out.println("<script>");
 				out.println("alert('회원 정보 수정 성공!!!')");
-				out.println("location.href='content.do?id="+dto.getMember_id()+"'");
+				out.println("location.href='member_list.do'");
 				out.println("</script>");
 			}else {
 				out.println("<script>");

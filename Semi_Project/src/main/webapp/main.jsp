@@ -22,7 +22,7 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 	crossorigin="anonymous"></script>
-<script
+<script	
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
 	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
 	crossorigin="anonymous"></script>
@@ -103,9 +103,9 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!-- 회원가입 -->
 				
-				<a href="<%=request.getContextPath() %>/member_update.do">
+				<a href="<%=request.getContextPath() %>/member_list.do">
 					<button type="button" class="join">
-						<span class="">관리자-회원업데이트 테스트
+						<span class="">관리자-회원관리페이지 테스트
 						</span>
 					</button>
 				</a>
@@ -188,7 +188,7 @@ if (session.getAttribute("id") != null) {
 				</div>
 			</div>
 			<div class="card">
-				<img src="main_img/1.jpg" class="card-img-top" alt="...">
+				<img src="main_img/2.jpeg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">This card has supporting text below as a
@@ -199,7 +199,7 @@ if (session.getAttribute("id") != null) {
 				</div>
 			</div>
 			<div class="card">
-				<img src="main_img/1.jpg" class="card-img-top" alt="...">
+				<img src="main_img/3.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">This is a wider card with supporting text

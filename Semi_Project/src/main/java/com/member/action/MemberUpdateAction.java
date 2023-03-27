@@ -15,7 +15,7 @@ public class MemberUpdateAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		
-		String member_id ="111";	//request.getParameter("id").trim();
+		String member_id =request.getParameter("id").trim();
 				
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO dto = dao.getMemberSelect(member_id);

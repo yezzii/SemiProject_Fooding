@@ -12,22 +12,23 @@
 </head>
 <body>
 
- <c:set var="dto" value="${DeleteMemId }" />		<%--변수선언 --%>
+ <c:set var="id" value="${DeleteMemId }" />		<%--변수선언 --%>
+ <c:set var="name" value="${DeleteMemName }" />		<%--변수선언 --%>
  
 	<div align="center">
 	   <hr width="50%" color="red">
-	      <h3>${DeleteMemName}님의 회원탈퇴 페이지</h3>
+	      <h3>${name}님의 회원탈퇴 페이지</h3>
 	   <hr width="50%" color="red">
 	   <br>
 	   
 	   <form method="post"
 	      action="<%=request.getContextPath() %>/member_delete_ok.do">
 	   
-	      <input type="hidden" name="member_id" value="${DeleteMemId }">
+	      <input type="hidden" name="member_id" value="${id}">
 	      
 	   	  <table border="1" cellspacing="0" width="350">
 	   	     <tr>
-	   	        <th>회원탈퇴를 위해 ${DeleteMemName}님의 비밀번호를 입력해주세요.</th>
+	   	        <th>회원탈퇴를 위해 ${name}님의 비밀번호를 입력해주세요.</th>
 	   	        <td> <input type="password" name="member_pwd"> </td>
 	   	     </tr>
 	   	     
