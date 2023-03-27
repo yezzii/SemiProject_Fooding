@@ -7,33 +7,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.member.model.CompanyDTO;
 import com.member.model.MemberDAO;
+import com.member.model.MemberDTO;
 
 import sha256.Encryption;
 
-public class CompanyJoinAction implements MemberAction {
+public class CompanyJoinAction implements Action {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
-		String company_id = request.getParameter("company_id");
-		String company_name = request.getParameter("company_name");
+		String member_id = request.getParameter("company_id");
+		String member_name = request.getParameter("company_name");
 		String Raw_pwd = request.getParameter("company_pwd");
-		String company_pwd = Encryption.encodeSha256(Raw_pwd);
-		String company_email = request.getParameter("company_email");
-		String company_phone = request.getParameter("company_phone");
-		String company_storenum = request.getParameter("company_storenum");
+		String member_pwd = Encryption.encodeSha256(Raw_pwd);
+		String member_email = request.getParameter("company_email");
+		String member_phone = request.getParameter("company_phone");
+		String member_storenum = request.getParameter("company_storenum");
 
-		CompanyDTO dto = new CompanyDTO();
+		MemberDTO dto = new MemberDTO();
 
-		dto.setCompany_id(company_id);
-		dto.setCompany_name(company_name);
-		dto.setCompany_pwd(company_pwd);
-		dto.setCompany_email(company_email);
-		dto.setCompany_phone(company_phone);
-		dto.setCompany_storenum(company_storenum);
+		dto.setMember_id(member_id);
+		dto.setMember_name(member_name);
+		dto.setMember_pwd(member_pwd);
+		dto.setMember_email(member_email);
+		dto.setMember_phone(member_phone);
+		dto.setMember_storenum(member_storenum);
+		dto.setMember_type(2);
 
 		MemberDAO dao = MemberDAO.getInstance();
 
@@ -43,8 +44,8 @@ public class CompanyJoinAction implements MemberAction {
 
 		if(result > 0) {
 			out.println("<script>");
-			out.println("alert('"+dto.getCompany_id()+"님 환영합니다.')");
-			out.println("location.href='select.go'");
+			out.println("alert('"+dto.getMember_id()+"님 환영합니다.')");
+			out.println("location.href='main.jsp'");
 			out.println("</script>");
 		}else {
 			out.println("<script>");

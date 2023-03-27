@@ -32,8 +32,7 @@ public class BoardInsertOkAction implements BoardAction {
 		
 		int result = dao.BoardInsert(dto);
 		
-		
-		
+		System.out.println("11111111");
 		return null;
 	}
 

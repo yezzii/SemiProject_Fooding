@@ -1,37 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
-	int board_no = 
-		Integer.parseInt(request.getParameter("no").trim());
-%>
+  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원탈퇴 페이지</title>
 </head>
 <body>
+
+ <c:set var="dto" value="${DeleteMemId }" />		<%--변수선언 --%>
+ 
 	<div align="center">
 	   <hr width="50%" color="red">
-	      <h3>BOARD 테이블 게시글 삭제 폼 페이지</h3>
+	      <h3>${DeleteMemName}님의 회원탈퇴 페이지</h3>
 	   <hr width="50%" color="red">
 	   <br>
 	   
 	   <form method="post"
-	      action="<%=request.getContextPath() %>/delete.go">
+	      action="<%=request.getContextPath() %>/member_delete_ok.do">
 	   
-	      <input type="hidden" name="no" value="<%=board_no %>">
+	      <input type="hidden" name="member_id" value="${DeleteMemId }">
 	      
 	   	  <table border="1" cellspacing="0" width="350">
 	   	     <tr>
-	   	        <th>삭제할 비밀번호</th>
-	   	        <td> <input type="password" name="pwd"> </td>
+	   	        <th>회원탈퇴를 위해 ${DeleteMemName}님의 비밀번호를 입력해주세요.</th>
+	   	        <td> <input type="password" name="member_pwd"> </td>
 	   	     </tr>
 	   	     
 	   	     <tr>
 	   	        <td colspan="2" align="center">
-	   	           <input type="submit" value="글 삭제">&nbsp;&nbsp;
-	   	           <input type="reset" value="다시작성">
+	   	           <input type="submit" value="회원탈퇴">&nbsp;&nbsp;
+	   	           <input type="reset" value="비밀번호 재입력">
 	   	        </td>
 	   	     </tr>
 	   	  </table>

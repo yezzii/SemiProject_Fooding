@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.board.action.BoardAction;
 import com.board.action.BoardInsertAction;
 import com.board.action.BoardInsertOkAction;
+import com.board.action.FreeBoardListAction;
 
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,8 +40,8 @@ public class BoardController extends HttpServlet {
 			action = new BoardInsertAction();
 		} else if (command.equals("write_boardOk.do")) {
 			action = new BoardInsertOkAction();
-		} else if (command.equals("Board_content.do")) {
-			action = new BoardGetContentAction();
+		} else if (command.equals("free_board.do")) {
+			action = new FreeBoardListAction();
 		}
 
 		String path1 = action.execute(request, response);
