@@ -128,14 +128,14 @@
 							사업자
 							</c:if>
 						</td>
-						
+						<td><input type="button" value="회원정보 수정" onclick="location.href='member_update.do?id=${dto.getMember_id()}'"></td>
+						<td><input type="button" value="회원정보 삭제" onclick="location.href='member_delete.do'"></td>
 						
 			
 					</tr>
 				</c:forEach>
 			</c:if>
-			<td><input type="button" value="회원정보 수정" onclick="location.href='member_update.do'"></td>
-						<td><input type="button" value="회원정보 삭제" onclick="location.href='member_delete.do'"></td>
+			
 			<c:if test="${empty list }">
 			
 				<tr>
