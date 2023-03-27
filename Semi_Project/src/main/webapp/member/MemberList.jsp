@@ -129,7 +129,7 @@
 							</c:if>
 						</td>
 						<td><input type="button" value="회원정보 수정" onclick="location.href='member_update.do?id=${dto.getMember_id()}'"></td>
-						<td><input type="button" value="회원정보 삭제" onclick="location.href='member_delete.do'"></td>
+						<td><input type="button" value="회원정보 삭제" onclick="location.href='member_delete.do?id=${dto.getMember_id()}'"></td>
 						
 			
 					</tr>
