@@ -27,7 +27,7 @@ public class MemberDeleteOkAction implements Action {
 		if(check > 0) {
 			out.println("<script>");
 			out.println("alert('회원 삭제 성공!!!')");
-			out.println("location.href='select.do'");		//수정하기(리스트로)
+			out.println("location.href='member_list.do'");		//수정하기(리스트로)
 			out.println("</script>");
 		}else if(check == -1) {
 			out.println("<script>");

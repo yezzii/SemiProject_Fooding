@@ -17,14 +17,12 @@ public class MemberDeleteAction implements Action {
 
 		
 		String member_id = request.getParameter("id").trim();
-		String member_name = request.getParameter("member_name").trim();		
 		System.out.println(member_id);
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO dto = dao.getMemberSelect(member_id);
 		
-		request.setAttribute("DeleteMemId", member_id);
-		request.setAttribute("DeleteMemName", member_name);
+		request.setAttribute("DTO", dto);
 		
 		ActionForward forward = new ActionForward();
 		

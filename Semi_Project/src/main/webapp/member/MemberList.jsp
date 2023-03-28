@@ -89,7 +89,7 @@
 		<table border="1" cellspacing="0" width="900">
 			<c:set var="list" value="${List }" />
 			<tr>
-				<td colspan="8" align="right">전체 회원 수 : ${totalMember}명</td>
+				<td colspan="10" align="right"><h4>전체 회원 수 : ${totalMember}명</h4></td>
 			</tr>
 
 			<tr>
@@ -108,9 +108,7 @@
 			
 			<c:if test="${!empty list }">
 				<c:forEach items="${list }" var="dto">
-				<input type="hidden" name="member_name" value="${dto.getMember_name() }">
 				<input type="hidden" name="member_id" value="${dto.getMember_id() }">
-				<input type="hidden" name="member_pwd" value="${dto.getMember_pwd() }">
 					<tr>
 						<td>${dto.getMember_no() }</td>
 						<td>${dto.getMember_id() }</td>
@@ -141,7 +139,7 @@
 			<c:if test="${empty list }">
 			
 				<tr>
-					<td colspan="8" align="center">
+					<td colspan="10" align="center">
 						<h3>전체 게시물 리스트가 없습니다.</h3>
 					</td>
 				</tr>
