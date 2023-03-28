@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,22 +110,23 @@
 				<c:forEach items="${list }" var="dto">
 				<input type="hidden" name="member_name" value="${dto.getMember_name() }">
 				<input type="hidden" name="member_id" value="${dto.getMember_id() }">
+				<input type="hidden" name="member_pwd" value="${dto.getMember_pwd() }">
 					<tr>
-						<td>${dto.getMember_no()}</td>
+						<td>${dto.getMember_no() }</td>
 						<td>${dto.getMember_id() }</td>
 						<td>${dto.getMember_name() }</td>
 						<td>${dto.getMember_email() }</td>
 						<td>${dto.getMember_phone() }</td>
 						<td>${dto.getMember_account() }</td>
-						<td>${dto.getMember_storenum()}</td>
+						<td>${dto.getMember_storenum() }</td>
 						<td>
-							<c:if test="${dto.getMember_type() ==0}">
+							<c:if test="${dto.getMember_type() == 0}">
 							관리자
 							</c:if> 
-							<c:if test="${dto.getMember_type() ==1}">
+							<c:if test="${dto.getMember_type() == 1}">
 							일반회원
 							</c:if> 
-							<c:if test="${dto.getMember_type() ==2}">
+							<c:if test="${dto.getMember_type() == 2}">
 							사업자
 							</c:if>
 						</td>
