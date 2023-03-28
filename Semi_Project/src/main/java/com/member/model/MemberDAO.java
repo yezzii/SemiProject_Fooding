@@ -196,6 +196,7 @@ public class MemberDAO {
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_name(rs.getString("member_name"));
 				dto.setMember_type(rs.getInt("member_type"));
+				
 			}
 
 		} catch (SQLException e) {
