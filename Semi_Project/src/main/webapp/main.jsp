@@ -150,7 +150,7 @@ if (session.getAttribute("id") != null) {
 				</a>
 
 
-				<a href="<%=request.getContextPath()%>/myprofile.go"> <img
+				<a href="<%=request.getContextPath()%>/myprofile.do"> <img
 					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
 					width="30px" height="30px">
 				</a>
