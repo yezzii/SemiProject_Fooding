@@ -233,8 +233,36 @@ public class MemberDAO {
 		}
 		return foundId;
 	}
+	
 
-
+public String MemberFindPwd(String name , String mail) {
+		
+		String foundPwd = null;
+		
+		openConn();
+		
+		try {
+			sql = "select member_pwd from member where member_name = ? and member_email =?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, mail);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				foundPwd = rs.getString("member_pwd");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return foundPwd;
+		
+	}
 
 	 public int getMemberCount() {
 	      
@@ -481,9 +509,6 @@ public class MemberDAO {
 		
 		return result;
 	}  // deleteMember() 메서드 end
-	
-	
-	
 	
 	
 	

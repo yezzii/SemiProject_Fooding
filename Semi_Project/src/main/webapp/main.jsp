@@ -142,6 +142,12 @@ if (session.getAttribute("id") != null) {
 					</button>
 				</a>
 				<!-- 글쓰기 -->
+				
+				<a href="board/board_main.jsp">
+				<button type="button" class="">
+				<span class="">가게등록</span>
+				</button>
+				</a>
 
 
 				<a href="<%=request.getContextPath()%>/myprofile.go"> <img

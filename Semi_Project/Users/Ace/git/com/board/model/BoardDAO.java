@@ -213,9 +213,32 @@ public class BoardDAO {
 		
 		
 	}
-	
-	
-	
+
+public int BoardMain(BoardMainDTO dto) {
+		
+		int result = 0;
+		
+		openConn();
+		
+		sql = "insert into board_main(main_name,main_content,main_addr,main_location) values(?,?,?,?)";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getMain_name());
+			pstmt.setString(2, dto.getMain_content());
+			pstmt.setString(3, dto.getMain_addr());
+			pstmt.setString(4, dto.getMain_location());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+				
+	}
 	
 	
 	
