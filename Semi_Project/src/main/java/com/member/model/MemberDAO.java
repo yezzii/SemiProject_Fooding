@@ -48,7 +48,7 @@ public class MemberDAO {
 
 		String password = "12345678";
 
-		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
+		String url = "jdbc:mysql://semi-project.c89ttyl10fx8.ap-southeast-2.rds.amazonaws.com:3306/semi";
 
 		try {
 			// 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.
@@ -91,7 +91,7 @@ public class MemberDAO {
 
 		try {
 
-			sql = "select max(*) from member";
+			sql = "select count(*) from member";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -101,7 +101,7 @@ public class MemberDAO {
 				count = rs.getInt(1);
 			}
 
-			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type,member_no) values(?,?,?,?,?,default,?,?)";
+			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type, member_no) values(?,?,?,?,?,default,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -124,58 +124,6 @@ public class MemberDAO {
 
 		return result;
 	}
-	
-	
-	
-	public int MemberKakaoJoin(MemberDTO dto) {
-
-		int result = 0, count = 0;
-
-		openConn();
-
-		try {
-
-			sql = "select max(member_no) from member";
-
-			pstmt = con.prepareStatement(sql);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				count = rs.getInt(1);
-			}
-			
-			
-			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone,"
-					+ " member_type,member_no,member_token) values(?,?,?,?,?,?,?,?)";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, dto.getMember_id());
-			pstmt.setString(2, dto.getMember_name());
-			pstmt.setString(3, dto.getMember_pwd());
-			pstmt.setString(4, dto.getMember_email());
-			pstmt.setString(5, dto.getMember_phone());
-			pstmt.setInt(6, dto.getMember_type());
-			pstmt.setInt(7, count + 1);
-			pstmt.setString(8, dto.getMember_token());
-			
-
-			result = pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-
-		return result;
-	}
-	
-	
-	
-	
 	
 	public int CompanyJoin(MemberDTO dto) {
 
@@ -185,7 +133,7 @@ public class MemberDAO {
 
 		try {
 
-			sql = "select max(*) from member";
+			sql = "select max(member_no) from member";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -240,6 +188,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
+				System.out.println(rs.getString("member_id"));
 				dto = new MemberDTO();
 
 				dto.setMember_id(rs.getString("member_id"));
@@ -255,49 +204,7 @@ public class MemberDAO {
 		}
 		return dto;
 	}
-	
-	
-	
-	public MemberDTO KakaoLogin(String kakao_token, String kakao_name, String kakao_email) {
 
-		MemberDTO dto = null;
-
-		openConn();
-
-		try {
-
-			sql = "select * from member where member_token = ? and member_name = ? and member_email = ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, kakao_token);
-
-			pstmt.setString(2, kakao_name);
-			
-			pstmt.setString(3, kakao_email);
-
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				dto = new MemberDTO();
-				
-				dto.setMember_token(rs.getString("member_token"));
-				dto.setMember_id(rs.getString("member_id"));
-				dto.setMember_email(rs.getString("member_email"));
-				dto.setMember_phone(rs.getString("member_phone"));
-				dto.setMember_name(rs.getString("member_name"));
-				dto.setMember_type(rs.getInt("member_type"));
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return dto;
-	}
-	
 	
 	public String MemberFindId(String member_name, String member_email) {
 		
@@ -327,70 +234,6 @@ public class MemberDAO {
 		return foundId;
 	}
 
-	
-	
-	public int idCheck(String member_id) {
-
-		int res = 0;
-
-		try {
-			openConn();
-
-			sql = "select * from member where member_id = ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, member_id);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				res = 1;
-			}else {
-				res = 0;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-
-		return res;
-	}
-	
-	
-	
-	public int tokenCheck(String member_token) {
-		
-		int res = 0;
-
-		try {
-			openConn();
-
-			sql = "select * from member where member_token = ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, member_token);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				res = 1;
-			}else {
-				res = 0;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-
-		return res;
-	}
-	
 
 	 public int getMemberCount() {
 	      
@@ -457,6 +300,7 @@ public class MemberDAO {
 				dto.setMember_pwd(rs.getString("member_pwd"));
 				dto.setMember_storenum(rs.getString("member_storenum"));
 				dto.setMember_type(rs.getInt("member_type"));
+				System.out.println(dto.getMember_id());
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -468,7 +312,40 @@ public class MemberDAO {
 		return list;
 	}	//getMemberCount() 메서드 end
 	
-
+	
+	
+	
+		//ID 중복체크
+		public int idCheck(String id) {
+		
+		int res = 0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "select count(member_id) from member where member_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				res = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return res;
+	}//ID 중복체크 end
+	
 	
 	
 	
@@ -603,7 +480,6 @@ public class MemberDAO {
 		
 		return result;
 	}  // deleteMember() 메서드 end
-
 	
 	
 	

@@ -22,7 +22,10 @@ public class MemberJoinChkAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=utf-8");
 		
-		String member_id = request.getParameter("userId").trim();
+		String member_id = request.getParameter("paramId").trim();
+		System.out.println(member_id);
+		
+	
 		
 		int result = dao.idCheck(member_id);
 		
