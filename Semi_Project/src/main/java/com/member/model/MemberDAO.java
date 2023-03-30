@@ -250,9 +250,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next() || member_id.equals("")) {
-				res = 0;
-			}else {
-				res = 1;
+				res = -1;
 			}
 
 		} catch (SQLException e) {

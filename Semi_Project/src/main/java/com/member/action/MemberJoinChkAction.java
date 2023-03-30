@@ -22,7 +22,7 @@ public class MemberJoinChkAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=utf-8");
 		
-		String member_id = request.getParameter("userId").trim();
+		String member_id = request.getParameter("paramId").trim();
 		System.out.println(member_id);
 		
 	
@@ -31,9 +31,9 @@ public class MemberJoinChkAction implements Action {
 		
         
         // 성공여부 확인 : 개발자용(서버콘솔)
-        if (result == 0) { //id 중복
+        if (result == -1) { //id 중복
             System.out.println("Action 내부) 이미 존재하는 아이디입니다.");
-        } else if (result == 1) {
+        } else {
             System.out.println("Action 내부) 사용 가능한 아이디입니다.");
         }
 		
