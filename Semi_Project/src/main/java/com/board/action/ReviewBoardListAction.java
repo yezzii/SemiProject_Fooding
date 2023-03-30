@@ -12,24 +12,24 @@ import com.board.model.BoardDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
 
-public class FreeBoardListAction implements Action {
+public class ReviewBoardListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		
-		BoardDAO dao = BoardDAO.getInstance();
-		
-		List<BoardDTO> list = dao.FreeBoardList();
 
-		request.setAttribute("free_boardList", list);
+		BoardDAO dao = BoardDAO.getInstance();
+
+		List<BoardDTO> list = dao.ReviewBoardList();
+
+		request.setAttribute("review_boardList", list);
 
 		ActionForward forward = new ActionForward();
-		
+
 		forward.setRedirect(false);
-		
-		forward.setPath("board/free_board_list.jsp");
-		
+
+		forward.setPath("board/review_board_list.jsp");
+
 		return forward;
 	}
 

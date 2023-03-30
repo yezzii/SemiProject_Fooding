@@ -22,7 +22,7 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 	crossorigin="anonymous"></script>
-<script
+<script	
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
 	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
 	crossorigin="anonymous"></script>
@@ -42,7 +42,6 @@ String userID = null; // 로그인이 된 사람들은 로그인정보를 담을
 String userType = null;
 if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
-	userType = (String)session.getAttribute("type");
 }
 %>
 
@@ -52,7 +51,7 @@ if (session.getAttribute("id") != null) {
 		<div class="flexTop">
 			<!-- 네비바 container -->
 			<div>
-				<a href="#"> <img class="ico_size"
+				<a href="#" > <img class="ico_size"
 					src="main_img/fooding type_1.png" style="width: 120px">
 				</a>
 			</div>
@@ -67,13 +66,13 @@ if (session.getAttribute("id") != null) {
 				<!-- 항목1 -->
 
 				<a class="top_left_aTag"
-					href="<%=request.getContextPath()%>/reviewBoard.go"> <span>후기
+					href="<%=request.getContextPath()%>/review_board.do"> <span>후기
 						게시판</span>
 				</a>
 				<!-- 항목2 -->
 
 				<a class="top_left_aTag"
-					href="<%=request.getContextPath()%>/main_booking.go"> <span>예약</span>
+					href="<%=request.getContextPath()%>/main_booking.do"> <span>예약</span>
 				</a>
 			</div>
 			<!-- 항목3 -->
@@ -103,6 +102,26 @@ if (session.getAttribute("id") != null) {
 					</button>
 				</a>
 				<!-- 회원가입 -->
+				
+				<a href="<%=request.getContextPath() %>/member_list.do">
+					<button type="button" class="join">
+						<span class="">관리자-회원관리페이지 테스트
+						</span>
+					</button>
+				</a>
+				<!-- test1 -->
+				
+					<a href="<%=request.getContextPath() %>/member_delete.do">
+					<button type="button" class="join">
+						<span class="">관리자-회원삭제 테스트
+						</span>
+					</button>
+				</a>
+				<!-- test2 -->
+				
+				
+				
+				
 
 				<%
 				// 로그인이 되어있는 사람만 볼수 있는 화면
@@ -169,7 +188,7 @@ if (session.getAttribute("id") != null) {
 				</div>
 			</div>
 			<div class="card">
-				<img src="main_img/1.jpg" class="card-img-top" alt="...">
+				<img src="main_img/2.jpeg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">This card has supporting text below as a
@@ -180,7 +199,7 @@ if (session.getAttribute("id") != null) {
 				</div>
 			</div>
 			<div class="card">
-				<img src="main_img/1.jpg" class="card-img-top" alt="...">
+				<img src="main_img/3.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">This is a wider card with supporting text

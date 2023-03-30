@@ -1,6 +1,16 @@
 @charset "UTF-8";
 
+
+
 body	{
+	background-color: #f7f9fa;
+}
+
+.mainSlidebox	{
+	margin-right: 120px;
+	margin-left: 120px;
+	padding-right: 40px;
+	paddin-left:40px;
 	
 }
 
