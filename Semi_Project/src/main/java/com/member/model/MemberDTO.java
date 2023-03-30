@@ -2,7 +2,6 @@ package com.member.model;
 
 public class MemberDTO {
 
-private int member_no;
 private String member_id;
 private String member_pwd;
 private String member_email;
@@ -12,16 +11,9 @@ private int member_type;
 private String member_name;
 private String member_mark;
 private String member_storenum;
-private int member_type;
 private int member_no;
 
 
-public int getMember_no() {
-	return member_no;
-}
-public void setMember_no(int member_no) {
-	this.member_no = member_no;
-}
 public String getMember_storenum() {
 	return member_storenum;
 }
