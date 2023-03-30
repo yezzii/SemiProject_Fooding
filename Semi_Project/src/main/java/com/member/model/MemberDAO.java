@@ -85,13 +85,23 @@ public class MemberDAO {
 
 	public int MemberJoin(MemberDTO dto) {
 
-		int result = 0;
+		int result = 0, count = 0;
 
 		openConn();
 
 		try {
 
-			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type) values(?,?,?,?,?,default,?)";
+			sql = "select max(*) from member";
+
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type,member_no) values(?,?,?,?,?,default,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -101,6 +111,7 @@ public class MemberDAO {
 			pstmt.setString(4, dto.getMember_email());
 			pstmt.setString(5, dto.getMember_phone());
 			pstmt.setInt(6, dto.getMember_type());
+			pstmt.setInt(7, count + 1);
 
 			result = pstmt.executeUpdate();
 
@@ -116,13 +127,23 @@ public class MemberDAO {
 	
 	public int CompanyJoin(MemberDTO dto) {
 
-		int result = 0;
+		int result = 0, count = 0;
 
 		openConn();
 
 		try {
 
-			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type, member_storenum) values(?,?,?,?,?,default,?,?)";
+			sql = "select max(*) from member";
+
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type, member_storenum,member_no) values(?,?,?,?,?,default,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -133,7 +154,8 @@ public class MemberDAO {
 			pstmt.setString(5, dto.getMember_phone());
 			pstmt.setInt(6, dto.getMember_type());
 			pstmt.setString(7, dto.getMember_storenum());
-			
+			pstmt.setInt(8, count + 1);
+
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -212,7 +234,35 @@ public class MemberDAO {
 		return foundId;
 	}
 
-	
+	public int idCheck(String member_id) {
+		int res = 0;
+
+		try {
+			openConn();
+
+			sql = "select * from member where member_id = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, member_id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next() || member_id.equals("")) {
+				res = 0;
+			}else {
+				res = 1;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+		return res;
+	}
 
 	 public int getMemberCount() {
 	      

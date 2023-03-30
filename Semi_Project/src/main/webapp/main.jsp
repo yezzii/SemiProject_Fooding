@@ -66,13 +66,13 @@ if (session.getAttribute("id") != null) {
 				<!-- 항목1 -->
 
 				<a class="top_left_aTag"
-					href="<%=request.getContextPath()%>/reviewBoard.go"> <span>후기
+					href="<%=request.getContextPath()%>/review_board.do"> <span>후기
 						게시판</span>
 				</a>
 				<!-- 항목2 -->
 
 				<a class="top_left_aTag"
-					href="<%=request.getContextPath()%>/main_booking.go"> <span>예약</span>
+					href="<%=request.getContextPath()%>/main_booking.do"> <span>예약</span>
 				</a>
 			</div>
 			<!-- 항목3 -->

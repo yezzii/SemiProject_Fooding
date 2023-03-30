@@ -8,10 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<c:set var="list" value="${review_boardList }" />
+	
 	<div align="center">
 		<hr width="50%" color="red">
-		<h3>자유 게시판 전체 게시물 목록 페이지</h3>
+		<h2>Review 테이블 전체 게시물 목록 페이지</h2>
 		<hr width="50%" color="red">
 		<br>
 
@@ -26,21 +27,24 @@
 			</select> <input type="text" name="keyword">&nbsp;&nbsp; <input
 				type="submit" value="검색">
 		</form>
+		
+	
+		
 		<table border="1" cellspacing="0" width="450">
 			<tr>
-				<td colspan="6" align="right">전체 게시물 수 : 개
+				<td colspan="6" align="right">전체 게시물 수 :((!!totalReviewCount()만들어서 넣기!!))개
 				</td>
 			</tr>
 			<tr>
-				<th>글번호</th>
-				<th>글제목</th>
+				<th>리뷰번호</th>
+				<th>리뷰제목</th>
 				<th>작성자</th>
-				<th>글내용</th>
-				<th>작성일자</th>
+				<th>리뷰내용</th>
+				<th>리뷰작성일자</th>
 				<th>조회수</th>
 			</tr>
 
-			<c:set var="list" value="${free_boardList }" />
+			
 			<c:if test="${!empty list }">
 				<c:forEach items="${list}" var="dto">
 					<tr>

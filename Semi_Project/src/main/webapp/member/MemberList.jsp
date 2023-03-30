@@ -151,29 +151,37 @@
 	<nav>
 	<br>
 		<ul class="pagination">
-			<li class="page-item"><a class="page-link"
-				href="board_list.do?page=1">First</a></li>
-			<li><a class="page-link" href="board_list.do?page=${page-1 }">Previous</a>
+			<li class="page-item">
+				<a class="page-link" href="member_list.do?page=1">First</a>
+			</li>
+			
+			<li>
+				<a class="page-link" href="member_list.do?page=${page-1 }">Previous</a>
 			</li>
 
 			<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 				<c:if test="${ i == page }">
-					<li class="page-item active" aria-current="page"><a
-						class="page-link" href="board_list.do?page=${i }">${i }</a></li>
+					<li class="page-item active" aria-current="page">
+					<a class="page-link" href="member_list.do?page=${i }">${i }</a>
+					</li>
 				</c:if>
 
-				<c:if test="${ i != page }">
-					<li class="page-item"><a class="page-link"
-						href="board_list.do?page=${i }">${i }</a></li>
+				<c:if test="${ i != page }">`
+					<li class="page-item">
+					<a class="page-link" href="member_list.do?page=${i }">${i }</a>
+					</li>
 				</c:if>
 			</c:forEach>
 			<c:if test="${endBlock < allPage }">
-				<li class="page-item"><a class="page-link"
-					href="board_list.do?page=${page+1 }">Next</a></li>
+				<li class="page-item">
+				<a class="page-link" href="member_list.do?page=${page+1 }">Next</a>
+				</li>
 			</c:if>
 
-			<li class="page-item"><a class="page-link"
-				href="board_list.do?page=${allPage}">End</a></li>
+			<li class="page-item">
+			<a class="page-link"
+				href="member_list.do?page=${allPage}">End</a>
+			</li>
 		</ul>
 	</nav>
 
