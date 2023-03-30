@@ -234,35 +234,7 @@ public class MemberDAO {
 		return foundId;
 	}
 
-	public int idCheck(String member_id) {
-		int res = 0;
 
-		try {
-			openConn();
-
-			sql = "select * from member where member_id = ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, member_id);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next() || member_id.equals("")) {
-				res = 0;
-			}else {
-				res = 1;
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-
-		return res;
-	}
 
 	 public int getMemberCount() {
 	      
