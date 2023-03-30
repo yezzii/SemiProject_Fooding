@@ -341,40 +341,7 @@ public class MemberDAO {
 		return list;
 	}	//getMemberCount() 메서드 end
 	
-	
-	
-	
-		//ID 중복체크
-		public int idCheck(String id) {
-		
-		int res = 0;
-		
-		
-		try {
-			openConn();
-			
-			sql = "select count(member_id) from member where member_id = ?";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, id);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				res = rs.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		
-		return res;
-	}//ID 중복체크 end
-	
+
 	
 	
 	
