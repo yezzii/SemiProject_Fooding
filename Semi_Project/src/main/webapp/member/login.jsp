@@ -59,17 +59,15 @@ function requestUserInfo() {
     })
       .then(function(res) {
     	 var id = res.id;
-    	var email = res.nickname;
 		  scope : 'account_email';
 					alert('로그인성공');
 					alert(id);
-					alert(email);
-        			 location.href="<%=request.getContextPath()%>/member_join.do?member_id="+id;
+        			 location.href="<%=request.getContextPath()%>/member_join.do?member_id="+id+"";
     	 
       })
       .catch(function(err) {
         alert(
-          '로그인 실패 유저정보 불러오기 실패 ' + JSON.stringify(err)
+          'failed to request user information: ' + JSON.stringify(err)
         );
       });
   }
