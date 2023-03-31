@@ -62,7 +62,7 @@ function requestUserInfo() {
 		  scope : 'account_email';
 					alert('로그인성공');
 					alert(id);
-        			 location.href="<%=request.getContextPath()%>/member_join.do?member_id="+id+"";
+        			 location.href="<%=request.getContextPath()%>/member_join.do?member_id="+id;
     	 
       })
       .catch(function(err) {
