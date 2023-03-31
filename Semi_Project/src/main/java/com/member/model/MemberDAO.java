@@ -125,6 +125,55 @@ public class MemberDAO {
 		return result;
 	}
 	
+	
+	
+	public int MemberKakaoJoin(MemberDTO dto) {
+
+		int result = 0, count = 0;
+
+		openConn();
+
+		try {
+
+			sql = "select max(member_no) from member";
+
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			
+			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type,member_no) values(?,?,?,?,?,default,?,?)";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getMember_id());
+			pstmt.setString(2, dto.getMember_name());
+			pstmt.setString(3, dto.getMember_pwd());
+			pstmt.setString(4, dto.getMember_email());
+			pstmt.setString(5, dto.getMember_phone());
+			pstmt.setInt(6, dto.getMember_type());
+			pstmt.setInt(7, count + 1);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+		return result;
+	}
+	
+	
+	
+	
+	
 	public int CompanyJoin(MemberDTO dto) {
 
 		int result = 0, count = 0;

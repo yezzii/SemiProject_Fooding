@@ -56,22 +56,28 @@ function requestUserInfo() {
       
     })
       .then(function(res) {
-    	 txt = JSON.stringify(res)
-        alert(txt);
-    	 
-    	 
-    	 	
-    	 
-    	 
-    	 
+    	var id = res.id;
+    	 var nickname = res.properties.nickname;
+    	 var email = res.kakao_account.email;
+    
+   	    alert(id);
+		alert(nickname);
+		alert(email);
+		  scope : 'account_email';
+		alert('카카오 계정 동기화가 완료 되었습니다. [확인]을 눌러 추가정보 입력 페이지로 이동합니다.');
+					
+     			location.href="<%=request.getContextPath()%>/member_Kakaojoin.do?member_id="+id+"&member_name="+nickname+"&member_email="+email;
+   
     	 
       })
       .catch(function(err) {
         alert(
-          'failed to request user information: ' + JSON.stringify(err)
+          '회원정보를 불러오는데 실패했습니다. ' + JSON.stringify(err)
         );
       });
   }
+  
+  
   
   
 displayToken()
@@ -128,7 +134,7 @@ function getCookie(name) {
 				<tr>
 					<td>
 						<p id="token-result"></p>
-						<button class="api-btn" onclick="requestUserInfo()" style="visibility:visible;">사용자 정보 가져오기</button>
+						<button class="api-btn" onclick="requestUserInfo()" style="visibility:visible;">카카오회원가입하기</button>
 					</td>
 				</tr>
 
