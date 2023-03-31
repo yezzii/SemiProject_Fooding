@@ -1,4 +1,3 @@
-<%@page import="org.eclipse.jdt.internal.compiler.lookup.Scope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
@@ -7,7 +6,7 @@
 	
 	<script>
 	
-	
+	let txt;
 	
 Kakao.init('fe3cf4492aa6c561d6c802d57d1418de'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -20,7 +19,6 @@ function kakaoLogin() {
     	  //2. 로그인 성공시, API 호출
        		 Kakao.API.request({
         	  url: '/v2/user/me',
-        	  scope : 'account_email',
      		  success: function (response) {
         	 		 console.log(response)	//json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
         	  			alert(response);
@@ -58,11 +56,13 @@ function requestUserInfo() {
       
     })
       .then(function(res) {
+
     	 var id = res.id;
 		  scope : 'account_email';
 					alert('로그인성공');
 					alert(id);
         			 location.href="<%=request.getContextPath()%>/member_join.do?member_id="+id;
+
     	 
       })
       .catch(function(err) {
