@@ -21,7 +21,14 @@ function kakaoLogin() {
         	  url: '/v2/user/me',
      		  success: function (response) {
         	 		 console.log(response)	//json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
-        	  			alert(response);
+        	       
+        	 		 
+        	 		 var id = response.id;
+        	       	 var nickname = response.properties.nickname;
+        	       	 var email = response.kakao_account.email;
+							//alert(response);
+        	 		location.href="<%=request.getContextPath()%>/member_KakaoLogin.do?member_id="+id+"&member_name="+nickname+"&member_email="+email;
+        	 		//	MemberKakaoLoginAction  으로 이동.
          	  			},
          fail: function (error) {
             console.log(error)
@@ -59,6 +66,7 @@ function requestUserInfo() {
     	var id = res.id;
     	 var nickname = res.properties.nickname;
     	 var email = res.kakao_account.email;
+    	 var profileImg = res.kakao_account.profile.profile_image_url;		//카톡프로필사진
     
    	    alert(id);
 		alert(nickname);
@@ -66,7 +74,7 @@ function requestUserInfo() {
 		  scope : 'account_email';
 		alert('카카오 계정 동기화가 완료 되었습니다. [확인]을 눌러 추가정보 입력 페이지로 이동합니다.');
 					
-     			location.href="<%=request.getContextPath()%>/member_Kakaojoin.do?member_id="+id+"&member_name="+nickname+"&member_email="+email;
+     			location.href="<%=request.getContextPath()%>/member_Kakaojoin.do?member_id="+id+"&member_name="+nickname+"&member_email="+email+"&member_img="+profileImg;
    
     	 
       })
@@ -123,21 +131,15 @@ function getCookie(name) {
 				<tr>
 				<th>카카오 로그인</th>
 				<td>
-					<input type="image" src="../button_img/kakao_login_medium_wide.png" onclick="kakaoLogin();" value="카카오 로그아웃 kakaoLogout();">
+					<input type="image" src="../button_img/kakao_login_medium_wide.png" onclick="kakaoLogin();" value="카카오 로그인 kakaoLogin();">
 				</td>
 				</tr>
 				
-				<tr>
-				<th>카카오 로그아웃</th>
-				<td><input type="image" src="../button_img/kakao_logout_medium_wide.png" onclick="kakaoLogout();" value="카카오 로그아웃 kakaoLogout();"></td>
+		 		<tr>
+					<th>카카오 로그아웃</th>
+					<td><input type="image" src="../button_img/kakao_logout_medium_wide.png" onclick="kakaoLogout();" value="카카오 로그아웃 kakaoLogout();"></td>
 				</tr>
-				<tr>
-					<td>
-						<p id="token-result"></p>
-						<button class="api-btn" onclick="requestUserInfo()" style="visibility:visible;">카카오회원가입하기</button>
-					</td>
-				</tr>
-
+				
 
 				<tr>
 					<td colspan="4" align="center">
@@ -160,6 +162,7 @@ function getCookie(name) {
 
 			</table>
 		</form>
+				
 	</div>
 
 

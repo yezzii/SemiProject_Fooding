@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,56 +19,59 @@
 		<form method="post" id="f"
 			action="<%=request.getContextPath()%>/member_KakaoOkjoin.do" autocomplete="off" onsubmit="return mySubmit()">
 			<table border="1" cellspacing="0" width="600">
-
+				
+				<input type="hidden" name="member_id" value="${member_id}">
+				
 				<tr>
-					<th>카카오 이메일</th>
-					<td><input type="text" class="input_id" id="member_id" name="member_id">
+					<th>아이디 (카카오 이메일)</th>
+					<td><input type="text" class="input_email" id="member_email" name="member_email"
+						value="${member_email}"	readonly>
 						<font id="checkId" size="2"></font></td>
 				</tr>
 
 				<tr>
 					<th>이름</th>
-					<td><input type="text" id="member_name"name="member_name"></td>
+					<td><input type="text" id="member_name"name="member_name"
+						value="${member_name}" readonly></td>
 				</tr>
-				<tr>
-					<th>카카오 ID</th>
-					<td><input type="password" id="password" name="member_pwd"></td>
-				<tr>
-					<th colspan="2"><font style="font-size: 5pt">영문자 대/소문자
-							특수문자,숫자포함 8 ~20자</font></th>
-				</tr>
+			
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="password" id="password_ok"
-						name="member_pwd.ok"></td>
+					<td><input type="password" id="password" name="member_pwd"></td>
 				<tr>
-				<tr>
-					<th>비밀번호 재입력</th>
-					<td><input type="text" id="member_email" name="member_email"></td>
+					<th colspan="2"><font style="font-size: 5pt">영문자 대/소문자 특수문자,숫자포함 8 ~20자</font></th>
 				</tr>
+				
+				<tr>
+					<th>비밀번호 확인</th>
+					<td><input type="password" id="password_ok" name="member_pwd.ok"></td>
+				<tr>
+				
 				<tr>
 					<th>연락처</th>
 					<td><input type="text" id="member_phone" name="member_phone"></td>
 				</tr>
-				<tr>
-					<th>연락처</th>
-					<td><input type="text" id="member_phone" name="member_phone"></td>
-				</tr>
+				
 				<tr>
 					<th>(사업자인지 개인회원인지)</th>
-					<td><input type="text" id="member_phone" name="member_phone"></td>
+					<td><input type="radio" id="member_type" name="member_type1" value="일반회원"></td>
+					<!-- <td><input type="radio" id="member_type" name="member_type2" value="사업자회원"></td> -->
 				</tr>
 				
 
 				<tr>
 					<td colspan="2" align="center"><input type="submit"
-						value="회원가입" onclick="return check()"> <input type="reset" value="다시작성"></td>
+						value="회원가입" onclick="return check()"> 
+						<input type="reset" value="다시작성"></td>
 				</tr>
 
 			</table>
 		</form>
 	</div>
 	<script>
+	/* 
+	
+	
 	let idCheck = false;
 	
 	function mySubmit() {
@@ -139,7 +143,7 @@
 			let userId = $('.input_id').val();
 			
 			$.ajax({
-				url:"member_join_chk.do",
+				url:"member_KakaoOkjoin.do",
 				type : "post",
 				data : {userId: userId},
 				dataType : 'json',
@@ -160,6 +164,8 @@
 			})
 		})
 		
+		
+		 */
 	
 	</script>
 

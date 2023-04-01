@@ -253,7 +253,47 @@ public class MemberDAO {
 		}
 		return dto;
 	}
+	
+	
+	
+	public MemberDTO KakaoLogin(String kakao_id, String kakao_name, String kakao_email) {
 
+		MemberDTO dto = null;
+
+		openConn();
+
+		try {
+
+			sql = "select * from member where member_id = ? and member_name = ? and member_email = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, kakao_id);
+
+			pstmt.setString(2, kakao_name);
+			
+			pstmt.setString(3, kakao_email);
+
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				System.out.println(rs.getString("member_id"));
+				dto = new MemberDTO();
+
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_email(rs.getString("member_email"));
+				dto.setMember_phone(rs.getString("member_phone"));
+				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_type(rs.getInt("member_type"));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
 	
 	public String MemberFindId(String member_name, String member_email) {
 		
@@ -525,6 +565,7 @@ public class MemberDAO {
 		
 		return result;
 	}  // deleteMember() 메서드 end
+
 	
 	
 	

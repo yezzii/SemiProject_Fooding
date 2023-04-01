@@ -22,7 +22,12 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 			String member_email = request.getParameter("member_email").trim();
 			String member_pwd = request.getParameter("member_pwd").trim();
 			String member_phone = request.getParameter("member_phone").trim();
-			int member_type = Integer.parseInt(request.getParameter("member_type").trim());
+			
+		
+			/*
+			 * int member_type2 =
+			 * Integer.parseInt(request.getParameter("member_type2").trim());
+			 */
 			MemberDTO dto = new MemberDTO();
 
 			dto.setMember_id(member_id);
@@ -30,7 +35,8 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 			dto.setMember_email(member_email);
 			dto.setMember_pwd(member_pwd);
 			dto.setMember_phone(member_phone);
-			dto.setMember_type(member_type);
+			dto.setMember_type(3);
+			/* dto.setMember_type(member_type2); */
 
 			MemberDAO dao = MemberDAO.getInstance();
 
@@ -40,12 +46,12 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 
 			if(result > 0) {
 				out.println("<script>");
-				out.println("alert('카카오 회원가입이 완료되었습니다!"+dto.getMember_id()+"님 환영합니다.')");
+				out.println("alert('카카오 회원가입이 완료되었습니다!"+dto.getMember_name()+"님 이메일아이디로 로그인을 진행해주세요.')");
 				out.println("location.href='main.jsp'");
 				out.println("</script>");
 			}else {
 				out.println("<script>");
-				out.println("alert('회원가입 실패')");
+				out.println("alert('회원가입에 실패했습니다. 이미 가입된 회원이거나 오류가 있습니다.')");
 				out.println("history.back()");
 				out.println("</script>");
 			}

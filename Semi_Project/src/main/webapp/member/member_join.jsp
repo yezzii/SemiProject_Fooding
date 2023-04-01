@@ -7,12 +7,101 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	
+	<script>
+Kakao.init('fe3cf4492aa6c561d6c802d57d1418de'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+	//1. 로그인 시도
+    Kakao.Auth.login({
+      success: function (response) {
+    	  
+    	  //2. 로그인 성공시, API 호출
+       		 Kakao.API.request({
+        	  url: '/v2/user/me',
+     		  success: function (response) {
+        	 		 console.log(response)	//json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
+        	  			alert(response);
+         	  			},
+         fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }
+
+
+function requestUserInfo() {
+    Kakao.API.request({
+      url: '/v2/user/me',
+      
+    })
+      .then(function(res) {
+    	var id = res.id;
+    	 var nickname = res.properties.nickname;
+    	 var email = res.kakao_account.email;
+
+		  scope : 'account_email';
+		alert('카카오 계정 동기화가 완료 되었습니다. [확인]을 눌러 추가정보 입력 페이지로 이동합니다.');
+					
+     			location.href="<%=request.getContextPath()%>/member_Kakaojoin.do?member_id="+id+"&member_name="+nickname+"&member_email="+email;
+   
+    	 
+      })
+      .catch(function(err) {
+        alert(
+          '회원정보를 불러오는데 실패했습니다. ' + JSON.stringify(err)
+        );
+      });
+  }
+  
+  
+  
+  
+displayToken()
+function displayToken() {
+  var token = getCookie('authorize-access-token');
+
+  if(token) {
+    Kakao.Auth.setAccessToken(token);
+    document.querySelector('#token-result').innerText = 'login success, ready to request API';
+    document.querySelector('button.api-btn').style.visibility = 'visible';
+  }
+}
+
+function getCookie(name) {
+  var parts = document.cookie.split(name + '=');
+  if (parts.length === 2) { return parts[1].split(';')[0]; }
+}
+
+</script>
 
 </head>
 <body>
 	<div align="center">
 		<hr width="50%" color="pink">
-		<h3>회원 회원 가입 페이지</h3>
+		<h3>회원 가입 페이지</h3>
 		<hr width="50%" color="pink">
 
 		<form method="post" id="f"
@@ -54,9 +143,15 @@
 					<td colspan="2" align="center"><input type="submit"
 						value="회원가입" onclick="return check()"> <input type="reset" value="다시작성"></td>
 				</tr>
-
+				
 			</table>
 		</form>
+		<br>
+		<div align="center">
+			<p id="token-result"></p>
+			<input class="api-btn" type="image" src="../button_img/kakaoJoin.png" 
+			onclick="requestUserInfo()" value="카카오 회원가입" style="width:300px;">
+		</div>
 	</div>
 	<script>
 	let idCheck = false;
