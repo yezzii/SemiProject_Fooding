@@ -7,28 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script>
-	function delete_func() {
-		let pwd = prompt("게시글의 비밀번호를 입력해주세요.");
-		
-		if(pwd == ${dto.getBoard_pwd()}){
-			location.href='delete.do?no= ${dto.getBoard_no()}'
-		}else{
-			alert("비밀번호를 확인 해 주세요.")
-		}
-	}
-</script>
+
 </head>
 <body>
-	<c:set var="dto" value="${Dto}">
+	<c:set var="dto" value="${DTO}" />
 		<div align="center">
 			<hr width="50%" color="marmoon">
 			<h3>BOARD 테이블 게시판 글쓰기 폼 페이지</h3>
 			<hr width="50%" color="marmoon">
 			<br>
 
-			<form method="post"
-				action="<%=request.getContextPath()%>/insert_ok.do" onsubmit="">
+			<form method="post" >
 				<table border="1" cellspacing="0" width="500">
 
 					<c:if test="${!empty dto }">
@@ -42,7 +31,7 @@
 						</tr>
 						<tr>
 							<th>글 번호</th>
-							<td>${dto.getBoard_no()}</td>
+							<td>${dto.getBoard_idx()}</td>
 
 							<th>글 작성자</th>
 							<td>${dto.getBoard_writer()}</td>
@@ -54,13 +43,9 @@
 							<th>작성일자</th>
 							<td>${dto.getBoard_date().substring(0, 10)}</td>
 							</c:if>
-							<c:if test="dto.getBoard_update() != null">
-							<th>수정일자</th>
-							<td>${dto.getBoard_update().substring(0, 10)}</td>
-							</c:if>
-
+							
 							<th>조회수</th>
-							<td colspan="3">${dto.getBoard_hit()}</td>
+							<td colspan="3">${dto.getBoard_viewcnt()}</td>
 						</tr>
 
 						<tr>
@@ -72,7 +57,7 @@
 							<th>글 내용</th>
 							<td colspan="3" height="100">
 								<%-- <textarea rows="7" cols="25"> <%=cont.getBoard_cont() %></textarea> --%>
-								${dto.getBoard_cont().replace("\r\n", "<br>")}
+								${dto.getBoard_content()}
 							</td>
 						</tr>
 
@@ -87,7 +72,6 @@
 
 			</form>
 		</div>
-	</c:set>
 </body>
 
 </html>

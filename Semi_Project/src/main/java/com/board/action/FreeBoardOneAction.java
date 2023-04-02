@@ -7,31 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.board.model.BoardDAO;
-import com.board.model.BoardDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
 
-public class ContentBoardAction implements Action {
+public class FreeBoardOneAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-
-		int no = Integer.parseInt(request.getParameter("no"));
-
+		
 		BoardDAO dao = BoardDAO.getInstance();
-
-		BoardDTO dto = dao.ContentBoard(no);
-
-		request.setAttribute("DTO", dto);
-
-		ActionForward forward = new ActionForward();
-
-		forward.setRedirect(true);
-
-		forward.setPath("board/board_detail.jsp");
-
-		return forward;
+		
+		return null;
 	}
 
 }
