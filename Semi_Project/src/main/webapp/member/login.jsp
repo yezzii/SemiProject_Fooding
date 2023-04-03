@@ -84,7 +84,18 @@ function kakaoLogout() {
 					<td colspan="4" align="center"><input type="submit"
 						value="로그인"> <input
 						type="button" onclick="location.href='member_join.jsp'"
-						value="회원가입"></td>
+						value="회원가입">  <a href="find_id.jsp">
+                  <button type="button" class="find">
+                     <span class="">아이디 찾기</span>
+                  </button>
+               </a>
+            <!-- 아이디 찾기 -->
+               <a href="find_pwd.jsp">
+                  <button type="button" class="find">
+                     <span class="">비밀번호 찾기</span>
+                  </button>
+               </a>
+            <!-- 비밀번호 찾기 --></td>
 				</tr>
 
 			</table>

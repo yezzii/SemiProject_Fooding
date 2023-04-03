@@ -1,5 +1,7 @@
+<%@page import="com.member.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+  <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -62,7 +64,7 @@
 		<table border="1" cellspacing="0" width="900">
 			<c:set var="list" value="${List }" />
 			<tr>
-				<td colspan="10" align="right"><h4>전체 회원 수 : ${totalMember}명</h4></td>
+				<td colspan="10" align="right"></td>
 			</tr>
 
 			<tr>
@@ -81,7 +83,6 @@
 			
 			<c:if test="${!empty list }">
 				<c:forEach items="${list }" var="dto">
-				<input type="hidden" name="member_id" value="${dto.getMember_id() }">
 					<tr>
 						<td>${dto.getMember_no() }</td>
 						<td>${dto.getMember_id() }</td>

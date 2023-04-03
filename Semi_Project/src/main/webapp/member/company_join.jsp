@@ -72,7 +72,17 @@
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" name="company_email"></td>
+					<td><input type="text" id="member_email" name="member_email">
+						<span class="a">@</span>
+						<input type="text" name="email">
+			            <select name="mailslc">
+			                <option value="self" selected>직접입력</option>
+			                <option value="naver">naver.com</option>
+			                <option value="gm">gmail.com</option>
+			                <option value="da">daum.com</option>
+			                <option value="yah">yahoo.com</option>
+			            </select>	
+					</td>
 				</tr>
 				<tr>
 					<th>연락처</th>
