@@ -56,7 +56,6 @@
 						<tr>
 							<th>글 내용</th>
 							<td colspan="3" height="100">
-								<%-- <textarea rows="7" cols="25"> <%=cont.getBoard_cont() %></textarea> --%>
 								${dto.getBoard_content()}
 							</td>
 						</tr>
@@ -66,7 +65,7 @@
 
 				<input type="button" value="목록" onclick="location.href='select.do'">&nbsp;&nbsp;
 				<input type="button" value="수정"
-					onclick="location.href='modify.do?no=${dto.getBoard_no()}'">&nbsp;&nbsp;
+					onclick="location.href='modify.do?no=${dto.getBoard_idx()}'">&nbsp;&nbsp;
 				<input type="button" value="글삭제" onclick="delete_func()">
 				&nbsp;&nbsp;
 
