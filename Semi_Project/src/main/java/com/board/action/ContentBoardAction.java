@@ -27,7 +27,7 @@ public class ContentBoardAction implements Action {
 
 		ActionForward forward = new ActionForward();
 
-		forward.setRedirect(true);
+		forward.setRedirect(false);
 
 		forward.setPath("board/board_detail.jsp");
 
