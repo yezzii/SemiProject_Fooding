@@ -23,15 +23,17 @@ function kakaoLogin() {
         	  url: '/v2/user/me',
      		  success: function (response) {
         	 		 console.log(response)	//json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
-        	  			alert(response);
-         	  			},
+        	 		requestUserInfo();
+     		  },
          fail: function (error) {
             console.log(error)
+         
           },
         })
       },
       fail: function (error) {
         console.log(error)
+           alert("회원이 아닙니다. 회원가입을 진행해주세요.")
       },
     })
   }
@@ -61,10 +63,8 @@ function requestUserInfo() {
     	var id = res.id;
     	 var nickname = res.properties.nickname;
     	 var email = res.kakao_account.email;
-
 		  scope : 'account_email';
-		alert('카카오 계정 동기화가 완료 되었습니다. [확인]을 눌러 추가정보 입력 페이지로 이동합니다.');
-					
+				alert("환영합니다~ 정상적인 회원가입을 위해 \n추가정보 입력페이지로 이동합니다!!");
      			location.href="<%=request.getContextPath()%>/member_Kakaojoin.do?member_id="+id+"&member_name="+nickname+"&member_email="+email;
    
     	 
@@ -150,7 +150,7 @@ function getCookie(name) {
 		<div align="center">
 			<p id="token-result"></p>
 			<input class="api-btn" type="image" src="../button_img/kakaoJoin.png" 
-			onclick="requestUserInfo()" value="카카오 회원가입" style="width:300px;">
+			onclick="kakaoLogin();" value="카카오 회원가입" style="width:300px;">
 		</div>
 	</div>
 	<script>

@@ -4,6 +4,7 @@
 
 body	{
 	background-color: #f7f9fa;
+	min-width: 1100px;
 }
 
 .mainSlidebox	{
@@ -103,6 +104,41 @@ body	{
 
 .main1	{
 	padding:40px 100px;
+}
+
+.radius_img	{
+	
+ 	width: 60px;
+    height: 60px; 
+    border-radius: 70%;
+    overflow: hidden;
+    border: 3px solid #ff9637;
+    margin: 0 20px 0 0;
+	
+}
+
+.profile_img	{
+	
+	width: 110%;
+    height: 110%;
+    object-fit: cover;
+    object-position: center; 
+  	
+	
+}
+
+.profileInfo	{
+	
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 10px 0 40px;
+	
+}
+
+.profileFlex	{
+	
+	display: flex;
+	align-items: center;
 }
 
 

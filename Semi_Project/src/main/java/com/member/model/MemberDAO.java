@@ -48,7 +48,7 @@ public class MemberDAO {
 
 		String password = "12345678";
 
-		String url = "jdbc:mysql://semi-project.c89ttyl10fx8.ap-southeast-2.rds.amazonaws.com:3306/semi";
+		String url = "jdbc:mysql://semi-project.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
 		try {
 			// 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.
@@ -146,7 +146,8 @@ public class MemberDAO {
 			}
 			
 			
-			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type,member_no) values(?,?,?,?,?,default,?,?)";
+			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone,"
+					+ " member_type,member_no,member_token) values(?,?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -157,6 +158,8 @@ public class MemberDAO {
 			pstmt.setString(5, dto.getMember_phone());
 			pstmt.setInt(6, dto.getMember_type());
 			pstmt.setInt(7, count + 1);
+			pstmt.setString(8, dto.getMember_token());
+			
 
 			result = pstmt.executeUpdate();
 
@@ -256,7 +259,7 @@ public class MemberDAO {
 	
 	
 	
-	public MemberDTO KakaoLogin(String kakao_id, String kakao_name, String kakao_email) {
+	public MemberDTO KakaoLogin(String kakao_token, String kakao_name, String kakao_email) {
 
 		MemberDTO dto = null;
 
@@ -264,11 +267,11 @@ public class MemberDAO {
 
 		try {
 
-			sql = "select * from member where member_id = ? and member_name = ? and member_email = ?";
+			sql = "select * from member where member_token = ? and member_name = ? and member_email = ?";
 
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setString(1, kakao_id);
+			pstmt.setString(1, kakao_token);
 
 			pstmt.setString(2, kakao_name);
 			
@@ -277,9 +280,10 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				System.out.println(rs.getString("member_id"));
+				System.out.println(rs.getString("member_token"));
 				dto = new MemberDTO();
-
+				
+				dto.setMember_token(rs.getString("member_token"));
 				dto.setMember_id(rs.getString("member_id"));
 				dto.setMember_email(rs.getString("member_email"));
 				dto.setMember_phone(rs.getString("member_phone"));
@@ -290,6 +294,8 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
 		}
 		return dto;
 	}
@@ -323,28 +329,30 @@ public class MemberDAO {
 		return foundId;
 	}
 
-	public int idCheck(String member_id) {
+	
+	
+	public int idCheck(String kakaoToken) {
+		
 		int res = 0;
 
 		try {
 			openConn();
 
-			sql = "select * from member where member_id = ?";
+			sql = "select * from member where member_token = ?";
 
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setString(1, member_id);
+			pstmt.setString(1, kakaoToken);
 
 			rs = pstmt.executeQuery();
 
-			if (rs.next() || member_id.equals("")) {
-				res = 0;
-			}else {
+			if (rs.next()) {
 				res = 1;
+			}else {
+				res = 0;
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeConn(rs, pstmt, con);
@@ -352,6 +360,39 @@ public class MemberDAO {
 
 		return res;
 	}
+	
+	
+	
+	public int tokenCheck(String member_token) {
+		
+		int res = 0;
+
+		try {
+			openConn();
+
+			sql = "select * from member where member_token = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, member_token);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				res = 1;
+			}else {
+				res = 0;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+		return res;
+	}
+	
 
 	 public int getMemberCount() {
 	      

@@ -20,14 +20,22 @@
 			action="<%=request.getContextPath()%>/member_KakaoOkjoin.do" autocomplete="off" onsubmit="return mySubmit()">
 			<table border="1" cellspacing="0" width="600">
 				
-				<input type="hidden" name="member_id" value="${member_id}">
+				<input type="hidden" name="member_token" value="${member_token}">
 				
 				<tr>
-					<th>아이디 (카카오 이메일)</th>
+					<th>카카오 이메일</th>
 					<td><input type="text" class="input_email" id="member_email" name="member_email"
 						value="${member_email}"	readonly>
 						<font id="checkId" size="2"></font></td>
 				</tr>
+				
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" id="member_id"name="member_id"
+						placeholder="아이디를 입력해주세요." ></td>
+				</tr>
+			
+				
 
 				<tr>
 					<th>이름</th>
@@ -52,11 +60,7 @@
 					<td><input type="text" id="member_phone" name="member_phone"></td>
 				</tr>
 				
-				<tr>
-					<th>(사업자인지 개인회원인지)</th>
-					<td><input type="radio" id="member_type" name="member_type1" value="일반회원"></td>
-					<!-- <td><input type="radio" id="member_type" name="member_type2" value="사업자회원"></td> -->
-				</tr>
+				
 				
 
 				<tr>

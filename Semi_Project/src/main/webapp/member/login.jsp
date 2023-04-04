@@ -23,11 +23,12 @@ function kakaoLogin() {
         	 		 console.log(response)	//json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
         	       
         	 		 
-        	 		 var id = response.id;
+        	 		 var token = response.id;
         	       	 var nickname = response.properties.nickname;
         	       	 var email = response.kakao_account.email;
+        	       	 var thumnail = response.properties.thumbnail_image;
 							//alert(response);
-        	 		location.href="<%=request.getContextPath()%>/member_KakaoLogin.do?member_id="+id+"&member_name="+nickname+"&member_email="+email;
+        	 		location.href="<%=request.getContextPath()%>/member_KakaoLogin.do?member_token="+token+"&member_name="+nickname+"&member_email="+ email +"&thumnail="+ thumnail;
         	 		//	MemberKakaoLoginAction  으로 이동.
          	  			},
          fail: function (error) {
@@ -128,17 +129,7 @@ function getCookie(name) {
 					<td><input type="password" name="pwd"></td>
 				</tr>
 				
-				<tr>
-				<th>카카오 로그인</th>
-				<td>
-					<input type="image" src="../button_img/kakao_login_medium_wide.png" onclick="kakaoLogin();" value="카카오 로그인 kakaoLogin();">
-				</td>
-				</tr>
 				
-		 		<tr>
-					<th>카카오 로그아웃</th>
-					<td><input type="image" src="../button_img/kakao_logout_medium_wide.png" onclick="kakaoLogout();" value="카카오 로그아웃 kakaoLogout();"></td>
-				</tr>
 				
 
 				<tr>
@@ -162,7 +153,17 @@ function getCookie(name) {
 
 			</table>
 		</form>
+			<table>
+				<tr>
+				<td>
+					<input type="image" src="../button_img/kakao_login_medium_wide.png" onclick="kakaoLogin();" value="카카오 로그인 kakaoLogin();">
+				</td>
+				</tr>
 				
+		 		<tr>
+					<td><input type="image" src="../button_img/kakao_logout_medium_wide.png" onclick="kakaoLogout();" value="카카오 로그아웃 kakaoLogout();"></td>
+				</tr>
+			</table>
 	</div>
 
 

@@ -43,6 +43,8 @@ String userType = null;
 if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
 }
+	String thumnail =  (String)session.getAttribute("Thumnail");
+	String name = (String)session.getAttribute("name");
 %>
 
 </head>
@@ -127,14 +129,8 @@ if (session.getAttribute("id") != null) {
 				// 로그인이 되어있는 사람만 볼수 있는 화면
 				} else {
 				%>
-				<a href="member/logout.jsp">
-				
-					<button type="button" class="logout"  >
-						<span class="">로그아웃</span>
-					</button>
-				</a>
-				<!--  로그아웃 -->
-
+		<div class="profileFlex">
+		
 
 				<a href="board/board_write.jsp">
 					<button type="button" class="write">
@@ -143,12 +139,27 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!-- 글쓰기 -->
 
-
-				<a href="<%=request.getContextPath()%>/myprofile.go"> <img
-					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
-					width="30px" height="30px">
+				
+				<a href="member/logout.jsp">
+					<button type="button" class="logout"  >
+						<span class="">로그아웃</span>
+					</button>
 				</a>
-
+				<!--  로그아웃 -->
+				
+				
+		<span class="profileInfo" ><%=userID%> 님</span>
+			<div class="radius_img">
+				<a href="<%=request.getContextPath()%>/myprofile.go"> 
+					<img class="profile_img" src="<%=thumnail%>">
+				</a>
+			</div>
+			
+		</div>
+				
+				
+				
+				
 				<%
 				}
 				%>
@@ -176,7 +187,7 @@ if (session.getAttribute("id") != null) {
 		<c:if test=""></c:if>
 		<div class="card-deck">
 			<div class="card">
-				<img src="main_img/1.jpg" class="card-img-top" alt="...">
+				<img src="https://thumb2.photo.mybox.naver.com/3472503982269460300?type=m1280_1280_2&authtoken=p6RsYJOHH3DsofZyTuZHDAI=&filelink=SxLWEJxDUXRw/5R2FyVXRXhprDjWDedc6xL9UOpLN4dg7OsTPTvWpTew7u3eIo6r59SflVsEe4RA5KJkmw2eMgI=" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">This is a longer card with supporting text

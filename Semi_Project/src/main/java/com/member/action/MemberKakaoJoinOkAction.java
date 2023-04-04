@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 
+import sha256.Encryption;
+
 public class MemberKakaoJoinOkAction implements Action {
 
 @Override
@@ -18,16 +20,16 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 	
 
 			String member_id = request.getParameter("member_id").trim();
+			String KakaoRaw_pwd = request.getParameter("member_token").trim();
+			String kakao_token = Encryption.encodeSha256(KakaoRaw_pwd);
+			
 			String member_name = request.getParameter("member_name").trim();
 			String member_email = request.getParameter("member_email").trim();
-			String member_pwd = request.getParameter("member_pwd").trim();
-			String member_phone = request.getParameter("member_phone").trim();
+			String Raw_pwd = request.getParameter("member_pwd").trim();
+			String member_pwd = Encryption.encodeSha256(Raw_pwd);
 			
+			String member_phone = request.getParameter("member_phone").trim();
 		
-			/*
-			 * int member_type2 =
-			 * Integer.parseInt(request.getParameter("member_type2").trim());
-			 */
 			MemberDTO dto = new MemberDTO();
 
 			dto.setMember_id(member_id);
@@ -35,8 +37,8 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 			dto.setMember_email(member_email);
 			dto.setMember_pwd(member_pwd);
 			dto.setMember_phone(member_phone);
+			dto.setMember_token(kakao_token);
 			dto.setMember_type(3);
-			/* dto.setMember_type(member_type2); */
 
 			MemberDAO dao = MemberDAO.getInstance();
 
@@ -46,7 +48,7 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 
 			if(result > 0) {
 				out.println("<script>");
-				out.println("alert('카카오 회원가입이 완료되었습니다!"+dto.getMember_name()+"님 이메일아이디로 로그인을 진행해주세요.')");
+				out.println("alert('카카오 회원가입이 완료되었습니다!"+dto.getMember_name()+"님 로그인을 진행해주세요.')");
 				out.println("location.href='main.jsp'");
 				out.println("</script>");
 			}else {
