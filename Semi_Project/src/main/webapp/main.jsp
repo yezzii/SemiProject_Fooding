@@ -85,13 +85,13 @@ if (session.getAttribute("id") != null) {
 				%>
 
 				<a href="member/login.jsp">
-					<button type="button" class="login">
+					<button type="button" class="hideBtn" >
 						<span class="">로그인</span>
 					</button>
 				</a>
 				<!--  로그인 -->
 				<a href="member/find_id.jsp">
-					<button type="button" class="find">
+					<button type="button" class="hideBtn">
 						<span class="">아이디 찾기</span>
 					</button>
 				</a>
@@ -99,27 +99,12 @@ if (session.getAttribute("id") != null) {
 
 
 				<a href="member/join_select.jsp">
-					<button type="button" class="join">
+					<button type="button" class="hideBtn">
 						<span class="">회원가입</span>
 					</button>
 				</a>
 				<!-- 회원가입 -->
 				
-				<a href="<%=request.getContextPath() %>/member_list.do">
-					<button type="button" class="join">
-						<span class="">관리자-회원관리페이지 테스트
-						</span>
-					</button>
-				</a>
-				<!-- test1 -->
-				
-					<a href="<%=request.getContextPath() %>/member_delete.do?">
-					<button type="button" class="join">
-						<span class="">관리자-회원삭제 테스트
-						</span>
-					</button>
-				</a>
-				<!-- test2 -->
 				
 				
 				
@@ -133,7 +118,7 @@ if (session.getAttribute("id") != null) {
 		
 
 				<a href="board/board_write.jsp">
-					<button type="button" class="write">
+					<button type="button" class="hideBtn">
 						<span class="">글쓰기</span>
 					</button>
 				</a>
@@ -141,7 +126,7 @@ if (session.getAttribute("id") != null) {
 
 				
 				<a href="member/logout.jsp">
-					<button type="button" class="logout"  >
+					<button type="button" class="hideBtn"  >
 						<span class="">로그아웃</span>
 					</button>
 				</a>
@@ -169,56 +154,56 @@ if (session.getAttribute("id") != null) {
 
 		</div>
 
-		<div>
+	<hr align="center" width="90%" color="lightgray">
+	<br>
+	
+	
+
+		<div align="center">
 			<form class="searchLine"
 				action="loaction.href='<%=request.getContextPath()%>/main_search.go'">
-				<span class="top_left_aTag-s"><input type="text"
-					class="top_search" name="searchText" value
-					placeholder="지역,음식,레스토랑명 검색"></span>
+				<span class="top_left_aTag-s" >
+					<input type="text"class="top_search" name="searchText" placeholder="지역,음식,레스토랑명 검색">
+				</span>
 			</form>
 		</div>
 		<!-- 검색 -->
 	</div>
 
-
+ 
 
 	<div class="main1">
 		<!-- 메인섹션1 -->
 		<c:if test=""></c:if>
 		<div class="card-deck">
 			<div class="card">
-				<img src="https://thumb2.photo.mybox.naver.com/3472503982269460300?type=m1280_1280_2&authtoken=p6RsYJOHH3DsofZyTuZHDAI=&filelink=SxLWEJxDUXRw/5R2FyVXRXhprDjWDedc6xL9UOpLN4dg7OsTPTvWpTew7u3eIo6r59SflVsEe4RA5KJkmw2eMgI=" class="card-img-top" alt="...">
+				<img src="main_img/1.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This is a longer card with supporting text
-						below as a natural lead-in to additional content. This content is
-						a little bit longer.</p>
+					<h5 class="card-title">스시 오마카세 입문해보기!</h5>
+					<br>
+					<p class="card-text">영등포구에 위치한 이 곳은 "스시 코우지" 입니다! 약속이 생겨서 예약을 어렵게해서 다녀와봤어요!!!!...</p>
 					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
+						<small class="text-muted">3분 전 업데이트 됨</small>
 					</p>
 				</div>
 			</div>
 			<div class="card">
 				<img src="main_img/2.jpeg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This card has supporting text below as a
-						natural lead-in to additional content.</p>
+					<h5 class="card-title">삼청동한정식 편안한집 :: 한옥에서 즐기는 한정식</h5>
+					<p class="card-text">메뉴판 디자인도 깔끔하더라고요~ 저희는 보쌈정식 (15,000원)과 능이 불고기정식 (13,000원)을 시켰어요... 점심시간이었는데도 주문한지 10분 만에 음식이 나왔어요!...</p>
 					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
+						<small class="text-muted">1일 전 업데이트 됨</small>
 					</p>
 				</div>
 			</div>
 			<div class="card">
 				<img src="main_img/3.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This is a wider card with supporting text
-						below as a natural lead-in to additional content. This card has
-						even longer content than the first to show that equal height
-						action.</p>
+					<h5 class="card-title">광화문 한정식 파인다이닝:) 데이트하기 좋은 '암소서울'</h5>
+					<p class="card-text">안에 공간도 넉넉하고 일대에서 보기 드문 광화문 깔끔한 한정식 집이라서 어르신들 모시고 오기에 괜찮았어요 나와서 좀만 걸으면 경희궁이 보인답니다! 경복궁 ...</p>
 					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
+						<small class="text-muted">3일전 업데이트 됨</small>
 					</p>
 				</div>
 			</div>
@@ -228,6 +213,22 @@ if (session.getAttribute("id") != null) {
 
 	<div>
 		<!-- 메인섹션2 -->
+		<a href="<%=request.getContextPath() %>/member_list.do">
+					<button type="button" class="hideBtn">
+						<span class="">관리자-회원관리페이지 테스트
+						</span>
+					</button>
+				</a>
+				<!-- test1 -->
+				
+					<a href="<%=request.getContextPath() %>/member_delete.do?">
+					<button type="button" class="hideBtn">
+						<span class="">관리자-회원삭제 테스트
+						</span>
+					</button>
+				</a>
+				<!-- test2 -->
+				
 
 	</div>
 	<!-- 메인섹션2 end -->

@@ -48,7 +48,7 @@ public class MemberDAO {
 
 		String password = "12345678";
 
-		String url = "jdbc:mysql://semi-project.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
+		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
 		try {
 			// 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.

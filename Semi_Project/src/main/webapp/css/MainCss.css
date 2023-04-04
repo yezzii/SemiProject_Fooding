@@ -1,17 +1,34 @@
 @charset "UTF-8";
 
 
+@font-face {
+    font-family: 'KorailRoundGothicBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KorailRoundGothicBold.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
 
 body	{
 	background-color: #f7f9fa;
 	min-width: 1100px;
+	
+
 }
+
+
 
 .mainSlidebox	{
 	margin-right: 120px;
 	margin-left: 120px;
 	padding-right: 40px;
-	paddin-left:40px;
+	padding-left:40px;
 	
 }
 
@@ -23,6 +40,7 @@ body	{
     padding-left: 30px;
     padding-right: 30px; 
     flex-direction: column;
+
     
 }
 
@@ -33,6 +51,8 @@ body	{
     margin: 20px;
     padding-left: 60px;
     padding-right: 60px;
+     font-family: 'GmarketSansMedium';
+    
 }
 
 
@@ -56,9 +76,11 @@ body	{
     outline: none;
     color: #ff6226;
     text-decoration: none;
+    
+
 }
 
-.top_left_aTag-s	{
+.top_left_aTag:hover	{
 
     border: none;
     background: none;
@@ -66,25 +88,31 @@ body	{
     position: relative;
     display: inline-block;
     margin: 0 10px;
-    padding: 10px 0px;
+    padding: 15px 10px;
     font-size: 18px;
     line-height: 1;
     font-weight: bold;
     outline: none;
-    color: #ff6226;
+    color: #000000;
+    text-decoration: none;
+}
+
+
+
+.top_left_aTag-s	{
+
+  
+    margin: 10px 10px;
+    padding: 20px 0 0 0;
+    font-size: 18px;
+    font-family: 'GmarketSansMedium';
     text-decoration: none;
 }
 
 
 .top_search	{
-	box-sizing: border-box;
-    -webkit-flex: 1 0 0%;
-    -ms-flex: 1 0 0%;
-    flex: 1 0 0%;
-    vertical-align: middle;
-    outline: none;
-    display: inline-block;
-    margin: 0;
+
+    margin: 7px 0 0 26px;
     padding: 0;
     border: none;
     background: none;
@@ -92,14 +120,23 @@ body	{
     color: #8e98a2;
     outline: none;
     font-size: 16px;
+    font-family: 'GmarketSansMedium';
     line-height: 24px;
     height: 40px;
 }
 
 .searchLine		{
-	border-color: lightgray;
-	border-style: solid;
-	bo
+	border:1px solid lightgray;
+	border-radius:0.4em;
+	width: 500px;
+	height: 50px;
+}
+
+.searchLine:hover	{
+	border:2px solid #ff6226;
+	border-radius:0.4em;
+	width: 500px;
+	height: 50px;
 }
 
 .main1	{
@@ -141,7 +178,17 @@ body	{
 	align-items: center;
 }
 
+.hideBtn	{
+	
+	border: none;
+	border-color: none;
+	background-color: transparent;
+	margin-right: 10px;
+}
+
+.card-body	{
+	 font-family: 'GmarketSansMedium';
+}
 
 
-
-}/* end */
+/* end */
