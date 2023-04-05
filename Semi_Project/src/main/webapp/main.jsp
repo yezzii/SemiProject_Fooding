@@ -88,12 +88,17 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!--  로그인 -->
 				<a href="member/find_id.jsp">
-					<button type="button" class="find">
+					<button type="button" class="findid">
 						<span class="">아이디 찾기</span>
 					</button>
 				</a>
 				<!-- 아이디 찾기 -->
-
+				<a href="<%=request.getContextPath()%>/find_pwd.do">
+					<button type="button" class="findpwd">
+						<span class="">비밀번호 찾기</span>
+					</button>
+				</a>
+				<!-- 아이디 찾기 -->
 
 				<a href="member/join_select.jsp">
 					<button type="button" class="join">
