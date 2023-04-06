@@ -158,12 +158,10 @@ body	{
 .main1-section	{
 	
 	display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: flex-start;
-    padding:0 180px 0 180px;
-    height: 
+    padding: 0 300px 0 300px;
 }
 
 .radius_img	{
