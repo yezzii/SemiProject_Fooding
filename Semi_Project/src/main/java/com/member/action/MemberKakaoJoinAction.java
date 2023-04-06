@@ -24,10 +24,9 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 			String member_email = request.getParameter("member_email").trim();
 			
 			
-			
 			MemberDAO dao = MemberDAO.getInstance();
 			
-			int check = dao.idCheck(kakao_token);
+			int check = dao.tokenCheck(kakao_token);
 			
 			PrintWriter out = response.getWriter();
 
@@ -35,8 +34,7 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 			
 			if(check == 0) {
 			// view page 로 이동 시에는 false 값 지정.
-			
-			
+		
 			request.setAttribute("member_token", kakao_token);
 			request.setAttribute("member_name", member_name);
 			request.setAttribute("member_email", member_email);

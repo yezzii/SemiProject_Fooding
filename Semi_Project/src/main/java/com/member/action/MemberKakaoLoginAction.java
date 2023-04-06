@@ -25,7 +25,7 @@ public class MemberKakaoLoginAction implements Action {
 	String kakao_token = Encryption.encodeSha256(Raw_pwd);
 	String kakao_name = request.getParameter("member_name").trim();
 	String kakao_email = request.getParameter("member_email").trim();
-	String kakao_thumnail = request.getParameter("thumnail").trim();
+	String kakao_thumnail = request.getParameter("thumbnail").trim();
 		
 	HttpSession session = request.getSession();
 
@@ -35,20 +35,21 @@ public class MemberKakaoLoginAction implements Action {
 
 	int check = dao.tokenCheck(kakao_token);
 
-	
 	ActionForward forward = new ActionForward();
 	
-		
+			
 		if(check == 0) {		//회원이 아닌경우 회원가입페이지로 안내
+			
 			
 			request.setAttribute("member_token", kakao_token);
 			request.setAttribute("member_name", kakao_name);
 			request.setAttribute("member_email", kakao_email);
 			request.setAttribute("member_thumnail", kakao_thumnail);
+			request.setAttribute("alert", 1);
 		
 			forward.setRedirect(false);
 			
-			forward.setPath("member/member_kakao_join.jsp");//
+			forward.setPath("member/member_kakao_join.jsp");
 		
 		
 		}else if(check == 1) {				//회원인 경우 로그인 페이지로 안내

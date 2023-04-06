@@ -20,9 +20,7 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 	
 
 			String member_id = request.getParameter("member_id").trim();
-			String KakaoRaw_pwd = request.getParameter("member_token").trim();
-			String kakao_token = Encryption.encodeSha256(KakaoRaw_pwd);
-			
+			String kakao_token =request.getParameter("member_token").trim();
 			String member_name = request.getParameter("member_name").trim();
 			String member_email = request.getParameter("member_email").trim();
 			String Raw_pwd = request.getParameter("member_pwd").trim();
@@ -48,7 +46,7 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 
 			if(result > 0) {
 				out.println("<script>");
-				out.println("alert('카카오 회원가입이 완료되었습니다!"+dto.getMember_name()+"님 로그인을 진행해주세요.')");
+				out.println("alert('카카오 회원가입이 완료되었습니다! "+dto.getMember_name()+"님 로그인을 진행해주세요.')");
 				out.println("location.href='main.jsp'");
 				out.println("</script>");
 			}else {

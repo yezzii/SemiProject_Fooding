@@ -5,8 +5,7 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	
 	<script>
-	
-	let txt;
+
 	
 Kakao.init('fe3cf4492aa6c561d6c802d57d1418de'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -22,14 +21,45 @@ function kakaoLogin() {
      		  success: function (response) {
         	 		 console.log(response)	//json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
         	       
-        	 		 
+        	 		
         	 		 var token = response.id;
         	       	 var nickname = response.properties.nickname;
         	       	 var email = response.kakao_account.email;
-        	       	 var thumnail = response.properties.thumbnail_image;
-							//alert(response);
-        	 		location.href="<%=request.getContextPath()%>/member_KakaoLogin.do?member_token="+token+"&member_name="+nickname+"&member_email="+ email +"&thumnail="+ thumnail;
-        	 		//	MemberKakaoLoginAction  으로 이동.
+        	       	 var thumbnail = response.properties.thumbnail_image;
+        	       	 
+        	       	const form = document.createElement('form');
+
+        	       	let objs1 = document.createElement('input');
+        	       	objs1.setAttribute('type', 'hidden');
+        	       	objs1.setAttribute('name', 'member_token');
+        	       	objs1.setAttribute('value', token);
+        	       	form.appendChild(objs1);
+
+        	       	let objs2 = document.createElement('input');
+        	       	objs2.setAttribute('type', 'hidden');
+        	       	objs2.setAttribute('name', 'member_name');
+        	       	objs2.setAttribute('value', nickname);
+        	       	form.appendChild(objs2);
+
+        	       	let objs3 = document.createElement('input');
+        	       	objs3.setAttribute('type', 'hidden');
+        	       	objs3.setAttribute('name', 'member_email');
+        	       	objs3.setAttribute('value', email);
+        	       	form.appendChild(objs3);
+
+        	       	let objs4 = document.createElement('input');
+        	       	objs4.setAttribute('type', 'hidden');
+        	       	objs4.setAttribute('name', 'thumbnail');
+        	       	objs4.setAttribute('value', thumbnail);
+        	       	form.appendChild(objs4);
+
+        	       	form.setAttribute('method', 'post');
+        	       	form.setAttribute('action', "../member_KakaoLogin.do");//	MemberKakaoLoginAction  으로 이동.
+        	       	document.body.appendChild(form);
+        	       	form.submit();
+        	       	 
+        	       	
+        	 		
          	  			},
          fail: function (error) {
             console.log(error)

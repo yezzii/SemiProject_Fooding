@@ -1,9 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	
+	<script>
+
+	
+Kakao.init('fe3cf4492aa6c561d6c802d57d1418de'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그아웃
+  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="main_img/fooding type_1.png"/>
 <meta charset="UTF-8">
 <title>Pooding 푸딩</title>
 
@@ -32,10 +59,6 @@
 	crossorigin="anonymous"></script>
 <!-- 부트스트랩 end-->
 
-<script type="text/javascript">
-
-
-</script>
 
 <%
 String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -54,13 +77,13 @@ if (session.getAttribute("id") != null) {
 			<!-- 네비바 container -->
 			<div>
 				<a href="#" > <img class="ico_size"
-					src="main_img/fooding type_1.png" style="width: 120px">
+					src="main_img/fooding type_1.png" style="width: 50px">
 				</a>
-			</div>
+		
 			<!-- 로고 -->
 
 
-			<div class="top_left">
+			
 				<a class="top_left_aTag"
 					href="<%=request.getContextPath()%>/free_board.do"> <span>자유
 						게시판</span>
@@ -124,13 +147,13 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!-- 글쓰기 -->
 
-				
+			
 				<a href="member/logout.jsp">
-					<button type="button" class="hideBtn"  >
+					<button type="button" class="hideBtn">
 						<span class="">로그아웃</span>
 					</button>
 				</a>
-				<!--  로그아웃 -->
+			<!--  로그아웃 -->
 				
 				
 		<span class="profileInfo" ><%=userID%> 님</span>
@@ -171,48 +194,99 @@ if (session.getAttribute("id") != null) {
 	</div>
 
  
-
-	<div class="main1">
-		<!-- 메인섹션1 -->
-		<c:if test=""></c:if>
-		<div class="card-deck">
-			<div class="card">
-				<img src="main_img/1.jpg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">스시 오마카세 입문해보기!</h5>
-					<br>
-					<p class="card-text">영등포구에 위치한 이 곳은 "스시 코우지" 입니다! 약속이 생겨서 예약을 어렵게해서 다녀와봤어요!!!!...</p>
-					<p class="card-text">
-						<small class="text-muted">3분 전 업데이트 됨</small>
-					</p>
-				</div>
-			</div>
-			<div class="card">
-				<img src="main_img/2.jpeg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">삼청동한정식 편안한집 :: 한옥에서 즐기는 한정식</h5>
-					<p class="card-text">메뉴판 디자인도 깔끔하더라고요~ 저희는 보쌈정식 (15,000원)과 능이 불고기정식 (13,000원)을 시켰어요... 점심시간이었는데도 주문한지 10분 만에 음식이 나왔어요!...</p>
-					<p class="card-text">
-						<small class="text-muted">1일 전 업데이트 됨</small>
-					</p>
-				</div>
-			</div>
-			<div class="card">
-				<img src="main_img/3.jpg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">광화문 한정식 파인다이닝:) 데이트하기 좋은 '암소서울'</h5>
-					<p class="card-text">안에 공간도 넉넉하고 일대에서 보기 드문 광화문 깔끔한 한정식 집이라서 어르신들 모시고 오기에 괜찮았어요 나와서 좀만 걸으면 경희궁이 보인답니다! 경복궁 ...</p>
-					<p class="card-text">
-						<small class="text-muted">3일전 업데이트 됨</small>
-					</p>
-				</div>
+	<div class="main1-section">
+		<div class="main1">
+			<!-- 메인섹션1 -->
+			<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+			  <div class="carousel-inner">
+			    <div class="carousel-item active" data-interval="10000">
+			      <img src="main_img/1.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item" data-interval="2000">
+			      <img src="main_img/2.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="main_img/3.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="main_img/4.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="main_img/5.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="main_img/6.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="main_img/7.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="main_img/8.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="main_img/9.png" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="main_img/10.png" class="d-block w-100" alt="...">
+			    </div>
+			  </div>
+			 <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
+			   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			   <span class="sr-only">Previous</span>
+			 </button>
+			 <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
+			   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			   <span class="sr-only">Next</span>
+			 </button>
 			</div>
 		</div>
-	</div>
-	<!-- 메인섹션1 end-->
-
+		<!-- 메인섹션1 end-->
+	
+	
+		<div class="main2">
+			<c:if test=""></c:if>
+			<div class="card-deck">
+				<div class="card">
+					<img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MDNfMTk0%2FMDAxNjUxNTI4NTI3OTg3.U86CbrKkNjulokeQf9ElnDy1A18DMU8-N2xDZdipT0Eg.nIiAzj2WPv8vmrI0yHEbfcPwDOkoKEmNqzwY5kysnM8g.JPEG.kzmiddle%2FL1020543.jpg&type=sc960_832" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">스시 오마카세 입문해보기!</h5>
+						<br>
+						<p class="card-text">영등포구에 위치한 이 곳은 "스시 코우지" 입니다! 약속이 생겨서 예약을 어렵게해서 다녀와봤어요!!!!...</p>
+						<p class="card-text">
+							<small class="text-muted">3분 전 업데이트 됨</small>
+						</p>
+					</div>
+				</div>
+				<!-- <div class="card">
+					<img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEyMTBfMTgg%2FMDAxNjcwNjc2NDU3OTQ0.XcjTaHMreL8-RQWiL-rfK6NdSaFFbH78ODqw0x2gbV8g.JliXS3IGdIrUsbiraKTL9ARJjYfixn60r6xfWM6FBbcg.JPEG.chlwldms0410%2FSE-c4d5e3f2-6273-4e62-8d26-7d0b5f99b43a.jpg&type=sc960_832" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">삼청동한정식 편안한집 :: 한옥에서 즐기는 한정식</h5>
+						<p class="card-text">메뉴판 디자인도 깔끔하더라고요~ 저희는 보쌈정식 (15,000원)과 능이 불고기정식 (13,000원)을 시켰어요... 점심시간이었는데도 주문한지 10분 만에 음식이 나왔어요!...</p>
+						<p class="card-text">
+							<small class="text-muted">1일 전 업데이트 됨</small>
+						</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MzBfNjkg%2FMDAxNjUzOTA2NDgxMDYx.fZXJCnuth6tNJKpefLypOscwR4cQs8DvLK4VW7ewrBcg.YW9Ek_CepXxB9FSEVHa2MRqnr_jEVPspd1mL8atjhZUg.JPEG.i1214%2FIMG_0905.JPG&type=sc960_832" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">광화문 한정식 파인다이닝:) 데이트하기 좋은 '암소서울'</h5>
+						<p class="card-text">안에 공간도 넉넉하고 일대에서 보기 드문 광화문 깔끔한 한정식 집이라서 어르신들 모시고 오기에 괜찮았어요 나와서 좀만 걸으면 경희궁이 보인답니다! 경복궁 ...</p>
+						<p class="card-text">
+							<small class="text-muted">3일전 업데이트 됨</small>
+						</p>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		<!-- 메인섹션2 end-->
+	</div>	
+	
+	
+	
+	
 	<div>
-		<!-- 메인섹션2 -->
+		<!-- 메인섹션3 -->
 		<a href="<%=request.getContextPath() %>/member_list.do">
 					<button type="button" class="hideBtn">
 						<span class="">관리자-회원관리페이지 테스트
@@ -231,13 +305,8 @@ if (session.getAttribute("id") != null) {
 				
 
 	</div>
-	<!-- 메인섹션2 end -->
+	<!-- 메인섹션3 end -->
 
-	<div>
-		<!-- 메인섹션3 -->
-
-	</div>
-	<!-- 메인섹션3 end-->
 
 	<div>
 		<!-- 메인섹션4 -->

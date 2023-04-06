@@ -60,13 +60,46 @@ function requestUserInfo() {
       
     })
       .then(function(res) {
-    	var id = res.id;
-    	 var nickname = res.properties.nickname;
-    	 var email = res.kakao_account.email;
-		  scope : 'account_email';
-				alert("환영합니다~ 정상적인 회원가입을 위해 \n추가정보 입력페이지로 이동합니다!!");
-     			location.href="<%=request.getContextPath()%>/member_Kakaojoin.do?member_id="+id+"&member_name="+nickname+"&member_email="+email;
-   
+    
+    	 var token = res.id;
+       	 var nickname = res.properties.nickname;
+       	 var email = res.kakao_account.email;
+       	 var thumbnail = res.properties.thumbnail_image;
+       	 
+       	const form = document.createElement('form');
+
+       	let objs1 = document.createElement('input');
+       	objs1.setAttribute('type', 'hidden');
+       	objs1.setAttribute('name', 'member_id');
+       	objs1.setAttribute('value', token);
+       	form.appendChild(objs1);
+
+       	let objs2 = document.createElement('input');
+       	objs2.setAttribute('type', 'hidden');
+       	objs2.setAttribute('name', 'member_name');
+       	objs2.setAttribute('value', nickname);
+       	form.appendChild(objs2);
+
+       	let objs3 = document.createElement('input');
+       	objs3.setAttribute('type', 'hidden');
+       	objs3.setAttribute('name', 'member_email');
+       	objs3.setAttribute('value', email);
+       	form.appendChild(objs3);
+
+       	let objs4 = document.createElement('input');
+       	objs4.setAttribute('type', 'hidden');
+       	objs4.setAttribute('name', 'thumbnail');
+       	objs4.setAttribute('value', thumbnail);
+       	form.appendChild(objs4);
+
+       	form.setAttribute('method', 'post');
+       	form.setAttribute('action', "../member_Kakaojoin.do");//	MemberKakaojoinAction  으로 이동.
+       	document.body.appendChild(form);
+       	form.submit();
+    	 
+    	 
+    	 
+    	 
     	 
       })
       .catch(function(err) {

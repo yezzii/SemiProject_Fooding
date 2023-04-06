@@ -240,7 +240,6 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				System.out.println(rs.getString("member_id"));
 				dto = new MemberDTO();
 
 				dto.setMember_id(rs.getString("member_id"));
@@ -280,7 +279,6 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				System.out.println(rs.getString("member_token"));
 				dto = new MemberDTO();
 				
 				dto.setMember_token(rs.getString("member_token"));
@@ -331,18 +329,18 @@ public class MemberDAO {
 
 	
 	
-	public int idCheck(String kakaoToken) {
-		
+	public int idCheck(String member_id) {
+		System.out.println(kakao_token);
 		int res = 0;
 
 		try {
 			openConn();
 
-			sql = "select * from member where member_token = ?";
+			sql = "select * from member where member_id = ?";
 
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setString(1, kakaoToken);
+			pstmt.setString(1, member_id);
 
 			rs = pstmt.executeQuery();
 
@@ -459,7 +457,6 @@ public class MemberDAO {
 				dto.setMember_pwd(rs.getString("member_pwd"));
 				dto.setMember_storenum(rs.getString("member_storenum"));
 				dto.setMember_type(rs.getInt("member_type"));
-				System.out.println(dto.getMember_id());
 				list.add(dto);
 			}
 		} catch (SQLException e) {

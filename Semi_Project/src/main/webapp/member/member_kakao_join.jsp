@@ -8,7 +8,18 @@
 <title>카카오 회원 정보입력</title>
 
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<%
+   Integer alert = (Integer) request.getAttribute("alert");
+%>
 
+<%-- alert 변수가 1인 경우에만 알림창을 띄웁니다. --%>
+<% if(alert != null && alert == 1) { %>
+   <script>
+      $(document).ready(function() {
+         alert("미가입(카카오) 회원입니다. 정상적인 회원가입을 위해 추가정보를 입력해주세요.");
+      });
+   </script>
+<% } %>
 </head>
 <body>
 	<div align="center">
@@ -18,9 +29,11 @@
 
 		<form method="post" id="f"
 			action="<%=request.getContextPath()%>/member_KakaoOkjoin.do" autocomplete="off" onsubmit="return mySubmit()">
+			
+			<input type="hidden" name="member_token" value="${member_token}">
+			
 			<table border="1" cellspacing="0" width="600">
 				
-				<input type="hidden" name="member_token" value="${member_token}">
 				
 				<tr>
 					<th>카카오 이메일</th>
