@@ -19,6 +19,10 @@ public class MemberJoinAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
+		//한글처리 작업 진행.
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html charset=utf-8");
+		
 		String member_id = request.getParameter("member_id");
 		String member_name = request.getParameter("member_name");
 		String Raw_pwd = request.getParameter("member_pwd");

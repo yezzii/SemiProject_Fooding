@@ -93,7 +93,7 @@ if (session.getAttribute("id") != null) {
 					</button>
 				</a>
 				<!-- 아이디 찾기 -->
-				<a href="<%=request.getContextPath()%>/find_pwd.do">
+				<a href="member/find_pwd.jsp">
 					<button type="button" class="findpwd">
 						<span class="">비밀번호 찾기</span>
 					</button>
