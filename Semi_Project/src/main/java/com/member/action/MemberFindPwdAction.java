@@ -52,19 +52,17 @@ public class MemberFindPwdAction implements Action {
 
 		System.out.println("DAO : " + dto.getMember_id());
 		System.out.println("Action : " + memberName);
-		
 
-		if (!dto.getMember_id().equals(memberId) || !dto.getMember_name().equals(memberName) || !dto.getMember_email().equals(memberEmail)) {
-			
-					PrintWriter out = response.getWriter();
+		if (dto.getMember_id().equals("없음") || !dto.getMember_name().equals(memberName)
+				|| !dto.getMember_email().equals(memberEmail)) {
 
-					out.println("<script>");
-					out.println("alert('입력받은 정보의 가입자가 없습니다')");
-					out.println("history.back()");
-					out.println("</script>");
+			PrintWriter out = response.getWriter();
 
-				
-			
+			out.println("<script>");
+			out.println("alert('입력받은 정보의 가입자가 없습니다')");
+			out.println("history.back()");
+			out.println("</script>");
+
 		} else {
 
 			// mail server 설정
@@ -127,9 +125,16 @@ public class MemberFindPwdAction implements Action {
 				msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 
 				// 메일 제목
-				msg.setSubject("오! 메일이 도착했어요~");
+				msg.setSubject("[Pooding] 임시 비밀번호 안내");
+
 				// 메일 내용
-				msg.setText("인증 번호는 :" + temp);
+				msg.setContent("<h1>임시 비밀번호 안내</h1>" + "<br>"+ "<br>"
+						+ "<p>안녕하세요,</p>" + "<br>"
+						+ "<p>고객님의 계정에 대한 비밀번호 초기화 요청을 받았습니다. 이에 따라 임시 비밀번호를 발급해드립니다.</p>" + "<br>" 
+						+ String.format("<p>임시 비밀번호: <b>%s</b></p>", temp) + "<br>" 
+						+ "<p>위 임시 비밀번호를 사용하여 로그인하신 후, 마이 페이지에서 새로운 비밀번호를 설정해주시기 바랍니다.</p>" + "<br>" 
+						+ "<p>감사합니다.</p>" + "<br>" 
+						+ "<p>[Pooding]</p>", "text/html; charset=UTF-8");
 
 				Transport.send(msg);
 

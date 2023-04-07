@@ -259,12 +259,18 @@ public class MemberDAO {
 				dto.setMember_name(rs.getString("member_name"));
 				dto.setMember_email(rs.getString("member_email"));
 				dto.setMember_no(rs.getInt("member_no"));
+				
+				System.out.println("아이디 : " + dto.getMember_id());
+				System.out.println("이름 : " + dto.getMember_name());
+				System.out.println("이메일 : " + dto.getMember_email());
 
+			}else {
+				dto = new MemberDTO();
+				
+				dto.setMember_id("없음");
 			}
 			
-			System.out.println("아이디 : " + dto.getMember_id());
-			System.out.println("이름 : " + dto.getMember_name());
-			System.out.println("이메일 : " + dto.getMember_email());
+			
 			
 
 		} catch (Exception e) {
@@ -277,8 +283,6 @@ public class MemberDAO {
 
 	// 임시비밀번호 DB에 저장
 	public void TempPwdUpdate(int no, String encode) {
-		
-		System.out.println("DAO안 비밀번호 "+ encode);
 		
 		openConn();
 
@@ -293,8 +297,6 @@ public class MemberDAO {
 			pstmt.setInt(2, no);
 			
 			int result = pstmt.executeUpdate();
-			
-			System.out.println(result);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
