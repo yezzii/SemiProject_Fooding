@@ -36,7 +36,7 @@ public class FrontController extends HttpServlet {
 		ActionForward forward = null;
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(
-				"C:\\Users\\Ace\\git\\Semi_project\\Semi_Project\\Users\\Ace\\git\\com\\member\\controller\\mapping.properties");
+				"C:\\Users\\Ace\\git\\Semi_project\\Semi_Project\\src\\main\\java\\com\\member\\controller\\mapping.properties");
 
 		prop.load(fis);
 
