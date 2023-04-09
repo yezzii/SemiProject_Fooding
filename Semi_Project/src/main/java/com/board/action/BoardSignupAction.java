@@ -6,11 +6,13 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.board.model.Board_MainDAO;
 import com.board.model.Board_MainDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
+import com.mysql.cj.Session;
 
 public class BoardSignupAction implements Action {
 
@@ -29,6 +31,15 @@ public class BoardSignupAction implements Action {
 		String main_detailaddr = request.getParameter("main_detailaddr").trim();
 		String main_phone = request.getParameter("main_phone").trim();
 		
+		
+		
+		
+		HttpSession session = request.getSession(true);
+		
+		String id =(String) session.getAttribute("id");
+		
+		System.out.println(id);
+		
 		Board_MainDTO dto = new Board_MainDTO();
 		
 		dto.setMain_name(main_name);
@@ -40,6 +51,7 @@ public class BoardSignupAction implements Action {
 		dto.setMain_addr(main_addr);
 		dto.setMain_detailaddr(main_detailaddr);
 		dto.setMain_phone(main_phone);
+		dto.setMain_memid(id);
 		
 		Board_MainDAO dao = Board_MainDAO.getInstance();
 		

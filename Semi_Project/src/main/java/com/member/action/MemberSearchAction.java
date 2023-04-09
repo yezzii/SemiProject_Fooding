@@ -41,7 +41,7 @@ public class MemberSearchAction implements Action {
 				
 				int endNo = (page * rowsize);
 				
-				int StartBlock = (((page-1)/block) * block) +1;
+				int startBlock = (((page-1)/block) * block) +1;
 				
 				int endBlock = (((page-1)/ block)*block)+block;
 				
@@ -58,15 +58,14 @@ public class MemberSearchAction implements Action {
 				
 				
 				List<MemberDTO>searchList = dao.getSearchMemberList(field,keyword,page,rowsize);
-				
-				request.setAttribute("page", page);
+				 request.setAttribute("page", page);
 				 request.setAttribute("rowsize", rowsize);
 				 request.setAttribute("block", block);
 				 request.setAttribute("totalMember", totalMember);
 				 request.setAttribute("allPage", allPage);
 				 request.setAttribute("startNo", startNo);
 				 request.setAttribute("endNo", endNo);
-				 request.setAttribute("StartBlock", StartBlock);
+				 request.setAttribute("startBlock", startBlock);
 				 request.setAttribute("endBlock", endBlock);
 				 request.setAttribute("field", field);
 				 request.setAttribute("keyword", keyword);

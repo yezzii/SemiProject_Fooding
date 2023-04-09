@@ -39,9 +39,10 @@
 
 <%
 String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
-String userType = null;
+int userType = 0;
 if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
+	userType = (int)session.getAttribute("type");
 }
 %>
 
@@ -111,20 +112,17 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!-- test1 -->
 				
-					<a href="board/board_signUp.jsp">
+				<a href="<%=request.getContextPath() %>/board_main_list.do">
 					<button type="button" class="join">
-						<span class="">가게 등록</span>
+						<span class="">관리자-가게관리페이지 테스트
+						</span>
 					</button>
 				</a>
-				<!-- test2 -->
+				<!-- test1 -->
 				
-				
-				
-				
-
 				<%
-				// 로그인이 되어있는 사람만 볼수 있는 화면
-				} else {
+				// 로그인이 되어있는 사람만 볼수 있는 화면 (사업자)
+				} else if(userID != null && userType == 2 ) {
 				%>
 				<a href="member/logout.jsp">
 				
@@ -147,8 +145,48 @@ if (session.getAttribute("id") != null) {
 					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
 					width="30px" height="30px">
 				</a>
+				
+				<a href="board/board_signUp.jsp">
+					<button type="button" class="join">
+						<span class="">가게 등록</span>
+					</button>
+					</a>
+				<!-- test2 -->
+				
+				<a href="board/board_menu.jsp">
+					<button type="button" class="menu">
+						<span class="">가게메뉴 등록</span>
+					</button>
+					</a>
+				<!-- test2 -->
 
 				<%
+				// 로그인이 되어있는 사람만 볼수 있는 화면 (일반회원)
+				}else if(userID != null && userType == 1 ){
+				%>	
+				
+				<a href="member/logout.jsp">
+				
+					<button type="button" class="logout"  >
+						<span class="">로그아웃</span>
+					</button>
+				</a>
+				<!--  로그아웃 -->
+
+
+				<a href="board/board_write.jsp">
+					<button type="button" class="write">
+						<span class="">글쓰기</span>
+					</button>
+				</a>
+				<!-- 글쓰기 -->
+
+
+				<a href="<%=request.getContextPath()%>/myprofile.go"> <img
+					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
+					width="30px" height="30px">
+				</a>
+				<%	
 				}
 				%>
 			</div>

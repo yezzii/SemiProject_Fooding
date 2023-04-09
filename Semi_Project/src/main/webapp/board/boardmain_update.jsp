@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>Insert title here</title>
-
 <style type="text/css">
 * {
 	margin: 0px;
@@ -135,11 +134,15 @@ body {
 </style>
 </head>
 <body>
-<form class="joinForm" method="post" action="<%=request.getContextPath() %>/board_signUp_ok.do" >
-	
-		<h2>가게 등록</h2>
+ <c:set var="dto" value="${boardmain }" />
+	<form class="joinForm" method="post" action="<%=request.getContextPath() %>/board_main_updateOk.do" >
+		
+
+		<input type="hidden" name="main_idx" value="${dto.getMain_idx() }" >
+		
+		<h2>가게 수정</h2>
 		<div class="textForm">
-			<input name="main_name" type="text" class="name" placeholder="가게이름">
+			<input name="main_name" type="text" class="name" value="${dto.getMain_name() }"readonly>
 		</div>
 
 		<div class="textForm">
@@ -154,10 +157,9 @@ body {
 				<option value="cafe">카페,디저트</option>
 			</select>
 		</div>
-
+				
 		<div class="textForm">
-			<textarea class="cont" rows="5" cols="25" name="main_info"
-				placeholder="가게정보"></textarea>
+			<textarea class="cont" rows="5" cols="25" name="main_info">${dto.getMain_info() }</textarea>
 		</div>
 
 
@@ -165,27 +167,30 @@ body {
 			<!-- <input name="main_opentime" type="text" class="name" placeholder="영업시작시간">
 			<input name="main_endtime" type="text" class="name" placeholder="영업종료시간"> -->
 			 <label for="main_opentime" style="color: #636e72">영업시작시간</label>
-			 <input type="time" id="main_opentime" name="main_opentime" value="10:00"> 
+			 <input type="time" id="main_opentime" name="main_opentime" value="${dto.getMain_opentime() }"> 
 			 <label for="main_endtime" style="color: #636e72">영업종료시간</label>
-			 <input type="time" id="main_endtime" name="main_endtime" value="21:00"> 
+			 <input type="time" id="main_endtime" name="main_endtime" value="${dto.getMain_opentime() }"> 
 			 
 			
 		</div>
 
 		<div class="textForm">
-			<input name = "main_post" id="post" type="text" class="location" placeholder="Zip Code" readonly onclick = "findAddr()">
-			<input name = "main_addr" id="addr" type="text" class="location" placeholder="Address" readonly  >
-			<input name = "main_detailaddr" type="text" class="location" placeholder="Detailed Address">
+			<input name = "main_post" id="post" type="text" class="location" value="${dto.getMain_post() }" readonly onclick = "findAddr()">
+			<input name = "main_addr" id="addr" type="text" class="location" value="${dto.getMain_addr() }" readonly  >
+			<input name = "main_detailaddr" type="text" class="location"  value="${dto.getMain_detailaddr() }">
 		</div> 
 		
 		<div class="textForm">
-			<input name="main_phone" type="text" class="phone" placeholder="전화번호">
+			<input name="main_phone" type="text" class="phone" value="${dto.getMain_phone() }">
 		</div>
 		
 		<input type="submit" class="btn" value="J O I N" />
 	</form>
+
 </body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript">
+
 function findAddr(){
 	new daum.Postcode({
         oncomplete: function(data) {
@@ -208,7 +213,13 @@ function findAddr(){
         }
     }).open();
 }
-
+	$(document).ready(function() {
+		  // 사용자가 선택한 셀렉트값 가져오기
+		  var selectedValue = "${dto.getMain_type()}";
+		  
+		  // 셀렉트박스에서 선택된 항목을 selected로 설정
+		  $("select option[value='" + selectedValue + "']").attr("selected", "selected");
+		});
 
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
