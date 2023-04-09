@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -154,8 +157,8 @@
             </div>
             <hr>
             <div class="d-flex justify-content-between align-items-center py-3">
-              <div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span class="font-weight-semibold text-dark">$325.00</span></div><a class="btn btn-outline-secondary btn-sm" href="cart.html">Expand cart<i class="mr-n2" data-feather="chevron-right"></i></a>
-            </div><a class="btn btn-primary btn-sm btn-block" href="checkout-details.html"><i class="mr-1" data-feather="credit-card"></i>Checkout</a>
+              <div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span class="font-weight-semibold text-dark">$325.00</span></div><a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand cart<i class="mr-n2" data-feather="chevron-right"></i></a>
+            </div><a class="btn btn-primary btn-sm btn-block" href="checkout-details.jsp"><i class="mr-1" data-feather="credit-card"></i>Checkout</a>
           </div>
         </div>
       </div>
@@ -163,7 +166,7 @@
     <!-- Navbar Light-->
     <header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
       <div class="container-fluid navbar-inner">
-        <!-- navbar brand--><a class="navbar-brand" style="min-width: 100px;" href="index.html"><img width="100" src="img/logo-dark.png" alt="MStore"/></a>
+        <!-- navbar brand--><a class="navbar-brand" style="min-width: 100px;" href="index.jsp"><img width="100" src="img/logo-dark.png" alt="MStore"/></a>
         <!-- navbar collapse area-->
         <div class="collapse navbar-collapse" id="menu">
           <!-- language/currency switcher-->
@@ -174,12 +177,12 @@
               <li class="dropdown-item">
                 <select class="custom-select custom-select-sm">
                   <option value="usd">$ USD</option>
-                  <option value="usd">€ EUR</option>
-                  <option value="usd">£ UKP</option>
-                  <option value="usd">¥ JPY</option>
+                  <option value="usd">â¬ EUR</option>
+                  <option value="usd">Â£ UKP</option>
+                  <option value="usd">Â¥ JPY</option>
                 </select>
               </li>
-              <li><a class="dropdown-item" href="index.html"><img class="mr-2" width="20" src="img/flags/fr.png" alt="Français"/>Français</a></li>
+              <li><a class="dropdown-item" href="index.jsp"><img class="mr-2" width="20" src="img/flags/fr.png" alt="FranÃ§ais"/>FranÃ§ais</a></li>
               <li class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch"/>Deutsch</a></li>
               <li class="dropdown-divider"></li>
@@ -244,24 +247,24 @@
             </li>
             <li class="nav-item dropdown mega-dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Home</a>
               <div class="dropdown-menu">
-                <div class="dropdown-inner"><a class="dropdown-column text-decoration-0" href="home-apparel.html"><img class="d-block img-thumbnail mb-2" src="img/megamenu/home-apparel.jpg" alt="Home Apparel Shop">
-                    <div class="text-center font-weight-semibold text-dark">Home Apparel Shop</div></a><a class="dropdown-column text-decoration-0" href="home-electronics.html"><img class="d-block img-thumbnail mb-2" src="img/megamenu/home-electronics.jpg" alt="Home Electronics Store">
+                <div class="dropdown-inner"><a class="dropdown-column text-decoration-0" href="home-apparel.jsp"><img class="d-block img-thumbnail mb-2" src="img/megamenu/home-apparel.jpg" alt="Home Apparel Shop">
+                    <div class="text-center font-weight-semibold text-dark">Home Apparel Shop</div></a><a class="dropdown-column text-decoration-0" href="home-electronics.jsp"><img class="d-block img-thumbnail mb-2" src="img/megamenu/home-electronics.jpg" alt="Home Electronics Store">
                     <div class="text-center font-weight-semibold text-dark">Home Electronics Store</div></a></div>
               </div>
             </li>
-            <li class="nav-item dropdown mega-dropdown active"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+            <li class="nav-item dropdown mega-dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
               <div class="dropdown-menu">
                 <div class="dropdown-inner">
                   <div class="dropdown-column">
                     <div class="widget widget-links">
                       <h3 class="widget-title">Shop layouts</h3>
                       <ul>
-                        <li><a href="shop-style1-ls.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-                        <li><a href="shop-style1-rs.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Right Sidebar</span></a></li>
-                        <li><a href="shop-style1-ft.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Filters Top</span></a></li>
-                        <li><a href="shop-style2-ls.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Left Sidebar</span></a></li>
-                        <li><a href="shop-style2-rs.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Right Sidebar</span></a></li>
-                        <li><a href="shop-style2-ft.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Filters Top</span></a></li>
+                        <li><a href="shop-style1-ls.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+                        <li><a href="shop-style1-rs.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Right Sidebar</span></a></li>
+                        <li><a href="shop-style1-ft.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Filters Top</span></a></li>
+                        <li><a href="shop-style2-ls.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Left Sidebar</span></a></li>
+                        <li><a href="shop-style2-rs.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Right Sidebar</span></a></li>
+                        <li><a href="shop-style2-ft.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Filters Top</span></a></li>
                       </ul>
                     </div>
                   </div>
@@ -269,16 +272,16 @@
                     <div class="widget widget-links">
                       <h3 class="widget-title">Shop pages</h3>
                       <ul>
-                        <li><a href="shop-categories-apparel.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Categories - Apparel</span></a></li>
-                        <li><a href="shop-categories-electronics.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Categories - Electronics</span></a></li>
-                        <li><a href="shop-single-apparel.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Product Page #1 - Apparel</span></a></li>
-                        <li><a href="shop-single-electronics.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Product Page #2 - Electronics</span></a></li>
-                        <li><a href="cart.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Cart</span></a></li>
-                        <li><a href="checkout-details.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Details</span></a></li>
-                        <li><a href="checkout-shipping.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Shipping</span></a></li>
-                        <li><a href="checkout-payment.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Payment</span></a></li>
-                        <li><a href="checkout-review.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Review</span></a></li>
-                        <li><a href="checkout-complete.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Complete</span></a></li>
+                        <li><a href="shop-categories-apparel.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Categories - Apparel</span></a></li>
+                        <li><a href="shop-categories-electronics.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Categories - Electronics</span></a></li>
+                        <li><a href="shop-single-apparel.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Product Page #1 - Apparel</span></a></li>
+                        <li><a href="shop-single-electronics.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Product Page #2 - Electronics</span></a></li>
+                        <li><a href="cart.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Cart</span></a></li>
+                        <li><a href="checkout-details.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Details</span></a></li>
+                        <li><a href="checkout-shipping.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Shipping</span></a></li>
+                        <li><a href="checkout-payment.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Payment</span></a></li>
+                        <li><a href="checkout-review.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Review</span></a></li>
+                        <li><a href="checkout-complete.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Complete</span></a></li>
                       </ul>
                     </div>
                   </div>
@@ -286,87 +289,87 @@
                 </div>
               </div>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
+            <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
               <ul class="dropdown-menu">
                 <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">User Account</a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="account-orders.html">Orders History</a></li>
+                    <li><a class="dropdown-item" href="account-orders.jsp">Orders History</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-profile.html">Profile Settings</a></li>
+                    <li><a class="dropdown-item" href="account-profile.jsp">Profile Settings</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-address.html">Account Addresses</a></li>
+                    <li><a class="dropdown-item" href="account-address.jsp">Account Addresses</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
+                    <li><a class="dropdown-item" href="account-payment.jsp">Payment Methods</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-wishlist.html">Wishlist</a></li>
+                    <li><a class="dropdown-item" href="account-wishlist.jsp">Wishlist</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-tickets.html">My Tickets</a></li>
+                    <li><a class="dropdown-item" href="account-tickets.jsp">My Tickets</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-single-ticket.html">Single Ticket</a></li>
+                    <li><a class="dropdown-item" href="account-single-ticket.jsp">Single Ticket</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-signin.html">Sign In / Sign Up Page</a></li>
+                    <li><a class="dropdown-item" href="account-signin.jsp">Sign In / Sign Up Page</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-password-recovery.html">Password Recovery</a></li>
+                    <li><a class="dropdown-item" href="account-password-recovery.jsp">Password Recovery</a></li>
                   </ul>
                 </li>
                 <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                <li><a class="dropdown-item" href="about.jsp">About Us</a></li>
                 <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
+                <li><a class="dropdown-item" href="contacts.jsp">Contacts</a></li>
                 <li class="dropdown-divider"></li>
                 <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Help Center</a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="help-topics.html">Help Topics</a></li>
+                    <li><a class="dropdown-item" href="help-topics.jsp">Help Topics</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="help-single-topic.html">Single Topic</a></li>
+                    <li><a class="dropdown-item" href="help-single-topic.jsp">Single Topic</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="help-submit-request.html">Submit a Request</a></li>
+                    <li><a class="dropdown-item" href="help-submit-request.jsp">Submit a Request</a></li>
                   </ul>
                 </li>
                 <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="product-comparison.html">Product Comparison</a></li>
+                <li><a class="dropdown-item" href="product-comparison.jsp">Product Comparison</a></li>
                 <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="order-tracking.html">Order Tracking</a></li>
+                <li><a class="dropdown-item" href="order-tracking.jsp">Order Tracking</a></li>
                 <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="404.html">404 Not Found</a></li>
+                <li><a class="dropdown-item" href="404.jsp">404 Not Found</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
               <ul class="dropdown-menu">
                 <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Blog Layout</a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="blog-rs.html">Blog Right Sidebar</a></li>
+                    <li><a class="dropdown-item" href="blog-rs.jsp">Blog Right Sidebar</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="blog-ls.html">Blog Left Sidebar</a></li>
+                    <li><a class="dropdown-item" href="blog-ls.jsp">Blog Left Sidebar</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="blog-ns.html">Blog No Sidebar</a></li>
+                    <li><a class="dropdown-item" href="blog-ns.jsp">Blog No Sidebar</a></li>
                   </ul>
                 </li>
                 <li class="dropdown-divider"></li>
                 <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Single Post Layout</a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="blog-single-rs.html">Post Right Sidebar</a></li>
+                    <li><a class="dropdown-item" href="blog-single-rs.jsp">Post Right Sidebar</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="blog-single-ls.html">Post Left Sidebar</a></li>
+                    <li><a class="dropdown-item" href="blog-single-ls.jsp">Post Left Sidebar</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="blog-single-ns.html">Post No Sidebar</a></li>
+                    <li><a class="dropdown-item" href="blog-single-ns.jsp">Post No Sidebar</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="mr-1" data-feather="file-text"></i>Docs</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="docs/dev-setup.html">
+                <li><a class="dropdown-item" href="docs/dev-setup.jsp">
                     <div class="d-flex py-1"><i class="mt-1 ml-n2" data-feather="file-text" style="width: 1.4375rem; height: 1.4375rem;"></i>
                       <div class="ml-2"><span class="d-block mb-n1">Documentation</span><small class="text-muted">Kick-start customization</small></div>
                     </div></a></li>
                 <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="components/alerts.html">
+                <li><a class="dropdown-item" href="components/alerts.jsp">
                     <div class="d-flex py-1"><i class="mt-1 ml-n2" data-feather="grid" style="width: 1.375rem; height: 1.375rem;"></i>
                       <div class="ml-2"><span class="d-block mb-n1">Components <span class='badge badge-pill badge-success'>40+</span></span><small class="text-muted">Faster page building</small></div>
                     </div></a></li>
                 <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="docs/changelog.html">
+                <li><a class="dropdown-item" href="docs/changelog.jsp">
                     <div class="d-flex py-1"><i class="mt-1 ml-n2" data-feather="edit" style="width: 1.375rem; height: 1.375rem;"></i>
                       <div class="ml-2"><span class="d-block mb-n1">Changelog <span class='badge badge-pill badge-warning'>v2.0</span></span><small class="text-muted">Regular updates</small></div>
                     </div></a></li>
@@ -387,176 +390,12 @@
         </div>
       </div>
     </header>
-    <!-- Page Title-->
-    <div class="page-title-wrapper" aria-label="Page title">
-      <div class="container">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-            <li class="breadcrumb-item"><a href="index.html">Home</a>
-            </li>
-            <li class="breadcrumb-item"><a href="#">Shop</a>
-            </li>
-          </ol>
-        </nav>
-        <h1 class="page-title">Checkout</h1><span class="d-block mt-2 text-muted"></span>
-      </div>
-    </div>
     <!-- Page Content-->
-    <div class="container pb-5 mb-sm-4 mt-n2 mt-md-n3">
-      <!-- Steps (wizard)-->
-      <div class="steps">
-        <div class="steps-body"><a class="step step-completed" href="cart.html"><span class="step-indicator"><i data-feather="check"></i></span><span class="step-icon"><i data-feather="shopping-cart"></i></span>1. Shopping cart</a><a class="step step-completed" href="checkout-details.html"><span class="step-indicator"><i data-feather="check"></i></span><span class="step-icon"><i data-feather="user"></i></span>2. Your details</a><a class="step step-active" href="checkout-shipping.html"><span class="step-icon"><i data-feather="truck"></i></span>3. Shipping</a><a class="step" href="checkout-payment.html"><span class="step-icon"><i data-feather="credit-card"></i></span>4. Payment</a><a class="step" href="checkout-review.html"><span class="step-icon"><i data-feather="check-circle"></i></span>5. Final review</a></div>
-      </div>
-      <div class="row pt-4 mt-2">
-        <!-- Content-->
-        <div class="col-xl-9 col-md-8">
-          <h2 class="h6 px-4 py-3 bg-secondary mb-4">Choose shipping method</h2>
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th class="align-middle"></th>
-                  <th class="align-middle">Shipping method</th>
-                  <th class="align-middle">Delivery time</th>
-                  <th class="align-middle">Handling fee</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="courier" name="shipping-method" checked>
-                      <label class="custom-control-label" for="courier"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-dark">Courier</span><br><span class="text-muted font-size-sm">All addresses (default zone), United States &amp; Canada</span></td>
-                  <td class="align-middle">2 - 4 days</td>
-                  <td class="align-middle">$26.50</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="local" name="shipping-method">
-                      <label class="custom-control-label" for="local"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-dark">Local Shipping</span><br><span class="text-muted font-size-sm">All addresses (default zone), United States &amp; Canada</span></td>
-                  <td class="align-middle">up to one week</td>
-                  <td class="align-middle">$10.00</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="flat" name="shipping-method">
-                      <label class="custom-control-label" for="flat"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-darkm">Flat Rate</span><br><span class="text-muted font-size-sm">All addresses (default zone)</span></td>
-                  <td class="align-middle">5 - 7 days</td>
-                  <td class="align-middle">$33.85</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="ups" name="shipping-method">
-                      <label class="custom-control-label" for="ups"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-dark">UPS Ground Shipping</span><br><span class="text-muted font-size-sm">All addresses (default zone)</span></td>
-                  <td class="align-middle">4 - 6 days</td>
-                  <td class="align-middle">$18.00</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="pickup" name="shipping-method">
-                      <label class="custom-control-label" for="pickup"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-dark">Local Pickup from store</span><br><span class="text-muted font-size-sm">All addresses (default zone)</span></td>
-                  <td class="align-middle">&mdash;</td>
-                  <td class="align-middle">$0.00</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="locker" name="shipping-method">
-                      <label class="custom-control-label" for="locker"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-dark">Pick Up at MStore Locker</span><br><span class="text-muted font-size-sm">All addresses (default zone), United States &amp; Canada</span></td>
-                  <td class="align-middle">&mdash;</td>
-                  <td class="align-middle">$9.99</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="global" name="shipping-method">
-                      <label class="custom-control-label" for="global"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-dark">MStore Global Export</span><br><span class="text-muted font-size-sm">All addresses (default zone), outside United States</span></td>
-                  <td class="align-middle">3 - 4 days</td>
-                  <td class="align-middle">$25.00</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="same-day" name="shipping-method">
-                      <label class="custom-control-label" for="same-day"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-dark">Same-Day Delivery</span><br><span class="text-muted font-size-sm">Only United States</span></td>
-                  <td class="align-middle">&mdash;</td>
-                  <td class="align-middle">$34.00</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="custom-control custom-radio mb-4">
-                      <input class="custom-control-input" type="radio" id="international" name="shipping-method">
-                      <label class="custom-control-label" for="international"></label>
-                    </div>
-                  </td>
-                  <td class="align-middle"><span class="text-dark">International Shipping</span><br><span class="text-muted font-size-sm">All addresses (default zone)</span></td>
-                  <td class="align-middle">up to 15 days</td>
-                  <td class="align-middle">$27.00</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- Navigation-->
-          <div class="d-flex pt-2">
-            <div class="w-50 pr-3"><a class="btn btn-outline-secondary btn-block" href="checkout-details.html"><i class="mr-1" data-feather="chevron-left"></i>Back</a></div>
-            <div class="w-50 pl-2"><a class="btn btn-primary btn-block" href="checkout-payment.html"><span class="d-none d-sm-inline">Proceed to payment</span><span class="d-inline d-sm-none">Next</span><i class="ml-1" data-feather="chevron-right"></i></a></div>
-          </div>
-        </div>
-        <!-- Sidebar-->
-        <div class="col-xl-3 col-md-4 pt-4 mt-3 pt-md-0 mt-md-0">
-          <h2 class="h6 px-4 py-3 bg-secondary text-center">Order summary</h2>
-          <div class="font-size-sm border-bottom pt-2 pb-3">
-            <div class="d-flex justify-content-between mb-2"><span>Subtotal:</span><span>$325.00</span></div>
-            <div class="d-flex justify-content-between mb-2"><span>Shipping:</span><span>$26.50</span></div>
-            <div class="d-flex justify-content-between mb-2"><span>Taxes:</span><span>$7.25</span></div>
-            <div class="d-flex justify-content-between"><span>Discount:</span><span>&mdash;</span></div>
-          </div>
-          <div class="h3 font-weight-semibold text-center py-3">$358.75</div>
-          <form class="needs-validation" novalidate>
-            <div class="form-group">
-              <input class="form-control" type="text" id="cart-promocode" placeholder="Promo code" required>
-              <div class="invalid-feedback">Please provide a valid promo code!</div>
-            </div>
-            <button class="btn btn-outline-primary btn-block" type="submit">Apply promo code</button>
-          </form>
-          <!-- Promo banner--><a class="d-block text-decoration-0 mt-4 mx-auto pt-2" href="#" style="max-width: 277px;">
-            <div class="bg-secondary">
-              <div class="px-3 pt-4 text-center">
-                <h4 class="font-size-sm font-weight-normal pt-1 mb-2">2019 Spring / Summer</h4>
-                <h4 class="h5 pb-2">Hoodie Collection</h4>
-                <div class="btn btn-primary btn-sm">Shop now</div>
-              </div><img src="img/shop/banner01.jpg" alt="Promo banner">
-            </div></a>
-        </div>
+    <div class="container pb-5">
+      <div class="pt-5"><img class="d-block my-4 mx-auto" src="img/404.jpg" alt="404 Page not found"></div>
+      <div class="pt-3 pb-2 text-center">
+        <h1 class="h2">Page not found!</h1>
+        <p class="text-muted">It seems we canât find the page you are looking for.&nbsp;<a class="font-weight-semibold" href="index.jsp">Go back to Homepage</a><br>Or try using search at the top right corner of the page.</p>
       </div>
     </div>
     <!-- Footer-->
@@ -663,7 +502,7 @@
               <div class="icon-box text-center mb-5 mb-md-0">
                 <div class="icon-box-icon"><i data-feather="credit-card"></i></div>
                 <h3 class="icon-box-title font-weight-semibold text-white">Secure online payment</h3>
-                <p class="icon-box-text">We posess SSL / Secure сertificate</p>
+                <p class="icon-box-text">We posess SSL / Secure Ñertificate</p>
               </div>
             </div>
           </div>
@@ -674,7 +513,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-left">
-              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.html"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
+              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.jsp"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
                 <div class="navbar-lang-switcher dropdown border-light mt-3 mb-0 mt-sm-0">
                   <div class="dropdown-toggle text-white" data-toggle="dropdown"><img width="20" src="img/flags/en.png" alt="English"/><span>USD</span>
                   </div>
@@ -682,12 +521,12 @@
                     <li class="dropdown-item">
                       <select class="custom-select custom-select-sm">
                         <option value="usd">$ USD</option>
-                        <option value="usd">€ EUR</option>
-                        <option value="usd">£ UKP</option>
-                        <option value="usd">¥ JPY</option>
+                        <option value="usd">â¬ EUR</option>
+                        <option value="usd">Â£ UKP</option>
+                        <option value="usd">Â¥ JPY</option>
                       </select>
                     </li>
-                    <li><a class="dropdown-item" href="index.html"><img class="mr-2" width="20" src="img/flags/fr.png" alt="Français"/>Français</a></li>
+                    <li><a class="dropdown-item" href="index.jsp"><img class="mr-2" width="20" src="img/flags/fr.png" alt="FranÃ§ais"/>FranÃ§ais</a></li>
                     <li class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch"/>Deutsch</a></li>
                     <li class="dropdown-divider"></li>
@@ -716,7 +555,7 @@
         </div>
       </div>
       <div class="py-3" style="background-color: #1a1a1a;">
-        <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
+        <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">Â© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
       </div>
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>

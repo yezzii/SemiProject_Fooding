@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,374 +28,738 @@
   </head>
   <!-- Body-->
   <body>
-    <!-- Off-canvas search-->
-    <div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-      <div class="offcanvas-header d-flex justify-content-between align-items-center">
-        <h3 class="offcanvas-title">Search site</h3>
-        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="offcanvas-body-inner">
-          <div class="input-group pt-3">
-            <div class="input-group-prepend"><span class="input-group-text" id="search-icon"><i data-feather="search"></i></span></div>
-            <input class="form-control" type="text" id="site-search" placeholder="Search site" aria-label="Search site" aria-describedby="search-icon">
-          </div><small class="form-text pt-1">Type A or C to see suggestions. Powered by Easy autocomplete plugin via separate JSON file.</small>
-        </div>
-      </div>
-    </div>
-    <!-- Off-canvas account-->
-    <div class="offcanvas offcanvas-reverse" id="offcanvas-account">
-      <div class="offcanvas-header d-flex justify-content-between align-items-center">
-        <h3 class="offcanvas-title">Sign in / Create account</h3>
-        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="offcanvas-body-inner">
-          <ul class="nav nav-tabs nav-justified" role="tablist">
-            <li class="nav-item"><a class="nav-link active" href="#signin" data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;Sign In</a></li>
-            <li class="nav-item"><a class="nav-link" href="#signup" data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;Sign Up</a></li>
-          </ul>
-          <div class="tab-content pt-1">
-            <div class="tab-pane fade show active" id="signin" role="tabpanel">
-              <form class="needs-validation" novalidate>
-                <div class="form-group">
-                  <label class="sr-only" for="signin-email">Email</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text" id="signin-email-icon"><i data-feather="mail"></i></span></div>
-                    <input class="form-control" type="email" id="signin-email" placeholder="Email" aria-label="Email" aria-describedby="signin-email-icon" required>
-                    <div class="invalid-feedback">Please provide email address.</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="signin-password">Password</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text" id="signin-password-icon"><i data-feather="lock"></i></span></div>
-                    <input class="form-control" type="password" id="signin-password" placeholder="Password" aria-label="Password" aria-describedby="signin-password-icon" required>
-                    <div class="invalid-feedback">Please enter a password.</div>
-                  </div>
-                </div>
-                <div class="custom-control custom-checkbox mb-3">
-                  <input class="custom-control-input" type="checkbox" id="remember-me" checked>
-                  <label class="custom-control-label" for="remember-me">Remember me</label>
-                </div>
-                <button class="btn btn-primary btn-block" type="submit">Sign In</button>
-              </form>
-            </div>
-            <div class="tab-pane fade" id="signup" role="tabpanel">
-              <form class="needs-validation" novalidate>
-                <div class="form-group">
-                  <label class="sr-only" for="signup-name">Full name</label>
-                  <input class="form-control" type="text" id="signup-name" placeholder="Full name" aria-label="Full name" required>
-                  <div class="invalid-feedback">Please enter your full name.</div>
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="signup-email">Email address</label>
-                  <input class="form-control" type="email" id="signup-email" placeholder="Email address" aria-label="Email address" required>
-                  <div class="invalid-feedback">Please provide a valid email address.</div>
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="signup-password">Password</label>
-                  <input class="form-control" type="password" id="signup-password" placeholder="Password" aria-label="Password" required>
-                  <div class="invalid-feedback">Please enter a password.</div>
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="signup-password-confirm">Confirm password</label>
-                  <input class="form-control" type="password" id="signup-password-confirm" placeholder="Confirm password" aria-label="Confirm password" required>
-                  <div class="invalid-feedback">Please confirm password.</div>
-                </div>
-                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-              </form>
-            </div>
-          </div>
-          <div class="d-flex align-items-center pt-5">
-            <hr class="w-100">
-            <div class="px-3 w-100 text-nowrap font-weight-semibold">Or sign in via</div>
-            <hr class="w-100">
-          </div>
-          <div class="text-center pt-4"><a class="social-btn sb-facebook mx-2 mb-3" href="#" data-toggle="tooltip" title="Facebook"><i class="flaticon-facebook"></i></a><a class="social-btn sb-google-plus mx-2 mb-3" href="#" data-toggle="tooltip" title="Google"><i class="flaticon-google-plus"></i></a><a class="social-btn sb-twitter mx-2 mb-3" href="#" data-toggle="tooltip" title="Twitter"><i class="flaticon-twitter"></i></a></div>
-        </div>
-      </div>
-    </div>
-    <!-- Off-canvas cart-->
-    <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
-      <div class="offcanvas-header d-flex justify-content-between align-items-center">
-        <h3 class="offcanvas-title">Your cart</h3>
-        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="offcanvas-body-inner">
-          <div class="text-right"><a class="text-danger btn-sm pr-0" href="#"><i class="mr-1" data-feather="x" style="width: .85rem; height: .85rem;"></i>Clear cart</a></div>
-          <div class="widget widget-featured-entries pt-3">
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="img/shop/widget/07.jpg" width="64" alt="Product thumb"></a><span class="item-remove-btn"><i data-feather="x"></i></span></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">Calvin Klein Jeans Keds</a></h6>
-                <p class="featured-entry-meta">1 <span class='text-muted'>x</span> $125.00</p>
-              </div>
-            </div>
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="img/shop/widget/08.jpg" width="64" alt="Product thumb"></a><span class="item-remove-btn"><i data-feather="x"></i></span></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">The North Face Hoodie</a></h6>
-                <p class="featured-entry-meta">1 <span class='text-muted'>x</span> $134.00</p>
-              </div>
-            </div>
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="img/shop/widget/09.jpg" width="64" alt="Product thumb"></a><span class="item-remove-btn"><i data-feather="x"></i></span></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">Medicine Chameleon Sunglasses</a></h6>
-                <p class="featured-entry-meta">1 <span class='text-muted'>x</span> $47.00</p>
-              </div>
-            </div>
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="img/shop/widget/10.jpg" width="64" alt="Product thumb"></a><span class="item-remove-btn"><i data-feather="x"></i></span></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">Adidas Performance Hat</a></h6>
-                <p class="featured-entry-meta">1 <span class='text-muted'>x</span> $19.00</p>
-              </div>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center py-3">
-              <div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span class="font-weight-semibold text-dark">$325.00</span></div><a class="btn btn-outline-secondary btn-sm" href="cart.html">Expand cart<i class="mr-n2" data-feather="chevron-right"></i></a>
-            </div><a class="btn btn-primary btn-sm btn-block" href="checkout-details.html"><i class="mr-1" data-feather="credit-card"></i>Checkout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Navbar Light-->
-    <header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-      <div class="container-fluid navbar-inner">
-        <!-- navbar brand--><a class="navbar-brand" style="min-width: 100px;" href="index.html"><img width="100" src="img/logo-dark.png" alt="MStore"/></a>
-        <!-- navbar collapse area-->
-        <div class="collapse navbar-collapse" id="menu">
-          <!-- language/currency switcher-->
-          <div class="navbar-lang-switcher dropdown pr-2">
-            <div class="dropdown-toggle" data-toggle="dropdown"><img width="20" src="img/flags/en.png" alt="English"/><span>USD</span>
-            </div>
-            <ul class="dropdown-menu">
-              <li class="dropdown-item">
-                <select class="custom-select custom-select-sm">
-                  <option value="usd">$ USD</option>
-                  <option value="usd">€ EUR</option>
-                  <option value="usd">£ UKP</option>
-                  <option value="usd">¥ JPY</option>
-                </select>
-              </li>
-              <li><a class="dropdown-item" href="index.html"><img class="mr-2" width="20" src="img/flags/fr.png" alt="Français"/>Français</a></li>
-              <li class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch"/>Deutsch</a></li>
-              <li class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/it.png" alt="Italiano"/>Italiano</a></li>
-            </ul>
-          </div>
-          <!-- Site menu-->
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown mega-dropdown dropdown-more"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i data-feather="more-horizontal"></i></a>
-              <div class="dropdown-menu">
-                <div class="dropdown-inner">
-                  <div class="dropdown-column">
-                    <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/cat_bg02.jpg);">
-                      <h3 class="h5 text-white text-shadow my-3">Apparel</h3>
-                    </div>
-                    <div class="widget widget-links">
-                      <ul>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Clothing</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shoes</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Handbags &amp; Backpacks</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Hats &amp; Caps</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Sunglasses</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Watches</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Accessories</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="dropdown-column">
-                    <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/cat_bg01.jpg);">
-                      <h3 class="h5 text-white text-shadow my-3">Electronics</h3>
-                    </div>
-                    <div class="widget widget-links">
-                      <ul>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Computers &amp; Accessories</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">TV, Video &amp; Audio</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Smartphones &amp; Tablets</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Cameras, Photo &amp; Video</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Wearable Electronics</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Video Games</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="dropdown-column">
-                    <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/cat_bg03.jpg);">
-                      <h3 class="h5 text-white text-shadow my-3">Furniture &amp; Decor</h3>
-                    </div>
-                    <div class="widget widget-links">
-                      <ul>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Lounge Seating</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">File Cabinets</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Indoor Lighting</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Office Chairs</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Adjustable Height Desks</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Storage Units</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown mega-dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Home</a>
-              <div class="dropdown-menu">
-                <div class="dropdown-inner"><a class="dropdown-column text-decoration-0" href="home-apparel.html"><img class="d-block img-thumbnail mb-2" src="img/megamenu/home-apparel.jpg" alt="Home Apparel Shop">
-                    <div class="text-center font-weight-semibold text-dark">Home Apparel Shop</div></a><a class="dropdown-column text-decoration-0" href="home-electronics.html"><img class="d-block img-thumbnail mb-2" src="img/megamenu/home-electronics.jpg" alt="Home Electronics Store">
-                    <div class="text-center font-weight-semibold text-dark">Home Electronics Store</div></a></div>
-              </div>
-            </li>
-            <li class="nav-item dropdown mega-dropdown active"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
-              <div class="dropdown-menu">
-                <div class="dropdown-inner">
-                  <div class="dropdown-column">
-                    <div class="widget widget-links">
-                      <h3 class="widget-title">Shop layouts</h3>
-                      <ul>
-                        <li><a href="shop-style1-ls.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-                        <li><a href="shop-style1-rs.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Right Sidebar</span></a></li>
-                        <li><a href="shop-style1-ft.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Filters Top</span></a></li>
-                        <li><a href="shop-style2-ls.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Left Sidebar</span></a></li>
-                        <li><a href="shop-style2-rs.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Right Sidebar</span></a></li>
-                        <li><a href="shop-style2-ft.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Filters Top</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="dropdown-column">
-                    <div class="widget widget-links">
-                      <h3 class="widget-title">Shop pages</h3>
-                      <ul>
-                        <li><a href="shop-categories-apparel.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Categories - Apparel</span></a></li>
-                        <li><a href="shop-categories-electronics.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Categories - Electronics</span></a></li>
-                        <li><a href="shop-single-apparel.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Product Page #1 - Apparel</span></a></li>
-                        <li><a href="shop-single-electronics.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Product Page #2 - Electronics</span></a></li>
-                        <li><a href="cart.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Cart</span></a></li>
-                        <li><a href="checkout-details.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Details</span></a></li>
-                        <li><a href="checkout-shipping.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Shipping</span></a></li>
-                        <li><a href="checkout-payment.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Payment</span></a></li>
-                        <li><a href="checkout-review.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Review</span></a></li>
-                        <li><a href="checkout-complete.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Checkout - Complete</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="dropdown-column"><a class="d-block mx-auto" href="#" style="max-width: 228px;"><img class="d-block" src="img/megamenu/promo-banner.jpg" alt="Promo banner"></a></div>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
-              <ul class="dropdown-menu">
-                <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">User Account</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="account-orders.html">Orders History</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-profile.html">Profile Settings</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-address.html">Account Addresses</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-wishlist.html">Wishlist</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-tickets.html">My Tickets</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-single-ticket.html">Single Ticket</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-signin.html">Sign In / Sign Up Page</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-password-recovery.html">Password Recovery</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="about.html">About Us</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Help Center</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="help-topics.html">Help Topics</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="help-single-topic.html">Single Topic</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="help-submit-request.html">Submit a Request</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="product-comparison.html">Product Comparison</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="order-tracking.html">Order Tracking</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="404.html">404 Not Found</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
-              <ul class="dropdown-menu">
-                <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Blog Layout</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="blog-rs.html">Blog Right Sidebar</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="blog-ls.html">Blog Left Sidebar</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="blog-ns.html">Blog No Sidebar</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Single Post Layout</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="blog-single-rs.html">Post Right Sidebar</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="blog-single-ls.html">Post Left Sidebar</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="blog-single-ns.html">Post No Sidebar</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="mr-1" data-feather="file-text"></i>Docs</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="docs/dev-setup.html">
-                    <div class="d-flex py-1"><i class="mt-1 ml-n2" data-feather="file-text" style="width: 1.4375rem; height: 1.4375rem;"></i>
-                      <div class="ml-2"><span class="d-block mb-n1">Documentation</span><small class="text-muted">Kick-start customization</small></div>
-                    </div></a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="components/alerts.html">
-                    <div class="d-flex py-1"><i class="mt-1 ml-n2" data-feather="grid" style="width: 1.375rem; height: 1.375rem;"></i>
-                      <div class="ml-2"><span class="d-block mb-n1">Components <span class='badge badge-pill badge-success'>40+</span></span><small class="text-muted">Faster page building</small></div>
-                    </div></a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="docs/changelog.html">
-                    <div class="d-flex py-1"><i class="mt-1 ml-n2" data-feather="edit" style="width: 1.375rem; height: 1.375rem;"></i>
-                      <div class="ml-2"><span class="d-block mb-n1">Changelog <span class='badge badge-pill badge-warning'>v2.0</span></span><small class="text-muted">Regular updates</small></div>
-                    </div></a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="mailto:contact@createx.studio">
-                    <div class="d-flex py-1"><i class="mt-1 ml-n2" data-feather="life-buoy" style="width: 1.4375rem; height: 1.4375rem;"></i>
-                      <div class="ml-2"><span class="d-block mb-n1">Support</span><small class="text-muted">contact@createx.studio</small></div>
-                    </div></a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <!-- navbar buttons-->
-        <div class="navbar-btns">
-          <div class="navbar-btns-inner">
-            <div class="navbar-toggler navbar-btn collapsed" data-toggle="collapse" data-target="#menu"><i class="mx-auto mb-1" data-feather="menu"></i>Menu</div><a class="navbar-btn" href="#offcanvas-search" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="search"></i>Search</a><a class="navbar-btn navbar-collapse-hidden" href="#offcanvas-account" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up</a><a class="navbar-btn" href="#offcanvas-cart" data-toggle="offcanvas"><span class="d-block position-relative"><span class="navbar-btn-badge bg-primary text-light">4</span><i class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
-          </div>
-        </div>
-      </div>
-    </header>
+
+	<%
+	String userID = null; // ë¡ê·¸ì¸ì´ ë ì¬ëë¤ì ë¡ê·¸ì¸ì ë³´ë¥¼ ë´ì ì ìëë¡íë¤
+	if (session.getAttribute("id") != null) {
+		userID = (String) session.getAttribute("id");
+	}
+	%>
+	<!-- Off-canvas search-->
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">Search site</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<div class="input-group pt-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="search-icon"><i
+							data-feather="search"></i></span>
+					</div>
+					<input class="form-control" type="text" id="site-search"
+						placeholder="Search site" aria-label="Search site"
+						aria-describedby="search-icon" />
+				</div>
+				<small class="form-text pt-1">Type A or C to see
+					suggestions. Powered by Easy autocomplete plugin via separate JSON
+					file.</small>
+			</div>
+		</div>
+	</div>
+
+
+
+	<%
+	// ì ìíê¸°ë ë¡ê·¸ì¸ì´ ëì´ìì§ ìì ê²½ì°ë§ ëì¤ê²íë¤
+	if (userID == null) {
+	%>
+
+	<!-- Off-canvas account-->
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">ë¡ê·¸ì¸ / íìê°ì</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<ul class="nav nav-tabs nav-justified" role="tablist">
+					<li class="nav-item"><a class="nav-link active" href="#signin"
+						data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;ë¡ê·¸ì¸</a></li>
+					<li class="nav-item"><a class="nav-link" href="#signup"
+						data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;íìê°ì</a></li>
+				</ul>
+				<div class="tab-content pt-1">
+					<div class="tab-pane fade show active" id="signin" role="tabpanel">
+						<form class="needs-validation" novalidate method="post"
+							action="<%=request.getContextPath()%>/login.do">
+							<div class="form-group">
+								<label class="sr-only" for="signin-id">ID</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="signin-id-icon"><i
+											data-feather="mail"></i></span>
+									</div>
+									<input class="form-control" type="text" id="signin-id"
+										placeholder="ID" aria-label="ID" name="id"
+										aria-describedby="signin-id-icon" required />
+									<div class="invalid-feedback">ìì´ëë¥¼ ìë ¥í´ì£¼ì¸ì.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signin-password">Password</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="signin-password-icon"><i
+											data-feather="lock"></i></span>
+									</div>
+									<input class="form-control" type="password"
+										id="signin-password" placeholder="Password"
+										aria-label="Password" name="pwd"
+										aria-describedby="signin-password-icon" required />
+									<div class="invalid-feedback">ë¹ë°ë²í¸ë¥¼ ìë ¥í´ì£¼ì¸ì.</div>
+								</div>
+							</div>
+							<div class="custom-control custom-checkbox mb-3">
+								<input class="custom-control-input" type="checkbox"
+									id="remember-me" checked /> <label
+									class="custom-control-label" for="remember-me">ìì´ë ì ì¥</label>
+							</div>
+							<button class="btn btn-primary btn-block" type="submit">
+								ë¡ê·¸ì¸</button>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="signup" role="tabpanel">
+						<form class="needs-validation" novalidate>
+							<div class="form-group">
+								<label class="sr-only" for="signup-name">Full name</label> <input
+									class="form-control" type="text" id="signup-name"
+									placeholder="ì´ë¦" aria-label="Full name" required />
+								<div class="invalid-feedback">ì´ë¦ì ìì±í´ì£¼ì¸ì</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-email">ì´ë©ì¼</label> <input
+									class="form-control" type="email" id="signup-email"
+									placeholder="Email" aria-label="Email address" required />
+								<div class="invalid-feedback">ì´ë©ì¼ì ìì±í´ì£¼ì¸ì</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-password">Password</label> <input
+									class="form-control" type="password" id="signup-password"
+									placeholder="Password" aria-label="Password" required />
+								<div class="invalid-feedback">ë¹ë°ë²í¸ë¥¼ ìì±í´ì£¼ì¸ì</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-password-confirm">ë¹ë°ë²í¸
+									íì¸</label> <input class="form-control" type="password"
+									id="signup-password-confirm" placeholder="Confirm password"
+									aria-label="Confirm password" required />
+								<div class="invalid-feedback">ë¹ë°ë²í¸ íì¸ì ìì±í´ì£¼ì¸ì</div>
+							</div>
+							<button class="btn btn-primary btn-block" type="submit">
+								ê°ìíê¸°</button>
+						</form>
+					</div>
+				</div>
+				<div class="d-flex align-items-center pt-5">
+					<hr class="w-100" />
+					<div class="px-3 w-100 text-nowrap font-weight-semibold">ìì
+						ë¡ê·¸ì¸</div>
+					<hr class="w-100" />
+				</div>
+				<div class="text-center pt-4">
+					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Facebook"><i
+						class="flaticon-facebook"></i></a><a
+						class="social-btn sb-google-plus mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Google"><i
+						class="flaticon-google-plus"></i></a><a
+						class="social-btn sb-twitter mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Twitter"><i
+						class="flaticon-twitter"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%
+	// ë¡ê·¸ì¸ì´ ëì´ìë ì¬ëë§ ë³¼ì ìë íë©´
+	} else {
+	%>
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">ë¡ê·¸ì¸ / íìê°ì</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<ul class="nav nav-tabs nav-justified" role="tablist">
+					<li class="nav-item"><a class="nav-link active" href="#signin"
+						data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;ë¡ê·¸ì¸</a></li>
+					<li class="nav-item"><a class="nav-link" href="#signup"
+						data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;íìê°ì</a></li>
+				</ul>
+				<div class="tab-content pt-1">
+					<div class="tab-pane fade show active" id="signin" role="tabpanel">
+						<form class="needs-validation" novalidate method="post"
+							action="<%=request.getContextPath()%>/login.do">
+							<div class="form-group">
+								<label class="sr-only" for="signin-id">ID</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="signin-id-icon"><i
+											data-feather="mail"></i></span>
+									</div>
+									<input class="form-control" type="text" id="signin-id"
+										placeholder="ID" aria-label="ID" name="id"
+										aria-describedby="signin-id-icon" required />
+									<div class="invalid-feedback">ìì´ëë¥¼ ìë ¥í´ì£¼ì¸ì.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signin-password">Password</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="signin-password-icon"><i
+											data-feather="lock"></i></span>
+									</div>
+									<input class="form-control" type="password"
+										id="signin-password" placeholder="Password"
+										aria-label="Password" name="pwd"
+										aria-describedby="signin-password-icon" required />
+									<div class="invalid-feedback">ë¹ë°ë²í¸ë¥¼ ìë ¥í´ì£¼ì¸ì.</div>
+								</div>
+							</div>
+							<div class="custom-control custom-checkbox mb-3">
+								<input class="custom-control-input" type="checkbox"
+									id="remember-me" checked /> <label
+									class="custom-control-label" for="remember-me">ìì´ë ì ì¥</label>
+							</div>
+							<button class="btn btn-primary btn-block" type="button" onclick="location.href='../member/logout.jsp'">
+								ë¡ê·¸ìì</button>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="signup" role="tabpanel">
+						<form class="needs-validation" novalidate>
+							<div class="form-group">
+								<label class="sr-only" for="signup-name">Full name</label> <input
+									class="form-control" type="text" id="signup-name"
+									placeholder="ì´ë¦" aria-label="Full name" required />
+								<div class="invalid-feedback">ì´ë¦ì ìì±í´ì£¼ì¸ì</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-email">ì´ë©ì¼</label> <input
+									class="form-control" type="email" id="signup-email"
+									placeholder="Email" aria-label="Email address" required />
+								<div class="invalid-feedback">ì´ë©ì¼ì ìì±í´ì£¼ì¸ì</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-password">Password</label> <input
+									class="form-control" type="password" id="signup-password"
+									placeholder="Password" aria-label="Password" required />
+								<div class="invalid-feedback">ë¹ë°ë²í¸ë¥¼ ìì±í´ì£¼ì¸ì</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-password-confirm">ë¹ë°ë²í¸
+									íì¸</label> <input class="form-control" type="password"
+									id="signup-password-confirm" placeholder="Confirm password"
+									aria-label="Confirm password" required />
+								<div class="invalid-feedback">ë¹ë°ë²í¸ íì¸ì ìì±í´ì£¼ì¸ì</div>
+							</div>
+							<button class="btn btn-primary btn-block" type="submit">
+								ê°ìíê¸°</button>
+						</form>
+					</div>
+				</div>
+				<div class="d-flex align-items-center pt-5">
+					<hr class="w-100" />
+					<div class="px-3 w-100 text-nowrap font-weight-semibold">ìì
+						ë¡ê·¸ì¸</div>
+					<hr class="w-100" />
+				</div>
+				<div class="text-center pt-4">
+					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Facebook"><i
+						class="flaticon-facebook"></i></a><a
+						class="social-btn sb-google-plus mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Google"><i
+						class="flaticon-google-plus"></i></a><a
+						class="social-btn sb-twitter mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Twitter"><i
+						class="flaticon-twitter"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%
+	}
+	%>
+	<!-- Off-canvas cart-->
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">Your cart</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<div class="text-right">
+					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
+						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i>Clear
+						cart</a>
+				</div>
+				<div class="widget widget-featured-entries pt-3">
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
+								alt="Product thumb" /></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Calvin Klein Jeans Keds</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class="text-muted">x</span> $125.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
+								alt="Product thumb" /></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">The North Face Hoodie</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class="text-muted">x</span> $134.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
+								alt="Product thumb" /></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Medicine Chameleon Sunglasses</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class="text-muted">x</span> $47.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
+								alt="Product thumb" /></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Adidas Performance Hat</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class="text-muted">x</span> $19.00
+							</p>
+						</div>
+					</div>
+					<hr />
+					<div class="d-flex justify-content-between align-items-center py-3">
+						<div class="font-size-sm">
+							<span class="mr-2">Subtotal:</span><span
+								class="font-weight-semibold text-dark">$325.00</span>
+						</div>
+						<a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand
+							cart<i class="mr-n2" data-feather="chevron-right"></i>
+						</a>
+					</div>
+					<a class="btn btn-primary btn-sm btn-block"
+						href="checkout-details.jsp"><i class="mr-1"
+						data-feather="credit-card"></i>Checkout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Navbar Light-->
+	<header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+		<div class="container-fluid navbar-inner">
+			<!-- navbar brand-->
+			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
+				width="100" src="img/logo-dark.png" alt="MStore" /></a>
+			<!-- navbar collapse area-->
+			<div class="collapse navbar-collapse" id="menu">
+				<!-- Site menu-->
+				<ul class="navbar-nav">
+               <li class="nav-item dropdown mega-dropdown dropdown-more"><a
+                  class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
+                     data-feather="more-horizontal"></i></a>
+                  <div class="dropdown-menu">
+                     <div class="dropdown-inner">
+                        <div class="dropdown-column">
+                           <div
+                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+                              style="background-image: url(img/megamenu/cat_bg02.jpg)">
+                              <h3 class="h5 text-white text-shadow my-3">ì§ì­ë³</h3>
+                           </div>
+                           <div class="widget widget-links">
+                              <ul>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">ìì¸</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">ê²½ê¸°/ì¸ì²</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">ìì</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">ì¶©ë¨</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">ë¶ì°</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">ê´ì£¼</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">ì ì£¼</span></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="dropdown-column">
+                           <div
+                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+                              style="background-image: url(img/megamenu/cat_bg01.jpg)">
+                              <h3 class="h5 text-white text-shadow my-3">íë§ë³</h3>
+                           </div>
+                           <div class="widget widget-links">
+                              <ul>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Computers
+                                          &amp; Accessories</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">TV,
+                                          Video &amp; Audio</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
+                                          &amp; Tablets</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
+                                          Photo &amp; Video</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Wearable
+                                          Electronics</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Video
+                                          Games</span></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="dropdown-column">
+                           <div
+                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+                              style="background-image: url(img/megamenu/cat_bg03.jpg)">
+                              <h3 class="h5 text-white text-shadow my-3">ì¥ë¥´ë³</h3>
+                           </div>
+                           <div class="widget widget-links">
+                              <ul>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Lounge
+                                          Seating</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">File
+                                          Cabinets</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Indoor
+                                          Lighting</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Office
+                                          Chairs</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Adjustable
+                                          Height Desks</span></a></li>
+                                 <li><a href="#"><i
+                                       class="widget-categories-indicator"
+                                       data-feather="chevron-right"></i><span class="font-size-sm">Storage
+                                          Units</span></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div></li>
+					<li class="nav-item dropdown mega-dropdown"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-inner">
+								<div class="dropdown-column">
+									<div class="widget widget-links">
+										<h3 class="widget-title">Shop layouts</h3>
+										<ul>
+											<li><a href="shop-style1-ls.jsp"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div class="widget widget-links">
+										<h3 class="widget-title">Shop pages</h3>
+										<ul>
+											<li><a href="shop-categories-apparel.jsp"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Shop
+														Categories - Apparel</span></a></li>
+
+											<li><a href="shop-single-apparel.jsp"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Product
+														Page #1 - Apparel</span></a></li>
+
+											<li><a href="cart.jsp"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Cart</span></a></li>
+											<li><a href="checkout-details.jsp"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
+														- Details</span></a></li>
+											<li><a href="checkout-shipping.jsp"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
+														- Shipping</span></a></li>
+											<li><a href="checkout-payment.jsp"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
+														- Payment</span></a></li>
+											<li><a href="checkout-review.jsp"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
+														- Review</span></a></li>
+											<li><a href="checkout-complete.jsp"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
+														- Complete</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<a class="d-block mx-auto" href="#" style="max-width: 228px"><img
+										class="d-block" src="img/megamenu/promo-banner.jpg"
+										alt="Promo banner" /></a>
+								</div>
+							</div>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown"><a
+								class="dropdown-item dropdown-toggle" href="#"
+								data-toggle="dropdown">User Account</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="account-orders.jsp">Orders
+											History</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="account-profile.jsp">Profile
+											Settings</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="account-address.jsp">Account
+											Addresses</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="account-payment.jsp">Payment
+											Methods</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="account-wishlist.jsp">Wishlist</a>
+									</li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="account-tickets.jsp">My
+											Tickets</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item"
+										href="account-single-ticket.html">Single Ticket</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="account-signin.jsp">Sign
+											In / Sign Up Page</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item"
+										href="account-password-recovery.">Password Recovery</a></li>
+								</ul></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="about.jsp">About Us</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="contacts.jsp">Contacts</a>
+							</li>
+							<li class="dropdown-divider"></li>
+							<li class="dropdown"><a
+								class="dropdown-item dropdown-toggle" href="#"
+								data-toggle="dropdown">Help Center</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="help-topics.jsp">Help
+											Topics</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="help-single-topic.jsp">Single
+											Topic</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item"
+										href="help-submit-request.jsp">Submit a Request</a></li>
+								</ul></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="product-comparison.jsp">Product
+									Comparison</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="order-tracking.jsp">Order
+									Tracking</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="404.jsp">404 Not
+									Found</a></li>
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown"><a
+								class="dropdown-item dropdown-toggle" href="#"
+								data-toggle="dropdown">Blog Layout</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
+											Right Sidebar</a></li>
+								</ul></li>
+							<li class="dropdown-divider"></li>
+							<li class="dropdown"><a
+								class="dropdown-item dropdown-toggle" href="#"
+								data-toggle="dropdown">Single Post Layout</a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
+											No Sidebar</a></li>
+								</ul></li>
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
+							class="mr-1" data-feather="file-text"></i>Docs</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="docs/dev-setup.jsp">
+									<div class="d-flex py-1">
+										<i class="mt-1 ml-n2" data-feather="file-text"
+											style="width: 1.4375rem; height: 1.4375rem"></i>
+										<div class="ml-2">
+											<span class="d-block mb-n1">Documentation</span><small
+												class="text-muted">Kick-start customization</small>
+										</div>
+									</div>
+							</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="components/alerts.jsp">
+									<div class="d-flex py-1">
+										<i class="mt-1 ml-n2" data-feather="grid"
+											style="width: 1.375rem; height: 1.375rem"></i>
+										<div class="ml-2">
+											<span class="d-block mb-n1">Components <span
+												class="badge badge-pill badge-success">40+</span>
+											</span><small class="text-muted">Faster page building</small>
+										</div>
+									</div>
+							</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="docs/changelog.jsp">
+									<div class="d-flex py-1">
+										<i class="mt-1 ml-n2" data-feather="edit"
+											style="width: 1.375rem; height: 1.375rem"></i>
+										<div class="ml-2">
+											<span class="d-block mb-n1">Changelog <span
+												class="badge badge-pill badge-warning">v2.0</span>
+											</span><small class="text-muted">Regular updates</small>
+										</div>
+									</div>
+							</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item"
+								href="mailto:contact@createx.studio">
+									<div class="d-flex py-1">
+										<i class="mt-1 ml-n2" data-feather="life-buoy"
+											style="width: 1.4375rem; height: 1.4375rem"></i>
+										<div class="ml-2">
+											<span class="d-block mb-n1">Support</span><small
+												class="text-muted">contact@createx.studio</small>
+										</div>
+									</div>
+							</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- navbar buttons-->
+			<div class="navbar-btns">
+				<div class="navbar-btns-inner">
+					<div class="navbar-toggler navbar-btn collapsed"
+						data-toggle="collapse" data-target="#menu">
+						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
+					</div>
+					<a class="navbar-btn" href="#offcanvas-search"
+						data-toggle="offcanvas"><i class="mx-auto mb-1"
+						data-feather="search"></i>Search</a>
+					<%
+	// ì ìíê¸°ë ë¡ê·¸ì¸ì´ ëì´ìì§ ìì ê²½ì°ë§ ëì¤ê²íë¤
+	if (userID == null) {
+	%>
+					<a class="navbar-btn navbar-collapse-hidden"
+						href="#offcanvas-account" data-toggle="offcanvas"><i
+						class="mx-auto mb-1" data-feather="log-in"></i>ë¡ê·¸ì¸/ê°ì</a>
+
+
+					<%
+	// ë¡ê·¸ì¸ì´ ëì´ìë ì¬ëë§ ë³¼ì ìë íë©´
+	} else {
+	%>
+					<a class="navbar-btn navbar-collapse-hidden"
+						href="#offcanvas-account" data-toggle="offcanvas"><i
+						class="mx-auto mb-1" data-feather="log-out"></i>ë´ì ë³´</a> 
+					
+					<% } %>
+					<a
+						class="navbar-btn" href="#offcanvas-cart" data-toggle="offcanvas"><span
+						class="d-block position-relative"><span
+							class="navbar-btn-badge bg-primary text-light">4</span><i
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
+				</div>
+			</div>
+		</div>
+	</header>
     <!-- Page Title-->
     <div class="page-title-wrapper" aria-label="Page title">
       <div class="container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-            <li class="breadcrumb-item"><a href="index.html">Home</a>
+            <li class="breadcrumb-item"><a href="index.jsp">Home</a>
             </li>
             <li class="breadcrumb-item"><a href="#">Shop</a>
             </li>
@@ -714,9 +1080,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/01.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/01.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Men's jeans</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Gues Slim Taper Fit Jeans</a></h3><span class="text-primary">$124.99</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Gues Slim Taper Fit Jeans</a></h3><span class="text-primary">$124.99</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -748,9 +1114,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="badge badge-danger rounded-0">Sale -15%</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/02.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="badge badge-danger rounded-0">Sale -15%</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/02.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Backpacks</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">JanSport Hatchet Special Edition</a></h3><span class="text-primary">
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">JanSport Hatchet Special Edition</a></h3><span class="text-primary">
                     <del class="text-muted mr-1">$70.00</del>$58.90</span>
                 </div>
                 <div class="product-card-body body-hidden">
@@ -775,9 +1141,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/03.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/03.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Men's shoes</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Calvin Klein Jeans Keds</a></h3><span class="text-primary">$125.00</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Calvin Klein Jeans Keds</a></h3><span class="text-primary">$125.00</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -809,9 +1175,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="badge badge-success rounded-0">&starf; Popular</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/04.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="badge badge-success rounded-0">&starf; Popular</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/04.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Hats &amp; Caps</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">47Brand Denim Cap</a></h3><span class="text-primary">$21.50</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">47Brand Denim Cap</a></h3><span class="text-primary">$21.50</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -835,9 +1201,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/05.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/05.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Hoodies &amp; Sweatshirts</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Nike Tech Fleece Hoodie</a></h3><span class="text-primary">$130.00</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Nike Tech Fleece Hoodie</a></h3><span class="text-primary">$130.00</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -869,9 +1235,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/06.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/06.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Sunglasses</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Medicine Chameleon Sunglasses</a></h3><span class="text-muted">Out of stock</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Medicine Chameleon Sunglasses</a></h3><span class="text-muted">Out of stock</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -883,16 +1249,16 @@
                       <input class="custom-control-input" type="radio" name="color-3" id="black-3">
                       <label class="custom-option-label" for="black-3"><span class="custom-option-color" style="background-color: #222;"></span></label>
                     </div>
-                  </div><a class="btn btn-primary btn-sm btn-block" href="shop-single-apparel.html">Pre-order</a><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
+                  </div><a class="btn btn-primary btn-sm btn-block" href="shop-single-apparel.jsp">Pre-order</a><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
                 </div>
               </div>
             </div>
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/07.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/07.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Dresses</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Floral Printed Maxi Dress</a></h3><span class="text-primary">$47.99</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Floral Printed Maxi Dress</a></h3><span class="text-primary">$47.99</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -920,9 +1286,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="badge badge-danger rounded-0">Sale -10%</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/08.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="badge badge-danger rounded-0">Sale -10%</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/08.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Women's sneakers</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Reebok Classic Sneakers Pyro</a></h3><span class="text-primary">
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Reebok Classic Sneakers Pyro</a></h3><span class="text-primary">
                     <del class="text-muted mr-1">$105.00</del>$94.50</span>
                 </div>
                 <div class="product-card-body body-hidden">
@@ -955,9 +1321,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/09.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/09.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Handbags</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Roxy Cotton Handbag</a></h3><span class="text-primary">$52.00</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Roxy Cotton Handbag</a></h3><span class="text-primary">$52.00</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -981,9 +1347,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/10.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/10.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Men's sandals</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Big Star Flip Tops</a></h3><span class="text-primary">$10.60</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Big Star Flip Tops</a></h3><span class="text-primary">$10.60</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -1015,9 +1381,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/11.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/11.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Men's tshirts</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Medicine Tshirt Sailor Spirit</a></h3><span class="text-primary">$17.00</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Medicine Tshirt Sailor Spirit</a></h3><span class="text-primary">$17.00</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -1049,9 +1415,9 @@
             <!-- Product-->
             <div class="col-md-4 col-sm-6">
               <div class="product-card mb-4">
-                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/12.jpg" alt="Product"></div>
+                <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/12.jpg" alt="Product"></div>
                 <div class="product-card-body text-center"><a class="product-meta" href="#">Men's belts</a>
-                  <h3 class="product-card-title"><a href="shop-single-apparel.html">Diesel Leather Belt</a></h3><span class="text-primary">$109.00</span>
+                  <h3 class="product-card-title"><a href="shop-single-apparel.jsp">Diesel Leather Belt</a></h3><span class="text-primary">$109.00</span>
                 </div>
                 <div class="product-card-body body-hidden">
                   <div class="pb-2 text-center">
@@ -1195,7 +1561,7 @@
               <div class="icon-box text-center mb-5 mb-md-0">
                 <div class="icon-box-icon"><i data-feather="credit-card"></i></div>
                 <h3 class="icon-box-title font-weight-semibold text-white">Secure online payment</h3>
-                <p class="icon-box-text">We posess SSL / Secure сertificate</p>
+                <p class="icon-box-text">We posess SSL / Secure Ñertificate</p>
               </div>
             </div>
           </div>
@@ -1206,7 +1572,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-left">
-              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.html"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
+              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.jsp"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
                 <div class="navbar-lang-switcher dropdown border-light mt-3 mb-0 mt-sm-0">
                   <div class="dropdown-toggle text-white" data-toggle="dropdown"><img width="20" src="img/flags/en.png" alt="English"/><span>USD</span>
                   </div>
@@ -1214,12 +1580,12 @@
                     <li class="dropdown-item">
                       <select class="custom-select custom-select-sm">
                         <option value="usd">$ USD</option>
-                        <option value="usd">€ EUR</option>
-                        <option value="usd">£ UKP</option>
-                        <option value="usd">¥ JPY</option>
+                        <option value="usd">â¬ EUR</option>
+                        <option value="usd">Â£ UKP</option>
+                        <option value="usd">Â¥ JPY</option>
                       </select>
                     </li>
-                    <li><a class="dropdown-item" href="index.html"><img class="mr-2" width="20" src="img/flags/fr.png" alt="Français"/>Français</a></li>
+                    <li><a class="dropdown-item" href="index.jsp"><img class="mr-2" width="20" src="img/flags/fr.png" alt="FranÃ§ais"/>FranÃ§ais</a></li>
                     <li class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch"/>Deutsch</a></li>
                     <li class="dropdown-divider"></li>
@@ -1248,7 +1614,7 @@
         </div>
       </div>
       <div class="py-3" style="background-color: #1a1a1a;">
-        <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
+        <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">Â© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
       </div>
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
