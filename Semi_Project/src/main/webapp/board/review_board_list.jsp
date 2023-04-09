@@ -40,6 +40,7 @@
 				<th>리뷰제목</th>
 				<th>작성자</th>
 				<th>리뷰내용</th>
+				<th>사진</th>
 				<th>리뷰작성일자</th>
 				<th>조회수</th>
 			</tr>
@@ -54,6 +55,9 @@
 						</td>
 						<td>${dto.getBoard_writer() }</td>
 						<td>${dto.getBoard_content() }</td>
+						<td>
+						<img src="<%=request.getContextPath() %>../photo/${dto.getBoard_image() }" width="100" height="100">
+						</td>
 						<td>${dto.getBoard_date().substring(0,10) }</td>
 						<td>${dto.getBoard_viewcnt() }</td>
 					</tr>
