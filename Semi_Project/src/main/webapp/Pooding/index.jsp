@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Pooding</title>
+<title>Fooding</title>
 <!-- SEO Meta Tags-->
 <meta name="description"
 	content="MStore - Modern Bootstrap E-commerce Template" />
@@ -242,8 +242,8 @@
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="location.href='../member/logout.jsp'">
-								로그아웃</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='../member/logout.jsp'">로그아웃</button>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
@@ -416,33 +416,31 @@
 									<div
 										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
 										style="background-image: url(img/megamenu/cat_bg02.jpg)">
-										<h3 class="h5 text-white text-shadow my-3">Apparel</h3>
+										<h3 class="h5 text-white text-shadow my-3">지역별</h3>
 									</div>
 									<div class="widget widget-links">
 										<ul>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Clothing</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Shoes</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Handbags
-														&amp; Backpacks</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">수원</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Hats
-														&amp; Caps</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">충남</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Sunglasses</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Watches</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">광주</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Accessories</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -450,7 +448,7 @@
 									<div
 										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
 										style="background-image: url(img/megamenu/cat_bg01.jpg)">
-										<h3 class="h5 text-white text-shadow my-3">Electronics</h3>
+										<h3 class="h5 text-white text-shadow my-3">테마별</h3>
 									</div>
 									<div class="widget widget-links">
 										<ul>
@@ -488,8 +486,7 @@
 									<div
 										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
 										style="background-image: url(img/megamenu/cat_bg03.jpg)">
-										<h3 class="h5 text-white text-shadow my-3">Furniture
-											&amp; Decor</h3>
+										<h3 class="h5 text-white text-shadow my-3">장르별</h3>
 									</div>
 									<div class="widget widget-links">
 										<ul>
@@ -748,11 +745,11 @@
 	%>
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="#offcanvas-account" data-toggle="offcanvas"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a> 
-					
+						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
+
 					<% } %>
-					<a
-						class="navbar-btn" href="#offcanvas-cart" data-toggle="offcanvas"><span
+					<a class="navbar-btn" href="#offcanvas-cart"
+						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
 							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
@@ -1491,27 +1488,9 @@
 			</div>
 		</div>
 	</section>
-	<!-- Blog + Insta split section-->
-	<section class="container-fluid px-0 border-bottom">
-		<div class="row no-gutters">
-			<div class="col-md-6 py-5 px-4" style="background-color: #efefef">
-				<div class="mx-auto py-3" style="max-width: 25rem">
-					<h2 class="mb-1">Read the blog</h2>
-					<p class="opacity-75 pb-3">Latest fashion news and trends</p>
-					<a class="btn btn-outline-dark" href="blog-ls.html"><i
-						class="mr-2" data-feather="book"></i>Go to blog</a>
-				</div>
-			</div>
-			<div class="col-md-6 bg-secondary py-5 px-4">
-				<div class="mx-auto py-3" style="max-width: 25rem">
-					<h2 class="mb-1">Follow on Instagram</h2>
-					<p class="opacity-75 pb-3">#ShopWithMStore</p>
-					<a class="btn btn-dark" href="#"><i class="mr-2"
-						data-feather="instagram"></i>Follow us</a>
-				</div>
-			</div>
-		</div>
-	</section>
+
+
+
 	<!-- Quick view modal-->
 	<div class="modal modal-quick-view fade" id="quick-view" tabindex="-1"
 		role="dialog">
@@ -1533,12 +1512,12 @@
 						<!-- Product gallery-->
 						<div class="col-lg-7">
 							<div class="owl-carousel"
-								data-owl-carousel='{ "nav": true, "dots": false, "loop": true, "margin": 15 }'>
-								<img src="img/shop/apparel/single/01.jpg" alt="Product" /><img
-									src="img/shop/apparel/single/02.jpg" alt="Product" /><img
-									src="img/shop/apparel/single/03.jpg" alt="Product" /><img
-									src="img/shop/apparel/single/04.jpg" alt="Product" /><img
-									src="img/shop/apparel/single/05.jpg" alt="Product" />
+								data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+								<img src="img/shop/apparel/single/01.jpg" alt="Product"><img
+									src="img/shop/apparel/single/02.jpg" alt="Product"><img
+									src="img/shop/apparel/single/03.jpg" alt="Product"><img
+									src="img/shop/apparel/single/04.jpg" alt="Product"><img
+									src="img/shop/apparel/single/05.jpg" alt="Product">
 							</div>
 						</div>
 						<!-- Product details-->
@@ -1549,30 +1528,34 @@
 									<div
 										class="custom-control custom-option custom-control-inline mb-2">
 										<input class="custom-control-input" type="radio" name="color"
-											value="dark" id="dark" required /> <label
+											value="dark" id="dark" required> <label
 											class="custom-option-label" for="dark"><span
-											class="custom-option-color" style="background-color: #2c363f"></span></label>
+											class="custom-option-color"
+											style="background-color: #2c363f;"></span></label>
 									</div>
 									<div
 										class="custom-control custom-option custom-control-inline mb-2">
 										<input class="custom-control-input" type="radio" name="color"
-											value="red" id="red" required /> <label
+											value="red" id="red" required> <label
 											class="custom-option-label" for="red"><span
-											class="custom-option-color" style="background-color: #e7484d"></span></label>
+											class="custom-option-color"
+											style="background-color: #e7484d;"></span></label>
 									</div>
 									<div
 										class="custom-control custom-option custom-control-inline mb-2">
 										<input class="custom-control-input" type="radio" name="color"
-											value="white" id="white" required /> <label
+											value="white" id="white" required> <label
 											class="custom-option-label" for="white"><span
-											class="custom-option-color" style="background-color: #e0dfe4"></span></label>
+											class="custom-option-color"
+											style="background-color: #e0dfe4;"></span></label>
 									</div>
 									<div
 										class="custom-control custom-option custom-control-inline mb-2">
 										<input class="custom-control-input" type="radio" name="color"
-											value="beige" id="beige" required /> <label
+											value="beige" id="beige" required> <label
 											class="custom-option-label" for="beige"><span
-											class="custom-option-color" style="background-color: #e6ddd6"></span></label>
+											class="custom-option-color"
+											style="background-color: #e6ddd6;"></span></label>
 									</div>
 								</div>
 								<div class="form-group">
@@ -1595,7 +1578,7 @@
 								<div class="d-flex flex-wrap align-items-center pt-1">
 									<div>
 										<input class="px-2 form-control mr-2" type="number"
-											name="quantity" style="width: 3.2rem" value="1" required />
+											name="quantity" style="width: 3.2rem;" value="1" required>
 									</div>
 									<div>
 										<button class="btn btn-primary px-5 mr-2" type="submit">
@@ -1604,7 +1587,7 @@
 									</div>
 									<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
 										class="align-middle mr-1" data-feather="heart"
-										style="width: 1.1rem; height: 1.1rem"></i>Wishlist</a>
+										style="width: 1.1rem; height: 1.1rem;"></i>Wishlist</a>
 								</div>
 							</form>
 							<div class="card">
@@ -1612,7 +1595,7 @@
 									<h3 class="h6 mb-0">
 										<span
 											class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
-											data-feather="info" style="width: 1.1rem; height: 1.1rem"></i></span>Product
+											data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>Product
 										information
 									</h3>
 								</div>
@@ -1643,7 +1626,7 @@
 			aria-live="assertive" aria-atomic="true">
 			<div class="toast-header bg-success text-white">
 				<i class="mr-2" data-feather="check-circle"
-					style="width: 1.25rem; height: 1.25rem"></i><span
+					style="width: 1.25rem; height: 1.25rem;"></i><span
 					class="font-weight-semibold mr-auto">Added to cart!</span>
 				<button class="close text-white ml-2 mb-1" type="button"
 					data-dismiss="toast" aria-label="Close">
@@ -1656,7 +1639,7 @@
 			role="alert" aria-live="assertive" aria-atomic="true">
 			<div class="toast-header bg-info text-white">
 				<i class="mr-2" data-feather="info"
-					style="width: 1.25rem; height: 1.25rem"></i><span
+					style="width: 1.25rem; height: 1.25rem;"></i><span
 					class="font-weight-semibold mr-auto">Added to comparison!</span>
 				<button class="close text-white ml-2 mb-1" type="button"
 					data-dismiss="toast" aria-label="Close">
@@ -1670,7 +1653,7 @@
 			role="alert" aria-live="assertive" aria-atomic="true">
 			<div class="toast-header bg-info text-white">
 				<i class="mr-2" data-feather="info"
-					style="width: 1.25rem; height: 1.25rem"></i><span
+					style="width: 1.25rem; height: 1.25rem;"></i><span
 					class="font-weight-semibold mr-auto">Added to wishlist!</span>
 				<button class="close text-white ml-2 mb-1" type="button"
 					data-dismiss="toast" aria-label="Close">
@@ -1683,7 +1666,7 @@
 			role="alert" aria-live="assertive" aria-atomic="true">
 			<div class="toast-header bg-success text-white">
 				<i class="mr-2" data-feather="check-circle"
-					style="width: 1.25rem; height: 1.25rem"></i><span
+					style="width: 1.25rem; height: 1.25rem;"></i><span
 					class="font-weight-semibold mr-auto">Updated!</span>
 				<button class="close text-white ml-2 mb-1" type="button"
 					data-dismiss="toast" aria-label="Close">
@@ -1696,7 +1679,7 @@
 			role="alert" aria-live="assertive" aria-atomic="true">
 			<div class="toast-header bg-success text-white">
 				<i class="mr-2" data-feather="check-circle"
-					style="width: 1.25rem; height: 1.25rem"></i><span
+					style="width: 1.25rem; height: 1.25rem;"></i><span
 					class="font-weight-semibold mr-auto">Updated!</span>
 				<button class="close text-white ml-2 mb-1" type="button"
 					data-dismiss="toast" aria-label="Close">
@@ -1738,37 +1721,6 @@
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
 											&amp; Tablets</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">TV,
-											Video &amp; Audio</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
-											Photo &amp; Video</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Wearable
-											Electronics</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Printers
-											&amp; Ink</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Video
-											Games</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Car
-											Electronics</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Smart
-											Home, IoT</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -1787,13 +1739,6 @@
 											rates &amp; policies</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Refunds
-											&amp; replacements</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Taxes</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Delivery
 											info</span></a></li>
 							</ul>
@@ -1810,51 +1755,13 @@
 											shop</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Our
-											stores</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Services</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">News</span></a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-xl-4 offset-xl-1 col-md-5">
 						<div class="widget">
-							<!-- Subscription form (MailChimp)-->
-							<h3 class="widget-title text-white border-light">Stay
-								informed</h3>
-							<form class="validate pb-4"
-								action="https://studio.us12.list-manage.com/subscribe/post-json?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126&amp;c=?"
-								method="get" name="mc-embedded-subscribe-form"
-								id="mc-embedded-subscribe-form">
-								<div class="input-group mb-2">
-									<div class="input-group-prepend">
-										<span class="input-group-text"
-											style="background-color: #e8e8e8"><i
-											data-feather="mail"></i></span>
-									</div>
-									<input class="form-control border-0 box-shadow-0 bg-secondary"
-										type="email" name="EMAIL" id="mce-EMAIL" value=""
-										placeholder="Your email" required />
-								</div>
-								<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-								<div style="position: absolute; left: -5000px"
-									aria-hidden="true">
-									<input type="text"
-										name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1" />
-								</div>
-								<button class="btn btn-primary btn-block" type="submit"
-									name="subscribe" id="mc-embedded-subscribe">
-									Subscribe*</button>
-								<p class="font-size-xs text-white opacity-60 pt-2 mb-2"
-									id="mc-helper">*Subscribe to our newsletter to receive
-									early discount offers, updates and new products info.</p>
-								<!-- Subscription status-->
-								<div class="subscribe-status"></div>
-							</form>
+
 							<!-- Mobile app download-->
 							<div class="widget pb-4">
 								<h3 class="widget-title text-white border-light">Download
@@ -1873,7 +1780,7 @@
 		</div>
 		<!-- shop features-->
 		<div class="pt-5 pb-0 pb-md-5 border-bottom border-light"
-			id="shop-features" style="background-color: #1f1f1f">
+			id="shop-features" style="background-color: #1f1f1f;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-sm-6 border-right border-light">
@@ -1881,8 +1788,8 @@
 							<div class="icon-box-icon">
 								<i data-feather="truck"></i>
 							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">
-								Free local delivery</h3>
+							<h3 class="icon-box-title font-weight-semibold text-white">Free
+								local delivery</h3>
 							<p class="icon-box-text">Free delivery for all orders over
 								$100</p>
 						</div>
@@ -1892,8 +1799,8 @@
 							<div class="icon-box-icon">
 								<i data-feather="refresh-cw"></i>
 							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">
-								Money back guarantee</h3>
+							<h3 class="icon-box-title font-weight-semibold text-white">Money
+								back guarantee</h3>
 							<p class="icon-box-text">Free delivery for all orders over
 								$100</p>
 						</div>
@@ -1903,8 +1810,8 @@
 							<div class="icon-box-icon">
 								<i data-feather="life-buoy"></i>
 							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">
-								24/7 customer support</h3>
+							<h3 class="icon-box-title font-weight-semibold text-white">24/7
+								customer support</h3>
 							<p class="icon-box-text">Friendly 24/7 customer support</p>
 						</div>
 					</div>
@@ -1913,8 +1820,8 @@
 							<div class="icon-box-icon">
 								<i data-feather="credit-card"></i>
 							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">
-								Secure online payment</h3>
+							<h3 class="icon-box-title font-weight-semibold text-white">Secure
+								online payment</h3>
 							<p class="icon-box-text">We posess SSL / Secure сertificate</p>
 						</div>
 					</div>
@@ -1922,13 +1829,14 @@
 			</div>
 		</div>
 		<!-- third row-->
-		<div class="pt-5 pb-4" style="background-color: #1f1f1f">
+		<div class="pt-5 pb-4" style="background-color: #1f1f1f;">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 text-center text-sm-left">
 						<div class="mb-4 mb-sm-0">
 							<a class="d-inline-block" href="index.html"><img width="100"
 								src="img/logo-light.png" alt="MStore" /></a>
+
 						</div>
 					</div>
 					<div class="col-sm-6 text-center text-sm-right">
@@ -1957,15 +1865,11 @@
 								class="nav-link-inline nav-link-light" href="#">Terms of use</a></li>
 						</ul>
 					</div>
-					<div class="col-sm-6 text-center text-sm-right">
-						<div class="d-inline-block">
-							<img width="187" src="img/cards.png" alt="Payment methods" />
-						</div>
-					</div>
+					<div class="col-sm-6 text-center text-sm-right"></div>
 				</div>
 			</div>
 		</div>
-		<div class="py-3" style="background-color: #1a1a1a">
+		<div class="py-3" style="background-color: #1a1a1a;">
 			<div class="container font-size-xs text-center"
 				aria-label="Copyright">
 				<span class="text-white opacity-60 mr-1">© All rights
