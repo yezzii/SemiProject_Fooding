@@ -386,12 +386,12 @@
 							<span class="mr-2">Subtotal:</span><span
 								class="font-weight-semibold text-dark">$325.00</span>
 						</div>
-						<a class="btn btn-outline-secondary btn-sm" href="cart.html">Expand
+						<a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand
 							cart<i class="mr-n2" data-feather="chevron-right"></i>
 						</a>
 					</div>
 					<a class="btn btn-primary btn-sm btn-block"
-						href="checkout-details.html"><i class="mr-1"
+						href="checkout-details.jsp"><i class="mr-1"
 						data-feather="credit-card"></i>Checkout</a>
 				</div>
 			</div>
@@ -401,7 +401,7 @@
 	<header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
 		<div class="container-fluid navbar-inner">
 			<!-- navbar brand-->
-			<a class="navbar-brand" style="min-width: 100px" href="index.html"><img
+			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
 				width="100" src="img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar collapse area-->
 			<div class="collapse navbar-collapse" id="menu">
@@ -530,7 +530,7 @@
 									<div class="widget widget-links">
 										<h3 class="widget-title">Shop layouts</h3>
 										<ul>
-											<li><a href="shop-style1-ls.html"> <i
+											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
@@ -541,36 +541,36 @@
 									<div class="widget widget-links">
 										<h3 class="widget-title">Shop pages</h3>
 										<ul>
-											<li><a href="shop-categories-apparel.html"><i
+											<li><a href="shop-categories-apparel.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.html"><i
+											<li><a href="shop-single-apparel.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">Product
 														Page #1 - Apparel</span></a></li>
 
-											<li><a href="cart.html"><i
+											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">Cart</span></a></li>
-											<li><a href="checkout-details.html"><i
+											<li><a href="checkout-details.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
 														- Details</span></a></li>
-											<li><a href="checkout-shipping.html"><i
+											<li><a href="checkout-shipping.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
 														- Shipping</span></a></li>
-											<li><a href="checkout-payment.html"><i
+											<li><a href="checkout-payment.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
 														- Payment</span></a></li>
-											<li><a href="checkout-review.html"><i
+											<li><a href="checkout-review.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
 														- Review</span></a></li>
-											<li><a href="checkout-complete.html"><i
+											<li><a href="checkout-complete.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
 														- Complete</span></a></li>
@@ -591,60 +591,60 @@
 								class="dropdown-item dropdown-toggle" href="#"
 								data-toggle="dropdown">User Account</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="account-orders.html">Orders
+									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-profile.html">Profile
+									<li><a class="dropdown-item" href="account-profile.jsp">Profile
 											Settings</a></li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-address.html">Account
+									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-payment.html">Payment
+									<li><a class="dropdown-item" href="account-payment.jsp">Payment
 											Methods</a></li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-wishlist.html">Wishlist</a>
+									<li><a class="dropdown-item" href="account-wishlist.jsp">Wishlist</a>
 									</li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-tickets.html">My
+									<li><a class="dropdown-item" href="account-tickets.jsp">My
 											Tickets</a></li>
 									<li class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
-										href="account-single-ticket.html">Single Ticket</a></li>
+										href="account-single-ticket.jsp">Single Ticket</a></li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-signin.html">Sign
+									<li><a class="dropdown-item" href="account-signin.jsp">Sign
 											In / Sign Up Page</a></li>
 									<li class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
-										href="account-password-recovery.html">Password Recovery</a></li>
+										href="account-password-recovery.jsp">Password Recovery</a></li>
 								</ul></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="about.html">About Us</a></li>
+							<li><a class="dropdown-item" href="about.jsp">About Us</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="contacts.html">Contacts</a>
+							<li><a class="dropdown-item" href="contacts.jsp">Contacts</a>
 							</li>
 							<li class="dropdown-divider"></li>
 							<li class="dropdown"><a
 								class="dropdown-item dropdown-toggle" href="#"
 								data-toggle="dropdown">Help Center</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="help-topics.html">Help
+									<li><a class="dropdown-item" href="help-topics.jsp">Help
 											Topics</a></li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="help-single-topic.html">Single
+									<li><a class="dropdown-item" href="help-single-topic.jsp">Single
 											Topic</a></li>
 									<li class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
-										href="help-submit-request.html">Submit a Request</a></li>
+										href="help-submit-request.jsp">Submit a Request</a></li>
 								</ul></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="product-comparison.html">Product
+							<li><a class="dropdown-item" href="product-comparison.jsp">Product
 									Comparison</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="order-tracking.html">Order
+							<li><a class="dropdown-item" href="order-tracking.jsp">Order
 									Tracking</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="404.html">404 Not
+							<li><a class="dropdown-item" href="404.jsp">404 Not
 									Found</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
@@ -654,7 +654,7 @@
 								class="dropdown-item dropdown-toggle" href="#"
 								data-toggle="dropdown">Blog Layout</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="blog-rs.html">Blog
+									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
 											Right Sidebar</a></li>
 								</ul></li>
 							<li class="dropdown-divider"></li>
@@ -663,7 +663,7 @@
 								data-toggle="dropdown">Single Post Layout</a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="blog-single-ns.html">Post
+									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
 											No Sidebar</a></li>
 								</ul></li>
 						</ul></li>
@@ -671,7 +671,7 @@
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
 							class="mr-1" data-feather="file-text"></i>Docs</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="docs/dev-setup.html">
+							<li><a class="dropdown-item" href="docs/dev-setup.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="file-text"
 											style="width: 1.4375rem; height: 1.4375rem"></i>
@@ -682,7 +682,7 @@
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="components/alerts.html">
+							<li><a class="dropdown-item" href="components/alerts.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
@@ -694,7 +694,7 @@
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="docs/changelog.html">
+							<li><a class="dropdown-item" href="docs/changelog.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="edit"
 											style="width: 1.375rem; height: 1.375rem"></i>
@@ -773,7 +773,7 @@
 							<h2 class="mb-1">Sneakers Classic Collection</h2>
 							<h3 class="font-weight-light opacity-70 pb-3">starting at
 								$105.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.html">Shop
+							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop
 								now<i class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
@@ -784,7 +784,7 @@
 							<h2 class="mb-1">Sports Hoodie Collection</h2>
 							<h3 class="font-weight-light opacity-70 pb-3">starting at
 								$89.00</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.html">Shop
+							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop
 								now<i class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
@@ -795,7 +795,7 @@
 							<h2 class="mb-1">Sunglasses Collection</h2>
 							<h3 class="font-weight-light opacity-70 pb-3">starting at
 								$16.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.html">Shop
+							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop
 								now<i class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
@@ -820,7 +820,7 @@
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"460":{"items":2}, "768":{"items":3}} }'>
 			<div class="card border-0">
-				<a class="card-img-tiles" href="shop-style1-ls.html">
+				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
 						<img src="img/shop/apparel/categories/01.jpg" alt="Clothing" />
 					</div>
@@ -834,11 +834,11 @@
 					<span class="d-block mb-3 font-size-xs text-muted">Starting
 						from <span class="font-weight-semibold">$49.99</span>
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.html">Shop clothing</a>
+						href="shop-style1-ls.jsp">Shop clothing</a>
 				</div>
 			</div>
 			<div class="card border-0">
-				<a class="card-img-tiles" href="shop-style1-ls.html">
+				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
 						<img src="img/shop/apparel/categories/04.jpg" alt="Shoes" />
 					</div>
@@ -852,11 +852,11 @@
 					<span class="d-block mb-3 font-size-xs text-muted">Starting
 						from <span class="font-weight-semibold">$56.00</span>
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.html">Shop shoes</a>
+						href="shop-style1-ls.jsp">Shop shoes</a>
 				</div>
 			</div>
 			<div class="card border-0">
-				<a class="card-img-tiles" href="shop-style1-ls.html">
+				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
 						<img src="img/shop/apparel/categories/07.jpg" alt="Bags" />
 					</div>
@@ -870,7 +870,7 @@
 					<span class="d-block mb-3 font-size-xs text-muted">Starting
 						from <span class="font-weight-semibold">$27.00</span>
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.html">Shop bags</a>
+						href="shop-style1-ls.jsp">Shop bags</a>
 				</div>
 			</div>
 		</div>
@@ -952,7 +952,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="product-card mb-4">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="shop-single-apparel.html"></a><span
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
 							class="product-wishlist-btn" data-toggle="tooltip"
 							data-placement="left" title="Add to wishlist"><i
 							data-feather="heart"></i></span><img src="img/shop/apparel/01.jpg"
@@ -961,7 +961,7 @@
 					<div class="product-card-body text-center">
 						<a class="product-meta" href="#">Men's jeans</a>
 						<h3 class="product-card-title">
-							<a href="shop-single-apparel.html">Gues Slim Taper Fit Jeans</a>
+							<a href="shop-single-apparel.jsp">Gues Slim Taper Fit Jeans</a>
 						</h3>
 						<span class="text-primary">$124.99</span>
 					</div>
@@ -1006,7 +1006,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="product-card mb-4">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="shop-single-apparel.html"></a><span
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
 							class="badge badge-success rounded-0">&starf; Popular</span><span
 							class="product-wishlist-btn" data-toggle="tooltip"
 							data-placement="left" title="Add to wishlist"><i
@@ -1016,7 +1016,7 @@
 					<div class="product-card-body text-center">
 						<a class="product-meta" href="#">Hats &amp; Caps</a>
 						<h3 class="product-card-title">
-							<a href="shop-single-apparel.html">47Brand Denim Cap</a>
+							<a href="shop-single-apparel.jsp">47Brand Denim Cap</a>
 						</h3>
 						<span class="text-primary">$21.50</span>
 					</div>
@@ -1055,7 +1055,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="product-card mb-4">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="shop-single-apparel.html"></a><span
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
 							class="product-wishlist-btn" data-toggle="tooltip"
 							data-placement="left" title="Add to wishlist"><i
 							data-feather="heart"></i></span><img src="img/shop/apparel/03.jpg"
@@ -1064,7 +1064,7 @@
 					<div class="product-card-body text-center">
 						<a class="product-meta" href="#">Men's shoes</a>
 						<h3 class="product-card-title">
-							<a href="shop-single-apparel.html">Calvin Klein Jeans Keds</a>
+							<a href="shop-single-apparel.jsp">Calvin Klein Jeans Keds</a>
 						</h3>
 						<span class="text-primary">$125.00</span>
 					</div>
@@ -1109,7 +1109,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="product-card mb-4">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="shop-single-apparel.html"></a><span
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
 							class="product-wishlist-btn" data-toggle="tooltip"
 							data-placement="left" title="Add to wishlist"><i
 							data-feather="heart"></i></span><img src="img/shop/apparel/06.jpg"
@@ -1118,7 +1118,7 @@
 					<div class="product-card-body text-center">
 						<a class="product-meta" href="#">Sunglasses</a>
 						<h3 class="product-card-title">
-							<a href="shop-single-apparel.html">Medicine Chameleon
+							<a href="shop-single-apparel.jsp">Medicine Chameleon
 								Sunglasses</a>
 						</h3>
 						<span class="text-muted">Out of stock</span>
@@ -1141,7 +1141,7 @@
 							</div>
 						</div>
 						<a class="btn btn-primary btn-sm btn-block"
-							href="shop-single-apparel.html">Pre-order</a><a
+							href="shop-single-apparel.jsp">Pre-order</a><a
 							class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
 							class="mr-1" data-feather="eye"></i>Quick view</a>
 					</div>
@@ -1151,7 +1151,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="product-card mb-4">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="shop-single-apparel.html"></a><span
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
 							class="badge badge-danger rounded-0">Sale -10%</span><span
 							class="product-wishlist-btn" data-toggle="tooltip"
 							data-placement="left" title="Add to wishlist"><i
@@ -1161,7 +1161,7 @@
 					<div class="product-card-body text-center">
 						<a class="product-meta" href="#">Women's sneakers</a>
 						<h3 class="product-card-title">
-							<a href="shop-single-apparel.html">Reebok Classic Sneakers
+							<a href="shop-single-apparel.jsp">Reebok Classic Sneakers
 								Pyro</a>
 						</h3>
 						<span class="text-primary"> <del class="text-muted mr-1">$105.00</del>$94.50
@@ -1208,7 +1208,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="product-card mb-4">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="shop-single-apparel.html"></a><span
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
 							class="product-wishlist-btn" data-toggle="tooltip"
 							data-placement="left" title="Add to wishlist"><i
 							data-feather="heart"></i></span><img src="img/shop/apparel/07.jpg"
@@ -1217,7 +1217,7 @@
 					<div class="product-card-body text-center">
 						<a class="product-meta" href="#">Dresses</a>
 						<h3 class="product-card-title">
-							<a href="shop-single-apparel.html">Floral Printed Maxi Dress</a>
+							<a href="shop-single-apparel.jsp">Floral Printed Maxi Dress</a>
 						</h3>
 						<span class="text-primary">$47.99</span>
 					</div>
@@ -1257,7 +1257,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="product-card mb-4">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="shop-single-apparel.html"></a><span
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
 							class="product-wishlist-btn" data-toggle="tooltip"
 							data-placement="left" title="Add to wishlist"><i
 							data-feather="heart"></i></span><img src="img/shop/apparel/09.jpg"
@@ -1266,7 +1266,7 @@
 					<div class="product-card-body text-center">
 						<a class="product-meta" href="#">Handbags</a>
 						<h3 class="product-card-title">
-							<a href="shop-single-apparel.html">Roxy Cotton Handbag</a>
+							<a href="shop-single-apparel.jsp">Roxy Cotton Handbag</a>
 						</h3>
 						<span class="text-primary">$52.00</span>
 					</div>
@@ -1305,7 +1305,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="product-card mb-4">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="shop-single-apparel.html"></a><span
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
 							class="product-wishlist-btn" data-toggle="tooltip"
 							data-placement="left" title="Add to wishlist"><i
 							data-feather="heart"></i></span><img src="img/shop/apparel/11.jpg"
@@ -1314,7 +1314,7 @@
 					<div class="product-card-body text-center">
 						<a class="product-meta" href="#">Men's tshirts</a>
 						<h3 class="product-card-title">
-							<a href="shop-single-apparel.html">Medicine Tshirt Sailor
+							<a href="shop-single-apparel.jsp">Medicine Tshirt Sailor
 								Spirit</a>
 						</h3>
 						<span class="text-primary">$17.00</span>
@@ -1495,7 +1495,7 @@
 				<div class="mx-auto py-3" style="max-width: 25rem">
 					<h2 class="mb-1">Read the blog</h2>
 					<p class="opacity-75 pb-3">Latest fashion news and trends</p>
-					<a class="btn btn-outline-dark" href="blog-ls.html"><i
+					<a class="btn btn-outline-dark" href="blog-ls.jsp"><i
 						class="mr-2" data-feather="book"></i>Go to blog</a>
 				</div>
 			</div>
@@ -1719,7 +1719,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-left">
-              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.html"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
+              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.jsp"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
                 
               </div>
             </div>
