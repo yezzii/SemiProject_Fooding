@@ -390,7 +390,7 @@ public class MemberDAO {
 		try {
 			openConn();
 
-			sql = "select count(member_id) from member where member_id = ?";
+			sql = "select * from member where member_id = ?";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -399,7 +399,9 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				res = rs.getInt(1);
+				res = -1;
+			}else {
+				res = 0;
 			}
 
 		} catch (SQLException e) {

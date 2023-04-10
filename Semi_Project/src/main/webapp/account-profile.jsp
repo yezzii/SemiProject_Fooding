@@ -805,7 +805,7 @@
               <li class="font-size-sm mb-2"><i class="text-muted mr-2" data-feather="phone" style="width: .875rem; height: .875rem;"></i><a class="nav-link-inline" href="tel:+100331697720">+1 00 33 169 7720</a></li>
               <li class="font-size-sm mb-2"><i class="text-muted mr-2" data-feather="clock" style="width: .875rem; height: .875rem;"></i>1-2 business days</li>
             </ul>
-            <div class="pt-2"><a class="btn btn-outline-secondary btn-sm btn-block" href="account-tickets.html"><i class="mr-1" data-feather="tag"></i>My tickets (1)</a><a class="btn btn-success btn-sm btn-block" href="account-tickets.html" data-toggle="modal" data-target="#open-ticket">Submit new ticket</a></div>
+            <div class="pt-2"><a class="btn btn-outline-secondary btn-sm btn-block" href="account-tickets.jsp"><i class="mr-1" data-feather="tag"></i>My tickets (1)</a><a class="btn btn-success btn-sm btn-block" href="account-tickets.jsp" data-toggle="modal" data-target="#open-ticket">Submit new ticket</a></div>
           </div>
         </div>
         <!-- Main content-->
@@ -815,7 +815,7 @@
             <div class="pt-3 mr-3">
               <h3 class="mb-0">Daniel Adams</h3><span class="font-size-sm text-warning">d.adams@example.com</span>
             </div>
-            <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="account-signin.html"><i class="mr-1" data-feather="log-out"></i>Sign Out</a></div>
+            <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="account-signin.jsp"><i class="mr-1" data-feather="log-out"></i>Sign Out</a></div>
           </div>
           <ul class="list-unstyled border p-3 mb-4">
             <li class="pb-1"><span class="opacity-80">&ndash; Joined:</span><span class="font-weight-semibold ml-1">Jan 13, 2018</span></li>
@@ -825,12 +825,12 @@
           </ul>
           <!-- Navigation (visible sm-up)-->
           <ul class="nav nav-tabs d-none d-sm-flex">
-            <li class="nav-item"><a class="nav-link" href="account-orders.html"><i data-feather="shopping-bag"></i>&nbsp;My orders<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">1</span></span></a></li>
-            <li class="nav-item"><a class="nav-link" href="account-wishlist.html"><i data-feather="heart"></i>&nbsp;Wishlist<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">3</span></span></a></li>
+            <li class="nav-item"><a class="nav-link" href="account-orders.jsp"><i data-feather="shopping-bag"></i>&nbsp;My orders<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">1</span></span></a></li>
+            <li class="nav-item"><a class="nav-link" href="account-wishlist.jsp"><i data-feather="heart"></i>&nbsp;Wishlist<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">3</span></span></a></li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" href="#" data-toggle="dropdown"><i data-feather="settings"></i>&nbsp;Account settings</a>
-              <div class="dropdown-menu"><a class="dropdown-item active" href="account-profile.html">Profile info</a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="account-address.html">Addresses</a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="account-payment.html">Payment methods</a>
+              <div class="dropdown-menu"><a class="dropdown-item active" href="account-profile.jsp">Profile info</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="account-address.jsp">Addresses</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="account-payment.jsp">Payment methods</a>
               </div>
             </li>
           </ul>
@@ -838,7 +838,7 @@
           <div class="d-sm-none pb-4">
             <button class="btn btn-primary btn-block mb-2" type="button" data-toggle="collapse" data-target="#account-menu"><i class="mr-2" data-feather="menu"></i>Menu</button>
             <div class="collapse" id="account-menu">
-              <div class="list-group"><a class="list-group-item list-group-item-action" href="account-orders.html"><i class="mr-2" data-feather="shopping-bag" style="width: 1rem; height: 1rem;"></i>My orders<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">1</span></span></a><a class="list-group-item list-group-item-action" href="account-wishlist.html"><i class="mr-2" data-feather="heart" style="width: 1rem; height: 1rem;"></i>Wishlist<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">3</span></span></a><a class="list-group-item list-group-item-action active" href="account-profile.html"><i class="mr-2" data-feather="user" style="width: 1rem; height: 1rem;"></i>Profile info</a><a class="list-group-item list-group-item-action" href="account-address.html"><i class="mr-2" data-feather="map-pin" style="width: 1rem; height: 1rem;"></i>Addresses</a><a class="list-group-item list-group-item-action" href="account-payment.html"><i class="mr-2" data-feather="credit-card" style="width: 1rem; height: 1rem;"></i>Payment methods</a></div>
+              <div class="list-group"><a class="list-group-item list-group-item-action" href="account-orders.jsp"><i class="mr-2" data-feather="shopping-bag" style="width: 1rem; height: 1rem;"></i>My orders<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">1</span></span></a><a class="list-group-item list-group-item-action" href="account-wishlist.jsp"><i class="mr-2" data-feather="heart" style="width: 1rem; height: 1rem;"></i>Wishlist<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">3</span></span></a><a class="list-group-item list-group-item-action active" href="account-profile.jsp"><i class="mr-2" data-feather="user" style="width: 1rem; height: 1rem;"></i>Profile info</a><a class="list-group-item list-group-item-action" href="account-address.jsp"><i class="mr-2" data-feather="map-pin" style="width: 1rem; height: 1rem;"></i>Addresses</a><a class="list-group-item list-group-item-action" href="account-payment.jsp"><i class="mr-2" data-feather="credit-card" style="width: 1rem; height: 1rem;"></i>Payment methods</a></div>
             </div>
           </div>
           <!-- Profile info-->
@@ -899,7 +899,7 @@
               <li class="font-size-sm mb-2"><i class="text-muted mr-2" data-feather="phone" style="width: .875rem; height: .875rem;"></i><a class="nav-link-inline" href="tel:+100331697720">+1 00 33 169 7720</a></li>
               <li class="font-size-sm mb-2"><i class="text-muted mr-2" data-feather="clock" style="width: .875rem; height: .875rem;"></i>1-2 business days</li>
             </ul>
-            <div class="pt-2"><a class="btn btn-outline-secondary btn-sm btn-block" href="account-tickets.html"><i class="mr-1" data-feather="tag"></i>My tickets (1)</a><a class="btn btn-success btn-sm btn-block" href="account-tickets.html" data-toggle="modal" data-target="#open-ticket">Submit new ticket</a></div>
+            <div class="pt-2"><a class="btn btn-outline-secondary btn-sm btn-block" href="account-tickets.jsp"><i class="mr-1" data-feather="tag"></i>My tickets (1)</a><a class="btn btn-success btn-sm btn-block" href="account-tickets.jsp" data-toggle="modal" data-target="#open-ticket">Submit new ticket</a></div>
           </div>
         </div>
       </div>
@@ -1019,7 +1019,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-left">
-              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.html"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
+              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.jsp"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
                 <div class="navbar-lang-switcher dropdown border-light mt-3 mb-0 mt-sm-0">
                   <div class="dropdown-toggle text-white" data-toggle="dropdown"><img width="20" src="img/flags/en.png" alt="English"/><span>USD</span>
                   </div>
@@ -1032,7 +1032,7 @@
                         <option value="usd">¥ JPY</option>
                       </select>
                     </li>
-                    <li><a class="dropdown-item" href="index.html"><img class="mr-2" width="20" src="img/flags/fr.png" alt="Français"/>Français</a></li>
+                    <li><a class="dropdown-item" href="index.jsp"><img class="mr-2" width="20" src="img/flags/fr.png" alt="Français"/>Français</a></li>
                     <li class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch"/>Deutsch</a></li>
                     <li class="dropdown-divider"></li>
