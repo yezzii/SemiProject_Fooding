@@ -22,13 +22,13 @@
 <link rel="manifest" href="site.webmanifest" />
 <link rel="mask-icon" color="#111" href="safari-pinned-tab.svg" />
 <meta name="msapplication-TileColor" content="#111" />
-<meta name="theme-color" content="#ffffff" /> 
-<!-- Vendor Styles including: Font Icons, Plugins, etc.--> 
-<link rel="stylesheet" media="screen" href="css/vendor.min.css" /> 
+<meta name="theme-color" content="#ffffff" />
+<!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+<link rel="stylesheet" media="screen" href="css/vendor.min.css" />
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
-<!-- Customizer styles and scripts--> 
+<!-- Customizer styles and scripts-->
 </head>
 <!-- Body-->
 <body>
@@ -403,7 +403,7 @@
 			<!-- navbar brand-->
 			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
 				width="250" src="img/logo-fooding.png" alt="Fooding" /></a>
-			
+
 			<!-- navbar collapse area-->
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
@@ -595,7 +595,9 @@
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="<%=request.getContextPath() %>/asdfasdf.do">서블렛 호출테스트</a></li>
+									<li><a class="dropdown-item"
+										href="<%=request.getContextPath()%>/asdfasdf.do">서블렛
+											호출테스트</a></li>
 									<li class="dropdown-divider"></li>
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
@@ -731,23 +733,25 @@
 						data-toggle="offcanvas"><i class="mx-auto mb-1"
 						data-feather="search"></i>Search</a>
 					<%
-	// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
-	if (userID == null) {
-	%>
+					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
+					if (userID == null) {
+					%>
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="#offcanvas-account" data-toggle="offcanvas"><i
 						class="mx-auto mb-1" data-feather="log-in"></i>로그인/가입</a>
 
 
 					<%
-	// 로그인이 되어있는 사람만 볼수 있는 화면
-	} else {
-	%>
+					// 로그인이 되어있는 사람만 볼수 있는 화면
+					} else {
+					%>
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="#offcanvas-account" data-toggle="offcanvas"><i
 						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
 
-					<% } %>
+					<%
+					}
+					%>
 					<a class="navbar-btn" href="#offcanvas-cart"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
@@ -758,6 +762,132 @@
 		</div>
 	</header>
 	<!-- Page Content-->
+
+
+	<div id="flexCardSlider_Dong">
+		<!-- 이미지 슬라이더 -->
+		<div id="carouselExampleInterval" class="carousel slide"
+			data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active" data-interval="4000">
+					<img src="img/photo/Fei.jpg" class="d-block w-100" alt="서울드래곤시티 페이">
+				</div>
+				<div class="carousel-item" data-interval="4000">
+					<img src="img/photo/GordonRamsayBuerger.jpg" class="d-block w-100" alt="고든램지 버거">
+				</div>
+				<div class="carousel-item"  data-interval="4000">
+					<img src="img/photo/KimSS.jpeg" class="d-block w-100" alt="서촌김씨 오스테리아">
+				</div>
+				<div class="carousel-item"  data-interval="4000">
+					<img src="img/photo/spectrum.png" class="d-block w-100" alt="스펙트럼 앰배서더 서울">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button"
+				data-target="#carouselExampleInterval" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+					class="sr-only">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-target="#carouselExampleInterval" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
+					class="sr-only">Next</span>
+			</button>
+		</div>
+		<!-- 이미지 슬라이더 -->
+		
+		
+		<!-- 카드덱 슬라이더 -->
+		<div id="card-deck-carousel" class="carousel slide"
+			data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<div class="card-deck">
+						<div class="card">
+							<img class="card-img-top" src="https://picsum.photos/200/200"
+								alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title">Card 1</h5>
+								<p class="card-text">This is a wider card with supporting
+									text below as a natural lead-in to additional content. This
+									content is a little bit longer.</p>
+							</div>
+						</div>
+						<div class="card">
+							<img class="card-img-top" src="https://picsum.photos/200/200"
+								alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title">Card 2</h5>
+								<p class="card-text">This card has supporting text below as a
+									natural lead-in to additional content.</p>
+							</div>
+						</div>
+						<div class="card">
+							<img class="card-img-top" src="https://picsum.photos/200/200"
+								alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title">Card 3</h5>
+								<p class="card-text">This is a wider card with supporting
+									text below as a natural lead-in to additional content. This card
+									has even longer content than the first to show that equal height
+									action.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<div class="card-deck">
+						<div class="card">
+							<img class="card-img-top" src="https://picsum.photos/200/200"
+								alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title">Card 4</h5>
+								<p class="card-text">This is a wider card with supporting
+									text below as a natural lead-in to additional content. This
+									content is a little bit longer.</p>
+							</div>
+						</div>
+						<div class="card">
+							<img class="card-img-top" src="https://picsum.photos/200/200"
+								alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title">Card 5</h5>
+								<p class="card-text">This card has supporting text below as a
+									natural lead-in to additional content.</p>
+							</div>
+						</div>
+						<div class="card">
+							<img class="card-img-top" src="https://picsum.photos/200/200"
+								alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title">Card 6</h5>
+								<p class="card-text">This is a wider card with supporting
+									text below as a natural lead-in to additional content. This card
+									has even longer content than the first to show that equal height
+									action.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+			<button class="carousel-control-prev" type="button"
+				data-target="#card-deck-carousel" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+					class="sr-only">Previous</span>
+					
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-target="#card-deck-carousel" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
+					class="sr-only">Next</span>
+			</button>
+		</div>
+	
+	</div>
+	<!-- 카드덱 슬라이더 -->
+	
+
 	<!-- Hero slider-->
 	<section class="container-fluid bg-secondary px-0">
 		<div class="row no-gutters align-items-center">
@@ -773,8 +903,8 @@
 							<h2 class="mb-1">Sneakers Classic Collection</h2>
 							<h3 class="font-weight-light opacity-70 pb-3">starting at
 								$105.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop
-								now<i class="ml-2" data-feather="arrow-right"></i>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
 						<div class="py-5 px-3 px-sm-5">
@@ -784,8 +914,8 @@
 							<h2 class="mb-1">Sports Hoodie Collection</h2>
 							<h3 class="font-weight-light opacity-70 pb-3">starting at
 								$89.00</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop
-								now<i class="ml-2" data-feather="arrow-right"></i>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
 						<div class="py-5 px-3 px-sm-5">
@@ -795,8 +925,8 @@
 							<h2 class="mb-1">Sunglasses Collection</h2>
 							<h3 class="font-weight-light opacity-70 pb-3">starting at
 								$16.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop
-								now<i class="ml-2" data-feather="arrow-right"></i>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
 					</div>

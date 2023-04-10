@@ -4868,10 +4868,20 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
 	flex-direction: column
+	
 }
 
 .card-deck .card {
 	margin-bottom: 15px
+}
+
+#flexCardSlider_Dong{
+	
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 50px;
+	padding:50px 100px;
+	
 }
 
 @media ( min-width : 576px) {
@@ -4881,7 +4891,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 		-ms-flex-flow: row wrap;
 		flex-flow: row wrap;
 		margin-right: -15px;
-		margin-left: -15px
+		margin-left: 33px;
 	}
 	.card-deck .card {
 		display: -webkit-box;
@@ -6384,7 +6394,10 @@ a.close.disabled {
 }
 
 .carousel {
-	position: relative
+	position: relative;
+ 	width: 700px;
+	height: calc(800px * 0.5);
+
 }
 
 .carousel.pointer-event {
@@ -6395,7 +6408,7 @@ a.close.disabled {
 .carousel-inner {
 	position: relative;
 	width: 100%;
-	overflow: hidden
+	overflow: hidden;
 }
 
 .carousel-inner::after {
@@ -6408,6 +6421,7 @@ a.close.disabled {
 	position: relative;
 	display: none;
 	float: left;
+	height: 400px;
 	width: 100%;
 	margin-right: -100%;
 	-webkit-backface-visibility: hidden;
@@ -6416,6 +6430,14 @@ a.close.disabled {
 	transition: -webkit-transform .6s ease-in-out;
 	transition: transform .6s ease-in-out;
 	transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out
+}
+
+
+.carousel-item img {
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 
 @media ( prefers-reduced-motion : reduce) {
@@ -6473,7 +6495,7 @@ a.close.disabled {
 
 .carousel-control-prev, .carousel-control-next {
 	position: absolute;
-	top: 0;
+	top: 20px;
 	bottom: 0;
 	z-index: 1;
 	display: -webkit-box;
@@ -6490,7 +6512,10 @@ a.close.disabled {
 	text-align: center;
 	opacity: .5;
 	-webkit-transition: opacity 0.15s ease;
-	transition: opacity 0.15s ease
+	transition: opacity 0.15s ease;
+	 background-color: transparent;
+    border: none;
+      margin-top: -25px;
 }
 
 @media ( prefers-reduced-motion : reduce) {
@@ -11190,7 +11215,7 @@ to {
 		position: fixed
 	}
 	.navbar-expand-lg.navbar.fixed-top+* {
-		margin-top: 5rem
+		margin-top: 7rem
 	}
 	.navbar-expand-lg .navbar-collapse {
 		position: static;
