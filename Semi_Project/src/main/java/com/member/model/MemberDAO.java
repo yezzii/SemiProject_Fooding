@@ -330,7 +330,7 @@ public class MemberDAO {
 	
 	
 	public int idCheck(String member_id) {
-		System.out.println(kakao_token);
+
 		int res = 0;
 
 		try {

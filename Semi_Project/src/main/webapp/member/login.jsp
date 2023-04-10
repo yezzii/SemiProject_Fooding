@@ -25,7 +25,7 @@ function kakaoLogin() {
         	 		 var token = response.id;
         	       	 var nickname = response.properties.nickname;
         	       	 var email = response.kakao_account.email;
-        	       	 var thumbnail = response.properties.thumbnail_image;
+        	       	 var thumbnail = response.properties.profile_image;
         	       	 
         	       	const form = document.createElement('form');
 

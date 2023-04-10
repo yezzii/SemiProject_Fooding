@@ -183,7 +183,7 @@ function getCookie(name) {
 		<div align="center">
 			<p id="token-result"></p>
 			<input class="api-btn" type="image" src="../button_img/kakaoJoin.png" 
-			onclick="kakaoLogin();" value="카카오 회원가입" style="width:300px;">
+			onclick="kakaoLogin();" value="카카오 회원가입" style="width:250px;">
 		</div>
 	</div>
 	<script>

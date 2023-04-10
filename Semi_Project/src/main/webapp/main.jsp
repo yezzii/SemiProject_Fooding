@@ -67,6 +67,7 @@ if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
 }
 	String thumnail =  (String)session.getAttribute("Thumnail");
+	String profile =  (String)session.getAttribute("member_profile");
 	String name = (String)session.getAttribute("name");
 %>
 
@@ -77,7 +78,10 @@ if (session.getAttribute("id") != null) {
 			<!-- 네비바 container -->
 			<div>
 				<a href="#" > <img class="ico_size"
-					src="main_img/fooding type_1.png" style="width: 50px">
+					src="main_img/fooding type_3.png" style="width: 45px">
+				</a>
+				<a href="#" > <img class="ico_size"
+					src="main_img/fooding type_2.png" style="width: 200px">
 				</a>
 		
 			<!-- 로고 -->
@@ -163,6 +167,7 @@ if (session.getAttribute("id") != null) {
 				</a>
 			</div>
 			
+			<img src="${profile }">
 		</div>
 				
 				
