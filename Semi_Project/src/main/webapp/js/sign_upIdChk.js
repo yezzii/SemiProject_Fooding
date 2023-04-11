@@ -1,6 +1,5 @@
-/**
- * 
- */
+
+let idchk = false;
 $(function() {
 
 		let userId = "";
@@ -8,35 +7,24 @@ $(function() {
 		$("#signup-id")
 				.on(
 						"blur",
-						function() { //회원가입 페이지에서 아이디 중복체크라는 버튼에 마우스가 올라갔을 때 호출되는 무명함수.
-							$("#idcheck").hide(); //span테그 영역을 숨겨라.
-							let userId = $("#signup-id").val(); //member_id의 value값을 뽑아와라.
+						function() { //회원가입 페이지에서 입력창에서 시점이 옮겨 갔을때  호출되는 무명함수.
+							$("#signup-idchk").hide(); //span테그 영역을 숨겨라.
+							let userId = $("#signup-id").val(); //signup-id의 value값을 뽑아와라.
 
-							if ($.trim($("#signup-id").val()).length < 4) {
-
-								let warningTxt = '<font color="red">아이디는 4자 이상이어야 합니다.</font>';
-								$("#idcheck").text(""); //span 테그 영역 초기화.
-								$("#idcheck").show();
-								$("#idcheck").append(warningTxt);
+							
+							let idRegExp = /^[a-z0-9]{4,12}$/; //아이디 유효성 검사
+							if(!idRegExp.test(userId)){
+								
+								let warningTxt = '<font color="red">영문 소문자나 숫자 4~12자리로 입력해야합니다.</font>';
+								$("#signup-idchk").text(""); //span 테그 영역 초기화.
+								$("#signup-idchk").show();
+								$("#signup-idchk").append(warningTxt);
 								$("#signup-id").val('').focus();//span 테그 영역 초기화.
 								return false;
 
 							}
-
-							if ($.trim($("#signup-id").val()).length > 16) {
-
-								let warningTxt = '<font color="red">아이디는 16자 이하이어야 합니다.</font>';
-								$("#idcheck").text(""); //span 테그 영역 초기화.
-								$("#idcheck").show();
-								$("#idcheck").append(warningTxt);
-								$("#signup-id").val('').focus();//span 테그 영역 초기화.
-								return false;
-
-							}
-
 							//아이디 중복 여부 확인
-							$
-									.ajax({
+							$.ajax({
 										type : "post",
 										url : "member_join_chk.do",
 										data : {
@@ -46,17 +34,17 @@ $(function() {
 										success : function(data) {
 											if (data == -1) { //DB에 아이디 존재하는 경우(중복)
 												let warningTxt = '<font color="red">중복 아이디 입니다.</font>';
-												$("#idcheck").text(""); //span 테그 영역 초기화.
-												$("#idcheck").show();
-												$("#idcheck")
+												$("#signup-idchk").text(""); //span 테그 영역 초기화.
+												$("#signup-idchk").show();
+												$("#signup-idchk")
 														.append(warningTxt);
-												$("#member_id").val('').focus();//span 테그 영역 초기화.
+												$("#signup-id").val('').focus();//span 테그 영역 초기화.
 												idchk = false;
 											} else {
 												let warningTxt = '<font color="green">사용가능한 아이디입니다.</font>';
-												$("#idcheck").text(""); //span 테그 영역 초기화.
-												$("#idcheck").show();
-												$("#idcheck")
+												$("#signup-idchk").text(""); //span 테그 영역 초기화.
+												$("#signup-idchk").show();
+												$("#signup-idchk")
 														.append(warningTxt);
 												idchk = true;
 											}

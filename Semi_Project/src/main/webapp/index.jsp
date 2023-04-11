@@ -8,12 +8,17 @@ response.setDateHeader("Expires", 0); // Proxies
 if(request.getProtocol().equals("HTTP/1.1"))
 	response.setHeader("Cache-Control", "no-cache");
 %>
+
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="utf-8" />
 <title>Fooding</title>
 <!-- SEO Meta Tags-->
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description"
 	content="MStore - Modern Bootstrap E-commerce Template" />
 <meta name="keywords"
@@ -35,107 +40,14 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <!-- Customizer styles and scripts-->
+
+
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/vendor.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/theme.min.js"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script>
-	$(function() {
-
-		let userId = "";
-		let idchk = false;
-		$("#signup-id")
-				.on(
-						"blur",
-						function() { //회원가입 페이지에서 아이디 중복체크라는 버튼에 마우스가 올라갔을 때 호출되는 무명함수.
-							$("#idcheck").hide(); //span테그 영역을 숨겨라.
-							let userId = $("#signup-id")
-									.val(); //member_id의 value값을 뽑아와라.
-
-							if ($.trim($("#signup-id")
-									.val()).length < 4) {
-
-								let warningTxt = '<font color="red">아이디는 4자 이상이어야 합니다.</font>';
-								$("#idcheck").text(""); //span 테그 영역 초기화.
-								$("#idcheck").show();
-								$("#idcheck").append(
-										warningTxt);
-								$("#signup-id").val('')
-										.focus();//span 테그 영역 초기화.
-								return false;
-
-							}
-
-							if ($.trim($("#signup-id")
-									.val()).length > 16) {
-
-								let warningTxt = '<font color="red">아이디는 16자 이하이어야 합니다.</font>';
-								$("#idcheck").text(""); //span 테그 영역 초기화.
-								$("#idcheck").show();
-								$("#idcheck").append(
-										warningTxt);
-								$("#signup-id").val('')
-										.focus();//span 테그 영역 초기화.
-								return false;
-
-							}
-
-							//아이디 중복 여부 확인
-							$
-									.ajax({
-										type : "post",
-										url : "member_join_chk.do",
-										data : {
-											paramId : userId
-										},
-										datatype : "json",
-										success : function(
-												data) {
-											if (data == -1) { //DB에 아이디 존재하는 경우(중복)
-												let warningTxt = '<font color="red">중복 아이디 입니다.</font>';
-												$(
-														"#idcheck")
-														.text(
-																""); //span 테그 영역 초기화.
-												$(
-														"#idcheck")
-														.show();
-												$(
-														"#idcheck")
-														.append(
-																warningTxt);
-												$(
-														"#signup-id")
-														.val(
-																'')
-														.focus();//span 테그 영역 초기화.
-												idchk = false;
-											} else {
-												let warningTxt = '<font color="green">사용가능한 아이디입니다.</font>';
-												$(
-														"#idcheck")
-														.text(
-																""); //span 테그 영역 초기화.
-												$(
-														"#idcheck")
-														.show();
-												$(
-														"#idcheck")
-														.append(
-																warningTxt);
-												idchk = true;
-											}
-										},
-										error : function(
-												data) {
-											alert("통신오류");
-										}
-									});
-
-						});
-	});
-</script>
-<script src="js/vendor.min.js"></script>
-<script src="js/theme.min.js"></script>
-
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/sign_upIdChk.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/joinchk.js"></script>
 
 </head>
 <!-- Body-->
@@ -190,6 +102,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
+		
+		<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<ul class="nav nav-tabs nav-justified" role="tablist">
@@ -239,48 +153,54 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						</form>
 					</div>
 					
+					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form class="needs-validation" novalidate
-							action="<%=request.getContextPath()%>/">
+						<form method="post" action="<%=request.getContextPath()%>/" id="f" name="f">
 							<div class="form-group">
-								<label class="sr-only" for="signup-name">아이디</label> <input
+								<label class="sr-only" for="signup-id">아이디</label> <input
 									class="form-control" type="text" id="signup-id"
-									name="member_id" placeholder="아이디" aria-label="아이디" required />
-								<div class="invalid-feedback">
-									<span id="idcheck">아이디를 작성해주세요</span>
-								</div>
+									name="member_id" placeholder="아이디" aria-label="아이디" />
+									<span class="feedback" id="signup-idchk"></span>
 
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-name">이름</label> <input
-									class="form-control" type="text" id="signup-name"
-									name="member_name" placeholder="이름" aria-label="Full name"
-									required />
-								<div class="invalid-feedback">이름을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-email">이메일</label> <input
-									class="form-control" type="email" id="signup-email"
-									name="member_email" placeholder="Email"
-									aria-label="Email address" required />
-								<div class="invalid-feedback">이메일을 작성해주세요</div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									name="member_pwd" placeholder="Password" aria-label="Password"
-									required />
-								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
+									name="signup-pwd" placeholder="Password" aria-label="Password"
+									 />
+								<span class="feedback" id="signup-pwdchk"></span>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
-									name="member_pwdchk" id="signup-password-confirm"
+									name="signup-pwdchk" id="signup-password-confirm"
 									placeholder="Confirm password" aria-label="Confirm password"
-									required />
-								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
+									 />
+									 <span class="feedback" id="signup-pwdconfirm-chk"></span>
 							</div>
-							<button class="btn btn-primary btn-block" type="submit">
+							<div class="form-group">
+								<label class="sr-only" for="signup-name">이름</label> <input
+									class="form-control" type="text" id="signup-name"
+									name="signup-name" placeholder="이름" aria-label="Full name"
+									/>
+								<span class="feedback" id="signup-namechk"></span>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-email">이메일</label> <input
+									class="form-control" type="email" id="signup-email"
+									name="signup-email" placeholder="Email"
+									aria-label="Email address"/>
+								<span class="feedback" id="signup-emailchk"></span>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-phone">연락처
+									확인</label> <input class="form-control" type="password"
+									name="signup-phone" id="signup-phone"
+									placeholder="Phone" aria-label="Phone"
+									 />
+								<span class="feedback" id="signup-phonechk"></span>
+							</div>
+							<button class="btn btn-primary btn-block" type="button" onclick="return checkAll()">
 								가입하기</button>
 							<button class="btn btn-primary btn-block" onclick="">
 								사업자 가입</button>
@@ -1915,8 +1835,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	
-	
 	
 </body>
 </html>
