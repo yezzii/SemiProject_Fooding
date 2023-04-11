@@ -42,12 +42,10 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <!-- Customizer styles and scripts-->
 
 
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/vendor.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/theme.min.js"></script>
+<script type="text/javascript" src="js/vendor.min.js"></script>
+<script type="text/javascript" src="js/theme.min.js"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/sign_upIdChk.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/joinchk.js"></script>
 
 </head>
 <!-- Body-->
@@ -157,7 +155,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<div class="tab-pane fade" id="signup" role="tabpanel">
 						<form method="post" action="<%=request.getContextPath()%>/" id="f" name="f">
 							<div class="form-group">
-								<label class="sr-only" for="signup-id">아이디</label> <input
+								<label class="sr-only" for="singup-id">아이디</label> <input
 									class="form-control" type="text" id="signup-id"
 									name="member_id" placeholder="아이디" aria-label="아이디" />
 									<span class="feedback" id="signup-idchk"></span>
@@ -166,14 +164,14 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							<div class="form-group">
 								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									name="signup-pwd" placeholder="Password" aria-label="Password"
+									name="member-pwd" placeholder="Password" aria-label="Password"
 									 />
 								<span class="feedback" id="signup-pwdchk"></span>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
-									name="signup-pwdchk" id="signup-password-confirm"
+									name="member-pwdchk" id="signup-password-confirm"
 									placeholder="Confirm password" aria-label="Confirm password"
 									 />
 									 <span class="feedback" id="signup-pwdconfirm-chk"></span>
@@ -181,26 +179,26 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							<div class="form-group">
 								<label class="sr-only" for="signup-name">이름</label> <input
 									class="form-control" type="text" id="signup-name"
-									name="signup-name" placeholder="이름" aria-label="Full name"
+									name="member-name" placeholder="이름" aria-label="Full name"
 									/>
 								<span class="feedback" id="signup-namechk"></span>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-email">이메일</label> <input
 									class="form-control" type="email" id="signup-email"
-									name="signup-email" placeholder="Email"
+									name="member-email" placeholder="Email"
 									aria-label="Email address"/>
 								<span class="feedback" id="signup-emailchk"></span>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-phone">연락처
 									확인</label> <input class="form-control" type="password"
-									name="signup-phone" id="signup-phone"
+									name="member-phone" id="signup-phone"
 									placeholder="Phone" aria-label="Phone"
 									 />
 								<span class="feedback" id="signup-phonechk"></span>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="return checkAll()">
+							<button class="btn btn-primary btn-block" type="button" id="join-chk" onclick="checkAll()">
 								가입하기</button>
 							<button class="btn btn-primary btn-block" onclick="">
 								사업자 가입</button>
@@ -1836,5 +1834,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	
+<script type="text/javascript" src="js/sign_upIdChk.js"></script>
+<!-- <script type="text/javascript" src="js/joinchk.js"></script> -->
 </body>
 </html>
