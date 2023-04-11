@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <title>Fooding</title>
 <!-- SEO Meta Tags-->
 <meta name="description"
@@ -764,130 +764,6 @@
 	<!-- Page Content-->
 
 
-	<div id="flexCardSlider_Dong">
-		<!-- 이미지 슬라이더 -->
-		<div id="carouselExampleInterval" class="carousel slide"
-			data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active" data-interval="4000">
-					<img src="img/photo/Fei.jpg" class="d-block w-100" alt="서울드래곤시티 페이">
-				</div>
-				<div class="carousel-item" data-interval="4000">
-					<img src="img/photo/GordonRamsayBuerger.jpg" class="d-block w-100" alt="고든램지 버거">
-				</div>
-				<div class="carousel-item"  data-interval="4000">
-					<img src="img/photo/KimSS.jpeg" class="d-block w-100" alt="서촌김씨 오스테리아">
-				</div>
-				<div class="carousel-item"  data-interval="4000">
-					<img src="img/photo/spectrum.png" class="d-block w-100" alt="스펙트럼 앰배서더 서울">
-				</div>
-			</div>
-			<button class="carousel-control-prev" type="button"
-				data-target="#carouselExampleInterval" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-					class="sr-only">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button"
-				data-target="#carouselExampleInterval" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-					class="sr-only">Next</span>
-			</button>
-		</div>
-		<!-- 이미지 슬라이더 -->
-		
-		
-		<!-- 카드덱 슬라이더 -->
-		<div id="card-deck-carousel" class="carousel slide"
-			data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<div class="card-deck">
-						<div class="card">
-							<img class="card-img-top" src="https://picsum.photos/200/200"
-								alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title">Card 1</h5>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
-							</div>
-						</div>
-						<div class="card">
-							<img class="card-img-top" src="https://picsum.photos/200/200"
-								alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title">Card 2</h5>
-								<p class="card-text">This card has supporting text below as a
-									natural lead-in to additional content.</p>
-							</div>
-						</div>
-						<div class="card">
-							<img class="card-img-top" src="https://picsum.photos/200/200"
-								alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title">Card 3</h5>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This card
-									has even longer content than the first to show that equal height
-									action.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="card-deck">
-						<div class="card">
-							<img class="card-img-top" src="https://picsum.photos/200/200"
-								alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title">Card 4</h5>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
-							</div>
-						</div>
-						<div class="card">
-							<img class="card-img-top" src="https://picsum.photos/200/200"
-								alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title">Card 5</h5>
-								<p class="card-text">This card has supporting text below as a
-									natural lead-in to additional content.</p>
-							</div>
-						</div>
-						<div class="card">
-							<img class="card-img-top" src="https://picsum.photos/200/200"
-								alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title">Card 6</h5>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This card
-									has even longer content than the first to show that equal height
-									action.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				
-			</div>
-			<button class="carousel-control-prev" type="button"
-				data-target="#card-deck-carousel" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-					class="sr-only">Previous</span>
-					
-			</button>
-			<button class="carousel-control-next" type="button"
-				data-target="#card-deck-carousel" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-					class="sr-only">Next</span>
-			</button>
-		</div>
-	
-	</div>
-	<!-- 카드덱 슬라이더 -->
-	
-
 	<!-- Hero slider-->
 	<section class="container-fluid bg-secondary px-0">
 		<div class="row no-gutters align-items-center">
@@ -896,36 +772,46 @@
 					<div class="owl-carousel trigger-carousel"
 						data-owl-carousel='{ "nav": true, "dots": false, "loop": true, "autoHeight": true }'
 						data-target-carousel="#target-carousel">
-						<div class="py-5 px-3 px-sm-5">
+						
+						<div class="py-4 px-3 px-sm-5">
 							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo01.png" width="180"
-								alt="Reebok" />
-							<h2 class="mb-1">Sneakers Classic Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$105.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								src="img/photo/FeiLogo.png" width="130"
+								alt="서울드래곤시티 페이" />
+							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">서울드래곤시티 페이</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">서울 용산구 청파로20길 95 <br>서울드래곤시티 그랜드 머큐어 2F</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약 하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
-						<div class="py-5 px-3 px-sm-5">
+						
+						<div class="py-4 px-3 px-sm-5">
 							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo02.png" width="129"
-								alt="The North Face" />
-							<h2 class="mb-1">Sports Hoodie Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$89.00</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								src="img/photo/gordon.jpg" width="125"
+								alt="고든램지 버거" />
+							<h2 class="mb-1"  style="font-family: 'GmarketSansMedium';">고든램지 버거</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">주소: 서울 송파구 올림픽로 300<br> 롯데월드몰 지하1층</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약 하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
-						<div class="py-5 px-3 px-sm-5">
+						
+						<div class="py-4 px-3 px-sm-5">
 							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo03.png" width="182"
-								alt="Calvin Klein" />
-							<h2 class="mb-1">Sunglasses Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$16.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								src="img/photo/KimSS_logo.png" width="130"
+								alt="서촌김씨 오스테리아" />
+							<h2 class="mb-1"  style="font-family: 'GmarketSansMedium';">서촌김씨 오스테리아</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">서울 강서구 공항대로 209 <br>지엠지 엘스타 2층 208호</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약하기<i
+								class="ml-2" data-feather="arrow-right"></i>
+							</a>
+						</div>
+						<div class="py-4 px-3 px-sm-5">
+							<img class="d-block mb-2"
+								src="img/photo/amberserder.png" width="130"
+								alt="스펙트럼 앰배서더 서울" />
+							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">스펙트럼 앰배서더 서울</h2>
+							<h5 class="font-weight-light opacity-70 pb-3" style="font-family: 'GmarketSansMedium';">서울 영등포구 여의대로 108<br> 페어몬트 앰배서더 서울 5층</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp" style="font-family: 'GmarketSansMedium';">예약하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
@@ -935,116 +821,117 @@
 			<div class="col-md-6">
 				<div class="owl-carousel" id="target-carousel"
 					data-owl-carousel='{ "nav": false, "dots": false, "loop": true, "mouseDrag": false, "touchDrag": false, "pullDrag": false, "animateOut": "fadeOut" }'>
-					<img class="ml-auto mr-0" src="img/home/apparel/hero-slide01.jpg"
-						alt="Sneakers Collection" /><img class="ml-auto mr-0"
-						src="img/home/apparel/hero-slide02.jpg" alt="Hoodie Collection" /><img
-						class="ml-auto mr-0" src="img/home/apparel/hero-slide03.jpg"
-						alt="Sunglasses Collection" />
+					<img class="ml-auto mr-0" src="img/photo/Fei.jpg"
+						alt="서울드래곤시티 페이" />
+						<img class="ml-auto mr-0"
+						src="img/photo/GordonRamsayBuerger.jpg" alt="고든램지 버거" />
+						<img class="ml-auto mr-0" src="img/photo/KimSS.jpeg"
+						alt="서촌김씨 오스테리아" />
+							<img class="ml-auto mr-0" src="img/photo/spectrum.png"
+						alt="스펙트럼 앰배서더 서울" />
 				</div>
 			</div>
 		</div>
 	</section>
+	
 	<!-- Popular categories (carousel)-->
 	<section class="container py-5 mt-3">
-		<h2 class="h3 text-center pb-4">Popular categories</h2>
+		<h5 class="h3 text-center pb-4" style="font-family: 'GmarketSansMedium';">상황별·주제별 BEST</h5>
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"460":{"items":2}, "768":{"items":3}} }'>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-						<img src="img/shop/apparel/categories/01.jpg" alt="Clothing" />
+						<img src="img/photo/Date.png" alt="GoodDate" />
 					</div>
 					<div class="thumblist">
-						<img src="img/shop/apparel/categories/02.jpg" alt="Clothing" /><img
-							src="img/shop/apparel/categories/03.jpg" alt="Clothing" />
+						<img src="img/photo/steak.jpg" alt="GoodDate" /><img
+							src="img/photo/food1.jpeg" alt="GoodDate" />
 					</div>
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Clothing</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$49.99</span>
+					<h2 class="h5 mb-1">미식 데이트</h2>
+					<span class="d-block mb-3 font-size-s text-muted">특별한 날, 소중한 추억을 남기고 싶다면?</span>
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop clothing</a>
+						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-						<img src="img/shop/apparel/categories/04.jpg" alt="Shoes" />
+						<img src="img/photo/GoodView.png" alt="GoodView" />
 					</div>
 					<div class="thumblist">
-						<img src="img/shop/apparel/categories/05.jpg" alt="Shoes" /><img
-							src="img/shop/apparel/categories/06.jpg" alt="Shoes" />
+						<img src="img/photo/centro.png" alt="GoodView" /><img
+							src="img/photo/GoodView2.jpg" alt="GoodView" />
 					</div>
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Shoes</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$56.00</span>
+					<h2 class="h5 mb-1">뷰와 맛을 한번에</h2>
+					<span class="d-block mb-3 font-size-s text-muted"> 전망 좋은 레스토랑에서의 식사 어때요?
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop shoes</a>
+						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-						<img src="img/shop/apparel/categories/07.jpg" alt="Bags" />
+						<img src="img/photo/Adult.png" alt="WithAdult" />
 					</div>
 					<div class="thumblist">
-						<img src="img/shop/apparel/categories/08.jpg" alt="Bags" /><img
-							src="img/shop/apparel/categories/09.jpg" alt="Bags" />
+						<img src="img/photo/Adult2.jpg" alt="WithAdult" /><img
+							src="img/photo/Adult3.jpeg" alt="WithAdult" />
 					</div>
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Bags</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$27.00</span>
+					<h2 class="h5 mb-1">하루를 선물해보세요</h2>
+					<span class="d-block mb-3 font-size-s text-muted">부모님께 색다른 하루를 선물해보세요!
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop bags</a>
+						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Brands carousel-->
 	<section class="container pb-4 mt-md-3">
-		<h2 class="h3 text-center pb-4">Shop by brand</h2>
+		<h5 class="h3 text-center pb-4" style="font-family: 'GmarketSansMedium';">브랜드 관</h5>
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "loop": true, "margin": 30, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2, "margin": 15},"460":{"items":3, "margin": 15}, "768":{"items":4}} }'>
 			<a class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/01.png"
+				class="d-block mx-auto" src="img/photo/amberserder.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/02.png"
+				class="d-block mx-auto" src="img/photo/01.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/03.png"
+				class="d-block mx-auto" src="img/photo/02.jpeg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/04.png"
+				class="d-block mx-auto" src="img/photo/03.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/05.png"
+				class="d-block mx-auto" src="img/photo/04.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/06.png"
+				class="d-block mx-auto" src="img/photo/05.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/07.png"
+				class="d-block mx-auto" src="img/photo/06.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/08.png"
+				class="d-block mx-auto" src="img/photo/07.jpeg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/09.png"
+				class="d-block mx-auto" src="img/photo/08.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/10.png"
+				class="d-block mx-auto" src="img/photo/gordon.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/11.png"
+				class="d-block mx-auto" src="img/photo/09.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/12.png"
+				class="d-block mx-auto" src="img/photo/10.png"
 				style="width: 150px" alt="Brand" /></a>
 		</div>
 	</section>
