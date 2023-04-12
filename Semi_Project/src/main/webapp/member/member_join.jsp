@@ -11,11 +11,8 @@
 	let idchk = false;
 	$(function() {
 		
-<<<<<<< HEAD
-=======
 		let userId = "";
 		let idchk = false;
->>>>>>> GM
 		$("#idcheck_btn")
 				.click(
 						function() { //회원가입 페이지에서 아이디 중복체크라는 버튼에 마우스가 올라갔을 때 호출되는 무명함수.
@@ -225,6 +222,7 @@
 					<th>비밀번호 확인</th>
 					<td><input type="password" name="member_pwdok"></td>
 				</tr>
+				
 				<tr>
 					<th>회원이름</th>
 					<td><input type="text" name="member_name"></td>

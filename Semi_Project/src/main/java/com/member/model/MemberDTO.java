@@ -7,14 +7,20 @@ private String member_pwd;
 private String member_email;
 private String member_phone;
 private int member_account;
-private int member_type;
 private String member_name;
 private String member_mark;
 private String member_storenum;
+private int member_type;
 private int member_no;
 private String member_token;
+private String member_joindate;
 
-
+public String getMember_joindate() {
+	return member_joindate;
+}
+public void setMember_joindate(String member_joindate) {
+	this.member_joindate = member_joindate;
+}
 public String getMember_token() {
 	return member_token;
 }

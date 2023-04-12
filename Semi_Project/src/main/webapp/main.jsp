@@ -64,6 +64,7 @@ function kakaoLogout() {
 String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
+	userType = (int)session.getAttribute("type");
 }
 	String thumnail =  (String)session.getAttribute("Thumnail");
 	String profile =  (String)session.getAttribute("member_profile");
@@ -77,11 +78,7 @@ if (session.getAttribute("id") != null) {
 			<!-- 네비바 container -->
 			<div>
 				<a href="#" > <img class="ico_size"
-<<<<<<< HEAD
 					src="main_img/fooding type_3.png" style="width: 45px">
-=======
-					src="main_img/fooding type_1.png" style="width: 120px">
->>>>>>> GM
 				</a>
 				<a href="#" > <img class="ico_size"
 					src="main_img/fooding type_2.png" style="width: 200px">
@@ -121,11 +118,7 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!--  로그인 -->
 				<a href="member/find_id.jsp">
-<<<<<<< HEAD
 					<button type="button" class="hideBtn">
-=======
-					<button type="button" class="findid">
->>>>>>> GM
 						<span class="">아이디 찾기</span>
 					</button>
 				</a>
@@ -155,12 +148,17 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!-- test1 -->
 				
+<<<<<<< HEAD
 				<a href="<%=request.getContextPath() %>/member_delete.do">
+=======
+				<a href="<%=request.getContextPath() %>/board_main_list.do">
+>>>>>>> origin/yeji1
 					<button type="button" class="join">
-						<span class="">관리자-회원삭제 테스트
+						<span class="">관리자-가게관리페이지 테스트
 						</span>
 					</button>
 				</a>
+<<<<<<< HEAD
 				<!-- test2 -->
 <<<<<<< HEAD
 >>>>>>> GM
@@ -169,15 +167,15 @@ if (session.getAttribute("id") != null) {
 				
 
 >>>>>>> origin/test1
+=======
+				<!-- test1 -->
+>>>>>>> origin/yeji1
 				
-				
-				
-				
-
 				<%
-				// 로그인이 되어있는 사람만 볼수 있는 화면
-				} else {
+				// 로그인이 되어있는 사람만 볼수 있는 화면 (사업자)
+				} else if(userID != null && userType == 2 ) {
 				%>
+<<<<<<< HEAD
 		<div class="profileFlex">
 		
 
@@ -188,16 +186,80 @@ if (session.getAttribute("id") != null) {
 				<a href="<%=request.getContextPath()%>/write_board.do">
 					<button type="button" class="write">
 >>>>>>> GM
+=======
+				<a href="board/board_write.jsp">
+					<button type="button" class="hideBtn">
+>>>>>>> origin/yeji1
 						<span class="">글쓰기</span>
 					</button>
 				</a>
 				<!-- 글쓰기 -->
+<<<<<<< HEAD
 				
 				<a href="board/board_main.jsp">
 				<button type="button" class="">
 				<span class="">가게등록</span>
 				</button>
+=======
+
+			
+				<a href="member/logout.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">로그아웃</span>
+					</button>
+>>>>>>> origin/yeji1
 				</a>
+			<!--  로그아웃 -->
+				
+				
+		<span class="profileInfo" ><%=userID%> 님</span>
+			<div class="radius_img">
+				<a href="<%=request.getContextPath()%>/myprofile.go"> 
+					<img class="profile_img" src="<%=thumnail%>">
+				</a>
+			</div>
+				
+				<a href="board/board_signUp.jsp">
+					<button type="button" class="join">
+						<span class="">가게 등록</span>
+					</button>
+					</a>
+				<!-- test2 -->
+				
+				<a href="board/board_menu.jsp">
+					<button type="button" class="menu">
+						<span class="">가게메뉴 등록</span>
+					</button>
+					</a>
+				<!-- test2 -->
+				<%
+				// 로그인이 되어있는 사람만 볼수 있는 화면 (카카오회원)
+				}else if(userID != null && userType == 3 ){
+				%>	
+				
+				<a href="board/board_write.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">글쓰기</span>
+					</button>
+				</a>
+				<!-- 글쓰기 -->
+
+			
+				<a href="member/logout.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">로그아웃</span>
+					</button>
+				</a>
+			<!--  로그아웃 -->
+				
+				
+		<span class="profileInfo" ><%=userID%> 님</span>
+			<div class="radius_img">
+				<a href="<%=request.getContextPath()%>/myprofile.go"> 
+					<img class="profile_img" src="<%=thumnail%>">
+				</a>
+			</div>
+			
 
 <<<<<<< HEAD
 			
@@ -233,9 +295,38 @@ if (session.getAttribute("id") != null) {
 				
 				
 				<%
+				// 로그인이 되어있는 사람만 볼수 있는 화면 (일반회원)
+				}else if(userID != null && userType == 1 ){
+				%>	
+				
+				<a href="board/board_write.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">글쓰기</span>
+					</button>
+				</a>
+				<!-- 글쓰기 -->
+
+			
+				<a href="member/logout.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">로그아웃</span>
+					</button>
+				</a>
+			<!--  로그아웃 -->
+				
+				
+		<span class="profileInfo" ><%=userID%> 님</span>
+			<div class="radius_img">
+				<a "<%=request.getContextPath()%>/myprofile.go"> 
+					<img class="profile_img" src="<%=thumnail%>">
+				</a>
+			</div>
+				<%	
 				}
 				%>
 			</div>
+			
+			
 			<!-- 로고 -->
 
 

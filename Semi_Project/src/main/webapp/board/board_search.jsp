@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-List<BoardDTO> list = (List<BoardDTO>)request.getAttribute("searchList"); 
+
 
 %>
 <!DOCTYPE html>

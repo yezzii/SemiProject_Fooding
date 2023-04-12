@@ -351,7 +351,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 			<!-- navbar brand-->
 			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
 				width="250" src="img/logo-fooding.png" alt="Fooding" /></a>
-
 			<!-- navbar collapse area-->
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->

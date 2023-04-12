@@ -357,47 +357,6 @@ public class Board_MainDAO {
 			return searchList;
 		}
 
-public List<Board_MainDTO>TotalMainSearch(String keyword){
-			
-			List<Board_MainDTO> searchList = new ArrayList<Board_MainDTO>();
-		
-			openConn();
-			
-			try {
-			    sql = "select * from board_main where ";
-
-			 
-				rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					Board_MainDTO dto = new Board_MainDTO();
-					
-					dto.setMain_idx(rs.getInt("main_idx"));
-					dto.setMain_name(rs.getString("main_name"));
-					dto.setMain_type(rs.getString("main_type"));
-					dto.setMain_info(rs.getString("main_info"));
-					dto.setMain_opentime(rs.getString("main_opentime"));
-					dto.setMain_endtime(rs.getString("main_endtime"));
-					dto.setMain_post(rs.getString("main_post"));
-					dto.setMain_addr(rs.getString("main_addr"));
-					dto.setMain_detailaddr(rs.getString("main_detailaddr"));
-					dto.setMain_phone(rs.getString("main_phone"));
-					dto.setMain_location(rs.getString("main_location"));
-					dto.setMain_memid(rs.getString("main_memid"));
-					dto.setMain_storenum(rs.getString("main_storenum"));
-					
-					searchList.add(dto);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				closeConn(rs, pstmt, con);
-			}
-			return searchList;
-		}
-		
-		
 		public int deleteBoardmain(int board_idx) {
 			int result = 0;
 			

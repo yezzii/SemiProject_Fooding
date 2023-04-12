@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-<<<<<<< HEAD
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -35,56 +33,10 @@
     <link rel="stylesheet" media="screen" href="css/vendor.min.css">
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" id="main-styles" href="css/theme.min.css">
-=======
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Pooding</title>
-    <!-- SEO Meta Tags-->
-    <meta
-      name="description"
-      content="MStore - Modern Bootstrap E-commerce Template"
-    />
-    <meta
-      name="keywords"
-      content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean"
-    />
-    <meta name="author" content="Createx Studio" />
-    <!-- Viewport-->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <link rel="mask-icon" color="#111" href="safari-pinned-tab.svg" />
-    <meta name="msapplication-TileColor" content="#111" />
-    <meta name="theme-color" content="#ffffff" />
-    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="css/vendor.min.css" />
-    <!-- Main Theme Styles + Bootstrap-->
-    <link
-      rel="stylesheet"
-      media="screen"
-      id="main-styles"
-      href="css/theme.min.css"
-    />
->>>>>>> origin/test1
     <!-- Customizer styles and scripts-->
   </head>
   <!-- Body-->
   <body>
-<<<<<<< HEAD
-
-  
-    <!-- Off-canvas search-->
-    <div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-      <div class="offcanvas-header d-flex justify-content-between align-items-center">
-        <h3 class="offcanvas-title">Search site</h3>
-        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-=======
     <!-- Off-canvas search-->
     <div class="offcanvas offcanvas-reverse" id="offcanvas-search">
       <div
@@ -99,16 +51,18 @@
         >
           <span aria-hidden="true">&times;</span>
         </button>
->>>>>>> origin/test1
       </div>
       <div class="offcanvas-body">
         <div class="offcanvas-body-inner">
           <div class="input-group pt-3">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div class="input-group-prepend"><span class="input-group-text" id="search-icon"><i data-feather="search"></i></span></div>
             <input class="form-control" type="text" id="site-search" placeholder="Search site" aria-label="Search site" aria-describedby="search-icon">
           </div><small class="form-text pt-1">Type A or C to see suggestions. Powered by Easy autocomplete plugin via separate JSON file.</small>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="input-group-prepend">
               <span class="input-group-text" id="search-icon"
                 ><i data-feather="search"></i
@@ -127,17 +81,23 @@
             >Type A or C to see suggestions. Powered by Easy autocomplete plugin
             via separate JSON file.</small
           >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
         </div>
       </div>
     </div>
     <!-- Off-canvas account-->
     <div class="offcanvas offcanvas-reverse" id="offcanvas-account">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div class="offcanvas-header d-flex justify-content-between align-items-center">
         <h3 class="offcanvas-title">Sign in / Create account</h3>
         <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 =======
+=======
+>>>>>>> origin/yeji1
       <div
         class="offcanvas-header d-flex justify-content-between align-items-center"
       >
@@ -150,11 +110,15 @@
         >
           <span aria-hidden="true">&times;</span>
         </button>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
       </div>
       <div class="offcanvas-body">
         <div class="offcanvas-body-inner">
           <ul class="nav nav-tabs nav-justified" role="tablist">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <li class="nav-item"><a class="nav-link active" href="#signin" data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;Sign In</a></li>
             <li class="nav-item"><a class="nav-link" href="#signup" data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;Sign Up</a></li>
@@ -169,6 +133,8 @@
                     <input class="form-control" type="email" id="signin-email" placeholder="Email" aria-label="Email" aria-describedby="signin-email-icon" required>
                     <div class="invalid-feedback">Please provide email address.</div>
 =======
+=======
+>>>>>>> origin/yeji1
             <li class="nav-item">
               <a
                 class="nav-link active"
@@ -206,12 +172,16 @@
                       required
                     />
                     <div class="invalid-feedback">아이디를 입력해주세요.</div>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="sr-only" for="signin-password">Password</label>
                   <div class="input-group">
+<<<<<<< HEAD
 <<<<<<< HEAD
                     <div class="input-group-prepend"><span class="input-group-text" id="signin-password-icon"><i data-feather="lock"></i></span></div>
                     <input class="form-control" type="password" id="signin-password" placeholder="Password" aria-label="Password" aria-describedby="signin-password-icon" required>
@@ -224,6 +194,8 @@
                 </div>
                 <button class="btn btn-primary btn-block" type="submit">Sign In</button>
 =======
+=======
+>>>>>>> origin/yeji1
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="signin-password-icon"
                         ><i data-feather="lock"></i
@@ -256,13 +228,17 @@
                 <button class="btn btn-primary btn-block" type="submit">
                   로그인
                 </button>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               </form>
             </div>
             <div class="tab-pane fade" id="signup" role="tabpanel">
               <form class="needs-validation" novalidate>
                 <div class="form-group">
                   <label class="sr-only" for="signup-name">Full name</label>
+<<<<<<< HEAD
 <<<<<<< HEAD
                   <input class="form-control" type="text" id="signup-name" placeholder="Full name" aria-label="Full name" required>
                   <div class="invalid-feedback">Please enter your full name.</div>
@@ -284,6 +260,8 @@
                 </div>
                 <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
 =======
+=======
+>>>>>>> origin/yeji1
                   <input
                     class="form-control"
                     type="text"
@@ -341,11 +319,15 @@
                 <button class="btn btn-primary btn-block" type="submit">
                   가입하기
                 </button>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               </form>
             </div>
           </div>
           <div class="d-flex align-items-center pt-5">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <hr class="w-100">
             <div class="px-3 w-100 text-nowrap font-weight-semibold">Or sign in via</div>
@@ -353,6 +335,8 @@
           </div>
           <div class="text-center pt-4"><a class="social-btn sb-facebook mx-2 mb-3" href="#" data-toggle="tooltip" title="Facebook"><i class="flaticon-facebook"></i></a><a class="social-btn sb-google-plus mx-2 mb-3" href="#" data-toggle="tooltip" title="Google"><i class="flaticon-google-plus"></i></a><a class="social-btn sb-twitter mx-2 mb-3" href="#" data-toggle="tooltip" title="Twitter"><i class="flaticon-twitter"></i></a></div>
 =======
+=======
+>>>>>>> origin/yeji1
             <hr class="w-100" />
             <div class="px-3 w-100 text-nowrap font-weight-semibold">
               소셜 로그인
@@ -380,12 +364,16 @@
               ><i class="flaticon-twitter"></i
             ></a>
           </div>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
         </div>
       </div>
     </div>
     <!-- Off-canvas cart-->
     <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div class="offcanvas-header d-flex justify-content-between align-items-center">
         <h3 class="offcanvas-title">Your cart</h3>
@@ -465,6 +453,8 @@
                   <div class="dropdown-column">
                     <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/cat_bg02.jpg);">
 =======
+=======
+>>>>>>> origin/yeji1
       <div
         class="offcanvas-header d-flex justify-content-between align-items-center"
       >
@@ -609,11 +599,15 @@
                       class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
                       style="background-image: url(img/megamenu/cat_bg02.jpg)"
                     >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                       <h3 class="h5 text-white text-shadow my-3">Apparel</h3>
                     </div>
                     <div class="widget widget-links">
                       <ul>
+<<<<<<< HEAD
 <<<<<<< HEAD
                         <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Clothing</span></a></li>
                         <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shoes</span></a></li>
@@ -623,6 +617,8 @@
                         <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Watches</span></a></li>
                         <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Accessories</span></a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                         <li>
                           <a href="#"
                             ><i
@@ -690,11 +686,15 @@
                             ><span class="font-size-sm">Accessories</span></a
                           >
                         </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                       </ul>
                     </div>
                   </div>
                   <div class="dropdown-column">
+<<<<<<< HEAD
 <<<<<<< HEAD
                     <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/cat_bg01.jpg);">
                       <h3 class="h5 text-white text-shadow my-3">Electronics</h3>
@@ -709,6 +709,8 @@
                         <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Wearable Electronics</span></a></li>
                         <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Video Games</span></a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                     <div
                       class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
                       style="background-image: url(img/megamenu/cat_bg01.jpg)"
@@ -792,11 +794,15 @@
                             ><span class="font-size-sm">Video Games</span></a
                           >
                         </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                       </ul>
                     </div>
                   </div>
                   <div class="dropdown-column">
+<<<<<<< HEAD
 <<<<<<< HEAD
                     <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/cat_bg03.jpg);">
                       <h3 class="h5 text-white text-shadow my-3">Furniture &amp; Decor</h3>
@@ -811,6 +817,8 @@
                         <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Adjustable Height Desks</span></a></li>
                         <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Storage Units</span></a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                     <div
                       class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
                       style="background-image: url(img/megamenu/cat_bg03.jpg)"
@@ -888,13 +896,17 @@
                             ><span class="font-size-sm">Storage Units</span></a
                           >
                         </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <li class="nav-item dropdown mega-dropdown active"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Home</a>
               <div class="dropdown-menu">
@@ -905,6 +917,8 @@
             </li>
             <li class="nav-item dropdown mega-dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <li class="nav-item dropdown mega-dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -912,13 +926,17 @@
                 data-toggle="dropdown"
                 >Shop</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               <div class="dropdown-menu">
                 <div class="dropdown-inner">
                   <div class="dropdown-column">
                     <div class="widget widget-links">
                       <h3 class="widget-title">Shop layouts</h3>
                       <ul>
+<<<<<<< HEAD
 <<<<<<< HEAD
                         <li><a href="shop-style1-ls.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
                         <li><a href="shop-style1-rs.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 1 - Right Sidebar</span></a></li>
@@ -927,6 +945,8 @@
                         <li><a href="shop-style2-rs.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Right Sidebar</span></a></li>
                         <li><a href="shop-style2-ft.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Style 2 - Filters Top</span></a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                         <li>
                           <a href="shop-style1-ls.html">
                             <i
@@ -939,7 +959,10 @@
                             ></a
                           >
                         </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                       </ul>
                     </div>
                   </div>
@@ -947,6 +970,7 @@
                     <div class="widget widget-links">
                       <h3 class="widget-title">Shop pages</h3>
                       <ul>
+<<<<<<< HEAD
 <<<<<<< HEAD
                         <li><a href="shop-categories-apparel.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Categories - Apparel</span></a></li>
                         <li><a href="shop-categories-electronics.html"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shop Categories - Electronics</span></a></li>
@@ -987,6 +1011,8 @@
                     <li class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="account-password-recovery.html">Password Recovery</a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                         <li>
                           <a href="shop-categories-apparel.html"
                             ><i
@@ -1160,12 +1186,16 @@
                         >Password Recovery</a
                       >
                     </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                   </ul>
                 </li>
                 <li class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="about.html">About Us</a></li>
                 <li class="dropdown-divider"></li>
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
                 <li class="dropdown-divider"></li>
@@ -1206,6 +1236,8 @@
                     <li class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="blog-single-ns.html">Post No Sidebar</a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                 <li>
                   <a class="dropdown-item" href="contacts.html">Contacts</a>
                 </li>
@@ -1293,11 +1325,15 @@
                         >Post No Sidebar</a
                       >
                     </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                   </ul>
                 </li>
               </ul>
             </li>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="mr-1" data-feather="file-text"></i>Docs</a>
               <ul class="dropdown-menu">
@@ -1321,6 +1357,8 @@
                       <div class="ml-2"><span class="d-block mb-n1">Support</span><small class="text-muted">contact@createx.studio</small></div>
                     </div></a></li>
 =======
+=======
+>>>>>>> origin/yeji1
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -1404,7 +1442,10 @@
                     </div></a
                   >
                 </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               </ul>
             </li>
           </ul>
@@ -1413,8 +1454,11 @@
         <div class="navbar-btns">
           <div class="navbar-btns-inner">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div class="navbar-toggler navbar-btn collapsed" data-toggle="collapse" data-target="#menu"><i class="mx-auto mb-1" data-feather="menu"></i>Menu</div><a class="navbar-btn" href="#offcanvas-search" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="search"></i>Search</a><a class="navbar-btn navbar-collapse-hidden" href="#offcanvas-account" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up</a><a class="navbar-btn" href="#offcanvas-cart" data-toggle="offcanvas"><span class="d-block position-relative"><span class="navbar-btn-badge bg-primary text-light">4</span><i class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div
               class="navbar-toggler navbar-btn collapsed"
               data-toggle="collapse"
@@ -1442,7 +1486,10 @@
                 >$325.00</span
               ></a
             >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
           </div>
         </div>
       </div>
@@ -1452,6 +1499,7 @@
     <section class="container-fluid bg-secondary px-0">
       <div class="row no-gutters align-items-center">
         <div class="col-md-6">
+<<<<<<< HEAD
 <<<<<<< HEAD
           <div class="mx-auto bg-light my-sm-4" style="max-width: 37rem;">
             <div class="owl-carousel trigger-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoHeight&quot;: true }" data-target-carousel="#target-carousel">
@@ -1467,6 +1515,8 @@
                 <h2 class="mb-1">Sunglasses Collection</h2>
                 <h3 class="font-weight-light opacity-70 pb-3">starting at $16.99</h3><a class="btn btn-primary" href="shop-style1-ls.html">Shop now<i class="ml-2" data-feather="arrow-right"></i></a>
 =======
+=======
+>>>>>>> origin/yeji1
           <div class="mx-auto bg-light my-sm-4" style="max-width: 37rem">
             <div
               class="owl-carousel trigger-carousel"
@@ -1517,15 +1567,21 @@
                 <a class="btn btn-primary" href="shop-style1-ls.html"
                   >Shop now<i class="ml-2" data-feather="arrow-right"></i
                 ></a>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-6">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <div class="owl-carousel" id="target-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;mouseDrag&quot;: false, &quot;touchDrag&quot;: false, &quot;pullDrag&quot;: false, &quot;animateOut&quot;: &quot;fadeOut&quot; }"><img class="ml-auto mr-0" src="img/home/apparel/hero-slide01.jpg" alt="Sneakers Collection"><img class="ml-auto mr-0" src="img/home/apparel/hero-slide02.jpg" alt="Hoodie Collection"><img class="ml-auto mr-0" src="img/home/apparel/hero-slide03.jpg" alt="Sunglasses Collection"></div>
 =======
+=======
+>>>>>>> origin/yeji1
           <div
             class="owl-carousel"
             id="target-carousel"
@@ -1545,13 +1601,17 @@
               alt="Sunglasses Collection"
             />
           </div>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
         </div>
       </div>
     </section>
     <!-- Popular categories (carousel)-->
     <section class="container py-5 mt-3">
       <h2 class="h3 text-center pb-4">Popular categories</h2>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;460&quot;:{&quot;items&quot;:2}, &quot;768&quot;:{&quot;items&quot;:3}} }">
         <div class="card border-0"><a class="card-img-tiles" href="shop-style1-ls.html">
@@ -1574,6 +1634,8 @@
           <div class="card-body border mt-n1 py-4 text-center">
             <h2 class="h5 mb-1">Bags</h2><span class="d-block mb-3 font-size-xs text-muted">Starting from <span class='font-weight-semibold'>$27.00</span></span><a class="btn btn-pill btn-outline-primary btn-sm" href="shop-style1-ls.html">Shop bags</a>
 =======
+=======
+>>>>>>> origin/yeji1
       <div
         class="owl-carousel"
         data-owl-carousel='{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"460":{"items":2}, "768":{"items":3}} }'
@@ -1648,7 +1710,10 @@
               href="shop-style1-ls.html"
               >Shop bags</a
             >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
           </div>
         </div>
       </div>
@@ -1656,6 +1721,7 @@
     <!-- Brands carousel-->
     <section class="container pb-4 mt-md-3">
       <h2 class="h3 text-center pb-4">Shop by brand</h2>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;margin&quot;: 30, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2, &quot;margin&quot;: 15},&quot;460&quot;:{&quot;items&quot;:3, &quot;margin&quot;: 15}, &quot;768&quot;:{&quot;items&quot;:4}} }"><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/01.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/02.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/03.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/04.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/05.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/06.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/07.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/08.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/09.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/10.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/11.png" style="width: 150px;" alt="Brand"></a><a class="d-block bg-white border py-3 py-sm-4" href="#"><img class="d-block mx-auto" src="img/shop/apparel/brands/12.png" style="width: 150px;" alt="Brand"></a></div>
     </section>
@@ -1672,6 +1738,8 @@
                 <div class="countdown h3 mb-0" data-date-time="10/10/2020 12:00" data-labels="{&quot;label-day&quot;: &quot;d&quot;, &quot;label-hour&quot;: &quot;h&quot;, &quot;label-minute&quot;: &quot;m&quot;, &quot;label-second&quot;: &quot;s&quot;}"></div>
               </div><a class="btn btn-primary" href="#">Shop now<i class="ml-2" data-feather="arrow-right"></i></a>
 =======
+=======
+>>>>>>> origin/yeji1
       <div
         class="owl-carousel"
         data-owl-carousel='{ "nav": false, "dots": true, "loop": true, "margin": 30, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2, "margin": 15},"460":{"items":3, "margin": 15}, "768":{"items":4}} }'
@@ -1780,7 +1848,10 @@
               <a class="btn btn-primary" href="#"
                 >Shop now<i class="ml-2" data-feather="arrow-right"></i
               ></a>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
@@ -1793,6 +1864,7 @@
         <!-- Product-->
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="product-card mb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/01.jpg" alt="Product"></div>
             <div class="product-card-body text-center"><a class="product-meta" href="#">Men's jeans</a>
@@ -1823,6 +1895,8 @@
               </div>
               <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="product-thumb">
               <a class="product-thumb-link" href="shop-single-apparel.html"></a
               ><span
@@ -1909,13 +1983,17 @@
               ><a class="quick-view-btn" href="#quick-view" data-toggle="modal"
                 ><i class="mr-1" data-feather="eye"></i>Quick view</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
         <!-- Product-->
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="product-card mb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="badge badge-success rounded-0">&starf; Popular</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/04.jpg" alt="Product"></div>
             <div class="product-card-body text-center"><a class="product-meta" href="#">Hats &amp; Caps</a>
@@ -1938,6 +2016,8 @@
               </div>
               <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="product-thumb">
               <a class="product-thumb-link" href="shop-single-apparel.html"></a
               ><span class="badge badge-success rounded-0">&starf; Popular</span
@@ -2018,13 +2098,17 @@
               ><a class="quick-view-btn" href="#quick-view" data-toggle="modal"
                 ><i class="mr-1" data-feather="eye"></i>Quick view</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
         <!-- Product-->
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="product-card mb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/03.jpg" alt="Product"></div>
             <div class="product-card-body text-center"><a class="product-meta" href="#">Men's shoes</a>
@@ -2055,6 +2139,8 @@
               </div>
               <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="product-thumb">
               <a class="product-thumb-link" href="shop-single-apparel.html"></a
               ><span
@@ -2141,13 +2227,17 @@
               ><a class="quick-view-btn" href="#quick-view" data-toggle="modal"
                 ><i class="mr-1" data-feather="eye"></i>Quick view</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
         <!-- Product-->
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="product-card mb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/06.jpg" alt="Product"></div>
             <div class="product-card-body text-center"><a class="product-meta" href="#">Sunglasses</a>
@@ -2165,6 +2255,8 @@
                 </div>
               </div><a class="btn btn-primary btn-sm btn-block" href="shop-single-apparel.html">Pre-order</a><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="product-thumb">
               <a class="product-thumb-link" href="shop-single-apparel.html"></a
               ><span
@@ -2227,13 +2319,17 @@
               ><a class="quick-view-btn" href="#quick-view" data-toggle="modal"
                 ><i class="mr-1" data-feather="eye"></i>Quick view</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
         <!-- Product-->
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="product-card mb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="badge badge-danger rounded-0">Sale -10%</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/08.jpg" alt="Product"></div>
             <div class="product-card-body text-center"><a class="product-meta" href="#">Women's sneakers</a>
@@ -2265,6 +2361,8 @@
               </div>
               <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="product-thumb">
               <a class="product-thumb-link" href="shop-single-apparel.html"></a
               ><span class="badge badge-danger rounded-0">Sale -10%</span
@@ -2356,13 +2454,17 @@
               ><a class="quick-view-btn" href="#quick-view" data-toggle="modal"
                 ><i class="mr-1" data-feather="eye"></i>Quick view</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
         <!-- Product-->
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="product-card mb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/07.jpg" alt="Product"></div>
             <div class="product-card-body text-center"><a class="product-meta" href="#">Dresses</a>
@@ -2389,6 +2491,8 @@
               </div>
               <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="product-thumb">
               <a class="product-thumb-link" href="shop-single-apparel.html"></a
               ><span
@@ -2464,13 +2568,17 @@
               ><a class="quick-view-btn" href="#quick-view" data-toggle="modal"
                 ><i class="mr-1" data-feather="eye"></i>Quick view</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
         <!-- Product-->
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="product-card mb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/09.jpg" alt="Product"></div>
             <div class="product-card-body text-center"><a class="product-meta" href="#">Handbags</a>
@@ -2493,6 +2601,8 @@
               </div>
               <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="product-thumb">
               <a class="product-thumb-link" href="shop-single-apparel.html"></a
               ><span
@@ -2572,13 +2682,17 @@
               ><a class="quick-view-btn" href="#quick-view" data-toggle="modal"
                 ><i class="mr-1" data-feather="eye"></i>Quick view</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
         <!-- Product-->
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="product-card mb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="product-thumb"><a class="product-thumb-link" href="shop-single-apparel.html"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/11.jpg" alt="Product"></div>
             <div class="product-card-body text-center"><a class="product-meta" href="#">Men's tshirts</a>
@@ -2609,6 +2723,8 @@
               </div>
               <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button><a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i class="mr-1" data-feather="eye"></i>Quick view</a>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="product-thumb">
               <a class="product-thumb-link" href="shop-single-apparel.html"></a
               ><span
@@ -2697,7 +2813,10 @@
               ><a class="quick-view-btn" href="#quick-view" data-toggle="modal"
                 ><i class="mr-1" data-feather="eye"></i>Quick view</a
               >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
             </div>
           </div>
         </div>
@@ -2708,6 +2827,7 @@
       <div class="row">
         <div class="col-md-4 col-sm-6 d-block d-sm-none d-md-block mb-3">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <!-- Promo banner--><a class="d-block text-decoration-0 mx-auto" href="#" style="max-width: 24rem;">
             <div class="bg-secondary">
               <div class="px-3 pt-4 text-center">
@@ -2717,6 +2837,8 @@
               </div><img src="img/shop/banner01.jpg" alt="Promo banner">
             </div></a>
 =======
+=======
+>>>>>>> origin/yeji1
           <!-- Promo banner--><a
             class="d-block text-decoration-0 mx-auto"
             href="#"
@@ -2732,11 +2854,15 @@
               </div>
               <img src="img/shop/banner01.jpg" alt="Promo banner" /></div
           ></a>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
         </div>
         <div class="col-md-4 col-sm-6 mb-2 py-3">
           <div class="widget widget-featured-entries">
             <h3 class="widget-title font-size-lg">Best sellers</h3>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="media"><a class="featured-entry-thumb" href="#"><img src="img/shop/widget/01.jpg" width="64" alt="Product thumb"></a>
               <div class="media-body">
@@ -2766,6 +2892,8 @@
               <div class="media-body">
                 <h6 class="featured-entry-title"><a href="#">Big Star Flip Tops</a></h6>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="media">
               <a class="featured-entry-thumb" href="#"
                 ><img
@@ -2833,7 +2961,10 @@
                 <h6 class="featured-entry-title">
                   <a href="#">Big Star Flip Tops</a>
                 </h6>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                 <p class="featured-entry-meta">$10.60</p>
               </div>
             </div>
@@ -2842,6 +2973,7 @@
         <div class="col-md-4 col-sm-6 mb-2 py-3">
           <div class="widget widget-featured-entries">
             <h3 class="widget-title font-size-lg">New arrivals</h3>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="media"><a class="featured-entry-thumb" href="#"><img src="img/shop/widget/08.jpg" width="64" alt="Product thumb"></a>
               <div class="media-body">
@@ -2871,6 +3003,8 @@
               <div class="media-body">
                 <h6 class="featured-entry-title"><a href="#">Roxy Cotton Handbag</a></h6>
 =======
+=======
+>>>>>>> origin/yeji1
             <div class="media">
               <a class="featured-entry-thumb" href="#"
                 ><img
@@ -2938,7 +3072,10 @@
                 <h6 class="featured-entry-title">
                   <a href="#">Roxy Cotton Handbag</a>
                 </h6>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                 <p class="featured-entry-meta">$52.00</p>
               </div>
             </div>
@@ -2949,6 +3086,7 @@
     <!-- Blog + Insta split section-->
     <section class="container-fluid px-0 border-bottom">
       <div class="row no-gutters">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <div class="col-md-6 py-5 px-4" style="background-color: #efefef;">
           <div class="mx-auto py-3" style="max-width: 25rem;">
@@ -2961,6 +3099,8 @@
             <h2 class="mb-1">Follow on Instagram</h2>
             <p class="opacity-75 pb-3">#ShopWithMStore</p><a class="btn btn-dark" href="#"><i class="mr-2" data-feather="instagram"></i>Follow us</a>
 =======
+=======
+>>>>>>> origin/yeji1
         <div class="col-md-6 py-5 px-4" style="background-color: #efefef">
           <div class="mx-auto py-3" style="max-width: 25rem">
             <h2 class="mb-1">Read the blog</h2>
@@ -2977,32 +3117,44 @@
             <a class="btn btn-dark" href="#"
               ><i class="mr-2" data-feather="instagram"></i>Follow us</a
             >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
           </div>
         </div>
       </div>
     </section>
     <!-- Quick view modal-->
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="modal modal-quick-view fade" id="quick-view" tabindex="-1" role="dialog">
 =======
+=======
+>>>>>>> origin/yeji1
     <div
       class="modal modal-quick-view fade"
       id="quick-view"
       tabindex="-1"
       role="dialog"
     >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <div>
+<<<<<<< HEAD
 <<<<<<< HEAD
               <h2 class="h3 modal-title mb-1">Reebok Classic - Sneakers CL Leather</h2>
               <h3 class="text-primary font-weight-light mb-0">$98.45</h3>
             </div>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 =======
+=======
+>>>>>>> origin/yeji1
               <h2 class="h3 modal-title mb-1">
                 Reebok Classic - Sneakers CL Leather
               </h2>
@@ -3016,15 +3168,21 @@
             >
               <span aria-hidden="true">&times;</span>
             </button>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
           </div>
           <div class="modal-body">
             <div class="row">
               <!-- Product gallery-->
               <div class="col-lg-7">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }"><img src="img/shop/apparel/single/01.jpg" alt="Product"><img src="img/shop/apparel/single/02.jpg" alt="Product"><img src="img/shop/apparel/single/03.jpg" alt="Product"><img src="img/shop/apparel/single/04.jpg" alt="Product"><img src="img/shop/apparel/single/05.jpg" alt="Product"></div>
 =======
+=======
+>>>>>>> origin/yeji1
                 <div
                   class="owl-carousel"
                   data-owl-carousel='{ "nav": true, "dots": false, "loop": true, "margin": 15 }'
@@ -3040,13 +3198,17 @@
                     alt="Product"
                   /><img src="img/shop/apparel/single/05.jpg" alt="Product" />
                 </div>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               </div>
               <!-- Product details-->
               <div class="col-lg-5 pt-4 pt-lg-0">
                 <form class="pb-4">
                   <div class="form-group">
                     <label class="d-block">Choose color</label>
+<<<<<<< HEAD
 <<<<<<< HEAD
                     <div class="custom-control custom-option custom-control-inline mb-2">
                       <input class="custom-control-input" type="radio" name="color" value="dark" id="dark" required>
@@ -3068,6 +3230,8 @@
                   <div class="form-group">
                     <select class="form-control custom-select" id="size" name="size" required>
 =======
+=======
+>>>>>>> origin/yeji1
                     <div
                       class="custom-control custom-option custom-control-inline mb-2"
                     >
@@ -3148,7 +3312,10 @@
                       name="size"
                       required
                     >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                       <option value>- Select a size</option>
                       <option value="13">13</option>
                       <option value="12">12</option>
@@ -3166,12 +3333,15 @@
                   <div class="d-flex flex-wrap align-items-center pt-1">
                     <div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                       <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
                     </div>
                     <div>
                       <button class="btn btn-primary px-5 mr-2" type="submit"><i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
                     </div><a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>Wishlist</a>
 =======
+=======
+>>>>>>> origin/yeji1
                       <input
                         class="px-2 form-control mr-2"
                         type="number"
@@ -3195,14 +3365,20 @@
                       ></i
                       >Wishlist</a
                     >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                   </div>
                 </form>
                 <div class="card">
                   <div class="card-header py-3 bg-0">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <h3 class="h6 mb-0"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>Product information</h3>
 =======
+=======
+>>>>>>> origin/yeji1
                     <h3 class="h6 mb-0">
                       <span
                         class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"
@@ -3212,7 +3388,10 @@
                         ></i></span
                       >Product information
                     </h3>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                   </div>
                   <div class="card-body">
                     <ul class="mb-0">
@@ -3237,6 +3416,7 @@
     </div>
     <!-- Toast notifications-->
     <div class="toast-container toast-bottom-center">
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to cart!</span>
@@ -3266,6 +3446,8 @@
         <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
           <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 =======
+=======
+>>>>>>> origin/yeji1
       <div
         class="toast mb-3"
         id="cart-toast"
@@ -3395,7 +3577,10 @@
           >
             <span aria-hidden="true">&times;</span>
           </button>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
         </div>
         <div class="toast-body">Your addresses info updated successfuly.</div>
       </div>
@@ -3408,6 +3593,7 @@
           <div class="row">
             <div class="col-md-4 col-sm-6">
               <div class="widget widget-links pb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <h3 class="widget-title text-white border-light">Shop departments</h3>
                 <ul>
@@ -3425,6 +3611,8 @@
                   <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Car Electronics</span></a></li>
                   <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Smart Home, IoT</span></a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                 <h3 class="widget-title text-white border-light">
                   Shop departments
                 </h3>
@@ -3558,12 +3746,16 @@
                       ><span class="font-size-sm">Smart Home, IoT</span></a
                     >
                   </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                 </ul>
               </div>
             </div>
             <div class="col-md-3 col-sm-6">
               <div class="widget widget-links pb-4">
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <h3 class="widget-title text-white border-light">Account &amp; shipping info</h3>
                 <ul>
@@ -3573,6 +3765,8 @@
                   <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Taxes</span></a></li>
                   <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Delivery info</span></a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                 <h3 class="widget-title text-white border-light">
                   Account &amp; shipping info
                 </h3>
@@ -3626,12 +3820,16 @@
                       ><span class="font-size-sm">Delivery info</span></a
                     >
                   </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                 </ul>
               </div>
               <div class="widget widget-links pb-4">
                 <h3 class="widget-title text-white border-light">About us</h3>
                 <ul>
+<<<<<<< HEAD
 <<<<<<< HEAD
                   <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Careers</span></a></li>
                   <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">About shop</span></a></li>
@@ -3639,6 +3837,8 @@
                   <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Services</span></a></li>
                   <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">News</span></a></li>
 =======
+=======
+>>>>>>> origin/yeji1
                   <li>
                     <a class="nav-link-inline nav-link-light" href="#"
                       ><i
@@ -3684,13 +3884,17 @@
                       ><span class="font-size-sm">News</span></a
                     >
                   </li>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                 </ul>
               </div>
             </div>
             <div class="col-xl-4 offset-xl-1 col-md-5">
               <div class="widget">
                 <!-- Subscription form (MailChimp)-->
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <h3 class="widget-title text-white border-light">Stay informed</h3>
                 <form class="validate pb-4" action="https://studio.us12.list-manage.com/subscribe/post-json?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126&amp;c=?" method="get" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form">
@@ -3705,6 +3909,8 @@
                   <button class="btn btn-primary btn-block" type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
                   <p class="font-size-xs text-white opacity-60 pt-2 mb-2" id="mc-helper">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</p>
 =======
+=======
+>>>>>>> origin/yeji1
                 <h3 class="widget-title text-white border-light">
                   Stay informed
                 </h3>
@@ -3759,15 +3965,21 @@
                     *Subscribe to our newsletter to receive early discount
                     offers, updates and new products info.
                   </p>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                   <!-- Subscription status-->
                   <div class="subscribe-status"></div>
                 </form>
                 <!-- Mobile app download-->
                 <div class="widget pb-4">
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <h3 class="widget-title text-white border-light">Download our app</h3><a class="market-btn market-btn-light apple-btn mr-2 mb-2" href="#" role="button"><span class="market-button-subtitle">Download on the</span><span class="market-button-title">App Store</span></a><a class="market-btn market-btn-light google-btn" href="#" role="button"><span class="market-button-subtitle">Download on the</span><span class="market-button-title">Google Play</span></a>
 =======
+=======
+>>>>>>> origin/yeji1
                   <h3 class="widget-title text-white border-light">
                     Download our app
                   </h3>
@@ -3784,7 +3996,10 @@
                     ><span class="market-button-subtitle">Download on the</span
                     ><span class="market-button-title">Google Play</span></a
                   >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                 </div>
               </div>
             </div>
@@ -3793,39 +4008,54 @@
       </div>
       <!-- shop features-->
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div class="pt-5 pb-0 pb-md-5 border-bottom border-light" id="shop-features" style="background-color: #1f1f1f;">
 =======
+=======
+>>>>>>> origin/yeji1
       <div
         class="pt-5 pb-0 pb-md-5 border-bottom border-light"
         id="shop-features"
         style="background-color: #1f1f1f"
       >
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
         <div class="container">
           <div class="row">
             <div class="col-md-3 col-sm-6 border-right border-light">
               <div class="icon-box text-center mb-5 mb-md-0">
                 <div class="icon-box-icon"><i data-feather="truck"></i></div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <h3 class="icon-box-title font-weight-semibold text-white">Free local delivery</h3>
                 <p class="icon-box-text">Free delivery for all orders over $100</p>
 =======
+=======
+>>>>>>> origin/yeji1
                 <h3 class="icon-box-title font-weight-semibold text-white">
                   Free local delivery
                 </h3>
                 <p class="icon-box-text">
                   Free delivery for all orders over $100
                 </p>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               </div>
             </div>
             <div class="col-md-3 col-sm-6 border-right border-light">
               <div class="icon-box text-center mb-5 mb-md-0">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="icon-box-icon"><i data-feather="refresh-cw"></i></div>
                 <h3 class="icon-box-title font-weight-semibold text-white">Money back guarantee</h3>
                 <p class="icon-box-text">Free delivery for all orders over $100</p>
 =======
+=======
+>>>>>>> origin/yeji1
                 <div class="icon-box-icon">
                   <i data-feather="refresh-cw"></i>
                 </div>
@@ -3835,38 +4065,53 @@
                 <p class="icon-box-text">
                   Free delivery for all orders over $100
                 </p>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               </div>
             </div>
             <div class="col-md-3 col-sm-6 border-right border-light">
               <div class="icon-box text-center mb-5 mb-md-0">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="icon-box-icon"><i data-feather="life-buoy"></i></div>
                 <h3 class="icon-box-title font-weight-semibold text-white">24/7 customer support</h3>
 =======
+=======
+>>>>>>> origin/yeji1
                 <div class="icon-box-icon">
                   <i data-feather="life-buoy"></i>
                 </div>
                 <h3 class="icon-box-title font-weight-semibold text-white">
                   24/7 customer support
                 </h3>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                 <p class="icon-box-text">Friendly 24/7 customer support</p>
               </div>
             </div>
             <div class="col-md-3 col-sm-6">
               <div class="icon-box text-center mb-5 mb-md-0">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="icon-box-icon"><i data-feather="credit-card"></i></div>
                 <h3 class="icon-box-title font-weight-semibold text-white">Secure online payment</h3>
 =======
+=======
+>>>>>>> origin/yeji1
                 <div class="icon-box-icon">
                   <i data-feather="credit-card"></i>
                 </div>
                 <h3 class="icon-box-title font-weight-semibold text-white">
                   Secure online payment
                 </h3>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
                 <p class="icon-box-text">We posess SSL / Secure сertificate</p>
               </div>
             </div>
@@ -3874,6 +4119,7 @@
         </div>
       </div>
       <!-- third row-->
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div class="pt-5 pb-4" style="background-color: #1f1f1f;">
         <div class="container">
@@ -3903,6 +4149,8 @@
             </div>
             <div class="col-sm-6 text-center text-sm-right"><a class="social-btn sb-facebook sb-light mx-1 mb-2" href="#"><i class="flaticon-facebook"></i></a><a class="social-btn sb-twitter sb-light mx-1 mb-2" href="#"><i class="flaticon-twitter"></i></a><a class="social-btn sb-instagram sb-light mx-1 mb-2" href="#"><i class="flaticon-instagram"></i></a><a class="social-btn sb-vimeo sb-light mx-1 mb-2" href="#"><i class="flaticon-vimeo"></i></a></div>
 =======
+=======
+>>>>>>> origin/yeji1
       <div class="pt-5 pb-4" style="background-color: #1f1f1f">
         <div class="container">
           <div class="row">
@@ -3924,11 +4172,15 @@
                 ><i class="flaticon-vimeo"></i
               ></a>
             </div>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
           </div>
           <div class="row pt-4">
             <div class="col-sm-6 text-center text-sm-left">
               <ul class="list-inline font-size-sm">
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Outlets</a></li>
                 <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Affiliates</a></li>
@@ -3940,6 +4192,8 @@
             <div class="col-sm-6 text-center text-sm-right">
               <div class="d-inline-block"><img width="187" src="img/cards.png" alt="Payment methods"/>
 =======
+=======
+>>>>>>> origin/yeji1
                 <li class="list-inline-item mr-3">
                   <a class="nav-link-inline nav-link-light" href="#">Outlets</a>
                 </li>
@@ -3964,12 +4218,16 @@
             <div class="col-sm-6 text-center text-sm-right">
               <div class="d-inline-block">
                 <img width="187" src="img/cards.png" alt="Payment methods" />
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
               </div>
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div class="py-3" style="background-color: #1a1a1a;">
         <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
@@ -3977,6 +4235,8 @@
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 =======
+=======
+>>>>>>> origin/yeji1
       <div class="py-3" style="background-color: #1a1a1a">
         <div class="container font-size-xs text-center" aria-label="Copyright">
           <span class="text-white opacity-60 mr-1"
@@ -3993,11 +4253,15 @@
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"
       ><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i
     ></a>
+<<<<<<< HEAD
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="js/vendor.min.js"></script>
     <script src="js/theme.min.js"></script>
   </body>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 	pageEncoding="UTF-8"%>
@@ -5958,4 +6222,6 @@ response.setDateHeader("Expires", 0); // Proxies
 >>>>>>> GM
 =======
 >>>>>>> origin/test1
+=======
+>>>>>>> origin/yeji1
 </html>
