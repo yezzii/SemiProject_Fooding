@@ -43,12 +43,13 @@
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Search site</h3>
+			<h3 class="offcanvas-title">푸딩 - 검색</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
+		<form>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<div class="input-group pt-3">
@@ -56,15 +57,14 @@
 						<span class="input-group-text" id="search-icon"><i
 							data-feather="search"></i></span>
 					</div>
-					<input class="form-control" type="text" id="site-search"
-						placeholder="Search site" aria-label="Search site"
-						aria-describedby="search-icon" />
+					<input class="form-control" type="text" id="site-search" name="main_search.do"
+						placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
+						aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do?keyword=" />
 				</div>
-				<small class="form-text pt-1">Type A or C to see
-					suggestions. Powered by Easy autocomplete plugin via separate JSON
-					file.</small>
+				<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
 			</div>
 		</div>
+		</form>
 	</div>
 
 
@@ -731,7 +731,7 @@
 					</div>
 					<a class="navbar-btn" href="#offcanvas-search"
 						data-toggle="offcanvas"><i class="mx-auto mb-1"
-						data-feather="search"></i>Search</a>
+						data-feather="search"></i>푸딩 검색</a>
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -756,7 +756,7 @@
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
 				</div>
 			</div>
 		</div>
