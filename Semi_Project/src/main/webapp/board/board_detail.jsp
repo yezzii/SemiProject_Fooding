@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<<<<<<< HEAD
 <script>
 	function delete_func() {
 		let pwd = prompt("게시글의 비밀번호를 입력해주세요.");
@@ -21,14 +22,24 @@
 </head>
 <body>
 	<c:set var="dto" value="${Dto}">
+=======
+
+</head>
+<body>
+	<c:set var="dto" value="${DTO}" />
+>>>>>>> GM
 		<div align="center">
 			<hr width="50%" color="marmoon">
 			<h3>BOARD 테이블 게시판 글쓰기 폼 페이지</h3>
 			<hr width="50%" color="marmoon">
 			<br>
 
+<<<<<<< HEAD
 			<form method="post"
 				action="<%=request.getContextPath()%>/insert_ok.do" onsubmit="">
+=======
+			<form method="post" >
+>>>>>>> GM
 				<table border="1" cellspacing="0" width="500">
 
 					<c:if test="${!empty dto }">
@@ -42,7 +53,11 @@
 						</tr>
 						<tr>
 							<th>글 번호</th>
+<<<<<<< HEAD
 							<td>${dto.getBoard_no()}</td>
+=======
+							<td>${dto.getBoard_idx()}</td>
+>>>>>>> GM
 
 							<th>글 작성자</th>
 							<td>${dto.getBoard_writer()}</td>
@@ -54,6 +69,7 @@
 							<th>작성일자</th>
 							<td>${dto.getBoard_date().substring(0, 10)}</td>
 							</c:if>
+<<<<<<< HEAD
 							<c:if test="dto.getBoard_update() != null">
 							<th>수정일자</th>
 							<td>${dto.getBoard_update().substring(0, 10)}</td>
@@ -61,6 +77,11 @@
 
 							<th>조회수</th>
 							<td colspan="3">${dto.getBoard_hit()}</td>
+=======
+							
+							<th>조회수</th>
+							<td colspan="3">${dto.getBoard_viewcnt()}</td>
+>>>>>>> GM
 						</tr>
 
 						<tr>
@@ -71,8 +92,12 @@
 						<tr>
 							<th>글 내용</th>
 							<td colspan="3" height="100">
+<<<<<<< HEAD
 								<%-- <textarea rows="7" cols="25"> <%=cont.getBoard_cont() %></textarea> --%>
 								${dto.getBoard_cont().replace("\r\n", "<br>")}
+=======
+								${dto.getBoard_content()}
+>>>>>>> GM
 							</td>
 						</tr>
 
@@ -81,13 +106,20 @@
 
 				<input type="button" value="목록" onclick="location.href='select.do'">&nbsp;&nbsp;
 				<input type="button" value="수정"
+<<<<<<< HEAD
 					onclick="location.href='modify.do?no=${dto.getBoard_no()}'">&nbsp;&nbsp;
+=======
+					onclick="location.href='modify.do?no=${dto.getBoard_idx()}'">&nbsp;&nbsp;
+>>>>>>> GM
 				<input type="button" value="글삭제" onclick="delete_func()">
 				&nbsp;&nbsp;
 
 			</form>
 		</div>
+<<<<<<< HEAD
 	</c:set>
+=======
+>>>>>>> GM
 </body>
 
 </html>

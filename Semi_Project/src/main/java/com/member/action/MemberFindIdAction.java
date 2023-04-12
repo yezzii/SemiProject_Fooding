@@ -14,6 +14,10 @@ public class MemberFindIdAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+		
+		//한글처리 작업 진행.
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html charset=utf-8");
 
 		String member_name = request.getParameter("send_name");
 		String member_email = request.getParameter("send_email");
@@ -32,7 +36,7 @@ public class MemberFindIdAction implements Action {
 		}else {
 			out.println("<script>");
 			out.println("alert('아이디 : "+foundId+"')");
-			out.println("location.href('member/main.jsp')");
+			out.println("location.href='main.do'");
 			out.println("</script>");
 		}
 		

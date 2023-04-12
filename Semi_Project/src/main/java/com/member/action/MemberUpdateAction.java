@@ -16,7 +16,12 @@ public class MemberUpdateAction implements Action {
 			throws IOException, ServletException {
 		
 		String member_id =request.getParameter("id").trim();
+<<<<<<< HEAD
 
+=======
+			System.out.println(member_id);
+			System.out.println();
+>>>>>>> GM
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO dto = dao.getMemberSelect(member_id);
 		

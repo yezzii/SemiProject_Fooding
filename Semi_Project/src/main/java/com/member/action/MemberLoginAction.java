@@ -13,6 +13,7 @@ import com.member.model.MemberDTO;
 
 import sha256.Encryption;
 
+
 public class MemberLoginAction implements Action {
 
 	@Override
@@ -43,8 +44,8 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("Thumnail", basic_thumnail);
 				
 				out.println("<script>");
-				out.println("alert('" + session.getAttribute("name") + " 관리자님 오지게 인사박습니다.')");
-				out.println("location.href='main.jsp'");
+				out.println("alert('" + session.getAttribute("name") + " 관리자님 오늘도 환영합니다.')");
+				out.println("location.href='index.jsp'");
 				out.println("</script>");
 				
 			} else if (memdto.getMember_type() == 1) {
@@ -58,7 +59,7 @@ public class MemberLoginAction implements Action {
 				
 				out.println("<script>");
 				out.println("alert('" + session.getAttribute("name") + " 회원님 다시 오신걸 환영합니다.')");
-				out.println("location.href='main.jsp'");
+				out.println("location.href='index.jsp'");
 				out.println("</script>");
 
 			} else if (memdto.getMember_type() == 2) {
@@ -73,7 +74,7 @@ public class MemberLoginAction implements Action {
 				
 				out.println("<script>");
 				out.println("alert('" + session.getAttribute("name") + " 사장님 다시 오신걸 환영합니다.')");
-				out.println("location.href='main.jsp'");
+				out.println("location.href='index.jsp'");
 				out.println("</script>");
 			}
 		}else {

@@ -15,9 +15,12 @@ import sha256.Encryption;
 public class CompanyJoinAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+		//한글처리 작업 진행.
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html charset=utf-8");
+		
 		String member_id = request.getParameter("company_id");
 		String member_name = request.getParameter("company_name");
 		String Raw_pwd = request.getParameter("company_pwd");
@@ -28,6 +31,7 @@ public class CompanyJoinAction implements Action {
 
 		MemberDTO dto = new MemberDTO();
 
+		
 		dto.setMember_id(member_id);
 		dto.setMember_name(member_name);
 		dto.setMember_pwd(member_pwd);

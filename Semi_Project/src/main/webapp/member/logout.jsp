@@ -9,7 +9,7 @@
 session.invalidate();
 
 // 2: 로그인 페이지로 이동시킴.
-response.sendRedirect("../main.jsp");
+response.sendRedirect("../index.jsp");
 %>
 <!DOCTYPE html>
 <html>

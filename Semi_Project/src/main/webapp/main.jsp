@@ -62,7 +62,6 @@ function kakaoLogout() {
 
 <%
 String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
-String userType = null;
 if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
 }
@@ -78,7 +77,11 @@ if (session.getAttribute("id") != null) {
 			<!-- 네비바 container -->
 			<div>
 				<a href="#" > <img class="ico_size"
+<<<<<<< HEAD
 					src="main_img/fooding type_3.png" style="width: 45px">
+=======
+					src="main_img/fooding type_1.png" style="width: 120px">
+>>>>>>> GM
 				</a>
 				<a href="#" > <img class="ico_size"
 					src="main_img/fooding type_2.png" style="width: 200px">
@@ -118,12 +121,21 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!--  로그인 -->
 				<a href="member/find_id.jsp">
+<<<<<<< HEAD
 					<button type="button" class="hideBtn">
+=======
+					<button type="button" class="findid">
+>>>>>>> GM
 						<span class="">아이디 찾기</span>
 					</button>
 				</a>
 				<!-- 아이디 찾기 -->
-
+				<a href="member/find_pwd.jsp">
+					<button type="button" class="findpwd">
+						<span class="">비밀번호 찾기</span>
+					</button>
+				</a>
+				<!-- 아이디 찾기 -->
 
 				<a href="member/join_select.jsp">
 					<button type="button" class="hideBtn">
@@ -131,7 +143,26 @@ if (session.getAttribute("id") != null) {
 					</button>
 				</a>
 				<!-- 회원가입 -->
+<<<<<<< HEAD
 				
+=======
+				
+				<a href="<%=request.getContextPath() %>/member_list.do">
+					<button type="button" class="join">
+						<span class="">관리자-회원관리페이지 테스트
+						</span>
+					</button>
+				</a>
+				<!-- test1 -->
+				
+					<a href="<%=request.getContextPath() %>/member_delete.do">
+					<button type="button" class="join">
+						<span class="">관리자-회원삭제 테스트
+						</span>
+					</button>
+				</a>
+				<!-- test2 -->
+>>>>>>> GM
 				
 				
 				
@@ -144,18 +175,30 @@ if (session.getAttribute("id") != null) {
 		<div class="profileFlex">
 		
 
+<<<<<<< HEAD
 				<a href="board/board_write.jsp">
 					<button type="button" class="hideBtn">
+=======
+				<a href="<%=request.getContextPath()%>/write_board.do">
+					<button type="button" class="write">
+>>>>>>> GM
 						<span class="">글쓰기</span>
 					</button>
 				</a>
 				<!-- 글쓰기 -->
 
+<<<<<<< HEAD
 			
 				<a href="member/logout.jsp">
 					<button type="button" class="hideBtn">
 						<span class="">로그아웃</span>
 					</button>
+=======
+
+				<a href = "<%=request.getContextPath()%>/myprofile.go"> <img
+					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
+					width="30px" height="30px">
+>>>>>>> GM
 				</a>
 			<!--  로그아웃 -->
 				
@@ -198,6 +241,7 @@ if (session.getAttribute("id") != null) {
 		<!-- 검색 -->
 	</div>
 
+<<<<<<< HEAD
  
 	<div class="main1-section">
 		<div class="main1">
@@ -243,6 +287,49 @@ if (session.getAttribute("id") != null) {
 			   <span class="carousel-control-next-icon" aria-hidden="true"></span>
 			   <span class="sr-only">Next</span>
 			 </button>
+=======
+
+
+	<div class="main1">
+		<!-- 메인섹션1 -->
+		<c:if test=""></c:if>
+		<div class="card-deck">
+			<div class="card">
+				<img src="main_img/1.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">This is a longer card with supporting text
+						below as a natural lead-in to additional content. This content is
+						a little bit longer.</p>
+					<p class="card-text">
+						<small class="text-muted">Last updated 3 mins ago</small>
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<img src="main_img/2.jpeg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">This card has supporting text below as a
+						natural lead-in to additional content.</p>
+					<p class="card-text">
+						<small class="text-muted">Last updated 3 mins ago</small>
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<img src="main_img/3.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">This is a wider card with supporting text
+						below as a natural lead-in to additional content. This card has
+						even longer content than the first to show that equal height
+						action.</p>
+					<p class="card-text">
+						<small class="text-muted">Last updated 3 mins ago</small>
+					</p>
+				</div>
+>>>>>>> GM
 			</div>
 		</div>
 		<!-- 메인섹션1 end-->
