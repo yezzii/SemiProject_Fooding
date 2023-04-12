@@ -1,5 +1,6 @@
 package com.member.model;
 
+import java.lang.reflect.Member;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -630,7 +631,163 @@ public class MemberDAO {
 			}
 			return result;
 		}//insertCustomer() 메서드 end
+
+	
 		
+		public int MemberKakaoJoin(MemberDTO dto) {
+
+			int result = 0, count = 0;
+
+			openConn();
+
+			try {
+
+				sql = "select max(member_no) from member";
+
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					count = rs.getInt(1);
+				}
+				
+				
+				sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone,"
+						+ " member_type,member_no,member_token) values(?,?,?,?,?,?,?,?)";
+
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setString(1, dto.getMember_id());
+				pstmt.setString(2, dto.getMember_name());
+				pstmt.setString(3, dto.getMember_pwd());
+				pstmt.setString(4, dto.getMember_email());
+				pstmt.setString(5, dto.getMember_phone());
+				pstmt.setInt(6, dto.getMember_type());
+				pstmt.setInt(7, count + 1);
+				pstmt.setString(8, dto.getMember_token());
+				
+
+				result = pstmt.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+
+			return result;
+		}
+		
+		public MemberDTO KakaoLogin(String kakao_token, String kakao_name, String kakao_email) {
+
+			MemberDTO dto = null;
+
+			openConn();
+
+			try {
+
+				sql = "select * from member where member_token = ? and member_name = ? and member_email = ?";
+
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setString(1, kakao_token);
+
+				pstmt.setString(2, kakao_name);
+				
+				pstmt.setString(3, kakao_email);
+
+				rs = pstmt.executeQuery();
+				
+				if (rs.next()) {
+					dto = new MemberDTO();
+					
+					dto.setMember_token(rs.getString("member_token"));
+					dto.setMember_id(rs.getString("member_id"));
+					dto.setMember_email(rs.getString("member_email"));
+					dto.setMember_phone(rs.getString("member_phone"));
+					dto.setMember_name(rs.getString("member_name"));
+					dto.setMember_type(rs.getInt("member_type"));
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return dto;
+		}
+		
+		public int tokenCheck(String member_token) {
+			
+			int res = 0;
+
+			try {
+				openConn();
+
+				sql = "select * from member where member_token = ?";
+
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setString(1, member_token);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					res = 1;
+				}else {
+					res = 0;
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+
+			return res;
+		}
+		
+		public MemberDTO getMemberProfile(String id) {
+			MemberDTO dto = null;
+			
+			openConn();
+			try {
+			sql = "select * from member where member_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				dto = new MemberDTO();
+				
+				dto.setMember_no(rs.getInt("member_no"));
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_pwd(rs.getString("member_pwd"));
+				dto.setMember_email(rs.getString("member_email"));
+				dto.setMember_phone(rs.getString("member_phone"));
+				dto.setMember_account(rs.getInt("member_account"));
+				dto.setMember_mark(rs.getString("member_mark"));
+				dto.setMember_storenum(rs.getString("member_storenum"));
+				dto.setMember_type(rs.getInt("member_type"));
+				dto.setMember_token(rs.getString("member_token"));
+				dto.setMember_joindate(rs.getString("member_joindate"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+	  }
+		return dto;
+	}//end 
 	
-	
+		
 }
+		
+
+	

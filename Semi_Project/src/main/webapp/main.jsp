@@ -1,6 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	
+	<script>
+
+	
+Kakao.init('fe3cf4492aa6c561d6c802d57d1418de'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그아웃
+  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }
+</script>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +71,9 @@ if (session.getAttribute("id") != null) {
 	userID = (String) session.getAttribute("id");
 	userType = (int)session.getAttribute("type");
 }
+
+String thumnail =  (String)session.getAttribute("Thumnail");
+String name = (String)session.getAttribute("name");
 %>
 
 </head>
@@ -124,27 +154,28 @@ if (session.getAttribute("id") != null) {
 				// 로그인이 되어있는 사람만 볼수 있는 화면 (사업자)
 				} else if(userID != null && userType == 2 ) {
 				%>
-				<a href="member/logout.jsp">
-				
-					<button type="button" class="logout"  >
-						<span class="">로그아웃</span>
-					</button>
-				</a>
-				<!--  로그아웃 -->
-
-
 				<a href="board/board_write.jsp">
-					<button type="button" class="write">
+					<button type="button" class="hideBtn">
 						<span class="">글쓰기</span>
 					</button>
 				</a>
 				<!-- 글쓰기 -->
 
-
-				<a href="<%=request.getContextPath()%>/myprofile.go"> <img
-					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
-					width="30px" height="30px">
+			
+				<a href="member/logout.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">로그아웃</span>
+					</button>
 				</a>
+			<!--  로그아웃 -->
+				
+				
+		<span class="profileInfo" ><%=userID%> 님</span>
+			<div class="radius_img">
+				<a href="<%=request.getContextPath()%>/myprofile.go"> 
+					<img class="profile_img" src="<%=thumnail%>">
+				</a>
+			</div>
 				
 				<a href="board/board_signUp.jsp">
 					<button type="button" class="join">
@@ -159,37 +190,68 @@ if (session.getAttribute("id") != null) {
 					</button>
 					</a>
 				<!-- test2 -->
+				<%
+				// 로그인이 되어있는 사람만 볼수 있는 화면 (카카오회원)
+				}else if(userID != null && userType == 3 ){
+				%>	
+				
+				<a href="board/board_write.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">글쓰기</span>
+					</button>
+				</a>
+				<!-- 글쓰기 -->
+
+			
+				<a href="member/logout.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">로그아웃</span>
+					</button>
+				</a>
+			<!--  로그아웃 -->
+				
+				
+		<span class="profileInfo" ><%=userID%> 님</span>
+			<div class="radius_img">
+				<a href="<%=request.getContextPath()%>/myprofile.go"> 
+					<img class="profile_img" src="<%=thumnail%>">
+				</a>
+			</div>
+			
 
 				<%
 				// 로그인이 되어있는 사람만 볼수 있는 화면 (일반회원)
 				}else if(userID != null && userType == 1 ){
 				%>	
 				
-				<a href="member/logout.jsp">
-				
-					<button type="button" class="logout"  >
-						<span class="">로그아웃</span>
-					</button>
-				</a>
-				<!--  로그아웃 -->
-
-
 				<a href="board/board_write.jsp">
-					<button type="button" class="write">
+					<button type="button" class="hideBtn">
 						<span class="">글쓰기</span>
 					</button>
 				</a>
 				<!-- 글쓰기 -->
 
-
-				<a href="<%=request.getContextPath()%>/myprofile.go"> <img
-					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
-					width="30px" height="30px">
+			
+				<a href="member/logout.jsp">
+					<button type="button" class="hideBtn">
+						<span class="">로그아웃</span>
+					</button>
 				</a>
+			<!--  로그아웃 -->
+				
+				
+		<span class="profileInfo" ><%=userID%> 님</span>
+			<div class="radius_img">
+				<a "<%=request.getContextPath()%>/myprofile.go"> 
+					<img class="profile_img" src="<%=thumnail%>">
+				</a>
+			</div>
 				<%	
 				}
 				%>
 			</div>
+			
+			
 			<!-- 로고 -->
 
 

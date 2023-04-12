@@ -12,8 +12,21 @@ private String member_mark;
 private String member_storenum;
 private int member_type;
 private int member_no;
+private String member_token;
+private String member_joindate;
 
-
+public String getMember_joindate() {
+	return member_joindate;
+}
+public void setMember_joindate(String member_joindate) {
+	this.member_joindate = member_joindate;
+}
+public String getMember_token() {
+	return member_token;
+}
+public void setMember_token(String member_token) {
+	this.member_token = member_token;
+}
 public int getMember_no() {
 	return member_no;
 }
