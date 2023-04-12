@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<<<<<<< HEAD
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Fooding</title>
-<!-- SEO Meta Tags-->
-<meta name="description"
-	content="Fooding - Modern Bootstrap E-commerce Template" />
-=======
 <%
 response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0
@@ -32,7 +22,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description"
 	content="MStore - Modern Bootstrap E-commerce Template" />
->>>>>>> GM
+	
 <meta name="keywords"
 	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 <meta name="author" content="Createx Studio" />
@@ -52,48 +42,25 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <!-- Customizer styles and scripts-->
-<<<<<<< HEAD
-=======
 
-
-<script type="text/javascript" src="js/vendor.min.js"></script>
-<script type="text/javascript" src="js/theme.min.js"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.1.js"></script>
-
->>>>>>> GM
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
 </head>
 <!-- Body-->
 <body>
 
-<<<<<<< HEAD
-	<%
-	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
-	if (session.getAttribute("id") != null) {
-		userID = (String) session.getAttribute("id");
-	}
-	%>
-=======
-
->>>>>>> GM
 	<!-- Off-canvas search-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-<<<<<<< HEAD
 			<h3 class="offcanvas-title">푸딩 - 검색</h3>
-=======
-			<h3 class="offcanvas-title">Search site</h3>
->>>>>>> GM
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-<<<<<<< HEAD
-		<form>
-=======
->>>>>>> GM
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<div class="input-group pt-3">
@@ -101,31 +68,17 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						<span class="input-group-text" id="search-icon"><i
 							data-feather="search"></i></span>
 					</div>
-<<<<<<< HEAD
-					<input class="form-control" type="text" id="site-search" name="main_search.do"
+					<input class="form-control" type="text" id="site-search" name="main_search"
 						placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
-						aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do?keyword=" />
+						aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do" />
 				</div>
-				<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
-			</div>
-		</div>
-		</form>
-	</div>
-
-
-
-	<%
-=======
-					<input class="form-control" type="text" id="site-search"
-						placeholder="Search site" aria-label="Search site"
-						aria-describedby="search-icon" />
-				</div>
-				<small class="form-text pt-1">Type A or C to see
-					suggestions. Powered by Easy autocomplete plugin via separate JSON
-					file.</small>
+				<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유롭게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
 			</div>
 		</div>
 	</div>
+
+
+
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -133,7 +86,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		userID = (String) session.getAttribute("id");
 	}
 
->>>>>>> GM
 	// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 	if (userID == null) {
 	%>
@@ -148,11 +100,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-<<<<<<< HEAD
-=======
 		
 		<%-- 로그인 --%>
->>>>>>> GM
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<ul class="nav nav-tabs nav-justified" role="tablist">
@@ -201,28 +150,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								로그인</button>
 						</form>
 					</div>
-<<<<<<< HEAD
-					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form class="needs-validation" novalidate>
-							<div class="form-group">
-								<label class="sr-only" for="signup-name">Full name</label> <input
-									class="form-control" type="text" id="signup-name"
-									placeholder="이름" aria-label="Full name" required />
-								<div class="invalid-feedback">이름을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-email">이메일</label> <input
-									class="form-control" type="email" id="signup-email"
-									placeholder="Email" aria-label="Email address" required />
-								<div class="invalid-feedback">이메일을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password">Password</label> <input
-									class="form-control" type="password" id="signup-password"
-									placeholder="Password" aria-label="Password" required />
-								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
-=======
-					
+
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
 						<form method="post" class="needs-validation" novalidate action="<%=request.getContextPath()%>/member_join.do" id="signup-form" name="signup-form">
@@ -241,20 +169,10 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									 />
 								<span class="feedback" id="signup-pwdchk"></span>
 								<div class="invalid-feedback"></div>
->>>>>>> GM
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
-<<<<<<< HEAD
-									id="signup-password-confirm" placeholder="Confirm password"
-									aria-label="Confirm password" required />
-								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
-							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								가입하기</button>
-						</form>
-=======
 									name="member_pwdchk" id="signup-password-confirm"
 									placeholder="Confirm password" aria-label="Confirm password"
 									 />
@@ -292,7 +210,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								사업자 가입</button>
 						</form>
 
->>>>>>> GM
 					</div>
 				</div>
 				<div class="d-flex align-items-center pt-5">
@@ -322,123 +239,14 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	%>
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
 		<div
-<<<<<<< HEAD
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-=======
 			class="offcanvas-header justify-content-between align-items-center">
->>>>>>> GM
 			<h3 class="offcanvas-title">로그인 / 회원가입</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-<<<<<<< HEAD
-		<div class="offcanvas-body">
-			<div class="offcanvas-body-inner">
-				<ul class="nav nav-tabs nav-justified" role="tablist">
-					<li class="nav-item"><a class="nav-link active" href="#signin"
-						data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="#signup"
-						data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;회원가입</a></li>
-				</ul>
-				<div class="tab-content pt-1">
-					<div class="tab-pane fade show active" id="signin" role="tabpanel">
-						<form class="needs-validation" novalidate method="post"
-							action="<%=request.getContextPath()%>/login.do">
-							<div class="form-group">
-								<label class="sr-only" for="signin-id">ID</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="signin-id-icon"><i
-											data-feather="mail"></i></span>
-									</div>
-									<input class="form-control" type="text" id="signin-id"
-										placeholder="ID" aria-label="ID" name="id"
-										aria-describedby="signin-id-icon" required />
-									<div class="invalid-feedback">아이디를 입력해주세요.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signin-password">Password</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="signin-password-icon"><i
-											data-feather="lock"></i></span>
-									</div>
-									<input class="form-control" type="password"
-										id="signin-password" placeholder="Password"
-										aria-label="Password" name="pwd"
-										aria-describedby="signin-password-icon" required />
-									<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
-								</div>
-							</div>
-							<div class="custom-control custom-checkbox mb-3">
-								<input class="custom-control-input" type="checkbox"
-									id="remember-me" checked /> <label
-									class="custom-control-label" for="remember-me">아이디 저장</label>
-							</div>
-							<button class="btn btn-primary btn-block" type="button"
-								onclick="location.href='../member/logout.jsp'">로그아웃</button>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form class="needs-validation" novalidate>
-							<div class="form-group">
-								<label class="sr-only" for="signup-name">Full name</label> <input
-									class="form-control" type="text" id="signup-name"
-									placeholder="이름" aria-label="Full name" required />
-								<div class="invalid-feedback">이름을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-email">이메일</label> <input
-									class="form-control" type="email" id="signup-email"
-									placeholder="Email" aria-label="Email address" required />
-								<div class="invalid-feedback">이메일을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password">Password</label> <input
-									class="form-control" type="password" id="signup-password"
-									placeholder="Password" aria-label="Password" required />
-								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password-confirm">비밀번호
-									확인</label> <input class="form-control" type="password"
-									id="signup-password-confirm" placeholder="Confirm password"
-									aria-label="Confirm password" required />
-								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
-							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								가입하기</button>
-						</form>
-					</div>
-				</div>
-				<div class="d-flex align-items-center pt-5">
-					<hr class="w-100" />
-					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
-						로그인</div>
-					<hr class="w-100" />
-				</div>
-				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
-						class="social-btn sb-google-plus mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
-						class="social-btn sb-twitter mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Twitter"><i
-						class="flaticon-twitter"></i></a>
-				</div>
-			</div>
-		</div>
 	</div>
-
-=======
-
-	</div>
->>>>>>> GM
 	<%
 	}
 	%>
@@ -542,12 +350,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		<div class="container-fluid navbar-inner">
 			<!-- navbar brand-->
 			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
-<<<<<<< HEAD
 				width="250" src="img/logo-fooding.png" alt="Fooding" /></a>
 
-=======
-				width="100" src="img/logo-dark.png" alt="MStore" /></a>
->>>>>>> GM
 			<!-- navbar collapse area-->
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
@@ -668,11 +472,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-<<<<<<< HEAD
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
-=======
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
->>>>>>> GM
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
@@ -683,23 +483,16 @@ if(request.getProtocol().equals("HTTP/1.1"))
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-<<<<<<< HEAD
-=======
 											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
->>>>>>> GM
 										</ul>
 									</div>
 								</div>
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-<<<<<<< HEAD
-										<h3 class="widget-title">Shop pages</h3>
-=======
 										<h3 class="widget-title">Shop</h3>
->>>>>>> GM
 										<ul>
 											<li><a href="shop-categories-apparel.jsp"><i
 													class="widget-categories-indicator"
@@ -744,10 +537,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								</div>
 							</div>
 						</div></li>
-<<<<<<< HEAD
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
-=======
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">예약</a>
@@ -771,7 +560,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">내정보</a>
->>>>>>> GM
 						<ul class="dropdown-menu">
 							<li class="dropdown"><a
 								class="dropdown-item dropdown-toggle" href="#"
@@ -780,14 +568,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
 									<li class="dropdown-divider"></li>
-<<<<<<< HEAD
-									<li><a class="dropdown-item"
-										href="<%=request.getContextPath()%>/asdfasdf.do">서블렛
-											호출테스트</a></li>
-=======
 									<li><a class="dropdown-item" href="account-profile.jsp">Profile
 											Settings</a></li>
->>>>>>> GM
 									<li class="dropdown-divider"></li>
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
@@ -839,30 +621,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							<li><a class="dropdown-item" href="404.jsp">404 Not
 									Found</a></li>
 						</ul></li>
-<<<<<<< HEAD
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Blog Layout</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
-											Right Sidebar</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Single Post Layout</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
-											No Sidebar</a></li>
-								</ul></li>
-						</ul></li>
-=======
-
->>>>>>> GM
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
 							class="mr-1" data-feather="file-text"></i>Docs</a>
@@ -925,11 +683,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					</div>
 					<a class="navbar-btn" href="#offcanvas-search"
 						data-toggle="offcanvas"><i class="mx-auto mb-1"
-<<<<<<< HEAD
 						data-feather="search"></i>푸딩 검색</a>
-=======
-						data-feather="search"></i>Search</a>
->>>>>>> GM
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -944,13 +698,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					} else {
 					%>
 					<a class="navbar-btn navbar-collapse-hidden"
-<<<<<<< HEAD
-						href="#offcanvas-account" data-toggle="offcanvas"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
-=======
 						href="member/logout.jsp"><i
 						class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
->>>>>>> GM
 
 					<%
 					}
@@ -959,21 +708,12 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
-<<<<<<< HEAD
 							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
-=======
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
->>>>>>> GM
 				</div>
 			</div>
 		</div>
 	</header>
 	<!-- Page Content-->
-<<<<<<< HEAD
-
-
-=======
->>>>>>> GM
 	<!-- Hero slider-->
 	<section class="container-fluid bg-secondary px-0">
 		<div class="row no-gutters align-items-center">
@@ -982,7 +722,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<div class="owl-carousel trigger-carousel"
 						data-owl-carousel='{ "nav": true, "dots": false, "loop": true, "autoHeight": true }'
 						data-target-carousel="#target-carousel">
-<<<<<<< HEAD
 						
 						<div class="py-4 px-3 px-sm-5">
 							<img class="d-block mb-2"
@@ -1023,38 +762,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">스펙트럼 앰배서더 서울</h2>
 							<h5 class="font-weight-light opacity-70 pb-3" style="font-family: 'GmarketSansMedium';">서울 영등포구 여의대로 108<br> 페어몬트 앰배서더 서울 5층</h5>
 							<a class="btn btn-primary" href="shop-style1-ls.jsp" style="font-family: 'GmarketSansMedium';">예약하기<i
-=======
-						<div class="py-5 px-3 px-sm-5">
-							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo01.png" width="180"
-								alt="Reebok" />
-							<h2 class="mb-1">Sneakers Classic Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$105.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
-								class="ml-2" data-feather="arrow-right"></i>
-							</a>
-						</div>
-						<div class="py-5 px-3 px-sm-5">
-							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo02.png" width="129"
-								alt="The North Face" />
-							<h2 class="mb-1">Sports Hoodie Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$89.00</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
-								class="ml-2" data-feather="arrow-right"></i>
-							</a>
-						</div>
-						<div class="py-5 px-3 px-sm-5">
-							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo03.png" width="182"
-								alt="Calvin Klein" />
-							<h2 class="mb-1">Sunglasses Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$16.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
->>>>>>> GM
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
@@ -1064,7 +771,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 			<div class="col-md-6">
 				<div class="owl-carousel" id="target-carousel"
 					data-owl-carousel='{ "nav": false, "dots": false, "loop": true, "mouseDrag": false, "touchDrag": false, "pullDrag": false, "animateOut": "fadeOut" }'>
-<<<<<<< HEAD
 					<img class="ml-auto mr-0" src="img/photo/Fei.jpg"
 						alt="서울드래곤시티 페이" />
 						<img class="ml-auto mr-0"
@@ -1073,33 +779,19 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						alt="서촌김씨 오스테리아" />
 							<img class="ml-auto mr-0" src="img/photo/spectrum.png"
 						alt="스펙트럼 앰배서더 서울" />
-=======
-					<img class="ml-auto mr-0" src="img/home/apparel/hero-slide01.jpg"
-						alt="Sneakers Collection" /><img class="ml-auto mr-0"
-						src="img/home/apparel/hero-slide02.jpg" alt="Hoodie Collection" /><img
-						class="ml-auto mr-0" src="img/home/apparel/hero-slide03.jpg"
-						alt="Sunglasses Collection" />
->>>>>>> GM
 				</div>
 			</div>
 		</div>
 	</section>
-<<<<<<< HEAD
 	
 	<!-- Popular categories (carousel)-->
 	<section class="container py-5 mt-3">
 		<h5 class="h3 text-center pb-4" style="font-family: 'GmarketSansMedium';">상황별·주제별 BEST</h5>
-=======
-	<!-- Popular categories (carousel)-->
-	<section class="container py-5 mt-3">
-		<h2 class="h3 text-center pb-4">Popular categories</h2>
->>>>>>> GM
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"460":{"items":2}, "768":{"items":3}} }'>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-<<<<<<< HEAD
 						<img src="img/photo/Date.png" alt="GoodDate" />
 					</div>
 					<div class="thumblist">
@@ -1112,27 +804,11 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<span class="d-block mb-3 font-size-s text-muted">특별한 날, 소중한 추억을 남기고 싶다면?</span>
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
 						href="shop-style1-ls.jsp">자세히</a>
-=======
-						<img src="img/shop/apparel/categories/01.jpg" alt="Clothing" />
-					</div>
-					<div class="thumblist">
-						<img src="img/shop/apparel/categories/02.jpg" alt="Clothing" /><img
-							src="img/shop/apparel/categories/03.jpg" alt="Clothing" />
-					</div>
-				</a>
-				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Clothing</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$49.99</span>
-					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop clothing</a>
->>>>>>> GM
 				</div>
 			</div>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-<<<<<<< HEAD
 						<img src="img/photo/GoodView.png" alt="GoodView" />
 					</div>
 					<div class="thumblist">
@@ -1145,27 +821,11 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<span class="d-block mb-3 font-size-s text-muted"> 전망 좋은 레스토랑에서의 식사 어때요?
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
 						href="shop-style1-ls.jsp">자세히</a>
-=======
-						<img src="img/shop/apparel/categories/04.jpg" alt="Shoes" />
-					</div>
-					<div class="thumblist">
-						<img src="img/shop/apparel/categories/05.jpg" alt="Shoes" /><img
-							src="img/shop/apparel/categories/06.jpg" alt="Shoes" />
-					</div>
-				</a>
-				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Shoes</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$56.00</span>
-					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop shoes</a>
->>>>>>> GM
 				</div>
 			</div>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-<<<<<<< HEAD
 						<img src="img/photo/Adult.png" alt="WithAdult" />
 					</div>
 					<div class="thumblist">
@@ -1178,28 +838,12 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<span class="d-block mb-3 font-size-s text-muted">부모님께 색다른 하루를 선물해보세요!
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
 						href="shop-style1-ls.jsp">자세히</a>
-=======
-						<img src="img/shop/apparel/categories/07.jpg" alt="Bags" />
-					</div>
-					<div class="thumblist">
-						<img src="img/shop/apparel/categories/08.jpg" alt="Bags" /><img
-							src="img/shop/apparel/categories/09.jpg" alt="Bags" />
-					</div>
-				</a>
-				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Bags</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$27.00</span>
-					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop bags</a>
->>>>>>> GM
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Brands carousel-->
 	<section class="container pb-4 mt-md-3">
-<<<<<<< HEAD
 		<h5 class="h3 text-center pb-4" style="font-family: 'GmarketSansMedium';">브랜드 관</h5>
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "loop": true, "margin": 30, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2, "margin": 15},"460":{"items":3, "margin": 15}, "768":{"items":4}} }'>
@@ -1238,46 +882,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
 				class="d-block mx-auto" src="img/photo/10.png"
-=======
-		<h2 class="h3 text-center pb-4">Shop by brand</h2>
-		<div class="owl-carousel"
-			data-owl-carousel='{ "nav": false, "dots": true, "loop": true, "margin": 30, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2, "margin": 15},"460":{"items":3, "margin": 15}, "768":{"items":4}} }'>
-			<a class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/01.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/02.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/03.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/04.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/05.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/06.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/07.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/08.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/09.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/10.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/11.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/12.png"
->>>>>>> GM
 				style="width: 150px" alt="Brand" /></a>
 		</div>
 	</section>
@@ -2198,11 +1802,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<div class="col-sm-6 text-center text-sm-left">
 						<div class="mb-4 mb-sm-0">
 							<a class="d-inline-block" href="index.jsp"><img width="100"
-<<<<<<< HEAD
 								src="img/logo-light.png" alt="Fooding" /></a>
-=======
-								src="img/logo-light.png" alt="MStore" /></a>
->>>>>>> GM
 
 						</div>
 					</div>
@@ -2248,13 +1848,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-<<<<<<< HEAD
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
-=======
+
 	
 <script type="text/javascript" src="js/sign_upChk.js"></script>
->>>>>>> GM
 </body>
 </html>

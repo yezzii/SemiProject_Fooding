@@ -11,13 +11,8 @@ private int member_type;
 private String member_name;
 private String member_mark;
 private String member_storenum;
-<<<<<<< HEAD
-private int member_type;
 private int member_no;
 private String member_token;
-=======
-private int member_no;
->>>>>>> GM
 
 
 public String getMember_token() {
@@ -86,12 +81,6 @@ public String getMember_name() {
 }
 public void setMember_name(String member_name) {
 	this.member_name = member_name;
-}
-public int getMember_no() {
-	return member_no;
-}
-public void setMember_no(int member_no) {
-	this.member_no = member_no;
 }
 
 

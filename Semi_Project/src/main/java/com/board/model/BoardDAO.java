@@ -130,7 +130,6 @@ public class BoardDAO {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 
 		try {
-<<<<<<< HEAD
 			
 			sql = "select * from board where board_type = ? order by board_idx";
 
@@ -164,81 +163,8 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public List<BoardDTO> ReviewBoardList() {
 
-		openConn();
 
-		BoardDTO dto = null;
-		
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		
-		try {
-			
-=======
-
->>>>>>> GM
-			sql = "select * from board where board_type = ? order by board_idx";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, "0");
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-
-				dto = new BoardDTO();
-
-				dto.setBoard_idx(rs.getInt("board_idx"));
-				dto.setBoard_title(rs.getString("board_title"));
-				dto.setBoard_writer(rs.getString("board_writer"));
-				dto.setBoard_content(rs.getString("board_content"));
-				dto.setBoard_date(rs.getString("board_date"));
-				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
-				dto.setBoard_type(rs.getInt("board_type"));
-
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-
-		return list;
-	}
-
-<<<<<<< HEAD
-	public void ContentBoard(int no) {
-		
-		openConn();
-		
-		sql = "select * from board order by board_idx";
-		
-		
-	}
-	
-	
-public int BoardMain(BoardMainDTO dto) {
-		
-		int result = 0;
-		
-		openConn();
-		
-		sql = "insert into board_main(main_name,main_content,main_addr,main_location) values(?,?,?,?)";
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, dto.getMain_name());
-			pstmt.setString(2, dto.getMain_content());
-			pstmt.setString(3, dto.getMain_addr());
-			pstmt.setString(4, dto.getMain_location());
-			
-			result = pstmt.executeUpdate();
-			
-=======
 	public List<BoardDTO> ReviewBoardList() {
 
 		openConn();
@@ -305,23 +231,15 @@ public int BoardMain(BoardMainDTO dto) {
 				dto.setBoard_type(rs.getInt("board_type"));
 			}
 
->>>>>>> GM
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-		return result;
-				
-	}
-	
-	
-	
-	
-=======
+
 
 		return dto;
 	}
 
->>>>>>> GM
+
 }

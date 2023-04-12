@@ -7,7 +7,6 @@
 @import
 	url("https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800")
 	;
-<<<<<<< HEAD
 	
 	@font-face {
     font-family: 'GmarketSansMedium';
@@ -16,8 +15,6 @@
     font-style: normal;
 	}
 	
-=======
->>>>>>> GM
 
 :root { -
 	-blue: #007bff; -
@@ -579,13 +576,8 @@ pre code {
 	display: flex;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-<<<<<<< HEAD
 	padding: 5px 140px;
 	margin-top: -20px;
-=======
-	margin-right: -15px;
-	margin-left: -15px
->>>>>>> GM
 }
 
 .no-gutters {
@@ -2310,8 +2302,7 @@ textarea.form-control {
 	font-size: 80%;
 	color: #f44336
 }
-<<<<<<< HEAD
-=======
+
 .feedback {
 	display: none;
 	width: 100%;
@@ -2319,7 +2310,7 @@ textarea.form-control {
 	font-size: 80%;
 	color: #f44336
 }
->>>>>>> GM
+
 
 .invalid-tooltip {
 	position: absolute;
@@ -2612,24 +2603,14 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-primary {
 	color: #fff;
-<<<<<<< HEAD
 	background-color: #ff9326;
 	border-color: none
-=======
-	background-color: #5c77fc;
-	border-color: #5c77fc
->>>>>>> GM
 }
 
 .btn-primary:hover {
 	color: #fff;
-<<<<<<< HEAD
 	background-color: #ffb973;
 	border-color: #ffffff
-=======
-	background-color: #3658fb;
-	border-color: #2a4dfb
->>>>>>> GM
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2910,13 +2891,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-<<<<<<< HEAD
 	color: #ff9326;
 	border-color: #ff9326
-=======
-	color: #5c77fc;
-	border-color: #5c77fc
->>>>>>> GM
 }
 
 .btn-outline-primary:hover {
@@ -4802,7 +4778,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	color: #fff
 }
 
-<<<<<<< HEAD
 
 @media (max-width: 767px) {
   .card {
@@ -4810,8 +4785,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   }
 }
 
-=======
->>>>>>> GM
 .card {
 	position: relative;
 	display: -webkit-box;
@@ -4919,17 +4892,13 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
 	flex-direction: column
-<<<<<<< HEAD
 	
-=======
->>>>>>> GM
 }
 
 .card-deck .card {
 	margin-bottom: 15px
 }
 
-<<<<<<< HEAD
 #flexCardSlider_Dong{
 	
 	display: flex;
@@ -4939,8 +4908,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	
 }
 
-=======
->>>>>>> GM
 @media ( min-width : 576px) {
 	.card-deck {
 		-webkit-box-orient: horizontal;
@@ -4948,11 +4915,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 		-ms-flex-flow: row wrap;
 		flex-flow: row wrap;
 		margin-right: -15px;
-<<<<<<< HEAD
 		margin-left: 33px;
-=======
-		margin-left: -15px
->>>>>>> GM
 	}
 	.card-deck .card {
 		display: -webkit-box;
@@ -6455,14 +6418,10 @@ a.close.disabled {
 }
 
 .carousel {
-<<<<<<< HEAD
 	position: relative;
  	width: 700px;
 	height: calc(800px * 0.5);
 
-=======
-	position: relative
->>>>>>> GM
 }
 
 .carousel.pointer-event {
@@ -6473,11 +6432,7 @@ a.close.disabled {
 .carousel-inner {
 	position: relative;
 	width: 100%;
-<<<<<<< HEAD
 	overflow: hidden;
-=======
-	overflow: hidden
->>>>>>> GM
 }
 
 .carousel-inner::after {
@@ -6490,10 +6445,7 @@ a.close.disabled {
 	position: relative;
 	display: none;
 	float: left;
-<<<<<<< HEAD
 	height: 400px;
-=======
->>>>>>> GM
 	width: 100%;
 	margin-right: -100%;
 	-webkit-backface-visibility: hidden;
@@ -6504,7 +6456,6 @@ a.close.disabled {
 	transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out
 }
 
-<<<<<<< HEAD
 
 .carousel-item img {
   max-height: 100%;
@@ -6513,8 +6464,6 @@ a.close.disabled {
   margin: auto;
 }
 
-=======
->>>>>>> GM
 @media ( prefers-reduced-motion : reduce) {
 	.carousel-item {
 		-webkit-transition: none;
@@ -6570,11 +6519,7 @@ a.close.disabled {
 
 .carousel-control-prev, .carousel-control-next {
 	position: absolute;
-<<<<<<< HEAD
 	top: 20px;
-=======
-	top: 0;
->>>>>>> GM
 	bottom: 0;
 	z-index: 1;
 	display: -webkit-box;
@@ -6591,14 +6536,10 @@ a.close.disabled {
 	text-align: center;
 	opacity: .5;
 	-webkit-transition: opacity 0.15s ease;
-<<<<<<< HEAD
 	transition: opacity 0.15s ease;
 	 background-color: transparent;
     border: none;
       margin-top: -25px;
-=======
-	transition: opacity 0.15s ease
->>>>>>> GM
 }
 
 @media ( prefers-reduced-motion : reduce) {
@@ -11298,11 +11239,7 @@ to {
 		position: fixed
 	}
 	.navbar-expand-lg.navbar.fixed-top+* {
-<<<<<<< HEAD
 		margin-top: 7rem
-=======
-		margin-top: 5rem
->>>>>>> GM
 	}
 	.navbar-expand-lg .navbar-collapse {
 		position: static;
@@ -12838,11 +12775,7 @@ to {
 
 .owl-carousel .owl-nav button.owl-next:hover:not(.disabled),
 	.owl-carousel .owl-nav button.owl-prev:hover:not(.disabled) {
-<<<<<<< HEAD
 	color: #ff9326
-=======
-	color: #5c77fc
->>>>>>> GM
 }
 
 .owl-carousel .owl-nav button.owl-next:focus, .owl-carousel .owl-nav button.owl-prev:focus
