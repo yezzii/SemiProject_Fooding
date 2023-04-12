@@ -234,6 +234,80 @@ public class MemberDAO {
 		}
 		return foundId;
 	}
+	
+	
+	// 아이디로 값을 받아와서 dto에 저장 후 매개변수로 받아온 입력값을 비교
+	public MemberDTO MemberFindPwd(String member_id) {
+
+		MemberDTO dto = null;
+		
+		int result = 0;
+
+		openConn();
+
+		try {
+			String sql = "select * from member where member_id = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, member_id);
+			
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				
+				dto = new MemberDTO();
+				
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_email(rs.getString("member_email"));
+				dto.setMember_no(rs.getInt("member_no"));
+				
+				System.out.println("아이디 : " + dto.getMember_id());
+				System.out.println("이름 : " + dto.getMember_name());
+				System.out.println("이메일 : " + dto.getMember_email());
+
+			}else {
+				dto = new MemberDTO();
+				
+				dto.setMember_id("없음");
+			}
+			
+			
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return dto;
+	}
+
+	// 임시비밀번호 DB에 저장
+	public void TempPwdUpdate(int no, String encode) {
+		
+		openConn();
+
+		String sql = "update member set member_pwd = ? where member_no = ?";
+		
+		try {
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, encode);
+			
+			pstmt.setInt(2, no);
+			
+			int result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+	}
 
 	
 
