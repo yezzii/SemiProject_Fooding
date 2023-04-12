@@ -155,14 +155,20 @@ if (session.getAttribute("id") != null) {
 				</a>
 				<!-- test1 -->
 				
-					<a href="<%=request.getContextPath() %>/member_delete.do">
+				<a href="<%=request.getContextPath() %>/member_delete.do">
 					<button type="button" class="join">
 						<span class="">관리자-회원삭제 테스트
 						</span>
 					</button>
 				</a>
 				<!-- test2 -->
+<<<<<<< HEAD
 >>>>>>> GM
+=======
+
+				
+
+>>>>>>> origin/test1
 				
 				
 				
@@ -186,6 +192,12 @@ if (session.getAttribute("id") != null) {
 					</button>
 				</a>
 				<!-- 글쓰기 -->
+				
+				<a href="board/board_main.jsp">
+				<button type="button" class="">
+				<span class="">가게등록</span>
+				</button>
+				</a>
 
 <<<<<<< HEAD
 			
@@ -195,7 +207,11 @@ if (session.getAttribute("id") != null) {
 					</button>
 =======
 
+<<<<<<< HEAD
 				<a href = "<%=request.getContextPath()%>/myprofile.go"> <img
+=======
+				<a href="<%=request.getContextPath()%>/myprofile.do"> <img
+>>>>>>> origin/test1
 					src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
 					width="30px" height="30px">
 >>>>>>> GM
@@ -224,6 +240,7 @@ if (session.getAttribute("id") != null) {
 
 
 		</div>
+<<<<<<< HEAD
 
 	<hr align="center" width="90%" color="lightgray">
 	<br>
@@ -231,6 +248,9 @@ if (session.getAttribute("id") != null) {
 	
 
 		<div align="center">
+=======
+		<div>
+>>>>>>> origin/test1
 			<form class="searchLine"
 				action="loaction.href='<%=request.getContextPath()%>/main_search.go'">
 				<span class="top_left_aTag-s" >

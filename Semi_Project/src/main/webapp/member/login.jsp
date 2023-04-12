@@ -1,8 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 	
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	
+	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	
 	<script>
@@ -137,59 +146,6 @@ function getCookie(name) {
 }
 
 </script>
-	
-=======
-
-
-
->>>>>>> GM
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
-<script>
-	Kakao.init('fe3cf4492aa6c561d6c802d57d1418de'); //발급받은 키 중 javascript키를 사용해준다.
-	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-	//카카오로그인
-	function kakaoLogin() {
-		Kakao.Auth.login({
-			success : function(response) {
-				Kakao.API.request({
-					url : '/v2/user/me',
-					success : function(response) {
-						console.log(response)
-					},
-					fail : function(error) {
-						console.log(error)
-					},
-				})
-			},
-			fail : function(error) {
-				console.log(error)
-			},
-		})
-	}
-
-	function kakaoLogout() {
-		if (Kakao.Auth.getAccessToken()) {
-			Kakao.API.request({
-				url : '/v1/user/unlink',
-				success : function(response) {
-					console.log(response)
-				},
-				fail : function(error) {
-					console.log(error)
-				},
-			})
-			Kakao.Auth.setAccessToken(undefined)
-		}
-	}
-</script>
 </head>
 <body>
 
@@ -206,7 +162,6 @@ function getCookie(name) {
 					<th>비밀번호 :</th>
 					<td><input type="password" name="pwd"></td>
 				</tr>
-<<<<<<< HEAD
 				
 				
 				
@@ -228,7 +183,6 @@ function getCookie(name) {
 					</a>
 				<!-- 비밀번호 찾기 -->
 					</td>
-=======
 
 				<tr>
 					<th>카카오 로그인</th>
@@ -259,7 +213,6 @@ function getCookie(name) {
 								<span class="">비밀번호 찾기</span>
 							</button>
 					</a> <!-- 비밀번호 찾기 --></td>
->>>>>>> GM
 				</tr>
 
 			</table>

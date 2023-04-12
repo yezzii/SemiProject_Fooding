@@ -40,6 +40,7 @@
 				<th>리뷰제목</th>
 				<th>작성자</th>
 				<th>리뷰내용</th>
+				<th>사진</th>
 				<th>리뷰작성일자</th>
 				<th>조회수</th>
 			</tr>
@@ -50,10 +51,13 @@
 					<tr>
 						<td>${dto.getBoard_idx() }</td>
 						<td><a
-							href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a>
+							href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx()}">${dto.getBoard_title() }</a>
 						</td>
 						<td>${dto.getBoard_writer() }</td>
 						<td>${dto.getBoard_content() }</td>
+						<td>
+						<img src="<%=request.getContextPath() %>../photo/${dto.getBoard_image() }" width="100" height="100">
+						</td>
 						<td>${dto.getBoard_date().substring(0,10) }</td>
 						<td>${dto.getBoard_viewcnt() }</td>
 					</tr>

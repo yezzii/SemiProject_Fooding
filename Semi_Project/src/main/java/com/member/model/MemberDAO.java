@@ -237,6 +237,7 @@ public class MemberDAO {
 		}
 		return foundId;
 	}
+	
 
 
 	// 아이디로 값을 받아와서 dto에 저장 후 매개변수로 받아온 입력값을 비교
@@ -328,12 +329,10 @@ public class MemberDAO {
 			if (rs.next()) {
 				count = rs.getInt(1);
 			}
-
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
 		}
 
 		return count;
@@ -678,4 +677,47 @@ public class MemberDAO {
 		      return res;
 		   }
 	   
+	public MemberDTO myProfile(String id) {
+		
+		MemberDTO dto = null;
+		
+		
+		openConn();
+		
+		sql = "select * from member where member_id = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto = new MemberDTO();
+				
+				dto.setMember_account(rs.getInt("member_account"));
+				dto.setMember_email(rs.getString("member_email"));
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_mark(rs.getString("member_mark"));
+				dto.setMember_name(rs.getString("member_name"));
+				dto.setMember_phone(rs.getString("member_phone"));
+				dto.setMember_pwd(rs.getString("member_pwd"));
+				dto.setMember_storenum(rs.getString("member_storenum"));
+				dto.setMember_type(rs.getInt("member_type"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dto;
+		
+	}
+	
+	
+	
+	
 }

@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 
+<<<<<<< HEAD
 @font-face {
     font-family: 'KorailRoundGothicBold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KorailRoundGothicBold.woff2') format('woff2');
@@ -24,11 +25,22 @@ body	{
 
 
 
+=======
+
+body	{
+	background-color: #f7f9fa;
+}
+
+>>>>>>> origin/test1
 .mainSlidebox	{
 	margin-right: 120px;
 	margin-left: 120px;
 	padding-right: 40px;
+<<<<<<< HEAD
 	padding-left:40px;
+=======
+	paddin-left:40px;
+>>>>>>> origin/test1
 	
 }
 
@@ -40,7 +52,10 @@ body	{
     padding-left: 30px;
     padding-right: 30px; 
     flex-direction: column;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/test1
     
 }
 
@@ -51,8 +66,11 @@ body	{
     margin: 20px;
     padding-left: 60px;
     padding-right: 60px;
+<<<<<<< HEAD
      font-family: 'GmarketSansMedium';
     
+=======
+>>>>>>> origin/test1
 }
 
 
@@ -76,11 +94,17 @@ body	{
     outline: none;
     color: #ff6226;
     text-decoration: none;
+<<<<<<< HEAD
     
 
 }
 
 .top_left_aTag:hover	{
+=======
+}
+
+.top_left_aTag-s	{
+>>>>>>> origin/test1
 
     border: none;
     background: none;
@@ -88,11 +112,16 @@ body	{
     position: relative;
     display: inline-block;
     margin: 0 10px;
+<<<<<<< HEAD
     padding: 15px 10px;
+=======
+    padding: 10px 0px;
+>>>>>>> origin/test1
     font-size: 18px;
     line-height: 1;
     font-weight: bold;
     outline: none;
+<<<<<<< HEAD
     color: #000000;
     text-decoration: none;
 }
@@ -106,13 +135,27 @@ body	{
     padding: 20px 0 0 0;
     font-size: 18px;
     font-family: 'GmarketSansMedium';
+=======
+    color: #ff6226;
+>>>>>>> origin/test1
     text-decoration: none;
 }
 
 
 .top_search	{
+<<<<<<< HEAD
 
     margin: 7px 0 0 26px;
+=======
+	box-sizing: border-box;
+    -webkit-flex: 1 0 0%;
+    -ms-flex: 1 0 0%;
+    flex: 1 0 0%;
+    vertical-align: middle;
+    outline: none;
+    display: inline-block;
+    margin: 0;
+>>>>>>> origin/test1
     padding: 0;
     border: none;
     background: none;
@@ -120,12 +163,16 @@ body	{
     color: #8e98a2;
     outline: none;
     font-size: 16px;
+<<<<<<< HEAD
     font-family: 'GmarketSansMedium';
+=======
+>>>>>>> origin/test1
     line-height: 24px;
     height: 40px;
 }
 
 .searchLine		{
+<<<<<<< HEAD
 	border:1px solid lightgray;
 	border-radius:0.4em;
 	width: 500px;
@@ -173,11 +220,21 @@ body	{
     border: 3px solid #ff9637;
     margin: 0 20px 0 0;
 	
+=======
+	border-color: lightgray;
+	border-style: solid;
+	bo
+}
+
+.main1	{
+	padding:40px 100px;
+>>>>>>> origin/test1
 }
 
 
 
 
+<<<<<<< HEAD
 
 .profile_img	{
 	
@@ -217,3 +274,6 @@ body	{
 
 
 /* end */
+=======
+}/* end */
+>>>>>>> origin/test1

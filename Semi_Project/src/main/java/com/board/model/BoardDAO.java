@@ -98,20 +98,22 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				count = rs.getInt(1);
+				count = rs.getInt(1) + 1;
 			}
 
-			sql = "insert into board(board_idx,board_title,board_writer,board_date,board_viewcnt,board_content,board_type) values(?,?,?,default,default,?,?)";
+			sql = "insert into board values(?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, count + 1);
+			pstmt.setInt(1, count);
 			pstmt.setString(2, dto.getBoard_title());
 			pstmt.setString(3, dto.getBoard_writer());
 			pstmt.setString(4, dto.getBoard_content());
 			pstmt.setInt(5, dto.getBoard_type());
+			pstmt.setString(6, dto.getBoard_image());
 
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -147,6 +149,7 @@ public class BoardDAO {
 				dto.setBoard_title(rs.getString("board_title"));
 				dto.setBoard_writer(rs.getString("board_writer"));
 				dto.setBoard_content(rs.getString("board_content"));
+				dto.setBoard_image(rs.getString("board_image"));
 				dto.setBoard_date(rs.getString("board_date"));
 				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
 				dto.setBoard_type(rs.getInt("board_type"));
@@ -191,6 +194,7 @@ public class BoardDAO {
 				dto.setBoard_title(rs.getString("board_title"));
 				dto.setBoard_writer(rs.getString("board_writer"));
 				dto.setBoard_content(rs.getString("board_content"));
+				dto.setBoard_image(rs.getString("board_image"));
 				dto.setBoard_date(rs.getString("board_date"));
 				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
 				dto.setBoard_type(rs.getInt("board_type"));
@@ -207,39 +211,146 @@ public class BoardDAO {
 		return list;
 	}
 
-	public BoardDTO ContentBoard(int no) {
-		BoardDTO dto = new BoardDTO();
-
-		try {
-			openConn();
-
-			sql = "select * from board where board_idx = ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setInt(1, no);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				dto.setBoard_idx(rs.getInt("board_idx"));
-				dto.setBoard_title(rs.getString("board_title"));
-				dto.setBoard_content(rs.getString("board_content"));
-				dto.setBoard_writer(rs.getString("board_writer"));
-				dto.setBoard_date(rs.getString("board_date"));
-				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
-				dto.setBoard_type(rs.getInt("board_type"));
-			}
-
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-		return dto;
+	
+	
+public int deleteBoard(int no) {
+	
+	int result = 0;
+	
+	
+	try {
+		openConn();
+		
+		sql = "delete from board where board_idx = ?";
+		
+		pstmt = con.prepareStatement(sql);
+		
+		pstmt.setInt(1, no);
+		
+		result = pstmt.executeUpdate();
+				
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		closeConn(rs, pstmt, con);
 	}
+	return result;
+	
+}
+	
+public BoardDTO ContentBoard(int no) {
+    BoardDTO dto = new BoardDTO();
+
+    try {
+       openConn();
+
+       sql = "select * from board where board_idx = ?";
+
+       pstmt = con.prepareStatement(sql);
+
+       pstmt.setInt(1, no);
+
+       rs = pstmt.executeQuery();
+
+       if (rs.next()) {
+          dto.setBoard_idx(rs.getInt("board_idx"));
+          dto.setBoard_title(rs.getString("board_title"));
+          dto.setBoard_content(rs.getString("board_content"));
+          dto.setBoard_writer(rs.getString("board_writer"));
+          dto.setBoard_image(rs.getString("board_image"));
+          dto.setBoard_date(rs.getString("board_date"));
+          dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+          dto.setBoard_type(rs.getInt("board_type"));
+       }
+
+    } catch (SQLException e) {
+       // TODO Auto-generated catch block
+       e.printStackTrace();
+    }finally {
+    	closeConn(rs, pstmt, con);
+    }
+
+    return dto;
+ }
+   //게시판 글 수정
+   public int boardModifyOk(BoardDTO dto) {
+	   
+	   int result = 0;
+	   
+	   try {
+		   openConn();
+		   
+		   sql = "select * from board where board_idx = ?";
+		   
+		pstmt = con.prepareStatement(sql);
+		
+		pstmt.setInt(1, dto.getBoard_idx());
+		
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			
+			sql = "update board set board_title = ?, board_content = ? where board_idx = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getBoard_title());
+			pstmt.setString(2, dto.getBoard_content());
+			pstmt.setInt(3, dto.getBoard_idx());
+			
+			result = pstmt.executeUpdate();
+		}
+		
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		closeConn(rs, pstmt, con);
+	}
+	return result;
+   }
+
+public int updateBoard(BoardDTO dto) {
+	
+	int result = 0,count = 0;
+	
+	try {
+		openConn();
+		
+		sql = "select max(board_idx) from board";
+
+		pstmt = con.prepareStatement(sql);
+
+		rs = pstmt.executeQuery();
+
+		if (rs.next()) {
+			count = rs.getInt(1) + 1;
+		}
+		
+		sql = "insert into board values(?,?,?,?,default,default,?,?)";
+		
+		pstmt=con.prepareStatement(sql);
+		
+		pstmt.setInt(1, count);
+		pstmt.setString(2, dto.getBoard_title());
+		pstmt.setString(3, dto.getBoard_writer());
+		pstmt.setString(4, dto.getBoard_content());
+		pstmt.setInt(5, dto.getBoard_type());
+		pstmt.setString(6, dto.getBoard_image());
+		
+		result = pstmt.executeUpdate();
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return result;
+	
+	
+}
 
 
 }

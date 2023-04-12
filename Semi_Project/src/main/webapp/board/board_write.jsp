@@ -61,12 +61,12 @@
 
 		<form method="post"
 			action="<%=request.getContextPath()%>/write_boardOk.do"
-			onsubmit="return check()" name="f">
+			onsubmit="return check()" name="f" enctype="multipart/form-data">
 			<select name="board_type">
 				<option value="1">후기</option>
 				<option value="0">자유게시판</option>
 			</select>
-			<table border="1" cellspacing="0" width="300">
+			<table border="1" cellspacing="0" width="400">
 
 				<tr>
 					<th>작성자</th>
@@ -80,6 +80,11 @@
 					<th>글내용</th>
 					<td><textarea id="myEditor" rows="10" cols="30" class="form-control" name="board_content"></textarea></textarea></td>
 				</tr>
+				
+					<tr>
+					<th>첨부파일</th>
+						<td><input type="file" name="board_image" id="board_image"></td>
+					</tr>
 
 				<tr>
 					<td colspan="2" align="center"><input type="submit"

@@ -28,14 +28,14 @@
 		</form>
 		<table border="1" cellspacing="0" width="450">
 			<tr>
-				<td colspan="6" align="right">전체 게시물 수 : 개
-				</td>
+				<td colspan="6" align="right">전체 게시물 수 : 개</td>
 			</tr>
 			<tr>
 				<th>글번호</th>
 				<th>글제목</th>
 				<th>작성자</th>
 				<th>글내용</th>
+				<th>사진</th>
 				<th>작성일자</th>
 				<th>조회수</th>
 			</tr>
@@ -50,17 +50,20 @@
 						</td>
 						<td>${dto.getBoard_writer() }</td>
 						<td>${dto.getBoard_content() }</td>
+						<td><img
+							src="<%=request.getContextPath() %>/photo/${dto.getBoard_image() }"
+							width="100" height="100"></td>
 						<td>${dto.getBoard_date().substring(0,10) }</td>
 						<td>${dto.getBoard_viewcnt() }</td>
 					</tr>
 				</c:forEach>
 			</c:if>
 			<c:if test="${empty list }">
-			<tr>
-				<td colspan="6" align="center">
-					<h3>조회된 게시물이 없습니다....</h3>
-				</td>
-			</tr>
+				<tr>
+					<td colspan="6" align="center">
+						<h3>조회된 게시물이 없습니다....</h3>
+					</td>
+				</tr>
 			</c:if>
 		</table>
 		<br> <input type="button" value="글쓰기"
