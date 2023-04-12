@@ -49,7 +49,7 @@ public class MemberJoinAction implements Action {
 		if(result > 0) {
 			out.println("<script>");
 			out.println("alert('"+dto.getMember_id()+"님 환영합니다.')");
-			out.println("location.href='main.jsp'");
+			out.println("location.href='index.jsp'");
 			out.println("</script>");
 		}else {
 			out.println("<script>");

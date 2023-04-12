@@ -153,54 +153,60 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form method="post" action="<%=request.getContextPath()%>/" id="f" name="f">
+						<form method="post" class="needs-validation" novalidate action="<%=request.getContextPath()%>/member_join.do" id="signup-form" name="signup-form">
 							<div class="form-group">
 								<label class="sr-only" for="singup-id">아이디</label> <input
 									class="form-control" type="text" id="signup-id"
 									name="member_id" placeholder="아이디" aria-label="아이디" />
 									<span class="feedback" id="signup-idchk"></span>
+									<div class="invalid-feedback"></div>
 
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									name="member-pwd" placeholder="Password" aria-label="Password"
+									name="member_pwd" placeholder="Password" aria-label="Password"
 									 />
 								<span class="feedback" id="signup-pwdchk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
-									name="member-pwdchk" id="signup-password-confirm"
+									name="member_pwdchk" id="signup-password-confirm"
 									placeholder="Confirm password" aria-label="Confirm password"
 									 />
 									 <span class="feedback" id="signup-pwdconfirm-chk"></span>
+									 <div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-name">이름</label> <input
 									class="form-control" type="text" id="signup-name"
-									name="member-name" placeholder="이름" aria-label="Full name"
+									name="member_name" placeholder="이름" aria-label="Full name"
 									/>
 								<span class="feedback" id="signup-namechk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-email">이메일</label> <input
 									class="form-control" type="email" id="signup-email"
-									name="member-email" placeholder="Email"
+									name="member_email" placeholder="Email"
 									aria-label="Email address"/>
 								<span class="feedback" id="signup-emailchk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-phone">연락처
-									확인</label> <input class="form-control" type="password"
-									name="member-phone" id="signup-phone"
+									확인</label> <input class="form-control" type="text"
+									name="member_phone" id="signup-phone"
 									placeholder="Phone" aria-label="Phone"
 									 />
 								<span class="feedback" id="signup-phonechk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" id="join-chk" onclick="checkAll()">
+							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
 								가입하기</button>
-							<button class="btn btn-primary btn-block" onclick="">
+							<button class="btn btn-primary btn-block" onclick="location.href=''">
 								사업자 가입</button>
 						</form>
 
@@ -693,8 +699,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					} else {
 					%>
 					<a class="navbar-btn navbar-collapse-hidden"
-						href="#offcanvas-account" data-toggle="offcanvas"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
+						href="member/logout.jsp"><i
+						class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
 
 					<%
 					}
@@ -1834,7 +1840,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	
-<script type="text/javascript" src="js/sign_upIdChk.js"></script>
-<!-- <script type="text/javascript" src="js/joinchk.js"></script> -->
+<script type="text/javascript" src="js/sign_upChk.js"></script>
 </body>
 </html>

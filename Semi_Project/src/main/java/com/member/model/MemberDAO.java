@@ -91,7 +91,7 @@ public class MemberDAO {
 
 		try {
 
-			sql = "select max(*) from member";
+			sql = "select max(member_no) from member";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -101,7 +101,7 @@ public class MemberDAO {
 				count = rs.getInt(1);
 			}
 
-			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type,member_no) values(?,?,?,?,?,default,?,?)";
+			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone, member_account, member_type,member_no,member_joindate) values(?,?,?,?,?,default,?,?,default)";
 
 			pstmt = con.prepareStatement(sql);
 
