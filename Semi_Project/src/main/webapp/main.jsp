@@ -166,7 +166,6 @@ if (session.getAttribute("id") != null) {
 
 
 		</div>
-
 		<div>
 			<form class="searchLine"
 				action="loaction.href='<%=request.getContextPath()%>/main_search.go'">

@@ -242,8 +242,8 @@
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="location.href='../member/logout.jsp'">
-								로그아웃</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='../member/logout.jsp'">로그아웃</button>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
@@ -407,133 +407,141 @@
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
 				<ul class="navbar-nav">
-               <li class="nav-item dropdown mega-dropdown dropdown-more"><a
-                  class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
-                     data-feather="more-horizontal"></i></a>
-                  <div class="dropdown-menu">
-                     <div class="dropdown-inner">
-                        <div class="dropdown-column">
-                           <div
-                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-                              style="background-image: url(img/megamenu/cat_bg02.jpg)">
-                              <h3 class="h5 text-white text-shadow my-3">지역별</h3>
-                           </div>
-                           <div class="widget widget-links">
-                              <ul>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">수원</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">충남</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">광주</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="dropdown-column">
-                           <div
-                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-                              style="background-image: url(img/megamenu/cat_bg01.jpg)">
-                              <h3 class="h5 text-white text-shadow my-3">테마별</h3>
-                           </div>
-                           <div class="widget widget-links">
-                              <ul>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Computers
-                                          &amp; Accessories</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">TV,
-                                          Video &amp; Audio</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
-                                          &amp; Tablets</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
-                                          Photo &amp; Video</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Wearable
-                                          Electronics</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Video
-                                          Games</span></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="dropdown-column">
-                           <div
-                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-                              style="background-image: url(img/megamenu/cat_bg03.jpg)">
-                              <h3 class="h5 text-white text-shadow my-3">장르별</h3>
-                           </div>
-                           <div class="widget widget-links">
-                              <ul>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Lounge
-                                          Seating</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">File
-                                          Cabinets</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Indoor
-                                          Lighting</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Office
-                                          Chairs</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Adjustable
-                                          Height Desks</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Storage
-                                          Units</span></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                  </div></li>
+					<li class="nav-item dropdown mega-dropdown dropdown-more"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
+							data-feather="more-horizontal"></i></a>
+						<div class="dropdown-menu">
+							<div class="dropdown-inner">
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/cat_bg02.jpg)">
+										<h3 class="h5 text-white text-shadow my-3">지역별</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">수원</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">충남</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">광주</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/cat_bg01.jpg)">
+										<h3 class="h5 text-white text-shadow my-3">테마별</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Computers
+														&amp; Accessories</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">TV,
+														Video &amp; Audio</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
+														&amp; Tablets</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
+														Photo &amp; Video</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Wearable
+														Electronics</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Video
+														Games</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/cat_bg03.jpg)">
+										<h3 class="h5 text-white text-shadow my-3">장르별</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Lounge
+														Seating</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">File
+														Cabinets</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Indoor
+														Lighting</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Office
+														Chairs</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Adjustable
+														Height Desks</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Storage
+														Units</span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop layouts</h3>
+										<h3 class="widget-title">게시판</h3>
 										<ul>
 											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/review_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">후기 게시판</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/free_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">자유 게시판</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -546,10 +554,10 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Product
-														Page #1 - Apparel</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
+														</span></a></li>
 
 											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
@@ -745,11 +753,11 @@
 	%>
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="#offcanvas-account" data-toggle="offcanvas"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a> 
-					
+						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
+
 					<% } %>
-					<a
-						class="navbar-btn" href="#offcanvas-cart" data-toggle="offcanvas"><span
+					<a class="navbar-btn" href="#offcanvas-cart"
+						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
 							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
@@ -1488,266 +1496,401 @@
 			</div>
 		</div>
 	</section>
-	<!-- Blog + Insta split section-->
-	<section class="container-fluid px-0 border-bottom">
-		<div class="row no-gutters">
-			<div class="col-md-6 py-5 px-4" style="background-color: #efefef">
-				<div class="mx-auto py-3" style="max-width: 25rem">
-					<h2 class="mb-1">Read the blog</h2>
-					<p class="opacity-75 pb-3">Latest fashion news and trends</p>
-					<a class="btn btn-outline-dark" href="blog-ls.jsp"><i
-						class="mr-2" data-feather="book"></i>Go to blog</a>
+
+
+
+	<!-- Quick view modal-->
+	<div class="modal modal-quick-view fade" id="quick-view" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div>
+						<h2 class="h3 modal-title mb-1">Reebok Classic - Sneakers CL
+							Leather</h2>
+						<h3 class="text-primary font-weight-light mb-0">$98.45</h3>
+					</div>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-			</div>
-			<div class="col-md-6 bg-secondary py-5 px-4">
-				<div class="mx-auto py-3" style="max-width: 25rem">
-					<h2 class="mb-1">Follow on Instagram</h2>
-					<p class="opacity-75 pb-3">#ShopWithMStore</p>
-					<a class="btn btn-dark" href="#"><i class="mr-2"
-						data-feather="instagram"></i>Follow us</a>
+				<div class="modal-body">
+					<div class="row">
+						<!-- Product gallery-->
+						<div class="col-lg-7">
+							<div class="owl-carousel"
+								data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+								<img src="img/shop/apparel/single/01.jpg" alt="Product"><img
+									src="img/shop/apparel/single/02.jpg" alt="Product"><img
+									src="img/shop/apparel/single/03.jpg" alt="Product"><img
+									src="img/shop/apparel/single/04.jpg" alt="Product"><img
+									src="img/shop/apparel/single/05.jpg" alt="Product">
+							</div>
+						</div>
+						<!-- Product details-->
+						<div class="col-lg-5 pt-4 pt-lg-0">
+							<form class="pb-4">
+								<div class="form-group">
+									<label class="d-block">Choose color</label>
+									<div
+										class="custom-control custom-option custom-control-inline mb-2">
+										<input class="custom-control-input" type="radio" name="color"
+											value="dark" id="dark" required> <label
+											class="custom-option-label" for="dark"><span
+											class="custom-option-color"
+											style="background-color: #2c363f;"></span></label>
+									</div>
+									<div
+										class="custom-control custom-option custom-control-inline mb-2">
+										<input class="custom-control-input" type="radio" name="color"
+											value="red" id="red" required> <label
+											class="custom-option-label" for="red"><span
+											class="custom-option-color"
+											style="background-color: #e7484d;"></span></label>
+									</div>
+									<div
+										class="custom-control custom-option custom-control-inline mb-2">
+										<input class="custom-control-input" type="radio" name="color"
+											value="white" id="white" required> <label
+											class="custom-option-label" for="white"><span
+											class="custom-option-color"
+											style="background-color: #e0dfe4;"></span></label>
+									</div>
+									<div
+										class="custom-control custom-option custom-control-inline mb-2">
+										<input class="custom-control-input" type="radio" name="color"
+											value="beige" id="beige" required> <label
+											class="custom-option-label" for="beige"><span
+											class="custom-option-color"
+											style="background-color: #e6ddd6;"></span></label>
+									</div>
+								</div>
+								<div class="form-group">
+									<select class="form-control custom-select" id="size"
+										name="size" required>
+										<option value>- Select a size</option>
+										<option value="13">13</option>
+										<option value="12">12</option>
+										<option value="11.5">11.5</option>
+										<option value="11">11</option>
+										<option value="10.5">10.5</option>
+										<option value="10">10</option>
+										<option value="9.5">9.5</option>
+										<option value="9">9</option>
+										<option value="8.5">8.5</option>
+										<option value="8">8</option>
+										<option value="7.5">7.5</option>
+									</select>
+								</div>
+								<div class="d-flex flex-wrap align-items-center pt-1">
+									<div>
+										<input class="px-2 form-control mr-2" type="number"
+											name="quantity" style="width: 3.2rem;" value="1" required>
+									</div>
+									<div>
+										<button class="btn btn-primary px-5 mr-2" type="submit">
+											<i class="mr-2" data-feather="shopping-cart"></i>Add to cart
+										</button>
+									</div>
+									<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
+										class="align-middle mr-1" data-feather="heart"
+										style="width: 1.1rem; height: 1.1rem;"></i>Wishlist</a>
+								</div>
+							</form>
+							<div class="card">
+								<div class="card-header py-3 bg-0">
+									<h3 class="h6 mb-0">
+										<span
+											class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
+											data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>Product
+										information
+									</h3>
+								</div>
+								<div class="card-body">
+									<ul class="mb-0">
+										<li>SKU: #8893249956</li>
+										<li>Sneakers from Reebok Classic collection</li>
+										<li>Man-made upper</li>
+										<li>Lace-up closure</li>
+										<li>Brand logo detail hits throughout</li>
+										<li>Soft fabric lining and footbed</li>
+										<li>Rubber outsole</li>
+										<li>Product measurements were taken using size 8</li>
+										<li>Weight of footwear is based on a single item</li>
+										<li>Weight: 9 oz</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<!-- Quick view modal-->
-    <div class="modal modal-quick-view fade" id="quick-view" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div>
-              <h2 class="h3 modal-title mb-1">Reebok Classic - Sneakers CL Leather</h2>
-              <h3 class="text-primary font-weight-light mb-0">$98.45</h3>
-            </div>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <!-- Product gallery-->
-              <div class="col-lg-7">
-                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }"><img src="img/shop/apparel/single/01.jpg" alt="Product"><img src="img/shop/apparel/single/02.jpg" alt="Product"><img src="img/shop/apparel/single/03.jpg" alt="Product"><img src="img/shop/apparel/single/04.jpg" alt="Product"><img src="img/shop/apparel/single/05.jpg" alt="Product"></div>
-              </div>
-              <!-- Product details-->
-              <div class="col-lg-5 pt-4 pt-lg-0">
-                <form class="pb-4">
-                  <div class="form-group">
-                    <label class="d-block">Choose color</label>
-                    <div class="custom-control custom-option custom-control-inline mb-2">
-                      <input class="custom-control-input" type="radio" name="color" value="dark" id="dark" required>
-                      <label class="custom-option-label" for="dark"><span class="custom-option-color" style="background-color: #2c363f;"></span></label>
-                    </div>
-                    <div class="custom-control custom-option custom-control-inline mb-2">
-                      <input class="custom-control-input" type="radio" name="color" value="red" id="red" required>
-                      <label class="custom-option-label" for="red"><span class="custom-option-color" style="background-color: #e7484d;"></span></label>
-                    </div>
-                    <div class="custom-control custom-option custom-control-inline mb-2">
-                      <input class="custom-control-input" type="radio" name="color" value="white" id="white" required>
-                      <label class="custom-option-label" for="white"><span class="custom-option-color" style="background-color: #e0dfe4;"></span></label>
-                    </div>
-                    <div class="custom-control custom-option custom-control-inline mb-2">
-                      <input class="custom-control-input" type="radio" name="color" value="beige" id="beige" required>
-                      <label class="custom-option-label" for="beige"><span class="custom-option-color" style="background-color: #e6ddd6;"></span></label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <select class="form-control custom-select" id="size" name="size" required>
-                      <option value>- Select a size</option>
-                      <option value="13">13</option>
-                      <option value="12">12</option>
-                      <option value="11.5">11.5</option>
-                      <option value="11">11</option>
-                      <option value="10.5">10.5</option>
-                      <option value="10">10</option>
-                      <option value="9.5">9.5</option>
-                      <option value="9">9</option>
-                      <option value="8.5">8.5</option>
-                      <option value="8">8</option>
-                      <option value="7.5">7.5</option>
-                    </select>
-                  </div>
-                  <div class="d-flex flex-wrap align-items-center pt-1">
-                    <div>
-                      <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
-                    </div>
-                    <div>
-                      <button class="btn btn-primary px-5 mr-2" type="submit"><i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
-                    </div><a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>Wishlist</a>
-                  </div>
-                </form>
-                <div class="card">
-                  <div class="card-header py-3 bg-0">
-                    <h3 class="h6 mb-0"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>Product information</h3>
-                  </div>
-                  <div class="card-body">
-                    <ul class="mb-0">
-                      <li>SKU: #8893249956</li>
-                      <li>Sneakers from Reebok Classic collection</li>
-                      <li>Man-made upper</li>
-                      <li>Lace-up closure</li>
-                      <li>Brand logo detail hits throughout</li>
-                      <li>Soft fabric lining and footbed</li>
-                      <li>Rubber outsole</li>
-                      <li>Product measurements were taken using size 8</li>
-                      <li>Weight of footwear is based on a single item</li>
-                      <li>Weight: 9 oz</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Toast notifications-->
-    <div class="toast-container toast-bottom-center">
-      <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to cart!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to your cart.</div>
-      </div>
-      <div class="toast mb-3" id="compare-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to comparison!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to comparison table.</div>
-      </div>
-      <div class="toast mb-3" id="wishlist-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to wishlist!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to your wishlist.</div>
-      </div>
-      <div class="toast mb-3" id="profile-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">Your profile info updated successfuly.</div>
-      </div>
-      <div class="toast mb-3" id="address-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">Your addresses info updated successfuly.</div>
-      </div>
-    </div>
-    <!-- Footer-->
-    <footer class="page-footer bg-dark">
-      <!-- first row-->
-      <div class="pt-5 pb-0 pb-md-4">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 col-sm-6">
-              <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">Shop departments</h3>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Apparel &amp; Shoes</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Glasses &amp; Accessories</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Handbags &amp; Backpacks</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Computers &amp; Accessories</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Smartphones &amp; Tablets</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">Account &amp; shipping info</h3>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Your account</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shipping rates &amp; policies</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Delivery info</span></a></li>
-                </ul>
-              </div>
-              <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">About us</h3>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Careers</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">About shop</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">News</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xl-4 offset-xl-1 col-md-5">
-              <div class="widget">
+	</div>
+	<!-- Toast notifications-->
+	<div class="toast-container toast-bottom-center">
+		<div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert"
+			aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to cart!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to your cart.</div>
+		</div>
+		<div class="toast mb-3" id="compare-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-info text-white">
+				<i class="mr-2" data-feather="info"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to comparison!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to comparison
+				table.</div>
+		</div>
+		<div class="toast mb-3" id="wishlist-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-info text-white">
+				<i class="mr-2" data-feather="info"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to wishlist!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to your wishlist.</div>
+		</div>
+		<div class="toast mb-3" id="profile-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Updated!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">Your profile info updated successfuly.</div>
+		</div>
+		<div class="toast mb-3" id="address-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Updated!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">Your addresses info updated
+				successfuly.</div>
+		</div>
+	</div>
+	<!-- Footer-->
+	<footer class="page-footer bg-dark">
+		<!-- first row-->
+		<div class="pt-5 pb-0 pb-md-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-sm-6">
+						<div class="widget widget-links pb-4">
+							<h3 class="widget-title text-white border-light">Shop
+								departments</h3>
+							<ul>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Apparel
+											&amp; Shoes</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Glasses
+											&amp; Accessories</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Handbags
+											&amp; Backpacks</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Computers
+											&amp; Accessories</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
+											&amp; Tablets</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="widget widget-links pb-4">
+							<h3 class="widget-title text-white border-light">Account
+								&amp; shipping info</h3>
+							<ul>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Your
+											account</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Shipping
+											rates &amp; policies</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Delivery
+											info</span></a></li>
+							</ul>
+						</div>
+						<div class="widget widget-links pb-4">
+							<h3 class="widget-title text-white border-light">About us</h3>
+							<ul>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Careers</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">About
+											shop</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">News</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-4 offset-xl-1 col-md-5">
+						<div class="widget">
 
-                <!-- Mobile app download-->
-                <div class="widget pb-4">
-                  <h3 class="widget-title text-white border-light">Download our app</h3><a class="market-btn market-btn-light apple-btn mr-2 mb-2" href="#" role="button"><span class="market-button-subtitle">Download on the</span><span class="market-button-title">App Store</span></a><a class="market-btn market-btn-light google-btn" href="#" role="button"><span class="market-button-subtitle">Download on the</span><span class="market-button-title">Google Play</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- shop features-->
-      <div class="pt-5 pb-0 pb-md-5 border-bottom border-light" id="shop-features" style="background-color: #1f1f1f;">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3 col-sm-6 border-right border-light">
-              <div class="icon-box text-center mb-5 mb-md-0">
-                <div class="icon-box-icon"><i data-feather="truck"></i></div>
-                <h3 class="icon-box-title font-weight-semibold text-white">Free local delivery</h3>
-                <p class="icon-box-text">Free delivery for all orders over $100</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 border-right border-light">
-              <div class="icon-box text-center mb-5 mb-md-0">
-                <div class="icon-box-icon"><i data-feather="refresh-cw"></i></div>
-                <h3 class="icon-box-title font-weight-semibold text-white">Money back guarantee</h3>
-                <p class="icon-box-text">Free delivery for all orders over $100</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 border-right border-light">
-              <div class="icon-box text-center mb-5 mb-md-0">
-                <div class="icon-box-icon"><i data-feather="life-buoy"></i></div>
-                <h3 class="icon-box-title font-weight-semibold text-white">24/7 customer support</h3>
-                <p class="icon-box-text">Friendly 24/7 customer support</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <div class="icon-box text-center mb-5 mb-md-0">
-                <div class="icon-box-icon"><i data-feather="credit-card"></i></div>
-                <h3 class="icon-box-title font-weight-semibold text-white">Secure online payment</h3>
-                <p class="icon-box-text">We posess SSL / Secure сertificate</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- third row-->
-      <div class="pt-5 pb-4" style="background-color: #1f1f1f;">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 text-center text-sm-left">
-              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.jsp"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
-                
-              </div>
-            </div>
-            <div class="col-sm-6 text-center text-sm-right"><a class="social-btn sb-facebook sb-light mx-1 mb-2" href="#"><i class="flaticon-facebook"></i></a><a class="social-btn sb-twitter sb-light mx-1 mb-2" href="#"><i class="flaticon-twitter"></i></a><a class="social-btn sb-instagram sb-light mx-1 mb-2" href="#"><i class="flaticon-instagram"></i></a><a class="social-btn sb-vimeo sb-light mx-1 mb-2" href="#"><i class="flaticon-vimeo"></i></a></div>
-          </div>
-          <div class="row pt-4">
-            <div class="col-sm-6 text-center text-sm-left">
-              <ul class="list-inline font-size-sm">
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Outlets</a></li>
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Affiliates</a></li>
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Support</a></li>
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Privacy</a></li>
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Terms of use</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-6 text-center text-sm-right">
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="py-3" style="background-color: #1a1a1a;">
-        <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
-      </div>
-    </footer>
-    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/theme.min.js"></script>
-  </body>
+							<!-- Mobile app download-->
+							<div class="widget pb-4">
+								<h3 class="widget-title text-white border-light">Download
+									our app</h3>
+								<a class="market-btn market-btn-light apple-btn mr-2 mb-2"
+									href="#" role="button"><span class="market-button-subtitle">Download
+										on the</span><span class="market-button-title">App Store</span></a><a
+									class="market-btn market-btn-light google-btn" href="#"
+									role="button"><span class="market-button-subtitle">Download
+										on the</span><span class="market-button-title">Google Play</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- shop features-->
+		<div class="pt-5 pb-0 pb-md-5 border-bottom border-light"
+			id="shop-features" style="background-color: #1f1f1f;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 border-right border-light">
+						<div class="icon-box text-center mb-5 mb-md-0">
+							<div class="icon-box-icon">
+								<i data-feather="truck"></i>
+							</div>
+							<h3 class="icon-box-title font-weight-semibold text-white">Free
+								local delivery</h3>
+							<p class="icon-box-text">Free delivery for all orders over
+								$100</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 border-right border-light">
+						<div class="icon-box text-center mb-5 mb-md-0">
+							<div class="icon-box-icon">
+								<i data-feather="refresh-cw"></i>
+							</div>
+							<h3 class="icon-box-title font-weight-semibold text-white">Money
+								back guarantee</h3>
+							<p class="icon-box-text">Free delivery for all orders over
+								$100</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 border-right border-light">
+						<div class="icon-box text-center mb-5 mb-md-0">
+							<div class="icon-box-icon">
+								<i data-feather="life-buoy"></i>
+							</div>
+							<h3 class="icon-box-title font-weight-semibold text-white">24/7
+								customer support</h3>
+							<p class="icon-box-text">Friendly 24/7 customer support</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="icon-box text-center mb-5 mb-md-0">
+							<div class="icon-box-icon">
+								<i data-feather="credit-card"></i>
+							</div>
+							<h3 class="icon-box-title font-weight-semibold text-white">Secure
+								online payment</h3>
+							<p class="icon-box-text">We posess SSL / Secure сertificate</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- third row-->
+		<div class="pt-5 pb-4" style="background-color: #1f1f1f;">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 text-center text-sm-left">
+						<div class="mb-4 mb-sm-0">
+							<a class="d-inline-block" href="index.jsp"><img width="100"
+								src="img/logo-light.png" alt="MStore" /></a>
+
+						</div>
+					</div>
+					<div class="col-sm-6 text-center text-sm-right">
+						<a class="social-btn sb-facebook sb-light mx-1 mb-2" href="#"><i
+							class="flaticon-facebook"></i></a><a
+							class="social-btn sb-twitter sb-light mx-1 mb-2" href="#"><i
+							class="flaticon-twitter"></i></a><a
+							class="social-btn sb-instagram sb-light mx-1 mb-2" href="#"><i
+							class="flaticon-instagram"></i></a><a
+							class="social-btn sb-vimeo sb-light mx-1 mb-2" href="#"><i
+							class="flaticon-vimeo"></i></a>
+					</div>
+				</div>
+				<div class="row pt-4">
+					<div class="col-sm-6 text-center text-sm-left">
+						<ul class="list-inline font-size-sm">
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Outlets</a></li>
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Affiliates</a></li>
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Support</a></li>
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Privacy</a></li>
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Terms of use</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-6 text-center text-sm-right"></div>
+				</div>
+			</div>
+		</div>
+		<div class="py-3" style="background-color: #1a1a1a;">
+			<div class="container font-size-xs text-center"
+				aria-label="Copyright">
+				<span class="text-white opacity-60 mr-1">© All rights
+					reserved. Made by</span><a class="nav-link-inline nav-link-light"
+					href="https://createx.studio/" target="_blank">Createx Studio</a>
+			</div>
+		</div>
+	</footer>
+	<!-- Back To Top Button-->
+	<a class="scroll-to-top-btn" href="#"><i
+		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
+</body>
 </html>

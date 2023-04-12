@@ -28,7 +28,7 @@ public class FreeBoardListAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("board/free_board_list.jsp");
+		forward.setPath("free_board.jsp");
 		
 		return forward;
 	}

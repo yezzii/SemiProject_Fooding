@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +29,7 @@
   </head>
   <!-- Body-->
   <body>
-
+	<c:set var="list" value="${free_boardList }" />
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
@@ -754,235 +754,134 @@
 			</div>
 		</div>
 	</header>
+    <!-- Page Title-->
+    <div class="page-title-wrapper" aria-label="Page title">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
+            <li class="breadcrumb-item"><a href="index.jsp">Home</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Blog</a>
+            </li>
+          </ol>
+        </nav>
+        <h1 class="page-title">자유게시판</h1><span class="d-block mt-2 text-muted"></span>
+        <hr class="mt-4">
+      </div>
+    </div>
     <!-- Page Content-->
-    <div class="container pb-5">
-      <div class="row pt-5">
-        <div class="col-lg-7">
-          <!-- Product title and price (visible md and down)-->
-          <div class="d-lg-none pb-2">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Men's shoes</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Sneakers &amp; Keds</li>
-              </ol>
-            </nav>
-            <h1 class="page-title pt-1">Reebok Classic - Sneakers CL Leather</h1>
-            <h2 class="h1 text-primary font-weight-light pt-3 pb-2">$98.45</h2>
-          </div>
-          <!-- Product gallery-->
-          <div class="product-gallery">
-            <ul class="product-thumbnails">
-              <li class="active"><a href="#one"><img src="img/shop/apparel/single/th01.jpg" alt="Product thumb"></a></li>
-              <li><a href="#two"><img src="img/shop/apparel/single/th02.jpg" alt="Product thumb"></a></li>
-              <li><a href="#three"><img src="img/shop/apparel/single/th03.jpg" alt="Product thumb"></a></li>
-              <li><a href="#four"><img src="img/shop/apparel/single/th04.jpg" alt="Product thumb"></a></li>
-              <li><a href="#five"><img src="img/shop/apparel/single/th05.jpg" alt="Product thumb"></a></li>
-            </ul>
-            <div class="product-carousel owl-carousel"><a href="img/shop/apparel/single/01.jpg" data-fancybox="prod-gallery" data-hash="one"><img src="img/shop/apparel/single/01.jpg" alt="Product"></a><a href="img/shop/apparel/single/02.jpg" data-fancybox="prod-gallery" data-hash="two"><img src="img/shop/apparel/single/02.jpg" alt="Product"></a><a href="img/shop/apparel/single/03.jpg" data-fancybox="prod-gallery" data-hash="three"><img src="img/shop/apparel/single/03.jpg" alt="Product"></a><a href="img/shop/apparel/single/04.jpg" data-fancybox="prod-gallery" data-hash="four"><img src="img/shop/apparel/single/04.jpg" alt="Product"></a><a href="img/shop/apparel/single/05.jpg" data-fancybox="prod-gallery" data-hash="five"><img src="img/shop/apparel/single/05.jpg" alt="Product"></a></div>
-          </div>
-          <!-- Related products (visible lg and up)-->
-          <div class="d-none d-lg-block">
-            <h2 class="h3 pt-5 pb-3 mt-2">You may also like</h2>
-            <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;margin&quot;: 15, &quot;items&quot;: 3 }">
-              <div class="product-card">
-                <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/03.jpg" alt="Product"></div>
-                <div class="product-card-body box-shadow-0 text-center"><a class="product-meta" href="#">Men's shoes</a>
-                  <h3 class="product-card-title"><a href="#">Calvin Klein Jeans Keds</a></h3><span class="text-primary">$125.00</span>
-                </div>
+    <div class="container pb-5 mb-4">
+      <div class="row">
+        <div class="col-lg-9">
+          <!-- Post-->
+          <div class="row pb-5">
+            <div class="col-md-4">
+              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+                <div class="mr-2">by&nbsp;<a href="#">Olivia Reyes</a><span class="meta-divider"></span><a href="#">Apr 20</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
               </div>
-              <div class="product-card">
-                <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="badge badge-danger rounded-0">Sale -10%</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/08.jpg" alt="Product"></div>
-                <div class="product-card-body box-shadow-0 text-center"><a class="product-meta" href="#">Women's sneakers</a>
-                  <h3 class="product-card-title"><a href="#">Reebok Classic Sneakers</a></h3><span class="text-primary">
-                    <del class="text-muted mr-1">$105.00</del>$94.50</span>
-                </div>
+              <h3 class="h4 mb-4"><a class="post-title" href="blog-single-rs.jsp">Must have clothing on your next trip</a></h3>
+            </div>
+            <div class="col-md-8">
+            <!-- Textarea -->
+<div class="form-group">
+  
+  <!-- Text input -->
+<div class="form-group">
+  <label for="text-input">제목</label>
+  <input class="form-control" type="text" id="text-input" value="Artisanal kale">
+</div>
+
+<label for="textarea-input">글쓰기</label>
+  <textarea class="form-control" id="textarea-input" rows="5"></textarea>
+<br>
+<!-- Primary button -->
+<button type="button" class="btn btn-primary rounded">작성</button>
+<br>
+</div>
+              <div class="post-meta">
+                <div>
+                   <a href="#">Fooding, &nbsp;</a><a href="#">Board</a><span class="meta-divider"></span><a href="#">#yummy!</a></div>
               </div>
-              <div class="product-card">
-                <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/10.jpg" alt="Product"></div>
-                <div class="product-card-body box-shadow-0 text-center"><a class="product-meta" href="#">Men's sandals</a>
-                  <h3 class="product-card-title"><a href="#">Big Star Flip Tops</a></h3><span class="text-primary">$10.60</span>
-                </div>
-              </div>
-              <div class="product-card">
-                <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/01.jpg" alt="Product"></div>
-                <div class="product-card-body box-shadow-0 text-center"><a class="product-meta" href="#">Men's jeans</a>
-                  <h3 class="product-card-title"><a href="#">Gues Slim Fit Jeans</a></h3><span class="text-primary">$124.99</span>
-                </div>
-              </div>
+              
             </div>
           </div>
+          <hr class="pb-5">
+          <!-- Post-->
+          <div class="row pb-5">
+            <div class="col-md-4">
+            <c:forEach items="${list }" var="dto">
+              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+                <div class="mr-2">by&nbsp;<a href="#">${dto.getBoard_writer() }</a><span class="meta-divider"></span><a href="#">${dto.getBoard_date().substring(2,10) }</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>24</a>
+              </div>
+              <h3 class="h4 mb-4"><a  class="post-title"
+							href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx()}">${dto.getBoard_title() }</a></h3>
+            </c:forEach>
+            </div>
+            <div class="col-md-8"><a class="d-block position-relative mb-3" href="https://player.vimeo.com/video/203972818?title=0&amp;byline=0&amp;portrait=0" data-fancybox data-width="1000" data-height="563"></a>
+  <div>
+    <c:if test="${!empty list}">
+        <c:forEach items="${list}" var="dto">
+            <div style="clear:both;">
+                <div style="float:left;">${dto.getBoard_content() }</div>
+                <div style="float:left;">
+                    <img src="<%=request.getContextPath() %>../photo/${dto.getBoard_image() }" width="100" height="100">
+                </div>
+            </div>
+        </c:forEach>
+    </c:if>
+    <c:if test="${empty list}">
+        <div style="text-align:center;">
+            <h3>조회된 게시물이 없습니다....</h3>
         </div>
-        <!-- Product details column            -->
-        <div class="col-lg-5 pt-4 pt-lg-0">
-          <!-- Product title and price (visible lg and up)-->
-          <div class="d-none d-lg-block">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Men's shoes</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Sneakers &amp; Keds</li>
-              </ol>
-            </nav>
-            <h1 class="page-title pt-1">Reebok Classic - Sneakers CL Leather</h1>
-            <h2 class="h1 text-primary font-weight-light pt-3 pb-2">$98.45</h2>
+    </c:if>
+</div>
+              <div class="post-meta">
+                <div>
+                   in&nbsp;<a href="#">Consumer electronics</a><span class="meta-divider"></span><a href="#">#IoT</a></div>
+              </div>
+            </div>
           </div>
-          <form class="pb-4">
-            <div class="form-group mb-1">
-              <label class="d-block">Choose color</label>
-              <div class="custom-control custom-option custom-control-inline mb-2">
-                <input class="custom-control-input" type="radio" name="color" value="dark" id="dark" required>
-                <label class="custom-option-label" for="dark"><span class="custom-option-color" style="background-color: #2c363f;"></span></label>
-              </div>
-              <div class="custom-control custom-option custom-control-inline mb-2">
-                <input class="custom-control-input" type="radio" name="color" value="red" id="red" required>
-                <label class="custom-option-label" for="red"><span class="custom-option-color" style="background-color: #e7484d;"></span></label>
-              </div>
-              <div class="custom-control custom-option custom-control-inline mb-2">
-                <input class="custom-control-input" type="radio" name="color" value="white" id="white" required>
-                <label class="custom-option-label" for="white"><span class="custom-option-color" style="background-color: #e0dfe4;"></span></label>
-              </div>
-              <div class="custom-control custom-option custom-control-inline mb-2">
-                <input class="custom-control-input" type="radio" name="color" value="beige" id="beige" required>
-                <label class="custom-option-label" for="beige"><span class="custom-option-color" style="background-color: #e6ddd6;"></span></label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="pb-2 text-right"><a class="nav-link-inline font-size-sm" href="#size-chart" data-toggle="modal"><i class="align-bottom mr-1" data-feather="bar-chart-2"></i>Size chart</a></div>
-              <select class="form-control custom-select" id="size" name="size" required>
-                <option value>- Select a size</option>
-                <option value="13">13</option>
-                <option value="12">12</option>
-                <option value="11.5">11.5</option>
-                <option value="11">11</option>
-                <option value="10.5">10.5</option>
-                <option value="10">10</option>
-                <option value="9.5">9.5</option>
-                <option value="9">9</option>
-                <option value="8.5">8.5</option>
-                <option value="8">8</option>
-                <option value="7.5">7.5</option>
-              </select>
-            </div>
-            <div class="d-flex flex-wrap align-items-center pt-1">
-              <div>
-                <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
-              </div>
-              <div>
-                <button class="btn btn-primary px-5 mr-2" type="submit"><i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
-              </div><a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>Add to wishlist</a>
-            </div>
-          </form>
-          <!-- Product panels-->
-          <div class="accordion" id="productPanels">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="accordion-heading"><a href="#productInfo" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="productInfo"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>Product information<span class="accordion-indicator"><i data-feather="chevron-up"></i></span></a></h3>
-              </div>
-              <div class="collapse show" id="productInfo" data-parent="#productPanels">
-                <div class="card-body">
-                  <ul class="mb-0">
-                    <li>SKU: #8893249956</li>
-                    <li>Sneakers from Reebok Classic collection</li>
-                    <li>Man-made upper</li>
-                    <li>Lace-up closure</li>
-                    <li>Brand logo detail hits throughout</li>
-                    <li>Soft fabric lining and footbed</li>
-                    <li>Rubber outsole</li>
-                    <li>Product measurements were taken using size 8</li>
-                    <li>Weight of footwear is based on a single item</li>
-                    <li>Weight: 9 oz</li>
+          <hr class="pb-5">
+          
+          <hr class="pb-4 mb-2">
+          <!-- Pagination-->
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center justify-content-sm-start mb-0">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item d-sm-none"><span class="page-link page-link-static">2 / 5</span></li>
+              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
+              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
+              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
+              <li class="page-item d-none d-sm-block">...</li>
+              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">10</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-3">
+          <!-- Blog sidebar-->
+          <div class="offcanvas-sidebar">
+            <div class="offcanvas-sidebar-toggle"><span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span></div>
+            <div class="offcanvas-sidebar-body">
+              <div class="offcanvas-sidebar-body-inner">
+                <!-- Categories-->
+                <div class="widget widget-categories mb-4 py-1">
+                  <h3 class="widget-title">Top categories</h3>
+                  <ul>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1">(25)</span></a></li>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(13)</span></a></li>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(9)</span></a></li>
                   </ul>
                 </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3 class="accordion-heading"><a class="collapsed" href="#shippingOptions" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="shippingOptions"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="truck" style="width: 1.1rem; height: 1.1rem;"></i></span>Shipping options<span class="accordion-indicator"><i data-feather="chevron-up"></i></span></a></h3>
-              </div>
-              <div class="collapse" id="shippingOptions" data-parent="#productPanels">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between border-bottom pb-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Courier</div>
-                      <div class="font-size-sm text-muted">2 - 4 days</div>
-                    </div>
-                    <div>$26.50</div>
-                  </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Local shipping</div>
-                      <div class="font-size-sm text-muted">up to one week</div>
-                    </div>
-                    <div>$10.00</div>
-                  </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Flat rate</div>
-                      <div class="font-size-sm text-muted">5 - 7 days</div>
-                    </div>
-                    <div>$33.85</div>
-                  </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">UPS ground shipping</div>
-                      <div class="font-size-sm text-muted">4 - 6 days</div>
-                    </div>
-                    <div>$18.00</div>
-                  </div>
-                  <div class="d-flex justify-content-between pt-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Local pickup from store</div>
-                      <div class="font-size-sm text-muted">&mdash;</div>
-                    </div>
-                    <div>$0.00</div>
-                  </div>
+                
+                <!-- Tags      -->
+                <div class="widget mb-4 pb-1">
+                  <h3 class="widget-title">Popular tags</h3><a class="tag-link mr-2 mb-2" href="#">#오마카세</a><a class="tag-link mr-2 mb-2" href="#">#삼겹살</a><a class="tag-link mr-2 mb-2" href="#">#한우</a><a class="tag-link mr-2 mb-2" href="#">#짜장면</a><a class="tag-link mb-2" href="#">#스시</a>
                 </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3 class="accordion-heading"><a class="collapsed" href="#tagCloud" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="tagCloud"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="tag" style="width: 1.1rem; height: 1.1rem;"></i></span>Tag cloud<span class="accordion-indicator"><i data-feather="chevron-up"></i></span></a></h3>
-              </div>
-              <div class="collapse" id="tagCloud" data-parent="#productPanels">
-                <div class="card-body"><a class="tag-link mr-2 mb-2" href="#">#sports shoes</a><a class="tag-link mr-2 mb-2" href="#">#men's shoes</a><a class="tag-link mr-2 mb-2" href="#">#sneakers</a><a class="tag-link mr-2 mb-2" href="#">#reebok classic</a><a class="tag-link mr-2 mb-2" href="#">#leather shoes</a><a class="tag-link mr-2 mb-2" href="#">#running</a><a class="tag-link mr-2 mb-2" href="#">#dark blue</a></div>
-              </div>
-            </div>
-          </div>
-          <!-- Share product-->
-          <div class="py-4"><span class="d-inline-block align-middle font-size-sm mr-3 mb-2">Share product:</span><a class="social-btn sb-instagram mr-2 mb-2" href="#"><i class="flaticon-instagram"></i></a><a class="social-btn sb-facebook mr-2 mb-2" href="#"><i class="flaticon-facebook"></i></a><a class="social-btn sb-twitter mr-2 mb-2" href="#"><i class="flaticon-twitter"></i></a><a class="social-btn sb-pinterest mr-2 mb-2" href="#"><i class="flaticon-pinterest"></i></a></div>
-          <!-- Prev / Next product-->
-          <nav class="entry-navigation"><a class="entry-navigation-link" href="#" data-toggle="popover" data-placement="top" data-trigger="hover" data-jsp="true" data-content="&lt;div class=&quot;media align-items-center&quot;&gt;&lt;img src=&quot;img/shop/widget/10.jpg&quot; width=&quot;64&quot; class=&quot;mr-3&quot; alt=&quot;Product thumb&quot;&gt;&lt;div class=&quot;media-body&quot;&gt;&lt;h6  class=&quot;font-size-sm font-weight-semibold mb-0&quot;&gt;Adidas Performance Hat&lt;/h6&gt;&lt;span class=&quot;d-block font-size-xs text-muted&quot;&gt;$19.00&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;"><i class="mr-1" data-feather="chevron-left"></i>Prev <span class='d-none d-sm-inline'>product</span></a><a class="entry-navigation-link" href="#" data-toggle="popover" data-placement="top" data-trigger="hover" data-jsp="true" data-content="&lt;div class=&quot;media align-items-center&quot;&gt;&lt;img src=&quot;img/shop/widget/08.jpg&quot; width=&quot;64&quot; class=&quot;mr-3&quot; alt=&quot;Product thumb&quot;&gt;&lt;div class=&quot;media-body&quot;&gt;&lt;h6  class=&quot;font-size-sm font-weight-semibold mb-0&quot;&gt;The North Face Hoodie&lt;/h6&gt;&lt;span class=&quot;d-block font-size-xs text-muted&quot;&gt;$134.00&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;">Next <span class='d-none d-sm-inline'>product</span><i class="ml-1" data-feather="chevron-right"></i></a></nav>
-          <!-- Related products (visible md and down)-->
-          <div class="d-lg-none">
-            <h2 class="h3 pt-5 pb-3">You may also like</h2>
-            <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;margin&quot;: 15, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2}, &quot;630&quot;:{&quot;items&quot;:3}} }">
-              <div class="product-card">
-                <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/03.jpg" alt="Product"></div>
-                <div class="product-card-body box-shadow-0 text-center"><a class="product-meta" href="#">Men's shoes</a>
-                  <h3 class="product-card-title"><a href="#">Calvin Klein Jeans Keds</a></h3><span class="text-primary">$125.00</span>
-                </div>
-              </div>
-              <div class="product-card">
-                <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="badge badge-danger rounded-0">Sale -10%</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/08.jpg" alt="Product"></div>
-                <div class="product-card-body box-shadow-0 text-center"><a class="product-meta" href="#">Women's sneakers</a>
-                  <h3 class="product-card-title"><a href="#">Reebok Classic Sneakers</a></h3><span class="text-primary">
-                    <del class="text-muted mr-1">$105.00</del>$94.50</span>
-                </div>
-              </div>
-              <div class="product-card">
-                <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/10.jpg" alt="Product"></div>
-                <div class="product-card-body box-shadow-0 text-center"><a class="product-meta" href="#">Men's sandals</a>
-                  <h3 class="product-card-title"><a href="#">Big Star Flip Tops</a></h3><span class="text-primary">$10.60</span>
-                </div>
-              </div>
-              <div class="product-card">
-                <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/apparel/01.jpg" alt="Product"></div>
-                <div class="product-card-body box-shadow-0 text-center"><a class="product-meta" href="#">Men's jeans</a>
-                  <h3 class="product-card-title"><a href="#">Gues Slim Fit Jeans</a></h3><span class="text-primary">$124.99</span>
-                </div>
+               
+                  </div></a>
               </div>
             </div>
           </div>

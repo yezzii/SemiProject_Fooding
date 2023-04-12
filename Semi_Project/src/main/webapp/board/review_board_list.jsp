@@ -51,7 +51,7 @@
 					<tr>
 						<td>${dto.getBoard_idx() }</td>
 						<td><a
-							href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a>
+							href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx()}">${dto.getBoard_title() }</a>
 						</td>
 						<td>${dto.getBoard_writer() }</td>
 						<td>${dto.getBoard_content() }</td>

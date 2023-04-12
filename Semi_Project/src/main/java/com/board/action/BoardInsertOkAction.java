@@ -52,9 +52,9 @@ public class BoardInsertOkAction implements Action {
 	     
 	      forward.setRedirect(true);
 	      if(type == 0) {
-	         forward.setPath("/Semi_Project/free_board.do");
+	         forward.setPath("free_board.do");
 	      } else if (type == 1) {
-	         forward.setPath("/Semi_Project/review_board.do");
+	         forward.setPath("review_board.do");
 	      }
 	      return forward;
 	      }else {

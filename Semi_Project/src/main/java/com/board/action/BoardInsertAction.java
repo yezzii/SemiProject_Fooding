@@ -15,7 +15,7 @@ public class BoardInsertAction implements BoardAction {
 			throws IOException, ServletException {
 	
 		
-		return "board/board_write.jsp";
+		return "board_write.jsp";
 	}
 
 }
