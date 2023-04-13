@@ -34,35 +34,8 @@
 	justify-content: center;
 }
 </style>
-<script type="text/javascript">
-	function check() {
 
-		if (f.writer.value == "") {
-			alert("작성자를 입력하세요");
-			f.writer.focus();
-			return false;
-		}
 
-		if (f.title.value == "") {
-			alert("제목를 입력하세요");
-			f.title.focus();
-			return false;
-		}
-
-		if (f.cont.value == "") {
-			alert("내용을 입력하세요");
-			f.cont.focus();
-			return false;
-		}
-
-		if (f.pwd.value == "") {
-			alert("비밀번호를 입력하세요");
-			f.pwd.focus();
-			return false;
-		}
-
-	}
-</script>
 </head>
 <body>
 	<div align="center">

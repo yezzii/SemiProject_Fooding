@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <%
 response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0
@@ -21,6 +22,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description"
 	content="MStore - Modern Bootstrap E-commerce Template" />
+	
 <meta name="keywords"
 	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 <meta name="author" content="Createx Studio" />
@@ -41,22 +43,19 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	href="css/theme.min.css" />
 <!-- Customizer styles and scripts-->
 
-
-<script type="text/javascript" src="js/vendor.min.js"></script>
-<script type="text/javascript" src="js/theme.min.js"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.1.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
 </head>
 <!-- Body-->
 <body>
-
 
 	<!-- Off-canvas search-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Search site</h3>
+			<h3 class="offcanvas-title">푸딩 - 검색</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -69,16 +68,17 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						<span class="input-group-text" id="search-icon"><i
 							data-feather="search"></i></span>
 					</div>
-					<input class="form-control" type="text" id="site-search"
-						placeholder="Search site" aria-label="Search site"
-						aria-describedby="search-icon" />
+					<input class="form-control" type="text" id="site-search" name="main_search"
+						placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
+						aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do" />
 				</div>
-				<small class="form-text pt-1">Type A or C to see
-					suggestions. Powered by Easy autocomplete plugin via separate JSON
-					file.</small>
+				<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유롭게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
 			</div>
 		</div>
 	</div>
+
+
+
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -86,8 +86,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		userID = (String) session.getAttribute("id");
 	}
 
-	// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
-	if (userID == null) {
 	%>
 
 	<!-- Off-canvas account-->
@@ -150,7 +148,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								로그인</button>
 						</form>
 					</div>
-					
+
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
 						<form method="post" class="needs-validation" novalidate action="<%=request.getContextPath()%>/member_join.do" id="signup-form" name="signup-form">
@@ -206,9 +204,13 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
 								가입하기</button>
-							<button class="btn btn-primary btn-block" onclick="location.href=''">
+								<button class="btn btn-primary btn-block" type="button" onclick="location.href='company-signup.jsp'">
 								사업자 가입</button>
+						
 						</form>
+						
+						
+					
 
 					</div>
 				</div>
@@ -233,24 +235,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 
-	<%
-	// 로그인이 되어있는 사람만 볼수 있는 화면
-	} else {
-	%>
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
-		<div
-			class="offcanvas-header justify-content-between align-items-center">
-			<h3 class="offcanvas-title">로그인 / 회원가입</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-
-	</div>
-	<%
-	}
-	%>
+	
 	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
@@ -351,7 +336,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		<div class="container-fluid navbar-inner">
 			<!-- navbar brand-->
 			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
-				width="100" src="img/logo-dark.png" alt="MStore" /></a>
+				width="250" src="img/logo-fooding.png" alt="Fooding" /></a>
 			<!-- navbar collapse area-->
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
@@ -621,7 +606,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							<li><a class="dropdown-item" href="404.jsp">404 Not
 									Found</a></li>
 						</ul></li>
-
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
 							class="mr-1" data-feather="file-text"></i>Docs</a>
@@ -684,7 +668,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					</div>
 					<a class="navbar-btn" href="#offcanvas-search"
 						data-toggle="offcanvas"><i class="mx-auto mb-1"
-						data-feather="search"></i>Search</a>
+						data-feather="search"></i>푸딩 검색</a>
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -709,7 +693,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
 				</div>
 			</div>
 		</div>
@@ -723,36 +707,46 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<div class="owl-carousel trigger-carousel"
 						data-owl-carousel='{ "nav": true, "dots": false, "loop": true, "autoHeight": true }'
 						data-target-carousel="#target-carousel">
-						<div class="py-5 px-3 px-sm-5">
+						
+						<div class="py-4 px-3 px-sm-5">
 							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo01.png" width="180"
-								alt="Reebok" />
-							<h2 class="mb-1">Sneakers Classic Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$105.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								src="img/photo/FeiLogo.png" width="130"
+								alt="서울드래곤시티 페이" />
+							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">서울드래곤시티 페이</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">서울 용산구 청파로20길 95 <br>서울드래곤시티 그랜드 머큐어 2F</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약 하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
-						<div class="py-5 px-3 px-sm-5">
+						
+						<div class="py-4 px-3 px-sm-5">
 							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo02.png" width="129"
-								alt="The North Face" />
-							<h2 class="mb-1">Sports Hoodie Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$89.00</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								src="img/photo/gordon.jpg" width="125"
+								alt="고든램지 버거" />
+							<h2 class="mb-1"  style="font-family: 'GmarketSansMedium';">고든램지 버거</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">주소: 서울 송파구 올림픽로 300<br> 롯데월드몰 지하1층</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약 하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
-						<div class="py-5 px-3 px-sm-5">
+						
+						<div class="py-4 px-3 px-sm-5">
 							<img class="d-block mb-2"
-								src="img/home/apparel/hero-slide-logo03.png" width="182"
-								alt="Calvin Klein" />
-							<h2 class="mb-1">Sunglasses Collection</h2>
-							<h3 class="font-weight-light opacity-70 pb-3">starting at
-								$16.99</h3>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp">Shop now<i
+								src="img/photo/KimSS_logo.png" width="130"
+								alt="서촌김씨 오스테리아" />
+							<h2 class="mb-1"  style="font-family: 'GmarketSansMedium';">서촌김씨 오스테리아</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">서울 강서구 공항대로 209 <br>지엠지 엘스타 2층 208호</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약하기<i
+								class="ml-2" data-feather="arrow-right"></i>
+							</a>
+						</div>
+						<div class="py-4 px-3 px-sm-5">
+							<img class="d-block mb-2"
+								src="img/photo/amberserder.png" width="130"
+								alt="스펙트럼 앰배서더 서울" />
+							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">스펙트럼 앰배서더 서울</h2>
+							<h5 class="font-weight-light opacity-70 pb-3" style="font-family: 'GmarketSansMedium';">서울 영등포구 여의대로 108<br> 페어몬트 앰배서더 서울 5층</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp" style="font-family: 'GmarketSansMedium';">예약하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
@@ -762,116 +756,117 @@ if(request.getProtocol().equals("HTTP/1.1"))
 			<div class="col-md-6">
 				<div class="owl-carousel" id="target-carousel"
 					data-owl-carousel='{ "nav": false, "dots": false, "loop": true, "mouseDrag": false, "touchDrag": false, "pullDrag": false, "animateOut": "fadeOut" }'>
-					<img class="ml-auto mr-0" src="img/home/apparel/hero-slide01.jpg"
-						alt="Sneakers Collection" /><img class="ml-auto mr-0"
-						src="img/home/apparel/hero-slide02.jpg" alt="Hoodie Collection" /><img
-						class="ml-auto mr-0" src="img/home/apparel/hero-slide03.jpg"
-						alt="Sunglasses Collection" />
+					<img class="ml-auto mr-0" src="img/photo/Fei.jpg"
+						alt="서울드래곤시티 페이" />
+						<img class="ml-auto mr-0"
+						src="img/photo/GordonRamsayBuerger.jpg" alt="고든램지 버거" />
+						<img class="ml-auto mr-0" src="img/photo/KimSS.jpeg"
+						alt="서촌김씨 오스테리아" />
+							<img class="ml-auto mr-0" src="img/photo/spectrum.png"
+						alt="스펙트럼 앰배서더 서울" />
 				</div>
 			</div>
 		</div>
 	</section>
+	
 	<!-- Popular categories (carousel)-->
 	<section class="container py-5 mt-3">
-		<h2 class="h3 text-center pb-4">Popular categories</h2>
+		<h5 class="h3 text-center pb-4" style="font-family: 'GmarketSansMedium';">상황별·주제별 BEST</h5>
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"460":{"items":2}, "768":{"items":3}} }'>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-						<img src="img/shop/apparel/categories/01.jpg" alt="Clothing" />
+						<img src="img/photo/Date.png" alt="GoodDate" />
 					</div>
 					<div class="thumblist">
-						<img src="img/shop/apparel/categories/02.jpg" alt="Clothing" /><img
-							src="img/shop/apparel/categories/03.jpg" alt="Clothing" />
+						<img src="img/photo/steak.jpg" alt="GoodDate" /><img
+							src="img/photo/food1.jpeg" alt="GoodDate" />
 					</div>
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Clothing</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$49.99</span>
+					<h2 class="h5 mb-1">미식 데이트</h2>
+					<span class="d-block mb-3 font-size-s text-muted">특별한 날, 소중한 추억을 남기고 싶다면?</span>
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop clothing</a>
+						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-						<img src="img/shop/apparel/categories/04.jpg" alt="Shoes" />
+						<img src="img/photo/GoodView.png" alt="GoodView" />
 					</div>
 					<div class="thumblist">
-						<img src="img/shop/apparel/categories/05.jpg" alt="Shoes" /><img
-							src="img/shop/apparel/categories/06.jpg" alt="Shoes" />
+						<img src="img/photo/centro.png" alt="GoodView" /><img
+							src="img/photo/GoodView2.jpg" alt="GoodView" />
 					</div>
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Shoes</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$56.00</span>
+					<h2 class="h5 mb-1">뷰와 맛을 한번에</h2>
+					<span class="d-block mb-3 font-size-s text-muted"> 전망 좋은 레스토랑에서의 식사 어때요?
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop shoes</a>
+						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
 			<div class="card border-0">
 				<a class="card-img-tiles" href="shop-style1-ls.jsp">
 					<div class="main-img">
-						<img src="img/shop/apparel/categories/07.jpg" alt="Bags" />
+						<img src="img/photo/Adult.png" alt="WithAdult" />
 					</div>
 					<div class="thumblist">
-						<img src="img/shop/apparel/categories/08.jpg" alt="Bags" /><img
-							src="img/shop/apparel/categories/09.jpg" alt="Bags" />
+						<img src="img/photo/Adult2.jpg" alt="WithAdult" /><img
+							src="img/photo/Adult3.jpeg" alt="WithAdult" />
 					</div>
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
-					<h2 class="h5 mb-1">Bags</h2>
-					<span class="d-block mb-3 font-size-xs text-muted">Starting
-						from <span class="font-weight-semibold">$27.00</span>
+					<h2 class="h5 mb-1">하루를 선물해보세요</h2>
+					<span class="d-block mb-3 font-size-s text-muted">부모님께 색다른 하루를 선물해보세요!
 					</span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">Shop bags</a>
+						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Brands carousel-->
 	<section class="container pb-4 mt-md-3">
-		<h2 class="h3 text-center pb-4">Shop by brand</h2>
+		<h5 class="h3 text-center pb-4" style="font-family: 'GmarketSansMedium';">브랜드 관</h5>
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "loop": true, "margin": 30, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2, "margin": 15},"460":{"items":3, "margin": 15}, "768":{"items":4}} }'>
 			<a class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/01.png"
+				class="d-block mx-auto" src="img/photo/amberserder.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/02.png"
+				class="d-block mx-auto" src="img/photo/01.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/03.png"
+				class="d-block mx-auto" src="img/photo/02.jpeg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/04.png"
+				class="d-block mx-auto" src="img/photo/03.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/05.png"
+				class="d-block mx-auto" src="img/photo/04.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/06.png"
+				class="d-block mx-auto" src="img/photo/05.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/07.png"
+				class="d-block mx-auto" src="img/photo/06.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/08.png"
+				class="d-block mx-auto" src="img/photo/07.jpeg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/09.png"
+				class="d-block mx-auto" src="img/photo/08.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/10.png"
+				class="d-block mx-auto" src="img/photo/gordon.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/11.png"
+				class="d-block mx-auto" src="img/photo/09.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/shop/apparel/brands/12.png"
+				class="d-block mx-auto" src="img/photo/10.png"
 				style="width: 150px" alt="Brand" /></a>
 		</div>
 	</section>
@@ -1792,7 +1787,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<div class="col-sm-6 text-center text-sm-left">
 						<div class="mb-4 mb-sm-0">
 							<a class="d-inline-block" href="index.jsp"><img width="100"
-								src="img/logo-light.png" alt="MStore" /></a>
+								src="img/logo-light.png" alt="Fooding" /></a>
 
 						</div>
 					</div>
@@ -1838,7 +1833,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+
 	
 <script type="text/javascript" src="js/sign_upChk.js"></script>
 </body>

@@ -28,7 +28,7 @@ public class ReviewBoardListAction implements Action {
 
 		forward.setRedirect(false);
 
-		forward.setPath("board/review_board_list.jsp");
+		forward.setPath("review_board.jsp");
 
 		return forward;
 	}

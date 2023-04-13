@@ -7,6 +7,14 @@
 @import
 	url("https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800")
 	;
+	
+	@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+	}
+	
 
 :root { -
 	-blue: #007bff; -
@@ -563,13 +571,13 @@ pre code {
 }
 
 .row {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	margin-right: -15px;
-	margin-left: -15px
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+   margin-right: -15px;
+   margin-left: -15px
 }
 
 .no-gutters {
@@ -2294,6 +2302,7 @@ textarea.form-control {
 	font-size: 80%;
 	color: #f44336
 }
+
 .feedback {
 	display: none;
 	width: 100%;
@@ -2301,6 +2310,7 @@ textarea.form-control {
 	font-size: 80%;
 	color: #f44336
 }
+
 
 .invalid-tooltip {
 	position: absolute;
@@ -2593,14 +2603,14 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-primary {
 	color: #fff;
-	background-color: #5c77fc;
-	border-color: #5c77fc
+	background-color: #ff9326;
+	border-color: none
 }
 
 .btn-primary:hover {
 	color: #fff;
-	background-color: #3658fb;
-	border-color: #2a4dfb
+	background-color: #ffb973;
+	border-color: #ffffff
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2881,8 +2891,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-	color: #5c77fc;
-	border-color: #5c77fc
+	color: #ff9326;
+	border-color: #ff9326
 }
 
 .btn-outline-primary:hover {
@@ -4768,6 +4778,12 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	color: #fff
 }
 
+
+@media (max-width: 767px) {
+  .card {
+    height: 200px;
+  }
+}
 .card {
 	position: relative;
 	display: -webkit-box;
@@ -4875,10 +4891,20 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
 	flex-direction: column
+	
 }
 
 .card-deck .card {
 	margin-bottom: 15px
+}
+
+#flexCardSlider_Dong{
+	
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 50px;
+	padding:50px 100px;
+	
 }
 
 @media ( min-width : 576px) {
@@ -4888,7 +4914,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 		-ms-flex-flow: row wrap;
 		flex-flow: row wrap;
 		margin-right: -15px;
-		margin-left: -15px
+		margin-left: 33px;
 	}
 	.card-deck .card {
 		display: -webkit-box;
@@ -6391,7 +6417,10 @@ a.close.disabled {
 }
 
 .carousel {
-	position: relative
+	position: relative;
+ 	width: 700px;
+	height: calc(800px * 0.5);
+
 }
 
 .carousel.pointer-event {
@@ -6402,7 +6431,7 @@ a.close.disabled {
 .carousel-inner {
 	position: relative;
 	width: 100%;
-	overflow: hidden
+	overflow: hidden;
 }
 
 .carousel-inner::after {
@@ -6415,6 +6444,7 @@ a.close.disabled {
 	position: relative;
 	display: none;
 	float: left;
+	height: 400px;
 	width: 100%;
 	margin-right: -100%;
 	-webkit-backface-visibility: hidden;
@@ -6423,6 +6453,14 @@ a.close.disabled {
 	transition: -webkit-transform .6s ease-in-out;
 	transition: transform .6s ease-in-out;
 	transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out
+}
+
+
+.carousel-item img {
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 
 @media ( prefers-reduced-motion : reduce) {
@@ -6480,7 +6518,7 @@ a.close.disabled {
 
 .carousel-control-prev, .carousel-control-next {
 	position: absolute;
-	top: 0;
+	top: 20px;
 	bottom: 0;
 	z-index: 1;
 	display: -webkit-box;
@@ -6497,7 +6535,10 @@ a.close.disabled {
 	text-align: center;
 	opacity: .5;
 	-webkit-transition: opacity 0.15s ease;
-	transition: opacity 0.15s ease
+	transition: opacity 0.15s ease;
+	 background-color: transparent;
+    border: none;
+      margin-top: -25px;
 }
 
 @media ( prefers-reduced-motion : reduce) {
@@ -11197,7 +11238,7 @@ to {
 		position: fixed
 	}
 	.navbar-expand-lg.navbar.fixed-top+* {
-		margin-top: 5rem
+		margin-top: 7rem
 	}
 	.navbar-expand-lg .navbar-collapse {
 		position: static;
@@ -12733,7 +12774,7 @@ to {
 
 .owl-carousel .owl-nav button.owl-next:hover:not(.disabled),
 	.owl-carousel .owl-nav button.owl-prev:hover:not(.disabled) {
-	color: #5c77fc
+	color: #ff9326
 }
 
 .owl-carousel .owl-nav button.owl-next:focus, .owl-carousel .owl-nav button.owl-prev:focus

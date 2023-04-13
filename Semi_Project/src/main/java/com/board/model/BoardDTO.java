@@ -9,7 +9,15 @@ public class BoardDTO {
 	private String board_date;
 	private int board_viewcnt;
 	private int board_type; //일반 게시글 0 후기성 게시글 1
+	private String board_image;
 	
+
+	public String getBoard_image() {
+		return board_image;
+	}
+	public void setBoard_image(String board_image) {
+		this.board_image = board_image;
+	}
 	public int getBoard_idx() {
 		return board_idx;
 	}

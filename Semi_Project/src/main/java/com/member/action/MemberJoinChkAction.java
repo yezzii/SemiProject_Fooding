@@ -31,9 +31,11 @@ public class MemberJoinChkAction implements Action {
 		
         
         // 성공여부 확인 : 개발자용(서버콘솔)
+
         if (result == -1) { //id 중복
             System.out.println("Action 내부) 이미 존재하는 아이디입니다.");
         } else {
+
             System.out.println("Action 내부) 사용 가능한 아이디입니다.");
         }
 		
