@@ -476,16 +476,20 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop layouts</h3>
+										<h3 class="widget-title">게시판</h3>
 										<ul>
 											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-											<li><a href="shop-style1-ls.jsp"> <i
+											<li><a href="<%=request.getContextPath() %>/review_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
-													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+													class="font-size-sm">후기 게시판</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/free_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">자유 게시판</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -498,10 +502,10 @@ if(request.getProtocol().equals("HTTP/1.1"))
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Product
-														Page #1 - Apparel</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
+														</span></a></li>
 
 											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
