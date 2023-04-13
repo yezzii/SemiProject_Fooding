@@ -776,29 +776,10 @@
         <div class="col-lg-9">
           <!-- Post-->
           <div class="row pb-5">
-            <div class="col-md-4">
-              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
-                <div class="mr-2">by&nbsp;<a href="#">Olivia Reyes</a><span class="meta-divider"></span><a href="#">Apr 20</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
-              </div>
-              <h3 class="h4 mb-4"><a class="post-title" href="blog-single-rs.jsp">Must have clothing on your next trip</a></h3>
-            </div>
+            
             <div class="col-md-8">
             <!-- Textarea -->
-<div class="form-group">
-  
-  <!-- Text input -->
-<div class="form-group">
-  <label for="text-input">제목</label>
-  <input class="form-control" type="text" id="text-input" value="Artisanal kale">
-</div>
 
-<label for="textarea-input">글쓰기</label>
-  <textarea class="form-control" id="textarea-input" rows="5"></textarea>
-<br>
-<!-- Primary button -->
-<button type="button" class="btn btn-primary rounded">작성</button>
-<br>
-</div>
               <div class="post-meta">
                 <div>
                    <a href="#">Fooding, &nbsp;</a><a href="#">Board</a><span class="meta-divider"></span><a href="#">#yummy!</a></div>
