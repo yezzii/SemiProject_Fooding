@@ -86,8 +86,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		userID = (String) session.getAttribute("id");
 	}
 
-	// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
-	if (userID == null) {
 	%>
 
 	<!-- Off-canvas account-->
@@ -206,9 +204,13 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
 								가입하기</button>
-							<button class="btn btn-primary btn-block" onclick="location.href=''">
+								<button class="btn btn-primary btn-block" type="button" onclick="location.href='company-signup.jsp'">
 								사업자 가입</button>
+						
 						</form>
+						
+						
+					
 
 					</div>
 				</div>
@@ -233,23 +235,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 
-	<%
-	// 로그인이 되어있는 사람만 볼수 있는 화면
-	} else {
-	%>
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
-		<div
-			class="offcanvas-header justify-content-between align-items-center">
-			<h3 class="offcanvas-title">로그인 / 회원가입</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-	</div>
-	<%
-	}
-	%>
+	
 	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
