@@ -53,29 +53,31 @@ if(request.getProtocol().equals("HTTP/1.1"))
 
 	<!-- Off-canvas search-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-		<div
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">푸딩 - 검색</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="offcanvas-body">
-			<div class="offcanvas-body-inner">
-				<div class="input-group pt-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="search-icon"><i
-							data-feather="search"></i></span>
-					</div>
-					<input class="form-control" type="text" id="site-search" name="main_search"
-						placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
-						aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do" />
+				<div
+					class="offcanvas-header d-flex justify-content-between align-items-center">
+					<h3 class="offcanvas-title">푸딩 - 검색</h3>
+					<button class="close" type="button" data-dismiss="offcanvas"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-				<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유롭게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
+				<form>
+				<div class="offcanvas-body">
+					<div class="offcanvas-body-inner">
+						<div class="input-group pt-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="search-icon"><i
+									data-feather="search"></i></span>
+							</div>
+							<input class="form-control" type="text" id="site-search" name="main_search"
+								placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
+								aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do?keyword=" />
+						</div>
+						<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
+					</div>
+				</div>
+				</form>
 			</div>
-		</div>
-	</div>
 
 
 
@@ -356,7 +358,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				<!-- Site menu-->
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown mega-dropdown dropdown-more"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">카테고리<i
 							data-feather="more-horizontal"></i></a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
@@ -376,16 +378,10 @@ if(request.getProtocol().equals("HTTP/1.1"))
 													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">수원</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">충남</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">광주</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
@@ -402,31 +398,20 @@ if(request.getProtocol().equals("HTTP/1.1"))
 										<ul>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Computers
-														&amp; Accessories</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">데이트 코스</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">TV,
-														Video &amp; Audio</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
-														&amp; Tablets</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">뷰가 좋은</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
-														Photo &amp; Video</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Wearable
-														Electronics</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Video
-														Games</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
+											
 										</ul>
 									</div>
 								</div>
@@ -440,31 +425,25 @@ if(request.getProtocol().equals("HTTP/1.1"))
 										<ul>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Lounge
-														Seating</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">고기요리</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">File
-														Cabinets</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">한식</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Indoor
-														Lighting</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Office
-														Chairs</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">양식</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Adjustable
-														Height Desks</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">아시안</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Storage
-														Units</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">카페,디저트</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -622,32 +601,30 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="mr-1" data-feather="file-text"></i>Docs</a>
+							class="mr-1" data-feather="file-text"></i>레스토랑</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="docs/dev-setup.jsp">
+							<li><a class="dropdown-item" href="<%=request.getContextPath() %>/board_main_list.do">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="file-text"
 											style="width: 1.4375rem; height: 1.4375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">Documentation</span><small
-												class="text-muted">Kick-start customization</small>
+											<span class="d-block mb-n1">레스토랑 목록</span>
 										</div>
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="components/alerts.jsp">
+							<li><a class="dropdown-item" href="Board_Main_join.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">Components <span
-												class="badge badge-pill badge-success">40+</span>
-											</span><small class="text-muted">Faster page building</small>
+											<span class="d-block mb-n1">레스토랑 추가
+											</span>
 										</div>
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="docs/changelog.jsp">
+							<li><a class="dropdown-item" href="Board_Main_join.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="edit"
 											style="width: 1.375rem; height: 1.375rem"></i>
@@ -680,9 +657,26 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						data-toggle="collapse" data-target="#menu">
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
-					<a class="navbar-btn" href="#offcanvas-search"
-						data-toggle="offcanvas"><i class="mx-auto mb-1"
-						data-feather="search"></i>푸딩 검색</a>
+					<form method="get" action="<%=request.getContextPath()%>/main_search.do">
+						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
+							<div class="input-group flex-nowrap">
+								<div class="input-group-prepend">
+									<%-- 검색input테그 --%>
+
+									<input class="form-control rounded" type="text"
+										id="site-search" placeholder="통합 검색" name="keyword"
+										aria-label="Search site" aria-describedby="search-icon">
+									<%-- 검색input테그 END --%>
+
+									<%-- 검색버튼 --%>
+						
+
+									<%-- 검색버튼 END--%>
+								</div>
+
+							</div>
+						</div>
+					</form>
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {

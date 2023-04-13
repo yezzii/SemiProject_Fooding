@@ -96,7 +96,7 @@ public class Board_MainDAO {
 				count = rs.getInt(1) + 1;
 			}
 
-			sql = "select member_storenum from member where member_id=?";
+			sql = "select member_storenum from member where member_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getMain_memid());
 			rs = pstmt.executeQuery();
@@ -104,14 +104,13 @@ public class Board_MainDAO {
 				board_main = rs.getString(1);
 			}
 
-			sql = "insert into board_main values(?,?,?,?,?,?,?,?,?,?,'',?,?)";
+			sql = "insert into board_main values(?,?,?,?,?,?,?,?,?,?,'',?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, count);
 			pstmt.setString(2, dto.getMain_name());
 			pstmt.setString(3, dto.getMain_type());
-			;
 			pstmt.setString(4, dto.getMain_info());
 			pstmt.setString(5, dto.getMain_opentime());
 			pstmt.setString(6, dto.getMain_endtime());
@@ -121,6 +120,7 @@ public class Board_MainDAO {
 			pstmt.setString(10, dto.getMain_phone());
 			pstmt.setString(11, dto.getMain_memid());
 			pstmt.setString(12, board_main);
+			pstmt.setString(13, dto.getMain_thema());
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -187,7 +187,9 @@ public class Board_MainDAO {
 				dto.setMain_location(rs.getString("main_location"));
 				dto.setMain_memid(rs.getString("main_memid"));
 				dto.setMain_storenum(rs.getString("main_storenum"));
-
+				dto.setMain_thema(rs.getString("main_thema"));
+				
+				
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -198,6 +200,8 @@ public class Board_MainDAO {
 		}
 		return list;
 	}// getBoardMainList() end
+	
+	
 
 	// update 메서드
 	public Board_MainDTO getBoardMainSelect(int idx) {
@@ -225,6 +229,7 @@ public class Board_MainDAO {
 				dto.setMain_location(rs.getString("main_location"));
 				dto.setMain_memid(rs.getString("main_memid"));
 				dto.setMain_storenum(rs.getString("main_storenum"));
+				dto.setMain_thema(rs.getString("main_thema"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -245,7 +250,7 @@ public class Board_MainDAO {
 			pstmt.setInt(1, dto.getMain_idx());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				sql = "update board_main set main_type = ?,main_info = ?,main_opentime = ?,main_endtime = ?,main_post = ?,main_addr = ?,main_detailaddr = ?,main_phone = ? where main_idx =?";
+				sql = "update board_main set main_type = ?,main_info = ?,main_opentime = ?,main_endtime = ?,main_post = ?,main_addr = ?,main_detailaddr = ?,main_phone = ?,main_thema = ? where main_idx =?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, dto.getMain_type());
 				pstmt.setString(2, dto.getMain_info());
@@ -255,7 +260,8 @@ public class Board_MainDAO {
 				pstmt.setString(6, dto.getMain_addr());
 				pstmt.setString(7, dto.getMain_detailaddr());
 				pstmt.setString(8, dto.getMain_phone());
-				pstmt.setInt(9, dto.getMain_idx());
+				pstmt.setString(9, dto.getMain_thema());
+				pstmt.setInt(10, dto.getMain_idx());
 
 				result = pstmt.executeUpdate();
 			}
@@ -299,6 +305,8 @@ public class Board_MainDAO {
 				sql += " where main_memid like ?) l";
 			} else if (field.equals("main_storenum")) {
 				sql += " where main_storenum like ?) h";
+			}else if(field.equals("main_thema")) {
+				sql += " where main_thema like ?) v";
 			}
 
 			sql += " where rnum between ? and ?";
@@ -339,7 +347,8 @@ public class Board_MainDAO {
 				dto.setMain_location(rs.getString("main_location"));
 				dto.setMain_memid(rs.getString("main_memid"));
 				dto.setMain_storenum(rs.getString("main_storenum"));
-
+				dto.setMain_thema(rs.getString("main_thema"));
+				
 				searchList.add(dto);
 			}
 		} catch (SQLException e) {
@@ -416,6 +425,8 @@ public class Board_MainDAO {
 				sql += " where main_memid like ?";
 			} else if (field.equals("main_storenum")) {
 				sql += " where main_storenum like ?";
+			}else if(field.equals("main_thema")) {
+				sql += " where main_thema like ?";
 			}
 
 			sql += " order by main_idx";
