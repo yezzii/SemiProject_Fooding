@@ -148,6 +148,9 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 							<button class="btn btn-primary btn-block" type="submit">
 								로그인</button>
+								<div class="pt-3" align="center">
+								<a href="account-id-recovery.jsp" class = "a-cssIdPwd font-size-xs">아이디 찾기</a><a href="account-password-recovery.jsp" class = "a-cssIdPwd font-size-xs" >비밀번호 찾기</a>
+								</div>
 						</form>
 					</div>
 
@@ -216,7 +219,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 
 					</div>
 				</div>
-				<div class="d-flex align-items-center pt-5">
+				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
 						로그인</div>
