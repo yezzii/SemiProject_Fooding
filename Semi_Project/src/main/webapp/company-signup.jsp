@@ -29,7 +29,7 @@
 <!-- Customizer styles and scripts-->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.1.js"></script>
-
+	<script src="js/company_joinChk.js"></script>
 </head>
 <!-- Body-->
 <body>
@@ -50,7 +50,7 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-		
+
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<div class="input-group pt-3">
@@ -71,10 +71,7 @@
 
 
 
-	<%
-	// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
-	if (userID == null) {
-	%>
+	
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -97,7 +94,7 @@
 				<div class="tab-content pt-1">
 					<div class="tab-pane fade show active" id="signin" role="tabpanel">
 						<form class="needs-validation" novalidate method="post"
-							action="<%=request.getContextPath()%>/login.do" id="reg-form">
+							action="<%=request.getContextPath()%>/login.do" id="signin">
 							<div class="form-group">
 								<label class="sr-only" for="signin-id">ID</label>
 								<div class="input-group">
@@ -161,122 +158,8 @@
 									aria-label="Confirm password" required />
 								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
-								가입하기</button>
-						</form>
-					</div>
-				</div>
-				<div class="d-flex align-items-center pt-5">
-					<hr class="w-100" />
-					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
-						로그인</div>
-					<hr class="w-100" />
-				</div>
-				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
-						class="social-btn sb-google-plus mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
-						class="social-btn sb-twitter mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Twitter"><i
-						class="flaticon-twitter"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<%
-	// 로그인이 되어있는 사람만 볼수 있는 화면
-	} else {
-	%>
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
-		<div
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">로그인 / 회원가입</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="offcanvas-body">
-			<div class="offcanvas-body-inner">
-				<ul class="nav nav-tabs nav-justified" role="tablist">
-					<li class="nav-item"><a class="nav-link active" href="#signin"
-						data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="#signup"
-						data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;회원가입</a></li>
-				</ul>
-				<div class="tab-content pt-1">
-					<div class="tab-pane fade show active" id="signin" role="tabpanel">
-						<form class="needs-validation" novalidate method="post"
-							action="<%=request.getContextPath()%>/login.do">
-							<div class="form-group">
-								<label class="sr-only" for="signin-id">ID</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="signin-id-icon"><i
-											data-feather="mail"></i></span>
-									</div>
-									<input class="form-control" type="text" id="signin-id"
-										placeholder="ID" aria-label="ID" name="id"
-										aria-describedby="signin-id-icon" required />
-									<div class="invalid-feedback">아이디를 입력해주세요.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signin-password">Password</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="signin-password-icon"><i
-											data-feather="lock"></i></span>
-									</div>
-									<input class="form-control" type="password"
-										id="signin-password" placeholder="Password"
-										aria-label="Password" name="pwd"
-										aria-describedby="signin-password-icon" required />
-									<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
-								</div>
-							</div>
-							<div class="custom-control custom-checkbox mb-3">
-								<input class="custom-control-input" type="checkbox"
-									id="remember-me" checked /> <label
-									class="custom-control-label" for="remember-me">아이디 저장</label>
-							</div>
 							<button class="btn btn-primary btn-block" type="button"
-								onclick="location.href='../member/logout.jsp'">로그아웃</button>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form class="needs-validation" novalidate>
-							<div class="form-group">
-								<label class="sr-only" for="signup-name">Full name</label> <input
-									class="form-control" type="text" id="signup-name"
-									placeholder="이름" aria-label="Full name" required />
-								<div class="invalid-feedback">이름을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-email">이메일</label> <input
-									class="form-control" type="email" id="signup-email"
-									placeholder="Email" aria-label="Email address" required />
-								<div class="invalid-feedback">이메일을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password">Password</label> <input
-									class="form-control" type="password" id="signup-password"
-									placeholder="Password" aria-label="Password" required />
-								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password-confirm">비밀번호
-									확인</label> <input class="form-control" type="password"
-									id="signup-password-confirm" placeholder="Confirm password"
-									aria-label="Confirm password" required />
-								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
-							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								가입하기</button>
+								onclick="checkAll()">가입하기</button>
 						</form>
 					</div>
 				</div>
@@ -301,9 +184,7 @@
 		</div>
 	</div>
 
-	<%
-	}
-	%>
+	
 	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
@@ -767,48 +648,49 @@
 
 
 			<div class="pt-5 pt-sm-3 ">
-			<br>
+				<br>
 				<h2 class="h4 mb-3">사업자 회원가입</h2>
 				<br>
-				<form class="needs-validation" novalidate id="reg-form" method = "post" action="<%=request.getContextPath()%>/company_join.do">
+				<form class="needs-validation" id="reg-form" method="post"
+					action="<%=request.getContextPath()%>/company_join.do" novalidate>
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-id">아이디</label> <input
-									class="form-control" type="text" required id="reg-id">
-								<span class="feedback" id="reg-idchk"></span>
+								<label for="reg-id">아이디</label> <input class="form-control"
+									type="text" required id="reg-id" name="company_id"> <span
+									class="feedback" id="reg-idchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-name">이름</label> <input
-									class="form-control" type="text" required id="reg-name">
-								<span class="feedback" id="reg-namechk"></span>
+								<label for="reg-name">이름</label> <input class="form-control"
+									type="text" required id="reg-name" name="company_name"> <span
+									class="feedback" id="reg-namechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-email">이메일</label> <input
-									class="form-control" type="email" required id="reg-email">
-								<span class="feedback" id="reg-emailchk"></span>
+								<label for="reg-email">이메일</label> <input class="form-control"
+									type="email" required id="reg-email" name="company_email"> <span
+									class="feedback" id="reg-emailchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-phone">연락처</label> <input
-									class="form-control" type="text" required id="reg-phone">
-									<span class="feedback" id="reg-idchk"></span>
+								<label for="reg-phone">연락처</label> <input class="form-control"
+									type="text" required id="reg-phone" name="company_phone"> <span
+									class="feedback" id="reg-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="reg-password">비밀번호</label> <input
-									class="form-control" type="password" required id="reg-password">
-									<span class="feedback" id="reg-pwdchk"></span>
+									class="form-control" type="password" required id="reg-password" name="company_pwd">
+								<span class="feedback" id="reg-pwdchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 						</div>
@@ -816,23 +698,23 @@
 							<div class="form-group">
 								<label for="reg-password-confirm">비밀번호 확인</label> <input
 									class="form-control" type="password" required
-									id="reg-password-confirm">
-									<span class="feedback" id="reg-pwdconfirm-chk"></span>
+									id="reg-password-confirm"> <span class="feedback"
+									id="reg-pwdconfirm-chk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-password-confirm">사업자번호</label> <input
-									class="form-control" type="password" required
-									id="reg-password-confirm">
-									<span class="feedback" id="reg-storechk"></span>
+								<label for="reg-storenum">사업자번호</label> <input
+									class="form-control" type="text" required id="reg-storenum" name="company_storenum">
+								<span class="feedback" id="reg-storechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 						</div>
 					</div>
 					<div class="text-right">
-						<button class="btn btn-primary" type="submit">사업자 회원가입</button>
+						<button class="btn btn-primary" type="button" onclick="checkAll()">사업자
+							회원가입</button>
 					</div>
 				</form>
 			</div>
@@ -1134,6 +1016,6 @@
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-	<script type="text/javascript" src="js/company_joinChk.js"></script>
+
 </body>
 </html>
