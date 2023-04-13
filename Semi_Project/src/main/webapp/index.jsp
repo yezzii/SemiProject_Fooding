@@ -2,27 +2,14 @@
 	pageEncoding="UTF-8"%>
 
 
-<%
-response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-response.setDateHeader("Expires", 0); // Proxies
-if(request.getProtocol().equals("HTTP/1.1"))
-	response.setHeader("Cache-Control", "no-cache");
-%>
-
 <!DOCTYPE html>
-
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <title>Fooding</title>
 <!-- SEO Meta Tags-->
-<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
-<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-<META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description"
-	content="MStore - Modern Bootstrap E-commerce Template" />
-	
+	content="Fooding - Modern Bootstrap E-commerce Template" />
 <meta name="keywords"
 	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 <meta name="author" content="Createx Studio" />
@@ -42,17 +29,19 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <!-- Customizer styles and scripts-->
-
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
 </head>
 <!-- Body-->
 <body>
 
-	<!-- Off-canvas search-->
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
+	<%
+	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
+	if (session.getAttribute("id") != null) {
+		userID = (String) session.getAttribute("id");
+	}
+	%>
+	<%--  Off-canvas search					--동현 수정중--
+	
+			<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
 				<div
 					class="offcanvas-header d-flex justify-content-between align-items-center">
 					<h3 class="offcanvas-title">푸딩 - 검색</h3>
@@ -78,16 +67,11 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				</div>
 				</form>
 			</div>
-
+	--%>
 
 
 
 	<%
-	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
-	if (session.getAttribute("id") != null) {
-		userID = (String) session.getAttribute("id");
-	}
-
 	// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 	if (userID == null) {
 	%>
@@ -102,8 +86,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-		
-		<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<ul class="nav nav-tabs nav-justified" role="tablist">
@@ -152,66 +134,36 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								로그인</button>
 						</form>
 					</div>
-
-					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form method="post" class="needs-validation" novalidate action="<%=request.getContextPath()%>/member_join.do" id="signup-form" name="signup-form">
+						<form class="needs-validation" novalidate>
 							<div class="form-group">
-								<label class="sr-only" for="singup-id">아이디</label> <input
-									class="form-control" type="text" id="signup-id"
-									name="member_id" placeholder="아이디" aria-label="아이디" />
-									<span class="feedback" id="signup-idchk"></span>
-									<div class="invalid-feedback"></div>
-
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password">비밀번호</label> <input
-									class="form-control" type="password" id="signup-password"
-									name="member_pwd" placeholder="Password" aria-label="Password"
-									 />
-								<span class="feedback" id="signup-pwdchk"></span>
-								<div class="invalid-feedback"></div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password-confirm">비밀번호
-									확인</label> <input class="form-control" type="password"
-									name="member_pwdchk" id="signup-password-confirm"
-									placeholder="Confirm password" aria-label="Confirm password"
-									 />
-									 <span class="feedback" id="signup-pwdconfirm-chk"></span>
-									 <div class="invalid-feedback"></div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-name">이름</label> <input
+								<label class="sr-only" for="signup-name">Full name</label> <input
 									class="form-control" type="text" id="signup-name"
-									name="member_name" placeholder="이름" aria-label="Full name"
-									/>
-								<span class="feedback" id="signup-namechk"></span>
-								<div class="invalid-feedback"></div>
+									placeholder="이름" aria-label="Full name" required />
+								<div class="invalid-feedback">이름을 작성해주세요</div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-email">이메일</label> <input
 									class="form-control" type="email" id="signup-email"
-									name="member_email" placeholder="Email"
-									aria-label="Email address"/>
-								<span class="feedback" id="signup-emailchk"></span>
-								<div class="invalid-feedback"></div>
+									placeholder="Email" aria-label="Email address" required />
+								<div class="invalid-feedback">이메일을 작성해주세요</div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signup-phone">연락처
-									확인</label> <input class="form-control" type="text"
-									name="member_phone" id="signup-phone"
-									placeholder="Phone" aria-label="Phone"
-									 />
-								<span class="feedback" id="signup-phonechk"></span>
-								<div class="invalid-feedback"></div>
+								<label class="sr-only" for="signup-password">Password</label> <input
+									class="form-control" type="password" id="signup-password"
+									placeholder="Password" aria-label="Password" required />
+								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
+							<div class="form-group">
+								<label class="sr-only" for="signup-password-confirm">비밀번호
+									확인</label> <input class="form-control" type="password"
+									id="signup-password-confirm" placeholder="Confirm password"
+									aria-label="Confirm password" required />
+								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
+							</div>
+							<button class="btn btn-primary btn-block" type="submit">
 								가입하기</button>
-							<button class="btn btn-primary btn-block" onclick="location.href=''">
-								사업자 가입</button>
 						</form>
-
 					</div>
 				</div>
 				<div class="d-flex align-items-center pt-5">
@@ -241,14 +193,114 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	%>
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
 		<div
-			class="offcanvas-header justify-content-between align-items-center">
+			class="offcanvas-header d-flex justify-content-between align-items-center">
 			<h3 class="offcanvas-title">로그인 / 회원가입</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<ul class="nav nav-tabs nav-justified" role="tablist">
+					<li class="nav-item"><a class="nav-link active" href="#signin"
+						data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="#signup"
+						data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;회원가입</a></li>
+				</ul>
+				<div class="tab-content pt-1">
+					<div class="tab-pane fade show active" id="signin" role="tabpanel">
+						<form class="needs-validation" novalidate method="post"
+							action="<%=request.getContextPath()%>/login.do">
+							<div class="form-group">
+								<label class="sr-only" for="signin-id">ID</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="signin-id-icon"><i
+											data-feather="mail"></i></span>
+									</div>
+									<input class="form-control" type="text" id="signin-id"
+										placeholder="ID" aria-label="ID" name="id"
+										aria-describedby="signin-id-icon" required />
+									<div class="invalid-feedback">아이디를 입력해주세요.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signin-password">Password</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="signin-password-icon"><i
+											data-feather="lock"></i></span>
+									</div>
+									<input class="form-control" type="password"
+										id="signin-password" placeholder="Password"
+										aria-label="Password" name="pwd"
+										aria-describedby="signin-password-icon" required />
+									<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+								</div>
+							</div>
+							<div class="custom-control custom-checkbox mb-3">
+								<input class="custom-control-input" type="checkbox"
+									id="remember-me" checked /> <label
+									class="custom-control-label" for="remember-me">아이디 저장</label>
+							</div>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='../member/logout.jsp'">로그아웃</button>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="signup" role="tabpanel">
+						<form class="needs-validation" novalidate>
+							<div class="form-group">
+								<label class="sr-only" for="signup-name">Full name</label> <input
+									class="form-control" type="text" id="signup-name"
+									placeholder="이름" aria-label="Full name" required />
+								<div class="invalid-feedback">이름을 작성해주세요</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-email">이메일</label> <input
+									class="form-control" type="email" id="signup-email"
+									placeholder="Email" aria-label="Email address" required />
+								<div class="invalid-feedback">이메일을 작성해주세요</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-password">Password</label> <input
+									class="form-control" type="password" id="signup-password"
+									placeholder="Password" aria-label="Password" required />
+								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-password-confirm">비밀번호
+									확인</label> <input class="form-control" type="password"
+									id="signup-password-confirm" placeholder="Confirm password"
+									aria-label="Confirm password" required />
+								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
+							</div>
+							<button class="btn btn-primary btn-block" type="submit">
+								가입하기</button>
+						</form>
+					</div>
+				</div>
+				<div class="d-flex align-items-center pt-5">
+					<hr class="w-100" />
+					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
+						로그인</div>
+					<hr class="w-100" />
+				</div>
+				<div class="text-center pt-4">
+					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Facebook"><i
+						class="flaticon-facebook"></i></a><a
+						class="social-btn sb-google-plus mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Google"><i
+						class="flaticon-google-plus"></i></a><a
+						class="social-btn sb-twitter mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Twitter"><i
+						class="flaticon-twitter"></i></a>
+				</div>
+			</div>
+		</div>
 	</div>
+
 	<%
 	}
 	%>
@@ -353,12 +405,13 @@ if(request.getProtocol().equals("HTTP/1.1"))
 			<!-- navbar brand-->
 			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
 				width="250" src="img/logo-fooding.png" alt="Fooding" /></a>
+
 			<!-- navbar collapse area-->
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown mega-dropdown dropdown-more"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">카테고리<i
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
 							data-feather="more-horizontal"></i></a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
@@ -370,7 +423,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+										<li>
+										<a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
 											<li><a href="#"><i
@@ -396,6 +450,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									</div>
 									<div class="widget widget-links">
 										<ul>
+										
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">데이트 코스</span></a></li>
@@ -411,7 +466,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
-											
 										</ul>
 									</div>
 								</div>
@@ -423,7 +477,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+										<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">고기요리</span></a></li>
 											<li><a href="#"><i
@@ -450,7 +504,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
@@ -461,16 +515,12 @@ if(request.getProtocol().equals("HTTP/1.1"))
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-											<li><a href="shop-style1-ls.jsp"> <i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"> </i><span
-													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop</h3>
+										<h3 class="widget-title">Shop pages</h3>
 										<ul>
 											<li><a href="shop-categories-apparel.jsp"><i
 													class="widget-categories-indicator"
@@ -515,29 +565,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								</div>
 							</div>
 						</div></li>
-
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">예약</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Blog Layout</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
-											Right Sidebar</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Single Post Layout</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
-											No Sidebar</a></li>
-								</ul></li>
-						</ul></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">내정보</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
 						<ul class="dropdown-menu">
 							<li class="dropdown"><a
 								class="dropdown-item dropdown-toggle" href="#"
@@ -546,8 +575,9 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-profile.jsp">Profile
-											Settings</a></li>
+									<li><a class="dropdown-item"
+										href="<%=request.getContextPath()%>/asdfasdf.do">서블렛
+											호출테스트</a></li>
 									<li class="dropdown-divider"></li>
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
@@ -600,32 +630,54 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									Found</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="mr-1" data-feather="file-text"></i>레스토랑</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="<%=request.getContextPath() %>/board_main_list.do">
+							<li class="dropdown"><a
+								class="dropdown-item dropdown-toggle" href="#"
+								data-toggle="dropdown">Blog Layout</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
+											Right Sidebar</a></li>
+								</ul></li>
+							<li class="dropdown-divider"></li>
+							<li class="dropdown"><a
+								class="dropdown-item dropdown-toggle" href="#"
+								data-toggle="dropdown">Single Post Layout</a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
+											No Sidebar</a></li>
+								</ul></li>
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
+							class="mr-1" data-feather="file-text"></i>가게</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="docs/dev-setup.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="file-text"
 											style="width: 1.4375rem; height: 1.4375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록</span>
+											<span class="d-block mb-n1">Documentation</span><small
+												class="text-muted">Kick-start customization</small>
 										</div>
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="Board_Main_join.jsp">
+							<li><a class="dropdown-item" href="components/alerts.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 추가
-											</span>
+											<span class="d-block mb-n1">Components <span
+												class="badge badge-pill badge-success">40+</span>
+											</span><small class="text-muted">Faster page building</small>
 										</div>
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="Board_Main_join.jsp">
-									<div class="d-flex py-1">
+							<li><a class="dropdown-item" href="docs/changelog.jsp">
+									<div class="d-flex py-1"> 	
 										<i class="mt-1 ml-n2" data-feather="edit"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
@@ -650,6 +702,10 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						</ul></li>
 				</ul>
 			</div>
+			
+					
+			
+			
 			<!-- navbar buttons-->
 			<div class="navbar-btns">
 				<div class="navbar-btns-inner">
@@ -657,6 +713,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						data-toggle="collapse" data-target="#menu">
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
+
 					<form method="get" action="<%=request.getContextPath()%>/main_search.do">
 						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
@@ -669,7 +726,18 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									<%-- 검색input테그 END --%>
 
 									<%-- 검색버튼 --%>
-						
+							<%-- 		
+									<span class="input-group-text rounded-right" id="search-icon">
+									onclick="location.href='<%=request.getContextPath()%>/main_search.do?keyword=${param.main_search }'">		 
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" fill="none" stroke="currentColor"
+											stroke-width="2" stroke-linecap="round"
+											stroke-linejoin="round" class="feather feather-search">
+												<circle cx="11" cy="11" r="8"></circle>
+											<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+									</svg>
+									</span>			
+							--%>
 
 									<%-- 검색버튼 END--%>
 								</div>
@@ -677,6 +745,10 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div>
 					</form>
+
+
+
+
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -691,8 +763,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					} else {
 					%>
 					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
+						href="#offcanvas-account" data-toggle="offcanvas"><i
+						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
 
 					<%
 					}
@@ -707,6 +779,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</header>
 	<!-- Page Content-->
+
+
 	<!-- Hero slider-->
 	<section class="container-fluid bg-secondary px-0">
 		<div class="row no-gutters align-items-center">
@@ -1841,8 +1915,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-
-	
-<script type="text/javascript" src="js/sign_upChk.js"></script>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
 </body>
 </html>
