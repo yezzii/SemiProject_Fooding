@@ -20,7 +20,9 @@ public class Board_mainInsertAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		// board_signUp에서 넘어온 데이터를 등록시키는 비지니스 로직.
-		
+			HttpSession session = request.getSession(true);
+			
+			
 		String main_name = request.getParameter("main_name").trim();
 		String main_type = request.getParameter("main_type").trim();
 		String main_info = request.getParameter("main_info").trim();
@@ -30,11 +32,11 @@ public class Board_mainInsertAction implements Action {
 		String main_addr = request.getParameter("main_addr").trim();
 		String main_detailaddr = request.getParameter("main_detailaddr").trim();
 		String main_phone = request.getParameter("main_phone").trim();
+		String main_thema = request.getParameter("main_thema").trim();
 		
 		
 		
-		
-		HttpSession session = request.getSession(true);
+	
 		
 		String id =(String) session.getAttribute("id");
 		
@@ -52,6 +54,7 @@ public class Board_mainInsertAction implements Action {
 		dto.setMain_detailaddr(main_detailaddr);
 		dto.setMain_phone(main_phone);
 		dto.setMain_memid(id);
+		dto.setMain_thema(main_thema);
 		
 		Board_MainDAO dao = Board_MainDAO.getInstance();
 		
@@ -62,7 +65,7 @@ public class Board_mainInsertAction implements Action {
 		if(res>0) {
 			out.println("<script>");
 			out.println("alert('등록완료')");
-			out.println("location.href='select.do'");
+			out.println("location.href='board_main_list.do'");
 			out.println("</script>");
 		}else {
 			out.println("<script>");

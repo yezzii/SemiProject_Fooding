@@ -28,6 +28,8 @@ public class Board_mainUpdateOkAction implements Action {
 		String main_detailaddr = request.getParameter("main_detailaddr");
 		String main_phone = request.getParameter("main_phone");
 		int main_idx = Integer.parseInt(request.getParameter("main_idx"));
+		String main_thema = request.getParameter("main_thema");
+		
 		
 		Board_MainDTO dto = new Board_MainDTO();
 		
@@ -41,6 +43,7 @@ public class Board_mainUpdateOkAction implements Action {
 		dto.setMain_addr(main_addr);
 		dto.setMain_detailaddr(main_detailaddr);
 		dto.setMain_phone(main_phone);
+		dto.setMain_thema(main_thema);
 		
 		Board_MainDAO dao = Board_MainDAO.getInstance();
 		

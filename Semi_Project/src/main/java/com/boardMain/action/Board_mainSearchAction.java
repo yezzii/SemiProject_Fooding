@@ -71,7 +71,7 @@ public class Board_mainSearchAction implements Action {
 		 ActionForward forward = new ActionForward();
 		 
 		 forward.setRedirect(false);
-		 forward.setPath("board/boardmain_search.jsp");
+		 forward.setPath("Board_Main_search.jsp");
 		
 		 return forward;
 		

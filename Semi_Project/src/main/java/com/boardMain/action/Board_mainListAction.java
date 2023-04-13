@@ -66,7 +66,7 @@ public class Board_mainListAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("board/boardmain_list.jsp");
+		forward.setPath("Board_Main_list.jsp");
 		
 		return forward;
 	}
