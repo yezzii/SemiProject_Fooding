@@ -1016,11 +1016,10 @@
 					</div>
 				</div>
 				<!-- Profile info-->
+				<!-- 수정 -->
+				
 				<h5 class="mb-4 pt-sm-3">Profile info</h5>
-				
-				<form id="memberInsertForm" method="POST"  onsubmit="return mySubmit()">
-				<div class="row" >
-				
+				<form class="row" method="post" action="<%=request.getContextPath() %>/MemberProfileUpdate.do">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-fn">Name</label> <input class="form-control"
@@ -1037,9 +1036,7 @@
 						</div>
 					</div>
 
-				
 					<!--비밀번호 유효성 검사 -->
-					
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-pass" class="inputpwd">New Password</label> <input
@@ -1054,14 +1051,13 @@
 								id="account-confirm-pass">
 						</div>
 					</div>
-					
-					<div class="pwCheck"></div>
+					<span class="pwCheck"></span>
 
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-phone">Phone Number</label> <input
 								class="form-control" type="text" id="account-phone"
-								name="member_number" value="${dto.getMember_phone() }" required>
+								name="member_phone" value="${dto.getMember_phone() }" required>
 						</div>
 					</div>
 
@@ -1075,13 +1071,9 @@
 									class="custom-control-label" for="subscribe_me">Subscribe
 									me to Newsletter</label>
 							</div>
-							<button id="updatebtn123" class="btn btn-primary mt-3 mt-sm-0"
-								type="button" data-toggle="toast" data-target="#profile-toast">Update
-								profile</button>
+							<button id="updatebtn123" class="btn btn-primary mt-3 mt-sm-0">Updateprofile</button>
 						</div>
 					</div>
-					
-				</div>
 				</form>
 				<!-- Technical support + Tickets (visible Mobile)-->
 				<div class="d-lg-none bg-secondary px-3 py-4 mt-5">
@@ -1406,11 +1398,12 @@
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
 	
+
 	$(function() {
-	    $('#updatebtn123').on('click', function() {
+	    $('#name="member_phone"').on('click', function() {
 	        let password1 = $("#account-pass").val();
 	        let password2 = $("#account-confirm-pass").val();
 	        let text = "비밀번호가 일치합니다.";
@@ -1438,34 +1431,10 @@
 	        }
 	    });
 	});
+	    </script>
+
+
 	
-	function mySubmit() {
-
-	   
-	    let member_pw = $('#account-pass').val();
-	    let check_pw = RegExp(/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{4,20}$/); // 비밀번호 유효성 검사 (영문 및 숫자 4-20글자)
-	    //let memberInsertForm = $('#memberInsertForm');
-
-	    $('#account-pass').on('keyup', function() {
-			let input_pw = $(this).val();
-
-			// 비밀번호 공백 확인
-			if (input_pw == "" || input_pw == null) {
-				$('.pwCheck').html('비밀번호를 입력해주세요.');
-				return false;
-			}
-
-			// 비밀번호 유효성 체크
-			if (!check_pw.test(input_pw)) {
-				$('.pwCheck').html('영문 및 숫자, 특수문자를 포함한 비밀번호를 입력해주세요.');
-				return false;
-			}
-
-			// 비밀번호가 유효하면 메시지 삭제
-			$('.pwCheck').html('');
-		});
-	    });
-	}
     </script>
 
 </body>
