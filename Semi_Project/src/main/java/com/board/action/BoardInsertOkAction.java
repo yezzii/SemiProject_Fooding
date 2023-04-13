@@ -44,7 +44,7 @@ public class BoardInsertOkAction implements Action {
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
-		int check = dao.updateBoard(dto);
+		int check = dao.insertBoard(dto);
 		
 		ActionForward forward = new ActionForward();
 	      if(check >0) {

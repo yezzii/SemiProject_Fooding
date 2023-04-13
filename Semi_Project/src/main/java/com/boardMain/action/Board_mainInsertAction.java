@@ -1,4 +1,4 @@
-package com.board.action;
+package com.boardMain.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.board.model.Board_MainDAO;
-import com.board.model.Board_MainDTO;
+import com.boardMain.model.Board_MainDAO;
+import com.boardMain.model.Board_MainDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
 import com.mysql.cj.Session;
 
-public class BoardSignupAction implements Action {
+public class Board_mainInsertAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)

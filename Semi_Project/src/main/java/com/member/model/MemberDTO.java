@@ -14,6 +14,9 @@ private int member_type;
 private int member_no;
 private String member_token;
 private String member_joindate;
+private String member_image;
+
+
 
 public String getMember_joindate() {
 	return member_joindate;
@@ -87,6 +90,12 @@ public String getMember_name() {
 }
 public void setMember_name(String member_name) {
 	this.member_name = member_name;
+}
+public String getMember_image() {
+	return member_image;
+}
+public void setMember_image(String member_image) {
+	this.member_image = member_image;
 }
 
 

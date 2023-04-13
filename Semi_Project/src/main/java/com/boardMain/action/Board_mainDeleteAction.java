@@ -1,4 +1,4 @@
-package com.board.action;
+package com.boardMain.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.model.Board_MainDAO;
+import com.boardMain.model.Board_MainDAO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
 

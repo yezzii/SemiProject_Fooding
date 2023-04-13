@@ -1,4 +1,4 @@
-package com.board.action;
+package com.boardMain.action;
 
 import java.io.IOException;
 
@@ -6,12 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.model.Board_MainDAO;
-import com.board.model.Board_MainDTO;
+import com.boardMain.model.Board_MainDAO;
+import com.boardMain.model.Board_MainDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
 
-public class Board_UpdateAction implements Action {
+public class Board_mainUpdateAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)

@@ -1,4 +1,4 @@
-package com.board.model;
+package com.menu.model;
 
 public class MainMenuDTO {
 	

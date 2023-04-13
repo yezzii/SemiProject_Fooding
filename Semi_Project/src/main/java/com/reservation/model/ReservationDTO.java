@@ -1,4 +1,4 @@
-package com.board.model;
+package com.reservation.model;
 
 public class ReservationDTO {
 	
