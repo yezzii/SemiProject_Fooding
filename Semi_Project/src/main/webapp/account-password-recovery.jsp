@@ -6,7 +6,7 @@
 response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0
 response.setDateHeader("Expires", 0); // Proxies
-if(request.getProtocol().equals("HTTP/1.1"))
+if (request.getProtocol().equals("HTTP/1.1"))
 	response.setHeader("Cache-Control", "no-cache");
 %>
 
@@ -22,7 +22,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description"
 	content="MStore - Modern Bootstrap E-commerce Template" />
-	
+
 <meta name="keywords"
 	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 <meta name="author" content="Createx Studio" />
@@ -42,42 +42,45 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <!-- Customizer styles and scripts-->
-
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
+<script type="text/javascript" src="js/sign_upChk.js"></script>
+<script type="text/javascript" src="js/Finduser.js"></script>
+
+
 </head>
 <!-- Body-->
 <body>
 
 	<!-- Off-canvas search-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-				<div
-					class="offcanvas-header d-flex justify-content-between align-items-center">
-					<h3 class="offcanvas-title">푸딩 - 검색</h3>
-					<button class="close" type="button" data-dismiss="offcanvas"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<form>
-				<div class="offcanvas-body">
-					<div class="offcanvas-body-inner">
-						<div class="input-group pt-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="search-icon"><i
-									data-feather="search"></i></span>
-							</div>
-							<input class="form-control" type="text" id="site-search" name="main_search"
-								placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
-								aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do?keyword=" />
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">푸딩 - 검색</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<form>
+			<div class="offcanvas-body">
+				<div class="offcanvas-body-inner">
+					<div class="input-group pt-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="search-icon"><i
+								data-feather="search"></i></span>
 						</div>
-						<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
+						<input class="form-control" type="text" id="site-search"
+							name="main_search" placeholder="지역,음식,레스토랑 명 검색"
+							aria-label="Search site" aria-describedby="search-icon"
+							onsubmit="<%=request.getContextPath()%>/main_search.do?keyword=" />
 					</div>
+					<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게
+						검색해보세요!<br> Powered by Fooding.co _Dong
+					</small>
 				</div>
-				</form>
 			</div>
+		</form>
+	</div>
 
 
 
@@ -87,7 +90,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
 	}
-
 	%>
 
 	<!-- Off-canvas account-->
@@ -100,7 +102,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-		
+
 		<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
@@ -148,25 +150,32 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 							<button class="btn btn-primary btn-block" type="submit">
 								로그인</button>
+							<div class="pt-3" align="center">
+								<a href="account-id-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
+									href="account-password-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">비밀번호 찾기</a>
+							</div>
 						</form>
 					</div>
 
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form method="post" class="needs-validation" novalidate action="<%=request.getContextPath()%>/member_join.do" id="signup-form" name="signup-form">
+						<form method="post" class="needs-validation" novalidate
+							action="<%=request.getContextPath()%>/member_join.do"
+							id="signup-form" name="signup-form">
 							<div class="form-group">
 								<label class="sr-only" for="singup-id">아이디</label> <input
 									class="form-control" type="text" id="signup-id"
-									name="member_id" placeholder="아이디" aria-label="아이디" />
-									<span class="feedback" id="signup-idchk"></span>
-									<div class="invalid-feedback"></div>
+									name="member_id" placeholder="아이디" aria-label="아이디" /> <span
+									class="feedback" id="signup-idchk"></span>
+								<div class="invalid-feedback"></div>
 
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									name="member_pwd" placeholder="Password" aria-label="Password"
-									 />
+									name="member_pwd" placeholder="Password" aria-label="Password" />
 								<span class="feedback" id="signup-pwdchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -174,16 +183,14 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
 									name="member_pwdchk" id="signup-password-confirm"
-									placeholder="Confirm password" aria-label="Confirm password"
-									 />
-									 <span class="feedback" id="signup-pwdconfirm-chk"></span>
-									 <div class="invalid-feedback"></div>
+									placeholder="Confirm password" aria-label="Confirm password" />
+								<span class="feedback" id="signup-pwdconfirm-chk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-name">이름</label> <input
 									class="form-control" type="text" id="signup-name"
-									name="member_name" placeholder="이름" aria-label="Full name"
-									/>
+									name="member_name" placeholder="이름" aria-label="Full name" />
 								<span class="feedback" id="signup-namechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -191,32 +198,30 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								<label class="sr-only" for="signup-email">이메일</label> <input
 									class="form-control" type="email" id="signup-email"
 									name="member_email" placeholder="Email"
-									aria-label="Email address"/>
-								<span class="feedback" id="signup-emailchk"></span>
+									aria-label="Email address" /> <span class="feedback"
+									id="signup-emailchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signup-phone">연락처
-									확인</label> <input class="form-control" type="text"
-									name="member_phone" id="signup-phone"
-									placeholder="Phone" aria-label="Phone"
-									 />
+								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
+									class="form-control" type="text" name="member_phone"
+									id="signup-phone" placeholder="Phone" aria-label="Phone" />
 								<span class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
-								가입하기</button>
-								<button class="btn btn-primary btn-block" type="button" onclick="location.href='company-signup.jsp'">
-								사업자 가입</button>
-						
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="checkAll()">가입하기</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='company-signup.jsp'">사업자 가입</button>
+
 						</form>
-						
-						
-					
+
+
+
 
 					</div>
 				</div>
-				<div class="d-flex align-items-center pt-5">
+				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
 						로그인</div>
@@ -237,7 +242,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 
-	
+
 	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
@@ -384,20 +389,22 @@ if(request.getProtocol().equals("HTTP/1.1"))
 										<ul>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">데이트 코스</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">데이트
+														코스</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">뷰가 좋은</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">뷰가
+														좋은</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
-											
+
 										</ul>
 									</div>
 								</div>
@@ -589,7 +596,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
 							class="mr-1" data-feather="file-text"></i>레스토랑</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="<%=request.getContextPath() %>/board_main_list.do">
+							<li><a class="dropdown-item"
+								href="<%=request.getContextPath()%>/board_main_list.do">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="file-text"
 											style="width: 1.4375rem; height: 1.4375rem"></i>
@@ -604,8 +612,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 추가
-											</span>
+											<span class="d-block mb-n1">레스토랑 추가 </span>
 										</div>
 									</div>
 							</a></li>
@@ -643,7 +650,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						data-toggle="collapse" data-target="#menu">
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
-					<form method="get" action="<%=request.getContextPath()%>/main_search.do">
+					<form method="get"
+						action="<%=request.getContextPath()%>/main_search.do">
 						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
@@ -655,7 +663,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									<%-- 검색input테그 END --%>
 
 									<%-- 검색버튼 --%>
-						
+
 
 									<%-- 검색버튼 END--%>
 								</div>
@@ -677,8 +685,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					} else {
 					%>
 					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
+						href="member/logout.jsp"><i class="mx-auto mb-1"
+						data-feather="log-out"></i>로그아웃</a>
 
 					<%
 					}
@@ -700,34 +708,44 @@ if(request.getProtocol().equals("HTTP/1.1"))
           <h2 class="h3 mb-4">비밀번호를 잃어버리셨나요?</h2>
           <p>임시 비밀번호를 발급하기 위한 간단한 과정이 있습니다. 아래를 참고해주세요.</p>
           <ol class="list-unstyled">
-            <li><span class="font-weight-semibold text-primary mr-2">1.</span>회원가입 하신 이름을 작성해주세요.</li>
-            <li><span class="font-weight-semibold text-primary mr-2">2.</span>회원가입 하신 아이디를 작성해주세요.</li>
-            <li><span class="font-weight-semibold text-primary mr-2">3.</span>회원가입 하신 이메일을 작성해주세요.</li>
-            <li><span class="font-weight-semibold text-primary mr-2">4.</span>비밀번호 찾기 버튼을 눌러주세요.</li>
+            <li><span class="font-weight-semibold text-primary mr-2">1.</span>회원가입 하신 이름, 아이디, 이메일을 작성해주세요.</li>
+            <li><span class="font-weight-semibold text-primary mr-2">2.</span>비밀번호 찾기 버튼을 눌러주세요.</li>
+            <li><span class="font-weight-semibold text-primary mr-2">3.</span>가입하신 이메일로 임시비밀번호가 전송됩니다.</li>
+            <li><span class="font-weight-semibold text-primary mr-2">4.</span>받으신 임시 비밀번호로 로그인 후 비밀번호를 변경해주세요.</li>
           </ol>
           <div class="card py-2 mt-4">
-            <form class="card-body needs-validation" novalidate>
+            <form class="card-body needs-validation" novalidate method="post" action="<%=request.getContextPath()%>/find_pwd.do">
+              <div class="alert alert-success" role="alert"  style="display:none">
+					<h4 class="pt-2 alert-heading">이메일 전송 성공</h4>
+					<p id="success_content">회원님의 비밀번호가 임시비밀번호로 변경되었습니다. 이메일을 확인해주세요. 메인페이지로 이동하시려면 <a href="index.jsp">여기</a>를 눌러주세요.</p>
+				</div>
+				<div class="alert alert-danger" role="alert"  style="display:none">
+					<h4 class="pt-2 alert-heading">비밀번호 찾기 실패</h4>
+					<p id="success_content">입력하신 것에 대한 회원정보를 찾을 수 없습니다. 다시 시도해주세요.</p>
+				</div>
               <div class="form-group">
-                <label for="recover-email">이름</label>
-                <input class="form-control" type="email" id="recover-pwd-name" required>
+                <label for="recover-pwd-name">이름</label>
+                <input class="form-control" type="text" id="recover-pwd-name" name="recover-pwd-name" required>
                 <div class="invalid-feedback"></div>
               </div>
               <div class="form-group">
-                <label for="recover-email">아이디</label>
-                <input class="form-control" type="email" id="recover-pwd-id" required>
+                <label for="recover-pwd-id">아이디</label>
+                <input class="form-control" type="text" id="recover-pwd-id" name= "recover-pwd-id" required>
                 <div class="invalid-feedback"></div>
               </div>
               <div class="form-group">
-                <label for="recover-email">이메일</label>
-                <input class="form-control" type="email" id="recover-pwd-email" required>
+                <label for="recover-pwd-email">이메일</label>
+                <input class="form-control" type="email" id="recover-pwd-email" name="recover-pwd-email" required>
                 <div class="invalid-feedback"></div>
               </div>
-              <button class="btn btn-primary" type="submit">비밀번호 찾기</button>
+              <button class="btn btn-primary" type="button" id ="FindPwdBtn">비밀번호 찾기</button>
+              
             </form>
           </div>
         </div>
       </div>
     </div>
+ 
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->
