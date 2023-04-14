@@ -1,7 +1,5 @@
 package com.member.controller;
 
-import com.member.action.Action;
-import com.member.action.ActionForward;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,6 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.member.action.Action;
+import com.member.action.ActionForward;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,7 +38,7 @@ public class FrontController extends HttpServlet {
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(
 
-				"C:\\Users\\ll001\\Documents\\GitHub\\Semi_project\\Semi_Project\\src\\main\\java\\com\\member\\controller\\mapping.properties");
+				"C:\\Users\\DongHyun\\Documents\\GitHub\\Semi_project\\Semi_Project\\src\\main\\java\\com\\member\\controller\\mapping.properties");
 
 
 		prop.load(fis);
