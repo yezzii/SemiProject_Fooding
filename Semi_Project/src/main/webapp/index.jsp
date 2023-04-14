@@ -662,7 +662,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
 					<form method="get"
-						action="<%=request.getContextPath()%>/main_search.do">
+						action="<%=request.getContextPath()%>/total_main_search.do">
 						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">

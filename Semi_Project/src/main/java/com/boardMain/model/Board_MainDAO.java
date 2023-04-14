@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.menu.model.MainMenuDTO;
+
 public class Board_MainDAO {
 	Connection con = null;
 
@@ -362,14 +364,21 @@ public class Board_MainDAO {
 		return searchList;
 	}
 
-	public List<Board_MainDTO>TotalMainSearch(String keyword){
+	public List<Board_MainDTO>TotalMainSearch(String keyword, int page, int rowsize){
 		
 		List<Board_MainDTO> searchList = new ArrayList<Board_MainDTO>();
 	
 		openConn();
 		
 		try {
-			sql = "select * from board_main where main_name = ? or main_type = ? or main_info = ? or main_addr = ? or main_detailaddr = ?";
+			sql = "select bm.main_name, bm.main_type, bm.main_addr, bm.main_thema, mm.menu_name"
+					+ "from semi.board_main bm,	 semi.main_menu mm"
+					+ "where bm.main_name  like ?"
+					+ "or    bm.main_type  like ?"
+					+ "or    bm.main_addr  like ?"
+					+ "or    bm.main_thema like ?"
+					+ "or    mm.menu_name  like ?"
+					+ "group by bm.main_name";
 			
 		    pstmt = con.prepareStatement(sql);
 		 
@@ -377,13 +386,13 @@ public class Board_MainDAO {
 			pstmt.setString(2, '%' + keyword + '%');
 			pstmt.setString(3, '%' + keyword + '%');
 			pstmt.setString(4, '%' + keyword + '%');
-			pstmt.setString(5, '%' + keyword + '%');
+			pstmt.setString(4, '%' + keyword + '%');
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				Board_MainDTO dto = new Board_MainDTO();
-				
+				Board_MainDTO Bdto = new Board_MainDTO();
+				MainMenuDTO Mdto 
 				dto.setMain_idx(rs.getInt("main_idx"));
 				dto.setMain_name(rs.getString("main_name"));
 				dto.setMain_type(rs.getString("main_type"));
@@ -401,7 +410,6 @@ public class Board_MainDAO {
 				searchList.add(dto);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			closeConn(rs, pstmt, con);
@@ -505,4 +513,32 @@ public class Board_MainDAO {
 		return count;
 	}
 
+	
+	// 검색어에 해당하는 게시물의 수를 조회하는 메서드
+		public int searchRestaurantCount( String keyword) {
+			int count = 0;
+
+			try {
+				openConn();
+
+				sql = "select count(*) from board_main order by main_idx";
+
+				pstmt = con.prepareStatement(sql);
+			
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					count = rs.getInt(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return count;
+		}
+
+	
+	
 }
