@@ -700,25 +700,26 @@ if(request.getProtocol().equals("HTTP/1.1"))
           <h2 class="h3 mb-4">비밀번호를 잃어버리셨나요?</h2>
           <p>임시 비밀번호를 발급하기 위한 간단한 과정이 있습니다. 아래를 참고해주세요.</p>
           <ol class="list-unstyled">
-            <li><span class="font-weight-semibold text-primary mr-2">1.</span>Fill in your email address below.</li>
-            <li><span class="font-weight-semibold text-primary mr-2">2.</span>We'll email you a temporary code.</li>
-            <li><span class="font-weight-semibold text-primary mr-2">3.</span>Use the code to change your password on our secure website.</li>
+            <li><span class="font-weight-semibold text-primary mr-2">1.</span>회원가입 하신 이름을 작성해주세요.</li>
+            <li><span class="font-weight-semibold text-primary mr-2">2.</span>회원가입 하신 아이디를 작성해주세요.</li>
+            <li><span class="font-weight-semibold text-primary mr-2">3.</span>회원가입 하신 이메일을 작성해주세요.</li>
+            <li><span class="font-weight-semibold text-primary mr-2">4.</span>비밀번호 찾기 버튼을 눌러주세요.</li>
           </ol>
           <div class="card py-2 mt-4">
             <form class="card-body needs-validation" novalidate>
               <div class="form-group">
-                <label for="recover-email">이름을 작성해주세요</label>
-                <input class="form-control" type="email" id="recover-email" required>
+                <label for="recover-email">이름</label>
+                <input class="form-control" type="email" id="recover-pwd-name" required>
                 <div class="invalid-feedback"></div>
               </div>
               <div class="form-group">
-                <label for="recover-email">아이디를 작성해주세요</label>
-                <input class="form-control" type="email" id="recover-email" required>
+                <label for="recover-email">아이디</label>
+                <input class="form-control" type="email" id="recover-pwd-id" required>
                 <div class="invalid-feedback"></div>
               </div>
               <div class="form-group">
-                <label for="recover-email">이메일을 작성해주세요</label>
-                <input class="form-control" type="email" id="recover-email" required>
+                <label for="recover-email">이메일</label>
+                <input class="form-control" type="email" id="recover-pwd-email" required>
                 <div class="invalid-feedback"></div>
               </div>
               <button class="btn btn-primary" type="submit">비밀번호 찾기</button>

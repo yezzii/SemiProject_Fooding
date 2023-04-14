@@ -768,12 +768,12 @@
             <form class="card-body needs-validation" novalidate>
               <div class="form-group">
                 <label for="recover-email">이름을 작성해주세요</label>
-                <input class="form-control" type="email" id="recover-email" required>
+                <input class="form-control" type="email" id="recover-id-email" required>
                 <div class="invalid-feedback"></div>
               </div>
               <div class="form-group">
                 <label for="recover-email">이메일을 작성해주세요</label>
-                <input class="form-control" type="email" id="recover-email" required>
+                <input class="form-control" type="email" id="recover-id-email" required>
                 <div class="invalid-feedback"></div>
               </div>
               <button class="btn btn-primary" type="submit">아이디 찾기</button>
