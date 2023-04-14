@@ -396,7 +396,9 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				res = rs.getInt(1);
+				res = -1;
+			}else {
+				res = 1;
 			}
 
 		} catch (SQLException e) {

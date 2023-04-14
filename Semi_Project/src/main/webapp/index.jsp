@@ -6,7 +6,7 @@
 response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0
 response.setDateHeader("Expires", 0); // Proxies
-if(request.getProtocol().equals("HTTP/1.1"))
+if (request.getProtocol().equals("HTTP/1.1"))
 	response.setHeader("Cache-Control", "no-cache");
 %>
 
@@ -22,7 +22,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 <META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description"
 	content="MStore - Modern Bootstrap E-commerce Template" />
-	
+
 <meta name="keywords"
 	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 <meta name="author" content="Createx Studio" />
@@ -43,43 +43,48 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 <!-- Customizer styles and scripts-->
-
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
+<script src="js/Board_Main.js"></script>	
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="js/sign_upChk.js"></script>
 	
+
 </head>
 <!-- Body-->
 <body>
 
 	<!-- Off-canvas search-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-				<div
-					class="offcanvas-header d-flex justify-content-between align-items-center">
-					<h3 class="offcanvas-title">푸딩 - 검색</h3>
-					<button class="close" type="button" data-dismiss="offcanvas"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<form>
-				<div class="offcanvas-body">
-					<div class="offcanvas-body-inner">
-						<div class="input-group pt-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="search-icon"><i
-									data-feather="search"></i></span>
-							</div>
-							<input class="form-control" type="text" id="site-search" name="main_search"
-								placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
-								aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do?keyword=" />
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">푸딩 - 검색</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<form>
+			<div class="offcanvas-body">
+				<div class="offcanvas-body-inner">
+					<div class="input-group pt-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="search-icon"><i
+								data-feather="search"></i></span>
 						</div>
-						<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
+						<input class="form-control" type="text" id="site-search"
+							name="main_search" placeholder="지역,음식,레스토랑 명 검색"
+							aria-label="Search site" aria-describedby="search-icon"
+							onsubmit="<%=request.getContextPath()%>/main_search.do?keyword=" />
 					</div>
+					<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게
+						검색해보세요!<br> Powered by Fooding.co _Dong
+					</small>
 				</div>
-				</form>
 			</div>
+		</form>
+	</div>
 
 
 
@@ -89,7 +94,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
 	}
-
 	%>
 
 	<!-- Off-canvas account-->
@@ -102,7 +106,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-		
+
 		<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
@@ -150,25 +154,32 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 							<button class="btn btn-primary btn-block" type="submit">
 								로그인</button>
+							<div class="pt-3" align="center">
+								<a href="account-id-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
+									href="account-password-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">비밀번호 찾기</a>
+							</div>
 						</form>
 					</div>
 
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form method="post" class="needs-validation" novalidate action="<%=request.getContextPath()%>/member_join.do" id="signup-form" name="signup-form">
+						<form method="post" class="needs-validation" novalidate
+							action="<%=request.getContextPath()%>/member_join.do"
+							id="signup-form" name="signup-form">
 							<div class="form-group">
 								<label class="sr-only" for="singup-id">아이디</label> <input
 									class="form-control" type="text" id="signup-id"
-									name="member_id" placeholder="아이디" aria-label="아이디" />
-									<span class="feedback" id="signup-idchk"></span>
-									<div class="invalid-feedback"></div>
+									name="member_id" placeholder="아이디" aria-label="아이디" /> <span
+									class="feedback" id="signup-idchk"></span>
+								<div class="invalid-feedback"></div>
 
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									name="member_pwd" placeholder="Password" aria-label="Password"
-									 />
+									name="member_pwd" placeholder="Password" aria-label="Password" />
 								<span class="feedback" id="signup-pwdchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -176,16 +187,14 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
 									name="member_pwdchk" id="signup-password-confirm"
-									placeholder="Confirm password" aria-label="Confirm password"
-									 />
-									 <span class="feedback" id="signup-pwdconfirm-chk"></span>
-									 <div class="invalid-feedback"></div>
+									placeholder="Confirm password" aria-label="Confirm password" />
+								<span class="feedback" id="signup-pwdconfirm-chk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-name">이름</label> <input
 									class="form-control" type="text" id="signup-name"
-									name="member_name" placeholder="이름" aria-label="Full name"
-									/>
+									name="member_name" placeholder="이름" aria-label="Full name" />
 								<span class="feedback" id="signup-namechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -193,32 +202,30 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								<label class="sr-only" for="signup-email">이메일</label> <input
 									class="form-control" type="email" id="signup-email"
 									name="member_email" placeholder="Email"
-									aria-label="Email address"/>
-								<span class="feedback" id="signup-emailchk"></span>
+									aria-label="Email address" /> <span class="feedback"
+									id="signup-emailchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signup-phone">연락처
-									확인</label> <input class="form-control" type="text"
-									name="member_phone" id="signup-phone"
-									placeholder="Phone" aria-label="Phone"
-									 />
+								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
+									class="form-control" type="text" name="member_phone"
+									id="signup-phone" placeholder="Phone" aria-label="Phone" />
 								<span class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
-								가입하기</button>
-								<button class="btn btn-primary btn-block" type="button" onclick="location.href='company-signup.jsp'">
-								사업자 가입</button>
-						
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="checkAll()">가입하기</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='company-signup.jsp'">사업자 가입</button>
+
 						</form>
-						
-						
-					
+
+
+
 
 					</div>
 				</div>
-				<div class="d-flex align-items-center pt-5">
+				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
 						로그인</div>
@@ -239,7 +246,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 
-	
+
 	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
@@ -386,20 +393,22 @@ if(request.getProtocol().equals("HTTP/1.1"))
 										<ul>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">데이트 코스</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">데이트
+														코스</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">뷰가 좋은</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">뷰가
+														좋은</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
-											
+
 										</ul>
 									</div>
 								</div>
@@ -595,7 +604,9 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
 							class="mr-1" data-feather="file-text"></i>레스토랑</a>
 						<ul class="dropdown-menu">
+
 							<li><a class="dropdown-item" href="<%=request.getContextPath() %>/board_main_list.do" >
+
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="file-text"
 											style="width: 1.4375rem; height: 1.4375rem"></i>
@@ -610,8 +621,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 추가
-											</span>
+											<span class="d-block mb-n1">레스토랑 추가 </span>
 										</div>
 									</div>
 							</a></li>
@@ -651,7 +661,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 						data-toggle="collapse" data-target="#menu">
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
-					<form method="get" action="<%=request.getContextPath()%>/main_search.do">
+					<form method="get"
+						action="<%=request.getContextPath()%>/main_search.do">
 						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
@@ -663,7 +674,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									<%-- 검색input테그 END --%>
 
 									<%-- 검색버튼 --%>
-						
+
 
 									<%-- 검색버튼 END--%>
 								</div>
@@ -685,8 +696,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					} else {
 					%>
 					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
+						href="member/logout.jsp"><i class="mx-auto mb-1"
+						data-feather="log-out"></i>로그아웃</a>
 
 					<%
 					}
@@ -709,46 +720,62 @@ if(request.getProtocol().equals("HTTP/1.1"))
 					<div class="owl-carousel trigger-carousel"
 						data-owl-carousel='{ "nav": true, "dots": false, "loop": true, "autoHeight": true }'
 						data-target-carousel="#target-carousel">
-						
+
 						<div class="py-4 px-3 px-sm-5">
-							<img class="d-block mb-2"
-								src="img/photo/FeiLogo.png" width="130"
+							<img class="d-block mb-2" src="img/photo/FeiLogo.png" width="130"
 								alt="서울드래곤시티 페이" />
-							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">서울드래곤시티 페이</h2>
-							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">서울 용산구 청파로20길 95 <br>서울드래곤시티 그랜드 머큐어 2F</h5>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약 하기<i
+							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">서울드래곤시티
+								페이</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"
+								style="font-family: 'GmarketSansMedium';">
+								서울 용산구 청파로20길 95 <br>서울드래곤시티 그랜드 머큐어 2F
+							</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"
+								style="font-family: 'GmarketSansMedium';">예약 하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
-						
+
 						<div class="py-4 px-3 px-sm-5">
-							<img class="d-block mb-2"
-								src="img/photo/gordon.jpg" width="125"
+							<img class="d-block mb-2" src="img/photo/gordon.jpg" width="125"
 								alt="고든램지 버거" />
-							<h2 class="mb-1"  style="font-family: 'GmarketSansMedium';">고든램지 버거</h2>
-							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">주소: 서울 송파구 올림픽로 300<br> 롯데월드몰 지하1층</h5>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약 하기<i
+							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">고든램지
+								버거</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"
+								style="font-family: 'GmarketSansMedium';">
+								주소: 서울 송파구 올림픽로 300<br> 롯데월드몰 지하1층
+							</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"
+								style="font-family: 'GmarketSansMedium';">예약 하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
-						
+
 						<div class="py-4 px-3 px-sm-5">
-							<img class="d-block mb-2"
-								src="img/photo/KimSS_logo.png" width="130"
-								alt="서촌김씨 오스테리아" />
-							<h2 class="mb-1"  style="font-family: 'GmarketSansMedium';">서촌김씨 오스테리아</h2>
-							<h5 class="font-weight-light opacity-70 pb-3"  style="font-family: 'GmarketSansMedium';">서울 강서구 공항대로 209 <br>지엠지 엘스타 2층 208호</h5>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp"  style="font-family: 'GmarketSansMedium';">예약하기<i
+							<img class="d-block mb-2" src="img/photo/KimSS_logo.png"
+								width="130" alt="서촌김씨 오스테리아" />
+							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">서촌김씨
+								오스테리아</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"
+								style="font-family: 'GmarketSansMedium';">
+								서울 강서구 공항대로 209 <br>지엠지 엘스타 2층 208호
+							</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"
+								style="font-family: 'GmarketSansMedium';">예약하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
 						<div class="py-4 px-3 px-sm-5">
-							<img class="d-block mb-2"
-								src="img/photo/amberserder.png" width="130"
-								alt="스펙트럼 앰배서더 서울" />
-							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">스펙트럼 앰배서더 서울</h2>
-							<h5 class="font-weight-light opacity-70 pb-3" style="font-family: 'GmarketSansMedium';">서울 영등포구 여의대로 108<br> 페어몬트 앰배서더 서울 5층</h5>
-							<a class="btn btn-primary" href="shop-style1-ls.jsp" style="font-family: 'GmarketSansMedium';">예약하기<i
+							<img class="d-block mb-2" src="img/photo/amberserder.png"
+								width="130" alt="스펙트럼 앰배서더 서울" />
+							<h2 class="mb-1" style="font-family: 'GmarketSansMedium';">스펙트럼
+								앰배서더 서울</h2>
+							<h5 class="font-weight-light opacity-70 pb-3"
+								style="font-family: 'GmarketSansMedium';">
+								서울 영등포구 여의대로 108<br> 페어몬트 앰배서더 서울 5층
+							</h5>
+							<a class="btn btn-primary" href="shop-style1-ls.jsp"
+								style="font-family: 'GmarketSansMedium';">예약하기<i
 								class="ml-2" data-feather="arrow-right"></i>
 							</a>
 						</div>
@@ -758,22 +785,21 @@ if(request.getProtocol().equals("HTTP/1.1"))
 			<div class="col-md-6">
 				<div class="owl-carousel" id="target-carousel"
 					data-owl-carousel='{ "nav": false, "dots": false, "loop": true, "mouseDrag": false, "touchDrag": false, "pullDrag": false, "animateOut": "fadeOut" }'>
-					<img class="ml-auto mr-0" src="img/photo/Fei.jpg"
-						alt="서울드래곤시티 페이" />
-						<img class="ml-auto mr-0"
-						src="img/photo/GordonRamsayBuerger.jpg" alt="고든램지 버거" />
-						<img class="ml-auto mr-0" src="img/photo/KimSS.jpeg"
-						alt="서촌김씨 오스테리아" />
-							<img class="ml-auto mr-0" src="img/photo/spectrum.png"
+					<img class="ml-auto mr-0" src="img/photo/Fei.jpg" alt="서울드래곤시티 페이" />
+					<img class="ml-auto mr-0" src="img/photo/GordonRamsayBuerger.jpg"
+						alt="고든램지 버거" /> <img class="ml-auto mr-0"
+						src="img/photo/KimSS.jpeg" alt="서촌김씨 오스테리아" /> <img
+						class="ml-auto mr-0" src="img/photo/spectrum.png"
 						alt="스펙트럼 앰배서더 서울" />
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Popular categories (carousel)-->
 	<section class="container py-5 mt-3">
-		<h5 class="h3 text-center pb-4" style="font-family: 'GmarketSansMedium';">상황별·주제별 BEST</h5>
+		<h5 class="h3 text-center pb-4"
+			style="font-family: 'GmarketSansMedium';">상황별·주제별 BEST</h5>
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"460":{"items":2}, "768":{"items":3}} }'>
 			<div class="card border-0">
@@ -788,8 +814,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
 					<h2 class="h5 mb-1">미식 데이트</h2>
-					<span class="d-block mb-3 font-size-s text-muted">특별한 날, 소중한 추억을 남기고 싶다면?</span>
-					</span><a class="btn btn-pill btn-outline-primary btn-sm"
+					<span class="d-block mb-3 font-size-s text-muted">특별한 날, 소중한
+						추억을 남기고 싶다면?</span> </span><a class="btn btn-pill btn-outline-primary btn-sm"
 						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
@@ -805,8 +831,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
 					<h2 class="h5 mb-1">뷰와 맛을 한번에</h2>
-					<span class="d-block mb-3 font-size-s text-muted"> 전망 좋은 레스토랑에서의 식사 어때요?
-					</span><a class="btn btn-pill btn-outline-primary btn-sm"
+					<span class="d-block mb-3 font-size-s text-muted"> 전망 좋은
+						레스토랑에서의 식사 어때요? </span><a class="btn btn-pill btn-outline-primary btn-sm"
 						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
@@ -822,8 +848,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				</a>
 				<div class="card-body border mt-n1 py-4 text-center">
 					<h2 class="h5 mb-1">하루를 선물해보세요</h2>
-					<span class="d-block mb-3 font-size-s text-muted">부모님께 색다른 하루를 선물해보세요!
-					</span><a class="btn btn-pill btn-outline-primary btn-sm"
+					<span class="d-block mb-3 font-size-s text-muted">부모님께 색다른
+						하루를 선물해보세요! </span><a class="btn btn-pill btn-outline-primary btn-sm"
 						href="shop-style1-ls.jsp">자세히</a>
 				</div>
 			</div>
@@ -831,44 +857,40 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	</section>
 	<!-- Brands carousel-->
 	<section class="container pb-4 mt-md-3">
-		<h5 class="h3 text-center pb-4" style="font-family: 'GmarketSansMedium';">브랜드 관</h5>
+		<h5 class="h3 text-center pb-4"
+			style="font-family: 'GmarketSansMedium';">브랜드 관</h5>
 		<div class="owl-carousel"
 			data-owl-carousel='{ "nav": false, "dots": true, "loop": true, "margin": 30, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2, "margin": 15},"460":{"items":3, "margin": 15}, "768":{"items":4}} }'>
 			<a class="d-block bg-white border py-3 py-sm-4" href="#"><img
 				class="d-block mx-auto" src="img/photo/amberserder.png"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/01.png"
+				class="d-block mx-auto" src="img/photo/01.png" style="width: 150px"
+				alt="Brand" /></a><a class="d-block bg-white border py-3 py-sm-4"
+				href="#"><img class="d-block mx-auto" src="img/photo/02.jpeg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/02.jpeg"
+				class="d-block mx-auto" src="img/photo/03.png" style="width: 150px"
+				alt="Brand" /></a><a class="d-block bg-white border py-3 py-sm-4"
+				href="#"><img class="d-block mx-auto" src="img/photo/04.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/03.png"
+				class="d-block mx-auto" src="img/photo/05.jpg" style="width: 150px"
+				alt="Brand" /></a><a class="d-block bg-white border py-3 py-sm-4"
+				href="#"><img class="d-block mx-auto" src="img/photo/06.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/04.jpg"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/05.jpg"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/06.jpg"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/07.jpeg"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/08.jpg"
+				class="d-block mx-auto" src="img/photo/07.jpeg" style="width: 150px"
+				alt="Brand" /></a><a class="d-block bg-white border py-3 py-sm-4"
+				href="#"><img class="d-block mx-auto" src="img/photo/08.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
 				class="d-block mx-auto" src="img/photo/gordon.jpg"
 				style="width: 150px" alt="Brand" /></a><a
 				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/09.png"
-				style="width: 150px" alt="Brand" /></a><a
-				class="d-block bg-white border py-3 py-sm-4" href="#"><img
-				class="d-block mx-auto" src="img/photo/10.png"
+				class="d-block mx-auto" src="img/photo/09.png" style="width: 150px"
+				alt="Brand" /></a><a class="d-block bg-white border py-3 py-sm-4"
+				href="#"><img class="d-block mx-auto" src="img/photo/10.png"
 				style="width: 150px" alt="Brand" /></a>
 		</div>
 	</section>
@@ -1923,8 +1945,12 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 
-<script src="js/Board_Main.js"></script>	
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="js/sign_upChk.js"></script>
+
+
+
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
+
 </body>
 </html>

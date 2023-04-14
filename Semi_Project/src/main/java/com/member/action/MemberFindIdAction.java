@@ -19,8 +19,11 @@ public class MemberFindIdAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=utf-8");
 
-		String member_name = request.getParameter("send_name");
-		String member_email = request.getParameter("send_email");
+		String member_name = request.getParameter("paramName");
+		String member_email = request.getParameter("paramEmail");
+		
+		System.out.println(member_name);
+		System.out.println(member_email);
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		
@@ -28,18 +31,10 @@ public class MemberFindIdAction implements Action {
 		
 		PrintWriter out = response.getWriter();
 		
-		if(foundId == null) {
-			out.println("<script>");
-			out.println("alert('이름이나 이메일을 잘못입력하셨습니다.')");
-			out.println("history.back()");
-			out.println("</script>");
-		}else {
-			out.println("<script>");
-			out.println("alert('아이디 : "+foundId+"')");
-			out.println("location.href='main.do'");
-			out.println("</script>");
-		}
 		
+		out.write(foundId);
+		
+	
 		return null;
 	}
 
