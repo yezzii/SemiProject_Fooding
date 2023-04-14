@@ -795,7 +795,6 @@
               
             </div>
           </div>
-          <hr class="pb-5">
           <!-- Post-->
           <div class="row pb-5">
 
@@ -820,7 +819,12 @@
         <td><a href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a></td>
         <td>${dto.getBoard_writer() }</td>
         <td>${dto.getBoard_date().substring(2, 10)}</td>
+      
       </tr>
+      <tr>
+      <td colspan="4">  <img src="<%=request.getContextPath() %>/photo/${dto.getBoard_image() }"></td>
+      </tr>
+      
       </c:forEach>
      </c:if>
       
@@ -835,7 +839,6 @@
           </div>
           <hr class="pb-5">
           
-          <hr class="pb-4 mb-2">
           <!-- Pagination-->
           <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center justify-content-sm-start mb-0">

@@ -803,66 +803,75 @@
           </div>
           <!-- Gallery-->
           <div class="row pb-2">
-            
-        <form method="post" action="<%=request.getContextPath()%>/write_boardOk.do"
-			onsubmit="return check()" name="f" enctype="multipart/form-data">
-			
-			
-			
-<div class="btn-group dropright">
- 
-  
-  <select name="board_type" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <option value="1">후기</option>
-    <option value="0">자유</option>
-  </select>
-</div>
+
+				<form method="post"
+					action="<%=request.getContextPath()%>/write_boardOk.do"
+					onsubmit="return check()" name="f" enctype="multipart/form-data">
 
 
-<br><br>
+					<div class="btn-group dropright">
 
 
-<div class="row">
-  <div class="col">
-      <div class="form-group">
-      <label for="text-input">작성자</label>
-      <input class="form-control" name="board_writer" type="text" id="text-input" value="<%=session.getAttribute("id")%>">  <%-- --%>   
-    </div>
-    <div class="form-group">
-      <label for="text-input">글제목</label>
-      <input class="form-control" name="board_title" type="text" id="text-input">
-    </div>
-  </div>
-</div>
+						<select name="board_type" class="btn btn-primary dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+							<option value="1">후기</option>
+							<option value="0">자유</option>
+						</select>
+					</div>
 
-<div class="row">
-  <div class="col">
-    <div class="form-group">
-      <label for="textarea-input">본문작성</label>
-      <textarea class="form-control" name="board_content" id="textarea-input" cols="860" rows="15" ></textarea>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col">
-    <div class="form-group">
-      <label for="file-input">File</label>
-      <div class="custom-file">
-        <input class="custom-file-input" name="board_image" type="file" id="file-input">
-        <label class="custom-file-label" for="file-input">Choose file...</label>
-      </div>
-    </div>
-  </div>
-</div>
+					<br>
+					<br>
 
-<div class="row">
-  <div class="col text-center">
-    <input type="submit" value="작성" id="button-input" class="btn btn-primary mx-auto">
-  </div>
-</div>
-      </form>          
-          </div>
+
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="text-input">작성자</label> <input class="form-control"
+									name="board_writer" type="text" id="text-input"
+									value="<%=session.getAttribute("id")%>">
+								<%-- --%>
+							</div>
+							<div class="form-group">
+								<label for="text-input">글제목</label> <input class="form-control"
+									name="board_title" type="text" id="text-input">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="textarea-input">본문작성</label>
+								<textarea class="form-control" name="board_content"
+									id="textarea-input" cols="860" rows="15"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="file-input">File</label>
+								<div class="custom-file">
+									<input class="custom-file-input" name="board_image"
+										type="file" id="file-input"> <label
+										class="custom-file-label" for="file-input">Choose
+										file...</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col text-center">
+							<input type="submit" value="작성" id="button-input"
+								class="btn btn-primary mx-auto">
+						</div>
+					</div>
+				</form>
+				</div>
          
 
         </div>

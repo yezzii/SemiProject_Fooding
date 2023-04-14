@@ -794,10 +794,16 @@
     <div class="container pb-5 mb-1">
       <div class="row justify-content-center">
         <div class="col-lg-9">
+        <form action="<%=request.getContextPath()%>/board_modify_ok.do" method="post">
+          
+          <input type="hidden" value="${dto.getBoard_idx() }" name="idx">
+          <input type="hidden" value="${dto.getBoard_type() }" name="type">
+          
           <!-- Post meta-->
           <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
-            <div><span>${dto.getBoard_date().substring(0, 10)}</span></div><a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
-          </div>
+    <div><span>${dto.getBoard_date()}</span></div>
+    <a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
+</div>
           <!-- Gallery-->
           <div class="row pb-2">
      <div align="center">
@@ -810,40 +816,32 @@
           </div>
    <!-- Text input -->
 <div class="form-group">
+
   <label for="text-input">글제목</label>
-  <input style="opacity: 0.4" class="form-control" type="text" id="text-input" value="${dto.getBoard_title()}" name="title">
-</div>       
+  <input class="form-control" type="text" id="text-input" value="${dto.getBoard_title()}" name="title">
+  </div> 
+   
+ <label for="textarea-input">글내용</label>  
+<textarea rows="15" cols="" class="form-control" name="cont" id="textarea-input">${dto.getBoard_content()}</textarea>       
           
           
-          <!-- Text input -->
-<div class="form-group">
-  <label for="text-input">Text</label>
-  <input height="400" class="form-control" type="text" id="text-input" value="${dto.getBoard_content()}">
-</div>
-          
-          
-          
-          <!-- Warning card -->
-          <label for="text-input">글내용</label>
-<div class="card bg-light">
-  <div class="card-body" style="height: 400px;">
-  <textarea text="color:red; font-size:16px; class="card-text font-size-sm"> font-family:Arial;">This is a red text with Arial font and font size 16px.</textarea>
-  </div>
-</div>
+
 
 <br>
 
-<!-- Solid button group -->
-<div class="btn-group10" role="group" aria-label="Solid button group" align="center">
-  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_modify.do?no=${dto.getBoard_idx()}'">수정</button>
+<!-- Primary button -->
+<div align="center">
+<input class="btn btn-primary" type="submit" value="수정">&nbsp;&nbsp;
+<input class="btn btn-outline-primary" type="reset" value="다시작성">
 </div>
+</form>
+</div>  
 
 
-          <!-- Post tags + sharing-->
+
          
         </div>
       </div>
-    </div>
     
 
     

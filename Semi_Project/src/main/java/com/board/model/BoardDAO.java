@@ -326,7 +326,7 @@ public class BoardDAO {
 				count = rs.getInt(1) + 1;
 			}
 
-			sql = "insert into board values(?,?,?,?,default,default,?,?)";
+			sql = "insert into board values(?,?,?,?,default,default,?,?,1)";
 
 			pstmt = con.prepareStatement(sql);
 

@@ -801,11 +801,11 @@
           <!-- Gallery-->
           <div class="row pb-2">
      <div align="center">
-     <c:if test="${dto.getBoard_image() }==''">
-     </c:if>
-     <c:if test="${dto.getBoard_image() }!=''">
-     <img src="<%=request.getContextPath() %>../photo/${dto.getBoard_image() }" width="900" height="300">
-     </c:if>
+     
+     
+     <img src="<%=request.getContextPath() %>/photo/${dto.getBoard_image() }">
+     
+     
      </div>
           </div>
           <!-- Post content-->
@@ -824,8 +824,8 @@
 
 <!-- Solid button group -->
 <div class="btn-group10" role="group" aria-label="Solid button group" align="center">
-  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_delete.do?no=${dto.getBoard_idx()}&type=${dto.getBoard_type }'">삭제</button>
-  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_modify.do?no=${dto.getBoard_idx()}&type=${dto.getBoard_type }'">수정</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_delete.do?no=${dto.getBoard_idx()}&type=${dto.getBoard_type() }'">삭제</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_modify.do?no=${dto.getBoard_idx()}'">수정</button>
   <button type="button" class="btn btn-primary" onclick="history.back()">목록</button>
 </div>
 
