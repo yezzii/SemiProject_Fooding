@@ -1,5 +1,6 @@
 package com.board.action;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,7 @@ public class BoardInsertOkAction implements Action {
 			throws IOException, ServletException {
 
 		
-		String saveFolder = "C:\\Users\\Ace\\git\\Semi_project\\Semi_Project\\src\\main\\webapp";
+		String saveFolder = "C:\\Users\\Ace\\git\\Semi_project\\Semi_Project\\src\\main\\webapp\\photo";
 
 		int fileSize = 10*1024 *1024;
 
@@ -31,7 +32,7 @@ public class BoardInsertOkAction implements Action {
 		String writer = multi.getParameter("board_writer");
 		String title = multi.getParameter("board_title");
 		String content = multi.getParameter("board_content");
-		String image = multi.getParameter("board_image");
+		String image = multi.getFilesystemName("board_image");
 		int type =Integer.parseInt(multi.getParameter("board_type"));
 		
 		BoardDTO dto = new BoardDTO();
@@ -40,6 +41,7 @@ public class BoardInsertOkAction implements Action {
 		dto.setBoard_title(title);
 		dto.setBoard_content(content);
 		dto.setBoard_image(image);
+		System.out.println("이미지 >>>."+image);
 		dto.setBoard_type(type);
 		
 		BoardDAO dao = BoardDAO.getInstance();
