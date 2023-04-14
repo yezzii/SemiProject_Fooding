@@ -90,8 +90,6 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		userID = (String) session.getAttribute("id");
 	}
 
-	// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
-	if (userID == null) {
 	%>
 
 	<!-- Off-canvas account-->
@@ -210,9 +208,13 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							</div>
 							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
 								가입하기</button>
-							<button class="btn btn-primary btn-block" onclick="location.href=''">
+								<button class="btn btn-primary btn-block" type="button" onclick="location.href='company-signup.jsp'">
 								사업자 가입</button>
+						
 						</form>
+						
+						
+					
 
 					</div>
 				</div>
@@ -237,23 +239,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 
-	<%
-	// 로그인이 되어있는 사람만 볼수 있는 화면
-	} else {
-	%>
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
-		<div
-			class="offcanvas-header justify-content-between align-items-center">
-			<h3 class="offcanvas-title">로그인 / 회원가입</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-	</div>
-	<%
-	}
-	%>
+	
 	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
@@ -457,16 +443,20 @@ if(request.getProtocol().equals("HTTP/1.1"))
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop layouts</h3>
+										<h3 class="widget-title">게시판</h3>
 										<ul>
 											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-											<li><a href="shop-style1-ls.jsp"> <i
+											<li><a href="<%=request.getContextPath() %>/review_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
-													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+													class="font-size-sm">후기 게시판</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/free_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">자유 게시판</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -479,10 +469,10 @@ if(request.getProtocol().equals("HTTP/1.1"))
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Product
-														Page #1 - Apparel</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
+														</span></a></li>
 
 											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
@@ -629,14 +619,13 @@ if(request.getProtocol().equals("HTTP/1.1"))
 				
 							
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="Board_Main_join.jsp">
+							<li><a class="dropdown-item" href="RoadRestaurantList.do">
 									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="edit"
+										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">Changelog <span
-												class="badge badge-pill badge-warning">v2.0</span>
-											</span><small class="text-muted">Regular updates</small>
+											<span class="d-block mb-n1">레스토랑 목록<br>(동현작업중)
+											</span>
 										</div>
 									</div>
 							</a></li>

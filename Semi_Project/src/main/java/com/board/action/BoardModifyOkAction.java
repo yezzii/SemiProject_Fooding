@@ -20,6 +20,7 @@ public class BoardModifyOkAction implements Action {
 		// TODO Auto-generated method stub
 		
 		int idx = Integer.parseInt(request.getParameter("idx"));
+		int type = Integer.parseInt(request.getParameter("type"));
 		String title = request.getParameter("title");
 		String cont = request.getParameter("cont");
 		System.out.println(title);
@@ -34,22 +35,30 @@ public class BoardModifyOkAction implements Action {
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
-		PrintWriter out = response.getWriter();
 		
 		int check = dao.boardModifyOk(dto);
 		
+		PrintWriter out = response.getWriter();
 		
 		if(check > 0) {
-			out.println("<script>");
-			out.println("alert('게시물 수정 성공')");
-			out.println("location.href='free_board.do'");
-			out.println("</script>");
+			if(type == 0) {
+				out.println("<script>");
+				out.println("alert('게시물 수정 성공.')");
+				out.println("location.href='free_board.do'");
+				out.println("</script>");
+
+			}else if(type == 1) {
+				out.println("<script>");
+				out.println("alert('게시물 수정 성공.')");
+				out.println("location.href='review_board.do'");
+				out.println("</script>");
+		    }
 		}else {
-			out.println("<script>");
-			out.println("alert('게시물 수정 실패')");
+	    	out.println("<script>");
+			out.println("alert('게시물 수정 실패.')");
 			out.println("history.back()");
 			out.println("</script>");
-		}
+	    }
 		
 		return null;
 	}

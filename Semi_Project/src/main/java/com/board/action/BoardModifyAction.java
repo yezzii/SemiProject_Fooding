@@ -29,7 +29,7 @@ public class BoardModifyAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("board/board_modify.jsp");
+		forward.setPath("board_modify.jsp");
 		
 		return forward;
 	}
