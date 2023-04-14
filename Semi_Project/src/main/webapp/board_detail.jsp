@@ -1,43 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <style type="text/css">
+  
+  <style>
+    .btn-group {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  </style>
     <meta charset="utf-8">
     <title>MStore | Modern Bootstrap E-commerce Template
     </title>
-    <!-- JQury 라이브러리 -->
-
-
-<script>
-	function check() {
-		
-		if (f.board_title.value == "") {
-			alert("글 제목을 입력하세요")
-			f.board_title.focus();
-			return false;
-		}
-		if (f.board_content.value == "") {
-			alert("내용을 입력하세요")
-			f.board_content.focus();
-			return false;
-		}
-	}
-</script>
-    <style>
-  #text-input {
-    width: 893px;
-  }
-  #file-input {
-    width: 893px;
-  }
-  #button-input {
-  text-align: center;
-  }
-  
-  
-</style>
     <!-- SEO Meta Tags-->
     <meta name="description" content="MStore - Modern Bootstrap E-commerce Template">
     <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
@@ -60,6 +40,7 @@
   </head>
   <!-- Body-->
   <body>
+<c:set var="dto" value="${DTO}" />
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -793,90 +774,81 @@
 			</div>
 		</div>
 	</header>
+    <!-- Page Title-->
+    <div class="page-title-wrapper" aria-label="Page title">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
+            <li class="breadcrumb-item"><a href="index.jsp">Home</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Blog</a>
+            </li>
+          </ol>
+        </nav>
+        <h1 class="page-title">${dto.getBoard_writer()}님의 게시글입니다.</h1><span class="d-block mt-2 text-muted"></span>
+        <hr class="mt-4">
+      </div>
+    </div>
     <!-- Page Content-->
-    <div class="container pb-5">
+    <div class="container pb-5 mb-1">
       <div class="row justify-content-center">
         <div class="col-lg-9">
           <!-- Post meta-->
           <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
-            <div class="mr-2">by&nbsp;<a href="#">Olivia Reyes</a><span class="meta-divider"></span>in&nbsp;<a href="#">Aerial photo</a><span class="meta-divider"></span><span>Apr 20</span></div><a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
+            <div><span>${dto.getBoard_date().substring(0, 10)}</span></div><a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
           </div>
           <!-- Gallery-->
           <div class="row pb-2">
+     <div align="center">
+     
+     
+     <img src="<%=request.getContextPath() %>/photo/${dto.getBoard_image() }">
+     
+     
+     </div>
+          </div>
+          <!-- Post content-->
+          
+          
+          <!-- Warning card -->
+<div class="card bg-light">
+  <div class="card-header">${dto.getBoard_writer()}</div>
+  <div class="card-body" style="height: 400px;">
+    <h5 class="card-title">${dto.getBoard_title()}</h5>
+    <p class="card-text font-size-sm">${dto.getBoard_content()}</p>
+  </div>
+</div>
 
-				<form method="post"
-					action="<%=request.getContextPath()%>/write_boardOk.do"
-					onsubmit="return check()" name="f" enctype="multipart/form-data">
+<br>
 
+<!-- Solid button group -->
+<div class="btn-group10" role="group" aria-label="Solid button group" align="center">
+  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_delete.do?no=${dto.getBoard_idx()}&type=${dto.getBoard_type() }'">삭제</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_modify.do?no=${dto.getBoard_idx()}'">수정</button>
+  <button type="button" class="btn btn-primary" onclick="history.back()">목록</button>
+</div>
 
-					<div class="btn-group dropright">
-
-
-						<select name="board_type" class="btn btn-primary dropdown-toggle"
-							data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">
-							<option value="1">후기</option>
-							<option value="0">자유</option>
-						</select>
-					</div>
-
-
-					<br>
-					<br>
-
-
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="text-input">작성자</label> <input class="form-control"
-									name="board_writer" type="text" id="text-input"
-									value="<%=session.getAttribute("id")%>">
-								<%-- --%>
-							</div>
-							<div class="form-group">
-								<label for="text-input">글제목</label> <input class="form-control"
-									name="board_title" type="text" id="text-input">
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="textarea-input">본문작성</label>
-								<textarea class="form-control" name="board_content"
-									id="textarea-input" cols="860" rows="15"></textarea>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="file-input">File</label>
-								<div class="custom-file">
-									<input class="custom-file-input" name="board_image"
-										type="file" id="file-input"> <label
-										class="custom-file-label" for="file-input">Choose
-										file...</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col text-center">
-							<input type="submit" value="작성" id="button-input"
-								class="btn btn-primary mx-auto">
-						</div>
-					</div>
-				</form>
-				</div>
+<div class="d-flex flex-wrap justify-content-between pt-2 pb-4 mb-1">
+            <div class="mt-3 mr-3"><a class="tag-link mr-2 mb-2" href="#">#consumer electronics</a><a class="tag-link mb-2" href="#">#drones</a></div>
+            <div class="mt-3"><span class="d-inline-block align-middle text-muted font-size-sm mr-2 mb-2">Share post:</span><a class="social-btn sb-facebook mr-2 mb-2" href="#"><i class="flaticon-facebook"></i></a><a class="social-btn sb-twitter mr-2 mb-2" href="#"><i class="flaticon-twitter"></i></a><a class="social-btn sb-pinterest mr-2 mb-2" href="#"><i class="flaticon-pinterest"></i></a></div>
+          </div>
+          <!-- Post tags + sharing-->
          
-
         </div>
+        
+        
+        
+        
+        
+        
+        
+        
       </div>
     </div>
+    
+
+    
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->

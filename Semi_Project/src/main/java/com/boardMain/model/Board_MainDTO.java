@@ -15,8 +15,22 @@ private String main_phone;
 private String main_location;
 private String main_memid;
 private String main_storenum;
+private String main_thema;
+private String main_img;
 
 
+public String getMain_img() {
+	return main_img;
+}
+public void setMain_img(String main_img) {
+	this.main_img = main_img;
+}
+public String getMain_thema() {
+	return main_thema;
+}
+public void setMain_thema(String main_thema) {
+	this.main_thema = main_thema;
+}
 public int getMain_idx() {
 	return main_idx;
 }

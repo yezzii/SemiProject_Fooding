@@ -520,17 +520,25 @@
                      </div>
                   </div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+			class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop layouts</h3>
+										<h3 class="widget-title">게시판</h3>
 										<ul>
 											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/review_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">후기 게시판</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/free_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">자유 게시판</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -543,10 +551,10 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.jsp"><i
+																<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Product
-														Page #1 - Apparel</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
+														</span></a></li>
 
 											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
@@ -787,45 +795,50 @@
               
             </div>
           </div>
-          <hr class="pb-5">
           <!-- Post-->
           <div class="row pb-5">
-            <div class="col-md-4">
-            <c:forEach items="${list }" var="dto">
-              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
-                <div class="mr-2">by&nbsp;<a href="#">${dto.getBoard_writer() }</a><span class="meta-divider"></span><a href="#">${dto.getBoard_date().substring(2,10) }</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>24</a>
-              </div>
-              <h3 class="h4 mb-4"><a  class="post-title"
-							href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx()}">${dto.getBoard_title() }</a></h3>
-            </c:forEach>
-            </div>
-            <div class="col-md-8"><a class="d-block position-relative mb-3" href="https://player.vimeo.com/video/203972818?title=0&amp;byline=0&amp;portrait=0" data-fancybox data-width="1000" data-height="563"></a>
-  <div>
-    <c:if test="${!empty list}">
-        <c:forEach items="${list}" var="dto">
-            <div style="clear:both;">
-                <div style="float:left;">${dto.getBoard_content() }</div>
-                <div style="float:left;">
-                    <img src="<%=request.getContextPath() %>../photo/${dto.getBoard_image() }" width="100" height="100">
-                </div>
-            </div>
-        </c:forEach>
-    </c:if>
-    <c:if test="${empty list}">
-        <div style="text-align:center;">
-            <h3>조회된 게시물이 없습니다....</h3>
-        </div>
-    </c:if>
+
+            
+            <!-- Basic table -->
+<div class="table-responsive">
+  <table class="table">
+  
+    <thead>
+      <tr>
+        <th>글번호</th>
+        <th>글제목</th>
+        <th>작성자</th>
+        <th>작성일자</th>
+      </tr>
+     </thead>
+    <tbody>
+     <c:if test="${!empty list }">
+				<c:forEach items="${list}" var="dto">
+      <tr>
+      <td>${dto.getBoard_idx() }</td>
+        <td><a href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a></td>
+        <td>${dto.getBoard_writer() }</td>
+        <td>${dto.getBoard_date().substring(2, 10)}</td>
+      
+      </tr>
+      <tr>
+      <td colspan="4">  <img src="<%=request.getContextPath() %>/photo/${dto.getBoard_image() }"></td>
+      </tr>
+      
+      </c:forEach>
+     </c:if>
+      
+    </tbody>
+  </table>
 </div>
-              <div class="post-meta">
-                <div>
-                   in&nbsp;<a href="#">Consumer electronics</a><span class="meta-divider"></span><a href="#">#IoT</a></div>
-              </div>
-            </div>
+            
+            
+            
+            
+            
           </div>
           <hr class="pb-5">
           
-          <hr class="pb-4 mb-2">
           <!-- Pagination-->
           <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center justify-content-sm-start mb-0">

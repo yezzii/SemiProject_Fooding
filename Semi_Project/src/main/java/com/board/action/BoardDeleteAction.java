@@ -19,6 +19,9 @@ public class BoardDeleteAction implements Action {
 		// TODO Auto-generated method stub
 		
 		int board_no = Integer.parseInt(request.getParameter("no"));
+		int type = Integer.parseInt(request.getParameter("type"));
+		
+		
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
@@ -27,23 +30,27 @@ public class BoardDeleteAction implements Action {
 		PrintWriter out = response.getWriter();
 		
 			
+		
+		
+		
+		
 			if(dto > 0) {
 				out.println("<script>");
-				out.println("alert('회원 삭제 성공!!!')");
-				out.println("location.href='review_board.do'");	
+				out.println("alert('게시물 삭제 성공.')");
 				out.println("</script>");
-			}else if(dto == -1) {
-				out.println("<script>");
-				out.println("alert('비밀번호가 틀립니다.~~~')");
-				out.println("history.back()");
-				out.println("</script>");
+				if(type == 0) {
+					out.println("location.href='free_board.do'");
+				}else if(type == 1) {
+					out.println("<script>");
+					out.println("location.href='review_board.do'");
+					out.println("</script>");
+			    }
 			}else {
-				out.println("<script>");
-				out.println("alert('회원 삭제 실패~~~')");
+		    	out.println("<script>");
+				out.println("alert('게시물 삭제 실패.')");
 				out.println("history.back()");
 				out.println("</script>");
-			
-		}
+		    }
 		
 		return null;
 		

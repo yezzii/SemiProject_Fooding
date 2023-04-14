@@ -1,43 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <style type="text/css">
+  
+  <style>
+    .btn-group {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  </style>
     <meta charset="utf-8">
     <title>MStore | Modern Bootstrap E-commerce Template
     </title>
-    <!-- JQury 라이브러리 -->
-
-
-<script>
-	function check() {
-		
-		if (f.board_title.value == "") {
-			alert("글 제목을 입력하세요")
-			f.board_title.focus();
-			return false;
-		}
-		if (f.board_content.value == "") {
-			alert("내용을 입력하세요")
-			f.board_content.focus();
-			return false;
-		}
-	}
-</script>
-    <style>
-  #text-input {
-    width: 893px;
-  }
-  #file-input {
-    width: 893px;
-  }
-  #button-input {
-  text-align: center;
-  }
-  
-  
-</style>
     <!-- SEO Meta Tags-->
     <meta name="description" content="MStore - Modern Bootstrap E-commerce Template">
     <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
@@ -60,6 +40,7 @@
   </head>
   <!-- Body-->
   <body>
+<c:set var="dto" value="${dto}" />
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -793,90 +774,77 @@
 			</div>
 		</div>
 	</header>
-    <!-- Page Content-->
-    <div class="container pb-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-9">
-          <!-- Post meta-->
-          <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
-            <div class="mr-2">by&nbsp;<a href="#">Olivia Reyes</a><span class="meta-divider"></span>in&nbsp;<a href="#">Aerial photo</a><span class="meta-divider"></span><span>Apr 20</span></div><a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
-          </div>
-          <!-- Gallery-->
-          <div class="row pb-2">
-
-				<form method="post"
-					action="<%=request.getContextPath()%>/write_boardOk.do"
-					onsubmit="return check()" name="f" enctype="multipart/form-data">
-
-
-					<div class="btn-group dropright">
-
-
-						<select name="board_type" class="btn btn-primary dropdown-toggle"
-							data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">
-							<option value="1">후기</option>
-							<option value="0">자유</option>
-						</select>
-					</div>
-
-
-					<br>
-					<br>
-
-
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="text-input">작성자</label> <input class="form-control"
-									name="board_writer" type="text" id="text-input"
-									value="<%=session.getAttribute("id")%>">
-								<%-- --%>
-							</div>
-							<div class="form-group">
-								<label for="text-input">글제목</label> <input class="form-control"
-									name="board_title" type="text" id="text-input">
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="textarea-input">본문작성</label>
-								<textarea class="form-control" name="board_content"
-									id="textarea-input" cols="860" rows="15"></textarea>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="file-input">File</label>
-								<div class="custom-file">
-									<input class="custom-file-input" name="board_image"
-										type="file" id="file-input"> <label
-										class="custom-file-label" for="file-input">Choose
-										file...</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col text-center">
-							<input type="submit" value="작성" id="button-input"
-								class="btn btn-primary mx-auto">
-						</div>
-					</div>
-				</form>
-				</div>
-         
-
-        </div>
+    <!-- Page Title-->
+    <div class="page-title-wrapper" aria-label="Page title">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
+            <li class="breadcrumb-item"><a href="index.jsp">Home</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Blog</a>
+            </li>
+          </ol>
+        </nav>
+        <h1 class="page-title">${dto.getBoard_writer()}님의 게시글 수정페이지.</h1><span class="d-block mt-2 text-muted"></span>
+        <hr class="mt-4">
       </div>
     </div>
+    <!-- Page Content-->
+    <div class="container pb-5 mb-1">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+        <form action="<%=request.getContextPath()%>/board_modify_ok.do" method="post">
+          
+          <input type="hidden" value="${dto.getBoard_idx() }" name="idx">
+          <input type="hidden" value="${dto.getBoard_type() }" name="type">
+          
+          <!-- Post meta-->
+          <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+    <div><span>${dto.getBoard_date()}</span></div>
+    <a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
+</div>
+          <!-- Gallery-->
+          <div class="row pb-2">
+     <div align="center">
+     <c:if test="${dto.getBoard_image() }==''">
+     </c:if>
+     <c:if test="${dto.getBoard_image() }!=''">
+     <img src="<%=request.getContextPath() %>../photo/${dto.getBoard_image() }" width="900" height="300">
+     </c:if>
+     </div>
+          </div>
+   <!-- Text input -->
+<div class="form-group">
+
+  <label for="text-input">글제목</label>
+  <input class="form-control" type="text" id="text-input" value="${dto.getBoard_title()}" name="title">
+  </div> 
+   
+ <label for="textarea-input">글내용</label>  
+<textarea rows="15" cols="" class="form-control" name="cont" id="textarea-input">${dto.getBoard_content()}</textarea>       
+          
+          
+
+
+<br>
+
+<!-- Primary button -->
+<div align="center">
+<input class="btn btn-primary" type="submit" value="수정">&nbsp;&nbsp;
+<input class="btn btn-outline-primary" type="reset" value="다시작성">
+</div>
+</form>
+</div>  
+
+
+
+         
+        </div>
+      </div>
+    
+
+    
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->

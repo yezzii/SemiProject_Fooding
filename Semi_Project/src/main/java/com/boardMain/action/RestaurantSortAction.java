@@ -12,13 +12,13 @@ import com.boardMain.model.Board_MainDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
 
-public class Board_mainListAction implements Action {
+public class RestaurantSortAction implements Action {
 
-	@Override
+	@Override 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		
-		int rowsize = 10;
+		int rowsize = 9;
 		int block = 5;
 		int totalBoard_main = 0;
 		int allpage = 0;
@@ -29,6 +29,11 @@ public class Board_mainListAction implements Action {
 		}else {
 			page = 1;
 		}
+		
+		if(page==0) {
+			page = 1;
+		}
+		
 		
 		int startNo = (page * rowsize) - (rowsize - 1);
 		
@@ -66,7 +71,7 @@ public class Board_mainListAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("Board_Main_list.jsp");
+		forward.setPath("RestaurantList.jsp");
 		
 		return forward;
 	}

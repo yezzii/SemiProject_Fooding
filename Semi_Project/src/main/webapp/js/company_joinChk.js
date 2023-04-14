@@ -61,6 +61,7 @@ function checkAll() {
 	var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
 	var nameRegExp = /^[가-힣]{2,4}$/;
 	var phoneRegExp = /^[0-9]{9,11}$/;
+	var storeRegExp = /^[0-9]{10,10}$/;
 	
 	
 	$("#reg-pwdchk").hide(); //span태그 영역을 숨겨라.
@@ -68,6 +69,7 @@ function checkAll() {
 	$("#reg-namechk").hide(); //span태그 영역을 숨겨라.
 	$("#reg-emailchk").hide(); //span태그 영역을 숨겨라.
 	$("#reg-phonechk").hide(); //span태그 영역을 숨겨라.
+	$("#reg-storechk").hide(); //span태그 영역을 숨겨라.
 
 	if ($("#reg-id").val() == "") {
 		
@@ -164,6 +166,7 @@ function checkAll() {
 		$("#reg-password").val('').focus();//input 영역 초기화.
 		return false;
 	}
+
 	if ($("#reg-password-confirm").val() == "") {
 		
 		let warningTxt = '<font color="red">비밀번호 확인을 작성해주세요.</font>';
@@ -186,6 +189,28 @@ function checkAll() {
 				
 		return false;
 	}
+	
+		if ($("#reg-storenum").val() == "") {
+		
+		let warningTxt = '<font color="red">사업자 번호를 작성해주세요.</font>';
+		$("#reg-storechk").text(""); //span 태그 영역 초기화.
+		$("#reg-storechk").show();
+		$("#reg-storechk").append(warningTxt);
+		$("#reg-storenum").val('').focus();//input 태그 영역 초기화.
+
+		return false;
+	}
+	
+	if (!phoneRegExp.test($("#reg-storenum").val())) {
+		let warningTxt = '<font color="red">숫자 10자리를 입력해야합니다.</font>';
+		$("#reg-storechk").text(""); //span 태그 영역 초기화.
+		$("#reg-storechk").show();
+		$("#reg-storechk").append(warningTxt);
+		$("#reg-storenum").val('').focus();//input 영역 초기화.
+		
+		return false;
+	}
+	
 	$('#reg-form').submit();
 }
 
