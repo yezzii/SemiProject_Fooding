@@ -551,17 +551,25 @@
                      </div>
                   </div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop layouts</h3>
+										<h3 class="widget-title">게시판</h3>
 										<ul>
 											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/review_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">후기 게시판</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/free_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">자유 게시판</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -574,10 +582,10 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Product
-														Page #1 - Apparel</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
+														</span></a></li>
 
 											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
@@ -798,15 +806,27 @@
             
         <form method="post" action="<%=request.getContextPath()%>/write_boardOk.do"
 			onsubmit="return check()" name="f" enctype="multipart/form-data">
-			<select name="board_type">
-				<option value="1">후기</option>
-				<option value="0">자유게시판</option>
-			</select>
+			
+			
+			
+<div class="btn-group dropright">
+ 
+  
+  <select name="board_type" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <option value="1">후기</option>
+    <option value="0">자유</option>
+  </select>
+</div>
+
+
+<br><br>
+
+
 <div class="row">
   <div class="col">
       <div class="form-group">
       <label for="text-input">작성자</label>
-      <input class="form-control" name="board_writer" type="text" id="text-input" value="<%=session.getAttribute("id")%>">
+      <input class="form-control" name="board_writer" type="text" id="text-input" value="<%=session.getAttribute("id")%>">  <%-- --%>   
     </div>
     <div class="form-group">
       <label for="text-input">글제목</label>
@@ -819,7 +839,7 @@
   <div class="col">
     <div class="form-group">
       <label for="textarea-input">본문작성</label>
-      <textarea class="form-control" name="board_content" id="textarea-input" cols="860" rows="15">Hello World!</textarea>
+      <textarea class="form-control" name="board_content" id="textarea-input" cols="860" rows="15" ></textarea>
     </div>
   </div>
 </div>

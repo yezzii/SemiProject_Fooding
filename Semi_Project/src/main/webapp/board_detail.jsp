@@ -1,9 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <style type="text/css">
+  
+  <style>
+    .btn-group {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  </style>
     <meta charset="utf-8">
     <title>MStore | Modern Bootstrap E-commerce Template
     </title>
@@ -29,7 +40,8 @@
   </head>
   <!-- Body-->
   <body>
-	<c:set var="list" value="${review_boardList }" />
+<c:set var="dto" value="${DTO}" />
+
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
@@ -520,7 +532,7 @@
                      </div>
                   </div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-			class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
@@ -551,7 +563,7 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-																<li><a href="board_write.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
 														</span></a></li>
@@ -774,111 +786,69 @@
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">후기게시판</h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title">${dto.getBoard_writer()}님의 게시글입니다.</h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
       </div>
     </div>
     <!-- Page Content-->
-    <div class="container pb-5 mb-4">
-      <div class="row">
+    <div class="container pb-5 mb-1">
+      <div class="row justify-content-center">
         <div class="col-lg-9">
-          <!-- Post-->
-          <div class="row pb-5">
-            
-            <div class="col-md-8">
-            <!-- Textarea -->
-
-              <div class="post-meta">
-                <div>
-                   <a href="#">Fooding, &nbsp;</a><a href="#">Board</a><span class="meta-divider"></span><a href="#">#yummy!</a></div>
-              </div>
-              
-            </div>
+          <!-- Post meta-->
+          <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+            <div><span>${dto.getBoard_date().substring(0, 10)}</span></div><a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
           </div>
-          <hr class="pb-5">
-          <!-- Post-->
-          <div class="row pb-5">
-
-            
-            <!-- Basic table -->
-<div class="table-responsive">
-  <table class="table">
-  
-    <thead>
-      <tr>
-        <th>글번호</th>
-        <th>글제목</th>
-        <th>작성자</th>
-        <th>작성일자</th>
-      </tr>
-     </thead>
-    <tbody>
-     <c:if test="${!empty list }">
-				<c:forEach items="${list}" var="dto">
-      <tr>
-      <td>${dto.getBoard_idx() }</td>
-        <td><a href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a></td>
-        <td>${dto.getBoard_writer() }</td>
-        <td>${dto.getBoard_date().substring(2, 10)}</td>
-      </tr>
-      </c:forEach>
+          <!-- Gallery-->
+          <div class="row pb-2">
+     <div align="center">
+     <c:if test="${dto.getBoard_image() }==''">
      </c:if>
-      
-    </tbody>
-  </table>
-</div>
-            
-            
-            
-            
-            
+     <c:if test="${dto.getBoard_image() }!=''">
+     <img src="<%=request.getContextPath() %>../photo/${dto.getBoard_image() }" width="900" height="300">
+     </c:if>
+     </div>
           </div>
-          <hr class="pb-5">
+          <!-- Post content-->
           
-          <hr class="pb-4 mb-2">
-          <!-- Pagination-->
-          <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center justify-content-sm-start mb-0">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item d-sm-none"><span class="page-link page-link-static">2 / 5</span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
-              <li class="page-item d-none d-sm-block">...</li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">10</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="col-lg-3">
-          <!-- Blog sidebar-->
-          <div class="offcanvas-sidebar">
-            <div class="offcanvas-sidebar-toggle"><span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span></div>
-            <div class="offcanvas-sidebar-body">
-              <div class="offcanvas-sidebar-body-inner">
-                <!-- Categories-->
-                <div class="widget widget-categories mb-4 py-1">
-                  <h3 class="widget-title">Top categories</h3>
-                  <ul>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1">(25)</span></a></li>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(13)</span></a></li>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(9)</span></a></li>
-                  </ul>
-                </div>
-                
-                <!-- Tags      -->
-                <div class="widget mb-4 pb-1">
-                  <h3 class="widget-title">Popular tags</h3><a class="tag-link mr-2 mb-2" href="#">#오마카세</a><a class="tag-link mr-2 mb-2" href="#">#삼겹살</a><a class="tag-link mr-2 mb-2" href="#">#한우</a><a class="tag-link mr-2 mb-2" href="#">#짜장면</a><a class="tag-link mb-2" href="#">#스시</a>
-                </div>
-               
-                  </div></a>
-              </div>
-            </div>
+          
+          <!-- Warning card -->
+<div class="card bg-light">
+  <div class="card-header">${dto.getBoard_writer()}</div>
+  <div class="card-body" style="height: 400px;">
+    <h5 class="card-title">${dto.getBoard_title()}</h5>
+    <p class="card-text font-size-sm">${dto.getBoard_content()}</p>
+  </div>
+</div>
+
+<br>
+
+<!-- Solid button group -->
+<div class="btn-group10" role="group" aria-label="Solid button group" align="center">
+  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_delete.do?no=${dto.getBoard_idx()}&type=${dto.getBoard_type }'">삭제</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath() %>/board_modify.do?no=${dto.getBoard_idx()}&type=${dto.getBoard_type }'">수정</button>
+  <button type="button" class="btn btn-primary" onclick="history.back()">목록</button>
+</div>
+
+<div class="d-flex flex-wrap justify-content-between pt-2 pb-4 mb-1">
+            <div class="mt-3 mr-3"><a class="tag-link mr-2 mb-2" href="#">#consumer electronics</a><a class="tag-link mb-2" href="#">#drones</a></div>
+            <div class="mt-3"><span class="d-inline-block align-middle text-muted font-size-sm mr-2 mb-2">Share post:</span><a class="social-btn sb-facebook mr-2 mb-2" href="#"><i class="flaticon-facebook"></i></a><a class="social-btn sb-twitter mr-2 mb-2" href="#"><i class="flaticon-twitter"></i></a><a class="social-btn sb-pinterest mr-2 mb-2" href="#"><i class="flaticon-pinterest"></i></a></div>
           </div>
+          <!-- Post tags + sharing-->
+         
         </div>
+        
+        
+        
+        
+        
+        
+        
+        
       </div>
     </div>
+    
+
+    
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->

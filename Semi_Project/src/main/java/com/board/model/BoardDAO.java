@@ -216,13 +216,15 @@ public class BoardDAO {
 		try {
 			openConn();
 
+			
 			sql = "delete from board where board_idx = ?";
 
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, no);
-
+			
 			result = pstmt.executeUpdate();
+
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -251,12 +253,12 @@ public class BoardDAO {
 			if (rs.next()) {
 				dto.setBoard_idx(rs.getInt("board_idx"));
 				dto.setBoard_title(rs.getString("board_title"));
-				dto.setBoard_content(rs.getString("board_content"));
 				dto.setBoard_writer(rs.getString("board_writer"));
-				dto.setBoard_image(rs.getString("board_image"));
+				dto.setBoard_content(rs.getString("board_content"));
 				dto.setBoard_date(rs.getString("board_date"));
 				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
 				dto.setBoard_type(rs.getInt("board_type"));
+				dto.setBoard_image(rs.getString("board_image"));
 			}
 
 		} catch (SQLException e) {

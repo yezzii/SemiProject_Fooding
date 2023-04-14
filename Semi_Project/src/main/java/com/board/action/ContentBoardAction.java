@@ -29,7 +29,7 @@ public class ContentBoardAction implements Action {
 
 		forward.setRedirect(false);
 
-		forward.setPath("../board/board_detail.jsp");
+		forward.setPath("board_detail.jsp");
 
 		return forward;
 	}
