@@ -9836,6 +9836,9 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .
 	color: #5c77fc !important
 }
 
+.text-primary-orange {
+	color: #ff9326 !important
+}
 .text-secondary {
 	color: #f1f1f1 !important
 }
