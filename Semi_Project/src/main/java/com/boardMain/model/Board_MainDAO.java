@@ -104,7 +104,7 @@ public class Board_MainDAO {
 				board_main = rs.getString(1);
 			}
 
-			sql = "insert into board_main values(?,?,?,?,?,?,?,?,?,?,'',?,?,?)";
+			sql = "insert into board_main values(?,?,?,?,?,?,?,?,?,?,'',?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -121,6 +121,7 @@ public class Board_MainDAO {
 			pstmt.setString(11, dto.getMain_memid());
 			pstmt.setString(12, board_main);
 			pstmt.setString(13, dto.getMain_thema());
+			pstmt.setString(14, dto.getMain_img());
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
