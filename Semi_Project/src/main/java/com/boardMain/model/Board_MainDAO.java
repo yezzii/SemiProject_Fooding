@@ -188,6 +188,7 @@ public class Board_MainDAO {
 				dto.setMain_memid(rs.getString("main_memid"));
 				dto.setMain_storenum(rs.getString("main_storenum"));
 				dto.setMain_thema(rs.getString("main_thema"));
+				dto.setMain_img(rs.getString("main_img"));
 				
 				
 				list.add(dto);

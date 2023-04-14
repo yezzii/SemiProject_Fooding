@@ -614,14 +614,13 @@ if(request.getProtocol().equals("HTTP/1.1"))
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="Board_Main_join.jsp">
+							<li><a class="dropdown-item" href="RoadRestaurantList.do">
 									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="edit"
+										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">Changelog <span
-												class="badge badge-pill badge-warning">v2.0</span>
-											</span><small class="text-muted">Regular updates</small>
+											<span class="d-block mb-n1">레스토랑 목록<br>(동현작업중)
+											</span>
 										</div>
 									</div>
 							</a></li>
