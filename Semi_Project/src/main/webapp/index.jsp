@@ -629,7 +629,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				
 							
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="RoadRestaurantList.do">
+							<li><a class="dropdown-item" href="LoadRestaurantList.do">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>

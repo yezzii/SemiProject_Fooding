@@ -7,13 +7,11 @@ private String main_name;
 private String main_type;
 private String main_info;
 private String main_opentime;
-
 private String main_endtime;
 private String main_post;
 private String main_addr;
 private String main_detailaddr;
 private String main_phone;
-
 private String main_location;
 private String main_memid;
 private String main_storenum;
