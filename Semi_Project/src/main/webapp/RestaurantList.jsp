@@ -699,7 +699,7 @@
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">레스토랑 목록 <span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title">레스토랑 목록  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${keyword } 🔍<span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
       </div>
     </div>
@@ -844,33 +844,34 @@
                     <li class="has-children"><a href="#shoes" data-toggle="collapse">
                     <i class="widget-categories-indicator" data-feather="chevron-down"></i>지역<span class="badge text-muted ml-1"></span></a>
                       <ul class="collapse show" id="shoes" data-parent="#shopCategories">
-                        <li><a href="board_main_search.do?loc=서울">서울<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">경기<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">대구<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">부산<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">제주<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=서울">서울<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=경기">경기<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=인천">경기<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=대구">대구<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=부산">부산<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=제주">제주<span class="badge text-muted ml-1"></span></a></li>
                       </ul>
                     </li>
                     <li class="has-children"><a class="collapsed" href="#clothing" data-toggle="collapse">
                     <i class="widget-categories-indicator" data-feather="chevron-down"></i>음식 종류<span class="badge text-muted ml-1"></span></a>
                       <ul class="collapse" id="clothing" data-parent="#shopCategories">
-                        <li><a href="#">고기요리<span class="badge text-muted ml-1"></span></a> </li>
-                        <li><a href="#">한식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">양식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">중식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">일식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">아시안<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">카페,디저트<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=고기">고기요리<span class="badge text-muted ml-1"></span></a> </li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=한식">한식<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=양식">양식<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=중식">중식<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=일식">일식<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=아시안">아시안<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=카페">카페,디저트<span class="badge text-muted ml-1"></span></a></li>
                       </ul>
                     </li>
                     <li class="has-children"><a class="collapsed" href="#bags" data-toggle="collapse">
                     <i class="widget-categories-indicator" data-feather="chevron-down"></i>테마별<span class="badge text-muted ml-1"></span></a>
                       <ul class="collapse" id="bags" data-parent="#shopCategories">
-                        <li><a href="#">데이트코스<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">가족모임<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">뷰가 좋은<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">전통적인<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="#">비지니스 미팅<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=데이트">데이트코스<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=가족">가족모임<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=뷰">뷰가 좋은<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=전통">전통적인<span class="badge text-muted ml-1"></span></a></li>
+                        <li><a href="SearchKeyRestaurant.do?keyword=비지니스">비지니스 미팅<span class="badge text-muted ml-1"></span></a></li>
                       </ul>
                     </li>
                  
