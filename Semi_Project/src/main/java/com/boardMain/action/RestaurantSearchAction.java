@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Restaurant.model.RtDTO;
 import com.boardMain.model.Board_MainDAO;
 import com.boardMain.model.Board_MainDTO;
 import com.member.action.Action;
@@ -21,7 +22,7 @@ public class RestaurantSearchAction implements Action {
 		
 		String keyword = request.getParameter("keyword").trim();
 		
-		int rowsize=10;
+		int rowsize=10000;
 		
 		int block = 3;
 		
@@ -46,15 +47,17 @@ public class RestaurantSearchAction implements Action {
 		Board_MainDAO dao = Board_MainDAO.getInstance();
 		
 		totalRestaurant = dao.searchRestaurantCount(keyword);
-		System.out.println("keyword"+keyword);
+		
+		System.out.println("검색값 :"+keyword);
+		
 		allPage = (int)Math.ceil(totalRestaurant / (double)rowsize);
 		
 		if(endBlock > allPage) {
 			endBlock = allPage;
 		}
 		
-		List<Board_MainDTO> searchList = dao.TotalMainSearch(keyword,page,rowsize);
-		System.out.println("search"+searchList);
+		List<RtDTO> searchList = dao.TotalMainSearch(keyword,page,rowsize);
+		System.out.println("검색값 >>>"+searchList);
 		request.setAttribute("page", page);
 		 request.setAttribute("rowsize", rowsize);
 		 request.setAttribute("block", block);
@@ -70,7 +73,7 @@ public class RestaurantSearchAction implements Action {
 		 ActionForward forward = new ActionForward();
 		 
 		 forward.setRedirect(false);
-		 forward.setPath("Board_Main_search.jsp");
+		 forward.setPath("RestaurantSearchList.jsp");
 		
 		 return forward;
 		

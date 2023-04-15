@@ -1,4 +1,4 @@
-package com.Restaurant;
+package com.Restaurant.model;
 
 public class RtDTO {
 

@@ -641,7 +641,7 @@
 								<div class="input-group-prepend">
 									<%-- 검색input테그 --%>
 
-									<input class="form-control rounded" type="text"
+									<input class="Search-form-Dong rounded" type="text"
 										id="site-search" placeholder="통합 검색" name="keyword"
 										aria-label="Search site" aria-describedby="search-icon">
 									<%-- 검색input테그 END --%>
@@ -699,7 +699,7 @@
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">레스토랑 목록 <span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title"> 통합 검색 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${keyword } 🔍<span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
       </div>
     </div>
@@ -967,6 +967,13 @@
     
               </c:forEach>
               </c:if>
+               <c:if test="${empty list }">
+                
+                 <div class="pb-md-6 py-md-6">
+             		  <h1>😢검색 내용이 없습니다.😢</h1>
+               	</div>
+    
+              </c:if>
             </div>
             </div>
             </div>
@@ -976,6 +983,10 @@
              
           <hr class="pb-4 mb-2">
          <!-- 페이지 기능-->
+ <%--   		============================================== 검색페이지에서 비활성화 (임시)  / 동현 =============================================
+ 
+ 
+ 
           <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center justify-content-sm-center mb-0">
               <li class="page-item"><a class="page-link" href="RoadRestaurantList.do?page=1">처음</a></li>
@@ -1008,6 +1019,10 @@
               
             </ul>
           </nav>
+          
+          
+          
+ --%>
         </div>
       </div>
     </div>
