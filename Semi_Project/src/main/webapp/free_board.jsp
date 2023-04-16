@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>MStore | Modern Bootstrap E-commerce Template
+    <title>Fooding
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="MStore - Modern Bootstrap E-commerce Template">
@@ -862,7 +862,7 @@
                   <h3 class="widget-title">Top categories</h3>
                   <ul>
                     <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1">(25)</span></a></li>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(13)</span></a></li>
+                    <li><a href="food_magazine.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(13)</span></a></li>
                     <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(9)</span></a></li>
                   </ul>
                 </div>

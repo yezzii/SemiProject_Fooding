@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>MStore | Modern Bootstrap E-commerce Template
+    <title>Fooding
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="MStore - Modern Bootstrap E-commerce Template">
@@ -30,6 +31,7 @@
   <!-- Body-->
   <body>
 	<c:set var="list" value="${review_boardList }" />
+
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
@@ -520,7 +522,7 @@
                      </div>
                   </div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-			class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
@@ -551,7 +553,7 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-																<li><a href="board_write.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
 														</span></a></li>
@@ -774,7 +776,7 @@
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">후기게시판</h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title">후시게시판</h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
       </div>
     </div>
@@ -784,60 +786,43 @@
         <div class="col-lg-9">
           <!-- Post-->
           <div class="row pb-5">
-            
-            <div class="col-md-8">
-            <!-- Textarea -->
-
-              <div class="post-meta">
-                <div>
-                   <a href="#">Fooding, &nbsp;</a><a href="#">Board</a><span class="meta-divider"></span><a href="#">#yummy!</a></div>
+          
+          
+          
+          
+          <c:if test="${!empty list }">
+				<c:forEach items="${list}" var="dto">
+          
+            <div class="col-md-4">
+              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+                <div class="mr-2">${dto.getBoard_idx()} &nbsp; | &nbsp; ${dto.getBoard_writer() }<span class="meta-divider"></span><a href="#">${dto.getBoard_date().substring(2, 10)}</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>5</a>
               </div>
+              <h3 class="h4 mb-4"><a class="post-title" href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a></h3>
+            </div>
+            <div class="col-md-8">
+            
+          <c:if test="${not empty dto.getBoard_image()}">
+  <img class="d-block" src="<%=request.getContextPath()%>/photo/${dto.getBoard_image() }" >
+</c:if>
+<c:if test="${empty dto.getBoard_image()}">
+  
+</c:if>
+           
+           
+              <p class="font-size-sm">${dto.getBoard_content() }</p>
               
             </div>
-          </div>
-          <!-- Post-->
-          <div class="row pb-5">
-
-            
-            <!-- Basic table -->
-<div class="table-responsive">
-  <table class="table">
-  
-    <thead>
-      <tr>
-        <th>글번호</th>
-        <th>글제목</th>
-        <th>작성자</th>
-        <th>작성일자</th>
-      </tr>
-     </thead>
-    <tbody>
-     <c:if test="${!empty list }">
-				<c:forEach items="${list}" var="dto">
-      <tr>
-      <td>${dto.getBoard_idx() }</td>
-        <td><a href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a></td>
-        <td>${dto.getBoard_writer() }</td>
-        <td>${dto.getBoard_date().substring(2, 10)}</td>
-      
-      </tr>
-      <tr>
-      <td colspan="4">  <img src="<%=request.getContextPath() %>/photo/${dto.getBoard_image() }"></td>
-      </tr>
-      
-      </c:forEach>
+        
+        
+        <hr width="100%" style="font-weight: bold;"  class="pb-5">
+         </c:forEach>
      </c:if>
-      
-    </tbody>
-  </table>
-</div>
-            
-            
-            
-            
-            
+        
           </div>
-          <hr class="pb-5">
+          
+          
+         
+          
           
           <!-- Pagination-->
           <nav aria-label="Page navigation">
@@ -865,17 +850,21 @@
                   <h3 class="widget-title">Top categories</h3>
                   <ul>
                     <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1">(25)</span></a></li>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(13)</span></a></li>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(9)</span></a></li>
+                    <li><a href="food_magazine.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(5)</span></a></li>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(5)</span></a></li>
                   </ul>
                 </div>
+                
+                
+                
                 
                 <!-- Tags      -->
                 <div class="widget mb-4 pb-1">
                   <h3 class="widget-title">Popular tags</h3><a class="tag-link mr-2 mb-2" href="#">#오마카세</a><a class="tag-link mr-2 mb-2" href="#">#삼겹살</a><a class="tag-link mr-2 mb-2" href="#">#한우</a><a class="tag-link mr-2 mb-2" href="#">#짜장면</a><a class="tag-link mb-2" href="#">#스시</a>
                 </div>
-               
-                  </div></a>
+                
+                
+                
               </div>
             </div>
           </div>

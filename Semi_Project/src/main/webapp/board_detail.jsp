@@ -16,7 +16,7 @@
   
   </style>
     <meta charset="utf-8">
-    <title>MStore | Modern Bootstrap E-commerce Template
+    <title>Fooding
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="MStore - Modern Bootstrap E-commerce Template">
@@ -803,7 +803,12 @@
      <div align="center">
      
      
-     <img src="<%=request.getContextPath() %>/photo/${dto.getBoard_image() }">
+            <c:if test="${not empty dto.getBoard_image()}">
+  <img class="d-block" src="<%=request.getContextPath()%>/photo/${dto.getBoard_image() }" >
+</c:if>
+<c:if test="${empty dto.getBoard_image()}">
+  
+</c:if>
      
      
      </div>

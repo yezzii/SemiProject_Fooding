@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.boardMain.model.Board_MainDTO;
+
 public class BoardDAO {
 
 	Connection con = null;
@@ -347,4 +349,68 @@ public class BoardDAO {
 
 	}
 
+	
+	public int getBoardCount() {
+
+		int count = 0;
+
+		try {
+			openConn();
+			sql = "select count(*) from board";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}// getBoardCount() end
+	
+	
+	public List<BoardDTO> getBoardReviewList(int page, int rowsize) {
+		
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+		int startNo = (page * rowsize) - (rowsize - 1);
+
+		int endNo = (page * rowsize);
+
+		try {
+			openConn();
+			sql = "select * from (select row_number() over (order by main_idx) rnum ,b.* from board_main b) a where rnum between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardDTO dto = new BoardDTO();
+
+				dto.setBoard_idx(rs.getInt("board_idx"));
+				dto.setBoard_title(rs.getString("board_title"));
+				dto.setBoard_writer(rs.getString("board_writer"));
+				dto.setBoard_content(rs.getString("board_content"));
+				dto.setBoard_date(rs.getString("board_date"));
+				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+				dto.setBoard_type(rs.getInt("board_type"));
+				dto.setBoard_image(rs.getString("board_image"));
+
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}// getBoardMainList() end
+	
+	
 }
