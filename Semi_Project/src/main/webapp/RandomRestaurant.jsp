@@ -695,13 +695,13 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-            <li class="breadcrumb-item"><a href="index.jsp">Home</a>
+            <li class="breadcrumb-item"><a href="index.jsp" style="font-family: 'GmarketSansMedium';">Home</a>
             </li>
-            <li class="breadcrumb-item"><a href="#">레스토랑 추천</a>
+            <li class="breadcrumb-item"><a href="#" style="font-family: 'GmarketSansMedium';">레스토랑 추천</a>
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">레스토랑 추천  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${keyword } 🎲<span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title" style="font-family: 'GmarketSansMedium';">레스토랑 추천  &nbsp; 🎲<span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
       </div>
     </div>
@@ -709,15 +709,19 @@
  
     
     <!--가게정보 상세페이지  ==============================================================================================-->
-     <c:set var="list" value="${DTO}" />					<!-- 오류 -->
+    <h1 style="text-align: center; font-family: 'GmarketSansMedium';">이 레스토랑은 어떠신가요?</h1>
+    <br>  <br>
+    
+     <c:set var="list" value="${List}" />
 	    <c:if test="${!empty list }">
-		    <div class="modal modal-quick-view fade" id="quick-view${list.getMain_idx()}" tabindex="-1" role="dialog">
+      <c:forEach items="${list }" var="dto">
+		    <div class="modal modal-quick-view fade" id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
 		      <div class="modal-dialog" role="document">
 		        <div class="modal-content">
 		          <div class="modal-header">
 		            <div>
-		              <h2 class="h2 modal-title mb-1" style="font-family: 'GmarketSansMedium';">${list.getMain_name()}</h2>
-		              <h5 class="text-primary font-weight-light mb-0" style="font-family: 'GmarketSansMedium';">${list.getMain_info() }</h5>
+		              <h2 class="h2 modal-title mb-1" style="font-family: 'GmarketSansMedium';">${dto.getMain_name()}</h2>
+		              <h5 class="text-primary font-weight-light mb-0" style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</h5>
 		            </div>
 		            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		          </div>
@@ -726,10 +730,10 @@
 		              <!-- Product gallery-->
 		              <div class="col-lg-7">
 		                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
-			                <img src="${list.getMain_img()}" alt="${list.getMain_img()}">
-			                <img src="${list.getMain_img()}" alt="${list.getMain_img()}">
-			                <img src="${list.getMain_img()}" alt="${list.getMain_img()}">
-			                <img src="${list.getMain_img()}" alt="${list.getMain_img()}">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
 		                </div>
 		              </div>
 		              <!-- Product details-->
@@ -785,15 +789,15 @@
 		                  </div>
 		                  <div class="card-body">
 		                    <ul class="mb-0" style="font-family: 'GmarketSansMedium';">
-		                      <li>주소 : ${list.getMain_addr() } ${list.getMain_detailaddr() }<br> 우편번호 : ${list.getMain_post() }</li>
+		                      <li>주소 : ${dto.getMain_addr() } ${dto.getMain_detailaddr() }<br> 우편번호 : ${dto.getMain_post() }</li>
 		                      <br>
-		                      <li>전화 : ${list.getMain_phone() }</li>
+		                      <li>전화 : ${dto.getMain_phone() }</li>
 		                      <br>
-		                      <li>=======정보=======<br>${list.getMain_info()}</li>
+		                      <li>=======정보=======<br>${dto.getMain_info()}</li>
 		                      <br>
-		                      <li>음식 종류 : ${list.getMain_type() }</li>
+		                      <li>음식 종류 : ${dto.getMain_type() }</li>
 		                      <br>
-		                      <li>오픈시간 : ${list.getMain_opentime()} ~ 마감시간 : ${list.getMain_endtime() }</li>
+		                      <li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 : ${dto.getMain_endtime() }</li>
 		                    </ul>
 		                  </div>
 		                </div>
@@ -805,15 +809,16 @@
 		        </div>
 		      </div>
 		    </div>
+		   </c:forEach>
 		   </c:if>
     <!-- Toast notifications-->
    
           <!-- Shop sidebar-->
            
             <div class="row">
-              <c:set var="list" value="${DTO}" />
+              <c:set var="list" value="${List}" />
               <c:if test="${!empty list }">
-            
+                <c:forEach items="${list }" var="dto">
                 <!-- DB데이터만큼 리스트 출력되는 가게목록. -->
                 <div class="col-md-4 col-sm-6">
                   <div class="product-card mb-4">
@@ -821,27 +826,27 @@
                       <a class="product-thumb-link" href="">	</a><span
                         class="product-wishlist-btn" data-toggle="tooltip"
                         data-placement="left" title="찜하기"><i
-                        data-feather="heart"></i></span><img src="${list.getMain_img()}"
-                        alt="${list.getMain_name()}">
+                        data-feather="heart"></i></span><img src="${dto.getMain_img()}"
+                        alt="${dto.getMain_name()}">
                     </div>
                     <div class="product-card-body text-center">
-                      <a class="product-meta" href="#"  style="font-family: 'GmarketSansMedium';">${list.getMain_info() }</a>
+                      <a class="product-meta" href="#"  style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
                       <h3 class="product-card-title">
-                        <a href="shop-single-apparel.jsp"  style="font-family: 'GmarketSansMedium'; font-size: 18px;">${list.getMain_name()}</a>
+                        <a href="shop-single-apparel.jsp"  style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
                       </h3>
-                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium'; font-size: 13px;">${list.getMain_addr() }</span>
+                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
                     </div>
                     <div class="product-card-body body-hidden">
                      
                       <button class="btn btn-primary btn-sm btn-block" type="button"
                         data-toggle="toast" data-target="#cart-toast"  style="font-family: 'GmarketSansMedium';">예약하기</button>
-                      <a class="quick-view-btn" href="#quick-view${list.getMain_idx()}"
+                      <a class="quick-view-btn" href="#quick-view${dto.getMain_idx()}"
                         data-toggle="modal" style=" color:black;"><i class="mr-2" data-feather="eye" style="font-family: 'GmarketSansMedium';"></i>자세히</a>
                     </div>
                   </div>
                 </div>
     
-     
+              </c:forEach>
               </c:if>
               
                  <c:if test="${empty list }">
@@ -850,11 +855,18 @@
 	               	</div>
             	  </c:if>
             </div>
-          </div>
-        </div>
           
             
                 <!-- 레스토랑-->
+           <div class="bg-secondary">
+                    <div class="px-3 pt-8 pb-md-4 text-center">
+                      <h4 class="font-size-sm font-weight-normal pt-1 mb-0"></h4>
+                      <h2 class="h3 pb-2" style="font-family: 'GmarketSansMedium';">다시 추천받기</h2>
+                      <a class="d-block text-decoration-0" href="RandomRST.do">
+                      	<div class="btn btn-primary btn-sm" style="font-family: 'GmarketSansMedium';">레스토랑 추천</div>
+                      </a>
+                    </div>
+                  </div>
              
     <!-- Footer-->
     <footer class="page-footer bg-dark">
