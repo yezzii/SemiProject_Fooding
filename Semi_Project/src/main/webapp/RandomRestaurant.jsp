@@ -695,54 +695,23 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-            <li class="breadcrumb-item"><a href="index.jsp">Home</a>
+            <li class="breadcrumb-item"><a href="index.jsp" style="font-family: 'GmarketSansMedium';">Home</a>
             </li>
-            <li class="breadcrumb-item"><a href="#">레스토랑</a>
+            <li class="breadcrumb-item"><a href="#" style="font-family: 'GmarketSansMedium';">레스토랑 추천</a>
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">레스토랑 목록  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${keyword } 🔍<span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title" style="font-family: 'GmarketSansMedium';">레스토랑 추천  &nbsp; 🎲<span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
       </div>
     </div>
     <!-- Page Content  ==========================================================================================-->
-    	
-  <%--
-    	  <c:set var="list" value="${List}" />
-              <c:if test="${!empty list }">
-                <c:forEach items="${list }" var="dto">
-                <!-- DB데이터만큼 리스트 출력되는 가게목록. -->
-                <div class="col-md-4 col-sm-6">
-                  <div class="product-card mb-4">
-                    <div class="product-thumb">
-                      <a class="product-thumb-link" href="">	</a><span
-                        class="product-wishlist-btn" data-toggle="tooltip"
-                        data-placement="left" title="찜하기"><i
-                        data-feather="heart"></i></span><img src="${dto.getMain_img()}"
-                        alt="${dto.getMain_name()}">
-                    </div>
-                    <div class="product-card-body text-center">
-                      <a class="product-meta" href="#"  style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
-                      <h3 class="product-card-title">
-                        <a href="shop-single-apparel.jsp"  style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
-                      </h3>
-                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
-                    </div>
-                    <div class="product-card-body body-hidden">
-                     
-                      <button class="btn btn-primary btn-sm btn-block" type="button"
-                        data-toggle="toast" data-target="#cart-toast"  style="font-family: 'GmarketSansMedium';">예약하기</button>
-                      <a class="quick-view-btn" href="#${dto.getMain_idx()}-quick-view"
-                        data-toggle="modal" style=" color:black;"><i class="mr-2" data-feather="eye" style="font-family: 'GmarketSansMedium';"></i>자세히</a>
-                    </div>
-                  </div>
-                </div>
-    
-              </c:forEach>
-              </c:if>				
-     --%>
+ 
     
     <!--가게정보 상세페이지  ==============================================================================================-->
+    <h1 style="text-align: center; font-family: 'GmarketSansMedium';">이 레스토랑은 어떠신가요?</h1>
+    <br>  <br>
+    
      <c:set var="list" value="${List}" />
 	    <c:if test="${!empty list }">
       <c:forEach items="${list }" var="dto">
@@ -843,152 +812,8 @@
 		   </c:forEach>
 		   </c:if>
     <!-- Toast notifications-->
-    <div class="toast-container toast-bottom-center">
-      <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to cart!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to your cart.</div>
-      </div>
-      <div class="toast mb-3" id="compare-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to comparison!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to comparison table.</div>
-      </div>
-      <div class="toast mb-3" id="wishlist-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to wishlist!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to your wishlist.</div>
-      </div>
-      <div class="toast mb-3" id="profile-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">Your profile info updated successfuly.</div>
-      </div>
-      <div class="toast mb-3" id="address-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">Your addresses info updated successfuly.</div>
-      </div>
-    </div>
-    <div class="container pb-5 mb-4">
-      <div class="row">
-        <div class="col-lg-3">
+   
           <!-- Shop sidebar-->
-         <!-- Shop sidebar-->
-          <div class="offcanvas-sidebar">
-            <div class="offcanvas-sidebar-toggle"><span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span></div>
-            <div class="offcanvas-sidebar-body">
-              <div class="offcanvas-sidebar-body-inner">
-                <!-- Categories-->
-                <div class="widget widget-categories mb-4 py-1">
-                  <p class="widget-title">카테고리</p>
-                  <ul id="shopCategories">
-                    <li class="has-children"><a href="#shoes" data-toggle="collapse">
-                    <i class="widget-categories-indicator" data-feather="chevron-down"></i>지역<span class="badge text-muted ml-1"></span></a>
-                      <ul class="collapse show" id="shoes" data-parent="#shopCategories">
-                        <li><a href="SearchKeyRestaurant.do?keyword=서울">서울<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=경기">경기<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=인천">인천<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=대구">대구<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=부산">부산<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=제주">제주<span class="badge text-muted ml-1"></span></a></li>
-                      </ul>
-                    </li>
-                    <li class="has-children"><a class="collapsed" href="#clothing" data-toggle="collapse">
-                    <i class="widget-categories-indicator" data-feather="chevron-down"></i>음식 종류<span class="badge text-muted ml-1"></span></a>
-                      <ul class="collapse" id="clothing" data-parent="#shopCategories">
-                        <li><a href="SearchKeyRestaurant.do?keyword=고기">고기요리<span class="badge text-muted ml-1"></span></a> </li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=한식">한식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=양식">양식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=중식">중식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=일식">일식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=아시안">아시안<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=카페">카페,디저트<span class="badge text-muted ml-1"></span></a></li>
-                      </ul>
-                    </li>
-                    <li class="has-children"><a class="collapsed" href="#bags" data-toggle="collapse">
-                    <i class="widget-categories-indicator" data-feather="chevron-down"></i>테마별<span class="badge text-muted ml-1"></span></a>
-                      <ul class="collapse" id="bags" data-parent="#shopCategories">
-                        <li><a href="SearchKeyRestaurant.do?keyword=데이트">데이트코스<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=가족">가족모임<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=뷰">뷰가 좋은<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=전통">전통적인<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=비지니스">비지니스 미팅<span class="badge text-muted ml-1"></span></a></li>
-                      </ul>
-                    </li>
-                 
-                  </ul>
-                </div>
-                <!-- Price range-->
-							<div class="widget mb-4 pb-3">
-								<h3 class="widget-title">메뉴 가격으로 레스토랑 검색</h3>
-								<form method="get" action="SearchCostRestaurant.do?"
-									class="range-slider" data-start-min="250" data-start-max="650"
-									data-min="0" data-max="300000" data-step="1000">
-									<div class="ui-range-slider"></div>
-									<footer class="ui-range-slider-footer">
-										<div class="column">
-											<button class="btn btn-outline-primary btn-sm" type="submit">검색</button>
-										</div>
-										<div class="column">
-											<div class="ui-range-values">
-												<div class="ui-range-label">가격:</div>
-												<div class="ui-range-value-min">
-													￦<span></span> <input type="hidden" name="min">
-												</div>
-												&nbsp;&ndash;&nbsp;
-												<div class="ui-range-value-max">
-													￦<span></span> <input type="hidden"  name="max">
-												</div>
-											</div>
-										</div>
-									</footer>
-								</form>
-							</div>
-
-							<%--Promo banner --%>
-                  <div class="bg-secondary">
-                  <img src="https://media.hellobot.co/fixedmenu/%E1%84%86%E1%85%A5%E1%86%A8%E1%84%8B%E1%85%B3%E1%86%AF%E1%84%81%E1%85%A1%E1%84%86%E1%85%A1%E1%86%AF%E1%84%81%E1%85%A1.png" alt="뭐 먹지?">
-                    <div class="px-3 pt-4 text-center">
-                      <h4 class="font-size-sm font-weight-normal pt-1 mb-0"></h4>
-                      <h4 class="h5 pb-2" style="font-family: 'GmarketSansMedium';">레스토랑을 고르기 <br>힘들다면?</h4>
-                      <a class="d-block text-decoration-0" href="RandomRST.do">
-                      	<div class="btn btn-primary btn-sm" style="font-family: 'GmarketSansMedium';">레스토랑 추천</div>
-                      </a>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <c:set var="list" value="${List}" />
-              <c:if test="${!empty list }">
-        
-        <div class="col-lg-9">
-          <!-- 정렬-->
-          <div class="d-flex flex-wrap justify-content-center justify-content-sm-between pb-3">
-            <div class="d-flex flex-wrap">
-              <div class="form-inline flex-nowrap mr-3 mr-sm-4 pb-3">
-              
-              <form method="get" action="<%=request.getContextPath() %>/RestaurantSort.do">
-                <label class="text-nowrap mr-2 d-none d-sm-block" for="sorting">정렬</label>
-                <select class="form-control custom-select" id="sorting">
-                  <option>저장순</option>
-                  <option>예약순</option>
-                  <option>리뷰많은순</option>
-                </select>
-                </form>
-              </div>
-             
-             </c:if>
-          <!--레스토랑 리스트-->
-          
            
             <div class="row">
               <c:set var="list" value="${List}" />
@@ -1030,49 +855,19 @@
 	               	</div>
             	  </c:if>
             </div>
-          </div>
-        </div>
           
             
                 <!-- 레스토랑-->
+           <div class="bg-secondary">
+                    <div class="px-3 pt-8 pb-md-4 text-center">
+                      <h4 class="font-size-sm font-weight-normal pt-1 mb-0"></h4>
+                      <h2 class="h3 pb-2" style="font-family: 'GmarketSansMedium';">다시 추천받기</h2>
+                      <a class="d-block text-decoration-0" href="RandomRST.do">
+                      	<div class="btn btn-primary btn-sm" style="font-family: 'GmarketSansMedium';">레스토랑 추천</div>
+                      </a>
+                    </div>
+                  </div>
              
-          <hr class="pb-4 mb-2">
-         <!-- 페이지 기능-->
-          <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center justify-content-sm-center mb-0">
-              <li class="page-item"><a class="page-link" href="LoadRestaurantList.do?page=1">처음</a></li>
-              <li class="page-item"><a class="page-link" href="LoadRestaurantList.do?page=${page - 1 }">이전</a></li>
-              
-               <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-	      	    <c:if test="${i == page }">
-	      	       <li class="page-item active" aria-current="page"><a class="page-link" href="LoadRestaurantList.do?page=${i }">${i }</a></li>
-	      	    </c:if>
-	      	    
-	      	    <c:if test="${i != page }">
-	      	       <li class="page-item">
-	      	          <a class="page-link"
-	      		   			href="LoadRestaurantList.do?page=${i }">${i }</a>
-	      	       </li>
-	      	    </c:if>
-	      	 </c:forEach>
-	      	 
-	      	  <c:if test="${endBlock < allPage }">
-	      	       <li class="page-item">
-	      	          <a class="page-link"
-	      		   			href="LoadRestaurantList.do?page=${page + 1 }">다음</a>
-	      	       </li>
-	      	       
-	      	       <li class="page-item">
-	      	          <a class="page-link"
-	      		   			href="LoadRestaurantList.do?page=${allPage }">마지막</a>
-	      	       </li>
-	      	 </c:if>
-              
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->
