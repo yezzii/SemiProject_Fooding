@@ -21,6 +21,7 @@
 				throws IOException, ServletException {
 			
 			String keyword = request.getParameter("keyword").trim();
+		
 			String SType = null;
 
 			if (keyword.equals("서울") || keyword.equals("경기") || keyword.equals("인천") || keyword.equals("대구") || keyword.equals("부산") || keyword.equals("제주")) {
@@ -29,6 +30,8 @@
 			    SType = "FoodType";
 			} else if (keyword.equals("데이트") || keyword.equals("가족") || keyword.equals("뷰") || keyword.equals("전통") || keyword.equals("비지니스")) {
 			    SType = "Thema";
+			} else{
+				SType = "";
 			}
 
 			int totalRestaurant = 0;
