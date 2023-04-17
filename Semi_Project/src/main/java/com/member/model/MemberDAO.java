@@ -387,7 +387,7 @@ public class MemberDAO {
 		try {
 			openConn();
 
-			sql = "select count(member_id) from member where member_id = ?";
+			sql = "select * from member where member_id = ?";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -797,5 +797,42 @@ public class MemberDAO {
 		}
 		return dto;
 	}// end
+
+	public int Store_Marking(MemberMarkDTO dto) {
+
+		openConn();
+		
+		int count = 0;
+		
+		int result = 0;
+		
+		try {
+			
+			sql="select count(*) from member_marking";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			sql="insert into member_marking value(?,?,?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getMem_id());
+			pstmt.setInt(3, dto.getMarked_storeidx());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }

@@ -39,7 +39,7 @@
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-	
+	<script src="js/StoreMarked.js"></script>
 	
 </head>
 <!-- Body-->
@@ -1001,11 +1001,13 @@
                 <div class="col-md-4 col-sm-6">
                   <div class="product-card mb-4">
                     <div class="product-thumb">
-                      <a class="product-thumb-link" href="">	</a><span
-                        class="product-wishlist-btn" data-toggle="tooltip"
-                        data-placement="left" title="찜하기"><i
-                        data-feather="heart"></i></span><img src="${dto.getMain_img()}"
-                        alt="${dto.getMain_name()}">
+                      <a class="product-thumb-link" href="" id="marking">
+                      <span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="찜하기">
+                      
+                      <i data-feather="heart" id="store-dibs"></i></span>
+                      </a>
+                      <input type="hidden" id= "main_idx" value="${dto.getMain_idx()}" >
+                      <img src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
                     </div>
                     <div class="product-card-body text-center">
                       <a class="product-meta" href="#"  style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>

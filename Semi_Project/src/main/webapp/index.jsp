@@ -56,39 +56,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <!-- Body-->
 <body>
 	<!--   ==============================  네비바  ================================= -->
-	<!-- Off-canvas search-->
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-		<div
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">푸딩 - 검색</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<form>
-			<div class="offcanvas-body">
-				<div class="offcanvas-body-inner">
-					<div class="input-group pt-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="search-icon"><i
-								data-feather="search"></i></span>
-						</div>
-						<input class="form-control" type="text" id="site-search"
-							name="main_search" placeholder="지역,음식,레스토랑 명 검색"
-							aria-label="Search site" aria-describedby="search-icon"
-							onsubmit="<%=request.getContextPath()%>/main_search.do?keyword=" />
-					</div>
-					<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게
-						검색해보세요!<br> Powered by Fooding.co _Dong
-					</small>
-				</div>
-			</div>
-		</form>
-	</div>
-
-
-
+	
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
