@@ -21,6 +21,7 @@ public class RestaurantSearchAction implements Action {
 			throws IOException, ServletException {
 		
 		String keyword = request.getParameter("keyword").trim();
+	
 		
 		int rowsize=10000;
 		

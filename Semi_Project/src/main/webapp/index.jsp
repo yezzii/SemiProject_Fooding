@@ -54,7 +54,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 </head>
 <!-- Body-->
 <body>
-
+<!--   ==============================  네비바  ================================= -->	
 	<!-- Off-canvas search-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
 		<div
@@ -365,19 +365,22 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=서울"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=경기"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">경기</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=인천"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=대구"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=부산"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=제주"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
 										</ul>
@@ -391,21 +394,21 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=데이트"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">데이트
 														코스</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=가족"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=뷰"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">뷰가
 														좋은</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=전통"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=비지니스"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
 
@@ -420,25 +423,25 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=고기"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">고기요리</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=한식"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">한식</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=양식"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">양식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=중식"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=일식"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=아시안"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">아시안</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=카페"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">카페,디저트</span></a></li>
 										</ul>
@@ -711,7 +714,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</header>
-	<!-- Page Content-->
+<!--   ==============================  네비바  ================================= -->	
+	
 	<!-- Hero slider-->
 	<section class="container-fluid bg-secondary px-0">
 		<div class="row no-gutters align-items-center">
@@ -816,7 +820,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<h2 class="h5 mb-1">미식 데이트</h2>
 					<span class="d-block mb-3 font-size-s text-muted">특별한 날, 소중한
 						추억을 남기고 싶다면?</span> </span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">자세히</a>
+						href="SearchKeyRestaurant.do?keyword=데이트">자세히</a>
 				</div>
 			</div>
 			<div class="card border-0">
@@ -833,7 +837,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<h2 class="h5 mb-1">뷰와 맛을 한번에</h2>
 					<span class="d-block mb-3 font-size-s text-muted"> 전망 좋은
 						레스토랑에서의 식사 어때요? </span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">자세히</a>
+						href="SearchKeyRestaurant.do?keyword=뷰">자세히</a>
 				</div>
 			</div>
 			<div class="card border-0">
@@ -850,7 +854,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<h2 class="h5 mb-1">하루를 선물해보세요</h2>
 					<span class="d-block mb-3 font-size-s text-muted">부모님께 색다른
 						하루를 선물해보세요! </span><a class="btn btn-pill btn-outline-primary btn-sm"
-						href="shop-style1-ls.jsp">자세히</a>
+						href="SearchKeyRestaurant.do?keyword=가족">자세히</a>
 				</div>
 			</div>
 		</div>

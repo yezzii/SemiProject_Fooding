@@ -19,8 +19,16 @@ public class RtDTO {
 	private String main_thema;
 	private String main_img;
 	private String menu_name;
+	private String menu_img;
 	private int menu_price;
-
+	
+	
+	public String getMenu_img() {
+		return menu_img;
+	}
+	public void setMenu_img(String menu_img) {
+		this.menu_img = menu_img;
+	}
 	
 	public String getMenu_name() {
 		return menu_name;
