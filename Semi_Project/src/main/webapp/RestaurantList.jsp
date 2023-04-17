@@ -45,7 +45,7 @@
 <!-- Body-->
 <body>
 
-	<!-- Off-canvas search-->
+	<%--   ======================================상단 네비바 <<START>>======================================= --%>
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
 				<div
 					class="offcanvas-header d-flex justify-content-between align-items-center">
@@ -350,19 +350,22 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=서울"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=경기"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">경기</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=인천"><i
+											class="widget-categories-indicator"
+											data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=대구"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=부산"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=제주"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
 										</ul>
@@ -376,19 +379,19 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=데이트"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">데이트 코스</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=가족"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=뷰"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">뷰가 좋은</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=전통"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=비지니스"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
 											
@@ -403,25 +406,25 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=고기"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">고기요리</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=한식"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">한식</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=양식"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">양식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=중식"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=일식"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=아시안"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">아시안</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=카페"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">카페,디저트</span></a></li>
 										</ul>
@@ -685,8 +688,8 @@
 				</div>
 			</div>
 		</div>
-	</header>	<%------------------------------------------- Nav Bar----------------------------------------------------%>
-	
+	</header>	
+	<%--   ======================================상단 네비바 <<END>>======================================= --%>
 	
 	
     <!-- Page Title-->
@@ -701,7 +704,7 @@
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">레스토랑 목록  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${keyword } 🔍<span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title">레스토랑 목록  &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
       </div>
     </div>
@@ -1020,7 +1023,6 @@
                     </div>
                   </div>
                 </div>
-    
               </c:forEach>
               </c:if>
               
@@ -1038,6 +1040,7 @@
              
           <hr class="pb-4 mb-2">
          <!-- 페이지 기능-->
+ 
           <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center justify-content-sm-center mb-0">
               <li class="page-item"><a class="page-link" href="LoadRestaurantList.do?page=1">처음</a></li>
@@ -1070,7 +1073,8 @@
               
             </ul>
           </nav>
-        </div>
+          
+ 		 </div>
       </div>
     </div>
     <!-- Footer-->
