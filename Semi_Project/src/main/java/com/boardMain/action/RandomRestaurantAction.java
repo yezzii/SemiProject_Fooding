@@ -29,15 +29,16 @@ public class RandomRestaurantAction implements Action {
 
 		while(selected.size() < 3) { // 3개의 값이 선택될 때까지 반복
 		    int randomNum = (int)(Math.random() * mainCount) + 1;
-		   
-		    if(!selected.contains(randomNum)) { // 선택한 값이 이전에 선택된 값과 같지 않으면
-		        Board_MainDTO dto = dao.getBoardMainSelect(randomNum);
-		        list.add(dto); // 선택한 값의 DTO를 리스트에 추가
-		        selected.add(randomNum); // 선택한 값을 Set에 추가
+
+		    while (selected.contains(randomNum) || randomNum > mainCount) { // 선택한 값이 이전에 선택된 값과 같거나, mainCount보다 크면 다시 랜덤한 수를 뽑음
+		        randomNum = (int)(Math.random() * mainCount) + 1;
 		    }
+
+		    Board_MainDTO dto = dao.getBoardMainSelect(randomNum);
+		    list.add(dto); // 선택한 값의 DTO를 리스트에 추가
+		    selected.add(randomNum); // 선택한 값을 Set에 추가
+		    System.out.println(randomNum);
 		}
-		
-		
 		System.out.println(list);
 		
 		request.setAttribute("List", list);

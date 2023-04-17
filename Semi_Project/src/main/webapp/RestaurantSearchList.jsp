@@ -48,7 +48,7 @@
 <!-- Body-->
 <body>
 
-	<!-- Off-canvas search-->
+<%--   ======================================상단 네비바 <<START>>======================================= --%>
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
 				<div
 					class="offcanvas-header d-flex justify-content-between align-items-center">
@@ -353,19 +353,22 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=서울"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=경기"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">경기</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=인천"><i
+											class="widget-categories-indicator"
+											data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=대구"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=부산"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=제주"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
 										</ul>
@@ -379,19 +382,19 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=데이트"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">데이트 코스</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=가족"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=뷰"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">뷰가 좋은</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=전통"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=비지니스"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
 											
@@ -406,25 +409,25 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=고기"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">고기요리</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=한식"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">한식</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=양식"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">양식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=중식"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=일식"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=아시안"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">아시안</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=카페"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">카페,디저트</span></a></li>
 										</ul>
@@ -688,7 +691,8 @@
 				</div>
 			</div>
 		</div>
-	</header>	<%------------------------------------------- Nav Bar----------------------------------------------------%>
+	</header>	
+			<%--   ======================================상단 네비바 <<END>>======================================= --%>
 	
 	
 	
@@ -709,97 +713,109 @@
       </div>
     </div>
     <!-- Page Content-->
-    
+     <!--가게정보 상세페이지  ==============================================================================================-->
+     <c:set var="list" value="${List}" />
+	    <c:if test="${!empty list }">
+      <c:forEach items="${list }" var="dto">
+		    <div class="modal modal-quick-view fade" id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
+		      <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <div>
+		              <h2 class="h2 modal-title mb-1" style="font-family: 'GmarketSansMedium';">${dto.getMain_name()}</h2>
+		              <h5 class="text-primary font-weight-light mb-0" style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</h5>
+		            </div>
+		            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		          </div>
+		          <div class="modal-body">
+		            <div class="row">
+		              <!-- Product gallery-->
+		              <div class="col-lg-7">
+		                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+		                </div>
+		              </div>
+		              <!-- Product details-->
+		              <div class="col-lg-5 pt-4 pt-lg-0">
+		                <form class="pb-4">
+		                  <div class="form-group">
+		                    <label class="d-block">Choose color</label>
+		                    <div class="custom-control custom-option custom-control-inline mb-2">
+		                      <input class="custom-control-input" type="radio" name="color" value="dark" id="dark" required>
+		                      <label class="custom-option-label" for="dark"><span class="custom-option-color" style="background-color: #2c363f;"></span></label>
+		                    </div>
+		                    <div class="custom-control custom-option custom-control-inline mb-2">
+		                      <input class="custom-control-input" type="radio" name="color" value="red" id="red" required>
+		                      <label class="custom-option-label" for="red"><span class="custom-option-color" style="background-color: #e7484d;"></span></label>
+		                    </div>
+		                    <div class="custom-control custom-option custom-control-inline mb-2">
+		                      <input class="custom-control-input" type="radio" name="color" value="white" id="white" required>
+		                      <label class="custom-option-label" for="white"><span class="custom-option-color" style="background-color: #e0dfe4;"></span></label>
+		                    </div>
+		                    <div class="custom-control custom-option custom-control-inline mb-2">
+		                      <input class="custom-control-input" type="radio" name="color" value="beige" id="beige" required>
+		                      <label class="custom-option-label" for="beige"><span class="custom-option-color" style="background-color: #e6ddd6;"></span></label>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <select class="form-control custom-select" id="size" name="size" required>
+		                      <option value>- Select a size</option>
+		                      <option value="13">13</option>
+		                      <option value="12">12</option>
+		                      <option value="11.5">11.5</option>
+		                      <option value="11">11</option>
+		                      <option value="10.5">10.5</option>
+		                      <option value="10">10</option>
+		                      <option value="9.5">9.5</option>
+		                      <option value="9">9</option>
+		                      <option value="8.5">8.5</option>
+		                      <option value="8">8</option>
+		                      <option value="7.5">7.5</option>
+		                    </select>
+		                  </div>
+		                  <div class="d-flex flex-wrap align-items-center pt-1">
+		                    <div>
+		                      <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
+		                    </div>
+		                    <div>
+		                      <button class="btn btn-primary px-5 mr-2" type="submit"><i class="mr-2" data-feather="shopping-cart" style="font-family: 'GmarketSansMedium';"></i>예약하기</button>
+		                    </div><a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
+		                  </div>
+		                </form>
+		                <div class="card">
+		                  <div class="card-header py-3 bg-0">
+		                    <h3 class="h6 mb-0"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑 상세 정보</h3>
+		                  </div>
+		                  <div class="card-body">
+		                    <ul class="mb-0" style="font-family: 'GmarketSansMedium';">
+		                      <li>주소 : ${dto.getMain_addr() } ${dto.getMain_detailaddr() }<br> 우편번호 : ${dto.getMain_post() }</li>
+		                      <br>
+		                      <li>전화 : ${dto.getMain_phone() }</li>
+		                      <br>
+		                      <li>=======정보=======<br>${dto.getMain_info()}</li>
+		                      <br>
+		                      <li>음식 종류 : ${dto.getMain_type() }</li>
+		                      <br>
+		                      <li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 : ${dto.getMain_endtime() }</li>
+		                    </ul>
+		                  </div>
+		                </div>
+		              </div>
+		                              =================================================모달 추가 정보 구분칸===================================================
+		              
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		   </c:forEach>
+		   </c:if>
     
     <!-- Quick view modal-->
-    <div class="modal modal-quick-view fade" id="quick-view" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div>
-              <h2 class="h3 modal-title mb-1">Reebok Classic - Sneakers CL Leather</h2>
-              <h3 class="text-primary font-weight-light mb-0">$98.45</h3>
-            </div>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <!-- Product gallery-->
-              <div class="col-lg-7">
-                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }"><img src="img/shop/apparel/single/01.jpg" alt="Product"><img src="img/shop/apparel/single/02.jpg" alt="Product"><img src="img/shop/apparel/single/03.jpg" alt="Product"><img src="img/shop/apparel/single/04.jpg" alt="Product"><img src="img/shop/apparel/single/05.jpg" alt="Product"></div>
-              </div>
-              <!-- Product details-->
-              <div class="col-lg-5 pt-4 pt-lg-0">
-                <form class="pb-4">
-                  <div class="form-group">
-                    <label class="d-block">Choose color</label>
-                    <div class="custom-control custom-option custom-control-inline mb-2">
-                      <input class="custom-control-input" type="radio" name="color" value="dark" id="dark" required>
-                      <label class="custom-option-label" for="dark"><span class="custom-option-color" style="background-color: #2c363f;"></span></label>
-                    </div>
-                    <div class="custom-control custom-option custom-control-inline mb-2">
-                      <input class="custom-control-input" type="radio" name="color" value="red" id="red" required>
-                      <label class="custom-option-label" for="red"><span class="custom-option-color" style="background-color: #e7484d;"></span></label>
-                    </div>
-                    <div class="custom-control custom-option custom-control-inline mb-2">
-                      <input class="custom-control-input" type="radio" name="color" value="white" id="white" required>
-                      <label class="custom-option-label" for="white"><span class="custom-option-color" style="background-color: #e0dfe4;"></span></label>
-                    </div>
-                    <div class="custom-control custom-option custom-control-inline mb-2">
-                      <input class="custom-control-input" type="radio" name="color" value="beige" id="beige" required>
-                      <label class="custom-option-label" for="beige"><span class="custom-option-color" style="background-color: #e6ddd6;"></span></label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <select class="form-control custom-select" id="size" name="size" required>
-                      <option value>- Select a size</option>
-                      <option value="13">13</option>
-                      <option value="12">12</option>
-                      <option value="11.5">11.5</option>
-                      <option value="11">11</option>
-                      <option value="10.5">10.5</option>
-                      <option value="10">10</option>
-                      <option value="9.5">9.5</option>
-                      <option value="9">9</option>
-                      <option value="8.5">8.5</option>
-                      <option value="8">8</option>
-                      <option value="7.5">7.5</option>
-                    </select>
-                  </div>
-                  <div class="d-flex flex-wrap align-items-center pt-1">
-                    <div>
-                      <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
-                    </div>
-                    <div>
-                      <button class="btn btn-primary px-5 mr-2" type="submit"><i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
-                    </div><a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>Wishlist</a>
-                  </div>
-                </form>
-                <div class="card">
-                  <div class="card-header py-3 bg-0">
-                    <h3 class="h6 mb-0"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>Product information</h3>
-                  </div>
-                  <div class="card-body">
-                    <ul class="mb-0">
-                      <li>SKU: #8893249956</li>
-                      <li>Sneakers from Reebok Classic collection</li>
-                      <li>Man-made upper</li>
-                      <li>Lace-up closure</li>
-                      <li>Brand logo detail hits throughout</li>
-                      <li>Soft fabric lining and footbed</li>
-                      <li>Rubber outsole</li>
-                      <li>Product measurements were taken using size 8</li>
-                      <li>Weight of footwear is based on a single item</li>
-                      <li>Weight: 9 oz</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <!-- Toast notifications-->
     <div class="toast-container toast-bottom-center">
       <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
@@ -884,7 +900,7 @@
                 </div>
                 <!-- Price range-->
             	<div class="widget mb-4 pb-3">
-								<h3 class="widget-title">가격</h3>
+								<h3 class="widget-title">메뉴 가격으로 레스토랑 검색</h3>
 								<form method="get" action="SearchCostRestaurant.do?"
 									class="range-slider" data-start-min="250" data-start-max="650"
 									data-min="0" data-max="300000" data-step="1000">
@@ -898,7 +914,6 @@
 												<div class="ui-range-label">가격:</div>
 												<div class="ui-range-value-min">
 													￦<span></span> <input type="hidden" name="min">
-												<input type="hidden" name="keyword" value="${keyword }">
 												</div>
 												&nbsp;&ndash;&nbsp;
 												<div class="ui-range-value-max">
@@ -910,15 +925,17 @@
 								</form>
 							</div>
                 
-                <%--Promo banner --%><a class="d-block text-decoration-0" href="#">
-                  <div class="bg-secondary">
+                <%--Promo banner --%>
+                <div class="bg-secondary">
                   <img src="https://media.hellobot.co/fixedmenu/%E1%84%86%E1%85%A5%E1%86%A8%E1%84%8B%E1%85%B3%E1%86%AF%E1%84%81%E1%85%A1%E1%84%86%E1%85%A1%E1%86%AF%E1%84%81%E1%85%A1.png" alt="뭐 먹지?">
                     <div class="px-3 pt-4 text-center">
                       <h4 class="font-size-sm font-weight-normal pt-1 mb-0"></h4>
                       <h4 class="h5 pb-2" style="font-family: 'GmarketSansMedium';">레스토랑을 고르기 <br>힘들다면?</h4>
-                      <div class="btn btn-primary btn-sm" style="font-family: 'GmarketSansMedium';">레스토랑 추천</div>
+                      <a class="d-block text-decoration-0" href="RandomRST.do">
+                      	<div class="btn btn-primary btn-sm" style="font-family: 'GmarketSansMedium';">레스토랑 추천</div>
+                      </a>
                     </div>
-                  </div></a>
+                  </div>
               </div>
             </div>
           </div>
@@ -947,7 +964,7 @@
           <!--레스토랑 리스트-->
           
            
-            <div class="row">
+          <div class="row">
               <c:set var="list" value="${List}" />
               <c:if test="${!empty list }">
                 <c:forEach items="${list }" var="dto">
@@ -957,7 +974,7 @@
                     <div class="product-thumb">
                       <a class="product-thumb-link" href="">	</a><span
                         class="product-wishlist-btn" data-toggle="tooltip"
-                        data-placement="left" title="Add to wishlist"><i
+                        data-placement="left" title="찜하기"><i
                         data-feather="heart"></i></span><img src="${dto.getMain_img()}"
                         alt="${dto.getMain_name()}">
                     </div>
@@ -966,25 +983,26 @@
                       <h3 class="product-card-title">
                         <a href="shop-single-apparel.jsp"  style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
                       </h3>
-                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium';">${dto.getMain_addr() } ${dto.getMain_detailaddr()}</span>
+                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
                     </div>
                     <div class="product-card-body body-hidden">
                      
                       <button class="btn btn-primary btn-sm btn-block" type="button"
                         data-toggle="toast" data-target="#cart-toast"  style="font-family: 'GmarketSansMedium';">예약하기</button>
-                      <a class="quick-view-btn" href="#quick-view"
+                      <a class="quick-view-btn" href="#quick-view${dto.getMain_idx()}"
                         data-toggle="modal" style=" color:black;"><i class="mr-2" data-feather="eye" style="font-family: 'GmarketSansMedium';"></i>자세히</a>
                     </div>
                   </div>
                 </div>
-    
               </c:forEach>
               </c:if>
-               <c:if test="${empty list }">
-                
-             		  <h1>😢검색 내용이 없습니다.😢</h1>
-    
-              </c:if>
+              
+              
+                 <c:if test="${empty list }">
+	                 <div class="pb-md-6 py-md-6">
+	             		  <h1>😢검색 내용이 없습니다.😢</h1>
+	               	</div>
+            	  </c:if>
             </div>
             </div>
             </div>
@@ -1000,18 +1018,18 @@
  
           <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center justify-content-sm-center mb-0">
-              <li class="page-item"><a class="page-link" href="RoadRestaurantList.do?page=1">처음</a></li>
-              <li class="page-item"><a class="page-link" href="RoadRestaurantList.do?page=${page - 1 }">이전</a></li>
+              <li class="page-item"><a class="page-link" href="LoadRestaurantList.do?page=1">처음</a></li>
+              <li class="page-item"><a class="page-link" href="LoadRestaurantList.do?page=${page - 1 }">이전</a></li>
               
                <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 	      	    <c:if test="${i == page }">
-	      	       <li class="page-item active" aria-current="page"><a class="page-link" href="RoadRestaurantList.do?page=${i }">${i }</a></li>
+	      	       <li class="page-item active" aria-current="page"><a class="page-link" href="LoadRestaurantList.do?page=${i }">${i }</a></li>
 	      	    </c:if>
 	      	    
 	      	    <c:if test="${i != page }">
 	      	       <li class="page-item">
 	      	          <a class="page-link"
-	      		   			href="RoadRestaurantList.do?page=${i }">${i }</a>
+	      		   			href="LoadRestaurantList.do?page=${i }">${i }</a>
 	      	       </li>
 	      	    </c:if>
 	      	 </c:forEach>
@@ -1019,12 +1037,12 @@
 	      	  <c:if test="${endBlock < allPage }">
 	      	       <li class="page-item">
 	      	          <a class="page-link"
-	      		   			href="RoadRestaurantList.do?page=${page + 1 }">다음</a>
+	      		   			href="LoadRestaurantList.do?page=${page + 1 }">다음</a>
 	      	       </li>
 	      	       
 	      	       <li class="page-item">
 	      	          <a class="page-link"
-	      		   			href="RoadRestaurantList.do?page=${allPage }">마지막</a>
+	      		   			href="LoadRestaurantList.do?page=${allPage }">마지막</a>
 	      	       </li>
 	      	 </c:if>
               
