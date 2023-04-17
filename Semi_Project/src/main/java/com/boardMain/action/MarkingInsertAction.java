@@ -13,7 +13,7 @@ import com.member.action.ActionForward;
 import com.member.model.MemberDAO;
 import com.member.model.MemberMarkDTO;
 
-public class RastaurantMarkingAction implements Action {
+public class MarkingInsertAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)

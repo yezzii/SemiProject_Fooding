@@ -3,38 +3,30 @@
  */
 
 
-	 
-	 $("#marking").on("click",function() {
-		 
-		 let idx = $("#main_idx").val();
-		 
-		 
-		 if($().children())
-		 $.ajax({
-					type: "post",
-					url: "Store_marking.do",
-					data: {
-						main_idx : idx
-					},
-					datatype: "json",
-					success: function(data) {
-						if (data == 1) { //가게 찜이 제대로 되었을 경우
-							$("#store-undibs").hide();
-							$("#store-dibs").show();
-							$("#reg-idchk")
-								.append(warningTxt);
-							$("#reg-id").val('').focus();//span 테그 영역 초기화.
-						} else {
-							$("#store-undibs").show();
-							$("#store-dibs").hide();
-							$("#reg-idchk").append(warningTxt);
-						}
-					},
-					error: function(data) {
-						alert("통신오류");
-					}
-				});
-		 
-	 });
-	 
+	$(document).ready(function() {
+  $('body').on('click', '.product-thumb-link', function(e) {
+    e.preventDefault();
+    var storeId = $(this).siblings('input[type=hidden]').val();
+    var heartIcon = $(this).find('i');
+    var isDib = heartIcon.hasClass('dib'); // 하트가 채워져 있는지 확인합니다.
+    $.ajax({
+      type: 'POST',
+      url: '/wishlist',
+      data: {
+        storeId: storeId,
+        isDib: isDib
+      },
+      success: function(response) {
+        if (isDib) {
+          heartIcon.removeClass('dib');
+        } else {
+          heartIcon.addClass('dib');
+        }
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
+});
  
