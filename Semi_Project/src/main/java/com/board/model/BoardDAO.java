@@ -393,7 +393,7 @@ try {
 		try {
 			openConn();
 
-			sql = "select max(board_num) from board";
+			sql = "select max(board_idx) from board";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -403,7 +403,7 @@ try {
 				count = rs.getInt(1) + 1;
 			}
 
-			sql = "insert into board values(?,?,?,?,default,default,?,?,1,default)";
+			sql = "insert into board values(?,?,?,?,default,default,?,?,default)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -457,7 +457,7 @@ try {
 
 		try {
 			openConn();
-			sql = "select * from (select row_number() over (order by main_idx) rnum ,b.* from board_main b) a where rnum between ? and ?";
+			sql = "select * from (select row_number() over (order by board_num) rnum ,b.* from board b) a where rnum between ? and ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startNo);
 			pstmt.setInt(2, endNo);
@@ -498,7 +498,7 @@ try {
 
 		try {
 			openConn();
-			sql = "select * from (select row_number() over (order by board_num) rnum ,b.* from board_ b) a where rnum between ? and ?";
+			sql = "select * from (select row_number() over (order by board_num) rnum ,b.* from board b) a where rnum between ? and ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startNo);
 			pstmt.setInt(2, endNo);

@@ -18,7 +18,7 @@ public class BoardReviewPageAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, Exception {
 		// TODO Auto-generated method stub
-		int rowsize = 9;
+		int rowsize = 10;
 		int block = 5;
 		int totalBoard_main = 0;
 		int allpage = 0;
