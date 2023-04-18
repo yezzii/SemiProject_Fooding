@@ -18,6 +18,10 @@ public ActionForward execute(HttpServletRequest request, HttpServletResponse res
 		throws IOException, ServletException {
 	
 
+	//한글처리 작업 진행.
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=utf-8");
+	
 			String Raw_pwd = request.getParameter("member_id").trim();
 			String kakao_token = Encryption.encodeSha256(Raw_pwd);
 			String member_name = request.getParameter("member_name").trim();
