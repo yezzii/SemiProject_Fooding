@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.boardMain.model.Board_MainDTO;
 
 public class BoardDAO {
 
@@ -134,8 +133,11 @@ public class BoardDAO {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 
 		try {
-			
-			sql = "select count(*) from board where board_type = ?";
+
+
+			sql = "select * from board where board_type = ? order by board_idx";
+
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "0");
 			rs = pstmt.executeQuery();
@@ -177,6 +179,7 @@ public class BoardDAO {
 
 		return list;
 	}
+
 	
 	public List<BoardDTO> BlogList() {
 
@@ -232,6 +235,7 @@ try {
 		return list;
 	}
 
+
 	public List<BoardDTO> ReviewBoardList() {
 
 		int count = 0;
@@ -241,9 +245,11 @@ try {
 
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 
-try {
-			
-			sql = "select count(*) from board where board_type = ?";
+
+		try {
+
+			sql = "select * from board where board_type = ? order by board_idx";
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "1");
 			rs = pstmt.executeQuery();
@@ -529,4 +535,5 @@ try {
 		}
 		return list;
 	}
+
 }
