@@ -42,8 +42,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
-<!-- Customizer styles and scripts-->
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 <script src="js/Board_Main.js"></script>	
@@ -52,13 +50,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <script type="text/javascript" src="js/kakao_login.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	
-
 </head>
 <!-- Body-->
 <body>
 <!--   ==============================  네비바  ================================= -->	
-
-
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -71,6 +66,21 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	String name = (String)session.getAttribute("name");
 	
 	%>
+	<!-- Success toast -->
+	<div class="toast" role="alert" aria-live="assertive"
+		aria-atomic="true">
+		<div class="toast-header bg-success text-white">
+			<i class="mr-2" data-feather="check-circle"
+				style="width: 1.25rem; height: 1.25rem;"></i> <span
+				class="font-weight-semibold mr-auto">Success toast</span>
+			<button type="button" class="close text-white ml-2 mb-1"
+				data-dismiss="toast" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="toast-body text-success">Hello, world! This is a
+			toast message.</div>
+	</div>
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -128,8 +138,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								로그인</button>
+							<button class="btn btn-primary btn-block" type="button"
+								data-toggle="toast" data-target="#success">로그인</button>
+
 							<div class="pt-3" align="center">
 								<a href="account-id-recovery.jsp"
 									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
@@ -138,6 +149,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</form>
 					</div>
+
 
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
@@ -437,11 +449,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-											<li><a href="<%=request.getContextPath() %>/review_board.do"> <i
+											<li><a
+												href="<%=request.getContextPath()%>/review_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">후기 게시판</span></a></li>
-											<li><a href="<%=request.getContextPath() %>/free_board.do"> <i
+											<li><a
+												href="<%=request.getContextPath()%>/free_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">자유 게시판</span></a></li>
@@ -459,8 +473,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
-														</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">후기
+														작성 </span></a></li>
 
 											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
@@ -584,7 +598,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							class="mr-1" data-feather="file-text"></i>레스토랑</a>
 						<ul class="dropdown-menu">
 
-							<li><a class="dropdown-item" href="<%=request.getContextPath() %>/board_main_list.do" >
+							<li><a class="dropdown-item"
+								href="<%=request.getContextPath()%>/board_main_list.do">
 
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="file-text"
@@ -595,7 +610,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" data-toggle="modal" href="#modalLong" >
+							<li><a class="dropdown-item" data-toggle="modal"
+								href="#modalLong">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
@@ -604,9 +620,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										</div>
 									</div>
 							</a></li>
-							
-				
-							
+
+
+
 							<li class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="LoadRestaurantList.do">
 									<div class="d-flex py-1">
@@ -707,8 +723,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</header>
-<!--   ==============================  네비바  ================================= -->	
-	
+	<!--   ==============================  네비바  ================================= -->
+
 	<!-- Hero slider-->
 	<section class="container-fluid bg-secondary px-0">
 		<div class="row no-gutters align-items-center">
@@ -1437,7 +1453,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</section>
 
-<%--    ++++++++++++++++++++++++++++++++++++++++++++++++가게추가++++++++++++++++++++++++++++++++++++++++++++++++++ --%>
+	<%--    ++++++++++++++++++++++++++++++++++++++++++++++++가게추가++++++++++++++++++++++++++++++++++++++++++++++++++ --%>
 
 	<!-- Quick view modal-->
 	<div class="modal modal-quick-view fade" id="quick-view" tabindex="-1"
@@ -1639,92 +1655,101 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 
-<!-- 가게 등록 Modal markup -->
-<div class="modal" tabindex="-1" role="dialog" id="modalLong">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">가게 등록</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden=true>&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>
-        <%--enctype : 파일을 업로드하기 위한 메서드 --%>
-		<form method="post" enctype="multipart/form-data" action ="<%=request.getContextPath() %>/board_signUp_ok.do">
-			
-			<div class="select-box">
+	<!-- 가게 등록 Modal markup -->
+	<div class="modal" tabindex="-1" role="dialog" id="modalLong">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">가게 등록</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden=true>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>
+						<%--enctype : 파일을 업로드하기 위한 메서드 --%>
+					<form method="post" enctype="multipart/form-data"
+						action="<%=request.getContextPath()%>/board_signUp_ok.do">
 
-				<label for="select-box1" class="label select-box2">
-				<span class="label-desc">가게 타입</span> </label> 
-				<select id="select-box1" class="select" name="main_type">
-					<option value="고기요리">고기요리</option>
-					<option value="일식">일식</option>
-					<option value="한식">한식</option>
-					<option value="중식">중식</option>
-					<option value="양식">양식</option>
-					<option value="이탈리아">이탈리아</option>
-					<option value="카페,디저트">카페,디저트</option>
-				</select>
+						<div class="select-box">
+
+							<label for="select-box1" class="label select-box2"> <span
+								class="label-desc">가게 타입</span>
+							</label> <select id="select-box1" class="select" name="main_type">
+								<option value="고기요리">고기요리</option>
+								<option value="일식">일식</option>
+								<option value="한식">한식</option>
+								<option value="중식">중식</option>
+								<option value="양식">양식</option>
+								<option value="이탈리아">이탈리아</option>
+								<option value="카페,디저트">카페,디저트</option>
+							</select>
+						</div>
+
+						<div class="select-box1">
+
+							<label for="select-box2" class="label select-box2"> <span
+								class="label-desc1">가게 테마</span>
+							</label> <select id="select-box2" class="select1" name="main_thema">
+								<option value="데이트 코스">데이트 코스</option>
+								<option value="가족모임">가족모임</option>
+								<option value="뷰가 좋은">뷰가 좋은</option>
+								<option value="전통적인">전통적인</option>
+								<option value="비지니스미팅">비지니스미팅</option>
+							</select>
+						</div>
+
+						<div class="textForm">
+							<input name="main_name" type="text" class="name"
+								placeholder="가게이름">
+						</div>
+
+						<div class="textForm">
+							<textarea class="cont" rows="5" cols="25" name="main_info"
+								placeholder="가게정보"></textarea>
+						</div>
+
+
+						<div class="time_textForm" align="center">
+
+							<label for="main_opentime" style="color: #636e72">영업시작시간</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="time" id="main_opentime" name="main_opentime"
+								value="10:00"> <br> <br> <label
+								for="main_endtime" style="color: #636e72">영업종료시간</label>
+							&nbsp;&nbsp;&nbsp; <input type="time" id="main_endtime"
+								name="main_endtime" value="21:00">
+						</div>
+
+						<div class="textForm">
+							<input name="main_post" id="post" type="text" class="location"
+								placeholder="우편번호" readonly onclick="findAddr()"> <input
+								name="main_addr" id="addr" type="text" class="location"
+								placeholder="주소" readonly> <input name="main_detailaddr"
+								type="text" class="location" placeholder="상세 주소">
+						</div>
+
+						<div class="textForm">
+							<input name="main_phone" type="text" class="phone"
+								placeholder="전화번호">
+						</div>
+
+						<div class="image">
+							<span class="pic_txt">가게등록 사진</span> <input class="main_file"
+								type="file" name="main_img">
+						</div>
+
+						</p>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary btn-sm"
+								data-dismiss="modal">Close</button>
+							<input type="submit" class="btn btn-primary btn-sm" value="가입하기" />
+						</div>
+					</form>
+				</div>
 			</div>
-
-			<div class="select-box1">
-
-				<label for="select-box2" class="label select-box2">
-				<span class="label-desc1">가게 테마</span> </label> 
-				<select id="select-box2" class="select1" name="main_thema">
-					<option value="데이트 코스">데이트 코스</option>
-					<option value="가족모임">가족모임</option>
-					<option value="뷰가 좋은">뷰가 좋은</option>
-					<option value="전통적인">전통적인</option>
-					<option value="비지니스미팅">비지니스미팅</option>
-				</select>
-			</div>
-		
-        <div class="textForm">
-			<input name="main_name" type="text" class="name" placeholder="가게이름">
 		</div>
-
-		<div class="textForm">
-			<textarea class="cont" rows="5" cols="25" name="main_info"
-				placeholder="가게정보"></textarea>
-		</div>
-
-
-		<div class="time_textForm" align="center">
-			
-			<label for="main_opentime" style="color: #636e72">영업시작시간</label>&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="time" id="main_opentime" name="main_opentime"value="10:00"> <br> <br>
-			<label for="main_endtime" style="color: #636e72">영업종료시간</label> &nbsp;&nbsp;&nbsp;
-			<input type="time" id="main_endtime" name="main_endtime" value="21:00">
-		</div>
-
-		<div class="textForm">
-			<input name="main_post" id="post" type="text" class="location" placeholder="우편번호" readonly onclick="findAddr()"> 
-			<input name="main_addr" id="addr" type="text" class="location" placeholder="주소" readonly> 
-			<input name="main_detailaddr" type="text" class="location" placeholder="상세 주소">
-		</div>
-
-		<div class="textForm">
-			<input name="main_phone" type="text" class="phone" placeholder="전화번호">
-		</div>
-		
-		<div class="image">
-			<span class="pic_txt">가게등록 사진</span>
-			<input class="main_file" type="file" name="main_img">				
-		</div>			
-		
-		</p>
-		<div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary btn-sm" value="가입하기"/>
-		</div>
-		</form>
-		</div>
-      </div>
-    </div>
-  </div>
+	</div>
 	<!-- Footer-->
 	<footer class="page-footer bg-dark">
 		<!-- first row-->
@@ -1857,8 +1882,15 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="js/sign_upChk.js"></script>
+	<script src="js/Board_Main.js"></script>
+	<script>
+	$('.toast').toast({delay: 5000});
+	</script>
 </body>
 </html>

@@ -28,10 +28,12 @@ public class MarkingDeleteAction implements Action {
 		
 		dto.setMarked_storeidx(Main_idx);
 		dto.setMem_id(Member_id);
+		dto.setMark_YN(0);
+
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		
-		int result = dao.Store_Marking(dto);
+		int result = dao.addMarking(dto);
 		
 		PrintWriter out = response.getWriter();
 		

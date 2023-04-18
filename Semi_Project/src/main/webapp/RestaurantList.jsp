@@ -3,9 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<%
+response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+response.setDateHeader("Expires", 0); // Proxies
+if (request.getProtocol().equals("HTTP/1.1"))
+	response.setHeader("Cache-Control", "no-cache");
+%>
+
 <!DOCTYPE html>
-<html lang="en">
- <head>
+
+<html>
+<head>
 <meta charset="utf-8" />
 <title>Fooding</title>
 <!-- SEO Meta Tags-->
@@ -13,7 +22,6 @@
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description" content="MStore - Modern Bootstrap E-commerce Template" />
-	
 <meta name="keywords"	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 <meta name="author" content="Createx Studio" />
 <!-- Viewport-->
@@ -31,12 +39,14 @@
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
+<link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 <!-- Customizer styles and scripts-->
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
 	<script src="js/kakao_login.js"></script>
+
 	
 </head>
 <!-- Body-->
@@ -44,7 +54,6 @@
 
 	<%--   ======================================상단 네비바 <<START>>======================================= --%>
  
-
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
@@ -56,6 +65,21 @@
 	String name = (String)session.getAttribute("name");
 	
 	%>
+<!-- Success toast -->
+							<div class="toast" role="alert" aria-live="assertive"
+								aria-atomic="true">
+								<div class="toast-header bg-success text-white">
+									<i class="mr-2" data-feather="check-circle"
+										style="width: 1.25rem; height: 1.25rem;"></i> <span
+										class="font-weight-semibold mr-auto">Success toast</span>
+									<button type="button" class="close text-white ml-2 mb-1"
+										data-dismiss="toast" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="toast-body text-success">Hello, world! This is
+									a toast message.</div>
+							</div>
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -82,7 +106,7 @@
 						<form class="needs-validation" novalidate method="post"
 							action="<%=request.getContextPath()%>/login.do">
 							<div class="form-group">
-								<label class="sr-only" for="signin-id">ID</label>
+								<label class="sr-only" for="signin-id">아이디</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="signin-id-icon"><i
@@ -95,7 +119,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signin-password">Password</label>
+								<label class="sr-only" for="signin-password">비밀번호</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="signin-password-icon"><i
@@ -113,8 +137,15 @@
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="submit">
+							<button class="btn btn-primary btn-block" type="button" data-toggle="toast" data-target="#success-toast">
 								로그인</button>
+							
+							<div class="pt-3" align="center">
+								<a href="account-id-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
+									href="account-password-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">비밀번호 찾기</a>
+							</div>
 						</form>
 					</div>
 
@@ -175,8 +206,6 @@
 						</form>
 					</div>
 				</div>
-
-
 				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
@@ -327,8 +356,8 @@
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">경기</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=인천"><i
-											class="widget-categories-indicator"
-											data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=대구"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
@@ -351,20 +380,22 @@
 										<ul>
 											<li><a href="SearchKeyRestaurant.do?keyword=데이트"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">데이트 코스</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">데이트
+														코스</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=가족"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=뷰"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">뷰가 좋은</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">뷰가
+														좋은</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=전통"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=비지니스"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
-											
+
 										</ul>
 									</div>
 								</div>
@@ -414,11 +445,13 @@
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-											<li><a href="<%=request.getContextPath() %>/review_board.do"> <i
+											<li><a
+												href="<%=request.getContextPath()%>/review_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">후기 게시판</span></a></li>
-											<li><a href="<%=request.getContextPath() %>/free_board.do"> <i
+											<li><a
+												href="<%=request.getContextPath()%>/free_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">자유 게시판</span></a></li>
@@ -434,10 +467,10 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Product
-														Page #1 - Apparel</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">후기
+														작성 </span></a></li>
 
 											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
@@ -560,7 +593,10 @@
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
 							class="mr-1" data-feather="file-text"></i>레스토랑</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="<%=request.getContextPath() %>/board_main_list.do">
+
+							<li><a class="dropdown-item"
+								href="<%=request.getContextPath()%>/board_main_list.do">
+
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="file-text"
 											style="width: 1.4375rem; height: 1.4375rem"></i>
@@ -575,11 +611,13 @@
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 추가
-											</span>
+											<span class="d-block mb-n1">레스토랑 추가 </span>
 										</div>
 									</div>
 							</a></li>
+
+
+
 							<li class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="LoadRestaurantList.do">
 									<div class="d-flex py-1">
@@ -606,7 +644,6 @@
 						</ul></li>
 				</ul>
 			</div>
-			
 			<!-- navbar buttons-->
 			<div class="navbar-btns">
 				<div class="navbar-btns-inner">
@@ -614,7 +651,8 @@
 						data-toggle="collapse" data-target="#menu">
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
-					<form method="get" action="<%=request.getContextPath()%>/total_main_search.do">
+					<form method="get"
+						action="<%=request.getContextPath()%>/total_main_search.do">
 						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
@@ -626,7 +664,7 @@
 									<%-- 검색input테그 END --%>
 
 									<%-- 검색버튼 --%>
-						
+
 
 									<%-- 검색버튼 END--%>
 								</div>
@@ -677,27 +715,29 @@
 		</div>
 	</header>
 	<%--   ======================================상단 네비바 <<END>>======================================= --%>
-	
-	
-    <!-- Page Title-->
-    <div class="page-title-wrapper" aria-label="Page title">
-      <div class="container">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-            <li class="breadcrumb-item"><a href="index.jsp">Home</a>
-            </li>
-            <li class="breadcrumb-item"><a href="#">레스토랑</a>
-            </li>
-          </ol>
-        </nav>
-        <h1 class="page-title">레스토랑 목록  &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span class="lead font-weight-semibold text-muted"></span></h1><span class="d-block mt-2 text-muted"></span>
-        <hr class="mt-4">
-      </div>
-    </div>
-    <!-- Page Content  ==========================================================================================-->
-    	
-  <%--
+
+
+	<!-- Page Title-->
+	<div class="page-title-wrapper" aria-label="Page title">
+		<div class="container">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="mt-n1 mr-1"><i data-feather="home"></i></li>
+					<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+					<li class="breadcrumb-item"><a href="#">레스토랑</a></li>
+				</ol>
+			</nav>
+			<h1 class="page-title">
+				레스토랑 목록 &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span
+					class="lead font-weight-semibold text-muted"></span>
+			</h1>
+			<span class="d-block mt-2 text-muted"></span>
+			<hr class="mt-4">
+		</div>
+	</div>
+	<!-- Page Content  ==========================================================================================-->
+
+	<%--
     	  <c:set var="list" value="${List}" />
               <c:if test="${!empty list }">
                 <c:forEach items="${list }" var="dto">
@@ -898,7 +938,7 @@
 												</div>
 												&nbsp;&ndash;&nbsp;
 												<div class="ui-range-value-max">
-													￦<span></span> <input type="hidden"  name="max">
+													￦<span></span> <input type="hidden" name="max">
 												</div>
 											</div>
 										</div>
@@ -907,292 +947,443 @@
 							</div>
 
 							<%--Promo banner --%>
-                  <div class="bg-secondary">
-                  <img src="https://media.hellobot.co/fixedmenu/%E1%84%86%E1%85%A5%E1%86%A8%E1%84%8B%E1%85%B3%E1%86%AF%E1%84%81%E1%85%A1%E1%84%86%E1%85%A1%E1%86%AF%E1%84%81%E1%85%A1.png" alt="뭐 먹지?">
-                    <div class="px-3 pt-4 text-center">
-                      <h4 class="font-size-sm font-weight-normal pt-1 mb-0"></h4>
-                      <h4 class="h5 pb-2" style="font-family: 'GmarketSansMedium';">레스토랑을 고르기 <br>힘들다면?</h4>
-                      <a class="d-block text-decoration-0" href="RandomRST.do">
-                      	<div class="btn btn-primary btn-sm" style="font-family: 'GmarketSansMedium';">레스토랑 추천</div>
-                      </a>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <c:set var="list" value="${List}" />
-              <c:if test="${!empty list }">
-        
-        <div class="col-lg-9">
-          <!-- 정렬-->
-          <div class="d-flex flex-wrap justify-content-center justify-content-sm-between pb-3">
-            <div class="d-flex flex-wrap">
-              <div class="form-inline flex-nowrap mr-3 mr-sm-4 pb-3">
-              
-              <form method="get" action="<%=request.getContextPath() %>/RestaurantSort.do">
-                <label class="text-nowrap mr-2 d-none d-sm-block" for="sorting">정렬</label>
-                <select class="form-control custom-select" id="sorting">
-                  <option>저장순</option>
-                  <option>예약순</option>
-                  <option>리뷰많은순</option>
-                </select>
-                </form>
-              </div>
-             
-             </c:if>
-          <!--레스토랑 리스트-->
-          
-           
-            <div class="row">
-              <c:set var="list" value="${List}" />
-              <c:if test="${!empty list }">
-                <c:forEach items="${list }" var="dto">
-                <!-- DB데이터만큼 리스트 출력되는 가게목록. -->
-                <div class="col-md-4 col-sm-6">
-                  <div class="product-card mb-4">
-                    <div class="product-thumb">
-                      <a class="product-thumb-link" href="">	</a><span
-                        class="product-wishlist-btn" data-toggle="tooltip"
-                        data-placement="left" title="찜하기"><i
-                        data-feather="heart"></i></span><img src="${dto.getMain_img()}"
-                        alt="${dto.getMain_name()}">
-                    </div>
-                    <div class="product-card-body text-center">
-                      <a class="product-meta" href="#"  style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
-                      <h3 class="product-card-title">
-                        <a href="shop-single-apparel.jsp"  style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
-                      </h3>
-                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
-                    </div>
-                    <div class="product-card-body body-hidden">
-                     
-                      <button class="btn btn-primary btn-sm btn-block" type="button"
-                        data-toggle="toast" data-target="#cart-toast"  style="font-family: 'GmarketSansMedium';">예약하기</button>
-                      <a class="quick-view-btn" href="#quick-view${dto.getMain_idx()}"
-                        data-toggle="modal" style=" color:black;"><i class="mr-2" data-feather="eye" style="font-family: 'GmarketSansMedium';"></i>자세히</a>
-                    </div>
-                  </div>
-                </div>
-              </c:forEach>
-              </c:if>
-              
-                 <c:if test="${empty list }">
-	                 <div class="pb-md-6 py-md-6">
-	             		  <h1>😢검색 내용이 없습니다.😢</h1>
-	               	</div>
-            	  </c:if>
-            </div>
-          </div>
-        </div>
-          
-            
-                <!-- 레스토랑-->
-             
-          <hr class="pb-4 mb-2">
-         <!-- 페이지 기능-->
- 
-          <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center justify-content-sm-center mb-0">
-              <li class="page-item"><a class="page-link" href="LoadRestaurantList.do?page=1">처음</a></li>
-              <li class="page-item"><a class="page-link" href="LoadRestaurantList.do?page=${page - 1 }">이전</a></li>
-              
-               <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-	      	    <c:if test="${i == page }">
-	      	       <li class="page-item active" aria-current="page"><a class="page-link" href="LoadRestaurantList.do?page=${i }">${i }</a></li>
-	      	    </c:if>
-	      	    
-	      	    <c:if test="${i != page }">
-	      	       <li class="page-item">
-	      	          <a class="page-link"
-	      		   			href="LoadRestaurantList.do?page=${i }">${i }</a>
-	      	       </li>
-	      	    </c:if>
-	      	 </c:forEach>
-	      	 
-	      	  <c:if test="${endBlock < allPage }">
-	      	       <li class="page-item">
-	      	          <a class="page-link"
-	      		   			href="LoadRestaurantList.do?page=${page + 1 }">다음</a>
-	      	       </li>
-	      	       
-	      	       <li class="page-item">
-	      	          <a class="page-link"
-	      		   			href="LoadRestaurantList.do?page=${allPage }">마지막</a>
-	      	       </li>
-	      	 </c:if>
-              
-            </ul>
-          </nav>
-          
- 		 </div>
-      </div>
-    </div>
-    <!-- Footer-->
-    <footer class="page-footer bg-dark">
-      <!-- first row-->
-      <div class="pt-5 pb-0 pb-md-4">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 col-sm-6">
-              <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">Shop departments</h3>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Apparel &amp; Shoes</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Glasses &amp; Accessories</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Handbags &amp; Backpacks</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Computers &amp; Accessories</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Smartphones &amp; Tablets</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">TV, Video &amp; Audio</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Cameras, Photo &amp; Video</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Wearable Electronics</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Printers &amp; Ink</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Video Games</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Car Electronics</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Smart Home, IoT</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">Account &amp; shipping info</h3>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Your account</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Shipping rates &amp; policies</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Refunds &amp; replacements</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Taxes</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Delivery info</span></a></li>
-                </ul>
-              </div>
-              <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">About us</h3>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Careers</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">About shop</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Our stores</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Services</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">News</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xl-4 offset-xl-1 col-md-5">
-              <div class="widget">
-                <!-- Subscription form (MailChimp)-->
-                <h3 class="widget-title text-white border-light">Stay informed</h3>
-                <form class="validate pb-4" action="https://studio.us12.list-manage.com/subscribe/post-json?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126&amp;c=?" method="get" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form">
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend"><span class="input-group-text" style="background-color: #e8e8e8;"><i data-feather="mail"></i></span></div>
-                    <input class="form-control border-0 box-shadow-0 bg-secondary" type="email" name="EMAIL" id="mce-EMAIL" value="" placeholder="Your email" required>
-                  </div>
-                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
-                  </div>
-                  <button class="btn btn-primary btn-block" type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
-                  <p class="font-size-xs text-white opacity-60 pt-2 mb-2" id="mc-helper">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</p>
-                  <!-- Subscription status-->
-                  <div class="subscribe-status"></div>
-                </form>
-                <!-- Mobile app download-->
-                <div class="widget pb-4">
-                  <h3 class="widget-title text-white border-light">Download our app</h3><a class="market-btn market-btn-light apple-btn mr-2 mb-2" href="#" role="button"><span class="market-button-subtitle">Download on the</span><span class="market-button-title">App Store</span></a><a class="market-btn market-btn-light google-btn" href="#" role="button"><span class="market-button-subtitle">Download on the</span><span class="market-button-title">Google Play</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- shop features-->
-      <div class="pt-5 pb-0 pb-md-5 border-bottom border-light" id="shop-features" style="background-color: #1f1f1f;">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3 col-sm-6 border-right border-light">
-              <div class="icon-box text-center mb-5 mb-md-0">
-                <div class="icon-box-icon"><i data-feather="truck"></i></div>
-                <h3 class="icon-box-title font-weight-semibold text-white">Free local delivery</h3>
-                <p class="icon-box-text">Free delivery for all orders over $100</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 border-right border-light">
-              <div class="icon-box text-center mb-5 mb-md-0">
-                <div class="icon-box-icon"><i data-feather="refresh-cw"></i></div>
-                <h3 class="icon-box-title font-weight-semibold text-white">Money back guarantee</h3>
-                <p class="icon-box-text">Free delivery for all orders over $100</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 border-right border-light">
-              <div class="icon-box text-center mb-5 mb-md-0">
-                <div class="icon-box-icon"><i data-feather="life-buoy"></i></div>
-                <h3 class="icon-box-title font-weight-semibold text-white">24/7 customer support</h3>
-                <p class="icon-box-text">Friendly 24/7 customer support</p>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <div class="icon-box text-center mb-5 mb-md-0">
-                <div class="icon-box-icon"><i data-feather="credit-card"></i></div>
-                <h3 class="icon-box-title font-weight-semibold text-white">Secure online payment</h3>
-                <p class="icon-box-text">We posess SSL / Secure Ñertificate</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- third row-->
-      <div class="pt-5 pb-4" style="background-color: #1f1f1f;">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 text-center text-sm-left">
-              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.jsp"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
-                <div class="navbar-lang-switcher dropdown border-light mt-3 mb-0 mt-sm-0">
-                  <div class="dropdown-toggle text-white" data-toggle="dropdown"><img width="20" src="img/flags/en.png" alt="English"/><span>USD</span>
-                  </div>
-                  <ul class="dropdown-menu" style="width: 150px;">
-                    <li class="dropdown-item">
-                      <select class="custom-select custom-select-sm">
-                        <option value="usd">$ USD</option>
-                        <option value="usd">â¬ EUR</option>
-                        <option value="usd">Â£ UKP</option>
-                        <option value="usd">Â¥ JPY</option>
-                      </select>
-                    </li>
-                    <li><a class="dropdown-item" href="index.jsp"><img class="mr-2" width="20" src="img/flags/fr.png" alt="FranÃ§ais"/>FranÃ§ais</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch"/>Deutsch</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/it.png" alt="Italiano"/>Italiano</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 text-center text-sm-right"><a class="social-btn sb-facebook sb-light mx-1 mb-2" href="#"><i class="flaticon-facebook"></i></a><a class="social-btn sb-twitter sb-light mx-1 mb-2" href="#"><i class="flaticon-twitter"></i></a><a class="social-btn sb-instagram sb-light mx-1 mb-2" href="#"><i class="flaticon-instagram"></i></a><a class="social-btn sb-vimeo sb-light mx-1 mb-2" href="#"><i class="flaticon-vimeo"></i></a></div>
-          </div>
-          <div class="row pt-4">
-            <div class="col-sm-6 text-center text-sm-left">
-              <ul class="list-inline font-size-sm">
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Outlets</a></li>
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Affiliates</a></li>
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Support</a></li>
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Privacy</a></li>
-                <li class="list-inline-item mr-3"><a class="nav-link-inline nav-link-light" href="#">Terms of use</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-6 text-center text-sm-right">
-              <div class="d-inline-block"><img width="187" src="img/cards.png" alt="Payment methods"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="py-3" style="background-color: #1a1a1a;">
-        <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">Â© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
-      </div>
-    </footer>
-    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/theme.min.js"></script>
-    <script type="text/javascript" src="js/sign_upChk.js"></script>
-  </body>
+							<div class="bg-secondary">
+								<img
+									src="https://media.hellobot.co/fixedmenu/%E1%84%86%E1%85%A5%E1%86%A8%E1%84%8B%E1%85%B3%E1%86%AF%E1%84%81%E1%85%A1%E1%84%86%E1%85%A1%E1%86%AF%E1%84%81%E1%85%A1.png"
+									alt="뭐 먹지?">
+								<div class="px-3 pt-4 text-center">
+									<h4 class="font-size-sm font-weight-normal pt-1 mb-0"></h4>
+									<h4 class="h5 pb-2" style="font-family: 'GmarketSansMedium';">
+										레스토랑을 고르기 <br>힘들다면?
+									</h4>
+									<a class="d-block text-decoration-0" href="RandomRST.do">
+										<div class="btn btn-primary btn-sm"
+											style="font-family: 'GmarketSansMedium';">레스토랑 추천</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<c:set var="list" value="${List}" />
+			<c:if test="${!empty list }">
+
+				<div class="col-lg-9">
+					<!-- 정렬-->
+					<div
+						class="d-flex flex-wrap justify-content-center justify-content-sm-between pb-3">
+						<div class="d-flex flex-wrap">
+							<div class="form-inline flex-nowrap mr-3 mr-sm-4 pb-3">
+
+								<form method="get"
+									action="<%=request.getContextPath()%>/RestaurantSort.do">
+									<label class="text-nowrap mr-2 d-none d-sm-block" for="sorting">정렬</label>
+									<select class="form-control custom-select" id="sorting">
+										<option>저장순</option>
+										<option>예약순</option>
+										<option>리뷰많은순</option>
+									</select>
+								</form>
+							</div>
+			</c:if>
+			<!--레스토랑 리스트-->
+
+
+			<div class="row">
+				<c:set var="list" value="${List}" />
+				<c:if test="${!empty list }">
+					<c:forEach items="${list }" var="dto">
+						<!-- DB데이터만큼 리스트 출력되는 가게목록. -->
+						<div class="col-md-4 col-sm-6">
+							<div class="product-card mb-4">
+								<div class="product-thumb">
+									 <span	class="product-wishlist-btn" data-toggle="tooltip"
+										data-placement="left" title="찜하기"> 
+										
+										<i data-feather="heart" id="store-dibs"></i>
+										
+										</span>
+									 <input type="hidden" id="main_idx" value="${dto.getMain_idx()}"> 
+									 <img src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
+								</div>
+								<div class="product-card-body text-center">
+									<a class="product-meta" href="#"
+										style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
+									<h3 class="product-card-title">
+										<a href="shop-single-apparel.jsp"
+											style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
+									</h3>
+									<span class="text-primary-orange"
+										style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
+								</div>
+								<div class="product-card-body body-hidden">
+
+									<button class="btn btn-primary btn-sm btn-block" type="button"
+										data-toggle="toast" data-target="#cart-toast"
+										style="font-family: 'GmarketSansMedium';">예약하기</button>
+									<a class="quick-view-btn"
+										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
+										style="color: black;"><i class="mr-2" data-feather="eye"
+										style="font-family: 'GmarketSansMedium';"></i>자세히</a>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</c:if>
+
+				<c:if test="${empty list }">
+					<div class="pb-md-6 py-md-6">
+						<h1>😢검색 내용이 없습니다.😢</h1>
+					</div>
+				</c:if>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 레스토랑-->
+
+	<hr class="pb-4 mb-2">
+	<!-- 페이지 기능-->
+
+	<nav aria-label="Page navigation">
+		<ul
+			class="pagination justify-content-center justify-content-sm-center mb-0">
+			<li class="page-item"><a class="page-link"
+				href="LoadRestaurantList.do?page=1">처음</a></li>
+			<li class="page-item"><a class="page-link"
+				href="LoadRestaurantList.do?page=${page - 1 }">이전</a></li>
+
+			<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+				<c:if test="${i == page }">
+					<li class="page-item active" aria-current="page"><a
+						class="page-link" href="LoadRestaurantList.do?page=${i }">${i }</a></li>
+				</c:if>
+
+				<c:if test="${i != page }">
+					<li class="page-item"><a class="page-link"
+						href="LoadRestaurantList.do?page=${i }">${i }</a></li>
+				</c:if>
+			</c:forEach>
+
+			<c:if test="${endBlock < allPage }">
+				<li class="page-item"><a class="page-link"
+					href="LoadRestaurantList.do?page=${page + 1 }">다음</a></li>
+
+				<li class="page-item"><a class="page-link"
+					href="LoadRestaurantList.do?page=${allPage }">마지막</a></li>
+			</c:if>
+
+		</ul>
+	</nav>
+
+	</div>
+	</div>
+	</div>
+	<!-- Footer-->
+	<footer class="page-footer bg-dark">
+		<!-- first row-->
+		<div class="pt-5 pb-0 pb-md-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-sm-6">
+						<div class="widget widget-links pb-4">
+							<h3 class="widget-title text-white border-light">Shop
+								departments</h3>
+							<ul>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Apparel
+											&amp; Shoes</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Glasses
+											&amp; Accessories</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Handbags
+											&amp; Backpacks</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Computers
+											&amp; Accessories</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
+											&amp; Tablets</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">TV,
+											Video &amp; Audio</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
+											Photo &amp; Video</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Wearable
+											Electronics</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Printers
+											&amp; Ink</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Video
+											Games</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Car
+											Electronics</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Smart
+											Home, IoT</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="widget widget-links pb-4">
+							<h3 class="widget-title text-white border-light">Account
+								&amp; shipping info</h3>
+							<ul>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Your
+											account</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Shipping
+											rates &amp; policies</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Refunds
+											&amp; replacements</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Taxes</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Delivery
+											info</span></a></li>
+							</ul>
+						</div>
+						<div class="widget widget-links pb-4">
+							<h3 class="widget-title text-white border-light">About us</h3>
+							<ul>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Careers</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">About
+											shop</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Our
+											stores</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Services</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">News</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-4 offset-xl-1 col-md-5">
+						<div class="widget">
+							<!-- Subscription form (MailChimp)-->
+							<h3 class="widget-title text-white border-light">Stay
+								informed</h3>
+							<form class="validate pb-4"
+								action="https://studio.us12.list-manage.com/subscribe/post-json?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126&amp;c=?"
+								method="get" name="mc-embedded-subscribe-form"
+								id="mc-embedded-subscribe-form">
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<span class="input-group-text"
+											style="background-color: #e8e8e8;"><i
+											data-feather="mail"></i></span>
+									</div>
+									<input class="form-control border-0 box-shadow-0 bg-secondary"
+										type="email" name="EMAIL" id="mce-EMAIL" value=""
+										placeholder="Your email" required>
+								</div>
+								<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+								<div style="position: absolute; left: -5000px;"
+									aria-hidden="true">
+									<input type="text"
+										name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+								</div>
+								<button class="btn btn-primary btn-block" type="submit"
+									name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
+								<p class="font-size-xs text-white opacity-60 pt-2 mb-2"
+									id="mc-helper">*Subscribe to our newsletter to receive
+									early discount offers, updates and new products info.</p>
+								<!-- Subscription status-->
+								<div class="subscribe-status"></div>
+							</form>
+							<!-- Mobile app download-->
+							<div class="widget pb-4">
+								<h3 class="widget-title text-white border-light">Download
+									our app</h3>
+								<a class="market-btn market-btn-light apple-btn mr-2 mb-2"
+									href="#" role="button"><span class="market-button-subtitle">Download
+										on the</span><span class="market-button-title">App Store</span></a><a
+									class="market-btn market-btn-light google-btn" href="#"
+									role="button"><span class="market-button-subtitle">Download
+										on the</span><span class="market-button-title">Google Play</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- shop features-->
+		<div class="pt-5 pb-0 pb-md-5 border-bottom border-light"
+			id="shop-features" style="background-color: #1f1f1f;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 border-right border-light">
+						<div class="icon-box text-center mb-5 mb-md-0">
+							<div class="icon-box-icon">
+								<i data-feather="truck"></i>
+							</div>
+							<h3 class="icon-box-title font-weight-semibold text-white">Free
+								local delivery</h3>
+							<p class="icon-box-text">Free delivery for all orders over
+								$100</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 border-right border-light">
+						<div class="icon-box text-center mb-5 mb-md-0">
+							<div class="icon-box-icon">
+								<i data-feather="refresh-cw"></i>
+							</div>
+							<h3 class="icon-box-title font-weight-semibold text-white">Money
+								back guarantee</h3>
+							<p class="icon-box-text">Free delivery for all orders over
+								$100</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 border-right border-light">
+						<div class="icon-box text-center mb-5 mb-md-0">
+							<div class="icon-box-icon">
+								<i data-feather="life-buoy"></i>
+							</div>
+							<h3 class="icon-box-title font-weight-semibold text-white">24/7
+								customer support</h3>
+							<p class="icon-box-text">Friendly 24/7 customer support</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="icon-box text-center mb-5 mb-md-0">
+							<div class="icon-box-icon">
+								<i data-feather="credit-card"></i>
+							</div>
+							<h3 class="icon-box-title font-weight-semibold text-white">Secure
+								online payment</h3>
+							<p class="icon-box-text">We posess SSL / Secure Ñertificate</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- third row-->
+		<div class="pt-5 pb-4" style="background-color: #1f1f1f;">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 text-center text-sm-left">
+						<div class="mb-4 mb-sm-0">
+							<a class="d-inline-block" href="index.jsp"><img width="100"
+								src="img/logo-light.png" alt="MStore" /></a>
+							<div
+								class="navbar-lang-switcher dropdown border-light mt-3 mb-0 mt-sm-0">
+								<div class="dropdown-toggle text-white" data-toggle="dropdown">
+									<img width="20" src="img/flags/en.png" alt="English" /><span>USD</span>
+								</div>
+								<ul class="dropdown-menu" style="width: 150px;">
+									<li class="dropdown-item"><select
+										class="custom-select custom-select-sm">
+											<option value="usd">$ USD</option>
+											<option value="usd">â¬ EUR</option>
+											<option value="usd">Â£ UKP</option>
+											<option value="usd">Â¥ JPY</option>
+									</select></li>
+									<li><a class="dropdown-item" href="index.jsp"><img
+											class="mr-2" width="20" src="img/flags/fr.png"
+											alt="FranÃ§ais" />FranÃ§ais</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="#"><img
+											class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch" />Deutsch</a></li>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="#"><img
+											class="mr-2" width="20" src="img/flags/it.png" alt="Italiano" />Italiano</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 text-center text-sm-right">
+						<a class="social-btn sb-facebook sb-light mx-1 mb-2" href="#"><i
+							class="flaticon-facebook"></i></a><a
+							class="social-btn sb-twitter sb-light mx-1 mb-2" href="#"><i
+							class="flaticon-twitter"></i></a><a
+							class="social-btn sb-instagram sb-light mx-1 mb-2" href="#"><i
+							class="flaticon-instagram"></i></a><a
+							class="social-btn sb-vimeo sb-light mx-1 mb-2" href="#"><i
+							class="flaticon-vimeo"></i></a>
+					</div>
+				</div>
+				<div class="row pt-4">
+					<div class="col-sm-6 text-center text-sm-left">
+						<ul class="list-inline font-size-sm">
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Outlets</a></li>
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Affiliates</a></li>
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Support</a></li>
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Privacy</a></li>
+							<li class="list-inline-item mr-3"><a
+								class="nav-link-inline nav-link-light" href="#">Terms of use</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-6 text-center text-sm-right">
+						<div class="d-inline-block">
+							<img width="187" src="img/cards.png" alt="Payment methods" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="py-3" style="background-color: #1a1a1a;">
+			<div class="container font-size-xs text-center"
+				aria-label="Copyright">
+				<span class="text-white opacity-60 mr-1">Â© All rights
+					reserved. Made by</span><a class="nav-link-inline nav-link-light"
+					href="https://createx.studio/" target="_blank">Createx Studio</a>
+			</div>
+		</div>
+	</footer>
+	<!-- Back To Top Button-->
+	<a class="scroll-to-top-btn" href="#"><i
+		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="js/sign_upChk.js"></script>
+<script type="text/javascript" src="js/sign_upChk.js"></script>
+<script src="js/Board_Main.js"></script>
+	<script src="js/StoreMarked.js"></script>
+
+</body>
 </html>

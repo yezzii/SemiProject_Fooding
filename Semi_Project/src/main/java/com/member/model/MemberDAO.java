@@ -799,7 +799,7 @@ public class MemberDAO {
 		return dto;
 	}// end
 
-	public int Store_Marking(MemberMarkDTO dto) {
+	public int addMarking(MemberMarkDTO dto) {
 
 		openConn();
 		
@@ -816,16 +816,17 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				count = rs.getInt(1);
+				count = rs.getInt(1) + 1;
 			}
 			
-			sql="insert into member_marking value(?,?,?)";
+			sql="insert into member_marking value(?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, count);
 			pstmt.setString(2, dto.getMem_id());
 			pstmt.setInt(3, dto.getMarked_storeidx());
+			pstmt.setInt(4, dto.getMark_YN());
 			
 			result = pstmt.executeUpdate();
 			

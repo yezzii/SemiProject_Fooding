@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.boardMain.model.Board_MainDTO;
+
 
 public class BoardDAO {
 

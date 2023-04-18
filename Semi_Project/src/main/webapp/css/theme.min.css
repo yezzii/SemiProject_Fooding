@@ -98,7 +98,9 @@ section {
 	
 }
 
-
+.filled	{
+	background-color: red;
+}
 
 body {
 	margin: 0;
