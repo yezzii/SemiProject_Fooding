@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
  <head>
@@ -12,11 +12,9 @@
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="-1">
-<meta name="description"
-	content="MStore - Modern Bootstrap E-commerce Template" />
+<meta name="description" content="MStore - Modern Bootstrap E-commerce Template" />
 	
-<meta name="keywords"
-	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+<meta name="keywords"	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 <meta name="author" content="Createx Studio" />
 <!-- Viewport-->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,46 +32,17 @@
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <!-- Customizer styles and scripts-->
-
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-	
+	<script src="js/kakao_login.js"></script>
 	
 </head>
 <!-- Body-->
 <body>
 
 	<%--   ======================================상단 네비바 <<START>>======================================= --%>
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-				<div
-					class="offcanvas-header d-flex justify-content-between align-items-center">
-					<h3 class="offcanvas-title">푸딩 - 검색</h3>
-					<button class="close" type="button" data-dismiss="offcanvas"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<form>
-				<div class="offcanvas-body">
-					<div class="offcanvas-body-inner">
-						<div class="input-group pt-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="search-icon"><i
-									data-feather="search"></i></span>
-							</div>
-							<input class="form-control" type="text" id="site-search" name="main_search"
-								placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
-								aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do?keyword=" />
-						</div>
-						<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
-					</div>
-				</div>
-				</form>
-			</div>
-
-
 
 
 	<%
@@ -81,7 +50,11 @@
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
 	}
-
+	
+	String thumnail =  (String)session.getAttribute("Thumnail");
+	String profile =  (String)session.getAttribute("member_profile");
+	String name = (String)session.getAttribute("name");
+	
 	%>
 
 	<!-- Off-canvas account-->
@@ -94,7 +67,7 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-		
+
 		<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
@@ -147,20 +120,21 @@
 
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form method="post" class="needs-validation" novalidate action="<%=request.getContextPath()%>/member_join.do" id="signup-form" name="signup-form">
+						<form method="post" class="needs-validation" novalidate
+							action="<%=request.getContextPath()%>/member_join.do"
+							id="signup-form" name="signup-form">
 							<div class="form-group">
 								<label class="sr-only" for="singup-id">아이디</label> <input
 									class="form-control" type="text" id="signup-id"
-									name="member_id" placeholder="아이디" aria-label="아이디" />
-									<span class="feedback" id="signup-idchk"></span>
-									<div class="invalid-feedback"></div>
+									name="member_id" placeholder="아이디" aria-label="아이디" /> <span
+									class="feedback" id="signup-idchk"></span>
+								<div class="invalid-feedback"></div>
 
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									name="member_pwd" placeholder="Password" aria-label="Password"
-									 />
+									name="member_pwd" placeholder="Password" aria-label="Password" />
 								<span class="feedback" id="signup-pwdchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -168,16 +142,14 @@
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
 									name="member_pwdchk" id="signup-password-confirm"
-									placeholder="Confirm password" aria-label="Confirm password"
-									 />
-									 <span class="feedback" id="signup-pwdconfirm-chk"></span>
-									 <div class="invalid-feedback"></div>
+									placeholder="Confirm password" aria-label="Confirm password" />
+								<span class="feedback" id="signup-pwdconfirm-chk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-name">이름</label> <input
 									class="form-control" type="text" id="signup-name"
-									name="member_name" placeholder="이름" aria-label="Full name"
-									/>
+									name="member_name" placeholder="이름" aria-label="Full name" />
 								<span class="feedback" id="signup-namechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -185,44 +157,42 @@
 								<label class="sr-only" for="signup-email">이메일</label> <input
 									class="form-control" type="email" id="signup-email"
 									name="member_email" placeholder="Email"
-									aria-label="Email address"/>
-								<span class="feedback" id="signup-emailchk"></span>
+									aria-label="Email address" /> <span class="feedback"
+									id="signup-emailchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signup-phone">연락처
-									확인</label> <input class="form-control" type="text"
-									name="member_phone" id="signup-phone"
-									placeholder="Phone" aria-label="Phone"
-									 />
+								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
+									class="form-control" type="text" name="member_phone"
+									id="signup-phone" placeholder="Phone" aria-label="Phone" />
 								<span class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
-								가입하기</button>
-								<button class="btn btn-primary btn-block" type="button" onclick="location.href='company-signup.jsp'">
-								사업자 가입</button>
-						
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="checkAll()">가입하기</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='company-signup.jsp'">사업자 가입</button>
 						</form>
-						
-						
-					
-
 					</div>
 				</div>
-				<div class="d-flex align-items-center pt-5">
+
+
+				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
 						로그인</div>
 					<hr class="w-100" />
 				</div>
 				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+					<input type="image" style="width: 320px;"
+						src="main_img/kakao_login.jpg" onclick="kakaoLogin();"
+						value="카카오 로그인 kakaoLogin();"> <br>
+					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
+						class="flaticon-facebook"></i></a> <a
 						class="social-btn sb-google-plus mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
+						class="flaticon-google-plus"></i></a> <a
 						class="social-btn sb-twitter mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Twitter"><i
 						class="flaticon-twitter"></i></a>
@@ -231,7 +201,7 @@
 		</div>
 	</div>
 
-	
+
 	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
@@ -438,16 +408,20 @@
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop layouts</h3>
+										<h3 class="widget-title">게시판</h3>
 										<ul>
 											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-											<li><a href="shop-style1-ls.jsp"> <i
+											<li><a href="<%=request.getContextPath() %>/review_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
-													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+													class="font-size-sm">후기 게시판</span></a></li>
+											<li><a href="<%=request.getContextPath() %>/free_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">자유 게시판</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -596,7 +570,7 @@
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="Board_Main_join.jsp">
+							<li><a class="dropdown-item" data-toggle="modal" href="#modalLong" >
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
@@ -673,22 +647,35 @@
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
-
-					<%
-					}
-					%>
 					<a class="navbar-btn" href="#offcanvas-cart"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
 							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
+					<a class="navbar-btn navbar-collapse-hidden"
+						href="member/logout.jsp">
+						
+						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
+
+					<%-- 프로필 정보란 --%>
+				<div class="navbar-btn navbar-collapse-hidden">
+					<div class="kakao_img mx-auto mb-1">
+						<a href="<%=request.getContextPath()%>/myprofile.go"> <img
+							class="profile_img" src="<%=thumnail%>">
+						</a>
+					</div>
+						<span class="mx-auto mb-1" style="font-family:'GmarketSansMedium'; font-size: 12px; "><%=name%> 님 </span>
+					<img src="${profile }">
+				</div>
+
+				<%-- 프로필 정보란 --%>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
-	</header>	
+	</header>
 	<%--   ======================================상단 네비바 <<END>>======================================= --%>
 	
 	
@@ -773,41 +760,6 @@
 		              <!-- Product details-->
 		              <div class="col-lg-5 pt-4 pt-lg-0">
 		                <form class="pb-4">
-		                  <div class="form-group">
-		                    <label class="d-block">Choose color</label>
-		                    <div class="custom-control custom-option custom-control-inline mb-2">
-		                      <input class="custom-control-input" type="radio" name="color" value="dark" id="dark" required>
-		                      <label class="custom-option-label" for="dark"><span class="custom-option-color" style="background-color: #2c363f;"></span></label>
-		                    </div>
-		                    <div class="custom-control custom-option custom-control-inline mb-2">
-		                      <input class="custom-control-input" type="radio" name="color" value="red" id="red" required>
-		                      <label class="custom-option-label" for="red"><span class="custom-option-color" style="background-color: #e7484d;"></span></label>
-		                    </div>
-		                    <div class="custom-control custom-option custom-control-inline mb-2">
-		                      <input class="custom-control-input" type="radio" name="color" value="white" id="white" required>
-		                      <label class="custom-option-label" for="white"><span class="custom-option-color" style="background-color: #e0dfe4;"></span></label>
-		                    </div>
-		                    <div class="custom-control custom-option custom-control-inline mb-2">
-		                      <input class="custom-control-input" type="radio" name="color" value="beige" id="beige" required>
-		                      <label class="custom-option-label" for="beige"><span class="custom-option-color" style="background-color: #e6ddd6;"></span></label>
-		                    </div>
-		                  </div>
-		                  <div class="form-group">
-		                    <select class="form-control custom-select" id="size" name="size" required>
-		                      <option value>- Select a size</option>
-		                      <option value="13">13</option>
-		                      <option value="12">12</option>
-		                      <option value="11.5">11.5</option>
-		                      <option value="11">11</option>
-		                      <option value="10.5">10.5</option>
-		                      <option value="10">10</option>
-		                      <option value="9.5">9.5</option>
-		                      <option value="9">9</option>
-		                      <option value="8.5">8.5</option>
-		                      <option value="8">8</option>
-		                      <option value="7.5">7.5</option>
-		                    </select>
-		                  </div>
 		                  <div class="d-flex flex-wrap align-items-center pt-1">
 		                    <div>
 		                      <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>

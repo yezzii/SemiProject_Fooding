@@ -387,7 +387,7 @@ public class MemberDAO {
 		try {
 			openConn();
 
-			sql = "select count(member_id) from member where member_id = ?";
+			sql = "select * from member where member_id = ?";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -667,7 +667,7 @@ public class MemberDAO {
 			}
 
 			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone,"
-					+ " member_type,member_no,member_token) values(?,?,?,?,?,?,?,?)";
+					+ " member_type,member_no,member_token,member_storenum) values(?,?,?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -679,6 +679,7 @@ public class MemberDAO {
 			pstmt.setInt(6, dto.getMember_type());
 			pstmt.setInt(7, count + 1);
 			pstmt.setString(8, dto.getMember_token());
+			pstmt.setString(9, dto.getMember_storenum());
 
 			result = pstmt.executeUpdate();
 
