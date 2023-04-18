@@ -1,38 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
+<%
+response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+response.setDateHeader("Expires", 0); // Proxies
+if (request.getProtocol().equals("HTTP/1.1"))
+	response.setHeader("Cache-Control", "no-cache");
+%>
+
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
-<meta charset="utf-8">
-<title>MStore | Modern Bootstrap E-commerce Template</title>
+<meta charset="utf-8" />
+<title>Fooding</title>
 <!-- SEO Meta Tags-->
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description"
-	content="MStore - Modern Bootstrap E-commerce Template">
+	content="MStore - Modern Bootstrap E-commerce Template" />
+
 <meta name="keywords"
-	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-<meta name="author" content="Createx Studio">
+	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+<meta name="author" content="Createx Studio" />
 <!-- Viewport-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- Favicon and Touch Icons-->
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
-<meta name="msapplication-TileColor" content="#111">
-<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg" />
+<meta name="msapplication-TileColor" content="#111" />
+<meta name="theme-color" content="#ffffff" />
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen" href="css/vendor.min.css">
+<link rel="stylesheet" media="screen" href="css/vendor.min.css" />
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" id="main-styles"
-	href="css/theme.min.css">
+	href="css/theme.min.css" />
 <!-- Customizer styles and scripts-->
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<script src="js/company_joinChk.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript" src="js/sign_upChk.js"></script>
+<script type="text/javascript" src="js/Finduser.js"></script>
+
+
 </head>
 <!-- Body-->
 <body>
+
+	<!-- Off-canvas search-->
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">푸딩 - 검색</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<form>
+			<div class="offcanvas-body">
+				<div class="offcanvas-body-inner">
+					<div class="input-group pt-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="search-icon"><i
+								data-feather="search"></i></span>
+						</div>
+						<input class="form-control" type="text" id="site-search"
+							name="main_search" placeholder="지역,음식,레스토랑 명 검색"
+							aria-label="Search site" aria-describedby="search-icon"
+							onsubmit="<%=request.getContextPath()%>/main_search.do?keyword=" />
+					</div>
+					<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게
+						검색해보세요!<br> Powered by Fooding.co _Dong
+					</small>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -40,38 +91,6 @@
 		userID = (String) session.getAttribute("id");
 	}
 	%>
-	<!-- Off-canvas search-->
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-		<div
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Search site</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-
-		<div class="offcanvas-body">
-			<div class="offcanvas-body-inner">
-				<div class="input-group pt-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="search-icon"><i
-							data-feather="search"></i></span>
-					</div>
-					<input class="form-control" type="text" id="site-search"
-						placeholder="Search site" aria-label="Search site"
-						aria-describedby="search-icon" />
-				</div>
-				<small class="form-text pt-1">Type A or C to see
-					suggestions. Powered by Easy autocomplete plugin via separate JSON
-					file.</small>
-			</div>
-		</div>
-	</div>
-
-
-
-	
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -83,6 +102,8 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
+
+		<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<ul class="nav nav-tabs nav-justified" role="tablist">
@@ -94,7 +115,7 @@
 				<div class="tab-content pt-1">
 					<div class="tab-pane fade show active" id="signin" role="tabpanel">
 						<form class="needs-validation" novalidate method="post"
-							action="<%=request.getContextPath()%>/login.do" id="signin">
+							action="<%=request.getContextPath()%>/login.do">
 							<div class="form-group">
 								<label class="sr-only" for="signin-id">ID</label>
 								<div class="input-group">
@@ -129,41 +150,78 @@
 							</div>
 							<button class="btn btn-primary btn-block" type="submit">
 								로그인</button>
+							<div class="pt-3" align="center">
+								<a href="account-id-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
+									href="account-password-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">비밀번호 찾기</a>
+							</div>
 						</form>
 					</div>
+
+					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form class="needs-validation" novalidate>
+						<form method="post" class="needs-validation" novalidate
+							action="<%=request.getContextPath()%>/member_join.do"
+							id="signup-form" name="signup-form">
 							<div class="form-group">
-								<label class="sr-only" for="signup-name">Full name</label> <input
-									class="form-control" type="text" id="signup-name"
-									placeholder="이름" aria-label="Full name" required />
-								<div class="invalid-feedback">이름을 작성해주세요</div>
+								<label class="sr-only" for="singup-id">아이디</label> <input
+									class="form-control" type="text" id="signup-id"
+									name="member_id" placeholder="아이디" aria-label="아이디" /> <span
+									class="feedback" id="signup-idchk"></span>
+								<div class="invalid-feedback"></div>
+
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signup-email">이메일</label> <input
-									class="form-control" type="email" id="signup-email"
-									placeholder="Email" aria-label="Email address" required />
-								<div class="invalid-feedback">이메일을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password">Password</label> <input
+								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									placeholder="Password" aria-label="Password" required />
-								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
+									name="member_pwd" placeholder="Password" aria-label="Password" />
+								<span class="feedback" id="signup-pwdchk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
-									id="signup-password-confirm" placeholder="Confirm password"
-									aria-label="Confirm password" required />
-								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
+									name="member_pwdchk" id="signup-password-confirm"
+									placeholder="Confirm password" aria-label="Confirm password" />
+								<span class="feedback" id="signup-pwdconfirm-chk"></span>
+								<div class="invalid-feedback"></div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-name">이름</label> <input
+									class="form-control" type="text" id="signup-name"
+									name="member_name" placeholder="이름" aria-label="Full name" />
+								<span class="feedback" id="signup-namechk"></span>
+								<div class="invalid-feedback"></div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-email">이메일</label> <input
+									class="form-control" type="email" id="signup-email"
+									name="member_email" placeholder="Email"
+									aria-label="Email address" /> <span class="feedback"
+									id="signup-emailchk"></span>
+								<div class="invalid-feedback"></div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
+									class="form-control" type="text" name="member_phone"
+									id="signup-phone" placeholder="Phone" aria-label="Phone" />
+								<span class="feedback" id="signup-phonechk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<button class="btn btn-primary btn-block" type="button"
 								onclick="checkAll()">가입하기</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='company-signup.jsp'">사업자 가입</button>
+
 						</form>
+
+
+
+
 					</div>
 				</div>
-				<div class="d-flex align-items-center pt-5">
+				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
 						로그인</div>
@@ -184,7 +242,7 @@
 		</div>
 	</div>
 
-	
+
 	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
@@ -285,13 +343,13 @@
 		<div class="container-fluid navbar-inner">
 			<!-- navbar brand-->
 			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
-				width="100" src="img/logo-dark.png" alt="MStore" /></a>
+				width="250" src="img/logo-fooding.png" alt="Fooding" /></a>
 			<!-- navbar collapse area-->
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown mega-dropdown dropdown-more"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">카테고리<i
 							data-feather="more-horizontal"></i></a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
@@ -311,16 +369,10 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">수원</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">충남</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">광주</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
@@ -337,31 +389,22 @@
 										<ul>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Computers
-														&amp; Accessories</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">데이트
+														코스</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">TV,
-														Video &amp; Audio</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
-														&amp; Tablets</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">뷰가
+														좋은</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
-														Photo &amp; Video</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Wearable
-														Electronics</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Video
-														Games</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
+
 										</ul>
 									</div>
 								</div>
@@ -375,38 +418,32 @@
 										<ul>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Lounge
-														Seating</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">고기요리</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">File
-														Cabinets</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">한식</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Indoor
-														Lighting</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Office
-														Chairs</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">양식</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Adjustable
-														Height Desks</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">아시안</span></a></li>
 											<li><a href="#"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Storage
-														Units</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">카페,디저트</span></a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
@@ -417,12 +454,16 @@
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+											<li><a href="shop-style1-ls.jsp"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop pages</h3>
+										<h3 class="widget-title">Shop</h3>
 										<ul>
 											<li><a href="shop-categories-apparel.jsp"><i
 													class="widget-categories-indicator"
@@ -467,8 +508,29 @@
 								</div>
 							</div>
 						</div></li>
+
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">예약</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown"><a
+								class="dropdown-item dropdown-toggle" href="#"
+								data-toggle="dropdown">Blog Layout</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
+											Right Sidebar</a></li>
+								</ul></li>
+							<li class="dropdown-divider"></li>
+							<li class="dropdown"><a
+								class="dropdown-item dropdown-toggle" href="#"
+								data-toggle="dropdown">Single Post Layout</a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
+											No Sidebar</a></li>
+								</ul></li>
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">내정보</a>
 						<ul class="dropdown-menu">
 							<li class="dropdown"><a
 								class="dropdown-item dropdown-toggle" href="#"
@@ -531,53 +593,31 @@
 									Found</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Blog Layout</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
-											Right Sidebar</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Single Post Layout</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
-											No Sidebar</a></li>
-								</ul></li>
-						</ul></li>
-					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="mr-1" data-feather="file-text"></i>Docs</a>
+							class="mr-1" data-feather="file-text"></i>레스토랑</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="docs/dev-setup.jsp">
+							<li><a class="dropdown-item"
+								href="<%=request.getContextPath()%>/board_main_list.do">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="file-text"
 											style="width: 1.4375rem; height: 1.4375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">Documentation</span><small
-												class="text-muted">Kick-start customization</small>
+											<span class="d-block mb-n1">레스토랑 목록</span>
 										</div>
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="components/alerts.jsp">
+							<li><a class="dropdown-item" href="Board_Main_join.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
 										<div class="ml-2">
-											<span class="d-block mb-n1">Components <span
-												class="badge badge-pill badge-success">40+</span>
-											</span><small class="text-muted">Faster page building</small>
+											<span class="d-block mb-n1">레스토랑 추가 </span>
 										</div>
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="docs/changelog.jsp">
+							<li><a class="dropdown-item" href="Board_Main_join.jsp">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="edit"
 											style="width: 1.375rem; height: 1.375rem"></i>
@@ -610,9 +650,27 @@
 						data-toggle="collapse" data-target="#menu">
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
-					<a class="navbar-btn" href="#offcanvas-search"
-						data-toggle="offcanvas"><i class="mx-auto mb-1"
-						data-feather="search"></i>Search</a>
+					<form method="get"
+						action="<%=request.getContextPath()%>/main_search.do">
+						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
+							<div class="input-group flex-nowrap">
+								<div class="input-group-prepend">
+									<%-- 검색input테그 --%>
+
+									<input class="form-control rounded" type="text"
+										id="site-search" placeholder="통합 검색" name="keyword"
+										aria-label="Search site" aria-describedby="search-icon">
+									<%-- 검색input테그 END --%>
+
+									<%-- 검색버튼 --%>
+
+
+									<%-- 검색버튼 END--%>
+								</div>
+
+							</div>
+						</div>
+					</form>
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -627,8 +685,8 @@
 					} else {
 					%>
 					<a class="navbar-btn navbar-collapse-hidden"
-						href="#offcanvas-account" data-toggle="offcanvas"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
+						href="member/logout.jsp"><i class="mx-auto mb-1"
+						data-feather="log-out"></i>로그아웃</a>
 
 					<%
 					}
@@ -637,86 +695,54 @@
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
 				</div>
 			</div>
 		</div>
 	</header>
 	<!-- Page Content-->
-	<div class="container pb-5 mb-sm-4 ">
-		<div class="row pt-10">
+	<div class="container pb-5 mb-sm-4">
+		<div class="row justify-content-center pt-5">
+			<div class="col-lg-8 col-md-10 mt-sm-3">
 
-
-			<div class="pt-5 pt-sm-3 ">
-				<br>
-				<h2 class="h4 mb-3">사업자 회원가입</h2>
-				<br>
-				<form class="needs-validation" id="reg-form" method="post"
-					action="<%=request.getContextPath()%>/company_join.do" novalidate>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="reg-id">아이디</label> <input class="form-control"
-									type="text" required id="reg-id" name="company_id"> <span
-									class="feedback" id="reg-idchk"></span>
-								<div class="invalid-feedback"></div>
-							</div>
+				<h2 class="h3 mb-4">아이디를 잃어버리셨나요?</h2>
+				<p>아이디를 찾기 위한 방법입니다. 아래의 순서를 참고해주세요.</p>
+				<ol class="list-unstyled">
+					<li><span class="font-weight-semibold text-primary mr-2">1.</span>회원가입
+						하신 이름을 작성해주세요.</li>
+					<li><span class="font-weight-semibold text-primary mr-2">2.</span>회원가입
+						하신 이메일을 작성해주세요.</li>
+					<li><span class="font-weight-semibold text-primary mr-2">3.</span>아이디
+						찾기 버튼을 눌러주세요.</li>
+				</ol>
+				
+				<div class="card py-2 mt-4">
+					<form class="card-body needs-validation" novalidate id="FindIdForm">
+						<!-- Success alert -->
+				<div class="alert alert-success" role="alert"  style="display:none">
+					<h4 class="pt-2 alert-heading">아이디 찾기 성공</h4>
+					<p id="success_content">회원님의 아이디는 <span id="member_id"></span> 입니다. 메인페이지로 이동하시려면 <a href="index.jsp">여기</a>를 눌러주세요.</p>
+				</div>
+				<div class="alert alert-danger" role="alert"  style="display:none">
+					<h4 class="pt-2 alert-heading">아이디 찾기 실패</h4>
+					<p id="success_content">입력하신 것에 대한 회원정보를 찾을 수 없습니다. 다시 시도해주세요.</p>
+				</div>
+				
+						<div class="form-group">
+							<label for="recover-id-name">이름을 작성해주세요</label> <input
+								class="form-control" type="text" id="recover-id-name"
+								name="recover-id-name" required>
+							<div class="invalid-feedback"></div>
 						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="reg-name">이름</label> <input class="form-control"
-									type="text" required id="reg-name" name="company_name"> <span
-									class="feedback" id="reg-namechk"></span>
-								<div class="invalid-feedback"></div>
-							</div>
+						<div class="form-group">
+							<label for="recover-id-email">이메일을 작성해주세요</label> <input
+								class="form-control" type="email" id="recover-id-email"
+								name="recover-id-email" required>
+							<div class="invalid-feedback"></div>
 						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="reg-email">이메일</label> <input class="form-control"
-									type="email" required id="reg-email" name="company_email"> <span
-									class="feedback" id="reg-emailchk"></span>
-								<div class="invalid-feedback"></div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="reg-phone">연락처</label> <input class="form-control"
-									type="text" required id="reg-phone" name="company_phone"> <span
-									class="feedback" id="reg-phonechk"></span>
-								<div class="invalid-feedback"></div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="reg-password">비밀번호</label> <input
-									class="form-control" type="password" required id="reg-password" name="company_pwd">
-								<span class="feedback" id="reg-pwdchk"></span>
-								<div class="invalid-feedback"></div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="reg-password-confirm">비밀번호 확인</label> <input
-									class="form-control" type="password" required
-									id="reg-password-confirm"> <span class="feedback"
-									id="reg-pwdconfirm-chk"></span>
-								<div class="invalid-feedback"></div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="reg-storenum">사업자번호</label> <input
-									class="form-control" type="text" required id="reg-storenum" name="company_storenum">
-								<span class="feedback" id="reg-storechk"></span>
-								<div class="invalid-feedback"></div>
-							</div>
-						</div>
-					</div>
-					<div class="text-right">
-						<button class="btn btn-primary" type="button" onclick="checkAll()">사업자
-							회원가입</button>
-					</div>
-				</form>
+						<button class="btn btn-primary" id="FindIdBtn" type="button">아이디 찾기</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -1016,6 +1042,6 @@
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-
+	
 </body>
 </html>

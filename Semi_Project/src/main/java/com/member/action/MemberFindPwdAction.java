@@ -28,10 +28,11 @@ public class MemberFindPwdAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=utf-8");
 
-		String memberId = request.getParameter("member_id");
-		String memberName = request.getParameter("member_name");
-		String memberEmail = request.getParameter("member_email");
+		String memberId = request.getParameter("paramId");
+		String memberName = request.getParameter("paramName");
+		String memberEmail = request.getParameter("paramEmail");
 
+		int result = 0;
 		// 먼저 아이디로 회원정보를 받아오고 가져온 데이터에서 email값을 비교하여 존재하지 않으면 인증메일 보내지 못함
 		/*
 		 * Member m = new MemberService().memberLogin(memberId); if(m==null ||
@@ -56,19 +57,16 @@ public class MemberFindPwdAction implements Action {
 		if (dto.getMember_id().equals("없음") || !dto.getMember_name().equals(memberName)
 				|| !dto.getMember_email().equals(memberEmail)) {
 
-			PrintWriter out = response.getWriter();
-
-			out.println("<script>");
-			out.println("alert('입력받은 정보의 가입자가 없습니다')");
-			out.println("history.back()");
-			out.println("</script>");
+			result = -1;
 
 		} else {
+
+			result = 1;
 
 			// mail server 설정
 			String host = "smtp.gmail.com";
 			String user = "hujik1234@gmail.com"; // 자신의 네이버 계정
-			String password = "jlifuiaarcstlfip";// 자신의 네이버 패스워드
+			String password = "ozgsnxegszmhsyyd";// 자신의 네이버 패스워드
 
 			// 메일 받을 주소
 			/* String to_email = m.getEmail(); */
@@ -128,13 +126,11 @@ public class MemberFindPwdAction implements Action {
 				msg.setSubject("[Pooding] 임시 비밀번호 안내");
 
 				// 메일 내용
-				msg.setContent("<h1>임시 비밀번호 안내</h1>" + "<br>"+ "<br>"
-						+ "<p>안녕하세요,</p>" + "<br>"
-						+ "<p>고객님의 계정에 대한 비밀번호 초기화 요청을 받았습니다. 이에 따라 임시 비밀번호를 발급해드립니다.</p>" + "<br>" 
-						+ String.format("<p>임시 비밀번호: <b>%s</b></p>", temp) + "<br>" 
-						+ "<p>위 임시 비밀번호를 사용하여 로그인하신 후, 마이 페이지에서 새로운 비밀번호를 설정해주시기 바랍니다.</p>" + "<br>" 
-						+ "<p>감사합니다.</p>" + "<br>" 
-						+ "<p>[Pooding]</p>", "text/html; charset=UTF-8");
+				msg.setContent("<h1>임시 비밀번호 안내</h1>" + "<br>" + "<br>" + "<p>안녕하세요,</p>" + "<br>"
+						+ "<p>고객님의 계정에 대한 비밀번호 초기화 요청을 받았습니다. 이에 따라 임시 비밀번호를 발급해드립니다.</p>" + "<br>"
+						+ String.format("<p>임시 비밀번호: <b>%s</b></p>", temp) + "<br>"
+						+ "<p>위 임시 비밀번호를 사용하여 로그인하신 후, 마이 페이지에서 새로운 비밀번호를 설정해주시기 바랍니다.</p>" + "<br>" + "<p>감사합니다.</p>"
+						+ "<br>" + "<p>[Fooding]</p>", "text/html; charset=UTF-8");
 
 				Transport.send(msg);
 
@@ -151,14 +147,12 @@ public class MemberFindPwdAction implements Action {
 			 * req.getRequestDispatcher("/views/login_myPage/searchPasswordEnd.jsp").forward
 			 * (req, resp);
 			 */
-			PrintWriter out = response.getWriter();
-
-			out.println("<script>");
-			out.println("alert('이메일로 전송을 완료했습니다.')");
-			out.println("location.href='main.do'");
-			out.println("</script>");
 
 		}
+
+		PrintWriter out = response.getWriter();
+		out.println(result + "");
+
 		return null;
 	}
 }

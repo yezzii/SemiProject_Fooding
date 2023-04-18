@@ -29,7 +29,7 @@ public class Board_mainUpdateAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("board/boardmain_update.jsp");
+		forward.setPath("Board_Main_update.jsp");
 		
 		return forward;
 	}
