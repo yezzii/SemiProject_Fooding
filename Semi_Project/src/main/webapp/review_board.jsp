@@ -786,7 +786,7 @@
       </div>
     </div>
     <!-- Page Content-->
-    <div class="container pb-5 mb-4">
+    <div class="container pb-1 mb-1">
       <div class="row">
         <div class="col-lg-9">
           <!-- Post-->
@@ -805,7 +805,7 @@
      <c:if test="${!empty list }">
 				<c:forEach items="${list}" var="dto">
       <tr>
-      <td>${dto.getBoard_idx() }</td>
+      <td>${dto.getBoard_num() }</td>
         <td><a href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a></td>
         <td>${dto.getBoard_writer() }</td>
         <td>${dto.getBoard_date().substring(2, 10)}</td>
@@ -818,26 +818,12 @@
 </div>
           
           
-         
-          
-          
-          <!-- Pagination-->
-          <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center justify-content-sm-start mb-0">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item d-sm-none"><span class="page-link page-link-static">2 / 5</span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
-              <li class="page-item d-none d-sm-block">...</li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">10</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
         </div>
+        
+        
+         <!-- Blog sidebar-->
         <div class="col-lg-3">
-          <!-- Blog sidebar-->
+         
           <div class="offcanvas-sidebar">
             <div class="offcanvas-sidebar-toggle"><span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span></div>
             <div class="offcanvas-sidebar-body">
@@ -846,7 +832,7 @@
                 <div class="widget widget-categories mb-4 py-1">
                   <h3 class="widget-title">Top categories</h3>
                   <ul>
-                    <li><a href="<%=request.getContextPath() %>/blog_list.do"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1">(25)</span></a></li>
+                    <li><a href="<%=request.getContextPath() %>/blog_list.do"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1"></span></a></li>
                     <li><a href="food_magazine.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(5)</span></a></li>
                     <li><a href="food_column.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(5)</span></a></li>
                   </ul>
@@ -868,6 +854,45 @@
         </div>
       </div>
     </div>
+    
+    
+    <!-- Pagination-->
+    <div class="col-lg-9">
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center justify-content-sm-center mb-0">
+              <li class="page-item"><a class="page-link" href="ReviewBoardList.do?page=1">처음</a></li>
+              <li class="page-item"><a class="page-link" href="ReviewBoardList.do?page=${page - 1 }">이전</a></li>
+              
+               <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+	      	    <c:if test="${i == page }">
+	      	       <li class="page-item active" aria-current="page"><a class="page-link" href="ReviewBoardList.do?page=${i }">${i }</a></li>
+	      	    </c:if>
+	      	    
+	      	    <c:if test="${i != page }">
+	      	       <li class="page-item">
+	      	          <a class="page-link"
+	      		   			href="ReviewBoardList.do?page=${i }">${i }</a>
+	      	       </li>
+	      	    </c:if>
+	      	 </c:forEach>
+	      	 
+	      	 
+	      	 
+	      	  <c:if test="${endBlock < allPage }">
+	      	       <li class="page-item">
+	      	          <a class="page-link"
+	      		   			href="ReviewBoardList.do?page=${page + 1 }">다음</a>
+	      	       </li>
+	      	       
+	      	       <li class="page-item">
+	      	          <a class="page-link"
+	      		   			href="ReviewBoardList.do?page=${allPage }">마지막</a>
+	      	       </li>
+	      	 </c:if>
+              
+            </ul>
+          </nav>
+        </div>
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->
