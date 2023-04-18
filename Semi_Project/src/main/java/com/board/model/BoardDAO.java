@@ -475,6 +475,7 @@ try {
 				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
 				dto.setBoard_type(rs.getInt("board_type"));
 				dto.setBoard_image(rs.getString("board_image"));
+				dto.setBoard_num(rs.getInt("board_num"));
 
 				list.add(dto);
 			}
