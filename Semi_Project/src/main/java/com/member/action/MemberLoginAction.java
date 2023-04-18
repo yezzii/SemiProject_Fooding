@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 
@@ -19,12 +21,20 @@ public class MemberLoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException ,ServletException {
 
+		response.setContentType("application/json;charset=UTF-8");
+		//한글처리 작업 진행.
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		
 		MemberDAO dao = MemberDAO.getInstance();
 		
 		String id = request.getParameter("id");
 		String Raw_pwd = request.getParameter("pwd");
 		String pwd = Encryption.encodeSha256(Raw_pwd);
 		String basic_thumnail = "main_img/user.png";
+		
+		int result = 0;
 		
 		HttpSession session = request.getSession();
 
@@ -43,10 +53,19 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("type", memdto.getMember_type());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
-				out.println("<script>");
-				out.println("alert('" + session.getAttribute("name") + " 관리자님 오늘도 환영합니다.')");
-				out.println("location.href='index.jsp'");
-				out.println("</script>");
+				result = 1;
+				
+				JSONObject jsonObj = new JSONObject();
+				
+				jsonObj.put("result", result);
+				jsonObj.put("name", memdto.getMember_name());
+				
+				out.println(jsonObj);
+				/*
+				 * out.println("<script>"); out.println("alert('" + session.getAttribute("name")
+				 * + " 관리자님 오늘도 환영합니다.')"); out.println("location.href='index.jsp'");
+				 * out.println("</script>");
+				 */			
 				
 			} else if (memdto.getMember_type() == 1) {
 
@@ -79,12 +98,17 @@ public class MemberLoginAction implements Action {
 			}
 		}else {
 			
-				out.println("<script>");
-				out.println("alert('아이디 및 비밀번호를 확인해주세요')");
-				out.println("history.back()");
-				out.println("</script>");
+			result = -1;
+			
+			out.println(result + "");
+			/*
+			 * out.println("<script>"); out.println("alert('아이디 및 비밀번호를 확인해주세요')");
+			 * out.println("history.back()"); out.println("</script>");
+			 */
 			
 		}
+		
+		out.close();
 
 		return null;
 	}

@@ -187,7 +187,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println(rs.getString("member_id"));
+				
 				dto = new MemberDTO();
 
 				dto.setMember_id(rs.getString("member_id"));
