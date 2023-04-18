@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,8 +29,7 @@
   </head>
   <!-- Body-->
   <body>
-	<c:set var="list" value="${review_boardList }" />
-
+	<c:set var="list" value="${blogList }" />
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
@@ -522,7 +520,7 @@
                      </div>
                   </div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
+			class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
@@ -553,7 +551,7 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="board_write.jsp"><i
+																<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">후기 작성
 														</span></a></li>
@@ -776,13 +774,8 @@
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">후시게시판</h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title">블로그 후기</h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
-        <br><br>
-        <div class="post-meta">
-                <div>
-                   <a href="#">Fooding, &nbsp;</a><a href="#">Board</a><span class="meta-divider"></span><a href="#">#yummy!</a></div>
-              </div>
       </div>
     </div>
     <!-- Page Content-->
@@ -790,7 +783,25 @@
       <div class="row">
         <div class="col-lg-9">
           <!-- Post-->
-         <div class="table-responsive">
+          <div class="row pb-5">
+            
+            <div class="col-md-8">
+            <!-- Textarea -->
+
+              <div class="post-meta">
+                <div>
+                   <a href="#">Fooding, &nbsp;</a><a href="#">Board</a><span class="meta-divider"></span><a href="#">#yummy!</a></div>
+              </div>
+              
+            </div>
+          </div>
+          <hr class="pb-5">
+          <!-- Post-->
+          <div class="row pb-5">
+
+            
+            <!-- Basic table -->
+<div class="table-responsive">
   <table class="table">
   
     <thead>
@@ -816,11 +827,15 @@
     </tbody>
   </table>
 </div>
+            
+            
+            
+            
+            
+          </div>
+          <hr class="pb-5">
           
-          
-         
-          
-          
+          <hr class="pb-4 mb-2">
           <!-- Pagination-->
           <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center justify-content-sm-start mb-0">
@@ -844,24 +859,14 @@
               <div class="offcanvas-sidebar-body-inner">
                 <!-- Categories-->
                 <div class="widget widget-categories mb-4 py-1">
-                  <h3 class="widget-title">Top categories</h3>
-                  <ul>
-                    <li><a href="<%=request.getContextPath() %>/blog_list.do"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1">(25)</span></a></li>
-                    <li><a href="food_magazine.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(5)</span></a></li>
-                    <li><a href="food_column.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(5)</span></a></li>
-                  </ul>
-                </div>
-                
-                
-                
+                  
                 
                 <!-- Tags      -->
                 <div class="widget mb-4 pb-1">
                   <h3 class="widget-title">Popular tags</h3><a class="tag-link mr-2 mb-2" href="#">#오마카세</a><a class="tag-link mr-2 mb-2" href="#">#삼겹살</a><a class="tag-link mr-2 mb-2" href="#">#한우</a><a class="tag-link mr-2 mb-2" href="#">#짜장면</a><a class="tag-link mb-2" href="#">#스시</a>
                 </div>
-                
-                
-                
+               
+                  </div></a>
               </div>
             </div>
           </div>

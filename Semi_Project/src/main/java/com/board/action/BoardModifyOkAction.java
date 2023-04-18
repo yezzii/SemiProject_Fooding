@@ -52,7 +52,11 @@ public class BoardModifyOkAction implements Action {
 				out.println("alert('게시물 수정 성공.')");
 				out.println("location.href='review_board.do'");
 				out.println("</script>");
-		    }
+		    }else if(type == -1) {
+				out.println("<script>");
+				out.println("alert('게시물 수정 성공.')");
+				out.println("location.href='blog_list.do'");
+				out.println("</script>");
 		}else {
 	    	out.println("<script>");
 			out.println("alert('게시물 수정 실패.')");
@@ -62,5 +66,7 @@ public class BoardModifyOkAction implements Action {
 		
 		return null;
 	}
+		return null;
 
+}
 }

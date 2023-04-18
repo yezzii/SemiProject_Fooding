@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>MStore | Modern Bootstrap E-commerce Template
+    <title>Fooding
     </title>
     <!-- JQury 라이브러리 -->
 
@@ -816,6 +816,7 @@
 							data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 							<option value="1">후기</option>
+							<option value="-1">블로그</option>
 							<option value="0">자유</option>
 						</select>
 					</div>

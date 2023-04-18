@@ -44,7 +44,10 @@ public class BoardDeleteAction implements Action {
 					out.println("<script>");
 					out.println("location.href='review_board.do'");
 					out.println("</script>");
-			    }
+			    }else if(type == -1) {
+					out.println("<script>");
+					out.println("location.href='blog_list.do'");
+					out.println("</script>");
 			}else {
 		    	out.println("<script>");
 				out.println("alert('게시물 삭제 실패.')");
@@ -55,5 +58,7 @@ public class BoardDeleteAction implements Action {
 		return null;
 		
 	}
+			return null;
 
+	}
 }

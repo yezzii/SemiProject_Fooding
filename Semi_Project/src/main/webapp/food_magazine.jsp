@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,8 +27,7 @@
     <!-- Customizer styles and scripts-->
   </head>
   <!-- Body-->
-  <body>
-	<c:set var="list" value="${review_boardList }" />
+    <body>
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
@@ -241,8 +238,8 @@
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="location.href='../member/logout.jsp'">
-								로그아웃</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='../member/logout.jsp'">로그아웃</button>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
@@ -406,121 +403,121 @@
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
 				<ul class="navbar-nav">
-               <li class="nav-item dropdown mega-dropdown dropdown-more"><a
-                  class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
-                     data-feather="more-horizontal"></i></a>
-                  <div class="dropdown-menu">
-                     <div class="dropdown-inner">
-                        <div class="dropdown-column">
-                           <div
-                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-                              style="background-image: url(img/megamenu/cat_bg02.jpg)">
-                              <h3 class="h5 text-white text-shadow my-3">지역별</h3>
-                           </div>
-                           <div class="widget widget-links">
-                              <ul>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">수원</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">충남</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">광주</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="dropdown-column">
-                           <div
-                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-                              style="background-image: url(img/megamenu/cat_bg01.jpg)">
-                              <h3 class="h5 text-white text-shadow my-3">테마별</h3>
-                           </div>
-                           <div class="widget widget-links">
-                              <ul>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Computers
-                                          &amp; Accessories</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">TV,
-                                          Video &amp; Audio</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
-                                          &amp; Tablets</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
-                                          Photo &amp; Video</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Wearable
-                                          Electronics</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Video
-                                          Games</span></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="dropdown-column">
-                           <div
-                              class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-                              style="background-image: url(img/megamenu/cat_bg03.jpg)">
-                              <h3 class="h5 text-white text-shadow my-3">장르별</h3>
-                           </div>
-                           <div class="widget widget-links">
-                              <ul>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Lounge
-                                          Seating</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">File
-                                          Cabinets</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Indoor
-                                          Lighting</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Office
-                                          Chairs</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Adjustable
-                                          Height Desks</span></a></li>
-                                 <li><a href="#"><i
-                                       class="widget-categories-indicator"
-                                       data-feather="chevron-right"></i><span class="font-size-sm">Storage
-                                          Units</span></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                  </div></li>
+					<li class="nav-item dropdown mega-dropdown dropdown-more"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
+							data-feather="more-horizontal"></i></a>
+						<div class="dropdown-menu">
+							<div class="dropdown-inner">
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/cat_bg02.jpg)">
+										<h3 class="h5 text-white text-shadow my-3">지역별</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">수원</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">충남</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">광주</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/cat_bg01.jpg)">
+										<h3 class="h5 text-white text-shadow my-3">테마별</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Computers
+														&amp; Accessories</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">TV,
+														Video &amp; Audio</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
+														&amp; Tablets</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
+														Photo &amp; Video</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Wearable
+														Electronics</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Video
+														Games</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/cat_bg03.jpg)">
+										<h3 class="h5 text-white text-shadow my-3">장르별</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Lounge
+														Seating</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">File
+														Cabinets</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Indoor
+														Lighting</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Office
+														Chairs</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Adjustable
+														Height Desks</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Storage
+														Units</span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
@@ -752,11 +749,11 @@
 	%>
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="#offcanvas-account" data-toggle="offcanvas"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a> 
-					
+						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
+
 					<% } %>
-					<a
-						class="navbar-btn" href="#offcanvas-cart" data-toggle="offcanvas"><span
+					<a class="navbar-btn" href="#offcanvas-cart"
+						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
 							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
@@ -764,106 +761,61 @@
 			</div>
 		</div>
 	</header>
-    <!-- Page Title-->
-    <div class="page-title-wrapper" aria-label="Page title">
-      <div class="container">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-            <li class="breadcrumb-item"><a href="index.jsp">Home</a>
-            </li>
-            <li class="breadcrumb-item"><a href="#">Blog</a>
-            </li>
-          </ol>
-        </nav>
-        <h1 class="page-title">후시게시판</h1><span class="d-block mt-2 text-muted"></span>
-        <hr class="mt-4">
-        <br><br>
-        <div class="post-meta">
-                <div>
-                   <a href="#">Fooding, &nbsp;</a><a href="#">Board</a><span class="meta-divider"></span><a href="#">#yummy!</a></div>
-              </div>
-      </div>
-    </div>
     <!-- Page Content-->
-    <div class="container pb-5 mb-4">
-      <div class="row">
-        <div class="col-lg-9">
-          <!-- Post-->
-         <div class="table-responsive">
-  <table class="table">
-  
-    <thead>
-      <tr>
-        <th>글번호</th>
-        <th>글제목</th>
-        <th>작성자</th>
-        <th>작성일자</th>
-      </tr>
-     </thead>
-    <tbody>
-     <c:if test="${!empty list }">
-				<c:forEach items="${list}" var="dto">
-      <tr>
-      <td>${dto.getBoard_idx() }</td>
-        <td><a href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a></td>
-        <td>${dto.getBoard_writer() }</td>
-        <td>${dto.getBoard_date().substring(2, 10)}</td>
-      </tr>
-      </c:forEach>
-     </c:if>
+    <div class="container-fluid px-0">
+      <!-- Row-->
+      <h1 class="page-title">Fooding Magazine</h1><span class="d-block mt-2 text-muted"></span>
       
-    </tbody>
-  </table>
-</div>
-          
-          
-         
-          
-          
-          <!-- Pagination-->
-          <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center justify-content-sm-start mb-0">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item d-sm-none"><span class="page-link page-link-static">2 / 5</span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
-              <li class="page-item d-none d-sm-block">...</li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">10</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
+      <hr>
+      <br>
+      
+      <div class="row no-gutters">
+        <div class="col-md-6 bg-position-center bg-size-cover bg-secondary" style="min-height: 15rem; background-image: url(magazine_img/korea.png);"><span class="split-section-arrow arrow-left"></span></div>
+        <div class="col-md-6 px-3 px-md-5 py-5">
+          <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+            <h2 class="h3 pb-3">류태환 셰프와 떠난 서천 1박 2일</h2>
+            <p class="pb-3 opacity-75">류태환 셰프는 자신의 고집스러운 철학을 바탕으로 음식을 개발할 때 맛에 앞서 어떤 이야기를 끌어올지 고민한다. 다시 말해 근거. 자신의 모든 음식에 존재해야 할 당위를 부여한다. 류니끄를 찾아야 할 이유는 늘 같다. 어떤 경험을 만나게 되느냐. ‘인스퍼레이션Inspiration’이라고 적힌 류니끄의 메뉴에서는 맛 이상의 특별한 경험을 얻을 수 있기 때문이다. 류태환 셰프는 전국 팔도의 특산물에 관심이 지대하다. 식재료를 넘어 식재료가 자라는 땅과 바다, 키우는 사람과 길어 올리는 사람, 식재료로 만든 음식을 먹는 사람과 식재료로 음식을 만드는 사람, 식재료의 유통 경로까지 주의 깊게 살핀다. 그렇게 세상에 모습을 드러낸 류니끄의 결과물이 ‘봉화 인스퍼레이션’이다. 봉화 인스퍼레이션은 지난여름 봉화군과의 협업을 통해 완성한 코스 메뉴다. 한약을 먹여 키운 한약우, 송이, 은어 등 전체 코스 메뉴를 오직 봉화군에서 나는 식재료와 특산품만을 이용해 구성했다. “예상하지 못했는데 반응이 굉장히 좋았어요.” 류태환 셰프는 자신감을 얻었다. 취재 요청 문의에 대뜸 제안했다. “이번 가을에 충남 서천을 통째로 테이블에 올리려고 해요. 같이 가시죠.”</p><a class="btn btn-pill btn-outline-primary" href="https://www.olivemagazine.co.kr/post/seo-cheon-inspiration">Go to magazine<i class="ml-1" data-feather="arrow-right"></i></a>
+          </div>
         </div>
-        <div class="col-lg-3">
-          <!-- Blog sidebar-->
-          <div class="offcanvas-sidebar">
-            <div class="offcanvas-sidebar-toggle"><span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span></div>
-            <div class="offcanvas-sidebar-body">
-              <div class="offcanvas-sidebar-body-inner">
-                <!-- Categories-->
-                <div class="widget widget-categories mb-4 py-1">
-                  <h3 class="widget-title">Top categories</h3>
-                  <ul>
-                    <li><a href="<%=request.getContextPath() %>/blog_list.do"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1">(25)</span></a></li>
-                    <li><a href="food_magazine.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(5)</span></a></li>
-                    <li><a href="food_column.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(5)</span></a></li>
-                  </ul>
-                </div>
-                
-                
-                
-                
-                <!-- Tags      -->
-                <div class="widget mb-4 pb-1">
-                  <h3 class="widget-title">Popular tags</h3><a class="tag-link mr-2 mb-2" href="#">#오마카세</a><a class="tag-link mr-2 mb-2" href="#">#삼겹살</a><a class="tag-link mr-2 mb-2" href="#">#한우</a><a class="tag-link mr-2 mb-2" href="#">#짜장면</a><a class="tag-link mb-2" href="#">#스시</a>
-                </div>
-                
-                
-                
-              </div>
-            </div>
+      </div>
+      <!-- Row-->
+      <div class="row no-gutters">
+        <div class="col-md-6 bg-position-center bg-size-cover bg-secondary order-md-2" style="min-height: 15rem; background-image: url(magazine_img/paris.png);"><span class="split-section-arrow arrow-right"></span></div>
+        <div class="col-md-6 px-3 px-md-5 py-5 order-md-1">
+          <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+            <h2 class="h3 pb-3">지금 파리에서 뜨는 지역의 맛집을 소개합니다.</h2>
+            <p class="pb-3 opacity-75">현재 파리에서 가장 트렌디한 지역구 벨빌Belleville과 메닐몽탕Ménilmontant. 파리 중심가의 비싼 임대료를 피해 옛 공장 지역이던 벨빌 지구와 메닐몽탕 지구로 젊은 층을 주축으로 형성된 문화 공간이 옮겨지고 있다. 파리지앵은 파리 중심가와 30분 이상 떨어져 있음에도 맛은 물론 가성비가 뛰어난 레스토랑과 재미있는 스폿이 많은 이 지역까지 찾아 온다. 지금, 파리의 음식들을 만나보자!</p><a class="btn btn-pill btn-outline-primary" href="https://www.olivemagazine.co.kr/post/gourmet-travel-hidden-gems-in-paris">Go to magazine<i class="ml-1" data-feather="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Row-->
+      <div class="row no-gutters">
+        <div class="col-md-6 bg-position-center bg-size-cover bg-secondary" style="min-height: 15rem; background-image: url(magazine_img/hongkong.png);"><span class="split-section-arrow arrow-left"></span></div>
+        <div class="col-md-6 px-3 px-md-5 py-5">
+          <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+            <h2 class="h3 pb-3">홍콩의 자연 속 미식</h2>
+            <p class="pb-3 opacity-75">한층 달라진 계절을 그대로 느낄 수 있는 홍콩 도심 속 미식 스폿을 소개한다. 훌륭한 풍미는 물론, 홍콩의 자연을 함께 누려보자.</p><a class="btn btn-pill btn-outline-primary" href="https://www.olivemagazine.co.kr/post/bright-and-tasty-hong-kong">Go to magazine<i class="ml-1" data-feather="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Row-->
+      <div class="row no-gutters">
+        <div class="col-md-6 bg-position-center bg-size-cover bg-secondary order-md-2" style="min-height: 15rem; background-image: url(magazine_img/beer.png);"><span class="split-section-arrow arrow-right"></span></div>
+        <div class="col-md-6 px-3 px-md-5 py-5 order-md-1">
+          <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+            <h2 class="h3 pb-3">"당신은 어떤 맥주를 좋아하며, 어떤 맥주 스타일이 되고 싶은가?"</h2>
+            
+            <p class="pb-3 opacity-75">2.저는 유독 '크래프트' 라는 단어가 마음에 들었습니다. 크래프트라는 말은 창의성과 퀄리티에 집중하는 만큼 양조에 관련한 요소들을 스스로 결정하는 자치원의 집합이라는 말이 상당히 힙하게 느껴졌거든요. 주체적이고 창의적인 삶은 늘 제가 꿈꾸던 삶입니다. 그중에서도 IPA 같은 사람이 되고 싶었는데요, 크래프트 신을 대표하기도 하고 강렬한 맛을 내는 게 멋지더라고오! 여러분은 어떤 사람이 되고 싶은가요? 맥주 스타일로 비유한다면 여러분은 어떤 맥주에 가까우신가요?</p><a class="btn btn-pill btn-outline-primary" href="contacts.html">Go to Magazine<i class="ml-1" data-feather="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Row-->
+      <div class="row no-gutters">
+        <div class="col-md-6 bg-position-center bg-size-cover bg-secondary" style="min-height: 15rem; background-image: url(magazine_img/coffee.png);"><span class="split-section-arrow arrow-left"></span></div>
+        <div class="col-md-6 px-3 px-md-5 py-5">
+          <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+            <h2 class="h3 pb-3">커피 테라스</h2>
+            <p class="pb-3 opacity-75">따가운 볕 아래 앉아 마시는 커피의 맛, 선선한 날씨에 테라스에서 즐기는 커피의 맛이 따로 있다. 그 계절에만 가질 수 있는 여유. 뛰어난 커피 맛은 기본, 낮이고 밤이고 무작정 테라스에 앉기 좋은 서울의 카페를 소개한다.</p><a class="btn btn-pill btn-outline-primary" href="https://www.olivemagazine.co.kr/post/coffee-terrace">Go to magazine<i class="ml-1" data-feather="arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -983,7 +935,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-left">
-              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.jsp"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
+              <div class="mb-4 mb-sm-0"><a class="d-inline-block" href="index.html"><img width="100" src="img/logo-light.png" alt="MStore"/></a>
                 <div class="navbar-lang-switcher dropdown border-light mt-3 mb-0 mt-sm-0">
                   <div class="dropdown-toggle text-white" data-toggle="dropdown"><img width="20" src="img/flags/en.png" alt="English"/><span>USD</span>
                   </div>
@@ -996,7 +948,7 @@
                         <option value="usd">Â¥ JPY</option>
                       </select>
                     </li>
-                    <li><a class="dropdown-item" href="index.jsp"><img class="mr-2" width="20" src="img/flags/fr.png" alt="FranÃ§ais"/>FranÃ§ais</a></li>
+                    <li><a class="dropdown-item" href="index.html"><img class="mr-2" width="20" src="img/flags/fr.png" alt="FranÃ§ais"/>FranÃ§ais</a></li>
                     <li class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#"><img class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch"/>Deutsch</a></li>
                     <li class="dropdown-divider"></li>
