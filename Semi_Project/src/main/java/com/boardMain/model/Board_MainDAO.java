@@ -252,7 +252,7 @@ public class Board_MainDAO {
 			pstmt.setInt(1, dto.getMain_idx());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				sql = "update board_main set main_type = ?,main_info = ?,main_opentime = ?,main_endtime = ?,main_post = ?,main_addr = ?,main_detailaddr = ?,main_phone = ?,main_thema = ? where main_idx =?";
+				sql = "update board_main set main_type = ?,main_info = ?,main_opentime = ?,main_endtime = ?,main_post = ?,main_addr = ?,main_detailaddr = ?,main_phone = ?,main_thema = ?,main_img = ? where main_idx =?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, dto.getMain_type());
 				pstmt.setString(2, dto.getMain_info());
@@ -263,7 +263,8 @@ public class Board_MainDAO {
 				pstmt.setString(7, dto.getMain_detailaddr());
 				pstmt.setString(8, dto.getMain_phone());
 				pstmt.setString(9, dto.getMain_thema());
-				pstmt.setInt(10, dto.getMain_idx());
+				pstmt.setString(10, dto.getMain_img());
+				pstmt.setInt(11, dto.getMain_idx());
 
 				result = pstmt.executeUpdate();
 			}
@@ -503,6 +504,28 @@ public class Board_MainDAO {
 			closeConn(rs, pstmt, con);
 		}
 		return count;
+	}
+
+	public int getBoardidx(String storenum) {
+		int result =0;
+		
+		
+		try {
+			openConn();
+			sql ="select main_idx from board_main where main_storenum = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, storenum);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
 	}
 
 }

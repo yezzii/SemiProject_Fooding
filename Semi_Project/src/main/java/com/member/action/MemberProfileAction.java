@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.boardMain.model.Board_MainDAO;
+import com.boardMain.model.Board_MainDTO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 import com.mysql.cj.Session;
@@ -35,7 +37,16 @@ public class MemberProfileAction implements Action {
 
 		ActionForward forward = new ActionForward();
 		
-		forward.setRedirect(false);
+		String storenum = (String)session.getAttribute("storenum");
+		
+		// 가게정보 수정 액션 페이지
+		Board_MainDAO a = Board_MainDAO.getInstance();
+		int main_idx = a.getBoardidx(storenum);
+		
+		
+		Board_MainDTO dto  = a.getBoardMainSelect(main_idx);
+		request.setAttribute("boardmain", dto);
+		
 		
 		forward.setPath("account-profile.jsp");
 		

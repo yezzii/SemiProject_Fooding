@@ -195,6 +195,7 @@ public class MemberDAO {
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_name(rs.getString("member_name"));
 				dto.setMember_type(rs.getInt("member_type"));
+				dto.setMember_storenum(rs.getString("member_storenum"));
 			}
 
 		} catch (SQLException e) {
@@ -329,9 +330,9 @@ public class MemberDAO {
 		return count;
 	} // getBoardCount 메서드 end
 
-	// board 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드
+	
 
-	// board 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
+	//member 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
 	public List<MemberDTO> getMemberList(int page, int rowsize) {
 
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
@@ -781,11 +782,11 @@ public class MemberDAO {
 				dto.setMember_email(rs.getString("member_email"));
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_account(rs.getInt("member_account"));
-				dto.setMember_mark(rs.getString("member_mark"));
 				dto.setMember_storenum(rs.getString("member_storenum"));
 				dto.setMember_type(rs.getInt("member_type"));
 				dto.setMember_token(rs.getString("member_token"));
 				dto.setMember_joindate(rs.getString("member_joindate"));
+				dto.setMember_image(rs.getString("member_image"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -795,5 +796,45 @@ public class MemberDAO {
 		}
 		return dto;
 	}// end
+
+	public int updateProfileMember(MemberDTO dto) {
+		// 마이페이지에 있는 회원의 정보수정을 하는 메서드
+		int result = 0;
+		
+		
+		try {
+			openConn();
+			sql = "select * from member where member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getMember_id());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(dto.getMember_image() == null) {
+					sql = "update member set member_pwd = ?, member_email = ?, member_phone = ? where member_id = ? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getMember_pwd());
+					pstmt.setString(2, dto.getMember_email());
+					pstmt.setString(3, dto.getMember_phone());
+					pstmt.setString(4, dto.getMember_id());
+				}else {
+					sql = "update member set member_pwd = ?, member_email = ?, member_phone = ?,member_image = ? where member_id = ? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getMember_pwd());
+					pstmt.setString(2, dto.getMember_email());
+					pstmt.setString(3, dto.getMember_phone());
+					pstmt.setString(4, dto.getMember_image());
+					pstmt.setString(5, dto.getMember_id());
+				}
+				
+				result = pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}// updateProfileMember() 메서드 end
 
 }

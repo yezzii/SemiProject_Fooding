@@ -88,8 +88,8 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
+		
 	}
-
 	%>
 
 	<!-- Off-canvas account-->
@@ -537,10 +537,16 @@ if(request.getProtocol().equals("HTTP/1.1"))
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-profile.jsp">Profile
-											Settings</a></li>
-									<li class="dropdown-divider"></li>
+									
+										<%
+										if (session.getAttribute("id") != null) {
+										%>
+											<li class="dropdown-divider"></li>
+											<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
+											<li class="dropdown-divider"></li>
+									<%}%>
+									
+									
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
 									<li class="dropdown-divider"></li>
@@ -1731,6 +1737,10 @@ if(request.getProtocol().equals("HTTP/1.1"))
       </div>
     </div>
   </div>
+  <!-- modal end -->
+  
+  
+  
 	<!-- Footer-->
 	<footer class="page-footer bg-dark">
 		<!-- first row-->
