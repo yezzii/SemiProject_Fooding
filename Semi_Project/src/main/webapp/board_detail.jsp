@@ -804,7 +804,7 @@
      
      
             <c:if test="${not empty dto.getBoard_image()}">
-  <img class="d-block" src="<%=request.getContextPath()%>/photo/${dto.getBoard_image() }" >
+  <img width="830" height="300" class="d-block" src="<%=request.getContextPath()%>/photo/${dto.getBoard_image() }" >
 </c:if>
 <c:if test="${empty dto.getBoard_image()}">
   

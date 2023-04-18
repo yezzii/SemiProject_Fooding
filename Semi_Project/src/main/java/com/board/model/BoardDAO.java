@@ -134,12 +134,59 @@ public class BoardDAO {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 
 		try {
+			
+		
 
-			sql = "select * from board where board_type = ? order by board_idx";
+			sql = "select * from board where board_type = ? order by board_idx desc";
 
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, "0");
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				dto = new BoardDTO();
+
+				dto.setBoard_idx(rs.getInt("board_idx"));
+				dto.setBoard_title(rs.getString("board_title"));
+				dto.setBoard_writer(rs.getString("board_writer"));
+				dto.setBoard_content(rs.getString("board_content"));
+				dto.setBoard_image(rs.getString("board_image"));
+				dto.setBoard_date(rs.getString("board_date"));
+				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+				dto.setBoard_type(rs.getInt("board_type"));
+
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+		return list;
+	}
+	
+	public List<BoardDTO> BlogList() {
+
+		openConn();
+
+		BoardDTO dto = null;
+
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+		try {
+			
+		
+
+			sql = "select * from board where board_type = ? order by board_idx desc";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "-1");
 
 			rs = pstmt.executeQuery();
 
@@ -178,7 +225,7 @@ public class BoardDAO {
 
 		try {
 
-			sql = "select * from board where board_type = ? order by board_idx";
+			sql = "select * from board where board_type = ? order by board_idx desc";
 
 			pstmt = con.prepareStatement(sql);
 
