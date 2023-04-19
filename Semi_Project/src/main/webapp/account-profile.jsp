@@ -46,6 +46,22 @@
 #modalCentered{
 margin-top: 350px;
 }
+
+.menu_text{
+  /* display: flex; /* 요소들을 flex container로 설정합니다 */ */
+  text-align: center; /* 요소들을 수직 가운데로 정렬합니다 */
+  align-content:center;
+max-width:100%;
+min-width: 458px;
+	
+}  
+  
+  
+.menu_text > th{
+margin-left: 30%;
+}  
+  
+  
 </style>
 
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
@@ -965,10 +981,19 @@ margin-top: 350px;
 								정보 수정 <span
 								class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
 					</c:if>
+					
+					
+					<c:if test="${dto.getMember_type() == 2}">
+						<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#modalLarge">
+						 <i data-feather="shopping-bag"></i>&nbsp;메뉴 등록 
+							<span class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
+					</c:if>
+					
+					
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle active" href="#"
-						data-toggle="dropdown"><i data-feather="settings"></i>&nbsp;회원수정</a>
+						data-toggle="dropdown"><i data-feather="settings"></i>&nbsp;회원 수정</a>
 
 						<div class="dropdown-menu">
 							<a class="dropdown-item active" href="account-profile.html">Profile
@@ -979,6 +1004,10 @@ margin-top: 350px;
 							<a class="dropdown-item" href="account-payment.html">Payment
 								methods</a>
 						</div></li>
+						
+					
+						
+						
 					</ul>
 					<!-- Navigation (visible sm-down)-->
 					<div class="d-sm-none pb-4">
@@ -1219,10 +1248,72 @@ margin-top: 350px;
 		</div>
 	</div>
 	<!-- modal end -->
+<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#modalLarge">
+  Large modal
+</button>
+
+
+
+
+<!-- 메뉴 Modal markup -->
+	<div class="modal" tabindex="-1" role="dialog" id="modalLarge">
+  		<div class="modal-dialog modal-lg" role="document">
+    	<div class="modal-content">
+     	 <div class="modal-header">
+					<h5 class="modal-title">메뉴 페이지</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden=true>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>
+						<form method="post" enctype="multipart/form-data"name="inForm" id="inForm" >
+						<table cellspacing="0" align="center" width="150px">
+					<tr class="table_bg">
+						<th>메뉴 이름</th><th>메뉴 가격</th><th>메뉴 사진</th> 
+					</tr>
+						
+					<tr>
+						<td> <input type="text" name="menu_name" id="name" size="10"></td>
+						<td> <input type="text" name="menu_price" id="price" size="10"></td>
+						<td> <input type="file" name="menu_img" id="pic" size="10"></td>
+						<td>
+						</td>
+						<td colspan="3" align="center">	
+						<input type="button" value="등록하기" id="btn">	
+						</td>
+					</tr>
+					
+					</table>
+					</form>
+					<br>
+					<span>메뉴 리스트</span>
+						<table id="listTable"  cellspacing="0">
+							<tr class="menu_text">
+								<th>번호</th><th>메뉴 이름</th><th>메뉴 가격</th>
+								<th>메뉴 사진</th><th>수정</th><th>삭제</th>
+							</tr>
+						</table>
+						
+					</p>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary btn-sm"
+								data-dismiss="modal">Close</button>
+							<input type="submit" class="btn btn-primary btn-sm" value="가입하기" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal end -->
+
+
 
 	<!-- 가게 수정 Modal markup -->
 	<c:set var="main" value="${boardmain }" />
-	<div class="modal" tabindex="-1" role="dialog" id="Board_MainModify">
+	<div class="modal" tabindex="-1" role="dialog" id="Board_MainModify" >
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">

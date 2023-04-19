@@ -48,6 +48,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
+	<script src="js/Main_Menu.js"></script>
 	
 </head>
 <!-- Body-->
