@@ -668,7 +668,7 @@ public class MemberDAO {
 			}
 
 			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone,"
-					+ " member_type,member_no,member_token) values(?,?,?,?,?,?,?,?)";
+					+ " member_type,member_no,member_token,member_storenum) values(?,?,?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -680,6 +680,7 @@ public class MemberDAO {
 			pstmt.setInt(6, dto.getMember_type());
 			pstmt.setInt(7, count + 1);
 			pstmt.setString(8, dto.getMember_token());
+			pstmt.setString(9, dto.getMember_storenum());
 
 			result = pstmt.executeUpdate();
 
@@ -800,7 +801,7 @@ public class MemberDAO {
 	}// end
 
 
-	public int Store_Marking(MemberMarkDTO dto) {
+	public int addMarking(MemberMarkDTO dto) {
 
 		openConn();
 		
@@ -817,16 +818,17 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				count = rs.getInt(1);
+				count = rs.getInt(1) + 1;
 			}
 			
-			sql="insert into member_marking value(?,?,?)";
+			sql="insert into member_marking value(?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, count);
 			pstmt.setString(2, dto.getMem_id());
 			pstmt.setInt(3, dto.getMarked_storeidx());
+			pstmt.setInt(4, dto.getMark_YN());
 			
 			result = pstmt.executeUpdate();
 			

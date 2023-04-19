@@ -73,7 +73,34 @@ section {
 	display: block
 }
 
+/* 카카오로그인 */
+.profileInfo	{
+	
+	font-size: 18px;
+	font-weight: bold;
+	
+}
+.profile_img	{
+	
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; 
+	
+}
 
+.kakao_img	{
+	
+ 	width: 58px;
+    height: 58px; 
+    overflow: hidden;
+    border: 2px solid #ff963782;
+	
+}
+
+.filled	{
+	background-color: red;
+}
 
 body {
 	margin: 0;
@@ -2294,6 +2321,26 @@ pre code {
 		-webkit-box-shadow 0.2s ease-in-out
 }
 
+.form-control-dong {
+	display: block;
+	width: 100%;
+	height: calc(1.5em + 1rem + 2px);
+	padding: .5rem 1rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #404040;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 2px solid #ff9326;
+	border-radius: 0;
+	-webkit-transition: border-color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+	transition: border-color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+	transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+	transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+		-webkit-box-shadow 0.2s ease-in-out
+}
+
 .Search-form-Dong {
 	display: block;
 	width: 100%;
@@ -2328,7 +2375,7 @@ pre code {
 
 .form-control:focus {
 	color: #404040;
-	background-color: #fff;
+	background-color: ff;
 	border-color: rgba(0, 0, 0, 0);
 	outline: 0;
 	-webkit-box-shadow: 0 0 0 0.0625rem rgba(92, 119, 252, 0.35);

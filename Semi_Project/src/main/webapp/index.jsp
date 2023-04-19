@@ -43,10 +43,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 
-
 <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-
-
 </head>
 <!-- Body-->
 <body>
@@ -93,6 +90,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		userID = (String) session.getAttribute("id");
 		
 	}
+	
+	String thumnail =  (String)session.getAttribute("Thumnail");
+	String profile =  (String)session.getAttribute("member_profile");
+	String name = (String)session.getAttribute("name");
+	
 	%>
 	
 
@@ -219,14 +221,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								onclick="checkAll()">가입하기</button>
 							<button class="btn btn-primary btn-block" type="button"
 								onclick="location.href='company-signup.jsp'">사업자 가입</button>
-
 						</form>
-
-
-
-
 					</div>
 				</div>
+
+
 				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
@@ -234,12 +233,15 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<hr class="w-100" />
 				</div>
 				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+					<input type="image" style="width: 320px;"
+						src="main_img/kakao_login.jpg" onclick="kakaoLogin();"
+						value="카카오 로그인 kakaoLogin();"> <br>
+					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
+						class="flaticon-facebook"></i></a> <a
 						class="social-btn sb-google-plus mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
+						class="flaticon-google-plus"></i></a> <a
 						class="social-btn sb-twitter mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Twitter"><i
 						class="flaticon-twitter"></i></a>
@@ -678,12 +680,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					</div>
 					<form method="get"
 						action="<%=request.getContextPath()%>/total_main_search.do">
-						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
+						<div class="flex-grow-1 pb-3 pt-sm-4 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
 									<%-- 검색input테그 --%>
 
-									<input class="form-control rounded" type="text"
+									<input class="form-control-dong rounded" type="text"
 										id="site-search" placeholder="통합 검색" name="keyword"
 										aria-label="Search site" aria-describedby="search-icon">
 									<%-- 검색input테그 END --%>
@@ -697,6 +699,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div>
 					</form>
+
+					
+					
+					
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -710,18 +716,31 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp"><i class="mx-auto mb-1"
-						data-feather="log-out"></i>로그아웃</a>
-
-					<%
-					}
-					%>
 					<a class="navbar-btn" href="#offcanvas-cart"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
 							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
+					<a class="navbar-btn navbar-collapse-hidden"
+						href="member/logout.jsp">
+						
+						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
+
+					<%-- 프로필 정보란 --%>
+				<div class="navbar-btn navbar-collapse-hidden">
+					<div class="kakao_img mx-auto mb-1">
+						<a href="<%=request.getContextPath()%>/myprofile.go"> <img
+							class="profile_img" src="<%=thumnail%>">
+						</a>
+					</div>
+						<span class="mx-auto mb-1" style="font-family:'GmarketSansMedium'; font-size: 12px; "><%=name%> 님 </span>
+					<img src="${profile }">
+				</div>
+
+				<%-- 프로필 정보란 --%>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
@@ -910,32 +929,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				style="width: 150px" alt="Brand" /></a>
 		</div>
 	</section>
-	<!-- Sale promo-->
-	<section class="container-fluid mb-5 mt-4">
-		<div class="bg-size-cover bg-position-center py-5"
-			style="background-image: url(img/home/apparel/promo-banner.jpg)">
-			<div class="row py-lg-4">
-				<div class="col-lg-5 col-md-8 offset-xl-2 offset-lg-1">
-					<div class="px-3 px-lg-0">
-						<h3 class="font-weight-light">
-							Shop cheap<span
-								class="badge badge-danger font-size-xs ml-3 align-middle">Sale
-								up to 50%</span>
-						</h3>
-						<h2 class="h1 mb-4">Backpacks for your next adventure</h2>
-						<h4 class="mb-3 font-weight-light">Hurry up! Limited time
-							offer.</h4>
-						<div class="d-table bg-light pt-4 p-3 mb-4">
-							<div class="countdown h3 mb-0" data-date-time="10/10/2020 12:00"
-								data-labels='{"label-day": "d", "label-hour": "h", "label-minute": "m", "label-second": "s"}'></div>
-						</div>
-						<a class="btn btn-primary" href="#">Shop now<i class="ml-2"
-							data-feather="arrow-right"></i></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+
 	<!-- Featured products grid-->
 	<section class="container pt-3 pb-4">
 		<h2 class="h3 text-center pb-4">Featured products</h2>
@@ -1830,64 +1824,50 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				<div class="row">
 					<div class="col-md-4 col-sm-6">
 						<div class="widget widget-links pb-4">
-							<h3 class="widget-title text-white border-light">Shop
-								departments</h3>
+							<h3 class="widget-title text-white border-light">Fooding 기능</h3>
 							<ul>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Apparel
-											&amp; Shoes</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">가게 찾기</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Glasses
-											&amp; Accessories</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">가게 검색</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Handbags
-											&amp; Backpacks</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">가게 등록</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Computers
-											&amp; Accessories</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">가격으로 검색</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
-											&amp; Tablets</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">문의</span></a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="widget widget-links pb-4">
-							<h3 class="widget-title text-white border-light">Account
-								&amp; shipping info</h3>
+							<h3 class="widget-title text-white border-light">계정 관리</h3>
 							<ul>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Your
-											account</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">계정 자세히</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Shipping
-											rates &amp; policies</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Delivery
-											info</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">회원탈퇴</span></a></li>
 							</ul>
 						</div>
 						<div class="widget widget-links pb-4">
-							<h3 class="widget-title text-white border-light">About us</h3>
+							<h3 class="widget-title text-white border-light">Fooding Info</h3>
 							<ul>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Careers</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">제작자</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">About
-											shop</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">세미프로젝트</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">News</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">About_ Project</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -1896,8 +1876,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 							<!-- Mobile app download-->
 							<div class="widget pb-4">
-								<h3 class="widget-title text-white border-light">Download
-									our app</h3>
+								<h3 class="widget-title text-white border-light">다운로드 Fooding 앱</h3>
 								<a class="market-btn market-btn-light apple-btn mr-2 mb-2"
 									href="#" role="button"><span class="market-button-subtitle">Download
 										on the</span><span class="market-button-title">App Store</span></a><a
@@ -1910,64 +1889,15 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</div>
 			</div>
 		</div>
-		<!-- shop features-->
-		<div class="pt-5 pb-0 pb-md-5 border-bottom border-light"
-			id="shop-features" style="background-color: #1f1f1f;">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6 border-right border-light">
-						<div class="icon-box text-center mb-5 mb-md-0">
-							<div class="icon-box-icon">
-								<i data-feather="truck"></i>
-							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">Free
-								local delivery</h3>
-							<p class="icon-box-text">Free delivery for all orders over
-								$100</p>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 border-right border-light">
-						<div class="icon-box text-center mb-5 mb-md-0">
-							<div class="icon-box-icon">
-								<i data-feather="refresh-cw"></i>
-							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">Money
-								back guarantee</h3>
-							<p class="icon-box-text">Free delivery for all orders over
-								$100</p>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 border-right border-light">
-						<div class="icon-box text-center mb-5 mb-md-0">
-							<div class="icon-box-icon">
-								<i data-feather="life-buoy"></i>
-							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">24/7
-								customer support</h3>
-							<p class="icon-box-text">Friendly 24/7 customer support</p>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="icon-box text-center mb-5 mb-md-0">
-							<div class="icon-box-icon">
-								<i data-feather="credit-card"></i>
-							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">Secure
-								online payment</h3>
-							<p class="icon-box-text">We posess SSL / Secure сertificate</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<!-- third row-->
 		<div class="pt-5 pb-4" style="background-color: #1f1f1f;">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 text-center text-sm-left">
 						<div class="mb-4 mb-sm-0">
-							<a class="d-inline-block" href="index.jsp"><img width="100"
-								src="img/logo-light.png" alt="Fooding" /></a>
+							<a class="d-inline-block" href="index.jsp"><img width="200"
+								src="img/logo-fooding.png" alt="Fooding" /></a>
 
 						</div>
 					</div>
@@ -1986,15 +1916,15 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<div class="col-sm-6 text-center text-sm-left">
 						<ul class="list-inline font-size-sm">
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Outlets</a></li>
+								class="nav-link-inline nav-link-light" href="#">가게</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Affiliates</a></li>
+								class="nav-link-inline nav-link-light" href="#">브랜드관</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Support</a></li>
+								class="nav-link-inline nav-link-light" href="#">고객센터</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Privacy</a></li>
+								class="nav-link-inline nav-link-light" href="#">개인정보 보호</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Terms of use</a></li>
+								class="nav-link-inline nav-link-light" href="#">이용약관</a></li>
 						</ul>
 					</div>
 					<div class="col-sm-6 text-center text-sm-right"></div>
@@ -2006,7 +1936,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				aria-label="Copyright">
 				<span class="text-white opacity-60 mr-1">© All rights
 					reserved. Made by</span><a class="nav-link-inline nav-link-light"
-					href="https://createx.studio/" target="_blank">Createx Studio</a>
+					href="https://createx.studio/" target="_blank">Fooding .co</a>
 			</div>
 		</div>
 	</footer>
