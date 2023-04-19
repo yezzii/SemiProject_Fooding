@@ -964,4 +964,33 @@ public class MemberDAO {
 		return result;
 	}// updateProfileMember() 메서드 end
 
+	public List<MemberMarkDTO> loadMark(String id) {
+		
+		List<MemberMarkDTO> list = new ArrayList<MemberMarkDTO>();
+		
+		openConn();
+		
+		sql = "select * from member_marking where mem_id = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				MemberMarkDTO dto = new MemberMarkDTO();
+				dto.setIdx(rs.getInt("idx"));
+				dto.setMem_id(rs.getString("mem_id"));
+				dto.setMarked_storeidx(rs.getInt("marked_storeidx"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
 }

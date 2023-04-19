@@ -33,6 +33,8 @@ public class MarkingDeleteAction implements Action {
 		
 		int result = dao.deleteMarking(dto);
 		
+		dao.updateSequence(dto.getIdx());
+		
 		PrintWriter out = response.getWriter();
 		
 		out.println(result + "");
