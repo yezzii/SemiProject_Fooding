@@ -125,7 +125,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardDTO> FreeBoardList() {
-
+		int count = 0;
 		openConn();
 
 		BoardDTO dto = null;
@@ -134,28 +134,41 @@ public class BoardDAO {
 
 		try {
 
+
 			sql = "select * from board where board_type = ? order by board_idx";
 
+
 			pstmt = con.prepareStatement(sql);
-
 			pstmt.setString(1, "0");
-
 			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+			    count = rs.getInt(1);
+			}
 
+			sql = "select * from board where board_type = ? order by board_date desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "0");
+			rs = pstmt.executeQuery();
+			
+			int i = count;
+			
 			while (rs.next()) {
-
-				dto = new BoardDTO();
-
-				dto.setBoard_idx(rs.getInt("board_idx"));
-				dto.setBoard_title(rs.getString("board_title"));
-				dto.setBoard_writer(rs.getString("board_writer"));
-				dto.setBoard_content(rs.getString("board_content"));
-				dto.setBoard_image(rs.getString("board_image"));
-				dto.setBoard_date(rs.getString("board_date"));
-				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
-				dto.setBoard_type(rs.getInt("board_type"));
-
-				list.add(dto);
+				if(i > 0) {
+			    dto = new BoardDTO();
+			    dto.setBoard_idx(rs.getInt("board_idx"));
+			    dto.setBoard_num(i);
+			    dto.setBoard_title(rs.getString("board_title"));
+			    dto.setBoard_writer(rs.getString("board_writer"));
+			    dto.setBoard_content(rs.getString("board_content"));
+			    dto.setBoard_image(rs.getString("board_image"));
+			    dto.setBoard_date(rs.getString("board_date"));
+			    dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+			    dto.setBoard_type(rs.getInt("board_type"));
+			    list.add(dto);
+			    i--;
+				}
+			    
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -167,38 +180,107 @@ public class BoardDAO {
 		return list;
 	}
 
-	public List<BoardDTO> ReviewBoardList() {
+	
+	public List<BoardDTO> BlogList() {
 
+		int count = 0;
 		openConn();
 
 		BoardDTO dto = null;
 
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 
+try {
+			
+			sql = "select count(*) from board where board_type = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "-1");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+			    count = rs.getInt(1);
+			}
+
+			sql = "select * from board where board_type = ? order by board_date desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "-1");
+			rs = pstmt.executeQuery();
+			
+			int i = count;
+			
+			while (rs.next()) {
+				if(i > 0) {
+			    dto = new BoardDTO();
+			    dto.setBoard_idx(rs.getInt("board_idx"));
+			    dto.setBoard_num(i);
+			    dto.setBoard_title(rs.getString("board_title"));
+			    dto.setBoard_writer(rs.getString("board_writer"));
+			    dto.setBoard_content(rs.getString("board_content"));
+			    dto.setBoard_image(rs.getString("board_image"));
+			    dto.setBoard_date(rs.getString("board_date"));
+			    dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+			    dto.setBoard_type(rs.getInt("board_type"));
+			    list.add(dto);
+			    i--;
+				}
+			    
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+		return list;
+	}
+
+
+	public List<BoardDTO> ReviewBoardList() {
+
+		int count = 0;
+		openConn();
+
+		BoardDTO dto = null;
+
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+
 		try {
 
 			sql = "select * from board where board_type = ? order by board_idx";
 
 			pstmt = con.prepareStatement(sql);
-
 			pstmt.setString(1, "1");
-
 			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+			    count = rs.getInt(1);
+			}
 
+			sql = "select * from board where board_type = ? order by board_date desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "1");
+			rs = pstmt.executeQuery();
+			
+			int i = count;
+			
 			while (rs.next()) {
-
-				dto = new BoardDTO();
-
-				dto.setBoard_idx(rs.getInt("board_idx"));
-				dto.setBoard_title(rs.getString("board_title"));
-				dto.setBoard_writer(rs.getString("board_writer"));
-				dto.setBoard_content(rs.getString("board_content"));
-				dto.setBoard_image(rs.getString("board_image"));
-				dto.setBoard_date(rs.getString("board_date"));
-				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
-				dto.setBoard_type(rs.getInt("board_type"));
-
-				list.add(dto);
+				if(i > 0) {
+			    dto = new BoardDTO();
+			    dto.setBoard_idx(rs.getInt("board_idx"));
+			    dto.setBoard_num(i);
+			    dto.setBoard_title(rs.getString("board_title"));
+			    dto.setBoard_writer(rs.getString("board_writer"));
+			    dto.setBoard_content(rs.getString("board_content"));
+			    dto.setBoard_image(rs.getString("board_image"));
+			    dto.setBoard_date(rs.getString("board_date"));
+			    dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+			    dto.setBoard_type(rs.getInt("board_type"));
+			    list.add(dto);
+			    i--;
+				}
+			    
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -327,7 +409,7 @@ public class BoardDAO {
 				count = rs.getInt(1) + 1;
 			}
 
-			sql = "insert into board values(?,?,?,?,default,default,?,?,1)";
+			sql = "insert into board values(?,?,?,?,default,default,?,?,default)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -346,6 +428,112 @@ public class BoardDAO {
 		}
 		return result;
 
+	}
+
+	
+	public int getBoardCount() {
+
+		int count = 0;
+
+		try {
+			openConn();
+			sql = "select count(*) from board";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}// getBoardCount() end
+	
+	
+	public List<BoardDTO> getBoardReviewList(int page, int rowsize) {
+		
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+		int startNo = (page * rowsize) - (rowsize - 1);
+
+		int endNo = (page * rowsize);
+
+		try {
+			openConn();
+			sql = "select * from (select row_number() over (order by board_num) rnum ,b.* from board b) a where rnum between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardDTO dto = new BoardDTO();
+
+				dto.setBoard_idx(rs.getInt("board_idx"));
+				dto.setBoard_title(rs.getString("board_title"));
+				dto.setBoard_writer(rs.getString("board_writer"));
+				dto.setBoard_content(rs.getString("board_content"));
+				dto.setBoard_date(rs.getString("board_date"));
+				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+				dto.setBoard_type(rs.getInt("board_type"));
+				dto.setBoard_image(rs.getString("board_image"));
+				dto.setBoard_num(rs.getInt("board_num"));
+
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}// getBoardMainList() end
+	
+	
+	
+	public List<BoardDTO> BoardReviewPageList(int page, int rowsize) {
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+		int startNo = (page * rowsize) - (rowsize - 1);
+
+		int endNo = (page * rowsize);
+
+		try {
+			openConn();
+			sql = "select * from (select row_number() over (order by board_num) rnum ,b.* from board b) a where rnum between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardDTO dto = new BoardDTO();
+
+				dto.setBoard_idx(rs.getInt("board_idx"));
+				dto.setBoard_title(rs.getString("board_title"));
+				dto.setBoard_writer(rs.getString("board_writer"));
+				dto.setBoard_content(rs.getString("board_content"));
+				dto.setBoard_date(rs.getString("board_date"));
+				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+				dto.setBoard_type(rs.getInt("board_type"));
+				dto.setBoard_image(rs.getString("board_image"));
+				dto.setBoard_num(rs.getInt("board_num"));
+
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
 	}
 
 }
