@@ -807,28 +807,50 @@ public class MemberDAO {
 		
 		int result = 0;
 		
+		int check = 0;
+		
 		try {
+					
+				sql="select * from member_marking where marked_storeidx = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, dto.getMarked_storeidx());
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					check = 1;
+				}	else {
+					check = 0;
+				}
+				
+			if(check == 0){
+				
+				sql="select count(*) from member_marking";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1) + 1;
+				}
+				
+				sql="insert into member_marking value(?,?,?,?)";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, count);
+				pstmt.setString(2, dto.getMem_id());
+				pstmt.setInt(3, dto.getMarked_storeidx());
+				pstmt.setInt(4, dto.getMark_YN());
+				
+				result = pstmt.executeUpdate();
 			
-			sql="select count(*) from member_marking";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				count = rs.getInt(1) + 1;
 			}
 			
-			sql="insert into member_marking value(?,?,?,?)";
 			
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setInt(1, count);
-			pstmt.setString(2, dto.getMem_id());
-			pstmt.setInt(3, dto.getMarked_storeidx());
-			pstmt.setInt(4, dto.getMark_YN());
-			
-			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
