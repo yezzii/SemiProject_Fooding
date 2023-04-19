@@ -187,7 +187,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				
+
 				dto = new MemberDTO();
 
 				dto.setMember_id(rs.getString("member_id"));
@@ -330,9 +330,7 @@ public class MemberDAO {
 		return count;
 	} // getBoardCount 메서드 end
 
-	
-
-	//member 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
+	// member 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
 	public List<MemberDTO> getMemberList(int page, int rowsize) {
 
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
@@ -398,7 +396,7 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				res = -1;
-			}else {
+			} else {
 				res = 1;
 			}
 
@@ -799,88 +797,153 @@ public class MemberDAO {
 		}
 		return dto;
 	}// end
-
-
-	public int addMarking(MemberMarkDTO dto) {
+	
+	
+	
+	
+	
+	public int checkMarking(MemberMarkDTO dto) {
 
 		openConn();
-		
-		int count = 0;
-		
+
 		int result = 0;
-		
-		int check = 0;
-		
+
 		try {
-					
-				sql="select * from member_marking where marked_storeidx = ?";
-				
-				pstmt = con.prepareStatement(sql);
-				
-				pstmt.setInt(1, dto.getMarked_storeidx());
-				
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					check = 1;
-				}	else {
-					check = 0;
-				}
-				
-			if(check == 0){
-				
-				sql="select count(*) from member_marking";
-				
-				pstmt = con.prepareStatement(sql);
-				
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					count = rs.getInt(1) + 1;
-				}
-				
-				sql="insert into member_marking value(?,?,?,?)";
-				
-				pstmt = con.prepareStatement(sql);
-				
-				pstmt.setInt(1, count);
-				pstmt.setString(2, dto.getMem_id());
-				pstmt.setInt(3, dto.getMarked_storeidx());
-				pstmt.setInt(4, dto.getMark_YN());
-				
-				result = pstmt.executeUpdate();
-			
+
+			sql = "select * from member_marking where marked_storeidx = ? and mem_id = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, dto.getMarked_storeidx());
+			pstmt.setString(2, dto.getMem_id());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+
+				result = 1;
+			} else {
+				result = 0;
 			}
-			
-			
-			
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
 		}
 		return result;
 	}
 
+	public int addMarking(MemberMarkDTO dto) {
+
+		openConn();
+
+		int count = 0;
+
+		int result = 0;
+
+
+		try {
+
+				sql = "select count(*) from member_marking";
+
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					count = rs.getInt(1) + 1;
+				}
+
+				sql = "insert into member_marking value(?,?,?)";
+
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setInt(1, count);
+				pstmt.setString(2, dto.getMem_id());
+				pstmt.setInt(3, dto.getMarked_storeidx());
+
+				result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
+
+	public int deleteMarking(MemberMarkDTO dto) {
+
+		openConn();
+
+		int result = 0;
+
+		try {
+			
+			sql = "delete from member_marking where mem_id = ? and marked_storeidx = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getMem_id());
+			
+			pstmt.setInt(2, dto.getMarked_storeidx());
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
+	
+	
+	public void updateSequence(int num) {
+		
+		try {
+			openConn();
+			
+			sql = "update member_marking set idx = idx - 1 where idx > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+	}  // updateSequence() 메서드 end
+	
+	
+	
+
 	public int updateProfileMember(MemberDTO dto) {
 		// 마이페이지에 있는 회원의 정보수정을 하는 메서드
 		int result = 0;
-		
-		
+
 		try {
 			openConn();
 			sql = "select * from member where member_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getMember_id());
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				if(dto.getMember_image() == null) {
+			if (rs.next()) {
+				if (dto.getMember_image() == null) {
 					sql = "update member set member_pwd = ?, member_email = ?, member_phone = ? where member_id = ? ";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, dto.getMember_pwd());
 					pstmt.setString(2, dto.getMember_email());
 					pstmt.setString(3, dto.getMember_phone());
 					pstmt.setString(4, dto.getMember_id());
-				}else {
+				} else {
 					sql = "update member set member_pwd = ?, member_email = ?, member_phone = ?,member_image = ? where member_id = ? ";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, dto.getMember_pwd());
@@ -889,17 +952,16 @@ public class MemberDAO {
 					pstmt.setString(4, dto.getMember_image());
 					pstmt.setString(5, dto.getMember_id());
 				}
-				
+
 				result = pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			closeConn(rs, pstmt, con);
 		}
 		return result;
 	}// updateProfileMember() 메서드 end
-
 
 }
