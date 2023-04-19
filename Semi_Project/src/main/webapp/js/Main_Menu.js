@@ -17,7 +17,7 @@ $(function(){
 				
 				$(data).find("main_menu").each(function(){
 					table +="<tr>";
-					table +="<td>"+$(this).find("menu_no").text()+"</td>";
+					table +="<td>"+$(this).find("main_no").text()+"</td>";
 					table +="<td>"+$(this).find("menu_name").text()+"</td>";
 					table +="<td>"+$(this).find("menu_price").text()+"</td>";
 					table +="<td>"+$(this).find("menu_pic").text()+"</td>";

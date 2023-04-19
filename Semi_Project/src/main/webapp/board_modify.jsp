@@ -16,7 +16,7 @@
   
   </style>
     <meta charset="utf-8">
-    <title>MStore | Modern Bootstrap E-commerce Template
+    <title>Fooding
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="MStore - Modern Bootstrap E-commerce Template">

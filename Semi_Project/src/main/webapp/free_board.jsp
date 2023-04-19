@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>MStore | Modern Bootstrap E-commerce Template
+    <title>Fooding
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="MStore - Modern Bootstrap E-commerce Template">
@@ -776,32 +776,19 @@
         </nav>
         <h1 class="page-title">자유게시판</h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
-      </div>
-    </div>
-    <!-- Page Content-->
-    <div class="container pb-5 mb-4">
-      <div class="row">
-        <div class="col-lg-9">
-          <!-- Post-->
-          <div class="row pb-5">
-            
-            <div class="col-md-8">
-            <!-- Textarea -->
-
-              <div class="post-meta">
+        <br><br>
+        <div class="post-meta">
                 <div>
                    <a href="#">Fooding, &nbsp;</a><a href="#">Board</a><span class="meta-divider"></span><a href="#">#yummy!</a></div>
               </div>
-              
-            </div>
-          </div>
-          <hr class="pb-5">
+      </div>
+    </div>
+    <!-- Page Content-->
+   <div class="container pb-1 mb-1">
+      <div class="row">
+        <div class="col-lg-9">
           <!-- Post-->
-          <div class="row pb-5">
-
-            
-            <!-- Basic table -->
-<div class="table-responsive">
+         <div class="table-responsive">
   <table class="table">
   
     <thead>
@@ -816,7 +803,7 @@
      <c:if test="${!empty list }">
 				<c:forEach items="${list}" var="dto">
       <tr>
-      <td>${dto.getBoard_idx() }</td>
+      <td>${dto.getBoard_num() }</td>
         <td><a href="<%=request.getContextPath()%>/content_board.do?no=${dto.getBoard_idx() }">${dto.getBoard_title() }</a></td>
         <td>${dto.getBoard_writer() }</td>
         <td>${dto.getBoard_date().substring(2, 10)}</td>
@@ -827,32 +814,14 @@
     </tbody>
   </table>
 </div>
-            
-            
-            
-            
-            
-          </div>
-          <hr class="pb-5">
           
-          <hr class="pb-4 mb-2">
-          <!-- Pagination-->
-          <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center justify-content-sm-start mb-0">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item d-sm-none"><span class="page-link page-link-static">2 / 5</span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
-              <li class="page-item d-none d-sm-block">...</li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">10</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
+          
         </div>
+        
+        
+         <!-- Blog sidebar-->
         <div class="col-lg-3">
-          <!-- Blog sidebar-->
+         
           <div class="offcanvas-sidebar">
             <div class="offcanvas-sidebar-toggle"><span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span></div>
             <div class="offcanvas-sidebar-body">
@@ -861,24 +830,67 @@
                 <div class="widget widget-categories mb-4 py-1">
                   <h3 class="widget-title">Top categories</h3>
                   <ul>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1">(25)</span></a></li>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(13)</span></a></li>
-                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(9)</span></a></li>
+                    <li><a href="<%=request.getContextPath() %>/blog_list.do"><i class="widget-categories-indicator" data-feather="chevron-right"></i>블로그 후기<span class="badge text-muted ml-1"></span></a></li>
+                    <li><a href="food_magazine.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>매거진<span class="badge text-muted ml-1">(5)</span></a></li>
+                    <li><a href="food_column.jsp"><i class="widget-categories-indicator" data-feather="chevron-right"></i>음식 컬럼<span class="badge text-muted ml-1">(5)</span></a></li>
                   </ul>
                 </div>
+                
+                
+                
                 
                 <!-- Tags      -->
                 <div class="widget mb-4 pb-1">
                   <h3 class="widget-title">Popular tags</h3><a class="tag-link mr-2 mb-2" href="#">#오마카세</a><a class="tag-link mr-2 mb-2" href="#">#삼겹살</a><a class="tag-link mr-2 mb-2" href="#">#한우</a><a class="tag-link mr-2 mb-2" href="#">#짜장면</a><a class="tag-link mb-2" href="#">#스시</a>
                 </div>
-               
-                  </div></a>
+                
+                
+                
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
+    <!-- Pagination-->
+    <div class="col-lg-9">
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center justify-content-sm-center mb-0">
+              <li class="page-item"><a class="page-link" href="ReviewBoardList.do?page=1">처음</a></li>
+              <li class="page-item"><a class="page-link" href="ReviewBoardList.do?page=${page - 1 }">이전</a></li>
+              
+               <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+	      	    <c:if test="${i == page }">
+	      	       <li class="page-item active" aria-current="page"><a class="page-link" href="ReviewBoardList.do?page=${i }">${i }</a></li>
+	      	    </c:if>
+	      	    
+	      	    <c:if test="${i != page }">
+	      	       <li class="page-item">
+	      	          <a class="page-link"
+	      		   			href="ReviewBoardList.do?page=${i }">${i }</a>
+	      	       </li>
+	      	    </c:if>
+	      	 </c:forEach>
+	      	 
+	      	 
+	      	 
+	      	  <c:if test="${endBlock < allPage }">
+	      	       <li class="page-item">
+	      	          <a class="page-link"
+	      		   			href="ReviewBoardList.do?page=${page + 1 }">다음</a>
+	      	       </li>
+	      	       
+	      	       <li class="page-item">
+	      	          <a class="page-link"
+	      		   			href="ReviewBoardList.do?page=${allPage }">마지막</a>
+	      	       </li>
+	      	 </c:if>
+              
+            </ul>
+          </nav>
+        </div>
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->

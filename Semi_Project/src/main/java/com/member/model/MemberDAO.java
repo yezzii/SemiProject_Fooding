@@ -187,7 +187,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println(rs.getString("member_id"));
+				
 				dto = new MemberDTO();
 
 				dto.setMember_id(rs.getString("member_id"));
@@ -293,7 +293,7 @@ public class MemberDAO {
 
 			pstmt.setInt(2, no);
 
-			int result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -388,7 +388,7 @@ public class MemberDAO {
 		try {
 			openConn();
 
-			sql = "select count(member_id) from member where member_id = ?";
+			sql = "select * from member where member_id = ?";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -397,7 +397,9 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				res = rs.getInt(1);
+				res = -1;
+			}else {
+				res = 1;
 			}
 
 		} catch (SQLException e) {
@@ -666,7 +668,7 @@ public class MemberDAO {
 			}
 
 			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone,"
-					+ " member_type,member_no,member_token) values(?,?,?,?,?,?,?,?)";
+					+ " member_type,member_no,member_token,member_storenum) values(?,?,?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -678,6 +680,7 @@ public class MemberDAO {
 			pstmt.setInt(6, dto.getMember_type());
 			pstmt.setInt(7, count + 1);
 			pstmt.setString(8, dto.getMember_token());
+			pstmt.setString(9, dto.getMember_storenum());
 
 			result = pstmt.executeUpdate();
 
@@ -797,6 +800,45 @@ public class MemberDAO {
 		return dto;
 	}// end
 
+
+	public int addMarking(MemberMarkDTO dto) {
+
+		openConn();
+		
+		int count = 0;
+		
+		int result = 0;
+		
+		try {
+			
+			sql="select count(*) from member_marking";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+			
+			sql="insert into member_marking value(?,?,?,?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getMem_id());
+			pstmt.setInt(3, dto.getMarked_storeidx());
+			pstmt.setInt(4, dto.getMark_YN());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	public int updateProfileMember(MemberDTO dto) {
 		// 마이페이지에 있는 회원의 정보수정을 하는 메서드
 		int result = 0;
@@ -836,5 +878,6 @@ public class MemberDAO {
 		}
 		return result;
 	}// updateProfileMember() 메서드 end
+
 
 }

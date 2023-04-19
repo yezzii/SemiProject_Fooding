@@ -706,7 +706,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="reg-storenum">사업자번호</label> <input
-									class="form-control" type="text" required id="reg-storenum" name="company_storenum">
+									class="form-control" type="text" required id="reg-storenum" name="member_storenum">
 								<span class="feedback" id="reg-storechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>

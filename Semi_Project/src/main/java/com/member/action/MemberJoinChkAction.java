@@ -20,7 +20,7 @@ public class MemberJoinChkAction implements Action {
 		MemberDAO dao = MemberDAO.getInstance();
 		//한글처리 작업 진행.
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		String member_id = request.getParameter("paramId").trim();
 		System.out.println(member_id);
@@ -35,7 +35,6 @@ public class MemberJoinChkAction implements Action {
         if (result == -1) { //id 중복
             System.out.println("Action 내부) 이미 존재하는 아이디입니다.");
         } else {
-
             System.out.println("Action 내부) 사용 가능한 아이디입니다.");
         }
 		
