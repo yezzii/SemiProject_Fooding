@@ -43,22 +43,52 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-<script src="js/Board_Main.js"></script>	
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="js/sign_upChk.js"></script>
-<script type="text/javascript" src="js/kakao_login.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	
+<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 </head>
 <!-- Body-->
 <body>
-<!--   ==============================  네비바  ================================= -->	
+
+
+	<!-- Success toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="login_success">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 성공</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-success" id="toast_success_div"></div>
+		</div>
+	</div>
+
+	<!-- Warning toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 실패</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning">아이디 혹은 비밀번호를 확인해주세요.</div>
+		</div>
+	</div>
+	<!--   ==============================  네비바  ================================= -->
+
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
+		
 	}
 	
 	String thumnail =  (String)session.getAttribute("Thumnail");
@@ -66,21 +96,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	String name = (String)session.getAttribute("name");
 	
 	%>
-	<!-- Success toast -->
-	<div class="toast" role="alert" aria-live="assertive"
-		aria-atomic="true">
-		<div class="toast-header bg-success text-white">
-			<i class="mr-2" data-feather="check-circle"
-				style="width: 1.25rem; height: 1.25rem;"></i> <span
-				class="font-weight-semibold mr-auto">Success toast</span>
-			<button type="button" class="close text-white ml-2 mb-1"
-				data-dismiss="toast" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="toast-body text-success">Hello, world! This is a
-			toast message.</div>
-	</div>
+	
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -138,8 +154,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="button"
-								data-toggle="toast" data-target="#success">로그인</button>
+							<button class="btn btn-primary btn-block" type="button" id="ImLogin"
+								>로그인</button>
 
 							<div class="pt-3" align="center">
 								<a href="account-id-recovery.jsp"
@@ -539,10 +555,16 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-profile.jsp">Profile
-											Settings</a></li>
-									<li class="dropdown-divider"></li>
+									
+										<%
+										if (session.getAttribute("id") != null) {
+										%>
+											<li class="dropdown-divider"></li>
+											<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
+											<li class="dropdown-divider"></li>
+									<%}%>
+									
+									
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
 									<li class="dropdown-divider"></li>
@@ -1750,6 +1772,50 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</div>
+
+		<div class="textForm">
+			<textarea class="cont" rows="5" cols="25" name="main_info"
+				placeholder="가게정보"></textarea>
+		</div>
+
+
+		<div class="time_textForm" align="center">
+			
+			<label for="main_opentime" style="color: #636e72">영업시작시간</label>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="time" id="main_opentime" name="main_opentime"value="10:00"> <br> <br>
+			<label for="main_endtime" style="color: #636e72">영업종료시간</label> &nbsp;&nbsp;&nbsp;
+			<input type="time" id="main_endtime" name="main_endtime" value="21:00">
+		</div>
+
+		<div class="textForm">
+			<input name="main_post" id="post" type="text" class="location" placeholder="우편번호" readonly onclick="findAddr()"> 
+			<input name="main_addr" id="addr" type="text" class="location" placeholder="주소" readonly> 
+			<input name="main_detailaddr" type="text" class="location" placeholder="상세 주소">
+		</div>
+
+		<div class="textForm">
+			<input name="main_phone" type="text" class="phone" placeholder="전화번호">
+		</div>
+		
+		<div class="image">
+			<span class="pic_txt">가게등록 사진</span>
+			<input class="main_file" type="file" name="main_img">				
+		</div>			
+		
+		</p>
+		<div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary btn-sm" value="가입하기"/>
+		</div>
+		</form>
+		</div>
+      </div>
+    </div>
+  </div>
+  <!-- modal end -->
+  
+  
+  
 	<!-- Footer-->
 	<footer class="page-footer bg-dark">
 		<!-- first row-->
@@ -1889,8 +1955,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="js/sign_upChk.js"></script>
 	<script src="js/Board_Main.js"></script>
+	<script src="js/LoginChk.js"></script>
 	<script>
-	$('.toast').toast({delay: 5000});
+		$('.toast').toast({
+			delay : 5000
+		});
 	</script>
 </body>
 </html>

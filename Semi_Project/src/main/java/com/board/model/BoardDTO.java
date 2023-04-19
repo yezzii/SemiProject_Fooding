@@ -2,6 +2,8 @@ package com.board.model;
 
 public class BoardDTO {
 	
+	
+	private int board_num;
 	private int board_idx;
 	private String board_title;
 	private String board_writer;
@@ -59,6 +61,12 @@ public class BoardDTO {
 	}
 	public void setBoard_type(int board_type) {
 		this.board_type = board_type;
+	}
+	public int getBoard_num() {
+		return board_num;
+	}
+	public void setBoard_num(int board_num) {
+		this.board_num = board_num;
 	}
 	
 	
