@@ -32,7 +32,7 @@ public class MemberLoginAction implements Action {
 		String id = request.getParameter("id");
 		String Raw_pwd = request.getParameter("pwd");
 		String pwd = Encryption.encodeSha256(Raw_pwd);
-		String basic_thumnail = "main_img/user.png";
+		String basic_thumnail = "main_img/basic_thumnail.png";
 		
 		int result = 0;
 		
@@ -56,7 +56,7 @@ public class MemberLoginAction implements Action {
 				result = 1;
 				
 				JSONObject jsonObj = new JSONObject();
-				
+				 
 				jsonObj.put("result", result);
 				jsonObj.put("name", memdto.getMember_name());
 				
@@ -67,7 +67,7 @@ public class MemberLoginAction implements Action {
 				 * out.println("</script>");
 				 */			
 				
-			} else if (memdto.getMember_type() == 1) {
+			} else if (memdto.getMember_type() == 1 || memdto.getMember_type() == 3) {
 
 				session.setAttribute("id", memdto.getMember_id());
 				session.setAttribute("email", memdto.getMember_email());
@@ -76,10 +76,14 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("type", memdto.getMember_type());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
-				out.println("<script>");
-				out.println("alert('" + session.getAttribute("name") + " 회원님 다시 오신걸 환영합니다.')");
-				out.println("location.href='index.jsp'");
-				out.println("</script>");
+				result = 1;
+				
+				JSONObject jsonObj = new JSONObject();
+				 
+				jsonObj.put("result", result);
+				jsonObj.put("name", memdto.getMember_name());
+				
+				out.println(jsonObj);
 
 			} else if (memdto.getMember_type() == 2) {
 
@@ -91,10 +95,16 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("storenum", memdto.getMember_storenum());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
-				out.println("<script>");
-				out.println("alert('" + session.getAttribute("name") + " 사장님 다시 오신걸 환영합니다.')");
-				out.println("location.href='index.jsp'");
-				out.println("</script>");
+
+				result = 1;
+				
+				JSONObject jsonObj = new JSONObject();
+				 
+				jsonObj.put("result", result);
+				jsonObj.put("name", memdto.getMember_name());
+				
+				out.println(jsonObj);
+
 			}
 		}else {
 			

@@ -5,6 +5,7 @@ public class MemberMarkDTO {
 	private int idx;
 	private String mem_id;
 	private int marked_storeidx;
+	private int mark_YN;
 
 	
 	public int getIdx() {
@@ -24,6 +25,12 @@ public class MemberMarkDTO {
 	}
 	public void setMarked_storeidx(int marked_storeidx) {
 		this.marked_storeidx = marked_storeidx;
+	}
+	public int getMark_YN() {
+		return mark_YN;
+	}
+	public void setMark_YN(int mark_YN) {
+		this.mark_YN = mark_YN;
 	}
 	
 }

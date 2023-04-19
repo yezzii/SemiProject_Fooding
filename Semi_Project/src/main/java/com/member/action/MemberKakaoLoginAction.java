@@ -49,7 +49,7 @@ public class MemberKakaoLoginAction implements Action {
 		
 			forward.setRedirect(false);
 			
-			forward.setPath("member/member_kakao_join.jsp");
+			forward.setPath("member_kakao_join.jsp");
 		
 		
 		}else if(check == 1) {				//회원인 경우 로그인 페이지로 안내
@@ -63,10 +63,11 @@ public class MemberKakaoLoginAction implements Action {
 					session.setAttribute("id", memdto.getMember_id());
 					session.setAttribute("name", memdto.getMember_name());
 					session.setAttribute("type", memdto.getMember_type());
+					session.setAttribute("Thumnail", kakao_thumnail);
 					
 					out.println("<script>");
 					out.println("alert('" + session.getAttribute("name") + " 관리자님 오지게 인사박습니다.')");
-					out.println("location.href='main.jsp'");
+					out.println("location.href='index.jsp'");
 					out.println("</script>");
 					
 				} else if (memdto.getMember_type() == 1) {
@@ -76,10 +77,11 @@ public class MemberKakaoLoginAction implements Action {
 					session.setAttribute("phone", memdto.getMember_phone());
 					session.setAttribute("name", memdto.getMember_name());
 					session.setAttribute("type", memdto.getMember_type());
-
+					session.setAttribute("Thumnail", kakao_thumnail);
+					
 					out.println("<script>");
 					out.println("alert('" + session.getAttribute("name") + " 회원님 다시 오신걸 환영합니다.')");
-					out.println("location.href='main.jsp'");
+					out.println("location.href='index.jsp'");
 					out.println("</script>");
 
 				} else if (memdto.getMember_type() == 2) {
@@ -90,11 +92,11 @@ public class MemberKakaoLoginAction implements Action {
 					session.setAttribute("name", memdto.getMember_name());
 					session.setAttribute("type", memdto.getMember_type());
 					session.setAttribute("storenum", memdto.getMember_storenum());
-					
+					session.setAttribute("Thumnail", kakao_thumnail);
 
 					out.println("<script>");
 					out.println("alert('" + session.getAttribute("name") + " 사장님 다시 오신걸 환영합니다.')");
-					out.println("location.href='main.jsp'");
+					out.println("location.href='index.jsp'");
 					out.println("</script>");
 				}else if (memdto.getMember_type() == 3) {
 
@@ -105,7 +107,7 @@ public class MemberKakaoLoginAction implements Action {
 
 					out.println("<script>");
 					out.println("alert('" + session.getAttribute("name") + " 카카오 회원님 환영합니다.')");
-					out.println("location.href='main.jsp'");
+					out.println("location.href='index.jsp'");
 					out.println("</script>");
 				
 			}else {
