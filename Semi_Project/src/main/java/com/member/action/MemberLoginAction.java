@@ -32,7 +32,7 @@ public class MemberLoginAction implements Action {
 		String id = request.getParameter("id");
 		String Raw_pwd = request.getParameter("pwd");
 		String pwd = Encryption.encodeSha256(Raw_pwd);
-		String basic_thumnail = "main_img/user.png";
+		String basic_thumnail = "main_img/basic_thumnail.png";
 		
 		int result = 0;
 		
@@ -67,7 +67,7 @@ public class MemberLoginAction implements Action {
 				 * out.println("</script>");
 				 */			
 				
-			} else if (memdto.getMember_type() == 1) {
+			} else if (memdto.getMember_type() == 1 || memdto.getMember_type() == 3) {
 
 				session.setAttribute("id", memdto.getMember_id());
 				session.setAttribute("email", memdto.getMember_email());
@@ -95,6 +95,7 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("storenum", memdto.getMember_storenum());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
+
 				result = 1;
 				
 				JSONObject jsonObj = new JSONObject();
@@ -103,6 +104,7 @@ public class MemberLoginAction implements Action {
 				jsonObj.put("name", memdto.getMember_name());
 				
 				out.println(jsonObj);
+
 			}
 		}else {
 			
