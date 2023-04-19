@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%
@@ -21,8 +21,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="-1">
-<meta name="description" content="MStore - Modern Bootstrap E-commerce Template" />
-<meta name="keywords"	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+<meta name="description"
+	content="MStore - Modern Bootstrap E-commerce Template" />
+
+<meta name="keywords"
+	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
 <meta name="author" content="Createx Studio" />
 <!-- Viewport-->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,46 +43,64 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
-<!-- Customizer styles and scripts-->
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
-	<script src="js/kakao_login.js"></script>
 
-	
+<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+<script src="js/kakao_login.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 </head>
 <!-- Body-->
 <body>
 
-	<%--   ======================================상단 네비바 <<START>>======================================= --%>
- 
+
+	<!-- Success toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive"
+			aria-atomic="true" id="login_success">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 성공</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-success" id="toast_success_div"></div>
+		</div>
+	</div>
+
+	<!-- Warning toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 실패</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning">아이디 혹은 비밀번호를 확인해주세요.</div>
+		</div>
+	</div>
+	<!--   ==============================  네비바  ================================= -->
+
+
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
+
 	}
-	
-	String thumnail =  (String)session.getAttribute("Thumnail");
-	String profile =  (String)session.getAttribute("member_profile");
-	String name = (String)session.getAttribute("name");
-	
+
+	String thumnail = (String) session.getAttribute("Thumnail");
+	String profile = (String) session.getAttribute("member_profile");
+	String name = (String) session.getAttribute("name");
 	%>
-<!-- Success toast -->
-							<div class="toast" role="alert" aria-live="assertive"
-								aria-atomic="true">
-								<div class="toast-header bg-success text-white">
-									<i class="mr-2" data-feather="check-circle"
-										style="width: 1.25rem; height: 1.25rem;"></i> <span
-										class="font-weight-semibold mr-auto">Success toast</span>
-									<button type="button" class="close text-white ml-2 mb-1"
-										data-dismiss="toast" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="toast-body text-success">Hello, world! This is
-									a toast message.</div>
-							</div>
+
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -113,7 +134,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											data-feather="mail"></i></span>
 									</div>
 									<input class="form-control" type="text" id="signin-id"
-										placeholder="ID" aria-label="ID" name="id"
+										placeholder="아이디" aria-label="ID" name="id"
 										aria-describedby="signin-id-icon" required />
 									<div class="invalid-feedback">아이디를 입력해주세요.</div>
 								</div>
@@ -126,9 +147,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											data-feather="lock"></i></span>
 									</div>
 									<input class="form-control" type="password"
-										id="signin-password" placeholder="Password"
-										aria-label="Password" name="pwd"
-										aria-describedby="signin-password-icon" required />
+										id="signin-password" placeholder="비밀번호" aria-label="Password"
+										name="pwd" aria-describedby="signin-password-icon" required />
 									<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 								</div>
 							</div>
@@ -137,9 +157,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" data-toggle="toast" data-target="#success-toast">
-								로그인</button>
-							
+							<button class="btn btn-primary btn-block" type="button"
+								id="ImLogin">로그인</button>
+
 							<div class="pt-3" align="center">
 								<a href="account-id-recovery.jsp"
 									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
@@ -148,6 +168,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</form>
 					</div>
+
 
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
@@ -165,7 +186,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<div class="form-group">
 								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									name="member_pwd" placeholder="Password" aria-label="Password" />
+									name="member_pwd" placeholder="비밀번호" aria-label="Password" />
 								<span class="feedback" id="signup-pwdchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -173,8 +194,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
 									name="member_pwdchk" id="signup-password-confirm"
-									placeholder="Confirm password" aria-label="Confirm password" />
-								<span class="feedback" id="signup-pwdconfirm-chk"></span>
+									placeholder="비밀번호 확인" aria-label="Confirm password" /> <span
+									class="feedback" id="signup-pwdconfirm-chk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
@@ -187,7 +208,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<div class="form-group">
 								<label class="sr-only" for="signup-email">이메일</label> <input
 									class="form-control" type="email" id="signup-email"
-									name="member_email" placeholder="Email"
+									name="member_email" placeholder="이메일"
 									aria-label="Email address" /> <span class="feedback"
 									id="signup-emailchk"></span>
 								<div class="invalid-feedback"></div>
@@ -195,8 +216,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<div class="form-group">
 								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
 									class="form-control" type="text" name="member_phone"
-									id="signup-phone" placeholder="Phone" aria-label="Phone" />
-								<span class="feedback" id="signup-phonechk"></span>
+									id="signup-phone" placeholder="연락처" aria-label="Phone" /> <span
+									class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<button class="btn btn-primary btn-block" type="button"
@@ -206,6 +227,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						</form>
 					</div>
 				</div>
+
+
 				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
@@ -215,8 +238,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				<div class="text-center pt-4">
 					<input type="image" style="width: 320px;"
 						src="main_img/kakao_login.jpg" onclick="kakaoLogin();"
-						value="카카오 로그인 kakaoLogin();"> <br>
-					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
+						value="카카오 로그인 kakaoLogin();"> <br> <br> <a
+						class="social-btn sb-facebook mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Facebook"><i
 						class="flaticon-facebook"></i></a> <a
 						class="social-btn sb-google-plus mx-2 mb-3" href="#"
@@ -535,10 +558,19 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
+
+									<%
+									if (session.getAttribute("id") != null) {
+									%>
 									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-profile.jsp">Profile
-											Settings</a></li>
+									<li><a class="dropdown-item"
+										href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
 									<li class="dropdown-divider"></li>
+									<%
+									}
+									%>
+
+
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
 									<li class="dropdown-divider"></li>
@@ -606,7 +638,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" data-toggle="modal" href="#modalLong" >
+							<li><a class="dropdown-item" data-toggle="modal"
+								href="#modalLong">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
@@ -653,12 +686,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					</div>
 					<form method="get"
 						action="<%=request.getContextPath()%>/total_main_search.do">
-						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
+						<div class="flex-grow-1 pb-3 pt-sm-4 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
 									<%-- 검색input테그 --%>
 
-									<input class="form-control rounded" type="text"
+									<input class="form-control-dong rounded" type="text"
 										id="site-search" placeholder="통합 검색" name="keyword"
 										aria-label="Search site" aria-describedby="search-icon">
 									<%-- 검색input테그 END --%>
@@ -672,6 +705,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div>
 					</form>
+
+
+
+
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -689,24 +726,25 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
-					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp">
-						
-						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a> <a
+						class="navbar-btn navbar-collapse-hidden" href="member/logout.jsp">
+
+						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃
+					</a>
 
 					<%-- 프로필 정보란 --%>
-				<div class="navbar-btn navbar-collapse-hidden">
-					<div class="kakao_img mx-auto mb-1">
-						<a href="<%=request.getContextPath()%>/myprofile.go"> <img
-							class="profile_img" src="<%=thumnail%>">
-						</a>
+					<div class="navbar-btn navbar-collapse-hidden">
+						<div class="kakao_img mx-auto mb-1">
+							<a href="<%=request.getContextPath()%>/myprofile.go"> <img
+								class="profile_img" src="<%=thumnail%>">
+							</a>
+						</div>
+						<span class="mx-auto mb-1"
+							style="font-family: 'GmarketSansMedium'; font-size: 12px;"><%=name%>
+							님 </span> <img src="${profile }">
 					</div>
-						<span class="mx-auto mb-1" style="font-family:'GmarketSansMedium'; font-size: 12px; "><%=name%> 님 </span>
-					<img src="${profile }">
-				</div>
 
-				<%-- 프로필 정보란 --%>
+					<%-- 프로필 정보란 --%>
 					<%
 					}
 					%>
@@ -771,155 +809,259 @@ if (request.getProtocol().equals("HTTP/1.1"))
               </c:forEach>
               </c:if>				
      --%>
-    
-    <!--가게정보 상세페이지  ==============================================================================================-->
-     <c:set var="list" value="${List}" />
-	    <c:if test="${!empty list }">
-      <c:forEach items="${list }" var="dto">
-		    <div class="modal modal-quick-view fade" id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
-		      <div class="modal-dialog" role="document">
-		        <div class="modal-content">
-		          <div class="modal-header">
-		            <div>
-		              <h2 class="h2 modal-title mb-1" style="font-family: 'GmarketSansMedium';">${dto.getMain_name()}</h2>
-		              <h5 class="text-primary font-weight-light mb-0" style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</h5>
-		            </div>
-		            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		          </div>
-		          <div class="modal-body">
-		            <div class="row">
-		              <!-- Product gallery-->
-		              <div class="col-lg-7">
-		                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
-			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-		                </div>
-		              </div>
-		              <!-- Product details-->
-		              <div class="col-lg-5 pt-4 pt-lg-0">
-		                <form class="pb-4">
-		                  <div class="d-flex flex-wrap align-items-center pt-1">
-		                    <div>
-		                      <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
-		                    </div>
-		                    <div>
-		                      <button class="btn btn-primary px-5 mr-2" type="submit"><i class="mr-2" data-feather="shopping-cart" style="font-family: 'GmarketSansMedium';"></i>예약하기</button>
-		                    </div><a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
-		                  </div>
-		                </form>
-		                <div class="card">
-		                  <div class="card-header py-3 bg-0">
-		                    <h3 class="h6 mb-0"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑 상세 정보</h3>
-		                  </div>
-		                  <div class="card-body">
-		                    <ul class="mb-0" style="font-family: 'GmarketSansMedium';">
-		                      <li>주소 : ${dto.getMain_addr() } ${dto.getMain_detailaddr() }<br> 우편번호 : ${dto.getMain_post() }</li>
-		                      <br>
-		                      <li>전화 : ${dto.getMain_phone() }</li>
-		                      <br>
-		                      <li>=======정보=======<br>${dto.getMain_info()}</li>
-		                      <br>
-		                      <li>음식 종류 : ${dto.getMain_type() }</li>
-		                      <br>
-		                      <li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 : ${dto.getMain_endtime() }</li>
-		                    </ul>
-		                  </div>
-		                </div>
-		              </div>
-		                              =================================================모달 추가 정보 구분칸===================================================
-		              
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-		   </c:forEach>
-		   </c:if>
-    <!-- Toast notifications-->
-    <div class="toast-container toast-bottom-center">
-      <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to cart!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to your cart.</div>
-      </div>
-      <div class="toast mb-3" id="compare-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to comparison!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to comparison table.</div>
-      </div>
-      <div class="toast mb-3" id="wishlist-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to wishlist!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to your wishlist.</div>
-      </div>
-      <div class="toast mb-3" id="profile-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">Your profile info updated successfuly.</div>
-      </div>
-      <div class="toast mb-3" id="address-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">Your addresses info updated successfuly.</div>
-      </div>
-    </div>
-    <div class="container pb-5 mb-4">
-      <div class="row">
-        <div class="col-lg-3">
-          <!-- Shop sidebar-->
-         <!-- Shop sidebar-->
-          <div class="offcanvas-sidebar">
-            <div class="offcanvas-sidebar-toggle"><span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span></div>
-            <div class="offcanvas-sidebar-body">
-              <div class="offcanvas-sidebar-body-inner">
-                <!-- Categories-->
-                <div class="widget widget-categories mb-4 py-1">
-                  <p class="widget-title">카테고리</p>
-                  <ul id="shopCategories">
-                    <li class="has-children"><a href="#shoes" data-toggle="collapse">
-                    <i class="widget-categories-indicator" data-feather="chevron-down"></i>지역<span class="badge text-muted ml-1"></span></a>
-                      <ul class="collapse show" id="shoes" data-parent="#shopCategories">
-                        <li><a href="SearchKeyRestaurant.do?keyword=서울">서울<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=경기">경기<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=인천">인천<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=대구">대구<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=부산">부산<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=제주">제주<span class="badge text-muted ml-1"></span></a></li>
-                      </ul>
-                    </li>
-                    <li class="has-children"><a class="collapsed" href="#clothing" data-toggle="collapse">
-                    <i class="widget-categories-indicator" data-feather="chevron-down"></i>음식 종류<span class="badge text-muted ml-1"></span></a>
-                      <ul class="collapse" id="clothing" data-parent="#shopCategories">
-                        <li><a href="SearchKeyRestaurant.do?keyword=고기">고기요리<span class="badge text-muted ml-1"></span></a> </li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=한식">한식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=양식">양식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=중식">중식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=일식">일식<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=아시안">아시안<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=카페">카페,디저트<span class="badge text-muted ml-1"></span></a></li>
-                      </ul>
-                    </li>
-                    <li class="has-children"><a class="collapsed" href="#bags" data-toggle="collapse">
-                    <i class="widget-categories-indicator" data-feather="chevron-down"></i>테마별<span class="badge text-muted ml-1"></span></a>
-                      <ul class="collapse" id="bags" data-parent="#shopCategories">
-                        <li><a href="SearchKeyRestaurant.do?keyword=데이트">데이트코스<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=가족">가족모임<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=뷰">뷰가 좋은<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=전통">전통적인<span class="badge text-muted ml-1"></span></a></li>
-                        <li><a href="SearchKeyRestaurant.do?keyword=비지니스">비지니스 미팅<span class="badge text-muted ml-1"></span></a></li>
-                      </ul>
-                    </li>
-                 
-                  </ul>
-                </div>
-                <!-- Price range-->
+
+	<!--가게정보 상세페이지  ==============================================================================================-->
+	<c:set var="list" value="${List}" />
+	<c:if test="${!empty list }">
+		<c:forEach items="${list }" var="dto">
+			<div class="modal modal-quick-view fade"
+				id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div>
+								<h2 class="h2 modal-title mb-1"
+									style="font-family: 'GmarketSansMedium';">${dto.getMain_name()}</h2>
+								<h5 class="text-primary font-weight-light mb-0"
+									style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</h5>
+							</div>
+							<button class="close" type="button" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<!-- Product gallery-->
+								<div class="col-lg-7">
+									<div class="owl-carousel"
+										data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+									</div>
+								</div>
+								<!-- Product details-->
+								<div class="col-lg-5 pt-4 pt-lg-0">
+									<form class="pb-4">
+										<div>
+											<label for="store-price">예약금</label>&nbsp;&nbsp;<span>20,000</span>
+											<br><br>
+											<div class="form-group">
+												<div class="form-inline" style="float:left;">
+												<label for="request-text">요청사항</label>
+												</div>
+												<div class="form-inline pb-2" style="float:right;">
+													<label for="people-num">인원</label>&nbsp;&nbsp;
+													<input class="pl-2 form-control mr-1" type="number"
+													id="people-num" name="quantity"
+													style="width: 3.5rem; height: 2rem;" value="1" required>
+												</div>
+											</div>
+												<textarea class="form-control" id="request-text" rows="3"
+													style="resize: none;"></textarea>
+										</div>
+										<div class="d-flex flex-wrap align-items-center pt-1">
+
+											<div>
+												<button class="btn btn-primary px-5 mr-2" type="submit">
+													<i class="mr-2" data-feather="shopping-cart"
+														style="font-family: 'GmarketSansMedium';"></i>예약하기
+												</button>
+											</div>
+											<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
+												class="align-middle mr-1" data-feather="heart"
+												style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
+										</div>
+									</form>
+									<div class="card">
+										<div class="card-header py-3 bg-0">
+											<h3 class="h6 mb-0">
+												<span
+													class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
+													data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑
+												상세 정보
+											</h3>
+										</div>
+										<div class="card-body">
+											<ul class="mb-0" style="font-family: 'GmarketSansMedium';">
+												<li>주소 : ${dto.getMain_addr() }
+													${dto.getMain_detailaddr() }<br> 우편번호 :
+													${dto.getMain_post() }
+												</li>
+												<br>
+												<li>전화 : ${dto.getMain_phone() }</li>
+												<br>
+												<li>=======정보=======<br>${dto.getMain_info()}</li>
+												<br>
+												<li>음식 종류 : ${dto.getMain_type() }</li>
+												<br>
+												<li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 :
+													${dto.getMain_endtime() }</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								=================================================모달 추가 정보
+								구분칸===================================================
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+	</c:if>
+	<!-- Toast notifications-->
+	<div class="toast-container toast-bottom-center">
+		<div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert"
+			aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to cart!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to your cart.</div>
+		</div>
+		<div class="toast mb-3" id="compare-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-info text-white">
+				<i class="mr-2" data-feather="info"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to comparison!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to comparison
+				table.</div>
+		</div>
+		<div class="toast mb-3" id="wishlist-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-info text-white">
+				<i class="mr-2" data-feather="info"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to wishlist!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to your wishlist.</div>
+		</div>
+		<div class="toast mb-3" id="profile-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Updated!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">Your profile info updated successfuly.</div>
+		</div>
+		<div class="toast mb-3" id="address-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Updated!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">Your addresses info updated
+				successfuly.</div>
+		</div>
+	</div>
+	<div class="container pb-5 mb-4">
+		<div class="row">
+			<div class="col-lg-3">
+				<!-- Shop sidebar-->
+				<!-- Shop sidebar-->
+				<div class="offcanvas-sidebar">
+					<div class="offcanvas-sidebar-toggle">
+						<span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span>
+					</div>
+					<div class="offcanvas-sidebar-body">
+						<div class="offcanvas-sidebar-body-inner">
+							<!-- Categories-->
+							<div class="widget widget-categories mb-4 py-1">
+								<p class="widget-title">카테고리</p>
+								<ul id="shopCategories">
+									<li class="has-children"><a href="#shoes"
+										data-toggle="collapse"> <i
+											class="widget-categories-indicator"
+											data-feather="chevron-down"></i>지역<span
+											class="badge text-muted ml-1"></span></a>
+										<ul class="collapse show" id="shoes"
+											data-parent="#shopCategories">
+											<li><a href="SearchKeyRestaurant.do?keyword=서울">서울<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=경기">경기<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=인천">인천<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=대구">대구<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=부산">부산<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=제주">제주<span
+													class="badge text-muted ml-1"></span></a></li>
+										</ul></li>
+									<li class="has-children"><a class="collapsed"
+										href="#clothing" data-toggle="collapse"> <i
+											class="widget-categories-indicator"
+											data-feather="chevron-down"></i>음식 종류<span
+											class="badge text-muted ml-1"></span></a>
+										<ul class="collapse" id="clothing"
+											data-parent="#shopCategories">
+											<li><a href="SearchKeyRestaurant.do?keyword=고기">고기요리<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=한식">한식<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=양식">양식<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=중식">중식<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=일식">일식<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=아시안">아시안<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=카페">카페,디저트<span
+													class="badge text-muted ml-1"></span></a></li>
+										</ul></li>
+									<li class="has-children"><a class="collapsed" href="#bags"
+										data-toggle="collapse"> <i
+											class="widget-categories-indicator"
+											data-feather="chevron-down"></i>테마별<span
+											class="badge text-muted ml-1"></span></a>
+										<ul class="collapse" id="bags" data-parent="#shopCategories">
+											<li><a href="SearchKeyRestaurant.do?keyword=데이트">데이트코스<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=가족">가족모임<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=뷰">뷰가 좋은<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=전통">전통적인<span
+													class="badge text-muted ml-1"></span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=비지니스">비지니스
+													미팅<span class="badge text-muted ml-1"></span>
+											</a></li>
+										</ul></li>
+
+								</ul>
+							</div>
+							<!-- Price range-->
 							<div class="widget mb-4 pb-3">
 								<h3 class="widget-title">메뉴 가격으로 레스토랑 검색</h3>
 								<form method="get" action="SearchCostRestaurant.do?"
@@ -999,14 +1141,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<div class="col-md-4 col-sm-6">
 							<div class="product-card mb-4">
 								<div class="product-thumb">
-									 <span	class="product-wishlist-btn" data-toggle="tooltip"
-										data-placement="left" title="찜하기"> 
-										
-										<i data-feather="heart" id="store-dibs"></i>
-										
-										</span>
-									 <input type="hidden" id="main_idx" value="${dto.getMain_idx()}"> 
-									 <img src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
+									<span class="product-wishlist-btn" data-toggle="tooltip"
+										data-placement="left" title="찜하기"> <i
+										data-feather="heart" id="store-dibs"></i>
+
+									</span> <input type="hidden" id="main_idx"
+										value="${dto.getMain_idx()}"> <img
+										src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
 								</div>
 								<div class="product-card-body text-center">
 									<a class="product-meta" href="#"
@@ -1375,15 +1516,22 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
+
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="js/sign_upChk.js"></script>
-<script type="text/javascript" src="js/sign_upChk.js"></script>
-<script src="js/Board_Main.js"></script>
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="js/sign_upChk.js"></script>
+	<script src="js/LoginChk.js"></script>
+	<script src="js/Board_Main.js"></script>
 	<script src="js/StoreMarked.js"></script>
+	<script>
+		$('.toast').toast({
+			delay : 3000
+		});
+	</script>
 
 </body>
 </html>
