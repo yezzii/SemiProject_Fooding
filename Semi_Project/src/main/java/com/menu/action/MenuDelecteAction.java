@@ -11,24 +11,22 @@ import com.member.action.Action;
 import com.member.action.ActionForward;
 import com.menu.model.MenuDAO;
 
-public class MenuSelectAction implements Action {
+public class MenuDelecteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, Exception {
 		
 		
+		int menu_no = Integer.parseInt(request.getParameter("no"));
+		System.out.println("menu_no>>>"+menu_no);
 		MenuDAO dao = MenuDAO.getInstance();
+		
+		int res = dao.deleteMenu(menu_no);
 		
 		PrintWriter out = response.getWriter();
 		
-		int main_idx = Integer.parseInt(request.getParameter("main_idx"));
-		
-		System.out.println("main_idx>>>>"+main_idx);
-		
-		String str = dao.getMenuList(main_idx);
-		
-		out.println(str);
+		out.println(res);
 		
 		return null;
 	}

@@ -26,7 +26,7 @@
 <link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
 <meta name="msapplication-TileColor" content="#111">
 <meta name="theme-color" content="#ffffff">
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
 <style type="text/css">
 .pwCheck {
@@ -47,21 +47,23 @@
 margin-top: 350px;
 }
 
-.menu_text{
-  /* display: flex; /* 요소들을 flex container로 설정합니다 */ */
-  text-align: center; /* 요소들을 수직 가운데로 정렬합니다 */
-  align-content:center;
-max-width:100%;
-min-width: 458px;
-	
-}  
-  
-  
-.menu_text > th{
-margin-left: 30%;
-}  
-  
-  
+ 
+.table_bg th {
+text-align: center;
+} 
+
+#listTable {
+  margin: 0 auto;
+}
+.rst_no_txt{
+width : 50px;
+}
+.menu_name_txt{
+width :80px;
+
+}
+
+
 </style>
 
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
@@ -111,6 +113,7 @@ margin-left: 30%;
 		userID = (String) session.getAttribute("id");
 		
 	}
+	
 	%>
 
 	<!-- Off-canvas account-->
@@ -1248,68 +1251,6 @@ margin-left: 30%;
 		</div>
 	</div>
 	<!-- modal end -->
-<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#modalLarge">
-  Large modal
-</button>
-
-
-
-
-<!-- 메뉴 Modal markup -->
-	<div class="modal" tabindex="-1" role="dialog" id="modalLarge">
-  		<div class="modal-dialog modal-lg" role="document">
-    	<div class="modal-content">
-     	 <div class="modal-header">
-					<h5 class="modal-title">메뉴 페이지</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden=true>&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>
-						<form method="post" enctype="multipart/form-data"name="inForm" id="inForm" >
-						<table cellspacing="0" align="center" width="150px">
-					<tr class="table_bg">
-						<th>메뉴 이름</th><th>메뉴 가격</th><th>메뉴 사진</th> 
-					</tr>
-						
-					<tr>
-						<td> <input type="text" name="menu_name" id="name" size="10"></td>
-						<td> <input type="text" name="menu_price" id="price" size="10"></td>
-						<td> <input type="file" name="menu_img" id="pic" size="10"></td>
-						<td>
-						</td>
-						<td colspan="3" align="center">	
-						<input type="button" value="등록하기" id="btn">	
-						</td>
-					</tr>
-					
-					</table>
-					</form>
-					<br>
-					<span>메뉴 리스트</span>
-						<table id="listTable"  cellspacing="0">
-							<tr class="menu_text">
-								<th>번호</th><th>메뉴 이름</th><th>메뉴 가격</th>
-								<th>메뉴 사진</th><th>수정</th><th>삭제</th>
-							</tr>
-						</table>
-						
-					</p>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary btn-sm"
-								data-dismiss="modal">Close</button>
-							<input type="submit" class="btn btn-primary btn-sm" value="가입하기" />
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- modal end -->
-
-
 
 	<!-- 가게 수정 Modal markup -->
 	<c:set var="main" value="${boardmain }" />
@@ -1328,10 +1269,8 @@ margin-left: 30%;
 						<%--enctype : 파일을 업로드하기 위한 메서드 --%>
 					<form method="post" enctype="multipart/form-data"
 						action="<%=request.getContextPath()%>/board_mainprofilemodify.do">
-						<input type="hidden" name="main_idx"
-							value="${main.getMain_idx() }">
+						<input type="hidden" name="main_idx" value="${main.getMain_idx() }">
 						<div class="select-box">
-
 							<label for="select-box1" class="label select-box2"> <span
 								class="label-desc">가게 타입</span>
 							</label> <select id="select-box1" class="select" name="main_type" value="${main.getMain_type()}">
@@ -1409,6 +1348,75 @@ margin-left: 30%;
 		</div>
 	</div>
 	<!-- modal end -->
+
+
+
+<!-- 메뉴 Modal markup -->
+	<div class="modal" tabindex="-1" role="dialog" id="modalLarge">
+  		<div class="modal-dialog modal-lg" role="document">
+    	<div class="modal-content">
+     	 <div class="modal-header">
+					<h5 class="modal-title">메뉴 페이지</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden=true>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>
+						<form method="post" enctype="multipart/form-data" name="inForm" id="inForm" width="100%" >
+						<table cellspacing="0" align="center" width="100%">
+					<tr class="table_bg">
+						<th>메뉴 이름</th><th>메뉴 가격</th><th>메뉴 사진</th> 
+					</tr>
+						
+					<tr>
+						<td> <input type="text" name="menu_name" id="menu_name" size="10"></td>
+						<input type="hidden" name="main_idx" id="main_idx" value="${main.getMain_idx() }">
+						<td> <input type="text" name="menu_price" id="menu_price" size="10"></td>
+						<td> <input type="file" name="menu_img" id="menu_img" size="10"></td>
+							
+						<td>
+						</td>
+						<td colspan="3" align="center">	
+						<input type="button" value="등록하기" id="btn">	
+						</td>
+					</tr>
+					
+					</table>
+					</form>
+					
+					<br>
+					<span>메뉴 리스트</span>
+						<table id="listTable" border="1" cellspacing="0" width="80%">
+							<tr align="center">
+								
+								<th>가게 번호</th>
+								<th>메뉴 번호</th>
+								<th>메뉴 이름</th>
+								<th>메뉴 가격</th>
+								<th>메뉴 사진</th>
+								<th>수 정</th>
+								<th>삭 제</th>
+							
+							</tr>
+							
+						</table>
+						
+					</p>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary btn-sm"
+								data-dismiss="modal">Close</button>
+							<input type="submit" class="btn btn-primary btn-sm" value="가입하기" />
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal end -->
+
+
+
 
 
 	<!--회원 탈퇴 Modal markup -->
@@ -1740,99 +1748,99 @@ margin-left: 30%;
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
 	<script src="js/Board_Main.js"></script>
+	<script src="js/Main_Menu.js"></script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
-		$(function() {
-			$('#updatebtn123').on(
-					'click',
-					function() {
-						let password1 = $("#account-pass").val();
-						let password2 = $("#account-confirm-pass").val();
-						let text = "회원수정 완료";
-						let text2 = "비밀번호가 일치하지 않습니다.";
-						/* if (password1 !== "" || password2 !== "") {
-						    if (password1 === password2) {
-						        $(".toast-header").removeClass("bg-warning").removeClass("text-white"); // 기존 클래스 제거
-						        $(".toast-header").addClass("bg-success").addClass("text-white"); // 클래스 추가
-						        $(".font-weight-semibold").text(""); // 텍스트 초기화
-						        $(".font-weight-semibold").append("success"); // 텍스트 지정
-						        $("#toast-body").text(""); // 텍스트 초기화
-						        $("#toast-body").append(text); // 텍스트 지정
-						        $("#successPwdToast").show(); // 창띄우기
-						        return false;
-						    }  */{
-							if (password1 != password2) {
-								$(".toast-header").removeClass("bg-success")
-										.removeClass("text-white"); // 기존 클래스 제거
-								$(".toast-header").addClass("bg-warning")
-										.addClass("text-white"); // 클래스 추가
-								$(".font-weight-semibold").text(""); // 텍스트 초기화
-								$(".font-weight-semibold").append("failed"); // 텍스트 지정
-								$("#toast-body").text(""); // 텍스트 초기화
-								$("#toast-body").append(text2); // 텍스트 지정
-								$("#failPwdToast").show(); // 창띄우기
-								return false;
-							}
+	$(function() {
+		$('#updatebtn123').on(
+				'click',
+				function() {
+					let password1 = $("#account-pass").val();
+					let password2 = $("#account-confirm-pass").val();
+					let text = "회원수정 완료";
+					let text2 = "비밀번호가 일치하지 않습니다.";
+					/* if (password1 !== "" || password2 !== "") {
+					    if (password1 === password2) {
+					        $(".toast-header").removeClass("bg-warning").removeClass("text-white"); // 기존 클래스 제거
+					        $(".toast-header").addClass("bg-success").addClass("text-white"); // 클래스 추가
+					        $(".font-weight-semibold").text(""); // 텍스트 초기화
+					        $(".font-weight-semibold").append("success"); // 텍스트 지정
+					        $("#toast-body").text(""); // 텍스트 초기화
+					        $("#toast-body").append(text); // 텍스트 지정
+					        $("#successPwdToast").show(); // 창띄우기
+					        return false;
+					    }  */{
+						if (password1 != password2) {
+							$(".toast-header").removeClass("bg-success")
+									.removeClass("text-white"); // 기존 클래스 제거
+							$(".toast-header").addClass("bg-warning")
+									.addClass("text-white"); // 클래스 추가
+							$(".font-weight-semibold").text(""); // 텍스트 초기화
+							$(".font-weight-semibold").append("failed"); // 텍스트 지정
+							$("#toast-body").text(""); // 텍스트 초기화
+							$("#toast-body").append(text2); // 텍스트 지정
+							$("#failPwdToast").show(); // 창띄우기
+							return false;
 						}
-					});
-		});
-
-		$(function() {
-			// 이미지 클릭 시 파일 업로드 창 실행
-			$('#Change_Profile').click(function() {
-				console.log('fileadd');
-				$("input[name='fileProfile']").click();
-			});
-
-			// 파일 선택 시 실행되는 이벤트
-			$("input[name='fileProfile']").on('change', function(e) {
-				// form 데이터 생성
-				var frm = document.getElementById('profile_file_add');
-				frm.method = 'POST';
-				frm.enctype = 'multipart/form-data';
-				var fileData = new FormData(frm);
-
-			});
-		});
-
-		var currentImageSrc = "${empty dto.getMember_image() ? 'main_img/basic_thumnail.png' : dto.getMember_image()}"; // 초기 이미지 소스 설정
-
-		function setThumbnail(event) {
-			var reader = new FileReader();
-			reader.onload = function(event) {
-				var img = document.createElement("img");
-				img.setAttribute("src", event.target.result);
-				img.setAttribute("class", "col-lg-6");
-				document.querySelector("img[src='" + currentImageSrc + "']")
-						.remove(); // 현재 이미지 삭제
-				document.querySelector("div#image_container").appendChild(img); // 새로운 이미지 추가
-				currentImageSrc = event.target.result; // 현재 이미지 소스 업데이트
-			};
-			reader.readAsDataURL(event.target.files[0]);
-		};
-
-		function findAddr() {
-			new daum.Postcode({
-				oncomplete : function(data) {
-					console.log(data);
-
-					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-					// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-					// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-					var roadAddr = data.roadAddress; // 도로명 주소 변수
-					var jibunAddr = data.jibunAddress; // 지번 주소 변수
-					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-					document.getElementById('post').value = data.zonecode;
-					if (roadAddr !== '') {
-						document.getElementById("addr").value = roadAddr;
-					} else if (jibunAddr !== '') {
-						document.getElementById("addr").value = jibunAddr;
 					}
-				}
-			}).open();
-		};
+				});
+	});
 
+	$(function() {
+		// 이미지 클릭 시 파일 업로드 창 실행
+		$('#Change_Profile').click(function() {
+			console.log('fileadd');
+			$("input[name='fileProfile']").click();
+		});
+
+		// 파일 선택 시 실행되는 이벤트
+		$("input[name='fileProfile']").on('change', function(e) {
+			// form 데이터 생성
+			var frm = document.getElementById('profile_file_add');
+			frm.method = 'POST';
+			frm.enctype = 'multipart/form-data';
+			var fileData = new FormData(frm);
+
+		});
+	});
+
+	var currentImageSrc = "${empty dto.getMember_image() ? 'main_img/basic_thumnail.png' : dto.getMember_image()}"; // 초기 이미지 소스 설정
+
+	function setThumbnail(event) {
+		var reader = new FileReader();
+		reader.onload = function(event) {
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			img.setAttribute("class", "col-lg-6");
+			document.querySelector("img[src='" + currentImageSrc + "']")
+					.remove(); // 현재 이미지 삭제
+			document.querySelector("div#image_container").appendChild(img); // 새로운 이미지 추가
+			currentImageSrc = event.target.result; // 현재 이미지 소스 업데이트
+		};
+		reader.readAsDataURL(event.target.files[0]);
+	};
+
+	function findAddr() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				console.log(data);
+
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+				// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				var roadAddr = data.roadAddress; // 도로명 주소 변수
+				var jibunAddr = data.jibunAddress; // 지번 주소 변수
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById('post').value = data.zonecode;
+				if (roadAddr !== '') {
+					document.getElementById("addr").value = roadAddr;
+				} else if (jibunAddr !== '') {
+					document.getElementById("addr").value = jibunAddr;
+				}
+			}
+		}).open();
+	};
 	</script>
 </body>
 </html>

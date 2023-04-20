@@ -6,6 +6,7 @@ public class MenuDTO {
 	private String menu_name;
 	private int menu_price;
 	private String menu_img;
+	private int menu_idx;
 	
 	public int getMenu_no() {
 		return menu_no;
@@ -36,6 +37,12 @@ public class MenuDTO {
 	}
 	public void setMenu_img(String menu_img) {
 		this.menu_img = menu_img;
+	}
+	public int getMenu_idx() {
+		return menu_idx;
+	}
+	public void setMenu_idx(int menu_idx) {
+		this.menu_idx = menu_idx;
 	}
 
 }

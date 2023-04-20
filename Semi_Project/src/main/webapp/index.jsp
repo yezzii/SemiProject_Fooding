@@ -43,16 +43,17 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 
-<<<<<<< HEAD
+
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
 	<script src="js/Main_Menu.js"></script>
 	
-=======
+
 <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
->>>>>>> total
+<script src="js/kakao_login.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <!-- Body-->
 <body>
@@ -1781,46 +1782,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</div>
-
-		<div class="textForm">
-			<textarea class="cont" rows="5" cols="25" name="main_info"
-				placeholder="가게정보"></textarea>
-		</div>
-
-
-		<div class="time_textForm" align="center">
-			
-			<label for="main_opentime" style="color: #636e72">영업시작시간</label>&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="time" id="main_opentime" name="main_opentime"value="10:00"> <br> <br>
-			<label for="main_endtime" style="color: #636e72">영업종료시간</label> &nbsp;&nbsp;&nbsp;
-			<input type="time" id="main_endtime" name="main_endtime" value="21:00">
-		</div>
-
-		<div class="textForm">
-			<input name="main_post" id="post" type="text" class="location" placeholder="우편번호" readonly onclick="findAddr()"> 
-			<input name="main_addr" id="addr" type="text" class="location" placeholder="주소" readonly> 
-			<input name="main_detailaddr" type="text" class="location" placeholder="상세 주소">
-		</div>
-
-		<div class="textForm">
-			<input name="main_phone" type="text" class="phone" placeholder="전화번호">
-		</div>
-		
-		<div class="image">
-			<span class="pic_txt">가게등록 사진</span>
-			<input class="main_file" type="file" name="main_img">				
-		</div>			
-		
-		</p>
-		<div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary btn-sm" value="가입하기"/>
-		</div>
-		</form>
-		</div>
-      </div>
-    </div>
-  </div>
   <!-- modal end -->
   
   

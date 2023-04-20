@@ -82,17 +82,17 @@ public class MenuDAO {
 
 	} // closeConn() 메서드 end
 
-	public String getMenuList() {
+	public String getMenuList(int no) {
+		
 		String result = "";
-		
-		
 		
 		try {
 			openConn();
 			
-			sql = "select * from main_menu order by menu_no desc";
+			sql = "select * from main_menu where rst_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
 			
 			rs = pstmt.executeQuery();
 			
@@ -100,11 +100,12 @@ public class MenuDAO {
 			
 			while(rs.next()) {
 				result += "<main_menu>";
-				result += "<main_no>"+rs.getInt("main_no")+"</main_no>";
+				result += "<menu_no>"+rs.getInt("menu_no")+"</menu_no>";
 				result += "<rst_no>"+rs.getInt("rst_no")+"</rst_no>";
 				result += "<menu_name>"+rs.getString("menu_name")+"</menu_name>";
-				result += "<menu_price>"+rs.getInt("menu_price")+"</menu_name>";
+				result += "<menu_price>"+rs.getInt("menu_price")+"</menu_price>";
 				result += "<menu_img>"+rs.getString("menu_img")+"</menu_img>";
+				result += "<menu_idx>"+rs.getString("menu_idx")+"</menu_idx>";
 				result += "</main_menu>";
 			}
 			result += "</main_menus>";
@@ -118,9 +119,8 @@ public class MenuDAO {
 		return result;
 	}
 	//입력폼에서 넘어온 데이터들을 DB에 저장하는 메서드
-	public int insertCustomer(MenuDTO dto) {
-		int result = 0, count =0;
-		
+	public int insertMenu(MenuDTO dto) {
+		int result = 0, count =0,count2=0;
 		
 		try {
 			openConn();
@@ -131,14 +131,65 @@ public class MenuDAO {
 			if(rs.next()) {
 				count = rs.getInt(1)+1;
 			}
-			sql = "insert into main_menu values(?,?,?,?,?)";
+			
+			sql = "select max(menu_idx) from main_menu";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count2 = rs.getInt(1)+1;
+			}
+			
+			
+			sql = "insert into main_menu values(?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			pstmt.setInt(2,dto.getRst_no());
+			pstmt.setString(3, dto.getMenu_name());
+			pstmt.setInt(4,dto.getMenu_price());
+			pstmt.setString(5, dto.getMenu_img());
+			pstmt.setInt(6, count2);
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
 		}
-		
-		return 0;
+		return result;
 	}
+
+	public int deleteMenu(int menu_no) {
+		int result = 0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "delete from main_menu where menu_idx = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1,menu_no);
+			
+			result = pstmt.executeUpdate();
+			
+			sql = "update main_menu set menu_idx = menu_idx-1 where menu_idx > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, menu_no);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}//deleteMenu 메서드 end
 	
 	
 }

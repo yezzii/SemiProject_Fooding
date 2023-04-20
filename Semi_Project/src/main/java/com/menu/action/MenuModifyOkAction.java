@@ -2,7 +2,6 @@ package com.menu.action;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,26 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.member.action.Action;
 import com.member.action.ActionForward;
-import com.menu.model.MenuDAO;
 import com.menu.model.MenuDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class MenuInsertAction implements Action {
+public class MenuModifyOkAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, Exception {
-		
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		// 메뉴 수정하는 액션 페이지
 		
 		MenuDTO dto = new MenuDTO();
 		
-		
 		String saveFolder = 
-				"C:\\Users\\rnjsd\\Desktop\\NCS\\project_workspace(semi)\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp3\\wtpwebapps\\Semi_Project\\Main_menu_img";
-		
+				"C:\\\\Users\\\\rnjsd\\\\Desktop\\\\NCS\\\\project_workspace(semi)\\\\.metadata\\\\.plugins\\\\org.eclipse.wst.server.core\\\\tmp3\\\\wtpwebapps\\\\Semi_Project\\\\Main_menu_img";
 		
 		int fileSize = 10 * 1024 * 1024;
 		
@@ -40,9 +34,7 @@ public class MenuInsertAction implements Action {
 				"UTF-8",
 				new DefaultFileRenamePolicy()
 				);
-		
-		int main_idx = Integer.parseInt(multi.getParameter("main_idx").trim());
-		System.out.println(">>>>>>>>"+main_idx);
+				
 		String menu_name = multi.getParameter("menu_name").trim();
 		
 		int menu_price = Integer.parseInt(multi.getParameter("menu_price").trim());
@@ -54,30 +46,14 @@ public class MenuInsertAction implements Action {
 			
 			String homedir = saveFolder;
 			
-			String reFileName = main_idx+"_"+fileName;
-			
-			//String reFileName =fileName;
+			String reFileName = fileName;
 			
 			menu_img.renameTo(new File(homedir+"/"+reFileName));
 			
-			String fileDBName = "Main_menu_img/"+reFileName;
-			
-			dto.setMenu_img(fileDBName);
+			String menuDBName =
 		}
 		
-			dto.setRst_no(main_idx);
-			dto.setMenu_name(menu_name);
-			dto.setMenu_price(menu_price);
-		
-			MenuDAO dao = MenuDAO.getInstance();
-			
-			int check = dao.insertMenu(dto);
-			
-			PrintWriter out = response.getWriter();
-			
-			out.println(check);
-			
-			return null;
+		return null;
 	}
 
 }
