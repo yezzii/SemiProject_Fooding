@@ -828,7 +828,7 @@ margin-top: 350px;
 					<a class="gallery-item mb-grid-gutter mx-auto"
 						style="max-width: 18.75rem;"> <c:if
 							test="${empty dto.getMember_image()}">
-							<img src="main_img/basic_thumnail.png">
+							<img src="${Thumnail }">
 						</c:if> <c:if test="${!empty dto.getMember_image()}">
 							<img src="${dto.getMember_image() }">
 						</c:if>

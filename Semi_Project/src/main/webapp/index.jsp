@@ -44,8 +44,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 
 <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-<script src="js/kakao_login.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+
 </head>
 <!-- Body-->
 <body>
@@ -235,8 +235,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<hr class="w-100" />
 				</div>
 				<div class="text-center pt-4">
-					<input type="image" style="width: 320px;"
-						src="main_img/kakao_login.jpg" onclick="kakaoLogin();"
+					<input type="image" style="width: 320px;" id="kakaoAjax"
+						src="main_img/kakao_login.jpg" 
 						value="카카오 로그인 kakaoLogin();"> <br>
 					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Facebook"><i
@@ -1957,6 +1957,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script type="text/javascript" src="js/sign_upChk.js"></script>
 	<script src="js/Board_Main.js"></script>
 	<script src="js/LoginChk.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="js/kakao_login.js"></script>
 	<script>
 		$('.toast').toast({

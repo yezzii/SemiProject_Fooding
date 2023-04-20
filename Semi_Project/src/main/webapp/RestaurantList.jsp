@@ -43,6 +43,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <!-- Customizer styles and scripts-->
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/kakao_login.js"></script>
+		<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 	
 </head>
@@ -50,7 +51,39 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <body>
 
 	<%--   ======================================상단 네비바 <<START>>======================================= --%>
- 
+ 	<!-- Success toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="login_success">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 성공</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-success" id="toast_success_div"></div>
+		</div>
+	</div>
+
+	<!-- Warning toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 실패</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning">아이디 혹은 비밀번호를 확인해주세요.</div>
+		</div>
+	</div>
+	<!--   ==============================  네비바  ================================= -->
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
@@ -62,21 +95,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	String name = (String)session.getAttribute("name");
 	
 	%>
-<!-- Success toast -->
-							<div class="toast" role="alert" aria-live="assertive"
-								aria-atomic="true">
-								<div class="toast-header bg-success text-white">
-									<i class="mr-2" data-feather="check-circle"
-										style="width: 1.25rem; height: 1.25rem;"></i> <span
-										class="font-weight-semibold mr-auto">Success toast</span>
-									<button type="button" class="close text-white ml-2 mb-1"
-										data-dismiss="toast" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="toast-body text-success">Hello, world! This is
-									a toast message.</div>
-							</div>
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -89,7 +107,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</button>
 		</div>
 
-		<%-- 로그인 --%>
+	<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<ul class="nav nav-tabs nav-justified" role="tablist">
@@ -134,9 +152,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" data-toggle="toast" data-target="#success-toast">
-								로그인</button>
-							
+							<button class="btn btn-primary btn-block" type="button" id="ImLogin"
+								>로그인</button>
+
 							<div class="pt-3" align="center">
 								<a href="account-id-recovery.jsp"
 									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
@@ -145,6 +163,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</form>
 					</div>
+
 
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
@@ -192,8 +211,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<div class="form-group">
 								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
 									class="form-control" type="text" name="member_phone"
-									id="signup-phone" placeholder="Phone" aria-label="Phone" />
-								<span class="feedback" id="signup-phonechk"></span>
+									id="signup-phone" placeholder="Phone" aria-label="Phone" /> <span
+									class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<button class="btn btn-primary btn-block" type="button"
@@ -203,6 +222,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						</form>
 					</div>
 				</div>
+
+
 				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
@@ -210,8 +231,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<hr class="w-100" />
 				</div>
 				<div class="text-center pt-4">
-					<input type="image" style="width: 320px;"
-						src="main_img/kakao_login.jpg" onclick="kakaoLogin();"
+					<input type="image" style="width: 320px;" id="kakaoAjax"
+						src="main_img/kakao_login.jpg" 
 						value="카카오 로그인 kakaoLogin();"> <br>
 					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Facebook"><i
@@ -226,6 +247,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</div>
+
 
 
 	<!-- Off-canvas cart-->
@@ -532,10 +554,16 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-profile.jsp">Profile
-											Settings</a></li>
-									<li class="dropdown-divider"></li>
+									
+										<%
+										if (session.getAttribute("id") != null) {
+										%>
+											<li class="dropdown-divider"></li>
+											<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
+											<li class="dropdown-divider"></li>
+									<%}%>
+									
+									
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
 									<li class="dropdown-divider"></li>
@@ -603,7 +631,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									</div>
 							</a></li>
 							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" data-toggle="modal" href="#modalLong" >
+							<li><a class="dropdown-item" data-toggle="modal"
+								href="#modalLong">
 									<div class="d-flex py-1">
 										<i class="mt-1 ml-n2" data-feather="grid"
 											style="width: 1.375rem; height: 1.375rem"></i>
@@ -650,12 +679,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					</div>
 					<form method="get"
 						action="<%=request.getContextPath()%>/total_main_search.do">
-						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
+						<div class="flex-grow-1 pb-3 pt-sm-4 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
 									<%-- 검색input테그 --%>
 
-									<input class="form-control rounded" type="text"
+									<input class="form-control-dong rounded" type="text"
 										id="site-search" placeholder="통합 검색" name="keyword"
 										aria-label="Search site" aria-describedby="search-icon">
 									<%-- 검색input테그 END --%>
@@ -669,6 +698,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div>
 					</form>
+					
+					
+					
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -711,6 +743,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</header>
+	
+	
 	<%--   ======================================상단 네비바 <<END>>======================================= --%>
 
 
@@ -1085,7 +1119,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</div>
 	</div>
 	</div>
-	<!-- Footer-->
+	<%--   ======================================하단 Footer <<START>>======================================= --%>
 	<footer class="page-footer bg-dark">
 		<!-- first row-->
 		<div class="pt-5 pb-0 pb-md-4">
@@ -1385,9 +1419,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <script src="js/theme.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="js/sign_upChk.js"></script>
-<script type="text/javascript" src="js/sign_upChk.js"></script>
+<script type="text/javascript" src="js/kakao_joinChk.js"></script>
 <script src="js/Board_Main.js"></script>
 <script src="js/StoreMarked.js"></script>
-
+<%--   ======================================하단 Footer <<END>>======================================= --%>
 </body>
 </html>

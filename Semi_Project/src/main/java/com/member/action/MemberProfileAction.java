@@ -27,6 +27,7 @@ public class MemberProfileAction implements Action {
 		HttpSession session = request.getSession();
 		
 		String id =	(String)session.getAttribute("id");
+		String thumnail = (String)session.getAttribute("Thumnail");
 		
 		MemberDAO dao = MemberDAO.getInstance();
 	
@@ -46,7 +47,7 @@ public class MemberProfileAction implements Action {
 		
 		Board_MainDTO dto  = a.getBoardMainSelect(main_idx);
 		request.setAttribute("boardmain", dto);
-		
+		request.setAttribute("Thumnail", thumnail);
 		
 		forward.setPath("account-profile.jsp");
 		
