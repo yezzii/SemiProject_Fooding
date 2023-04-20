@@ -847,7 +847,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									<form class="pb-4">
 										<div>
 											<label for="store-price">예약금</label>&nbsp;&nbsp;<span>20,000</span>
-											<br><br>
+											<br>
 											<div class="form-group">
 												<div class="form-inline" style="float:left;">
 												<label for="request-text">요청사항</label>
@@ -875,7 +875,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 												style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
 										</div>
 									</form>
-									<div class="card">
+									<div class="card"> 
 										<div class="card-header py-3 bg-0">
 											<h3 class="h6 mb-0">
 												<span

@@ -1,32 +1,7 @@
 $(document).ready(function() {
 
 
-	$.ajax({
-		type: 'POST',
-		url: 'Marking_load.do',
-		data: {
-			main_idx: main_idx,
-		},
-		success: function(data) {
-			if (data == 1) { // DB에서 삭제 성공시
-				// 좋아요 활성
-				$('#Heart' + main_idx).find('svg').toggleClass('bi-suit-heart-fill');
-
-				const color = $('#Heart' + main_idx).find('svg.bi-suit-heart-fill');
-				color.attr('fill', "red");
-				const image = $('#Heart' + main_idx).find('svg.bi-suit-heart-fill');
-				const path = $('#Heart' + main_idx).find('svg.bi-suit-heart-fill path');
-
-				const fillHeart = "M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z";
-				path.attr('d', fillHeart);
-				image.html('<svg class="bi bi-suit-heart-fill" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="' + fillHeart + '"/></svg>');
-
-				console.log("하트 색상 변경실행");
-
-			}
-		}
-
-	});
+	
 
 
 
