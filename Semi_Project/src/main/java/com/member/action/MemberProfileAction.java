@@ -1,10 +1,7 @@
 package com.member.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +11,6 @@ import com.boardMain.model.Board_MainDAO;
 import com.boardMain.model.Board_MainDTO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
-import com.mysql.cj.Session;
 
 public class MemberProfileAction implements Action {
 
