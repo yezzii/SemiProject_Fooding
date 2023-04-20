@@ -845,7 +845,7 @@ public class MemberDAO {
 
 		try {
 
-				sql = "select count(*) from member_marking";
+				sql = "select max(idx) from member_marking";
 
 				pstmt = con.prepareStatement(sql);
 
@@ -977,15 +977,17 @@ public class MemberDAO {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				MemberMarkDTO dto = new MemberMarkDTO();
+				
 				dto.setIdx(rs.getInt("idx"));
 				dto.setMem_id(rs.getString("mem_id"));
 				dto.setMarked_storeidx(rs.getInt("marked_storeidx"));
 				
 				list.add(dto);
 			}
-		} catch (SQLException e) {
+			
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -41,10 +41,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 <!-- Customizer styles and scripts-->
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
 	<script src="js/kakao_login.js"></script>
 
 	
@@ -1381,6 +1378,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
+		
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script src="js/vendor.min.js"></script>
