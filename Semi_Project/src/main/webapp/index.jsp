@@ -259,7 +259,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">찜한 레스토랑</h3>
+			<h3 class="offcanvas-title" style="font-family:'GmarketSansMedium'; font-size: 23px; ">찜한 레스토랑</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -269,47 +269,33 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			<div class="offcanvas-body-inner">
 				<div class="text-right">
 					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
-						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i>찜 목록 모두 삭제</a>
+						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i style="font-family:'GmarketSansMedium'; font-size: 12px; ">찜 목록 모두 삭제</a>
 				</div>
-				<div class="widget widget-featured-entries pt-3">
+				<div class="widget widget-featured-entries pt-3" id="marked-list">
 				
 				<%--찜 목록 리스트 (가게정보 출력란) --%>
-				<c:set var="list" value="${List}" />
-				  <c:if test="${!empty list }">
-				  <c:forEach items="${list }" var="dto">
-						<div class="media">
+				
+						<div class="media" >
 							<div class="featured-entry-thumb mr-3">
-								<a href="#"><img src="${dto.getMain_img()}" width="64"
-									alt="${dto.getMain_name()}" /></a><span class="item-remove-btn"><i
+								<a href="#"><img src="" width="64"
+									alt="" /></a><span class="item-remove-btn" ><i
 									data-feather="x"></i></span>
 							</div>
 							<div class="media-body">
 								<h6 class="featured-entry-title">
-									<a href="#">${dto.getMain_name()}</a>
+									<a href="#"></a>
 								</h6>
 								<p class="featured-entry-meta">
 									1 <span class="text-muted">x</span> $125.00
 								</p>
 							</div>
 						</div>
-					</c:forEach>
-					</c:if>
+				<hr />
 			
 					<%--찜 목록 리스트 END  --%>
 					
-					<hr />
-					<div class="d-flex justify-content-between align-items-center py-3">
-						<div class="font-size-sm">
-							<span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">$325.00</span>
-						</div>
-						<a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand
-							cart<i class="mr-n2" data-feather="chevron-right"></i>
-						</a>
-					</div>
-					<a class="btn btn-primary btn-sm btn-block"
-						href="checkout-details.jsp"><i class="mr-1"
-						data-feather="credit-card"></i>Checkout</a>
+					
+					
 				</div>
 			</div>
 		</div>
@@ -634,11 +620,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-					<a class="navbar-btn" href="#offcanvas-cart"	
+					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary text-light">${totalMark }</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart" onclick="loadMark();"></i>찜한 레스토랑</span></a>
+							class="mx-auto mb-1" data-feather="shopping-cart" ></i>찜한 레스토랑</span></a>
 					
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="member/logout.jsp">

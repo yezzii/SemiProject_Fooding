@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.boardMain.model.Board_MainDTO;
+
 public class MemberDAO {
 
 	Connection con = null;
@@ -994,5 +996,66 @@ public class MemberDAO {
 		
 		return list;
 	}
+
+	public List<Board_MainDTO> loadMarkRst(String member_id) {
+	    List<Board_MainDTO> list = new ArrayList<Board_MainDTO>();
+	    openConn();
+
+	    try {
+	        // 첫 번째 쿼리 실행
+	        String sql = "SELECT board_main.main_idx FROM board_main " +
+	                     "INNER JOIN member_marking ON " +
+	                     "member_marking.marked_storeidx = board_main.main_idx " +
+	                     "WHERE member_marking.mem_id = ?";
+	        PreparedStatement pstmt1 = con.prepareStatement(sql);
+	        pstmt1.setString(1, member_id);
+	        ResultSet rs1 = pstmt1.executeQuery();
+
+	        List<Integer> mainIdxList = new ArrayList<Integer>();
+	        while(rs1.next()) {
+	            mainIdxList.add(rs1.getInt("main_idx"));
+	        }
+	        rs1.close();
+	        pstmt1.close();
+
+	        // 두 번째 쿼리 실행
+	        for(int main_idx : mainIdxList) {
+	            Board_MainDTO dto = new Board_MainDTO();
+	            sql = "SELECT * FROM board_main WHERE main_idx = ?";
+	            PreparedStatement pstmt2 = con.prepareStatement(sql);
+	            pstmt2.setInt(1, main_idx);
+	            ResultSet rs2 = pstmt2.executeQuery();
+
+	            if(rs2.next()) {
+	                dto.setMain_idx(rs2.getInt("main_idx"));
+	                dto.setMain_name(rs2.getString("main_name"));
+	                dto.setMain_type(rs2.getString("main_type"));
+	                dto.setMain_info(rs2.getString("main_info"));
+	                dto.setMain_opentime(rs2.getString("main_opentime"));
+	                dto.setMain_endtime(rs2.getString("main_endtime"));
+	                dto.setMain_post(rs2.getString("main_post"));
+	                dto.setMain_addr(rs2.getString("main_addr"));
+	                dto.setMain_detailaddr(rs2.getString("main_detailaddr"));
+	                dto.setMain_phone(rs2.getString("main_phone"));
+	                dto.setMain_location(rs2.getString("main_location"));
+	                dto.setMain_memid(rs2.getString("main_memid"));
+	                dto.setMain_storenum(rs2.getString("main_storenum"));
+	                dto.setMain_thema(rs2.getString("main_thema"));
+	                dto.setMain_img(rs2.getString("main_img"));
+	                list.add(dto);
+	            }
+
+	            rs2.close();
+	            pstmt2.close();
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	    	closeConn(rs, pstmt, con);
+	    }
+
+	    return list;
+	}
+
 
 }

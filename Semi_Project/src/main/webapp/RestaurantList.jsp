@@ -1257,6 +1257,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="js/LoginChk.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="js/kakao_login.js"></script>
+	<script src="js/StoreMarked.js"></script>
 	<script>
 		$('.toast').toast({
 			delay : 5000

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.boardMain.model.Board_MainDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
 import com.member.model.MemberDAO;
@@ -31,28 +32,33 @@ public class MemMarkLoadAction implements Action {
 
 	    // 2. 데이터가 있다면 해당 회원이 좋아요 한 가게번호 불러오기(List형태로)
 	    MemberDAO dao = MemberDAO.getInstance();
-
-	    List<MemberMarkDTO> MList = dao.loadMark(Member_id);
 	    
-	    System.out.println(MList);
+	    System.out.println("찜레스토랑 아이디 >>"+Member_id);
+	    
+	    List<Board_MainDTO> List = dao.loadMarkRst(Member_id);
+	    
+	    System.out.println(List);
 	    
 	    // 3. Ajax에 출력값 전송
 	    JSONArray jsonArray = new JSONArray();
-	    for (MemberMarkDTO dto : MList) {
+	    for (Board_MainDTO dto : List) {
 	        JSONObject obj = new JSONObject();
-	        obj.put("idx", dto.getIdx());
-	        obj.put("mem_id", dto.getMem_id());
-	        obj.put("marked_storeidx", dto.getMarked_storeidx());
+	        obj.put("name", dto.getMain_name());
+	        obj.put("info", dto.getMain_info());
+	        obj.put("addr", dto.getMain_addr());
+	        obj.put("detailAddr", dto.getMain_detailaddr());
+	        obj.put("marked_storeidx", dto.getMain_idx());
+	        obj.put("main_img", dto.getMain_img());
 	        jsonArray.put(obj);
 	    }
 
 	    JSONObject jsonObj = new JSONObject();
-	    jsonObj.put("MList", jsonArray.toString()); // jsonArray를 문자열로 변환하여 jsonObj에 추가
+	    jsonObj.put("List", jsonArray.toString()); // jsonArray를 문자열로 변환하여 jsonObj에 추가
 
 	    response.setContentType("application/json"); // Content-Type 헤더 설정
 	    
 	    PrintWriter out = response.getWriter();
-	    out.println(1);
+	    out.println(jsonObj);
 
 	    return null;
 	}
