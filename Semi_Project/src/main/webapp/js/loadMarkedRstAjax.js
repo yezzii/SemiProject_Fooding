@@ -43,6 +43,7 @@ function loadMark() {
 					      <p class="featured-entry-meta" style="font-family:'GmarketSansMedium'; font-size: 12px; ">
 					        ${obj.addr}<br>${obj.detailAddr}
 					      </p>
+					      <input type="hidden" name="main_idx" value="${obj.marked_storeidx}">
 					    </div>
 					    
 					  </div>  

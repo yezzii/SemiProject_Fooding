@@ -278,7 +278,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<div class="media" >
 							<div class="featured-entry-thumb mr-3">
 								<a href="#"><img src="" width="64"
-									alt="" /></a><span class="item-remove-btn" ><i
+									alt="" /></a><span class="item-remove-btn"><i
 									data-feather="x"></i></span>
 							</div>
 							<div class="media-body">
