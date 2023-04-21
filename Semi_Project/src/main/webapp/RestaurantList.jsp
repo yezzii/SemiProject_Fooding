@@ -844,24 +844,54 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								</div>
 								<!-- Product details-->
 								<div class="col-lg-5 pt-4 pt-lg-0">
-									<form class="pb-4">
-										<div>
-											<label for="store-price">예약금</label>&nbsp;&nbsp;<span>20,000</span>
-											<br>
-											<div class="form-group">
-												<div class="form-inline" style="float:left;">
-												<label for="request-text">요청사항</label>
-												</div>
-												<div class="form-inline pb-2" style="float:right;">
-													<label for="people-num">인원</label>&nbsp;&nbsp;
-													<input class="pl-2 form-control mr-1" type="number"
-													id="people-num" name="quantity"
-													style="width: 3.5rem; height: 2rem;" value="1" required>
-												</div>
+									<form class="pb-4" method="post" action="">
+
+										<div class="form-group">
+											<!-- Date input -->
+											<div class="form-inline" style="float: left;">
+												<label for="date-input">예약날짜</label>
 											</div>
-												<textarea class="form-control" id="request-text" rows="3"
-													style="resize: none;"></textarea>
+											<div class="form-inline pb-2" style="float: right;">
+												<label for="store-price">예약금</label>&nbsp;&nbsp;<span>20,000
+													원</span>
+											</div>
+
 										</div>
+										<fmt:parseDate var="startTime_D"
+											value="${dto.getMain_opentime()}" pattern="HHmm" />
+										<fmt:parseNumber var="sum_hh"
+											value="${(Time1_D + Time2_D  / (1000*60)) / 60 }"
+											integerOnly="true" />
+										3
+										<fmt:parseDate var="endTime_D"
+											value="${dto.getMain_endtime()}" pattern="HHmm" />
+
+
+
+										<div class="form-inline pb-3">
+											<div class="form-inline" style="float: left;">
+												<input class="form-control" type="date" id="date-input">
+											</div>
+											<div class="form-inline" style="float: right;">
+												<select class="form-control custom-select" id="size"
+													name="size" required>
+													<option>예약 시간</option>
+
+													<c:forEach var="list" begin="${dto.getMain_opentime()}"
+														end="${dto.getMain_endtime() }">
+														<option value="${list.beverage}"
+															<c:if test ="${user.selectedBeberage eq list.beverage}">selected="selected"</c:if>>${list.beverage}</option>
+													</c:forEach>
+												</select>
+											</div>
+
+										</div>
+										<div class="form-group" style="float: left;">
+											<div class="form-inline pb-2" style="float: right;"></div>
+										</div>
+										<label for="order-detail">요청사항</label>
+										<textarea class="form-control" id="request-text" rows="3"
+											style="resize: none;"></textarea>
 										<div class="d-flex flex-wrap align-items-center pt-1">
 
 											<div>
@@ -869,13 +899,19 @@ if (request.getProtocol().equals("HTTP/1.1"))
 													<i class="mr-2" data-feather="shopping-cart"
 														style="font-family: 'GmarketSansMedium';"></i>예약하기
 												</button>
+
 											</div>
 											<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
 												class="align-middle mr-1" data-feather="heart"
-												style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
+												style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a> <label
+												for="people-num">인원</label>&nbsp;&nbsp; <input
+												class="pl-2 form-control mr-1" type="number" id="people-num"
+												name="quantity" style="width: 3.5rem; height: 2rem;"
+												value="1" required>
+
 										</div>
 									</form>
-									<div class="card"> 
+									<div class="card">
 										<div class="card-header py-3 bg-0">
 											<h3 class="h6 mb-0">
 												<span
@@ -1142,20 +1178,19 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<div class="product-card mb-4">
 								<div class="product-thumb">
 
-									 <span	class="product-wishlist-btn" data-toggle="tooltip"
-										data-placement="left" title="찜하기" id="Heart${dto.getMain_idx() }"> 
-										
-										<svg
-					                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-					                        fill="currentColor" class="bi bi-suit-heart" 
-					                        viewBox="0 0 16 16">
+									<span class="product-wishlist-btn" data-toggle="tooltip"
+										data-placement="left" title="찜하기"
+										id="Heart${dto.getMain_idx() }"> <svg
+											xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+											fill="currentColor" class="bi bi-suit-heart"
+											viewBox="0 0 16 16">
 					                          <path
-					                            d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+												d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
 					                        </svg>
-										
-										</span>
-									 <input type="hidden" id="main_idx" value="${dto.getMain_idx()}"> 
-									 <img src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
+
+									</span> <input type="hidden" id="main_idx"
+										value="${dto.getMain_idx()}"> <img
+										src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
 
 								</div>
 								<div class="product-card-body text-center">
