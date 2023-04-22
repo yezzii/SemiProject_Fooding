@@ -267,10 +267,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
-				<div class="text-right">
-					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
-						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i style="font-family:'GmarketSansMedium'; font-size: 12px; ">찜 목록 모두 삭제</a>
-				</div>
+				
 				<div class="widget widget-featured-entries pt-3" id="marked-list">
 				
 				<%--찜 목록 리스트 (가게정보 출력란) --%>
@@ -278,15 +275,14 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<div class="media" >
 							<div class="featured-entry-thumb mr-3">
 								<a href="#"><img src="" width="64"
-									alt="" /></a><span class="item-remove-btn"><i
-									data-feather="x"></i></span>
+									alt="" /></a>
 							</div>
 							<div class="media-body">
 								<h6 class="featured-entry-title">
-									<a href="#"></a>
+									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
 								</h6>
-								<p class="featured-entry-meta">
-									1 <span class="text-muted">x</span> $125.00
+								<p cxlass="fe$125.00atured-entry-meta">
+									<span class="text-muted"></span> 
 								</p>
 							</div>
 						</div>
@@ -623,8 +619,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary text-light">${totalMark }</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart" ></i>찜한 레스토랑</span></a>
+							class="navbar-btn-badge bg-primary text-light" id="totalMarkCount"></span><i
+							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
 					
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="member/logout.jsp">
@@ -1822,6 +1818,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="js/LoginChk.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="js/kakao_login.js"></script>
+	<script src="js/StoreMarked.js"></script>
 	<script>
 		$('.toast').toast({
 			delay : 5000

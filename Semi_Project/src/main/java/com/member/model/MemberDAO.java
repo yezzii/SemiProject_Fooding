@@ -1057,5 +1057,32 @@ public class MemberDAO {
 	    return list;
 	}
 
+	 public int markCount(String member_id) {
+		 	
+		 	openConn();
+
+			int count = 0;
+
+			try {
+
+					sql = "select count(idx) from member_marking where mem_id = ?";
+
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, member_id);
+					
+					rs = pstmt.executeQuery();
+
+					if (rs.next()) {
+						count = rs.getInt(1);
+					}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return count;
+		}
 
 }

@@ -11,7 +11,7 @@ $(document).ready(function () {
    var MList = JSON.parse(data.MList); // 문자열을 JavaScript 객체로 파싱
     var markedStoreIdxValues = MList.map(obj => obj.marked_storeidx);
     console.log(markedStoreIdxValues);
-
+	let count = markedStoreIdxValues.length;
       if (data != null) { // DB에서 삭제 성공시
       for(let i = 0; i < markedStoreIdxValues.length; i ++){
 		   // 좋아요 활성
@@ -25,11 +25,12 @@ $(document).ready(function () {
         const fillHeart = "M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z";
         path.attr('d', fillHeart);
         image.html('<svg class="bi bi-suit-heart-fill" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="' + fillHeart + '"/></svg>');
-
         console.log("하트 색상 변경실행");
+        
       	}
 	  }
-       
+     
+       CountMark(count);
     },
      error: function (request, status, error) {
         console.log(status+ " : " +error); // 오류 발생시 콘솔에 출력
@@ -88,3 +89,10 @@ $(document).ready(function () {
     });
   });
 });
+
+function CountMark(count){
+	   //찜한 가게 총 수
+		const totalMark = document.getElementById('totalMarkCount');
+		
+		totalMark.textContent = count;
+};
