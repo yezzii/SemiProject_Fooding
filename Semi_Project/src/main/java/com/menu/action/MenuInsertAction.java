@@ -43,6 +43,8 @@ public class MenuInsertAction implements Action {
 		
 		int main_idx = Integer.parseInt(multi.getParameter("main_idx").trim());
 		System.out.println(">>>>>>>>"+main_idx);
+		
+		
 		String menu_name = multi.getParameter("menu_name").trim();
 		
 		int menu_price = Integer.parseInt(multi.getParameter("menu_price").trim());

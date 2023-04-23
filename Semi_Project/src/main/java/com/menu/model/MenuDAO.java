@@ -132,8 +132,9 @@ public class MenuDAO {
 				count = rs.getInt(1)+1;
 			}
 			
-			sql = "select max(menu_idx) from main_menu";
+			sql = "select max(menu_idx) from main_menu where rst_no = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getRst_no());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				count2 = rs.getInt(1)+1;
@@ -160,27 +161,35 @@ public class MenuDAO {
 		return result;
 	}
 
-	public int deleteMenu(int menu_no) {
+	public int deleteMenu(int menu_idx,int rst_no) {
 		int result = 0;
-		
-		
 		try {
 			openConn();
+
 			
-			sql = "delete from main_menu where menu_idx = ?";
+			// 메뉴 삭제
+			sql = "delete from main_menu where menu_idx = ? and rst_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1,menu_no);
+			pstmt.setInt(1,menu_idx);
+			
+			pstmt.setInt(2,rst_no);
+			
+			System.out.println("rst_no >>>"+rst_no);
 			
 			result = pstmt.executeUpdate();
 			
-			sql = "update main_menu set menu_idx = menu_idx-1 where menu_idx > ?";
+		  sql = "update main_menu set menu_idx = menu_idx -1 where menu_idx > ? and rst_no = ?" ;
+		  
+		  pstmt = con.prepareStatement(sql);
+		  
+		  pstmt.setInt(1,menu_idx);
 			
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setInt(1, menu_no);
-			
+		  pstmt.setInt(2,rst_no);
+		  
+		  result = pstmt.executeUpdate();
+			 
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -190,6 +199,47 @@ public class MenuDAO {
 		}
 		return result;
 	}//deleteMenu 메서드 end
+
+	public int modifyUpload(MenuDTO dto) {
+		// 메뉴를 수정하는 메서드
+		int result = 0;
+		
+		try {
+			openConn();
+			
+			sql = "select * from main_menu where menu_idx = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getMenu_idx());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(dto.getMenu_img() == null) {
+					sql = "update main_menu set menu_name = ?,menu_price = ? where menu_idx = ?";
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, dto.getMenu_name());
+					pstmt.setInt(2, dto.getMenu_price());
+					pstmt.setInt(3, dto.getMenu_idx());
+					
+				}else {
+					sql = "update main_menu set menu_name =?,menu_price=?,menu_img = ? where menu_idx = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getMenu_name());
+					pstmt.setInt(2, dto.getMenu_price());
+					pstmt.setString(3,dto.getMenu_img());
+					pstmt.setInt(4, dto.getMenu_idx());
+				}
+				result = pstmt.executeUpdate();
+				System.out.println(dto.getMenu_img());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
 	
 	
 }

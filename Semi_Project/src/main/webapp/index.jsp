@@ -739,7 +739,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<%-- 프로필 정보란 --%>
 				<div class="navbar-btn navbar-collapse-hidden">
 					<div class="kakao_img mx-auto mb-1">
-						<a href="<%=request.getContextPath()%>/myprofile.go"> <img
+						<a href="<%=request.getContextPath()%>/member_profile.do"> <img
 							class="profile_img" src="<%=thumnail%>">
 						</a>
 					</div>

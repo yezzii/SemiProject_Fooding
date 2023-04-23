@@ -55,6 +55,15 @@ text-align: center;
 #listTable {
   margin: 0 auto;
 }
+
+#listTable th {
+	text-align: center;
+}
+
+#listTable td {
+	text-align: center;
+}
+
 .rst_no_txt{
 width : 50px;
 }
@@ -63,7 +72,136 @@ width :80px;
 
 }
 
+.menu_name1 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 130px;
+  margin-left: 50px;
+  margin-top: 100px;
+}
 
+.menu_name1 input {
+  font-size: 15px;
+  color: #464444;
+  width: 130px;
+  border: none;
+  border-bottom: solid #aaaaaa 1px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  position: relative;
+  background: none;
+  z-index: 5;
+}
+
+.menu_name1 input::placeholder { color: #464444; }
+.menu_name1 input:focus { outline: none; }
+
+.menu_name1 span {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+  background-color: #666;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  transition: 0.5s;
+}
+
+.menu_name1 label {
+  position: absolute;
+  color: #464444;
+  left: 10px;
+  font-size: 15px;
+  bottom: 8px;
+  transition: all .2s;
+}
+
+.menu_name1 input:focus ~ label, input:valid ~ label {
+  font-size: 15px;
+  bottom: 30px;
+  color: #464444;
+}
+
+.menu_name1 input:focus ~ span, input:valid ~ span {
+  width: 100%;
+}
+
+.menu_price1 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 130px;
+  margin-left: 50px;
+  margin-top: 100px;
+}
+
+.menu_price1 input {
+  font-size: 15px;
+  color: #464444;
+  width: 110px;
+  border: none;
+  margin-left: 50px;
+  border-bottom: solid #aaaaaa 1px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  position: relative;
+  background: none;
+  z-index: 5;
+}
+
+.menu_price1 input::placeholder { color: #464444; }
+.menu_price1 input:focus { outline: none; }
+
+.menu_price1 span {
+ display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+  margin-left: 50px;
+  background-color: #666;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  transition: 0.5s;
+}
+
+.menu_price1 label {
+  position: absolute;
+  color: #464444;
+  left: 10px;
+  font-size: 15px;
+  bottom: 8px;
+  transition: all .2s;
+  margin-left: 50px;
+}
+
+.menu_price1 input:focus ~ label, input:valid ~ label {
+  font-size: 15px;
+  bottom: 30px;
+  color: #464444;
+}
+
+.menu_price1 input:focus ~ span, input:valid ~ span {
+  width: 100%;
+}
+
+#menu_img{
+margin-left: 50px;
+}
+#menubtn{
+margin-right: 20px;
+}
+
+.menu_text{
+background-color:#e3e3e3;
+width :90px;
+border: none;
+color : #ffff;
+}
 </style>
 
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
@@ -847,7 +985,7 @@ width :80px;
 					<a class="gallery-item mb-grid-gutter mx-auto"
 						style="max-width: 18.75rem;"> <c:if
 							test="${empty dto.getMember_image()}">
-							<img src="main_img/basic_thumnail.png">
+							<img src="${Thumnail }">
 						</c:if> <c:if test="${!empty dto.getMember_image()}">
 							<img src="${dto.getMember_image() }">
 						</c:if>
@@ -866,7 +1004,7 @@ width :80px;
 					<!-- Technical support + Tickets (visible Desktop)-->
 					<div class="d-none d-lg-block" align="center">
 						<h6 class="font-size-sm mb-3 pb-2 border-bottom">
-							<span>${dto.getMember_id() } 님의 프로필</span>
+							<span>${dto.getMember_name() } 님의 프로필</span>
 							<c:if test="${dto.getMember_type() == 0}">
            					(Manager)
             			</c:if>
@@ -1367,19 +1505,30 @@ width :80px;
 						<form method="post" enctype="multipart/form-data" name="inForm" id="inForm" width="100%" >
 						<table cellspacing="0" align="center" width="100%">
 					<tr class="table_bg">
-						<th>메뉴 이름</th><th>메뉴 가격</th><th>메뉴 사진</th> 
+						<th> </th><th> </th><th> </th> 
 					</tr>
 						
 					<tr>
-						<td> <input type="text" name="menu_name" id="menu_name" size="10"></td>
-						<input type="hidden" name="main_idx" id="main_idx" value="${main.getMain_idx() }">
-						<td> <input type="text" name="menu_price" id="menu_price" size="10"></td>
+						<td class="menu_name1">
+						 <input type="text" required  name="menu_name" id="menu_name">
+						<label>메뉴 이름</label>
+						<span></span>
+						</td>
+						
+						<td class="menu_price1">
+						 <input type="text" required name="menu_price" id="menu_price">
+						<label>메뉴 가격</label>
+						<span></span>
+						</td>
+						
+						
 						<td> <input type="file" name="menu_img" id="menu_img" size="10"></td>
+						<input type="hidden" name="main_idx" id="main_idx" value="${main.getMain_idx() }">
 							
 						<td>
 						</td>
 						<td colspan="3" align="center">	
-						<input type="button" value="등록하기" id="btn">	
+						<input type="button" class="btn btn-primary btn-sm" value="등록하기" id="menubtn">	
 						</td>
 					</tr>
 					
@@ -1387,11 +1536,13 @@ width :80px;
 					</form>
 					
 					<br>
-					<span>메뉴 리스트</span>
-						<table id="listTable" border="1" cellspacing="0" width="80%">
-							<tr align="center">
+					<form method="post" enctype="multipart/form-data" name="upForm" id="upForm" width="100%" >
+					<br>
+					<span align="center"><h5>메뉴 리스트</h5></span>
+						<table id="listTable" border="1" cellspacing="0" width="90%" bordercolor="#e3e3e3">
+							<tr>
 								
-								<th>가게 번호</th>
+								<!-- <th>가게 번호</th> -->
 								<th>메뉴 번호</th>
 								<th>메뉴 이름</th>
 								<th>메뉴 가격</th>
@@ -1402,12 +1553,12 @@ width :80px;
 							</tr>
 							
 						</table>
+					</form>
 						
 					</p>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary btn-sm"
+							<button type="button" class="btn btn-primary btn-sm"
 								data-dismiss="modal">Close</button>
-							<input type="submit" class="btn btn-primary btn-sm" value="가입하기" />
 						</div>
 				</div>
 			</div>
@@ -1442,7 +1593,6 @@ width :80px;
 			</div>
 	        </p>
 	      </div>
-	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
 	        <button type="submit" class="btn btn-primary btn-sm">회원 탈퇴</button>
 	      </div>
@@ -1749,98 +1899,9 @@ width :80px;
 	<script src="js/theme.min.js"></script>
 	<script src="js/Board_Main.js"></script>
 	<script src="js/Main_Menu.js"></script>
+	<script src="js/Member_profile.js"></script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript">
-	$(function() {
-		$('#updatebtn123').on(
-				'click',
-				function() {
-					let password1 = $("#account-pass").val();
-					let password2 = $("#account-confirm-pass").val();
-					let text = "회원수정 완료";
-					let text2 = "비밀번호가 일치하지 않습니다.";
-					/* if (password1 !== "" || password2 !== "") {
-					    if (password1 === password2) {
-					        $(".toast-header").removeClass("bg-warning").removeClass("text-white"); // 기존 클래스 제거
-					        $(".toast-header").addClass("bg-success").addClass("text-white"); // 클래스 추가
-					        $(".font-weight-semibold").text(""); // 텍스트 초기화
-					        $(".font-weight-semibold").append("success"); // 텍스트 지정
-					        $("#toast-body").text(""); // 텍스트 초기화
-					        $("#toast-body").append(text); // 텍스트 지정
-					        $("#successPwdToast").show(); // 창띄우기
-					        return false;
-					    }  */{
-						if (password1 != password2) {
-							$(".toast-header").removeClass("bg-success")
-									.removeClass("text-white"); // 기존 클래스 제거
-							$(".toast-header").addClass("bg-warning")
-									.addClass("text-white"); // 클래스 추가
-							$(".font-weight-semibold").text(""); // 텍스트 초기화
-							$(".font-weight-semibold").append("failed"); // 텍스트 지정
-							$("#toast-body").text(""); // 텍스트 초기화
-							$("#toast-body").append(text2); // 텍스트 지정
-							$("#failPwdToast").show(); // 창띄우기
-							return false;
-						}
-					}
-				});
-	});
-
-	$(function() {
-		// 이미지 클릭 시 파일 업로드 창 실행
-		$('#Change_Profile').click(function() {
-			console.log('fileadd');
-			$("input[name='fileProfile']").click();
-		});
-
-		// 파일 선택 시 실행되는 이벤트
-		$("input[name='fileProfile']").on('change', function(e) {
-			// form 데이터 생성
-			var frm = document.getElementById('profile_file_add');
-			frm.method = 'POST';
-			frm.enctype = 'multipart/form-data';
-			var fileData = new FormData(frm);
-
-		});
-	});
-
-	var currentImageSrc = "${empty dto.getMember_image() ? 'main_img/basic_thumnail.png' : dto.getMember_image()}"; // 초기 이미지 소스 설정
-
-	function setThumbnail(event) {
-		var reader = new FileReader();
-		reader.onload = function(event) {
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result);
-			img.setAttribute("class", "col-lg-6");
-			document.querySelector("img[src='" + currentImageSrc + "']")
-					.remove(); // 현재 이미지 삭제
-			document.querySelector("div#image_container").appendChild(img); // 새로운 이미지 추가
-			currentImageSrc = event.target.result; // 현재 이미지 소스 업데이트
-		};
-		reader.readAsDataURL(event.target.files[0]);
-	};
-
-	function findAddr() {
-		new daum.Postcode({
-			oncomplete : function(data) {
-				console.log(data);
-
-				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-				// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-				var roadAddr = data.roadAddress; // 도로명 주소 변수
-				var jibunAddr = data.jibunAddress; // 지번 주소 변수
-				// 우편번호와 주소 정보를 해당 필드에 넣는다.
-				document.getElementById('post').value = data.zonecode;
-				if (roadAddr !== '') {
-					document.getElementById("addr").value = roadAddr;
-				} else if (jibunAddr !== '') {
-					document.getElementById("addr").value = jibunAddr;
-				}
-			}
-		}).open();
-	};
-	</script>
+	
 </body>
 </html>

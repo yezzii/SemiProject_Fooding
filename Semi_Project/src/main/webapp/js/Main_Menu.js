@@ -21,10 +21,10 @@ $(function(){
 				
 				$(data).find("main_menu").each(function(){
 				    table += "<tr>";
-					table += "<td>"+$(this).find("rst_no").text()+"</td>";
-					table += "<td>"+$(this).find("menu_idx").text()+"</td>";
-					table += "<td>"+"<input type='text' name='menu_name' class='menu_name_txt' value="+$(this).find("menu_name").text()+"></td>";
-					table += "<td>"+"<input type='text' name='menu_price' class='menu_name_txt' value="+$(this).find("menu_price").text()+"></td>";
+					/*table += "<td>"+$(this).find("rst_no").text()+"</td>";*/
+					table += "<td width='50px'>"+$(this).find("menu_idx").text()+"</td>";
+					table += "<td>"+"<input type='text' class='menu_text' id='menu_name_"+$(this).find("menu_idx").text()+"' class='menu_name_txt' value="+$(this).find("menu_name").text()+"></td>";
+					table += "<td>"+"<input type='text' class='menu_text' id='menu_price_"+$(this).find("menu_idx").text()+"' class='menu_name_txt' value="+$(this).find("menu_price").text()+"></td>";
 					table += "<td width='150px'>";
 					table += "<label for='menu_img_"+$(this).find("menu_idx").text()+"'>";
 					table += "<img src='"+$(this).find("menu_img").text()+"' id='menu_img_preview_"+$(this).find("menu_idx").text()+"'></label>";
@@ -32,6 +32,7 @@ $(function(){
 					table += "</td>";
 					table += "<td width='70px'><input type='button' class='btn btn-secondary btn-sm' value='삭 제' id='del' num='"+$(this).find("menu_idx").text()+"'></td>";
 					table += "<td width='70px'><input type='button' class='btn btn-secondary btn-sm' value='수 정' id='mod' num='"+$(this).find("menu_idx").text()+"'></td>";
+					table += "<input type='hidden' value='"+$(this).find("rst_no").text()+"'>";
 					table += "</tr>"; 
 				});
 				$("#listTable tr:eq(0)").after(table);
@@ -82,9 +83,12 @@ $(function(){
 	});
 
 	$("table").on("click","#del",function(){
+		  
+		  var num = $(this).attr("num");
+		
 		$.ajax({
 			url :"menu_delecte.do",
-			data : "no="+$(this).attr("num"),
+			data: { num: num, rst_no: $(this).closest("tr").find("input[type='hidden']").val() },
 			datatype : "text",
 			success : function(data){
 				if(data > 0){
@@ -102,10 +106,22 @@ $(function(){
 	});
 	
 	$("table").on("click","#mod",function(){
+		let num = $(this).attr("num");
+		
+		let form = $('#upForm')[0];
+		let formData = new FormData(form);
+		
+  		formData.append('no',num);
+  		formData.append('name', $('#menu_name_'+num).val());
+  		formData.append('price', $('#menu_price_'+num).val());
+  		formData.append('file', $('#menu_img_'+num)[0].files[0]);
+		
 		$.ajax({
 			url : "menu_modifyOk.do",
-			data : "no="+$(this).attr("num"),
-			datatype :"text",
+			data : formData,
+			datatype :"json",
+			contentType: false,
+   			processData: false,
 			success : function(data){
 				if(data > 0){
 					alert("메뉴 수정 완료.");
@@ -122,9 +138,9 @@ $(function(){
 		});
 		
 	});
+	
 		getData();
 	});
-
 
 
   

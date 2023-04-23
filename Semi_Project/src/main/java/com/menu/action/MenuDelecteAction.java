@@ -18,11 +18,15 @@ public class MenuDelecteAction implements Action {
 			throws IOException, ServletException, Exception {
 		
 		
-		int menu_no = Integer.parseInt(request.getParameter("no"));
-		System.out.println("menu_no>>>"+menu_no);
+		int menu_idx = Integer.parseInt(request.getParameter("num"));
+		int rst_no = Integer.parseInt(request.getParameter("rst_no"));
+		
+		
+		System.out.println("menu_idx>>>"+rst_no);
+		
 		MenuDAO dao = MenuDAO.getInstance();
 		
-		int res = dao.deleteMenu(menu_no);
+		int res = dao.deleteMenu(menu_idx,rst_no);
 		
 		PrintWriter out = response.getWriter();
 		
