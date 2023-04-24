@@ -832,68 +832,750 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 	<!-- Featured products grid-->
 	<section class="container pt-3 pb-4">
-		<h2 class="h3 text-center pb-4">요즘 뜨는 레스토랑</h2>
-		<div class="row" id="CardLoad">
+		<h2 class="h3 text-center pb-4">Featured products</h2>
+		<div class="row">
 			<!-- Product-->
-			
-		<c:set var="list" value="${List}" />
-				<c:if test="${!empty list }">
-					<c:forEach items="${list }" var="dto">
-						<!-- DB데이터만큼 리스트 출력되는 가게목록. -->
-						<div class="col-md-4 col-sm-6">
-							<div class="product-card mb-4">
-								<div class="product-thumb">
-									 <span	class="product-wishlist-btn" data-toggle="tooltip"
-										data-placement="left" title="찜하기" id="Heart${dto.getMain_idx() }"> 
-										
-										<svg
-					                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-					                        fill="currentColor" class="bi bi-suit-heart" 
-					                        viewBox="0 0 16 16">
-					                          <path
-					                            d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
-					                        </svg>
-										
-										</span>
-									 <input type="hidden" id="main_idx" value="${dto.getMain_idx()}"> 
-									 <img src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
-								</div>
-								<div class="product-card-body text-center">
-									<a class="product-meta" href="#"
-										style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
-									<h3 class="product-card-title">
-										<a href="shop-single-apparel.jsp"
-											style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
-									</h3>
-									<span class="text-primary-orange"
-										style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
-								</div>
-								<div class="product-card-body body-hidden">
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="product-card mb-4">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
+							class="product-wishlist-btn" data-toggle="tooltip"
+							data-placement="left" title="Add to wishlist"><i
+							data-feather="heart"></i></span><img src="img/shop/apparel/01.jpg"
+							alt="Product" />
+					</div>
+					<div class="product-card-body text-center">
+						<a class="product-meta" href="#">Men's jeans</a>
+						<h3 class="product-card-title">
+							<a href="shop-single-apparel.jsp">Gues Slim Taper Fit Jeans</a>
+						</h3>
+						<span class="text-primary">$124.99</span>
+					</div>
+					<div class="product-card-body body-hidden">
+						<div class="pb-2 text-center">
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-1"
+									id="xl-1" /> <label class="custom-option-label" for="xl-1">XL</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-1"
+									id="l-1" checked /> <label class="custom-option-label"
+									for="l-1">L</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-1"
+									id="m-1" /> <label class="custom-option-label" for="m-1">M</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-1"
+									id="s-1" /> <label class="custom-option-label" for="s-1">S</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-1"
+									id="xs-1" /> <label class="custom-option-label" for="xs-1">XS</label>
+							</div>
+						</div>
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+						<a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
+							class="mr-1" data-feather="eye"></i>Quick view</a>
+					</div>
+				</div>
+			</div>
+			<!-- Product-->
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="product-card mb-4">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
+							class="badge badge-success rounded-0">&starf; Popular</span><span
+							class="product-wishlist-btn" data-toggle="tooltip"
+							data-placement="left" title="Add to wishlist"><i
+							data-feather="heart"></i></span><img src="img/shop/apparel/04.jpg"
+							alt="Product" />
+					</div>
+					<div class="product-card-body text-center">
+						<a class="product-meta" href="#">Hats &amp; Caps</a>
+						<h3 class="product-card-title">
+							<a href="shop-single-apparel.jsp">47Brand Denim Cap</a>
+						</h3>
+						<span class="text-primary">$21.50</span>
+					</div>
+					<div class="product-card-body body-hidden">
+						<div class="pb-2 text-center">
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="color-2"
+									id="red-2" /> <label class="custom-option-label" for="red-2"><span
+									class="custom-option-color" style="background-color: #c53b4b"></span></label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="color-2"
+									id="blue-2" checked /> <label class="custom-option-label"
+									for="blue-2"><span class="custom-option-color"
+									style="background-color: #4e5392"></span></label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="color-2"
+									id="white-2" /> <label class="custom-option-label"
+									for="white-2"><span class="custom-option-color"
+									style="background-color: #e5ddd5"></span></label>
+							</div>
+						</div>
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+						<a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
+							class="mr-1" data-feather="eye"></i>Quick view</a>
+					</div>
+				</div>
+			</div>
+			<!-- Product-->
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="product-card mb-4">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
+							class="product-wishlist-btn" data-toggle="tooltip"
+							data-placement="left" title="Add to wishlist"><i
+							data-feather="heart"></i></span><img src="img/shop/apparel/03.jpg"
+							alt="Product" />
+					</div>
+					<div class="product-card-body text-center">
+						<a class="product-meta" href="#">Men's shoes</a>
+						<h3 class="product-card-title">
+							<a href="shop-single-apparel.jsp">Calvin Klein Jeans Keds</a>
+						</h3>
+						<span class="text-primary">$125.00</span>
+					</div>
+					<div class="product-card-body body-hidden">
+						<div class="pb-2 text-center">
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-2"
+									id="s-10" /> <label class="custom-option-label" for="s-10">10</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-2"
+									id="s-95" checked /> <label class="custom-option-label"
+									for="s-95">9.5</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-2"
+									id="s-9" /> <label class="custom-option-label" for="s-9">9</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-2"
+									id="s-85" /> <label class="custom-option-label" for="s-85">8.5</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-2"
+									id="s-8" /> <label class="custom-option-label" for="s-8">8</label>
+							</div>
+						</div>
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+						<a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
+							class="mr-1" data-feather="eye"></i>Quick view</a>
+					</div>
+				</div>
+			</div>
+			<!-- Product-->
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="product-card mb-4">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
+							class="product-wishlist-btn" data-toggle="tooltip"
+							data-placement="left" title="Add to wishlist"><i
+							data-feather="heart"></i></span><img src="img/shop/apparel/06.jpg"
+							alt="Product" />
+					</div>
+					<div class="product-card-body text-center">
+						<a class="product-meta" href="#">Sunglasses</a>
+						<h3 class="product-card-title">
+							<a href="shop-single-apparel.jsp">Medicine Chameleon
+								Sunglasses</a>
+						</h3>
+						<span class="text-muted">Out of stock</span>
+					</div>
+					<div class="product-card-body body-hidden">
+						<div class="pb-2 text-center">
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="color-3"
+									id="brown-3" checked /> <label class="custom-option-label"
+									for="brown-3"><span class="custom-option-color"
+									style="background-color: #ba7764"></span></label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="color-3"
+									id="black-3" /> <label class="custom-option-label"
+									for="black-3"><span class="custom-option-color"
+									style="background-color: #222"></span></label>
+							</div>
+						</div>
+						<a class="btn btn-primary btn-sm btn-block"
+							href="shop-single-apparel.jsp">Pre-order</a><a
+							class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
+							class="mr-1" data-feather="eye"></i>Quick view</a>
+					</div>
+				</div>
+			</div>
+			<!-- Product-->
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="product-card mb-4">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
+							class="badge badge-danger rounded-0">Sale -10%</span><span
+							class="product-wishlist-btn" data-toggle="tooltip"
+							data-placement="left" title="Add to wishlist"><i
+							data-feather="heart"></i></span><img src="img/shop/apparel/08.jpg"
+							alt="Product" />
+					</div>
+					<div class="product-card-body text-center">
+						<a class="product-meta" href="#">Women's sneakers</a>
+						<h3 class="product-card-title">
+							<a href="shop-single-apparel.jsp">Reebok Classic Sneakers
+								Pyro</a>
+						</h3>
+						<span class="text-primary"> <del class="text-muted mr-1">$105.00</del>$94.50
+						</span>
+					</div>
+					<div class="product-card-body body-hidden">
+						<div class="pb-2 text-center">
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-5"
+									id="s-5-95" /> <label class="custom-option-label" for="s-5-95">9.5</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-5"
+									id="s-5-9" checked /> <label class="custom-option-label"
+									for="s-5-9">9</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-5"
+									id="s-5-85" /> <label class="custom-option-label" for="s-5-85">8.5</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-5"
+									id="s-5-8" /> <label class="custom-option-label" for="s-5-8">8</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-5"
+									id="s-5-75" /> <label class="custom-option-label" for="s-5-75">7.5</label>
+							</div>
+						</div>
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+						<a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
+							class="mr-1" data-feather="eye"></i>Quick view</a>
+					</div>
+				</div>
+			</div>
+			<!-- Product-->
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="product-card mb-4">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
+							class="product-wishlist-btn" data-toggle="tooltip"
+							data-placement="left" title="Add to wishlist"><i
+							data-feather="heart"></i></span><img src="img/shop/apparel/07.jpg"
+							alt="Product" />
+					</div>
+					<div class="product-card-body text-center">
+						<a class="product-meta" href="#">Dresses</a>
+						<h3 class="product-card-title">
+							<a href="shop-single-apparel.jsp">Floral Printed Maxi Dress</a>
+						</h3>
+						<span class="text-primary">$47.99</span>
+					</div>
+					<div class="product-card-body body-hidden">
+						<div class="pb-2 text-center">
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-4"
+									id="l-4" /> <label class="custom-option-label" for="l-4">L</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-4"
+									id="m-4" checked /> <label class="custom-option-label"
+									for="m-4">M</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-4"
+									id="s-4" /> <label class="custom-option-label" for="s-4">S</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-4"
+									id="xs-4" /> <label class="custom-option-label" for="xs-4">XS</label>
+							</div>
+						</div>
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+						<a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
+							class="mr-1" data-feather="eye"></i>Quick view</a>
+					</div>
+				</div>
+			</div>
+			<!-- Product-->
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="product-card mb-4">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
+							class="product-wishlist-btn" data-toggle="tooltip"
+							data-placement="left" title="Add to wishlist"><i
+							data-feather="heart"></i></span><img src="img/shop/apparel/09.jpg"
+							alt="Product" />
+					</div>
+					<div class="product-card-body text-center">
+						<a class="product-meta" href="#">Handbags</a>
+						<h3 class="product-card-title">
+							<a href="shop-single-apparel.jsp">Roxy Cotton Handbag</a>
+						</h3>
+						<span class="text-primary">$52.00</span>
+					</div>
+					<div class="product-card-body body-hidden">
+						<div class="pb-2 text-center">
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="color-4"
+									id="cyan-4" /> <label class="custom-option-label" for="cyan-4"><span
+									class="custom-option-color" style="background-color: #8ab5be"></span></label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="color-4"
+									id="blue-4" checked /> <label class="custom-option-label"
+									for="blue-4"><span class="custom-option-color"
+									style="background-color: #4e5392"></span></label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="color-4"
+									id="beige-4" /> <label class="custom-option-label"
+									for="beige-4"><span class="custom-option-color"
+									style="background-color: #fccec2"></span></label>
+							</div>
+						</div>
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+						<a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
+							class="mr-1" data-feather="eye"></i>Quick view</a>
+					</div>
+				</div>
+			</div>
+			<!-- Product-->
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="product-card mb-4">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="shop-single-apparel.jsp"></a><span
+							class="product-wishlist-btn" data-toggle="tooltip"
+							data-placement="left" title="Add to wishlist"><i
+							data-feather="heart"></i></span><img src="img/shop/apparel/11.jpg"
+							alt="Product" />
+					</div>
+					<div class="product-card-body text-center">
+						<a class="product-meta" href="#">Men's tshirts</a>
+						<h3 class="product-card-title">
+							<a href="shop-single-apparel.jsp">Medicine Tshirt Sailor
+								Spirit</a>
+						</h3>
+						<span class="text-primary">$17.00</span>
+					</div>
+					<div class="product-card-body body-hidden">
+						<div class="pb-2 text-center">
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-7"
+									id="xl-7" /> <label class="custom-option-label" for="xl-7">XL</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-7"
+									id="l-7" checked /> <label class="custom-option-label"
+									for="l-7">L</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-7"
+									id="m-7" /> <label class="custom-option-label" for="m-7">M</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-7"
+									id="s-7" /> <label class="custom-option-label" for="s-7">S</label>
+							</div>
+							<div
+								class="custom-control custom-option custom-control-inline mb-2">
+								<input class="custom-control-input" type="radio" name="size-7"
+									id="xs-7" /> <label class="custom-option-label" for="xs-7">XS</label>
+							</div>
+						</div>
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+						<a class="quick-view-btn" href="#quick-view" data-toggle="modal"><i
+							class="mr-1" data-feather="eye"></i>Quick view</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Product widgets-->
+	<section class="container pt-sm-3 pb-4 pb-md-5">
+		<div class="row">
+			<div class="col-md-4 col-sm-6 d-block d-sm-none d-md-block mb-3">
+				<!-- Promo banner-->
+				<a class="d-block text-decoration-0 mx-auto" href="#"
+					style="max-width: 24rem">
+					<div class="bg-secondary">
+						<div class="px-3 pt-4 text-center">
+							<h4 class="font-size-sm font-weight-normal pt-1 mb-2">2019
+								Spring / Summer</h4>
+							<h4 class="h5 pb-2">Hoodie Collection</h4>
+							<div class="btn btn-primary btn-sm">Shop now</div>
+						</div>
+						<img src="img/shop/banner01.jpg" alt="Promo banner" />
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 col-sm-6 mb-2 py-3">
+				<div class="widget widget-featured-entries">
+					<h3 class="widget-title font-size-lg">Best sellers</h3>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/01.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Keds - Kickstart Pom Pom</a>
+							</h6>
+							<p class="featured-entry-meta">$42.99</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/02.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Nike - Brasilia Medium Backpack</a>
+							</h6>
+							<p class="featured-entry-meta">$27.99</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/03.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Guess - GU7295</a>
+							</h6>
+							<p class="featured-entry-meta">$38.00</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/11.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Adidas Originals Cap</a>
+							</h6>
+							<p class="featured-entry-meta">$35.00</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/13.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Big Star Flip Tops</a>
+							</h6>
+							<p class="featured-entry-meta">$10.60</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 mb-2 py-3">
+				<div class="widget widget-featured-entries">
+					<h3 class="widget-title font-size-lg">New arrivals</h3>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/08.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">The North Face Hoodie</a>
+							</h6>
+							<p class="featured-entry-meta">$134.00</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/09.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Medicine Chameleon Sunglasses</a>
+							</h6>
+							<p class="featured-entry-meta">$47.00</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/10.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Adidas Performance Hat</a>
+							</h6>
+							<p class="featured-entry-meta">$19.00</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/07.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Calvin Klein Jeans Keds</a>
+							</h6>
+							<p class="featured-entry-meta">$125.00</p>
+						</div>
+					</div>
+					<div class="media">
+						<a class="featured-entry-thumb" href="#"><img
+							src="img/shop/widget/12.jpg" width="64" alt="Product thumb" /></a>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Roxy Cotton Handbag</a>
+							</h6>
+							<p class="featured-entry-meta">$52.00</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-									
-									<a class="quick-view-btn"
-										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
-										style="color: black;"><button class="btn btn-primary btn-sm btn-block" type="button"
-										style="font-family: 'GmarketSansMedium';">자세히</button></a>
+	<%--    ++++++++++++++++++++++++++++++++++++++++++++++++가게추가++++++++++++++++++++++++++++++++++++++++++++++++++ --%>
+
+	<!-- Quick view modal-->
+	<div class="modal modal-quick-view fade" id="quick-view" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div>
+						<h2 class="h3 modal-title mb-1">Reebok Classic - Sneakers CL
+							Leather</h2>
+						<h3 class="text-primary font-weight-light mb-0">$98.45</h3>
+					</div>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<!-- Product gallery-->
+						<div class="col-lg-7">
+							<div class="owl-carousel"
+								data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+								<img src="img/shop/apparel/single/01.jpg" alt="Product"><img
+									src="img/shop/apparel/single/02.jpg" alt="Product"><img
+									src="img/shop/apparel/single/03.jpg" alt="Product"><img
+									src="img/shop/apparel/single/04.jpg" alt="Product"><img
+									src="img/shop/apparel/single/05.jpg" alt="Product">
+							</div>
+						</div>
+						<!-- Product details-->
+						<div class="col-lg-5 pt-4 pt-lg-0">
+							<form class="pb-4">
+								<div class="form-group">
+									<label class="d-block">Choose color</label>
+									<div
+										class="custom-control custom-option custom-control-inline mb-2">
+										<input class="custom-control-input" type="radio" name="color"
+											value="dark" id="dark" required> <label
+											class="custom-option-label" for="dark"><span
+											class="custom-option-color"
+											style="background-color: #2c363f;"></span></label>
+									</div>
+									<div
+										class="custom-control custom-option custom-control-inline mb-2">
+										<input class="custom-control-input" type="radio" name="color"
+											value="red" id="red" required> <label
+											class="custom-option-label" for="red"><span
+											class="custom-option-color"
+											style="background-color: #e7484d;"></span></label>
+									</div>
+									<div
+										class="custom-control custom-option custom-control-inline mb-2">
+										<input class="custom-control-input" type="radio" name="color"
+											value="white" id="white" required> <label
+											class="custom-option-label" for="white"><span
+											class="custom-option-color"
+											style="background-color: #e0dfe4;"></span></label>
+									</div>
+									<div
+										class="custom-control custom-option custom-control-inline mb-2">
+										<input class="custom-control-input" type="radio" name="color"
+											value="beige" id="beige" required> <label
+											class="custom-option-label" for="beige"><span
+											class="custom-option-color"
+											style="background-color: #e6ddd6;"></span></label>
+									</div>
+								</div>
+								<div class="form-group">
+									<select class="form-control custom-select" id="size"
+										name="size" required>
+										<option value>- Select a size</option>
+										<option value="13">13</option>
+										<option value="12">12</option>
+										<option value="11.5">11.5</option>
+										<option value="11">11</option>
+										<option value="10.5">10.5</option>
+										<option value="10">10</option>
+										<option value="9.5">9.5</option>
+										<option value="9">9</option>
+										<option value="8.5">8.5</option>
+										<option value="8">8</option>
+										<option value="7.5">7.5</option>
+									</select>
+								</div>
+								<div class="d-flex flex-wrap align-items-center pt-1">
+									<div>
+										<input class="px-2 form-control mr-2" type="number"
+											name="quantity" style="width: 3.2rem;" value="1" required>
+									</div>
+									<div>
+										<button class="btn btn-primary px-5 mr-2" type="submit">
+											<i class="mr-2" data-feather="shopping-cart"></i>Add to cart
+										</button>
+									</div>
+									<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
+										class="align-middle mr-1" data-feather="heart"
+										style="width: 1.1rem; height: 1.1rem;"></i>Wishlist</a>
+								</div>
+							</form>
+							<div class="card">
+								<div class="card-header py-3 bg-0">
+									<h3 class="h6 mb-0">
+										<span
+											class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
+											data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>Product
+										information
+									</h3>
+								</div>
+								<div class="card-body">
+									<ul class="mb-0">
+										<li>SKU: #8893249956</li>
+										<li>Sneakers from Reebok Classic collection</li>
+										<li>Man-made upper</li>
+										<li>Lace-up closure</li>
+										<li>Brand logo detail hits throughout</li>
+										<li>Soft fabric lining and footbed</li>
+										<li>Rubber outsole</li>
+										<li>Product measurements were taken using size 8</li>
+										<li>Weight of footwear is based on a single item</li>
+										<li>Weight: 9 oz</li>
+									</ul>
 								</div>
 							</div>
 						</div>
-					</c:forEach>
-				</c:if>
-				
+					</div>
+				</div>
+			</div>
 		</div>
-	</section>
-	
-	<div class="btn-center pb-4" align="center">
-	<a  href="LoadRestaurantList.do" style="color: black;">
-	<button class="btn btn-primary btn-sm btn-block" type="button"style="font-family: 'GmarketSansMedium'; width: 500px;">
-	자세한 내용, 더 많은 레스토랑이 궁금하다면?
-	</button>
-	</a>
 	</div>
-	<%--    ++++++++++++++++++++++++++++++++++++++++++++++++가게추가++++++++++++++++++++++++++++++++++++++++++++++++++ --%>
-
-	
+	<!-- Toast notifications-->
+	<div class="toast-container toast-bottom-center">
+		<div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert"
+			aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to cart!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to your cart.</div>
+		</div>
+		<div class="toast mb-3" id="compare-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-info text-white">
+				<i class="mr-2" data-feather="info"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to comparison!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to comparison
+				table.</div>
+		</div>
+		<div class="toast mb-3" id="wishlist-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-info text-white">
+				<i class="mr-2" data-feather="info"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Added to wishlist!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">This item was added to your wishlist.</div>
+		</div>
+		<div class="toast mb-3" id="profile-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Updated!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">Your profile info updated successfuly.</div>
+		</div>
+		<div class="toast mb-3" id="address-toast" data-delay="5000"
+			role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.25rem; height: 1.25rem;"></i><span
+					class="font-weight-semibold mr-auto">Updated!</span>
+				<button class="close text-white ml-2 mb-1" type="button"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">Your addresses info updated
+				successfuly.</div>
+		</div>
+	</div>
 
 	<!-- 가게 등록 Modal markup -->
 	<div class="modal" tabindex="-1" role="dialog" id="modalLong">
@@ -1137,7 +1819,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="js/kakao_login.js"></script>
 	<script src="js/StoreMarked.js"></script>
-	<script src="js/main_card.js"></script>
 	<script>
 		$('.toast').toast({
 			delay : 5000
