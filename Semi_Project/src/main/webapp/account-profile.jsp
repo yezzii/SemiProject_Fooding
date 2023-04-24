@@ -1103,7 +1103,7 @@ color : #ffff;
 					<c:if
 						test="${dto.getMember_type() == 3 || dto.getMember_type() == 1}">
 						<li class="nav-item"><a class="nav-link"
-							href="account-wishlist.html"> <i data-feather="heart"></i>&nbsp;북마크<span
+							href="account-wishlist.html"> <i data-feather="heart"></i>&nbsp;관심 레스토랑<span
 								class="badge badge-pill badge-secondary bg-0 border ml-2">
 									<span class="text-primary">3</span>
 							</span></a></li>
