@@ -70,6 +70,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/kakao_login.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
 =======
@@ -82,6 +83,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="js/kakao_login.js"></script>
 
 >>>>>>> parent of 964435e (sadawd)
+=======
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
+>>>>>>> parent of ddf499f (Merge remote-tracking branch 'origin/Donk' into test)
 =======
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
@@ -1464,7 +1469,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+=======
+
+>>>>>>> parent of ddf499f (Merge remote-tracking branch 'origin/Donk' into test)
 =======
 
 >>>>>>> parent of ddf499f (Merge remote-tracking branch 'origin/Donk' into test)
@@ -1476,6 +1485,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <script type="text/javascript" src="js/sign_upChk.js"></script>
 	<script src="js/Board_Main.js"></script>
 	<script src="js/StoreMarked.js"></script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 	<script>
 		$('.toast').toast({
@@ -1499,6 +1509,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 >>>>>>> parent of 964435e (sadawd)
 =======
 >>>>>>> parent of 964435e (sadawd)
+=======
+	<script src="js/StarReview.js"></script>
+	              
+>>>>>>> parent of ddf499f (Merge remote-tracking branch 'origin/Donk' into test)
 =======
 	<script src="js/StarReview.js"></script>
 	              
