@@ -1182,7 +1182,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								구분칸===================================================
 
 								<div class="input-group">
-									<div class="starRev">
+									<div class="starRev" id="starRev${detail.getMain_idx()}">
 										<span class="starR on">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span>
@@ -1191,10 +1191,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 
 										<textarea name="review" class="form-control" type="text"
-											id="reviewContents" placeholder="리뷰 작성"></textarea>
+											id="reviewContents${detail.getMain_idx()}" placeholder="리뷰 작성"></textarea>
 
 										<br>
-										<button class="btn btn-primary" type="button" id="id123">등록</button>
+										<button class="btn btn-primary" type="button" id="starInsert">등록</button>
 									</div>
 								</div>
 								
