@@ -5,7 +5,7 @@
 $(function () {
 
 	
-  $("#booking-btn").on("click", function () {
+  function reservation_insert() {
 	  
 	  var main_idx = $(this).siblings('#date_idx').val();
 	  console.log("메인 idx : " + main_idx);

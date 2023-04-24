@@ -1008,144 +1008,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								</div>
 							</div>
 						</div>
-
-
-						
-						<!--가게정보 상세페이지  ==============================================================================================-->
-						<div class="modal modal-quick-view fade"
-							id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
-							<div class="modal-dialog" role="document">
-								<input type="hidden" id="main_idx${dto.getMain_idx()}" value="${dto.getMain_idx()}">
-								<div class="modal-content">
-									<div class="modal-header">
-										<div>
-											<h2 class="h2 modal-title mb-1"
-												style="font-family: 'GmarketSansMedium';">${dto.getMain_name()}</h2>
-											<h5 class="text-primary font-weight-light mb-0"
-												style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</h5>
-										</div>
-										<button class="close" type="button" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div class="row">
-											<!-- Product gallery-->
-											<div class="col-lg-7">
-												<div class="owl-carousel"
-													data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
-													<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-													<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-													<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-													<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-												</div>
-											</div>
-											<!-- Product details-->
-											<div class="col-lg-5 pt-4 pt-lg-0">
-												<form class="pb-4" method="post" action="">
-													<label for="resvation_date">예약날짜</label>
-
-													<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
-
-													<c:set var="opentime" value="${dto.getMain_opentime()}" />
-													<c:set var="endtime" value="${dto.getMain_endtime()}" />
-													<div class="form-group">
-														<div class="form-inline pb-3" style="float: left;">
-															<input class="form-control" type="date"
-																id="resvation_date" min="<%=java.time.LocalDate.now()%>"
-																value="<%=java.time.LocalDate.now()%>">
-														</div>
-														<div class="form-inline pb-3" style="float: left;">
-															<select class="form-control custom-select"
-																id="resvation_time" name="size" required>
-																<option>예약 시간</option>
-																<c:forEach var="res_time"
-																	begin="${fn:substring(opentime,0,2)}"
-																	end="${fn:substring(endtime,0,2)}">
-																	<option
-																		value="${res_time}:${fn:substring(opentime,3,5)}">${res_time}
-																		: ${fn:substring(opentime,3,5)}</option>
-																</c:forEach>
-
-															</select>
-														</div>
-
-														<div class="" style="float: right;">
-
-															<input class="pl-2 form-control pb-3" type="number"
-																id="people-num" name="quantity"
-																style="width: 3.5rem; height: 2.625rem;" value="1"
-																required>
-														</div>
-														<div style="float: right;">
-															<label class="pt-2" for="people-num">인원&nbsp;&nbsp;</label>
-														</div>
-														<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
-
-
-
-													</div>
-													<div class="form-group" style="float: left;">
-														<div class="form-inline pb-2" style="float: right;"></div>
-													</div>
-													<textarea class="form-control" id="request-text" rows="3"
-														style="resize: none;" placeholder="요청사항 혹은 알러지 음식을 작성해주세요"></textarea>
-													<div class="d-flex flex-wrap align-items-center pt-1">
-
-														<div>
-															<button class="btn btn-primary px-5 mr-2" type="button"
-																id="booking-btn">
-																<i class="mr-2" data-feather="shopping-cart"
-																	style="font-family: 'GmarketSansMedium';"></i>예약하기
-															</button>
-															<input type="hidden" value="${dto.getMain_idx()}" id="date_idx">
-
-														</div>
-														<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
-															class="align-middle mr-1" data-feather="heart"
-															style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
-
-													</div>
-												</form>
-												<div class="card">
-													<div class="card-header py-3 bg-0">
-														<h3 class="h6 mb-0">
-															<span
-																class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
-																data-feather="info"
-																style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑 상세 정보
-														</h3>
-													</div>
-													<div class="card-body">
-														<ul class="mb-0" style="font-family: 'GmarketSansMedium';">
-															<li>주소 : ${dto.getMain_addr() }
-																${dto.getMain_detailaddr() }<br> 우편번호 :
-																${dto.getMain_post() }
-															</li>
-															<br>
-															<li>전화 : ${dto.getMain_phone() }</li>
-															<br>
-															<li>=======정보=======<br>${dto.getMain_info()}</li>
-															<br>
-															<li>음식 종류 : ${dto.getMain_type() }</li>
-															<br>
-															<li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 :
-																${dto.getMain_endtime() }</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											=================================================모달 추가 정보
-											구분칸===================================================
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
+					
 					</c:forEach>
 				</c:if>
 
@@ -1157,6 +1020,147 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</div>
+
+
+
+	<c:if test="${!empty list }">
+		<c:forEach items="${list }" var="detail">
+			<!--가게정보 상세페이지  ==============================================================================================-->
+			<div class="modal modal-quick-view fade"
+				id="quick-view${detail.getMain_idx()}" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<input type="hidden" id="detail_idx"
+						value="${detail.getMain_idx()}">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div>
+								<h2 class="h2 modal-title mb-1"
+									style="font-family: 'GmarketSansMedium';">${detail.getMain_name()}</h2>
+								<h5 class="text-primary font-weight-light mb-0"
+									style="font-family: 'GmarketSansMedium';">${detail.getMain_info() }</h5>
+							</div>
+							<button class="close" type="button" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<!-- Product gallery-->
+								<div class="col-lg-7">
+									<div class="owl-carousel"
+										data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+										<img src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
+										<img src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
+										<img src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
+										<img src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
+									</div>
+								</div>
+								<!-- Product details-->
+								<div class="col-lg-5 pt-4 pt-lg-0">
+									<form class="pb-4" method="post" action="">
+										<label for="resvation_date">예약날짜</label>
+
+										<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
+
+										<c:set var="opentime" value="${detail.getMain_opentime()}" />
+										<c:set var="endtime" value="${detail.getMain_endtime()}" />
+										<div class="form-group">
+											<div class="form-inline pb-3" style="float: left;">
+												<input class="form-control" type="date" id="resvation_date${detail.getMain_idx()}"
+													min="<%=java.time.LocalDate.now()%>"
+													value="<%=java.time.LocalDate.now()%>">
+											</div>
+											<div class="form-inline pb-3" style="float: left;">
+												<select class="form-control custom-select"
+													id="resvation_time${detail.getMain_idx()}" name="size" required>
+													<option>예약 시간</option>
+													<c:forEach var="res_time"
+														begin="${fn:substring(opentime,0,2)}"
+														end="${fn:substring(endtime,0,2)}">
+														<option value="${res_time}:${fn:substring(opentime,3,5)}">${res_time}
+															: ${fn:substring(opentime,3,5)}</option>
+													</c:forEach>
+
+												</select>
+											</div>
+
+											<div class="" style="float: right;">
+
+												<input class="pl-2 form-control pb-3" type="number"
+													id="people-num${detail.getMain_idx()}" name="quantity"
+													style="width: 3.5rem; height: 2.625rem;" value="1" required>
+											</div>
+											<div style="float: right;">
+												<label class="pt-2" for="people-num">인원&nbsp;&nbsp;</label>
+											</div>
+											<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
+
+
+
+										</div>
+										<div class="form-group" style="float: left;">
+											<div class="form-inline pb-2" style="float: right;"></div>
+										</div>
+										<textarea class="form-control" id="request-text${detail.getMain_idx()}" rows="3"
+											style="resize: none;" placeholder="요청사항 혹은 알러지 음식을 작성해주세요"></textarea>
+										<div class="d-flex flex-wrap align-items-center pt-1">
+
+											<div>
+												<button class="reservation-btn btn btn-primary px-5 mr-2" type="button">
+													<i class="mr-2" data-feather="shopping-cart"
+														style="font-family: 'GmarketSansMedium';"></i>예약하기
+												</button>
+
+											</div>
+											<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
+												class="align-middle mr-1" data-feather="heart"
+												style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
+
+										</div>
+									</form>
+									<div class="card">
+										<div class="card-header py-3 bg-0">
+											<h3 class="h6 mb-0">
+												<span
+													class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
+													data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑
+												상세 정보
+											</h3>
+										</div>
+										<div class="card-body">
+											<ul class="mb-0" style="font-family: 'GmarketSansMedium';">
+												<li>주소 : ${detail.getMain_addr() }
+													${detail.getMain_detailaddr() }<br> 우편번호 :
+													${detail.getMain_post() }
+												</li>
+												<br>
+												<li>전화 : ${detail.getMain_phone() }</li>
+												<br>
+												<li>=======정보=======<br>${detail.getMain_info()}</li>
+												<br>
+												<li>음식 종류 : ${detail.getMain_type() }</li>
+												<br>
+												<li>오픈시간 : ${detail.getMain_opentime()} ~ 마감시간 :
+													${detail.getMain_endtime() }</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								=================================================모달 추가 정보
+								구분칸===================================================
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+	</c:if>
+
+
+
+
 
 
 	<!-- 레스토랑-->

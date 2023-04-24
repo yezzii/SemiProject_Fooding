@@ -1,18 +1,16 @@
-/**
- * 
- */
- 
- $(function () {
+$(function () {
+  $('.reservation-btn').on('click', function(e) {
+    console.log("찜하기 기능 Ajax호출");
+    e.preventDefault(); // 기본 이벤트 방지
 
+    let main_idx = $(this).parents('.modal-dialog').find("#detail_idx").val();
+    let date = $("#resvation_date"+main_idx).val();
+    let time = $("#resvation_time"+main_idx+" option:selected").val();
+    let people_num = $("#people-num"+main_idx).val();
+    let req_text = $("#request-text"+main_idx).val();
 
-  $("#booking-btn").on("click", function () {
-	  
-  let date = $("#resvation_date").val();
-  let time = $("#resvation_time").val();
-  let people_num = $("#people-num").val();
-  let req_text = $("#request-text").val();
-  let main_idx = $("#main_idx").val();
-  
+    console.log(main_idx);
+
     $.ajax({
       type: "POST",
       url: "reservation_insert.do",
