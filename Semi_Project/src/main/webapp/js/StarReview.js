@@ -1,16 +1,21 @@
-   let idx = $("#idx").val();
-
-   
-    
+  
+  
+  
+$(function () {
+	
+  
     $('.starRev span').click(function(){
     $(this).parent().children('span').removeClass('on');
     $(this).addClass('on').prevAll('span').addClass('on');
     return false;
   });
 
-  $("#id"+idx).on("click", function(){
+  $("#id123").on("click", function(){
+	  
+    let idx = $(this).parents('.input-group').find("#idx").val();
     let star = $(".starRev .on").length;
     let review = $("#reviewContents").val();
+    
 	console.log("Ajax호출-Star");	
   
 	$.ajax({
@@ -26,4 +31,6 @@
         
       }
     });
+  });
+  
   });

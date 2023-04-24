@@ -804,6 +804,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
       <c:forEach items="${list }" var="dto">
 		    <div class="modal modal-quick-view fade" id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
 		      <div class="modal-dialog" role="document">
+		      
 		        <div class="modal-content">
 		          <div class="modal-header">
 		            <div>
@@ -856,49 +857,30 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		              </div>
 		                              =================================================모달 추가 정보 구분칸===================================================
 		                              
-		                              
-		                              +<div class="input-group">
-<div class="starRev">
-  <span class="starR on">⭐</span>
-  <span class="starR">⭐</span>
-  <span class="starR">⭐</span>
-  <span class="starR">⭐</span>
-  <span class="starR">⭐</span>
-</div>
-<div class="input-group">
-
-
-  <textarea name="review" class="form-control" type="text" id="reviewContents" placeholder="리뷰 작성"></textarea>
-<input type="hidden" value="${dto.getMain_idx()}" name="idx" id="idx">
-<br>
-<button class="btn btn-primary" type="button" id="id${dto.getMain_idx()}">등록</button>
-</div>
-</div>
-
-
-
+		       <div class="input-group">
+		       <input type="hidden" value = "${dto.getMain_idx()}" id = "idx">
+					<div class="starRev">
+					  <span class="starR on">⭐</span>
+					  <span class="starR">⭐</span>
+					  <span class="starR">⭐</span>
+					  <span class="starR">⭐</span>
+					  <span class="starR">⭐</span>
+					</div>
+					<div class="input-group">
+					
+					
+					  <textarea name="review" class="form-control" type="text" id="reviewContents" placeholder="리뷰 작성"></textarea>
+					
+					<br>
+					<button class="btn btn-primary" type="button" id="id123">등록</button>
+					</div>
+					</div>
 
 
 
-<!-- Product review -->
-<blockquote class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
-  <div class="d-sm-flex align-items-center pb-2">
-    <h6 class="mb-0">Awesome quality for the price</h6>
-    <span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
-    <div class="star-rating">
-      <i class="sr-star active" data-feather="star"></i>
-      <i class="sr-star active" data-feather="star"></i>
-      <i class="sr-star active" data-feather="star"></i>
-      <i class="sr-star active" data-feather="star"></i>
-      <i class="sr-star" data-feather="star"></i>
-    </div>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse...</p>
-  <div class="d-inline-block text-left pt-4">
-    
-  </div>
-</blockquote>
-		                              
+
+
+            
 		                              
 		                              
 		                              
