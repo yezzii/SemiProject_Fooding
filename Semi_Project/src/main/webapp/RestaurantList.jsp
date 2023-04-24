@@ -18,6 +18,32 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <head>
 <meta charset="utf-8" />
 <title>Fooding</title>
+
+<style type="text/css">
+/* 각 별들의 기본 설정 */
+.starR {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	color: transparent;
+	text-shadow: 0 0 0 #f0f0f0;
+	font-size: 1.8em;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+/* 별 이모지에 마우스 오버 시 */
+.starR:hover {
+	text-shadow: 0 0 0 #ccc;
+}
+
+/* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
+.starR.on {
+	text-shadow: 0 0 0 #ffbc00;
+}
+</style>
+
+
 <!-- SEO Meta Tags-->
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
@@ -1008,7 +1034,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								</div>
 							</div>
 						</div>
-					
+
 					</c:forEach>
 				</c:if>
 
@@ -1050,10 +1076,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<div class="col-lg-7">
 									<div class="owl-carousel"
 										data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
-										<img src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
-										<img src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
-										<img src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
-										<img src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
+										<img src="${detail.getMain_img()}"
+											alt="${detail.getMain_img()}"> <img
+											src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
+										<img src="${detail.getMain_img()}"
+											alt="${detail.getMain_img()}"> <img
+											src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
 									</div>
 								</div>
 								<!-- Product details-->
@@ -1067,13 +1095,15 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										<c:set var="endtime" value="${detail.getMain_endtime()}" />
 										<div class="form-group">
 											<div class="form-inline pb-3" style="float: left;">
-												<input class="form-control" type="date" id="resvation_date${detail.getMain_idx()}"
+												<input class="form-control" type="date"
+													id="resvation_date${detail.getMain_idx()}"
 													min="<%=java.time.LocalDate.now()%>"
 													value="<%=java.time.LocalDate.now()%>">
 											</div>
 											<div class="form-inline pb-3" style="float: left;">
 												<select class="form-control custom-select"
-													id="resvation_time${detail.getMain_idx()}" name="size" required>
+													id="resvation_time${detail.getMain_idx()}" name="size"
+													required>
 													<option>예약 시간</option>
 													<c:forEach var="res_time"
 														begin="${fn:substring(opentime,0,2)}"
@@ -1101,12 +1131,14 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										<div class="form-group" style="float: left;">
 											<div class="form-inline pb-2" style="float: right;"></div>
 										</div>
-										<textarea class="form-control" id="request-text${detail.getMain_idx()}" rows="3"
+										<textarea class="form-control"
+											id="request-text${detail.getMain_idx()}" rows="3"
 											style="resize: none;" placeholder="요청사항 혹은 알러지 음식을 작성해주세요"></textarea>
 										<div class="d-flex flex-wrap align-items-center pt-1">
 
 											<div>
-												<button class="reservation-btn btn btn-primary px-5 mr-2" type="button">
+												<button class="reservation-btn btn btn-primary px-5 mr-2"
+													type="button">
 													<i class="mr-2" data-feather="shopping-cart"
 														style="font-family: 'GmarketSansMedium';"></i>예약하기
 												</button>
@@ -1149,6 +1181,25 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								=================================================모달 추가 정보
 								구분칸===================================================
 
+								<div class="input-group">
+									<div class="starRev">
+										<span class="starR on">⭐</span> <span class="starR">⭐</span> <span
+											class="starR">⭐</span> <span class="starR">⭐</span> <span
+											class="starR">⭐</span>
+									</div>
+									<div class="input-group">
+
+
+										<textarea name="review" class="form-control" type="text"
+											id="reviewContents" placeholder="리뷰 작성"></textarea>
+
+										<br>
+										<button class="btn btn-primary" type="button" id="id123">등록</button>
+									</div>
+								</div>
+								
+								
+								
 							</div>
 						</div>
 					</div>
