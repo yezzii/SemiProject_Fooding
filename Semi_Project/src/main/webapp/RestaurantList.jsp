@@ -17,6 +17,30 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <head>
 <meta charset="utf-8" />
 <title>Fooding</title>
+<style type="text/css">
+/* 각 별들의 기본 설정 */
+.starR{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+  font-size: 1.8em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* 별 이모지에 마우스 오버 시 */
+.starR:hover {
+  text-shadow: 0 0 0 #ccc;
+}
+
+/* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
+.starR.on{
+  text-shadow: 0 0 0 #ffbc00;
+}
+
+</style>
 <!-- SEO Meta Tags-->
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
@@ -831,6 +855,53 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		                </div>
 		              </div>
 		                              =================================================모달 추가 정보 구분칸===================================================
+		                              
+		                              
+		                              +<div class="input-group">
+<div class="starRev">
+  <span class="starR on">⭐</span>
+  <span class="starR">⭐</span>
+  <span class="starR">⭐</span>
+  <span class="starR">⭐</span>
+  <span class="starR">⭐</span>
+</div>
+<div class="input-group">
+
+
+  <textarea name="review" class="form-control" type="text" id="reviewContents" placeholder="리뷰 작성"></textarea>
+<input type="hidden" value="${dto.getMain_idx()}" name="idx" id="idx">
+<br>
+<button class="btn btn-primary" type="button" id="id${dto.getMain_idx()}">등록</button>
+</div>
+</div>
+
+
+
+
+
+
+<!-- Product review -->
+<blockquote class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
+  <div class="d-sm-flex align-items-center pb-2">
+    <h6 class="mb-0">Awesome quality for the price</h6>
+    <span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
+    <div class="star-rating">
+      <i class="sr-star active" data-feather="star"></i>
+      <i class="sr-star active" data-feather="star"></i>
+      <i class="sr-star active" data-feather="star"></i>
+      <i class="sr-star active" data-feather="star"></i>
+      <i class="sr-star" data-feather="star"></i>
+    </div>
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse...</p>
+  <div class="d-inline-block text-left pt-4">
+    
+  </div>
+</blockquote>
+		                              
+		                              
+		                              
+		                              
 		              
 		            </div>
 		          </div>
@@ -1402,7 +1473,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <script src="js/Board_Main.js"></script>
 	<script src="js/StoreMarked.js"></script>
 	<script src="js/StarReview.js"></script>
-
 	<script src="js/StoreMarked.js"></script>
 
 
