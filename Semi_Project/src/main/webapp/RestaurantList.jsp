@@ -93,6 +93,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	String thumnail =  (String)session.getAttribute("Thumnail");
 	String profile =  (String)session.getAttribute("member_profile");
 	String name = (String)session.getAttribute("name");
+	int totalBoardmain = (int)request.getAttribute("totalBoardmain");
 	
 	%>
 
@@ -714,11 +715,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-					<a class="navbar-btn" href="#offcanvas-cart"
+					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
+							class="navbar-btn-badge bg-primary-Mark text-light" id="totalMarkCount"></span><i
+							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="member/logout.jsp">
 						
@@ -759,7 +760,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</ol>
 			</nav>
 			<h1 class="page-title">
-				레스토랑 목록 &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span
+				레스토랑 목록(${totalBoardmain }) &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span
 					class="lead font-weight-semibold text-muted"></span>
 			</h1>
 			<span class="d-block mt-2 text-muted"></span>
@@ -767,44 +768,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 	<!-- Page Content  ==========================================================================================-->
-
-	<%--
-    	  <c:set var="list" value="${List}" />
-              <c:if test="${!empty list }">
-                <c:forEach items="${list }" var="dto">
-                <!-- DB데이터만큼 리스트 출력되는 가게목록. -->
-                <div class="col-md-4 col-sm-6">
-                  <div class="product-card mb-4">
-                    <div class="product-thumb">
-                      <a class="product-thumb-link" href="">	</a><span
-                        class="product-wishlist-btn" data-toggle="tooltip"
-                        data-placement="left" title="찜하기"><i
-                        data-feather="heart"></i></span><img src="${dto.getMain_img()}"
-                        alt="${dto.getMain_name()}">
-                    </div>
-                    <div class="product-card-body text-center">
-                      <a class="product-meta" href="#"  style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
-                      <h3 class="product-card-title">
-                        <a href="shop-single-apparel.jsp"  style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
-                      </h3>
-                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
-                    </div>
-                    <div class="product-card-body body-hidden">
-                     
-                      <button class="btn btn-primary btn-sm btn-block" type="button"
-                        data-toggle="toast" data-target="#cart-toast"  style="font-family: 'GmarketSansMedium';">예약하기</button>
-                      <a class="quick-view-btn" href="#${dto.getMain_idx()}-quick-view"
-                        data-toggle="modal" style=" color:black;"><i class="mr-2" data-feather="eye" style="font-family: 'GmarketSansMedium';"></i>자세히</a>
-                    </div>
-                  </div>
-                </div>
-    
-              </c:forEach>
-              </c:if>				
-     --%>
-    
     <!--가게정보 상세페이지  ==============================================================================================-->
      <c:set var="list" value="${List}" />
+     
 	    <c:if test="${!empty list }">
       <c:forEach items="${list }" var="dto">
 		    <div class="modal modal-quick-view fade" id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
@@ -822,10 +788,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		              <!-- Product gallery-->
 		              <div class="col-lg-7">
 		                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+			              <%--   <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+			                <img class="menu_img" src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
 			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}"> --%>
 		                </div>
 		              </div>
 		              <!-- Product details-->
@@ -836,8 +802,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		                      <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
 		                    </div>
 		                    <div>
-		                      <button class="btn btn-primary px-5 mr-2" type="submit"><i class="mr-2" data-feather="shopping-cart" style="font-family: 'GmarketSansMedium';"></i>예약하기</button>
-		                    </div><a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
+		                      <button class="btn btn-primary px-5 mr-2" type="submit">
+		                      <i class="mr-2" data-feather="shopping-cart" style="font-family: 'GmarketSansMedium';">
+		                      </i>예약하기</button>
+		                    </div>
+
+
 		                  </div>
 		                </form>
 		                <div class="card">
@@ -1058,10 +1028,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<div class="product-card-body body-hidden">
 
 									
-									<a class="quick-view-btn"
+									<a class="quick-view-btn" id="quick-view${dto.getMain_idx()}"
 										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
 										style="color: black;"><button class="btn btn-primary btn-sm btn-block" type="button"
 										style="font-family: 'GmarketSansMedium';">자세히</button></a>
+										<input type="hidden" id="main_menu_idx" value="${dto.getMain_idx()}"> 
 								</div>
 							</div>
 						</div>
