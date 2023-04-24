@@ -41,10 +41,19 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 <!-- Customizer styles and scripts-->
+<<<<<<< HEAD
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/kakao_login.js"></script>
 		<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
+=======
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
+	<script src="js/kakao_login.js"></script>
+
+>>>>>>> parent of 964435e (sadawd)
 	
 </head>
 <!-- Body-->
@@ -1192,6 +1201,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 		
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+<<<<<<< HEAD
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
@@ -1208,5 +1218,16 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		});
 	</script>
 <%--   ======================================하단 Footer <<END>>======================================= --%>
+=======
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="js/sign_upChk.js"></script>
+<script type="text/javascript" src="js/sign_upChk.js"></script>
+<script src="js/Board_Main.js"></script>
+	<script src="js/StoreMarked.js"></script>
+
+>>>>>>> parent of 964435e (sadawd)
 </body>
 </html>
