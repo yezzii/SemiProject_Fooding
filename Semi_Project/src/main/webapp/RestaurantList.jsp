@@ -1086,7 +1086,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											</div>
 
 											<div class="" style="float: right;">
-
 												<input class="pl-2 form-control pb-3" type="number"
 													id="people-num${detail.getMain_idx()}" name="quantity"
 													style="width: 3.5rem; height: 2.625rem;" value="1" required>
