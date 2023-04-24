@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 public class MenuDAO {
@@ -240,6 +243,40 @@ public class MenuDAO {
 		}
 		return result;
 	}
+	
+
+	public List<MenuDTO> getMenuImgList(int main_idx) {
+		List<MenuDTO> list = new ArrayList<MenuDTO>();
+
+		try {
+			openConn();
+			sql = "SELECT menu_img FROM semi.main_menu where rst_no = ?";
+			
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, main_idx);
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				MenuDTO dto = new MenuDTO();
+
+				dto.setMenu_img(rs.getString("menu_img"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}// getMenuImgList() end
+	
+	
+	
+	
 	
 	
 }

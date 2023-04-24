@@ -560,60 +560,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<li><a class="dropdown-item" href="404.jsp">404 Not
 									Found</a></li>
 						</ul></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="mr-1" data-feather="file-text"></i>레스토랑</a>
-						<ul class="dropdown-menu">
-
-							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/board_main_list.do">
-
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="file-text"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" data-toggle="modal"
-								href="#modalLong">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 추가 </span>
-										</div>
-									</div>
-							</a></li>
-
-
-
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="LoadRestaurantList.do">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록<br>(동현작업중)
-											</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item"
-								href="mailto:contact@createx.studio">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="life-buoy"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">Support</span><small
-												class="text-muted">contact@createx.studio</small>
-										</div>
-									</div>
-							</a></li>
-						</ul></li>
+				<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="LoadRestaurantList.do" ><i
+							class="mr-1" ></i>레스토랑</a>
+						</li>
 				</ul>
 			</div>
 			<!-- navbar buttons-->
@@ -705,7 +655,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</ol>
 			</nav>
 			<h1 class="page-title">
-				레스토랑 목록 &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span
+				레스토랑 목록(${totalBoardmain }) &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span
 					class="lead font-weight-semibold text-muted"></span>
 			</h1>
 			<span class="d-block mt-2 text-muted"></span>
