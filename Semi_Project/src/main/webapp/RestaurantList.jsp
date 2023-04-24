@@ -44,7 +44,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="js/kakao_login.js"></script>
 		<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
+<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
 	
 </head>
 <!-- Body-->
@@ -250,11 +250,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 
 
-	<!-- Off-canvas cart-->
+		<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Your cart</h3>
+			<h3 class="offcanvas-title" style="font-family:'GmarketSansMedium'; font-size: 23px; ">찜한 레스토랑</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -262,85 +262,31 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
-				<div class="text-right">
-					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
-						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i>Clear
-						cart</a>
-				</div>
-				<div class="widget widget-featured-entries pt-3">
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
+				
+				<div class="widget widget-featured-entries pt-3" id="marked-list">
+				
+				<%--찜 목록 리스트 (가게정보 출력란) --%>
+				
+						<div class="media" >
+							<div class="featured-entry-thumb mr-3">
+								<a href="#"><img src="" width="64"
+									alt="" /></a>
+							</div>
+							<div class="media-body">
+								<h6 class="featured-entry-title">
+									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
+								</h6>
+								<p cxlass="fe$125.00atured-entry-meta">
+									<span class="text-muted"></span> 
+								</p>
+							</div>
 						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Calvin Klein Jeans Keds</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $125.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">The North Face Hoodie</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $134.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Medicine Chameleon Sunglasses</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $47.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Adidas Performance Hat</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $19.00
-							</p>
-						</div>
-					</div>
-					<hr />
-					<div class="d-flex justify-content-between align-items-center py-3">
-						<div class="font-size-sm">
-							<span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">$325.00</span>
-						</div>
-						<a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand
-							cart<i class="mr-n2" data-feather="chevron-right"></i>
-						</a>
-					</div>
-					<a class="btn btn-primary btn-sm btn-block"
-						href="checkout-details.jsp"><i class="mr-1"
-						data-feather="credit-card"></i>Checkout</a>
+				<hr />
+			
+					<%--찜 목록 리스트 END  --%>
+					
+					
+					
 				</div>
 			</div>
 		</div>
