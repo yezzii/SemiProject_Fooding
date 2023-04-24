@@ -1,6 +1,6 @@
 $(function () {
   $('.reservation-btn').on('click', function(e) {
-    console.log("찜하기 기능 Ajax호출");
+    console.log("예약기능 Ajax호출");
     e.preventDefault(); // 기본 이벤트 방지
 
     let main_idx = $(this).parents('.modal-dialog').find("#detail_idx").val();

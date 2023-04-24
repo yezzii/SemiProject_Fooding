@@ -1182,19 +1182,20 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								구분칸===================================================
 
 								<div class="input-group">
-									<div class="starRev" id="starRev${detail.getMain_idx()}">
+								
+									<div class="starRev" id="starRev">
 										<span class="starR on">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span>
 									</div>
-									<div class="input-group">
-
-
+									<div class="input-group starInsert-idx">
+									<input type="hidden" id="detail_idx"
+										value="${detail.getMain_idx()}">
 										<textarea name="review" class="form-control" type="text"
 											id="reviewContents${detail.getMain_idx()}" placeholder="리뷰 작성"></textarea>
 
 										<br>
-										<button class="btn btn-primary" type="button" id="starInsert">등록</button>
+										<button class="btn btn-primary starInsert" type="button" id="starInsert">등록</button>
 									</div>
 								</div>
 								
@@ -1558,6 +1559,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="js/Board_Main.js"></script>
 	<script src="js/StoreMarked.js"></script>
 	<script src="js/reservation.js"></script>
+	<script src="js/StarReview.js"></script>
 	<script>
 		$('.toast').toast({
 			delay : 3000
