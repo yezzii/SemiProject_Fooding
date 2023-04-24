@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
-
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 
@@ -39,7 +37,6 @@ public class MemberKakaoLoginAction implements Action {
 
 	ActionForward forward = new ActionForward();
 	
-	int result = 0;
 			
 		if(check == 0) {		//회원이 아닌경우 회원가입페이지로 안내
 			
@@ -53,7 +50,7 @@ public class MemberKakaoLoginAction implements Action {
 			forward.setRedirect(false);
 			
 			forward.setPath("member_kakao_join.jsp");
-			
+		
 		
 		}else if(check == 1) {				//회원인 경우 로그인 페이지로 안내
 			
@@ -68,14 +65,10 @@ public class MemberKakaoLoginAction implements Action {
 					session.setAttribute("type", memdto.getMember_type());
 					session.setAttribute("Thumnail", kakao_thumnail);
 					
-					result = 1;
-					
-					JSONObject jsonObj = new JSONObject();
-					 
-					jsonObj.put("result", result);
-					jsonObj.put("name", memdto.getMember_name());
-					
-					out.println(jsonObj);
+					out.println("<script>");
+					out.println("alert('" + session.getAttribute("name") + " 관리자님 오지게 인사박습니다.')");
+					out.println("location.href='index.jsp'");
+					out.println("</script>");
 					
 				} else if (memdto.getMember_type() == 1) {
 
@@ -86,14 +79,10 @@ public class MemberKakaoLoginAction implements Action {
 					session.setAttribute("type", memdto.getMember_type());
 					session.setAttribute("Thumnail", kakao_thumnail);
 					
-					result = 1;
-					
-					JSONObject jsonObj = new JSONObject();
-					 
-					jsonObj.put("result", result);
-					jsonObj.put("name", memdto.getMember_name());
-					
-					out.println(jsonObj);
+					out.println("<script>");
+					out.println("alert('" + session.getAttribute("name") + " 회원님 다시 오신걸 환영합니다.')");
+					out.println("location.href='index.jsp'");
+					out.println("</script>");
 
 				} else if (memdto.getMember_type() == 2) {
 
@@ -105,14 +94,10 @@ public class MemberKakaoLoginAction implements Action {
 					session.setAttribute("storenum", memdto.getMember_storenum());
 					session.setAttribute("Thumnail", kakao_thumnail);
 
-					result = 1;
-					
-					JSONObject jsonObj = new JSONObject();
-					 
-					jsonObj.put("result", result);
-					jsonObj.put("name", memdto.getMember_name());
-					
-					out.println(jsonObj);
+					out.println("<script>");
+					out.println("alert('" + session.getAttribute("name") + " 사장님 다시 오신걸 환영합니다.')");
+					out.println("location.href='index.jsp'");
+					out.println("</script>");
 				}else if (memdto.getMember_type() == 3) {
 
 					session.setAttribute("id", memdto.getMember_id());
@@ -120,24 +105,20 @@ public class MemberKakaoLoginAction implements Action {
 					session.setAttribute("type", memdto.getMember_type());
 					session.setAttribute("Thumnail", kakao_thumnail);
 
-					result = 1;
-					
-					JSONObject jsonObj = new JSONObject();
-					 
-					jsonObj.put("result", result);
-					jsonObj.put("name", memdto.getMember_name());
-					
-					out.println(jsonObj);
+					out.println("<script>");
+					out.println("alert('" + session.getAttribute("name") + " 카카오 회원님 환영합니다.')");
+					out.println("location.href='index.jsp'");
+					out.println("</script>");
 				
 			}else {
-				
-				result = -1;
-				
-				out.println(result + "");
+					out.println("<script>");
+					out.println("alert('아이디 및 비밀번호를 확인해주세요')");
+					out.println("history.back()");
+					out.println("</script>");
 			}
 		}					
 	}
-		out.close();
-		return null;
+		
+		return forward;
 	}
 }

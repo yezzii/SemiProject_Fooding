@@ -14,15 +14,6 @@
 	font-style: normal;
 }
 
-@font-face {
-	font-family: 'GmarketSansLight';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-	font-weight: 100;
-	font-style: normal;
-}
-
-
 :root {
 	--blue: #007bff;
 	--indigo: #6610f2;
@@ -7325,10 +7316,6 @@ a.close.disabled {
 
 .bg-primary {
 	background-color: #5c77fc !important
-}
-
-.bg-primary-Mark {
-	background-color: #ff4c3f !important
 }
 
 a.bg-primary:hover,
