@@ -6,11 +6,14 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.boardMain.model.Board_MainDAO;
 import com.boardMain.model.Board_MainDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
+import com.member.model.MemberDAO;
+import com.member.model.MemberMarkDTO;
 
 public class RestaurantListAction implements Action {
 
@@ -67,6 +70,7 @@ public class RestaurantListAction implements Action {
 		request.setAttribute("endBlock", endBlock);
 		
 		request.setAttribute("List", MainList);
+	
 		
 		ActionForward forward = new ActionForward();
 		

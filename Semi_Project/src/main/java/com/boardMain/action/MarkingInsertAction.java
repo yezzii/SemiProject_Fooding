@@ -20,28 +20,51 @@ public class MarkingInsertAction implements Action {
 			throws IOException, ServletException, Exception {
 
 		HttpSession session = request.getSession();
-		
+
 		int Main_idx = Integer.parseInt(request.getParameter("main_idx"));
 		String Member_id = (String) session.getAttribute("id");
-		
-		System.out.println("찜하기 기능 Action 진입 가게번호 : "+Main_idx);
-		System.out.println("찜하기 기능 Action 진입 회원아이디 : "+Member_id);
-		
-		
+
+		System.out.println("찜하기 기능 Action 진입 가게번호 : " + Main_idx);
+		System.out.println("찜하기 기능 Action 진입 회원아이디 : " + Member_id);
+
 		MemberMarkDTO dto = new MemberMarkDTO();
-		
+
 		dto.setMarked_storeidx(Main_idx);
 		dto.setMem_id(Member_id);
-		dto.setMark_YN(1);
-		
+
 		MemberDAO dao = MemberDAO.getInstance();
+
+		int check = dao.checkMarking(dto);
+
+		int result = 0;
+
+		int end = 0;
 		
-		int result = dao.addMarking(dto);
-		
+		if (check == 1) {// 데이터가 있다면(제거)
+
+			result = dao.deleteMarking(dto);
+			if (result == 1) {
+				end = 1; // delete 완료
+			} else {
+				end = -1; // delete x
+			}
+
+		} else if (check == 0) {// 데이터가 없다면(삽입)
+
+			result = dao.addMarking(dto);
+			
+			if (result == 1) {
+				end = 2; // insert 완료
+			} else {
+				end = -2; // insert 모담
+			}
+			
+		}
+	
 		PrintWriter out = response.getWriter();
-		
-		out.println(result + "");
-		System.out.println("찜하기 Action > Ajax 보내는 값 : "+result);
+
+		out.println(end + "");
+
 		return null;
 	}
 
