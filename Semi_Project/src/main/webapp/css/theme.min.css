@@ -7327,6 +7327,10 @@ a.close.disabled {
 	background-color: #5c77fc !important
 }
 
+.bg-primary-Mark {
+	background-color: #ff4c3f !important
+}
+
 a.bg-primary:hover,
 a.bg-primary:focus,
 button.bg-primary:hover,

@@ -2,7 +2,7 @@ $(document).ready(function () {
 
  
 
-  $.ajax({
+  $.ajax({//찜하기 목록 불러오기
     type: 'POST',
     url: 'Marking_load.do',
     dataType: "json",
@@ -90,9 +90,10 @@ $(document).ready(function () {
   });
 });
 
-function CountMark(count){
+function CountMark(count){//상단 찜하기 총 갯수
 	   //찜한 가게 총 수
 		const totalMark = document.getElementById('totalMarkCount');
 		
 		totalMark.textContent = count;
+		
 };

@@ -1057,13 +1057,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								</div>
 								<div class="product-card-body body-hidden">
 
-									<button class="btn btn-primary btn-sm btn-block" type="button"
-										data-toggle="toast" data-target="#cart-toast"
-										style="font-family: 'GmarketSansMedium';">예약하기</button>
+									
 									<a class="quick-view-btn"
 										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
-										style="color: black;"><i class="mr-2" data-feather="eye"
-										style="font-family: 'GmarketSansMedium';"></i>자세히</a>
+										style="color: black;"><button class="btn btn-primary btn-sm btn-block" type="button"
+										style="font-family: 'GmarketSansMedium';">자세히</button></a>
 								</div>
 							</div>
 						</div>
