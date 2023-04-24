@@ -92,8 +92,10 @@ $(document).ready(function () {
 
 function CountMark(count){//상단 찜하기 총 갯수
 	   //찜한 가게 총 수
-		const totalMark = document.getElementById('totalMarkCount');
+		const totalMark = document.getElementById('ToTalMarkCount');
 		
 		totalMark.textContent = count;
+		
+		
 		
 };

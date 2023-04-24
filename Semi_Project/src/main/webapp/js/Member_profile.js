@@ -32,40 +32,39 @@ $(function() {
 					}
 				});
 	});
-
-	$(function() {
-		// 이미지 클릭 시 파일 업로드 창 실행
-		$('#Change_Profile').click(function() {
-			console.log('fileadd');
-			$("input[name='fileProfile']").click();
+		$(function() {
+		  // 이미지 클릭 시 파일 업로드 창 실행
+		  $('#Change_Profile').click(function() {
+		    console.log('fileadd');
+		    $("input[name='fileProfile']").click();
+		  });
+		
+		  // 파일 선택 시 실행되는 이벤트
+		  $("input[name='fileProfile']").on('change', function(e) {
+		    // form 데이터 생성
+		    var frm = document.getElementById('profile_file_add');
+		    frm.method = 'POST';
+		    frm.enctype = 'multipart/form-data';
+		    var fileData = new FormData(frm);
+		  });
 		});
-
-		// 파일 선택 시 실행되는 이벤트
-		$("input[name='fileProfile']").on('change', function(e) {
-			// form 데이터 생성
-			var frm = document.getElementById('profile_file_add');
-			frm.method = 'POST';
-			frm.enctype = 'multipart/form-data';
-			var fileData = new FormData(frm);
-
-		});
-	});
-
-	var currentImageSrc = "${empty dto.getMember_image() ? 'main_img/basic_thumnail.png' : dto.getMember_image()}"; // 초기 이미지 소스 설정
-
-	function setThumbnail(event) {
-		var reader = new FileReader();
-		reader.onload = function(event) {
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result);
-			img.setAttribute("class", "col-lg-6");
-			document.querySelector("img[src='" + currentImageSrc + "']")
-					.remove(); // 현재 이미지 삭제
-			document.querySelector("div#image_container").appendChild(img); // 새로운 이미지 추가
-			currentImageSrc = event.target.result; // 현재 이미지 소스 업데이트
+		
+		var currentImage = document.getElementById("current-image");
+		
+		function setThumbnail(event) {
+		  var reader = new FileReader();
+		  reader.onload = function(event) {
+		    var img = document.createElement("img");
+		    img.setAttribute("src", event.target.result);
+		    img.setAttribute("class", "col-lg-6");
+		    var parent = currentImage.parentNode;
+		    parent.replaceChild(img, currentImage); // 현재 이미지 삭제
+		    document.querySelector("div#image_container").appendChild(img); // 새로운 이미지 추가
+		    currentImage = img; // 현재 이미지 소스 업데이트
+		  };
+		  reader.readAsDataURL(event.target.files[0]);
 		};
-		reader.readAsDataURL(event.target.files[0]);
-	};
+
 
 	function findAddr() {
 		new daum.Postcode({
@@ -73,7 +72,7 @@ $(function() {
 				console.log(data);
 
 				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-				// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+				// 도로명ㄴ 주소의 노출 규칙에 따라 주소를 표시한다.
 				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 				var roadAddr = data.roadAddress; // 도로명 주소 변수
 				var jibunAddr = data.jibunAddress; // 지번 주소 변수
