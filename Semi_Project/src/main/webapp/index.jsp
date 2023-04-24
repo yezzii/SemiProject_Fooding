@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%
 response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
@@ -44,6 +45,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 
 <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
+
 </head>
 <!-- Body-->
 <body>
@@ -94,6 +97,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	String thumnail =  (String)session.getAttribute("Thumnail");
 	String profile =  (String)session.getAttribute("member_profile");
 	String name = (String)session.getAttribute("name");
+	String totalMark = (String)session.getAttribute("totalMark");
 	
 	%>
 	
@@ -233,8 +237,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<hr class="w-100" />
 				</div>
 				<div class="text-center pt-4">
-					<input type="image" style="width: 320px;"
-						src="main_img/kakao_login.jpg" onclick="kakaoLogin();"
+					<input type="image" style="width: 320px;" id="kakaoAjax"
+						src="main_img/kakao_login.jpg" 
 						value="카카오 로그인 kakaoLogin();"> <br>
 					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Facebook"><i
@@ -255,7 +259,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Your cart</h3>
+			<h3 class="offcanvas-title" style="font-family:'GmarketSansMedium'; font-size: 23px; ">찜한 레스토랑</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -263,85 +267,31 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
-				<div class="text-right">
-					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
-						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i>Clear
-						cart</a>
-				</div>
-				<div class="widget widget-featured-entries pt-3">
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
+				
+				<div class="widget widget-featured-entries pt-3" id="marked-list">
+				
+				<%--찜 목록 리스트 (가게정보 출력란) --%>
+				
+						<div class="media" >
+							<div class="featured-entry-thumb mr-3">
+								<a href="#"><img src="" width="64"
+									alt="" /></a>
+							</div>
+							<div class="media-body">
+								<h6 class="featured-entry-title">
+									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
+								</h6>
+								<p cxlass="fe$125.00atured-entry-meta">
+									<span class="text-muted"></span> 
+								</p>
+							</div>
 						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Calvin Klein Jeans Keds</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $125.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">The North Face Hoodie</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $134.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Medicine Chameleon Sunglasses</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $47.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Adidas Performance Hat</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $19.00
-							</p>
-						</div>
-					</div>
-					<hr />
-					<div class="d-flex justify-content-between align-items-center py-3">
-						<div class="font-size-sm">
-							<span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">$325.00</span>
-						</div>
-						<a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand
-							cart<i class="mr-n2" data-feather="chevron-right"></i>
-						</a>
-					</div>
-					<a class="btn btn-primary btn-sm btn-block"
-						href="checkout-details.jsp"><i class="mr-1"
-						data-feather="credit-card"></i>Checkout</a>
+				<hr />
+			
+					<%--찜 목록 리스트 END  --%>
+					
+					
+					
 				</div>
 			</div>
 		</div>
@@ -616,59 +566,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									Found</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="mr-1" data-feather="file-text"></i>레스토랑</a>
-						<ul class="dropdown-menu">
-
-							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/board_main_list.do">
-
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="file-text"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" data-toggle="modal"
-								href="#modalLong">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 추가 </span>
-										</div>
-									</div>
-							</a></li>
-
-
-
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="LoadRestaurantList.do">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록<br>(동현작업중)
-											</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item"
-								href="mailto:contact@createx.studio">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="life-buoy"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">Support</span><small
-												class="text-muted">contact@createx.studio</small>
-										</div>
-									</div>
-							</a></li>
-						</ul></li>
+						class="nav-link dropdown-toggle" href="LoadRestaurantList.do" ><i
+							class="mr-1" ></i>레스토랑</a>
+						</li>
 				</ul>
 			</div>
 			<!-- navbar buttons-->
@@ -716,20 +616,20 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-					<a class="navbar-btn" href="#offcanvas-cart"
+					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
+							class="navbar-btn-badge bg-primary-Mark text-light" id="totalMarkCount"></span><i
+							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
+					
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="member/logout.jsp">
-						
 						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
 
 					<%-- 프로필 정보란 --%>
 				<div class="navbar-btn navbar-collapse-hidden">
 					<div class="kakao_img mx-auto mb-1">
-						<a href="<%=request.getContextPath()%>/myprofile.go"> <img
+						<a href="<%=request.getContextPath()%>/member_profile.do"> <img
 							class="profile_img" src="<%=thumnail%>">
 						</a>
 					</div>
@@ -1773,46 +1673,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 
-		<div class="textForm">
-			<textarea class="cont" rows="5" cols="25" name="main_info"
-				placeholder="가게정보"></textarea>
-		</div>
-
-
-		<div class="time_textForm" align="center">
-			
-			<label for="main_opentime" style="color: #636e72">영업시작시간</label>&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="time" id="main_opentime" name="main_opentime"value="10:00"> <br> <br>
-			<label for="main_endtime" style="color: #636e72">영업종료시간</label> &nbsp;&nbsp;&nbsp;
-			<input type="time" id="main_endtime" name="main_endtime" value="21:00">
-		</div>
-
-		<div class="textForm">
-			<input name="main_post" id="post" type="text" class="location" placeholder="우편번호" readonly onclick="findAddr()"> 
-			<input name="main_addr" id="addr" type="text" class="location" placeholder="주소" readonly> 
-			<input name="main_detailaddr" type="text" class="location" placeholder="상세 주소">
-		</div>
-
-		<div class="textForm">
-			<input name="main_phone" type="text" class="phone" placeholder="전화번호">
-		</div>
-		
-		<div class="image">
-			<span class="pic_txt">가게등록 사진</span>
-			<input class="main_file" type="file" name="main_img">				
-		</div>			
-		
-		</p>
-		<div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary btn-sm" value="가입하기"/>
-		</div>
-		</form>
-		</div>
-      </div>
-    </div>
-  </div>
-  <!-- modal end -->
   
   
   
@@ -1951,11 +1811,14 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
 	<script type="text/javascript" src="js/sign_upChk.js"></script>
 	<script src="js/Board_Main.js"></script>
 	<script src="js/LoginChk.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="js/kakao_login.js"></script>
+	<script src="js/StoreMarked.js"></script>
 	<script>
 		$('.toast').toast({
 			delay : 5000

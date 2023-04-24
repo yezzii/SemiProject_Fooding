@@ -9,6 +9,7 @@ public class ReservationDTO {
 	private int main_idx;
 	private int member_cnt;
 	private int price;
+	private String request_text;
 	
 	public int getBooking_idx() {
 		return booking_idx;
@@ -51,6 +52,12 @@ public class ReservationDTO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public String getRequest_text() {
+		return request_text;
+	}
+	public void setRequest_text(String request_text) {
+		this.request_text = request_text;
 	}
 	
 	
