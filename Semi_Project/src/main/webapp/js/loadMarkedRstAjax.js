@@ -33,7 +33,7 @@ function loadMark() {
 	          elem.classList.add('pt-3');
 		         elem.innerHTML = `
 				    <div class="featured-entry-thumb mr-3 ">
-				      <a href="#"><img src="${obj.main_img}" width="70" alt="${obj.name}" /></a>
+				      <a href="#"><img src="${obj.main_img}" width="100px;" alt="${obj.name}" /></a>
 				      <button type="button" onclick="DelSideMark(${obj.mem_id},${obj.marked_storeidx});" class="btn btn-pill btn-outline-warning" 
 				      style="width:50px; height:20px; font-family:'GmarketSansLight'; font-size: 12px; 
 				      position: absolute; right: -250px; top:-7px;"><p  style="position: absolute; right: 4px; top:1px;">찜 삭제</p></button>

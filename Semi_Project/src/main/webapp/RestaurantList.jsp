@@ -714,41 +714,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</div>
 	<!-- Page Content  ==========================================================================================-->
 
-	<%--
-    	  <c:set var="list" value="${List}" />
-              <c:if test="${!empty list }">
-                <c:forEach items="${list }" var="dto">
-                <!-- DB데이터만큼 리스트 출력되는 가게목록. -->
-                <div class="col-md-4 col-sm-6">
-                  <div class="product-card mb-4">
-                    <div class="product-thumb">
-                      <a class="product-thumb-link" href="">	</a><span
-                        class="product-wishlist-btn" data-toggle="tooltip"
-                        data-placement="left" title="찜하기"><i
-                        data-feather="heart"></i></span><img src="${dto.getMain_img()}"
-                        alt="${dto.getMain_name()}">
-                    </div>
-                    <div class="product-card-body text-center">
-                      <a class="product-meta" href="#"  style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
-                      <h3 class="product-card-title">
-                        <a href="shop-single-apparel.jsp"  style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
-                      </h3>
-                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
-                    </div>
-                    <div class="product-card-body body-hidden">
-                     
-                      <button class="btn btn-primary btn-sm btn-block" type="button"
-                        data-toggle="toast" data-target="#cart-toast"  style="font-family: 'GmarketSansMedium';">예약하기</button>
-                      <a class="quick-view-btn" href="#${dto.getMain_idx()}-quick-view"
-                        data-toggle="modal" style=" color:black;"><i class="mr-2" data-feather="eye" style="font-family: 'GmarketSansMedium';"></i>자세히</a>
-                    </div>
-                  </div>
-                </div>
-    
-              </c:forEach>
-              </c:if>				
-     --%>
-    
     <!--가게정보 상세페이지  ==============================================================================================-->
      <c:set var="list" value="${List}" />
 	    <c:if test="${!empty list }">
@@ -783,7 +748,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		                    </div>
 		                    <div>
 		                      <button class="btn btn-primary px-5 mr-2" type="submit"><i class="mr-2" data-feather="shopping-cart" style="font-family: 'GmarketSansMedium';"></i>예약하기</button>
-		                    </div><a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
+		                    </div>
 		                  </div>
 		                </form>
 		                <div class="card">
