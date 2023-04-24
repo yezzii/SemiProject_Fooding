@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%
 response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
@@ -810,219 +811,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
               </c:if>				
      --%>
 
-	<!--가게정보 상세페이지  ==============================================================================================-->
-	<c:set var="list" value="${List}" />
-	<c:if test="${!empty list }">
-		<c:forEach items="${list }" var="dto">
-			<div class="modal modal-quick-view fade"
-				id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<div>
-								<h2 class="h2 modal-title mb-1"
-									style="font-family: 'GmarketSansMedium';">${dto.getMain_name()}</h2>
-								<h5 class="text-primary font-weight-light mb-0"
-									style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</h5>
-							</div>
-							<button class="close" type="button" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="row">
-								<!-- Product gallery-->
-								<div class="col-lg-7">
-									<div class="owl-carousel"
-										data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
-										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-									</div>
-								</div>
-								<!-- Product details-->
-								<div class="col-lg-5 pt-4 pt-lg-0">
-									<form class="pb-4" method="post" action="">
-
-										<div class="form-group">
-											<!-- Date input -->
-											<div class="form-inline" style="float: left;">
-												<label for="date-input">예약날짜</label>
-											</div>
-											<div class="form-inline pb-2" style="float: right;">
-												<label for="store-price">예약금</label>&nbsp;&nbsp;<span>20,000
-													원</span>
-											</div>
-
-										</div>
-										<fmt:parseDate var="startTime_D"
-											value="${dto.getMain_opentime()}" pattern="HHmm" />
-										<fmt:parseNumber var="sum_hh"
-											value="${(Time1_D + Time2_D  / (1000*60)) / 60 }"
-											integerOnly="true" />
-										3
-										<fmt:parseDate var="endTime_D"
-											value="${dto.getMain_endtime()}" pattern="HHmm" />
 
 
-
-										<div class="form-inline pb-3">
-											<div class="form-inline" style="float: left;">
-												<input class="form-control" type="date" id="date-input">
-											</div>
-											<div class="form-inline" style="float: right;">
-												<select class="form-control custom-select" id="size"
-													name="size" required>
-													<option>예약 시간</option>
-
-													<c:forEach var="list" begin="${dto.getMain_opentime()}"
-														end="${dto.getMain_endtime() }">
-														<option value="${list.beverage}"
-															<c:if test ="${user.selectedBeberage eq list.beverage}">selected="selected"</c:if>>${list.beverage}</option>
-													</c:forEach>
-												</select>
-											</div>
-
-										</div>
-										<div class="form-group" style="float: left;">
-											<div class="form-inline pb-2" style="float: right;"></div>
-										</div>
-										<label for="order-detail">요청사항</label>
-										<textarea class="form-control" id="request-text" rows="3"
-											style="resize: none;"></textarea>
-										<div class="d-flex flex-wrap align-items-center pt-1">
-
-											<div>
-												<button class="btn btn-primary px-5 mr-2" type="submit">
-													<i class="mr-2" data-feather="shopping-cart"
-														style="font-family: 'GmarketSansMedium';"></i>예약하기
-												</button>
-
-											</div>
-											<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
-												class="align-middle mr-1" data-feather="heart"
-												style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a> <label
-												for="people-num">인원</label>&nbsp;&nbsp; <input
-												class="pl-2 form-control mr-1" type="number" id="people-num"
-												name="quantity" style="width: 3.5rem; height: 2rem;"
-												value="1" required>
-
-										</div>
-									</form>
-									<div class="card">
-										<div class="card-header py-3 bg-0">
-											<h3 class="h6 mb-0">
-												<span
-													class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
-													data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑
-												상세 정보
-											</h3>
-										</div>
-										<div class="card-body">
-											<ul class="mb-0" style="font-family: 'GmarketSansMedium';">
-												<li>주소 : ${dto.getMain_addr() }
-													${dto.getMain_detailaddr() }<br> 우편번호 :
-													${dto.getMain_post() }
-												</li>
-												<br>
-												<li>전화 : ${dto.getMain_phone() }</li>
-												<br>
-												<li>=======정보=======<br>${dto.getMain_info()}</li>
-												<br>
-												<li>음식 종류 : ${dto.getMain_type() }</li>
-												<br>
-												<li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 :
-													${dto.getMain_endtime() }</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								=================================================모달 추가 정보
-								구분칸===================================================
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</c:if>
-	<!-- Toast notifications-->
-	<div class="toast-container toast-bottom-center">
-		<div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert"
-			aria-live="assertive" aria-atomic="true">
-			<div class="toast-header bg-success text-white">
-				<i class="mr-2" data-feather="check-circle"
-					style="width: 1.25rem; height: 1.25rem;"></i><span
-					class="font-weight-semibold mr-auto">Added to cart!</span>
-				<button class="close text-white ml-2 mb-1" type="button"
-					data-dismiss="toast" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="toast-body">This item was added to your cart.</div>
-		</div>
-		<div class="toast mb-3" id="compare-toast" data-delay="5000"
-			role="alert" aria-live="assertive" aria-atomic="true">
-			<div class="toast-header bg-info text-white">
-				<i class="mr-2" data-feather="info"
-					style="width: 1.25rem; height: 1.25rem;"></i><span
-					class="font-weight-semibold mr-auto">Added to comparison!</span>
-				<button class="close text-white ml-2 mb-1" type="button"
-					data-dismiss="toast" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="toast-body">This item was added to comparison
-				table.</div>
-		</div>
-		<div class="toast mb-3" id="wishlist-toast" data-delay="5000"
-			role="alert" aria-live="assertive" aria-atomic="true">
-			<div class="toast-header bg-info text-white">
-				<i class="mr-2" data-feather="info"
-					style="width: 1.25rem; height: 1.25rem;"></i><span
-					class="font-weight-semibold mr-auto">Added to wishlist!</span>
-				<button class="close text-white ml-2 mb-1" type="button"
-					data-dismiss="toast" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="toast-body">This item was added to your wishlist.</div>
-		</div>
-		<div class="toast mb-3" id="profile-toast" data-delay="5000"
-			role="alert" aria-live="assertive" aria-atomic="true">
-			<div class="toast-header bg-success text-white">
-				<i class="mr-2" data-feather="check-circle"
-					style="width: 1.25rem; height: 1.25rem;"></i><span
-					class="font-weight-semibold mr-auto">Updated!</span>
-				<button class="close text-white ml-2 mb-1" type="button"
-					data-dismiss="toast" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="toast-body">Your profile info updated successfuly.</div>
-		</div>
-		<div class="toast mb-3" id="address-toast" data-delay="5000"
-			role="alert" aria-live="assertive" aria-atomic="true">
-			<div class="toast-header bg-success text-white">
-				<i class="mr-2" data-feather="check-circle"
-					style="width: 1.25rem; height: 1.25rem;"></i><span
-					class="font-weight-semibold mr-auto">Updated!</span>
-				<button class="close text-white ml-2 mb-1" type="button"
-					data-dismiss="toast" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="toast-body">Your addresses info updated
-				successfuly.</div>
-		</div>
-	</div>
 	<div class="container pb-5 mb-4">
 		<div class="row">
 			<div class="col-lg-3">
-				<!-- Shop sidebar-->
 				<!-- Shop sidebar-->
 				<div class="offcanvas-sidebar">
 					<div class="offcanvas-sidebar-toggle">
@@ -1208,13 +1001,151 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									<button class="btn btn-primary btn-sm btn-block" type="button"
 										data-toggle="toast" data-target="#cart-toast"
 										style="font-family: 'GmarketSansMedium';">예약하기</button>
-									<a class="quick-view-btn"
+									<a class="quick-view-btn" id="StoreDetail"
 										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
 										style="color: black;"><i class="mr-2" data-feather="eye"
 										style="font-family: 'GmarketSansMedium';"></i>자세히</a>
 								</div>
 							</div>
 						</div>
+
+
+						
+						<!--가게정보 상세페이지  ==============================================================================================-->
+						<div class="modal modal-quick-view fade"
+							id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
+							<div class="modal-dialog" role="document">
+								<input type="hidden" id="main_idx${dto.getMain_idx()}" value="${dto.getMain_idx()}">
+								<div class="modal-content">
+									<div class="modal-header">
+										<div>
+											<h2 class="h2 modal-title mb-1"
+												style="font-family: 'GmarketSansMedium';">${dto.getMain_name()}</h2>
+											<h5 class="text-primary font-weight-light mb-0"
+												style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</h5>
+										</div>
+										<button class="close" type="button" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="row">
+											<!-- Product gallery-->
+											<div class="col-lg-7">
+												<div class="owl-carousel"
+													data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+													<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+													<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+													<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+													<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
+												</div>
+											</div>
+											<!-- Product details-->
+											<div class="col-lg-5 pt-4 pt-lg-0">
+												<form class="pb-4" method="post" action="">
+													<label for="resvation_date">예약날짜</label>
+
+													<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
+
+													<c:set var="opentime" value="${dto.getMain_opentime()}" />
+													<c:set var="endtime" value="${dto.getMain_endtime()}" />
+													<div class="form-group">
+														<div class="form-inline pb-3" style="float: left;">
+															<input class="form-control" type="date"
+																id="resvation_date" min="<%=java.time.LocalDate.now()%>"
+																value="<%=java.time.LocalDate.now()%>">
+														</div>
+														<div class="form-inline pb-3" style="float: left;">
+															<select class="form-control custom-select"
+																id="resvation_time" name="size" required>
+																<option>예약 시간</option>
+																<c:forEach var="res_time"
+																	begin="${fn:substring(opentime,0,2)}"
+																	end="${fn:substring(endtime,0,2)}">
+																	<option
+																		value="${res_time}:${fn:substring(opentime,3,5)}">${res_time}
+																		: ${fn:substring(opentime,3,5)}</option>
+																</c:forEach>
+
+															</select>
+														</div>
+
+														<div class="" style="float: right;">
+
+															<input class="pl-2 form-control pb-3" type="number"
+																id="people-num" name="quantity"
+																style="width: 3.5rem; height: 2.625rem;" value="1"
+																required>
+														</div>
+														<div style="float: right;">
+															<label class="pt-2" for="people-num">인원&nbsp;&nbsp;</label>
+														</div>
+														<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
+
+
+
+													</div>
+													<div class="form-group" style="float: left;">
+														<div class="form-inline pb-2" style="float: right;"></div>
+													</div>
+													<textarea class="form-control" id="request-text" rows="3"
+														style="resize: none;" placeholder="요청사항 혹은 알러지 음식을 작성해주세요"></textarea>
+													<div class="d-flex flex-wrap align-items-center pt-1">
+
+														<div>
+															<button class="btn btn-primary px-5 mr-2" type="button"
+																id="booking-btn">
+																<i class="mr-2" data-feather="shopping-cart"
+																	style="font-family: 'GmarketSansMedium';"></i>예약하기
+															</button>
+															<input type="hidden" value="${dto.getMain_idx()}" id="date_idx">
+
+														</div>
+														<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
+															class="align-middle mr-1" data-feather="heart"
+															style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
+
+													</div>
+												</form>
+												<div class="card">
+													<div class="card-header py-3 bg-0">
+														<h3 class="h6 mb-0">
+															<span
+																class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
+																data-feather="info"
+																style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑 상세 정보
+														</h3>
+													</div>
+													<div class="card-body">
+														<ul class="mb-0" style="font-family: 'GmarketSansMedium';">
+															<li>주소 : ${dto.getMain_addr() }
+																${dto.getMain_detailaddr() }<br> 우편번호 :
+																${dto.getMain_post() }
+															</li>
+															<br>
+															<li>전화 : ${dto.getMain_phone() }</li>
+															<br>
+															<li>=======정보=======<br>${dto.getMain_info()}</li>
+															<br>
+															<li>음식 종류 : ${dto.getMain_type() }</li>
+															<br>
+															<li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 :
+																${dto.getMain_endtime() }</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											=================================================모달 추가 정보
+											구분칸===================================================
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
 					</c:forEach>
 				</c:if>
 
@@ -1572,6 +1503,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="js/LoginChk.js"></script>
 	<script src="js/Board_Main.js"></script>
 	<script src="js/StoreMarked.js"></script>
+	<script src="js/reservation.js"></script>
 	<script>
 		$('.toast').toast({
 			delay : 3000

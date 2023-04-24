@@ -1930,7 +1930,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="js/sign_upChk.js"></script>
-
 	<script src="js/Board_Main.js"></script>
 	<script src="js/LoginChk.js"></script>
 	<script src="js/kakao_login.js"></script>

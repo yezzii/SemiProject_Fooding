@@ -219,6 +219,7 @@ public class Board_MainDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, idx);
 			rs = pstmt.executeQuery();
+			
 			if (rs.next()) {
 				dto = new Board_MainDTO();
 				dto.setMain_idx(rs.getInt("main_idx"));
