@@ -42,9 +42,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 <!-- Customizer styles and scripts-->
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="js/kakao_login.js"></script>
-		<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
+
 	
 </head>
 <!-- Body-->
@@ -276,21 +274,20 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<h6 class="featured-entry-title">
 									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
 								</h6>
-								<p cxlass="fe$125.00atured-entry-meta">
+								<p cxlass="featured-entry-meta">
 									<span class="text-muted"></span> 
 								</p>
 							</div>
 						</div>
 				<hr />
-			
-					<%--찜 목록 리스트 END  --%>
-					
-					
-					
 				</div>
 			</div>
 		</div>
 	</div>
+			
+					<%--찜 목록 리스트 END  --%>
+					
+					
 	<!-- Navbar Light-->
 	<header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
 		<div class="container-fluid navbar-inner">
@@ -615,9 +612,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary-Mark text-light" id="totalMarkCount"></span><i
 							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
+					
 					<a class="navbar-btn navbar-collapse-hidden"
 						href="member/logout.jsp">
-						
 						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
 
 					<%-- 프로필 정보란 --%>
@@ -655,7 +652,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</ol>
 			</nav>
 			<h1 class="page-title">
-				레스토랑 목록(${totalBoardmain }) &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span
+				레스토랑 목록 &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;${keyword } <span
 					class="lead font-weight-semibold text-muted"></span>
 			</h1>
 			<span class="d-block mt-2 text-muted"></span>
@@ -679,10 +676,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		          </div>
 		          <div class="modal-body">
-		            <div class="row">
+		            <div class="row" >
 		              <!-- Product gallery-->
-		              <div class="col-lg-7">
-		                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+		              <div class="col-lg-7" >
+		                <div class="owl-carousel carouselMenu" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
 			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
 			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
 			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
@@ -703,7 +700,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		                </form>
 		                <div class="card">
 		                  <div class="card-header py-3 bg-0">
-		                    <h3 class="h6 mb-0"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑 상세 정보</h3>
+		                    <h3 class="h6 mb-0"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>${dto.getMain_name()} 상세 정보</h3>
 		                  </div>
 		                  <div class="card-body">
 		                    <ul class="mb-0" style="font-family: 'GmarketSansMedium';">
@@ -711,11 +708,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		                      <br>
 		                      <li>전화 : ${dto.getMain_phone() }</li>
 		                      <br>
-		                      <li>=======정보=======<br>${dto.getMain_info()}</li>
-		                      <br>
-		                      <li>음식 종류 : ${dto.getMain_type() }</li>
+		                      <li>음식 종류 : ${dto.getMain_type() },   ${dto.getMain_info()}</li>
 		                      <br>
 		                      <li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 : ${dto.getMain_endtime() }</li>
+		                      <br>
+		                      <span class="Menu_Info_Text" ></span>
 		                    </ul>
 		                  </div>
 		                </div>
@@ -858,10 +855,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</div>
 			</div>
 
+	<%--              임시 비활성화 (정렬)
 			<c:set var="list" value="${List}" />
-			<c:if test="${!empty list }">
+			<c:if test="${!empty list}">
 
-				<div class="col-lg-9">
 					<!-- 정렬-->
 					<div
 						class="d-flex flex-wrap justify-content-center justify-content-sm-between pb-3">
@@ -880,8 +877,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 			</c:if>
 			<!--레스토랑 리스트-->
+	--%>
 
-
+			<div class="col-lg-9">
 			<div class="row">
 				<c:set var="list" value="${List}" />
 				<c:if test="${!empty list }">
@@ -906,10 +904,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									 <img src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
 								</div>
 								<div class="product-card-body text-center">
-									<a class="product-meta" href="#"
+									<a class="product-meta" 
 										style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
 									<h3 class="product-card-title">
-										<a href="shop-single-apparel.jsp"
+										<a 
 											style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
 									</h3>
 									<span class="text-primary-orange"
@@ -918,10 +916,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<div class="product-card-body body-hidden">
 
 									
-									<a class="quick-view-btn"
+									<a class="quick-view-btn LoadMenuImg"
 										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
 										style="color: black;"><button class="btn btn-primary btn-sm btn-block" type="button"
 										style="font-family: 'GmarketSansMedium';">자세히</button></a>
+										<input type="hidden" value="${dto.getMain_idx() }" class="main_menu_idx">
 								</div>
 							</div>
 						</div>
@@ -978,6 +977,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</div>
 	</div>
 	<%--   ======================================하단 Footer <<START>>======================================= --%>
+	<!-- Footer-->
 	<footer class="page-footer bg-dark">
 		<!-- first row-->
 		<div class="pt-5 pb-0 pb-md-4">
@@ -987,16 +987,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<div class="widget widget-links pb-4">
 							<h3 class="widget-title text-white border-light">Fooding 기능</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">가게 찾기</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+								<li><a class="nav-link-inline nav-link-light" href="LoadRestaurantList.do"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">가게 검색</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">가게 등록</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+								<li><a class="nav-link-inline nav-link-light" href="LoadRestaurantList.do"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">가격으로 검색</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
@@ -1077,7 +1074,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<div class="col-sm-6 text-center text-sm-left">
 						<ul class="list-inline font-size-sm">
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">가게</a></li>
+								class="nav-link-inline nav-link-light" href="board_main_update.do">가게</a></li>
 							<li class="list-inline-item mr-3"><a
 								class="nav-link-inline nav-link-light" href="#">브랜드관</a></li>
 							<li class="list-inline-item mr-3"><a
@@ -1104,16 +1101,18 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-		
+
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	
+	<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="js/sign_upChk.js"></script>
 	<script src="js/Board_Main.js"></script>
 	<script src="js/LoginChk.js"></script>
-	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="js/kakao_login.js"></script>
 	<script src="js/StoreMarked.js"></script>
 	<script>

@@ -74,7 +74,7 @@ public class RestaurantSearchAction implements Action {
 		 ActionForward forward = new ActionForward();
 		 
 		 forward.setRedirect(false);
-		 forward.setPath("RestaurantSearchList.jsp");
+		 forward.setPath("RestaurantList.jsp");
 		
 		 return forward;
 		

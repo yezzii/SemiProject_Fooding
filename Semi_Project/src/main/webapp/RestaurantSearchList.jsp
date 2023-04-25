@@ -941,29 +941,8 @@
           </div>
         </div>
         
-       <c:set var="list" value="${List}" />
-              <c:if test="${!empty list }">
-        
-        <div class="col-lg-9">
-          <!-- 정렬-->
-          <div class="d-flex flex-wrap justify-content-center justify-content-sm-between pb-3">
-            <div class="d-flex flex-wrap">
-              <div class="form-inline flex-nowrap mr-3 mr-sm-4 pb-3">
-              
-              <form method="get" action="<%=request.getContextPath() %>/RestaurantSort.do">
-                <label class="text-nowrap mr-2 d-none d-sm-block" for="sorting">정렬</label>
-                <select class="form-control custom-select" id="sorting">
-                  <option>저장순</option>
-                  <option>예약순</option>
-                  <option>리뷰많은순</option>
-                </select>
-                </form>
-              </div>
-             
-             </c:if>
           <!--레스토랑 리스트-->
-          
-           
+        <div class="col-lg-9">
           <div class="row">
               <c:set var="list" value="${List}" />
               <c:if test="${!empty list }">
@@ -1055,6 +1034,9 @@
         </div>
       </div>
     </div>
+    
+    
+    
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->

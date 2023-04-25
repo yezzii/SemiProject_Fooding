@@ -99,46 +99,58 @@ function CountMark(count){//상단 찜하기 총 갯수
 };
 
 
-
-  $('.quick-view-btn').on('click', function (e) {
+$('.LoadMenuImg').on('click', function (e) {
     console.log("메뉴사진 로드 Ajax호출");
     
- var main_idx = $(this).siblings('#main_menu_idx').val(); // 가게 idx 가져오기 전역변수
- 
-console.log("가게번호 >"+main_idx);
+    var main_idx = $(this).siblings('.main_menu_idx').val(); // 가게 idx 가져오기 전역변수
+    
+    console.log("가게번호 >"+main_idx);
     $.ajax({
-      type: 'POST',
-      url: 'Menu_Load.do',
-      datatype: 'json',
-      data: {
-        main_idx: main_idx,
-      },
-      success: function (data) {
-		  
-		   
-      var imageLinks = [];
-      
-      // JSON 데이터 파싱
-      for (var i = 0; i < data.List.length; i++) {
-        imageLinks.push(data.List[i].menu_img);
-      }
-      
-      // HTML 코드 생성
-      var html = '';
-      for (var i = 0; i < imageLinks.length; i++) {
-        html += '<img src="' + imageLinks[i] + '" alt="' + imageLinks[i] + '">';
-      }
-      
-      // JSP 페이지에 HTML 코드 출력
-      $('.owl-carousel').html(html); 
-     
-        
-      },
-      error: function (request, status, error) {
-        console.log(error); // 오류 발생시 콘솔에 출력
-      }
-
+        type: 'POST',
+        url: 'Menu_Load.do',
+        datatype: 'json',
+        data: {
+            main_idx: main_idx,
+        },
+        success: function (data) {
+            var img_Elm = $('.carouselMenu');
+            var List = JSON.parse(data.List);
+            var div_top = '<div class="owl-carousel carouselMenu" data-owl-carousel=\'{ "nav": true, "dots": false, "loop": true, "margin": 15 }\'>';
+            var div_end = '</div>';
+            var imgHtml = '';
+            var textHtml = '<li class="pb-2" style="list-style: none;">== 메뉴 ==</b>';
+            
+            if (List.length > 0) {
+                List.forEach(function (obj) {
+                    imgHtml += '<img src="' + obj.menu_img + '" alt="' + obj.menu_img + '">';
+					textHtml += '<li>'+obj.menu_name+' : '+obj.menu_price+'원</li>';
+					
+					
+                });
+            }
+            div_top += imgHtml;
+            div_top += div_end;
+             
+            img_Elm.html(div_top);
+    	    $('.Menu_Info_Text').html(textHtml);
+                
+            // Carousel 초기화
+			var owl = $('.carouselMenu .owl-carousel');
+            owl.owlCarousel({
+			    nav: true,
+			    dots: false,
+			    loop: true,
+			    margin: 15,
+			    items: 1, // 추가
+			    autoplay: true, // 추가
+			    autoplayTimeout: 5000, // 추가
+			});
+			owl.trigger('refresh.owl.carousel');
+			
+            
+        },
+        error: function (request, status, error) {
+            console.log(error); // 오류 발생시 콘솔에 출력
+        }
     });
- 
 });
-

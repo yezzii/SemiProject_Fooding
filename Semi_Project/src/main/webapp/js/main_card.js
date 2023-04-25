@@ -29,10 +29,10 @@ $(document).ready(function () {
 									 <img src="${obj.Main_img}" alt="${obj.Main_name}">
 								</div>
 								<div class="product-card-body text-center">
-									<a class="product-meta" href="LoadRestaurantList.do"
+									<a class="product-meta" href="total_main_search.do?keyword=${obj.Main_name}"
 										style="font-family: 'GmarketSansMedium';">${obj.Main_info }</a>
 									<h3 class="product-card-title">
-										<a href="LoadRestaurantList.do"
+										<a href="total_main_search.do?keyword=${obj.Main_name}"
 											style="font-family: 'GmarketSansMedium'; font-size: 18px;">${obj.Main_name}</a>
 									</h3>
 									<span class="text-primary-orange"

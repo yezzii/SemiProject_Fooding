@@ -48,7 +48,7 @@ public class MenuDAO {
 
 		String user = "web";
 
-		String password = "12345678";
+		String password = "tpalvmfhwprxm1010";
 
 		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
@@ -250,7 +250,7 @@ public class MenuDAO {
 
 		try {
 			openConn();
-			sql = "SELECT menu_img FROM semi.main_menu where rst_no = ?";
+			sql = "SELECT * FROM semi.main_menu where rst_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
 
@@ -260,7 +260,9 @@ public class MenuDAO {
 
 			while (rs.next()) {
 				MenuDTO dto = new MenuDTO();
-
+				
+				dto.setMenu_name(rs.getString("menu_name"));
+				dto.setMenu_price(rs.getInt("menu_price"));
 				dto.setMenu_img(rs.getString("menu_img"));
 				
 				list.add(dto);

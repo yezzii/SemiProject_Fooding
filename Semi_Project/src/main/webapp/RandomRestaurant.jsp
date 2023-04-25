@@ -34,54 +34,55 @@
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <!-- Customizer styles and scripts-->
-
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
-	
 	
 </head>
 <!-- Body-->
 <body>
 
-	<%--   ======================================상단 네비바 <<START>>======================================= --%>
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-				<div
-					class="offcanvas-header d-flex justify-content-between align-items-center">
-					<h3 class="offcanvas-title">푸딩 - 검색</h3>
-					<button class="close" type="button" data-dismiss="offcanvas"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<form>
-				<div class="offcanvas-body">
-					<div class="offcanvas-body-inner">
-						<div class="input-group pt-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="search-icon"><i
-									data-feather="search"></i></span>
-							</div>
-							<input class="form-control" type="text" id="site-search" name="main_search"
-								placeholder="지역,음식,레스토랑 명 검색" aria-label="Search site"
-								aria-describedby="search-icon" onsubmit="<%=request.getContextPath() %>/main_search.do?keyword=" />
-						</div>
-						<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게 검색해보세요!<br> Powered by Fooding.co  _Dong</small>
-					</div>
-				</div>
-				</form>
+		<%--   ======================================상단 네비바 <<START>>======================================= --%>
+ 	<!-- Success toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="login_success">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 성공</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 			</div>
+			<div class="toast-body text-success" id="toast_success_div"></div>
+		</div>
+	</div>
 
-
-
-
+	<!-- Warning toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 실패</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning">아이디 혹은 비밀번호를 확인해주세요.</div>
+		</div>
+	</div>
+	<!--   ==============================  네비바  ================================= -->
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
 	}
-
+	
+	String thumnail =  (String)session.getAttribute("Thumnail");
+	String profile =  (String)session.getAttribute("member_profile");
+	String name = (String)session.getAttribute("name");
+	
 	%>
 
 	<!-- Off-canvas account-->
@@ -94,8 +95,8 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-		
-		<%-- 로그인 --%>
+
+	<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<ul class="nav nav-tabs nav-justified" role="tablist">
@@ -109,7 +110,7 @@
 						<form class="needs-validation" novalidate method="post"
 							action="<%=request.getContextPath()%>/login.do">
 							<div class="form-group">
-								<label class="sr-only" for="signin-id">ID</label>
+								<label class="sr-only" for="signin-id">아이디</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="signin-id-icon"><i
@@ -122,7 +123,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signin-password">Password</label>
+								<label class="sr-only" for="signin-password">비밀번호</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="signin-password-icon"><i
@@ -140,27 +141,36 @@
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								로그인</button>
+							<button class="btn btn-primary btn-block" type="button" id="ImLogin"
+								>로그인</button>
+
+							<div class="pt-3" align="center">
+								<a href="account-id-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
+									href="account-password-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">비밀번호 찾기</a>
+							</div>
 						</form>
 					</div>
 
+
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form method="post" class="needs-validation" novalidate action="<%=request.getContextPath()%>/member_join.do" id="signup-form" name="signup-form">
+						<form method="post" class="needs-validation" novalidate
+							action="<%=request.getContextPath()%>/member_join.do"
+							id="signup-form" name="signup-form">
 							<div class="form-group">
 								<label class="sr-only" for="singup-id">아이디</label> <input
 									class="form-control" type="text" id="signup-id"
-									name="member_id" placeholder="아이디" aria-label="아이디" />
-									<span class="feedback" id="signup-idchk"></span>
-									<div class="invalid-feedback"></div>
+									name="member_id" placeholder="아이디" aria-label="아이디" /> <span
+									class="feedback" id="signup-idchk"></span>
+								<div class="invalid-feedback"></div>
 
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									name="member_pwd" placeholder="Password" aria-label="Password"
-									 />
+									name="member_pwd" placeholder="Password" aria-label="Password" />
 								<span class="feedback" id="signup-pwdchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -168,16 +178,14 @@
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
 									name="member_pwdchk" id="signup-password-confirm"
-									placeholder="Confirm password" aria-label="Confirm password"
-									 />
-									 <span class="feedback" id="signup-pwdconfirm-chk"></span>
-									 <div class="invalid-feedback"></div>
+									placeholder="Confirm password" aria-label="Confirm password" />
+								<span class="feedback" id="signup-pwdconfirm-chk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-name">이름</label> <input
 									class="form-control" type="text" id="signup-name"
-									name="member_name" placeholder="이름" aria-label="Full name"
-									/>
+									name="member_name" placeholder="이름" aria-label="Full name" />
 								<span class="feedback" id="signup-namechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -185,44 +193,42 @@
 								<label class="sr-only" for="signup-email">이메일</label> <input
 									class="form-control" type="email" id="signup-email"
 									name="member_email" placeholder="Email"
-									aria-label="Email address"/>
-								<span class="feedback" id="signup-emailchk"></span>
+									aria-label="Email address" /> <span class="feedback"
+									id="signup-emailchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signup-phone">연락처
-									확인</label> <input class="form-control" type="text"
-									name="member_phone" id="signup-phone"
-									placeholder="Phone" aria-label="Phone"
-									 />
-								<span class="feedback" id="signup-phonechk"></span>
+								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
+									class="form-control" type="text" name="member_phone"
+									id="signup-phone" placeholder="Phone" aria-label="Phone" /> <span
+									class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
-							<button class="btn btn-primary btn-block" type="button" onclick="checkAll()">
-								가입하기</button>
-								<button class="btn btn-primary btn-block" type="button" onclick="location.href='company-signup.jsp'">
-								사업자 가입</button>
-						
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="checkAll()">가입하기</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='company-signup.jsp'">사업자 가입</button>
 						</form>
-						
-						
-					
-
 					</div>
 				</div>
-				<div class="d-flex align-items-center pt-5">
+
+
+				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
 						로그인</div>
 					<hr class="w-100" />
 				</div>
 				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+					<input type="image" style="width: 320px;" id="kakaoAjax"
+						src="main_img/kakao_login.jpg" 
+						value="카카오 로그인 kakaoLogin();"> <br>
+					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
+						class="flaticon-facebook"></i></a> <a
 						class="social-btn sb-google-plus mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
+						class="flaticon-google-plus"></i></a> <a
 						class="social-btn sb-twitter mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Twitter"><i
 						class="flaticon-twitter"></i></a>
@@ -231,12 +237,13 @@
 		</div>
 	</div>
 
-	
-	<!-- Off-canvas cart-->
+
+
+		<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Your cart</h3>
+			<h3 class="offcanvas-title" style="font-family:'GmarketSansMedium'; font-size: 23px; ">찜한 레스토랑</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -244,89 +251,34 @@
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
-				<div class="text-right">
-					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
-						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i>Clear
-						cart</a>
-				</div>
-				<div class="widget widget-featured-entries pt-3">
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
+				
+				<div class="widget widget-featured-entries pt-3" id="marked-list">
+				
+				<%--찜 목록 리스트 (가게정보 출력란) --%>
+				
+						<div class="media" >
+							<div class="featured-entry-thumb mr-3">
+								<a href="#"><img src="" width="64"
+									alt="" /></a>
+							</div>
+							<div class="media-body">
+								<h6 class="featured-entry-title">
+									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
+								</h6>
+								<p cxlass="featured-entry-meta">
+									<span class="text-muted"></span> 
+								</p>
+							</div>
 						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Calvin Klein Jeans Keds</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $125.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">The North Face Hoodie</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $134.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Medicine Chameleon Sunglasses</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $47.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Adidas Performance Hat</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $19.00
-							</p>
-						</div>
-					</div>
-					<hr />
-					<div class="d-flex justify-content-between align-items-center py-3">
-						<div class="font-size-sm">
-							<span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">$325.00</span>
-						</div>
-						<a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand
-							cart<i class="mr-n2" data-feather="chevron-right"></i>
-						</a>
-					</div>
-					<a class="btn btn-primary btn-sm btn-block"
-						href="checkout-details.jsp"><i class="mr-1"
-						data-feather="credit-card"></i>Checkout</a>
+				<hr />
 				</div>
 			</div>
 		</div>
 	</div>
+			
+					<%--찜 목록 리스트 END  --%>
+					
+					
 	<!-- Navbar Light-->
 	<header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
 		<div class="container-fluid navbar-inner">
@@ -357,8 +309,8 @@
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">경기</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=인천"><i
-											class="widget-categories-indicator"
-											data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=대구"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
@@ -381,20 +333,22 @@
 										<ul>
 											<li><a href="SearchKeyRestaurant.do?keyword=데이트"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">데이트 코스</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">데이트
+														코스</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=가족"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=뷰"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">뷰가 좋은</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">뷰가
+														좋은</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=전통"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
 											<li><a href="SearchKeyRestaurant.do?keyword=비지니스"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
-											
+
 										</ul>
 									</div>
 								</div>
@@ -438,16 +392,22 @@
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop layouts</h3>
+										<h3 class="widget-title">게시판</h3>
 										<ul>
 											<li><a href="shop-style1-ls.jsp"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
 													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
-											<li><a href="shop-style1-ls.jsp"> <i
+											<li><a
+												href="<%=request.getContextPath()%>/review_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
-													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+													class="font-size-sm">후기 게시판</span></a></li>
+											<li><a
+												href="<%=request.getContextPath()%>/free_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">자유 게시판</span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -460,10 +420,10 @@
 													data-feather="chevron-right"></i><span class="font-size-sm">Shop
 														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Product
-														Page #1 - Apparel</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">후기
+														작성 </span></a></li>
 
 											<li><a href="cart.jsp"><i
 													class="widget-categories-indicator"
@@ -528,10 +488,16 @@
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-profile.jsp">Profile
-											Settings</a></li>
-									<li class="dropdown-divider"></li>
+									
+										<%
+										if (session.getAttribute("id") != null) {
+										%>
+											<li class="dropdown-divider"></li>
+											<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
+											<li class="dropdown-divider"></li>
+									<%}%>
+									
+									
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
 									<li class="dropdown-divider"></li>
@@ -582,57 +548,12 @@
 							<li><a class="dropdown-item" href="404.jsp">404 Not
 									Found</a></li>
 						</ul></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="mr-1" data-feather="file-text"></i>레스토랑</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="<%=request.getContextPath() %>/board_main_list.do">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="file-text"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="Board_Main_join.jsp">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 추가
-											</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="LoadRestaurantList.do">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록<br>(동현작업중)
-											</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item"
-								href="mailto:contact@createx.studio">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="life-buoy"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">Support</span><small
-												class="text-muted">contact@createx.studio</small>
-										</div>
-									</div>
-							</a></li>
-						</ul></li>
+				<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="LoadRestaurantList.do" ><i
+							class="mr-1" ></i>레스토랑</a>
+						</li>
 				</ul>
 			</div>
-			
 			<!-- navbar buttons-->
 			<div class="navbar-btns">
 				<div class="navbar-btns-inner">
@@ -640,19 +561,20 @@
 						data-toggle="collapse" data-target="#menu">
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
-					<form method="get" action="<%=request.getContextPath()%>/total_main_search.do">
-						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
+					<form method="get"
+						action="<%=request.getContextPath()%>/total_main_search.do">
+						<div class="flex-grow-1 pb-3 pt-sm-4 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
 									<%-- 검색input테그 --%>
 
-									<input class="form-control rounded" type="text"
+									<input class="form-control-dong rounded" type="text"
 										id="site-search" placeholder="통합 검색" name="keyword"
 										aria-label="Search site" aria-describedby="search-icon">
 									<%-- 검색input테그 END --%>
 
 									<%-- 검색버튼 --%>
-						
+
 
 									<%-- 검색버튼 END--%>
 								</div>
@@ -660,6 +582,9 @@
 							</div>
 						</div>
 					</form>
+					
+					
+					
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -673,22 +598,37 @@
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
+				<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
+						data-toggle="offcanvas"><span
+						class="d-block position-relative"><span
+							class="navbar-btn-badge bg-primary-Mark text-light" id="totalMarkCount"></span><i
+							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
+					
 					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
+						href="member/logout.jsp">
+						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
 
+					<%-- 프로필 정보란 --%>
+				<div class="navbar-btn navbar-collapse-hidden">
+					<div class="kakao_img mx-auto mb-1">
+						<a href="<%=request.getContextPath()%>/member_profile.do"> <img
+							class="profile_img" src="<%=thumnail%>">
+						</a>
+					</div>
+						<span class="mx-auto mb-1" style="font-family:'GmarketSansMedium'; font-size: 12px; "><%=name%> 님 </span>
+					<img src="${profile }">
+				</div>
+
+				<%-- 프로필 정보란 --%>
 					<%
 					}
 					%>
-					<a class="navbar-btn" href="#offcanvas-cart"
-						data-toggle="offcanvas"><span
-						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
 				</div>
 			</div>
 		</div>
-	</header>	
+	</header>
+	
+	
 	<%--   ======================================상단 네비바 <<END>>======================================= --%>
 	
 	
@@ -718,7 +658,7 @@
     <h1 style="text-align: center; font-family: 'GmarketSansMedium';">이 레스토랑은 어떠신가요?</h1>
     <br>  <br>
     
-     <c:set var="list" value="${List}" />
+       <c:set var="list" value="${List}" />
 	    <c:if test="${!empty list }">
       <c:forEach items="${list }" var="dto">
 		    <div class="modal modal-quick-view fade" id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
@@ -732,10 +672,10 @@
 		            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		          </div>
 		          <div class="modal-body">
-		            <div class="row">
+		            <div class="row" >
 		              <!-- Product gallery-->
-		              <div class="col-lg-7">
-		                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+		              <div class="col-lg-7" >
+		                <div class="owl-carousel carouselMenu" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
 			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
 			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
 			                <img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
@@ -830,29 +770,42 @@
                 <div class="col-md-3 col-sm-6 pt-md-4">
                   <div class="product-card mb-4">
                     <div class="product-thumb">
-                      <a class="product-thumb-link" href="">	</a><span
-                        class="product-wishlist-btn" data-toggle="tooltip"
-                        data-placement="left" title="찜하기"><i
-                        data-feather="heart"></i></span><img src="${dto.getMain_img()}"
-                        alt="${dto.getMain_name()}">
-                    </div>
-                    <div class="product-card-body text-center">
-                      <a class="product-meta" href="#"  style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
-                      <h3 class="product-card-title">
-                        <a href="shop-single-apparel.jsp"  style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
-                      </h3>
-                      <span class="text-primary-orange"  style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
-                    </div>
-                    <div class="product-card-body body-hidden">
-                     
-                      <button class="btn btn-primary btn-sm btn-block" type="button"
-                        data-toggle="toast" data-target="#cart-toast"  style="font-family: 'GmarketSansMedium';">예약하기</button>
-                      <a class="quick-view-btn" href="#quick-view${dto.getMain_idx()}"
-                        data-toggle="modal" style=" color:black;"><i class="mr-2" data-feather="eye" style="font-family: 'GmarketSansMedium';"></i>자세히</a>
-                    </div>
-                  </div>
-                </div>
-    
+									 <span	class="product-wishlist-btn" data-toggle="tooltip"
+										data-placement="left" title="찜하기" id="Heart${dto.getMain_idx() }"> 
+										
+										<svg
+					                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					                        fill="currentColor" class="bi bi-suit-heart" 
+					                        viewBox="0 0 16 16">
+					                          <path
+					                            d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+					                        </svg>
+										
+										</span>
+									 <input type="hidden" id="main_idx" value="${dto.getMain_idx()}"> 
+									 <img src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
+								</div>
+								<div class="product-card-body text-center">
+									<a class="product-meta" 
+										style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
+									<h3 class="product-card-title">
+										<a 
+											style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
+									</h3>
+									<span class="text-primary-orange"
+										style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
+								</div>
+								<div class="product-card-body body-hidden">
+
+									
+									<a class="quick-view-btn LoadMenuImg"
+										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
+										style="color: black;"><button class="btn btn-primary btn-sm btn-block" type="button"
+										style="font-family: 'GmarketSansMedium';">자세히</button></a>
+										<input type="hidden" value="${dto.getMain_idx() }" class="main_menu_idx">
+								</div>
+							</div>
+						</div>
               </c:forEach>
               </c:if>
               
@@ -1037,9 +990,23 @@
       </div>
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/theme.min.js"></script>
-    <script type="text/javascript" src="js/sign_upChk.js"></script>
+   <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	
+	<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
+	<script type="text/javascript" src="js/sign_upChk.js"></script>
+	<script src="js/Board_Main.js"></script>
+	<script src="js/LoginChk.js"></script>
+	<script src="js/kakao_login.js"></script>
+	<script src="js/StoreMarked.js"></script>
+	<script>
+		$('.toast').toast({
+			delay : 5000
+		});
+	</script>
   </body>
 </html>

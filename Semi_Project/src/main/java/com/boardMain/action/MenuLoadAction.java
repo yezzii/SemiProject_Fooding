@@ -32,6 +32,8 @@ public class MenuLoadAction implements Action {
 		 JSONArray jsonArray = new JSONArray();
 		    for (MenuDTO dto : menuImgList) {
 		        JSONObject obj = new JSONObject();
+		        obj.put("menu_name", dto.getMenu_name());
+		        obj.put("menu_price", dto.getMenu_price());
 		        obj.put("menu_img", dto.getMenu_img());
 		        jsonArray.put(obj);
 		    }
