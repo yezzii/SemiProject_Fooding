@@ -804,7 +804,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
       <c:forEach items="${list }" var="dto">
 		    <div class="modal modal-quick-view fade" id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
 		      <div class="modal-dialog" role="document">
-		      
 		        <div class="modal-content">
 		          <div class="modal-header">
 		            <div>
@@ -858,8 +857,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		                              =================================================모달 추가 정보 구분칸===================================================
 		                              
 		       <div class="input-group">
-		       <input type="hidden" value = "${dto.getMain_idx()}" id = "idx">
 					<div class="starRev">
+			     	<input type="hidden" value = "${dto.getMain_idx()}" id = "idx1">
 					  <span class="starR on">⭐</span>
 					  <span class="starR">⭐</span>
 					  <span class="starR">⭐</span>

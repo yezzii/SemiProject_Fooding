@@ -12,7 +12,7 @@ $(function () {
 
   $("#id123").on("click", function(){
 	  
-    let idx = $(this).parents('.input-group').find("#idx").val();
+    let idx = $(this).parents('.starRev').find("#idx1").val();
     let star = $(".starRev .on").length;
     let review = $("#reviewContents").val();
     
@@ -34,3 +34,6 @@ $(function () {
   });
   
   });
+  
+  
+  
