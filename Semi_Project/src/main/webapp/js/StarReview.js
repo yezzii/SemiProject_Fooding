@@ -42,7 +42,7 @@ $(function () {
 $(function () {
    
    $(".starRatingList").on("click", function(e){
-	e.preventDefault(); // 기본 이벤트 방지
+	e.preventDefault();
 	
 $.ajax({
   url: "starList.do",

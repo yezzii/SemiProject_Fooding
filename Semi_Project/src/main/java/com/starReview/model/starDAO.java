@@ -147,7 +147,7 @@ public class starDAO {
 	            JSONObject obj = new JSONObject();
 	            obj.put("member_id", rs.getString("member_id"));
 	            obj.put("review", rs.getString("review"));
-	            obj.put("star_count", rs.getInt("star_count"));
+	            obj.put("star_count", rs.getString("star_count"));
 	            result.put(obj);
 	        }
 

@@ -1200,24 +1200,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									</div>
 								</div>
 								
-								
-								
-<blockquote class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
-  <div class="d-sm-flex align-items-center pb-2">
-    <h6 class="mb-0">Awesome quality for the price</h6>
-    <span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
-    <div class="star-rating">
-      <i class="sr-star active" data-feather="star"></i>
-      <i class="sr-star active" data-feather="star"></i>
-      <i class="sr-star active" data-feather="star"></i>
-      <i class="sr-star active" data-feather="star"></i>
-      <i class="sr-star" data-feather="star"></i>
-    </div>
-  </div>
-  <p>nt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse...</p>
-</blockquote>
-								
-								
+
 								
 								<div id="starRatingList">
 								<button class="btn btn-primary starRatingList" type="button" id="starInsert">리뷰</button>
