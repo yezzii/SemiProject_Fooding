@@ -28,181 +28,8 @@
 <meta name="theme-color" content="#ffffff">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
-<style type="text/css">
-.pwCheck {
-	color: red; /* 예시: 빨간색 텍스트로 표시 */
-	font-size: 12px; /* 예시: 폰트 사이즈 12px로 설정 */
-}
 
-#image_container {
-	width: 550px;
-	margin-left: 0px;
-}
 
-.modal-title {
-	text-align: center;
-}
-
-#modalCentered{
-margin-top: 350px;
-}
-
- 
-.table_bg th {
-text-align: center;
-} 
-
-#listTable {
-  margin: 0 auto;
-}
-
-#listTable th {
-	text-align: center;
-}
-
-#listTable td {
-	text-align: center;
-}
-
-.rst_no_txt{
-width : 50px;
-}
-.menu_name_txt{
-width :80px;
-
-}
-
-.menu_name1 {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  position: relative;
-  width: 130px;
-  margin-left: 50px;
-  margin-top: 100px;
-}
-
-.menu_name1 input {
-  font-size: 15px;
-  color: #464444;
-  width: 130px;
-  border: none;
-  border-bottom: solid #aaaaaa 1px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  position: relative;
-  background: none;
-  z-index: 5;
-}
-
-.menu_name1 input::placeholder { color: #464444; }
-.menu_name1 input:focus { outline: none; }
-
-.menu_name1 span {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0%;  /* right로만 바꿔주면 오 - 왼 */
-  background-color: #666;
-  width: 0;
-  height: 2px;
-  border-radius: 2px;
-  transition: 0.5s;
-}
-
-.menu_name1 label {
-  position: absolute;
-  color: #464444;
-  left: 10px;
-  font-size: 15px;
-  bottom: 8px;
-  transition: all .2s;
-}
-
-.menu_name1 input:focus ~ label, input:valid ~ label {
-  font-size: 15px;
-  bottom: 30px;
-  color: #464444;
-}
-
-.menu_name1 input:focus ~ span, input:valid ~ span {
-  width: 100%;
-}
-
-.menu_price1 {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  position: relative;
-  width: 130px;
-  margin-left: 50px;
-  margin-top: 100px;
-}
-
-.menu_price1 input {
-  font-size: 15px;
-  color: #464444;
-  width: 110px;
-  border: none;
-  margin-left: 50px;
-  border-bottom: solid #aaaaaa 1px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  position: relative;
-  background: none;
-  z-index: 5;
-}
-
-.menu_price1 input::placeholder { color: #464444; }
-.menu_price1 input:focus { outline: none; }
-
-.menu_price1 span {
- display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0%;  /* right로만 바꿔주면 오 - 왼 */
-  margin-left: 50px;
-  background-color: #666;
-  width: 0;
-  height: 2px;
-  border-radius: 2px;
-  transition: 0.5s;
-}
-
-.menu_price1 label {
-  position: absolute;
-  color: #464444;
-  left: 10px;
-  font-size: 15px;
-  bottom: 8px;
-  transition: all .2s;
-  margin-left: 50px;
-}
-
-.menu_price1 input:focus ~ label, input:valid ~ label {
-  font-size: 15px;
-  bottom: 30px;
-  color: #464444;
-}
-
-.menu_price1 input:focus ~ span, input:valid ~ span {
-  width: 100%;
-}
-
-#menu_img{
-margin-left: 50px;
-}
-#menubtn{
-margin-right: 20px;
-}
-
-.menu_text{
-background-color:#e3e3e3;
-width :90px;
-border: none;
-color : #ffff;
-}
-</style>
 
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
 <link rel="stylesheet" media="screen" href="css/vendor.min.css">
@@ -210,6 +37,8 @@ color : #ffff;
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css">
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
+<link rel="stylesheet" media="screen" href="css/Member_Profile.css" />
+
 <!-- Customizer styles and scripts-->
 </head>
 <!-- Body-->
@@ -781,7 +610,7 @@ color : #ffff;
 					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary-Mark text-light" id="ToalMarkCount"></span><i
+							class="navbar-btn-badge bg-primary-Mark text-light" id="ToTalMarkCount"></span><i
 							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
 					
 					<a class="navbar-btn navbar-collapse-hidden"
@@ -972,14 +801,6 @@ color : #ffff;
 								class="nav-link-inline" href="${dto.getMember_phone()}">${dto.getMember_phone()}</a></li>
 
 						</ul>
-						<div class="pt-2">
-							<a class="btn btn-outline-secondary btn-sm btn-block"
-								href="account-tickets.html"><i class="mr-1"
-								data-feather="tag"></i>My tickets (1)</a><a
-								class="btn btn-success btn-sm btn-block"
-								href="account-tickets.html" data-toggle="modal"
-								data-target="#open-ticket">Submit new ticket</a>
-						</div>
 						<%-- </c:if> --%>
 					</div>
 				</div>
@@ -1004,11 +825,11 @@ color : #ffff;
 					</div>
 					<ul class="list-unstyled border p-3 mb-4">
 						<li class="pb-1"><span class="opacity-80">&ndash;
-								Joined:</span><span class="font-weight-semibold ml-1">${dto.getMember_joindate().substring(0,10) }</span></li>
+								회원 가입일 :</span><span class="font-weight-semibold ml-1">${dto.getMember_joindate().substring(0,10) }</span></li>
 						<li class="pb-1"><span class="opacity-80">&ndash;
-								Total booking:</span><span class="font-weight-semibold ml-1">15(바꿔야함)</span></li>
+								총 예약 :</span><span class="font-weight-semibold ml-1">15(바꿔야함)</span></li>
 						<li class="pb-1"><span class="opacity-80">&ndash;
-								Total Account:</span><span class="font-weight-semibold ml-1"> <fmt:formatNumber
+								계좌 잔액 :</span><span class="font-weight-semibold ml-1"> <fmt:formatNumber
 									value="${dto.getMember_account()}" type="number"
 									pattern="#,##0" />원
 						</span></li>
@@ -1043,7 +864,7 @@ color : #ffff;
 						<i data-feather="heart"></i>
 						&nbsp;찜한 레스토랑
 						<span class="badge badge-pill badge-second ary bg-0 border ml-2">
-						<span class="text-primary" id="ToalMarkCount"></span>
+						<span class="text-primary" id="ToTalMarkCount1"></span>
 						</span>
 						</a>
 						</li>
@@ -1065,7 +886,7 @@ color : #ffff;
 					
 					
 					<c:if test="${dto.getMember_type() == 2}">
-						<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#modalLarge">
+						<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#MenuInsert" href="">
 						 <i data-feather="shopping-bag"></i>&nbsp;메뉴 등록 
 							<span class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
 					</c:if>
@@ -1130,7 +951,7 @@ color : #ffff;
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="account-name">Name</label> <input
+								<label for="account-name">이름</label> <input
 									class="form-control" type="text" id="account-name"
 									name="member_name" value="<%=session.getAttribute("name")%>"
 									disabled>
@@ -1139,7 +960,7 @@ color : #ffff;
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="account-id">User_Id</label> <input
+								<label for="account-id">아이디</label> <input
 									class="form-control" type="text" id="account-id"
 									name="member_id" value="${dto.getMember_id() }" disabled>
 							</div>
@@ -1152,7 +973,7 @@ color : #ffff;
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="account-pass" class="inputpwd">New Password</label>
+								<label for="account-pass" class="inputpwd">새로운 비밀번호</label>
 								<input name="member_pwd" class="form-control" type="password"
 									id="account-pass">
 							</div>
@@ -1160,8 +981,7 @@ color : #ffff;
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="account-confirm-pass" class="inputpwd">Confirm
-									Password</label> <input class="form-control" type="password"
+								<label for="account-confirm-pass" class="inputpwd">비밀번호 확인</label> <input class="form-control" type="password"
 									id="account-confirm-pass">
 							</div>
 						</div>
@@ -1170,7 +990,7 @@ color : #ffff;
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="account-phone">Phone Number</label> <input
+								<label for="account-phone">핸드폰 번호</label> <input
 									class="form-control" type="text" id="account-phone"
 									name="member_phone" value="${dto.getMember_phone() }" required>
 							</div>
@@ -1178,7 +998,7 @@ color : #ffff;
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="account-email">Email Address</label> <input
+								<label for="account-email">이메일 주소</label> <input
 									class="form-control" type="email" id="account-email"
 									name="member_email" value="${dto.getMember_email() }">
 							</div>
@@ -1188,15 +1008,9 @@ color : #ffff;
 							<hr class="mt-2 mb-3">
 							<div
 								class="d-flex flex-wrap justify-content-between align-items-center">
-								<div class="custom-control custom-checkbox d-block">
-									<input class="custom-control-input" type="checkbox"
-										id="subscribe_me" checked> <label
-										class="custom-control-label" for="subscribe_me">Subscribe
-										me to Newsletter</label>
-								</div>
+								
 								<button id="updatebtn123" class="btn btn-primary mt-3 mt-sm-0"
-									type="submit" data-toggle="toast" data-target="#profile-toast">Update
-									profile</button>
+									type="submit" data-toggle="toast" data-target="#profile-toast" style="margin-left:670px">프로필 수정</button>
 							</div>
 						</div>
 
@@ -1347,7 +1161,7 @@ color : #ffff;
 						<%--enctype : 파일을 업로드하기 위한 메서드 --%>
 					<form method="post" enctype="multipart/form-data"
 						action="<%=request.getContextPath()%>/board_mainprofilemodify.do">
-						<input type="hidden" name="main_idx" value="${main.getMain_idx() }">
+						<input type="hidden" class="main_idx" id="main_idx" value="${main.getMain_idx() }">
 						<div class="select-box">
 							<label for="select-box1" class="label select-box2"> <span
 								class="label-desc">가게 타입</span>
@@ -1430,7 +1244,7 @@ color : #ffff;
 
 
 <!-- 메뉴 Modal markup -->
-	<div class="modal" tabindex="-1" role="dialog" id="modalLarge">
+	<div class="modal" tabindex="-1" role="dialog" id="MenuInsert">
   		<div class="modal-dialog modal-lg" role="document">
     	<div class="modal-content">
      	 <div class="modal-header">
@@ -1443,31 +1257,28 @@ color : #ffff;
 				<div class="modal-body">
 					<p>
 						<form method="post" enctype="multipart/form-data" name="inForm" id="inForm" width="100%" >
-						<table cellspacing="0" align="center" width="100%">
+						<table cellspacing="0" align="center" width="90%">
 					<tr class="table_bg">
 						<th> </th><th> </th><th> </th> 
 					</tr>
 						
 					<tr>
-						<td class="menu_name1">
-						 <input type="text" required  name="menu_name" id="menu_name">
-						<label>메뉴 이름</label>
-						<span></span>
+						<td class="1">
+						 <input type="text" name="menu_name" id="menu_name" placeholder="메뉴 이름">
 						</td>
 						
 						<td class="menu_price1">
-						 <input type="text" required name="menu_price" id="menu_price">
-						<label>메뉴 가격</label>
-						<span></span>
+						 <input type="text" required name="menu_price" id="menu_price" placeholder="메뉴 가격">
 						</td>
 						
 						
-						<td> <input type="file" name="menu_img" id="menu_img" size="10"></td>
-						<input type="hidden" name="main_idx" id="main_idx" value="${main.getMain_idx() }">
-							
-						<td>
-						</td>
-						<td colspan="3" align="center">	
+						<td><img id="menu_img_preview" style="width: 100px;"></td>
+						<td><label class='btn btn-secondary btn-sm' for="menu_img" name="menu_img" style="margin-top:7px">
+ 							 사진 선택
+							</label>
+						<td><input type="file" id="menu_img" name="menu_img" style="display:none" accept="image/*" onchange="previewImage(event)"></td>
+						
+						<td align="center">	
 						<input type="button" class="btn btn-primary btn-sm" value="등록하기" id="menubtn">	
 						</td>
 					</tr>
@@ -1844,6 +1655,9 @@ color : #ffff;
 	<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript">
 	
+	
+	</script>
 </body>
 </html>

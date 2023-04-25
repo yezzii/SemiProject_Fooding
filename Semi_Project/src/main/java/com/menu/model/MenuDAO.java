@@ -45,7 +45,7 @@ public class MenuDAO {
 
 		String user = "web";
 
-		String password = "12345678";
+		String password = "tpalvmfhwprxm1010";
 
 		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
