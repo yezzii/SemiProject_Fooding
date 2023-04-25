@@ -41,8 +41,16 @@ public class InsertReservationAction implements Action{
 		int result = dao.reservation_insert(dto);
 		
 		PrintWriter out = response.getWriter(); 
-		
+
 		out.println(result+"");
+		
+		request.setAttribute("res_detail", dto);
+		
+		ActionForward forward = new ActionForward();
+		
+		forward.setRedirect(false);
+		
+		forward.setPath("reservation-finish.jsp");
 		
 		return null;
 	}

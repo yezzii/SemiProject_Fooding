@@ -781,14 +781,43 @@ if (request.getProtocol().equals("HTTP/1.1"))
             <table class="table table-hover mb-0">
               <thead>
                 <tr>
-                  <th>예약번호</th>
-                  <th>요청사항</th>
-                  <th>인원</th>
-                  <th>예약날짜</th>
+                  <th>Order #</th>
+                  <th>Date Purchased</th>
+                  <th>Status</th>
+                  <th>Total</th>
                 </tr>
               </thead>
               <tbody>
-                
+                <tr>
+                  <td><a class="nav-link-inline" href="#order-details" data-toggle="modal">34VB5540K83</a></td>
+                  <td>May 21, 2019</td>
+                  <td><span class="badge badge-info m-0">In Progress</span></td>
+                  <td>$358.75</td>
+                </tr>
+                <tr>
+                  <td><a class="nav-link-inline" href="#order-details" data-toggle="modal">78A643CD409</a></td>
+                  <td>December 09, 2018</td>
+                  <td><span class="badge badge-danger m-0">Canceled</span></td>
+                  <td><span>$760.50</span></td>
+                </tr>
+                <tr>
+                  <td><a class="nav-link-inline" href="#order-details" data-toggle="modal">112P45A90V2</a></td>
+                  <td>October 15, 2018</td>
+                  <td><span class="badge badge-warning m-0">Delayed</span></td>
+                  <td>$1,264.00</td>
+                </tr>
+                <tr>
+                  <td><a class="nav-link-inline" href="#order-details" data-toggle="modal">28BA67U0981</a></td>
+                  <td>July 19, 2018</td>
+                  <td><span class="badge badge-success m-0">Delivered</span></td>
+                  <td>$198.35</td>
+                </tr>
+                <tr>
+                  <td><a class="nav-link-inline" href="#order-details" data-toggle="modal">502TR872W2</a></td>
+                  <td>April 04, 2018</td>
+                  <td><span class="badge badge-success m-0">Delivered</span></td>
+                  <td>$2,133.90</td>
+                </tr>
                 <tr>
                   <td><a class="nav-link-inline" href="#order-details" data-toggle="modal">47H76G09F33</a></td>
                   <td>March 30, 2018</td>

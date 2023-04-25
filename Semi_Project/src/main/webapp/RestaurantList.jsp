@@ -585,7 +585,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
-
+									
+									
+									
 									<%
 									if (session.getAttribute("id") != null) {
 									%>
@@ -987,7 +989,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</c:if>
 			<!--레스토랑 리스트-->
 
-
+			<input type="hidden" id="session_id" value="<%=session.getAttribute("id")%>">
 			<div class="row">
 				<c:set var="list" value="${List}" />
 				<c:if test="${!empty list }">
@@ -1023,7 +1025,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
 								</div>
 								<div class="product-card-body body-hidden">
-
+									
 									<button class="btn btn-primary btn-sm btn-block" type="button"
 										data-toggle="toast" data-target="#cart-toast"
 										style="font-family: 'GmarketSansMedium';">예약하기</button>
@@ -1178,8 +1180,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										</div>
 									</div>
 								</div>
-								=================================================모달 추가 정보
-								구분칸===================================================
+								=================================================모달 추가 정보 구분칸===================================================
 
 								<div class="input-group">
 								
