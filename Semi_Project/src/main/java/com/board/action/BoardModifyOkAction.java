@@ -43,23 +43,23 @@ public class BoardModifyOkAction implements Action {
 		if(check > 0) {
 			if(type == 0) {
 				out.println("<script>");
-				out.println("alert('게시물 수정 성공.')");
+				System.out.println("게시물 수정 성공.");
 				out.println("location.href='free_board.do'");
 				out.println("</script>");
 
 			}else if(type == 1) {
 				out.println("<script>");
-				out.println("alert('게시물 수정 성공.')");
+				System.out.println("게시물 수정 성공.");
 				out.println("location.href='review_board.do'");
 				out.println("</script>");
 		    }else if(type == -1) {
 				out.println("<script>");
-				out.println("alert('게시물 수정 성공.')");
+				System.out.println("게시물 수정 성공.");
 				out.println("location.href='blog_list.do'");
 				out.println("</script>");
 		}else {
 	    	out.println("<script>");
-			out.println("alert('게시물 수정 실패.')");
+	    	System.out.println("게시물 수정 실패.");
 			out.println("history.back()");
 			out.println("</script>");
 	    }

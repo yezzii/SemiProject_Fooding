@@ -36,7 +36,7 @@ public class BoardDeleteAction implements Action {
 		
 			if(dto > 0) {
 				out.println("<script>");
-				out.println("alert('게시물 삭제 성공.')");
+				System.out.println("게시물 삭제 성공.");
 				out.println("</script>");
 				if(type == 0) {
 					out.println("<script>");
@@ -52,7 +52,7 @@ public class BoardDeleteAction implements Action {
 					out.println("</script>");
 			}else {
 		    	out.println("<script>");
-				out.println("alert('게시물 삭제 실패.')");
+		    	System.out.println("게시물 삭제 실패.");
 				out.println("history.back()");
 				out.println("</script>");
 		    }

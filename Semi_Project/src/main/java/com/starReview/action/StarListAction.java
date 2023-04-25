@@ -1,42 +1,38 @@
 package com.starReview.action;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.model.BoardDTO;
-import com.boardMain.model.Board_MainDTO;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.member.action.Action;
 import com.member.action.ActionForward;
 import com.starReview.model.starDAO;
-import com.starReview.model.starDTO;
 
 public class StarListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, Exception {
-		// TODO Auto-generated method stub
 		
-		
+		response.setContentType("application/json;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+
 		starDAO dao = starDAO.getInstance();
 		
+		JSONArray list = dao.starList();
 		
-		List<starDTO> list = dao.starList();
+		JSONObject result = new JSONObject();
+		result.put("list", list);
 		
+		PrintWriter out = response.getWriter();
+		out.print(result);
 		
-        request.setAttribute("List", list);
-		
-		ActionForward forward = new ActionForward();
-		
-		forward.setRedirect(false);
-		
-		forward.setPath("RestaurantList.jsp");
-		
-		
-		return forward;
+		return null;
 	}
 }

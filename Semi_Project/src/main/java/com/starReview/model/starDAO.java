@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 public class starDAO {
 
@@ -47,7 +50,7 @@ public class starDAO {
 
 		String user = "web";
 
-		String password = "12345678";
+		String password = "tpalvmfhwprxm1010";
 
 		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
@@ -129,44 +132,31 @@ public class starDAO {
 
 	
 	
-	public List<starDTO> starList(){
-		
-		List<starDTO> list = new ArrayList<starDTO>();
-		
-		try {
-			openConn();
-			
-			sql = "select max(star_review_idx) from star_review";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			
-			sql = "select * from star_review order by star_review_idx";
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				starDTO dto = new starDTO();
-				
-				dto.setStar_review_idx(rs.getInt("star_review_idx"));
-				dto.setStore_num(rs.getInt("store_num"));
-				dto.setMember_id(rs.getString("member_id"));
-				dto.setReview(rs.getString("review"));
-				dto.setStar_count(rs.getString("star_count"));
-				
-				list.add(dto);
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-		
-		
+	public JSONArray starList() {
+	    JSONArray result = new JSONArray();
+	    try {
+	        openConn();
+
+	        sql = "select * from star_review order by store_num";
+	        
+	        pstmt = con.prepareStatement(sql);
+
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            JSONObject obj = new JSONObject();
+	            obj.put("member_id", rs.getString("member_id"));
+	            obj.put("review", rs.getString("review"));
+	            obj.put("star_count", rs.getInt("star_count"));
+	            result.put(obj);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        closeConn(rs, pstmt, con);
+	    }
+	    return result;
 	}
 	
 	
