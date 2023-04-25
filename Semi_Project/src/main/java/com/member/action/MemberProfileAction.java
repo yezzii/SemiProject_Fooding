@@ -14,7 +14,6 @@ import com.boardMain.model.Board_MainDAO;
 import com.boardMain.model.Board_MainDTO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
-import com.mysql.cj.Session;
 
 public class MemberProfileAction implements Action {
 
