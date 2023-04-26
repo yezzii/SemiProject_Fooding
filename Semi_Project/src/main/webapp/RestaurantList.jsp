@@ -20,7 +20,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <title>Fooding</title>
 
 <style type="text/css">
-/* 각 별들의 기본 설정 */
 .starR {
 	display: inline-block;
 	width: 30px;
@@ -32,12 +31,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	cursor: pointer;
 }
 
-/* 별 이모지에 마우스 오버 시 */
 .starR:hover {
 	text-shadow: 0 0 0 #ccc;
 }
 
-/* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
 .starR.on {
 	text-shadow: 0 0 0 #ffbc00;
 }
@@ -1183,30 +1180,42 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								구분칸===================================================
 
 								<div class="input-group">
-								
+
 									<div class="starRev" id="starRev">
 										<span class="starR on">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span>
 									</div>
 									<div class="input-group starInsert-idx">
-									<input type="hidden" id="detail_idx"
-										value="${detail.getMain_idx()}">
+										<input type="hidden" id="detail_idx"
+											value="${detail.getMain_idx()}">
 										<textarea name="review" class="form-control" type="text"
-											id="reviewContents${detail.getMain_idx()}" placeholder="리뷰 작성"></textarea>
+											id="reviewContents${detail.getMain_idx()}"
+											placeholder="리뷰 작성"></textarea>
 
 										<br>
-										<button class="btn btn-primary starInsert" type="button" id="starInsert">등록</button>
+										<button class="btn btn-primary starInsert" type="button"
+											id="starInsert">등록</button>
 									</div>
 								</div>
-								
 
-								
-								<div id="starRatingList">
-								<button class="btn btn-primary starRatingList" type="button" id="starInsert">리뷰</button>
-								</div>
-								
-								
+								<blockquote
+									class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
+									<div class="d-sm-flex align-items-center pb-2">
+										<h6 class="mb-0 member_id_title"></h6>
+										<span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
+										<div class="star-rating">
+											<i class="sisi"></i> <i class="sisi"></i> <i class="sisi"></i>
+											<i class="sisi"></i> <i class="sisi"></i>
+										</div>
+									</div>
+									<p class="user_comment"></p>
+
+								</blockquote>
+
+
+
+
 							</div>
 						</div>
 					</div>

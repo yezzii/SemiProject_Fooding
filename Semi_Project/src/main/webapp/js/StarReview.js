@@ -37,48 +37,47 @@ $(function () {
       }
     });
   });
-});
 
-$(function () {
-   
-   $(".starRatingList").on("click", function(e){
-	e.preventDefault();
-	
-$.ajax({
-  url: "starList.do",
-  type: "POST",
-  dataType: "json",
-  success: function(data) {
-    console.log(data); 
-    
-    var list = data.list;
-    var starRatingHTML = '';
-    
-    for (var i = 0; i < list.length; i++) {
-      starRatingHTML += '<blockquote class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">';
-      starRatingHTML += '<div class="d-sm-flex align-items-center pb-2">';
-      starRatingHTML += '<h6 class="mb-0">' + list[i].member_id + '</h6>';
-      starRatingHTML += '<span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>';
-      starRatingHTML += '<div class="star-rating">';
-      
-      for (var j = 0; j < 5; j++) {
-        if (j < list[i].star_count) {
-          starRatingHTML += '<span class="star">&#9733;</span>'; 
-        } else {
-          starRatingHTML += '<span class="star">&#9734;</span>'; 
+
+$(document).ready(function() {
+  $.ajax({
+    url: "starList.do",
+    type: "get",
+    dataType: "json", 
+
+    success: function(data) {
+      var list = data.list;
+      for (var i = 0; i < list.length; i++) {
+        var member_id = list[i].member_id;
+        var review = list[i].review;
+        var star_count = list[i].star_count;
+
+        var title = $('.member_id_title').text("");
+        title = $('.member_id_title').text(member_id);
+        
+        var p = $('.user_comment').text("");
+        p = $('.user_comment').text(review);
+
+        var star_rating = $('.star-rating');
+        star_rating.html('');
+
+        for (var j = 0; j < 5; j++) {
+          var spa = $('<span>').addClass('starR');
+          if (j < star_count) {
+            spa.addClass('on');
+          }
+          spa.text('⭐');
+          star_rating.append(spa);
         }
       }
-      
-      starRatingHTML += '</div></div>';
-      starRatingHTML += '<p class="mb-0">' + list[i].review + '</p>';
-      starRatingHTML += '</blockquote>';
+    },
+
+    error: function(xhr, status, error) {
+      console.log(error);
     }
-    
-    $('#starRatingList').html(starRatingHTML);
-  },
-  error : function(request, status, error) {
-	  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-  }
+  });
 });
-});
+
+
+
 });

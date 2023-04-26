@@ -23,6 +23,7 @@ public class StarListAction implements Action {
 		response.setContentType("application/json;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 
+		
 		starDAO dao = starDAO.getInstance();
 		
 		JSONArray list = dao.starList();
