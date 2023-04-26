@@ -1077,12 +1077,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="js/kakao_login.js"></script>
 	<script src="js/StoreMarked.js"></script>
 	<script src="js/main_card.js"></script>
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
 	<script>
 		$('.toast').toast({
 			delay : 5000
 		});
 	</script>
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
 </body>
 </html>
