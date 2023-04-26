@@ -132,14 +132,17 @@ public class starDAO {
 
 	
 	
-	public JSONArray starList() {
+	public JSONArray starList(int idx) {
 	    JSONArray result = new JSONArray();
 	    try {
 	        openConn();
 
-	        sql = "select * from star_review order by store_num";
+	        sql = "select * from star_review where store_num = ? order by store_num";
 	        
 	        pstmt = con.prepareStatement(sql);
+	        
+	        pstmt.setInt(1, idx);
+	        System.out.println(idx);
 
 	        rs = pstmt.executeQuery();
 
@@ -148,6 +151,8 @@ public class starDAO {
 	            obj.put("member_id", rs.getString("member_id"));
 	            obj.put("review", rs.getString("review"));
 	            obj.put("star_count", rs.getString("star_count"));
+	            System.out.println(rs.getString("star_count"));
+	            obj.put("store_num", rs.getString("store_num"));
 	            result.put(obj);
 	        }
 
@@ -158,6 +163,10 @@ public class starDAO {
 	    }
 	    return result;
 	}
+	
+	
+	
+	
 	
 	
 }

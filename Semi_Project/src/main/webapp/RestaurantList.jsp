@@ -1025,10 +1025,15 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									<button class="btn btn-primary btn-sm btn-block" type="button"
 										data-toggle="toast" data-target="#cart-toast"
 										style="font-family: 'GmarketSansMedium';">예약하기</button>
-									<a class="quick-view-btn" id="StoreDetail"
-										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
-										style="color: black;"><i class="mr-2" data-feather="eye"
-										style="font-family: 'GmarketSansMedium';"></i>자세히</a>
+									<a class="quick-view-btn LoadMenuImg"
+                              href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
+                              style="color: black;">
+                              
+                              <button class="btn btn-primary btn-sm btn-block" type="button" onclick="starLoad(${dto.getMain_idx() });"
+                              style="font-family: 'GmarketSansMedium';">자세히</button>
+                              
+                              </a>
+                              <input type="hidden" value="${dto.getMain_idx() }" class="main_menu_idx">
 								</div>
 							</div>
 						</div>
@@ -1176,13 +1181,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										</div>
 									</div>
 								</div>
-								=================================================모달 추가 정보
-								구분칸===================================================
+								
 
 								<div class="input-group">
 
 									<div class="starRev" id="starRev">
-										<span class="starR on">⭐</span> <span class="starR">⭐</span> <span
+										<span class="starR on" >⭐</span> <span class="starR ">⭐</span> <span
 											class="starR">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span>
 									</div>
@@ -1197,8 +1201,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										<button class="btn btn-primary starInsert" type="button"
 											id="starInsert">등록</button>
 									</div>
+									<input type="hidden" id="review_idx"
+											value="${detail.getMain_idx()}">
 								</div>
-
+								
+								<div class="starjs">
 								<blockquote
 									class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
 									<div class="d-sm-flex align-items-center pb-2">
@@ -1212,8 +1219,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									<p class="user_comment"></p>
 
 								</blockquote>
-
-
+</div>
 
 
 							</div>
