@@ -78,12 +78,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 </head>
 <!-- Body-->
 <body>
-
-	<%--   ======================================상단 네비바 <<START>>======================================= --%>
 	<!-- Success toast -->
 	<div class="toast-container toast-top-center">
-		<div class="toast" role="alert" aria-live="assertive"
-			aria-atomic="true" id="login_success">
+		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="login_success">
 			<div class="toast-header bg-success text-white">
 				<i class="mr-2" data-feather="check-circle"
 					style="width: 1.75rem; height: 1.75rem;"></i> <span
@@ -120,15 +117,16 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
-
+		
 	}
-
-	String thumnail = (String) session.getAttribute("Thumnail");
-	String profile = (String) session.getAttribute("member_profile");
-	String name = (String) session.getAttribute("name");
-	String totalMark = (String) session.getAttribute("totalMark");
+	
+	String thumnail =  (String)session.getAttribute("Thumnail");
+	String profile =  (String)session.getAttribute("member_profile");
+	String name = (String)session.getAttribute("name");
+	String totalMark = (String)session.getAttribute("totalMark");
+	
 	%>
-
+	
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -244,7 +242,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<div class="form-group">
 								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
 									class="form-control" type="text" name="member_phone"
-									id="signup-phone" placeholder="Phone" aria-label="Phone" /> <span
+									id="signup-phone" placeholder="연락처" aria-label="Phone" /> <span
 									class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -265,15 +263,16 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</div>
 				<div class="text-center pt-4">
 					<input type="image" style="width: 320px;" id="kakaoAjax"
-						src="main_img/kakao_login.jpg" value="카카오 로그인 kakaoLogin();">
-					<br> <br> <a class="social-btn sb-facebook mx-2 mb-3"
-						href="https://www.facebook.com/" data-toggle="tooltip"
-						title="Facebook"><i class="flaticon-facebook"></i></a> <a
-						class="social-btn sb-google-plus mx-2 mb-3"
-						href="https://www.google.com/" data-toggle="tooltip"
-						title="Google"><i class="flaticon-google-plus"></i></a> <a
-						class="social-btn sb-twitter mx-2 mb-3"
-						href="https://twitter.com/" data-toggle="tooltip" title="Twitter"><i
+						src="main_img/kakao_login.jpg" 
+						value="카카오 로그인 kakaoLogin();"> <br>
+					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="https://www.facebook.com/"
+						data-toggle="tooltip" title="Facebook"><i
+						class="flaticon-facebook"></i></a> <a
+						class="social-btn sb-google-plus mx-2 mb-3" href="https://www.google.com/"
+						data-toggle="tooltip" title="Google"><i
+						class="flaticon-google-plus"></i></a> <a
+						class="social-btn sb-twitter mx-2 mb-3" href="https://twitter.com/"
+						data-toggle="tooltip" title="Twitter"><i
 						class="flaticon-twitter"></i></a>
 				</div>
 			</div>
@@ -285,9 +284,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title"
-				style="font-family: 'GmarketSansMedium'; font-size: 23px;">찜한
-				레스토랑</h3>
+			<h3 class="offcanvas-title" style="font-family:'GmarketSansMedium'; font-size: 23px; ">찜한 레스토랑</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -295,36 +292,35 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
-
+				
 				<div class="widget widget-featured-entries pt-3" id="marked-list">
-
-					<%--찜 목록 리스트 (가게정보 출력란) --%>
-
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="" width="64" alt="" /></a>
+				
+				<%--찜 목록 리스트 (가게정보 출력란) --%>
+				
+						<div class="media" >
+							<div class="featured-entry-thumb mr-3">
+								<a href="#"><img src="" width="64"
+									alt="" /></a>
+							</div>
+							<div class="media-body">
+								<h6 class="featured-entry-title">
+									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
+								</h6>
+								<p cxlass="featured-entry-meta">
+									<span class="text-muted"></span> 
+								</p>
+							</div>
 						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#"
-									style="font-family: 'GmarketSansMedium'; font-size: 18px;">찜한
-									가게 목록 불러오는중...</a>
-							</h6>
-							<p cxlass="featured-entry-meta">
-								<span class="text-muted"></span>
-							</p>
-						</div>
-					</div>
-					<hr />
+				<hr />
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<%--찜 목록 리스트 END  --%>
-
-
-
+			
+					<%--찜 목록 리스트 END  --%>
+					
+					
+					
 	<!-- Navbar Light-->
 	<header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
 		<div class="container-fluid navbar-inner">
@@ -460,8 +456,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">리뷰
-														작성 </span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">리뷰	작성 </span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -488,21 +483,22 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											No Sidebar</a></li>
 								</ul></li>
 						</ul></li>
-					<%
-					if (session.getAttribute("id") != null) {
-					%>
+										<%
+										if (session.getAttribute("id") != null) {
+										%>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle"
-						href="<%=request.getContextPath()%>/member_profile.do"><i
-							class="mr-1"></i>마이페이지</a></li>
+						<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/member_profile.do" ><i
+							class="mr-1" ></i>마이페이지</a>
+						</li>
 
 					<%
 					}
 					%>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="LoadRestaurantList.do"><i
-							class="mr-1"></i>레스토랑</a></li>
+						class="nav-link dropdown-toggle" href="LoadRestaurantList.do" ><i
+							class="mr-1" ></i>레스토랑</a>
+						</li>
 				</ul>
 			</div>
 			<!-- navbar buttons-->
@@ -534,6 +530,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						</div>
 					</form>
 
+					
+					
+					
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -547,33 +546,33 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-					<a class="navbar-btn" href="#offcanvas-cart" onclick="loadMark();"
+					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary-Mark text-light"
-							id="totalMarkCount"></span><i class="mx-auto mb-1"
-							data-feather="heart"></i>찜한 레스토랑</span></a> <a
-						class="navbar-btn navbar-collapse-hidden" href="member/logout.jsp">
-						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃
-					</a>
+							class="navbar-btn-badge bg-primary-Mark text-light" id="totalMarkCount"></span><i
+							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
+					
+					<a class="navbar-btn navbar-collapse-hidden"
+						href="member/logout.jsp">
+						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
 
 					<%-- 프로필 정보란 --%>
-					<div class="navbar-btn navbar-collapse-hidden">
-						<div class="kakao_img mx-auto mb-1">
-							<a href="<%=request.getContextPath()%>/member_profile.do"> <img
-								class="profile_img" src="<%=thumnail%>">
-							</a>
-						</div>
-
-						<%-- 프로필 정보란 --%>
-						<%
-						}
-						%>
+				<div class="navbar-btn navbar-collapse-hidden">
+					<div class="kakao_img mx-auto mb-1">
+						<a href="<%=request.getContextPath()%>/member_profile.do"> <img
+							class="profile_img" src="<%=thumnail%>">
+						</a>
 					</div>
+
+					<%-- 프로필 정보란 --%>
+					<%
+					}
+					%>
 				</div>
 			</div>
+		</div>
 	</header>
-	<%--   ======================================상단 네비바 <<END>>======================================= --%>
+		<%--   ======================================상단 네비바 <<END>>======================================= --%>
 
 
 	<!-- Page Title-->
@@ -596,117 +595,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</div>
 	<!-- Page Content  ==========================================================================================-->
 
-	<!--가게정보 상세페이지  ==============================================================================================-->
-	<c:set var="list" value="${List}" />
-	<c:if test="${!empty list }">
-		<c:forEach items="${list }" var="dto">
-			<div class="modal modal-quick-view fade"
-				id="quick-view${dto.getMain_idx()}" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<div>
-								<h2 class="h2 modal-title mb-1"
-									style="font-family: 'GmarketSansMedium';">${dto.getMain_name()}</h2>
-								<h5 class="text-primary font-weight-light mb-0"
-									style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</h5>
-							</div>
-							<button class="close" type="button" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="row">
-								<!-- Product gallery-->
-								<div class="col-lg-7">
-									<div class="owl-carousel carouselMenu"
-										data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
-										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-										<img src="${dto.getMain_img()}" alt="${dto.getMain_img()}">
-									</div>
-								</div>
-								<!-- Product details-->
-								<div class="col-lg-5 pt-4 pt-lg-0">
-									<form class="pb-4">
-										<div class="d-flex flex-wrap align-items-center pt-1">
-											<div>
-												<input class="px-2 form-control mr-2" type="number"
-													name="quantity" style="width: 3.2rem;" value="1" required>
-											</div>
-											<div>
-												<button class="btn btn-primary px-5 mr-2" type="submit">
-													<i class="mr-2" data-feather="shopping-cart"
-														style="font-family: 'GmarketSansMedium';"></i>예약하기
-												</button>
-											</div>
-										</div>
-									</form>
-									<div class="card">
-										<div class="card-header py-3 bg-0">
-											<h3 class="h6 mb-0">
-												<span
-													class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
-													data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>${dto.getMain_name()}
-												상세 정보
-											</h3>
-										</div>
-										<div class="card-body">
-											<ul class="mb-0" style="font-family: 'GmarketSansMedium';">
-												<li>주소 : ${dto.getMain_addr() }
-													${dto.getMain_detailaddr() }<br> 우편번호 :
-													${dto.getMain_post() }
-												</li>
-												<br>
-												<li>전화 : ${dto.getMain_phone() }</li>
-												<br>
-												<li>음식 종류 : ${dto.getMain_type() },
-													${dto.getMain_info()}</li>
-												<br>
-												<li>오픈시간 : ${dto.getMain_opentime()} ~ 마감시간 :
-													${dto.getMain_endtime() }</li>
-												<br>
-												<span class="Menu_Info_Text"></span>
-											</ul>
-										</div>
-									</div>
-								</div>
-								=================================================모달 추가 정보
-								구분칸===================================================
+	
 
-
-								<!-- Product review -->
-								<blockquote
-									class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
-									<div class="d-sm-flex align-items-center pb-2">
-										<h6 class="mb-0">이름</h6>
-										<span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
-										<div class="star-rating">
-											<i class="sr-star active" data-feather="star"></i> <i
-												class="sr-star active" data-feather="star"></i> <i
-												class="sr-star active" data-feather="star"></i> <i
-												class="sr-star active" data-feather="star"></i> <i
-												class="sr-star" data-feather="star"></i>
-										</div>
-									</div>
-									<p>리뷰칸</p>
-								</blockquote>
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</c:if>
 
 	<div class="container pb-5 mb-4">
 		<div class="row">
 			<div class="col-lg-3">
-				<!-- Shop sidebar-->
 				<!-- Shop sidebar-->
 				<div class="offcanvas-sidebar">
 					<div class="offcanvas-sidebar-toggle">
@@ -830,8 +724,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 
 
-			<input type="hidden" id="session_id"
-				value="<%=session.getAttribute("id")%>">
+
+			<div class="col-lg-9">
 			<div class="row">
 				<c:set var="list" value="${List}" />
 				<c:if test="${!empty list }">
@@ -857,26 +751,22 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 								</div>
 								<div class="product-card-body text-center">
-									<a class="product-meta"
+									<a class="product-meta" 
 										style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
 									<h3 class="product-card-title">
-										<a style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
+										<a 
+											style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
 									</h3>
 									<span class="text-primary-orange"
 										style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
 								</div>
 								<div class="product-card-body body-hidden">
 
-									<button class="btn btn-primary btn-sm btn-block" type="button"
-										data-toggle="toast" data-target="#cart-toast"
-										style="font-family: 'GmarketSansMedium';">예약하기</button>
-									<a class="quick-view-btn" id="StoreDetail"
+									<a class="quick-view-btn LoadMenuImg"
 										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
-										style="color: black;"><button
-											class="btn btn-primary btn-sm btn-block" type="button"
-											style="font-family: 'GmarketSansMedium';">자세히</button></a> <input
-										type="hidden" value="${dto.getMain_idx() }"
-										class="main_menu_idx">
+										style="color: black;"><button class="btn btn-primary btn-sm btn-block" type="button"
+										style="font-family: 'GmarketSansMedium';">자세히</button></a>
+										<input type="hidden" value="${dto.getMain_idx() }" class="main_menu_idx">
 								</div>
 							</div>
 						</div>
@@ -895,17 +785,17 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 
 
+	<!--가게정보 상세페이지  ==============================================================================================-->
 	<c:if test="${!empty list }">
 		<c:forEach items="${list }" var="detail">
-			<!--가게정보 상세페이지  ==============================================================================================-->
 			<div class="modal modal-quick-view fade"
 				id="quick-view${detail.getMain_idx()}" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<input type="hidden" id="detail_idx"
-						value="${detail.getMain_idx()}">
+						value="${detail.getMain_idx()}"> 
 					<div class="modal-content">
-						<input type="hidden" id="store_name"
-							value="${detail.getMain_name()}">
+					<input type="hidden"
+						id="store_name" value="${detail.getMain_name()}">
 						<div class="modal-header">
 							<div>
 								<h2 class="h2 modal-title mb-1"
@@ -1160,7 +1050,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</div>
 	</div>
 	<%--   ======================================하단 Footer <<START>>======================================= --%>
-	<!-- Footer-->
+		<!-- Footer-->
 	<footer class="page-footer bg-dark">
 		<!-- first row-->
 		<div class="pt-5 pb-0 pb-md-4">
@@ -1170,22 +1060,16 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<div class="widget widget-links pb-4">
 							<h3 class="widget-title text-white border-light">Fooding 기능</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light"
-									href="LoadRestaurantList.do"><i
+								<li><a class="nav-link-inline nav-link-light" href="LoadRestaurantList.do"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">가게
-											검색</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">가게 검색</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">가게
-											등록(사장님)</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="LoadRestaurantList.do"><i
+										data-feather="chevron-right"></i><span class="font-size-sm">가게 등록(사장님)</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="LoadRestaurantList.do"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">가격으로
-											검색</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="#quick-view-kakako" data-toggle="modal"><i
+										data-feather="chevron-right"></i><span class="font-size-sm">가격으로 검색</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="#quick-view-kakako" data-toggle="modal"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">문의</span></a></li>
 							</ul>
@@ -1195,26 +1079,21 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<div class="widget widget-links pb-4">
 							<h3 class="widget-title text-white border-light">계정 관리</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light"
-									href="<%=request.getContextPath()%>/member_profile.do"><i
+								<li><a class="nav-link-inline nav-link-light" href="<%=request.getContextPath()%>/member_profile.do"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">계정
-											자세히</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="<%=request.getContextPath()%>/member_profile.do"><i
+										data-feather="chevron-right"></i><span class="font-size-sm">계정 자세히</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="<%=request.getContextPath()%>/member_profile.do"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">회원탈퇴</span></a></li>
 							</ul>
 						</div>
 						<div class="widget widget-links pb-4">
-							<h3 class="widget-title text-white border-light">Fooding
-								Info</h3>
+							<h3 class="widget-title text-white border-light">Fooding Info</h3>
 							<ul>
-
+								
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">About_
-											Project</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">About_ Project</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -1223,8 +1102,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 							<!-- Mobile app download-->
 							<div class="widget pb-4">
-								<h3 class="widget-title text-white border-light">다운로드
-									Fooding 앱</h3>
+								<h3 class="widget-title text-white border-light">다운로드 Fooding 앱</h3>
 								<a class="market-btn market-btn-light apple-btn mr-2 mb-2"
 									href="#" role="button"><span class="market-button-subtitle">Download
 										on the</span><span class="market-button-title">App Store</span></a><a
@@ -1237,7 +1115,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</div>
 			</div>
 		</div>
-
+		
 		<!-- third row-->
 		<div class="pt-5 pb-4" style="background-color: #1f1f1f;">
 			<div class="container">
@@ -1264,8 +1142,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<div class="col-sm-6 text-center text-sm-left">
 						<ul class="list-inline font-size-sm">
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light"
-								href="LoadRestaurantList.do">가게</a></li>
+								class="nav-link-inline nav-link-light" href="LoadRestaurantList.do">가게</a></li>
 							<li class="list-inline-item mr-3"><a
 								class="nav-link-inline nav-link-light" href="#">브랜드관</a></li>
 							<li class="list-inline-item mr-3"><a
@@ -1277,7 +1154,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						</ul>
 					</div>
 					<div class="col-sm-6 text-center text-sm-right"></div>
-				</div>
+				</div> 
 			</div>
 		</div>
 		<div class="py-3" style="background-color: #1a1a1a;">
@@ -1292,10 +1169,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-
+		
 	<!-- 카카오 문의하기 모달 -->
-	<div class="modal modal-quick-view fade" id="quick-view-kakako"
-		tabindex="-1" role="dialog">
+	<div class="modal modal-quick-view fade" id="quick-view-kakako" tabindex="-1"
+		role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -1308,10 +1185,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					</button>
 				</div>
 				<div class="modal-body">
-					<!-- Product gallery-->
-					<div class="col-cg-10" align="center">
-						<a href="https://open.kakao.com/o/sStYAar"><img
-							src="main_img/카카오상담.png" alt="Product"></a>
+						<!-- Product gallery-->
+						<div class="col-cg-10" align="center">
+							<a href="https://open.kakao.com/o/sStYAar" ><img src="main_img/카카오상담.png" alt="Product"></a>
 					</div>
 				</div>
 			</div>
@@ -1321,25 +1197,24 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-	<script src="js/reservation.js"></script>
-	<script src="js/StarReview.js"></script>
+	
 	<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-	<script type="text/javascript" src="js/sign_upChk.js"></script>
+	<script src="js/sign_upChk.js"></script>
 	<script src="js/Board_Main.js"></script>
 	<script src="js/LoginChk.js"></script>
 	<script src="js/kakao_login.js"></script>
 	<script src="js/StoreMarked.js"></script>
+	<script src="js/reservation.js"></script>
+	<script src="js/StarReview.js"></script>z
 	<script>
 		$('.toast').toast({
-			delay : 5000
+			delay : 3000
 		});
 	</script>
-	<%--   ======================================하단 Footer <<END>>======================================= --%>
+<%--   ======================================하단 Footer <<END>>======================================= --%>
 </body>
 </html>
