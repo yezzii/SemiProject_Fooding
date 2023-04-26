@@ -38,7 +38,11 @@
 	href="css/theme.min.css">
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 <link rel="stylesheet" media="screen" href="css/Member_Profile.css" />
+<style type="text/css">
 
+
+
+</style>
 <!-- Customizer styles and scripts-->
 </head>
 <!-- Body-->
@@ -818,7 +822,7 @@
 						<div class="pt-3">
 							<a class="btn btn-outline-primary btn-sm" data-toggle="modal" href="#modalCentered"
 								onclick="location.href='#modalCentered?id=${dto.getMember_id()}'">
-								<i class="mr-1" data-feather="log-out"></i>Sign Out
+								<i class="mr-1" data-feather="log-out"></i>회원 탈퇴
 							</a>
 						</div>
 						
@@ -1277,10 +1281,11 @@
  							 사진 선택
 							</label>
 						<td><input type="file" id="menu_img" name="menu_img" style="display:none" accept="image/*" onchange="previewImage(event)"></td>
-						
+							<input type="hidden" name="main_idx" id="main_idx" value="${main.getMain_idx() }">
 						<td align="center">	
 						<input type="button" class="btn btn-primary btn-sm" value="등록하기" id="menubtn">	
 						</td>
+						 	
 					</tr>
 					
 					</table>
@@ -1344,8 +1349,8 @@
 			</div>
 	        </p>
 	      </div>
-	        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary btn-sm">회원 탈퇴</button>
+	        
+	        <button type="submit" class="btn btn-primary btn-sm" id="member_del">회원 탈퇴</button>
 	      </div>
 	    </form>
 	    </div>

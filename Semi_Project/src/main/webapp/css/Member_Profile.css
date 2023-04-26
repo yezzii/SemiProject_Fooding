@@ -235,9 +235,16 @@ border-color: #e3e3e3;
 
 .menu_text{
 text-align: center;
-width :100px;
+width :180px;
 border:none;
 border-bottom: 2px solid #e3e3e3;
+}
+
+.price_text{
+text-align: center;
+width :90px;
+border:none;
+border-bottom: 2px solid #e3e3e3;	
 }
 
 .input-file-button{
@@ -276,3 +283,9 @@ border-bottom: 2px solid #e3e3e3;
 margin-left: 10px;
 
 }
+
+#member_del{
+	margin-left: 360px;
+	margin-bottom: 50px;
+}
+
