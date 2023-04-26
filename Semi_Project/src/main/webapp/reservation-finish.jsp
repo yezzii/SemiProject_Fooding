@@ -704,7 +704,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			<div class="col-lg-8 col-md-10 mt-sm-3">
 
 			
-				<c:set var="res_detail" value="${res_detail}" />
+			
 				<div class="card py-2 mt-4">
 					<form class="card-body needs-validation">
 						<!-- Info alert -->
@@ -712,13 +712,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							style="display: show">
 							<h4 class="pt-2 alert-heading" align="center">예약 성공</h4>
 							<br>
-							<p align="center">${res_detail.getMember_id()} 회원님의 예약이 성공하셨습니다.</p>
+							<p align="center"><span></span> 회원님의 예약이 성공하셨습니다.</p>
 							<br>
-							<p><b>가게이름 : </b> ${res_detail.getMain_idx()}</p>
+							<p><b>가게이름 : </b> <span>${param.result.getMain_idx()}</span></p>
 							<br>
-							<p><b>예약일시 : </b> ${res_detail.getD_day()} <b>인원 : </b>${res_detail.getMember_cnt()} </p>
+							<p><b>예약일시 : </b> <span>${param.result.getD_day()}</span> <b>인원 : </b></p>
 							<br>
-							<p><b>요청사항 : </b> ${res_detail.getRequest_text()}</p>
+							<p><b>요청사항 : </b> <span>${param.result.getRequest_text()}</span></p>
 							
 						</div>
 						
@@ -1025,9 +1025,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<script type="text/javascript" src="js/sign_upChk.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
+	<script src="js/sign_upChk.js"></script>
+	<script src="js/LoginChk.js"></script>
+	<script src="js/Board_Main.js"></script>
+	<script src="js/StoreMarked.js"></script>
+	<script src="js/reservation.js"></script>
 
 </body>
 </html>

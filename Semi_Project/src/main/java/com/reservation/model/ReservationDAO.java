@@ -97,16 +97,17 @@ public class ReservationDAO {
 				count = rs.getInt(1) + 1;
 			}
 
-			sql = "insert into reservation value(?,?,default,?,?,?,?)";
+			sql = "insert into reservation value(?,?,default,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, count);
 			pstmt.setString(2, dto.getMember_id());
 			pstmt.setInt(3, dto.getMain_idx());
-			pstmt.setInt(4, dto.getMember_cnt());
-			pstmt.setString(5, dto.getD_day());
-			pstmt.setString(6, dto.getRequest_text());
+			pstmt.setString(4, dto.getStore_name());
+			pstmt.setInt(5, dto.getMember_cnt());
+			pstmt.setString(6, dto.getD_day());
+			pstmt.setString(7, dto.getRequest_text());
 
 			result = pstmt.executeUpdate();
 

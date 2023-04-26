@@ -585,9 +585,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
-									
-									
-									
+
+
+
 									<%
 									if (session.getAttribute("id") != null) {
 									%>
@@ -989,7 +989,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</c:if>
 			<!--레스토랑 리스트-->
 
-			<input type="hidden" id="session_id" value="<%=session.getAttribute("id")%>">
+			<input type="hidden" id="session_id"
+				value="<%=session.getAttribute("id")%>">
 			<div class="row">
 				<c:set var="list" value="${List}" />
 				<c:if test="${!empty list }">
@@ -1025,7 +1026,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
 								</div>
 								<div class="product-card-body body-hidden">
-									
+
 									<button class="btn btn-primary btn-sm btn-block" type="button"
 										data-toggle="toast" data-target="#cart-toast"
 										style="font-family: 'GmarketSansMedium';">예약하기</button>
@@ -1088,8 +1089,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								</div>
 								<!-- Product details-->
 								<div class="col-lg-5 pt-4 pt-lg-0">
-									<form class="pb-4" method="post" action="">
-										<label for="resvation_date">예약날짜</label>
+									<form class="pb-4" method="post">
+										<input type="hidden" name="store_name" id="store_name"
+											value="${detail.getMain_name()}"> <label
+											for="resvation_date">예약날짜</label>
 
 										<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
 
@@ -1099,13 +1102,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											<div class="form-inline pb-3" style="float: left;">
 												<input class="form-control" type="date"
 													id="resvation_date${detail.getMain_idx()}"
-													min="<%=java.time.LocalDate.now()%>"
+													name="resvation_date" min="<%=java.time.LocalDate.now()%>"
 													value="<%=java.time.LocalDate.now()%>">
 											</div>
 											<div class="form-inline pb-3" style="float: left;">
 												<select class="form-control custom-select"
-													id="resvation_time${detail.getMain_idx()}" name="size"
-													required>
+													id="resvation_time${detail.getMain_idx()}"
+													name="resvation_time" required>
 													<option>예약 시간</option>
 													<c:forEach var="res_time"
 														begin="${fn:substring(opentime,0,2)}"
@@ -1119,7 +1122,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 											<div class="" style="float: right;">
 												<input class="pl-2 form-control pb-3" type="number"
-													id="people-num${detail.getMain_idx()}" name="quantity"
+													id="people-num${detail.getMain_idx()}" name="people-num"
 													style="width: 3.5rem; height: 2.625rem;" value="1" required>
 											</div>
 											<div style="float: right;">
@@ -1135,7 +1138,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										</div>
 										<textarea class="form-control"
 											id="request-text${detail.getMain_idx()}" rows="3"
-											style="resize: none;" placeholder="요청사항 혹은 알러지 음식을 작성해주세요"></textarea>
+											name="request-text" style="resize: none;"
+											placeholder="요청사항 혹은 알러지 음식을 작성해주세요"></textarea>
 										<div class="d-flex flex-wrap align-items-center pt-1">
 
 											<div>
@@ -1180,28 +1184,31 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										</div>
 									</div>
 								</div>
-								=================================================모달 추가 정보 구분칸===================================================
+								=================================================모달 추가 정보
+								구분칸===================================================
 
 								<div class="input-group">
-								
+
 									<div class="starRev" id="starRev">
 										<span class="starR on">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span> <span class="starR">⭐</span> <span
 											class="starR">⭐</span>
 									</div>
 									<div class="input-group starInsert-idx">
-									<input type="hidden" id="detail_idx"
-										value="${detail.getMain_idx()}">
+										<input type="hidden" id="detail_idx"
+											value="${detail.getMain_idx()}">
 										<textarea name="review" class="form-control" type="text"
-											id="reviewContents${detail.getMain_idx()}" placeholder="리뷰 작성"></textarea>
+											id="reviewContents${detail.getMain_idx()}"
+											placeholder="리뷰 작성"></textarea>
 
 										<br>
-										<button class="btn btn-primary starInsert" type="button" id="starInsert">등록</button>
+										<button class="btn btn-primary starInsert" type="button"
+											id="starInsert">등록</button>
 									</div>
 								</div>
-								
-								
-								
+
+
+
 							</div>
 						</div>
 					</div>
@@ -1211,8 +1218,63 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</c:if>
 
 
-
-
+	<!-- 예약 확정 화면 -->
+	<div class="modal" tabindex="-1" role="dialog" id="reservation_result">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">예약 성공</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>
+						<b>가게이름 : </b><span id="store-name"></span>
+					</p>
+					<p>
+						<b>인원 : </b><span id="mem-cnt"></span>
+					</p>
+					<p>
+						<b>예약일시 : </b><span id="date"></span>
+					</p>
+					<p>
+						<b>요청사항 : </b><span id="req"></span>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary btn-sm"
+						data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-primary btn-sm">예약내역</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- 예약 실패 화면 -->
+	<div class="modal" tabindex="-1" role="dialog" id="reservation_fail">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">예약 실패</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p align="center">
+						<b>예약이 실패했습니다. </b>
+					</p>
+					
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
 
 
 	<!-- 레스토랑-->

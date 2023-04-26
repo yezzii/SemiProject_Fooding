@@ -13,7 +13,10 @@ $(function () {
     let time = $("#resvation_time"+main_idx+" option:selected").val();
     let people_num = $("#people-num"+main_idx).val();
     let req_text = $("#request-text"+main_idx).val();
-let success_toast = $("#login_success");
+    let store_name = $("#store_name").val();
+    
+	let res_modal = $("#reservation_result");
+	let fail_modal = $("#reservation_fail");
 
 
     console.log(main_idx);
@@ -23,6 +26,7 @@ let success_toast = $("#login_success");
       url: "reservation_insert.do",
       dataType : "json",
       data: {
+		store_name : store_name,
         date: date,
         time: time,
         people_num: people_num,
@@ -30,11 +34,16 @@ let success_toast = $("#login_success");
         main_idx: main_idx,
       },
       success: function (data) {
-        if (data == 1) {
-          location.href="reservation-finish.jsp";
+        if (data.result == 1) {
+			fail_modal.modal("hide");
+			$("#store-name").text(store_name);
+			$("#mem-cnt").text(people_num);
+			$("#date").text(date);
+			$("#req").text(req_text);
+			res_modal.modal("show");
         } else {
-          $("#quick-view").hide();
-          success_toast.toast("show");
+			res_modal.modal("hide");
+			fail_modal.modal("show");
         }
       },
       error: function (request, status, error) {

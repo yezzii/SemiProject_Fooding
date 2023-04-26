@@ -24,7 +24,7 @@ $(function () {
             success : function(data){
                 if(data.result == 1){
 					fail_toast.toast("hide");
-					toast_success_div.text(data.name+" 님 다시 오신걸 환영합니다.")
+					toast_success_div.text(data.name+" 님 다시 오신걸 환영합니다.");
                     success_toast.toast("show");
                     setTimeout(function() {
     				location.reload();
