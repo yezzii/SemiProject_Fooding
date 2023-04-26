@@ -782,7 +782,7 @@
 					<c:if test="${dto.getMember_type() != 2}">
 						<ul class="nav nav-tabs d-none d-sm-flex">
 							<li class="nav-item"><a class="nav-link"
-								href="account-orders.html"> <i data-feather="shopping-bag"></i>&nbsp;예약현황
+								href="<%=request.getContextPath() %>/reservation_list.do"> <i data-feather="shopping-bag"></i>&nbsp;예약현황
 									<span class="badge badge-pill badge-secondary bg-0 border ml-2">
 										<span class="text-primary">1</span>
 								</span></a></li>

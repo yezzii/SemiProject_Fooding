@@ -47,15 +47,20 @@ public class Board_MainDAO {
 
 	// DB를 연동하는 작업을 진행하는 메서드.
 	public void openConn() {
+		String driver = "com.mysql.cj.jdbc.Driver";
+
+		String user = "web";
+
+		String password = "tpalvmfhwprxm1010";
+
+		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
 		try {
-
-			Context init = new InitialContext();
-
-			DataSource dataSource = (DataSource) init.lookup("java:comp/env/jdbc/mysql");
+			// 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.
+			Class.forName(driver);
 
 			// 2단계 : 오라클 데이터베이스와 연결 작업 진행.
-			con = dataSource.getConnection();
+			con = DriverManager.getConnection(url, user, password);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
