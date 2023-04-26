@@ -31,6 +31,7 @@ $(document).ready(function () {
 	  }
      
        CountMark(count);
+       CountMark1(count);
     },
      error: function (request, status, error) {
         console.log(status+ " : " +error); // 오류 발생시 콘솔에 출력
@@ -92,7 +93,15 @@ $(document).ready(function () {
 
 function CountMark(count){//상단 찜하기 총 갯수
 	   //찜한 가게 총 수
-		const totalMark = document.getElementById('totalMarkCount');
+		const totalMark = document.getElementById('ToTalMarkCount');
+		
+		totalMark.textContent = count;
+	
+			
+};	
+function CountMark1(count){ //마이프로필
+	   //찜한 가게 총 수
+		const totalMark = document.getElementById('ToTalMarkCount1');
 		
 		totalMark.textContent = count;
 		

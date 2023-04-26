@@ -191,7 +191,7 @@ public class MenuDAO {
 			
 		  pstmt.setInt(2,rst_no);
 		  
-		  result = pstmt.executeUpdate();
+		  pstmt.executeUpdate();
 			 
 			
 		} catch (SQLException e) {
@@ -275,10 +275,6 @@ public class MenuDAO {
 		}
 		return list;
 	}// getMenuImgList() end
-	
-	
-	
-	
 	
 	
 }

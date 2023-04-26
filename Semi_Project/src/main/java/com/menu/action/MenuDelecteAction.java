@@ -22,7 +22,8 @@ public class MenuDelecteAction implements Action {
 		int rst_no = Integer.parseInt(request.getParameter("rst_no"));
 		
 		
-		System.out.println("menu_idx>>>"+rst_no);
+		System.out.println("rst_no>>>"+rst_no);
+		System.out.println("menu_idx>>>"+menu_idx);
 		
 		MenuDAO dao = MenuDAO.getInstance();
 		

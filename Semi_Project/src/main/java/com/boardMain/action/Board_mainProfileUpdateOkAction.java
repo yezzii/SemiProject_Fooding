@@ -37,6 +37,7 @@ public class Board_mainProfileUpdateOkAction implements Action {
 				new DefaultFileRenamePolicy()
 				);
 		int main_idx = Integer.parseInt(multi.getParameter("main_idx").trim());
+		
 		String main_type = multi.getParameter("main_type").trim();
 		String main_thema = multi.getParameter("main_thema").trim();
 		String main_name = multi.getParameter("main_name").trim();
@@ -75,6 +76,8 @@ public class Board_mainProfileUpdateOkAction implements Action {
 		dto.setMain_detailaddr(main_detailaddr);
 		dto.setMain_phone(main_phone);
 		dto.setMain_thema(main_thema);
+		
+
 		
 		Board_MainDAO dao = Board_MainDAO.getInstance();
 		

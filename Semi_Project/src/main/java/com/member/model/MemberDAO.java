@@ -40,6 +40,7 @@ public class MemberDAO {
 		}
 
 		return instance;
+		
 	} // getInstance() 메서드 end
 
 	// DB를 연동하는 작업을 진행하는 메서드.

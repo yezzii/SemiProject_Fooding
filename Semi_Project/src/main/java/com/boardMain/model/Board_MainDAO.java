@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.Restaurant.model.RtDTO;
-import com.menu.model.MenuDTO;
 
 public class Board_MainDAO {
 	Connection con = null;
