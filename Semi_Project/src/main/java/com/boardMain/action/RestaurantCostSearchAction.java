@@ -24,6 +24,7 @@
 			int costMin = Integer.parseInt(request.getParameter("min").trim());
 			int costMax = Integer.parseInt(request.getParameter("max").trim());
 
+			String costVal = Integer.toString(costMin)+"원 ~ "+ Integer.toString(costMax)+"원";
 			Board_MainDAO dao = Board_MainDAO.getInstance();
 			
 			System.out.println(costMin);
@@ -33,6 +34,8 @@
 			List<RtDTO> searchList = dao.RestaurantCostSearch(costMin,costMax);
 			
 			request.setAttribute("List", searchList);
+			request.setAttribute("keyword", costVal);
+			
 			
 			ActionForward forward = new ActionForward();
 			 

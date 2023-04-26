@@ -425,44 +425,14 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								</div>
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop</h3>
+										<h3 class="widget-title">리뷰 남기기</h3>
 										<ul>
 
 											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">후기
-														작성 </span></a></li>
-
-											<li><a href="cart.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Cart</span></a></li>
-											<li><a href="checkout-details.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Details</span></a></li>
-											<li><a href="checkout-shipping.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Shipping</span></a></li>
-											<li><a href="checkout-payment.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Payment</span></a></li>
-											<li><a href="checkout-review.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Review</span></a></li>
-											<li><a href="checkout-complete.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Complete</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">리뷰	작성 </span></a></li>
 										</ul>
 									</div>
-								</div>
-								<div class="dropdown-column">
-									<a class="d-block mx-auto" href="#" style="max-width: 228px"><img
-										class="d-block" src="img/megamenu/promo-banner.jpg"
-										alt="Promo banner" /></a>
 								</div>
 							</div>
 						</div></li>
@@ -690,7 +660,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							src="img/photo/GoodView2.jpg" alt="GoodView" />
 					</div>
 				</a>
-				<div class="card-body border mt-n1 py-4 text-center">
+				<div class="card-body border mt-n1 py-4 text-center"  id="brandSlide">
 					<h2 class="h5 mb-1">뷰와 맛을 한번에</h2>
 					<span class="d-block mb-3 font-size-s text-muted"> 전망 좋은
 						레스토랑에서의 식사 어때요? </span><a class="btn btn-pill btn-outline-primary btn-sm"
@@ -760,53 +730,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<section class="container pt-3 pb-4">
 	<h2 class="h3 text-center pb-4">요즘 뜨는 레스토랑</h2>
 		<div class="row" id="CardLoad">
-			<!-- Product-->
-				<c:set var="list" value="${List}" />
-				<c:if test="${!empty list }">
-					<c:forEach items="${list }" var="dto">
-						<!-- DB데이터만큼 리스트 출력되는 가게목록. -->
-						<div class="col-md-4 col-sm-6">
-							<div class="product-card mb-4">
-								<div class="product-thumb">
-									 <span	class="product-wishlist-btn" data-toggle="tooltip"
-										data-placement="left" title="찜하기" id="Heart${dto.getMain_idx() }"> 
-										
-										<svg
-					                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-					                        fill="currentColor" class="bi bi-suit-heart" 
-					                        viewBox="0 0 16 16">
-					                          <path
-					                            d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
-					                        </svg>
-										
-										</span>
-									 <input type="hidden" id="main_idx" value="${dto.getMain_idx()}"> 
-									 <img src="${dto.getMain_img()}" alt="${dto.getMain_name()}">
-								</div>
-								<div class="product-card-body text-center">
-									<a class="product-meta" href="#"
-										style="font-family: 'GmarketSansMedium';">${dto.getMain_info() }</a>
-									<h3 class="product-card-title">
-										<a href="shop-single-apparel.jsp"
-											style="font-family: 'GmarketSansMedium'; font-size: 18px;">${dto.getMain_name()}</a>
-									</h3>
-									<span class="text-primary-orange"
-										style="font-family: 'GmarketSansMedium'; font-size: 13px;">${dto.getMain_addr() }</span>
-							</div>
-								<div class="product-card-body body-hidden">
-
-									
-									<a class="quick-view-btn"
-										href="#quick-view${dto.getMain_idx()}" data-toggle="modal"
-										style="color: black;"><button class="btn btn-primary btn-sm btn-block" type="button"
-										style="font-family: 'GmarketSansMedium';">자세히</button></a>
-										</div>
-							</div>
-						</div>
-						</c:forEach>
-						</c:if>
-						
-			</div>
+		
+		
+		
+		</div>
 			<!-- Product-->
 						
 	</section>
@@ -1084,9 +1011,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<div class="col-sm-6 text-center text-sm-left">
 						<ul class="list-inline font-size-sm">
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="board_main_update.do">가게</a></li>
+								class="nav-link-inline nav-link-light" href="LoadRestaurantList.do">가게</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">브랜드관</a></li>
+								class="nav-link-inline nav-link-light" href="#brandSlide">브랜드관</a></li>
 							<li class="list-inline-item mr-3"><a
 								class="nav-link-inline nav-link-light" href="#">고객센터</a></li>
 							<li class="list-inline-item mr-3"><a
@@ -1136,8 +1063,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 	<!-- 카카오 문의하기 모달 끝 -->
-		
-		
 
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>

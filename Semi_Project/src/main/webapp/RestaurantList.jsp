@@ -48,8 +48,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <!-- Body-->
 <body>
 
-	<%--   ======================================상단 네비바 <<START>>======================================= --%>
- 	<!-- Success toast -->
+<%--   ======================================상단 네비바 <<START>>======================================= --%>
+	<!-- Success toast -->
 	<div class="toast-container toast-top-center">
 		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="login_success">
 			<div class="toast-header bg-success text-white">
@@ -82,17 +82,22 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 	</div>
 	<!--   ==============================  네비바  ================================= -->
+
+
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
+		
 	}
 	
 	String thumnail =  (String)session.getAttribute("Thumnail");
 	String profile =  (String)session.getAttribute("member_profile");
 	String name = (String)session.getAttribute("name");
+	String totalMark = (String)session.getAttribute("totalMark");
 	
 	%>
+	
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -105,7 +110,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</button>
 		</div>
 
-	<%-- 로그인 --%>
+		<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<ul class="nav nav-tabs nav-justified" role="tablist">
@@ -232,13 +237,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<input type="image" style="width: 320px;" id="kakaoAjax"
 						src="main_img/kakao_login.jpg" 
 						value="카카오 로그인 kakaoLogin();"> <br>
-					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
+					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="https://www.facebook.com/"
 						data-toggle="tooltip" title="Facebook"><i
 						class="flaticon-facebook"></i></a> <a
-						class="social-btn sb-google-plus mx-2 mb-3" href="#"
+						class="social-btn sb-google-plus mx-2 mb-3" href="https://www.google.com/"
 						data-toggle="tooltip" title="Google"><i
 						class="flaticon-google-plus"></i></a> <a
-						class="social-btn sb-twitter mx-2 mb-3" href="#"
+						class="social-btn sb-twitter mx-2 mb-3" href="https://twitter.com/"
 						data-toggle="tooltip" title="Twitter"><i
 						class="flaticon-twitter"></i></a>
 				</div>
@@ -247,8 +252,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</div>
 
 
-
-		<!-- Off-canvas cart-->
+	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
@@ -286,6 +290,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</div>
 			
 					<%--찜 목록 리스트 END  --%>
+					
 					
 					
 	<!-- Navbar Light-->
@@ -403,10 +408,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									<div class="widget widget-links">
 										<h3 class="widget-title">게시판</h3>
 										<ul>
-											<li><a href="shop-style1-ls.jsp"> <i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"> </i><span
-													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
 											<li><a
 												href="<%=request.getContextPath()%>/review_board.do"> <i
 													class="widget-categories-indicator"
@@ -422,48 +423,14 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								</div>
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop</h3>
+										<h3 class="widget-title">리뷰 남기기</h3>
 										<ul>
-											<li><a href="shop-categories-apparel.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Shop
-														Categories - Apparel</span></a></li>
 
 											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">후기
-														작성 </span></a></li>
-
-											<li><a href="cart.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Cart</span></a></li>
-											<li><a href="checkout-details.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Details</span></a></li>
-											<li><a href="checkout-shipping.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Shipping</span></a></li>
-											<li><a href="checkout-payment.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Payment</span></a></li>
-											<li><a href="checkout-review.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Review</span></a></li>
-											<li><a href="checkout-complete.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Complete</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">리뷰	작성 </span></a></li>
 										</ul>
 									</div>
-								</div>
-								<div class="dropdown-column">
-									<a class="d-block mx-auto" href="#" style="max-width: 228px"><img
-										class="d-block" src="img/megamenu/promo-banner.jpg"
-										alt="Promo banner" /></a>
 								</div>
 							</div>
 						</div></li>
@@ -488,76 +455,19 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											No Sidebar</a></li>
 								</ul></li>
 						</ul></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">내정보</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">User Account</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="account-orders.jsp">Orders
-											History</a></li>
-									
 										<%
 										if (session.getAttribute("id") != null) {
 										%>
-											<li class="dropdown-divider"></li>
-											<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
-											<li class="dropdown-divider"></li>
-									<%}%>
-									
-									
-									<li><a class="dropdown-item" href="account-address.jsp">Account
-											Addresses</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-payment.jsp">Payment
-											Methods</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-wishlist.jsp">Wishlist</a>
-									</li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-tickets.jsp">My
-											Tickets</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item"
-										href="account-single-ticket.jsp">Single Ticket</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-signin.jsp">Sign
-											In / Sign Up Page</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item"
-										href="account-password-recovery.jsp">Password Recovery</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="about.jsp">About Us</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="contacts.jsp">Contacts</a>
-							</li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Help Center</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="help-topics.jsp">Help
-											Topics</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="help-single-topic.jsp">Single
-											Topic</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item"
-										href="help-submit-request.jsp">Submit a Request</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="product-comparison.jsp">Product
-									Comparison</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="order-tracking.jsp">Order
-									Tracking</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="404.jsp">404 Not
-									Found</a></li>
-						</ul></li>
-				<li class="nav-item dropdown"><a
+
+						<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/member_profile.do" ><i
+							class="mr-1" ></i>마이페이지</a>
+						</li>
+
+					<%
+					}
+					%>
+					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="LoadRestaurantList.do" ><i
 							class="mr-1" ></i>레스토랑</a>
 						</li>
@@ -591,6 +501,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div>
 					</form>
+
 					
 					
 					
@@ -607,7 +518,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-				<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
+					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
 							class="navbar-btn-badge bg-primary-Mark text-light" id="totalMarkCount"></span><i
@@ -620,7 +531,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<%-- 프로필 정보란 --%>
 				<div class="navbar-btn navbar-collapse-hidden">
 					<div class="kakao_img mx-auto mb-1">
-						<a href="<%=request.getContextPath()%>/myprofile.go"> <img
+						<a href="<%=request.getContextPath()%>/member_profile.do"> <img
 							class="profile_img" src="<%=thumnail%>">
 						</a>
 					</div>
@@ -636,9 +547,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</header>
-	
-	
-	<%--   ======================================상단 네비바 <<END>>======================================= --%>
+		<%--   ======================================상단 네비바 <<END>>======================================= --%>
 
 
 	<!-- Page Title-->
@@ -718,6 +627,25 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		                </div>
 		              </div>
 		                              =================================================모달 추가 정보 구분칸===================================================
+		           
+		           
+		           <!-- Product review -->
+				<blockquote class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
+				  <div class="d-sm-flex align-items-center pb-2">
+				    <h6 class="mb-0">이름</h6>
+				    <span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
+				    <div class="star-rating">
+				      <i class="sr-star active" data-feather="star"></i>
+				      <i class="sr-star active" data-feather="star"></i>
+				      <i class="sr-star active" data-feather="star"></i>
+				      <i class="sr-star active" data-feather="star"></i>
+				      <i class="sr-star" data-feather="star"></i>
+				    </div>
+				  </div>
+				  <p>리뷰칸</p>
+				</blockquote>
+		           
+		           
 		            </div>
 		          </div>
 		        </div>
@@ -977,7 +905,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</div>
 	</div>
 	<%--   ======================================하단 Footer <<START>>======================================= --%>
-	<!-- Footer-->
+		<!-- Footer-->
 	<footer class="page-footer bg-dark">
 		<!-- first row-->
 		<div class="pt-5 pb-0 pb-md-4">
@@ -992,11 +920,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										data-feather="chevron-right"></i><span class="font-size-sm">가게 검색</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">가게 등록</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">가게 등록(사장님)</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="LoadRestaurantList.do"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">가격으로 검색</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+								<li><a class="nav-link-inline nav-link-light" href="#quick-view-kakako" data-toggle="modal"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">문의</span></a></li>
 							</ul>
@@ -1006,10 +934,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<div class="widget widget-links pb-4">
 							<h3 class="widget-title text-white border-light">계정 관리</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+								<li><a class="nav-link-inline nav-link-light" href="<%=request.getContextPath()%>/member_profile.do"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">계정 자세히</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+								<li><a class="nav-link-inline nav-link-light" href="<%=request.getContextPath()%>/member_profile.do"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">회원탈퇴</span></a></li>
 							</ul>
@@ -1017,12 +945,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<div class="widget widget-links pb-4">
 							<h3 class="widget-title text-white border-light">Fooding Info</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">제작자</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">세미프로젝트</span></a></li>
+								
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">About_ Project</span></a></li>
@@ -1074,7 +997,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<div class="col-sm-6 text-center text-sm-left">
 						<ul class="list-inline font-size-sm">
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="board_main_update.do">가게</a></li>
+								class="nav-link-inline nav-link-light" href="LoadRestaurantList.do">가게</a></li>
 							<li class="list-inline-item mr-3"><a
 								class="nav-link-inline nav-link-light" href="#">브랜드관</a></li>
 							<li class="list-inline-item mr-3"><a
@@ -1086,7 +1009,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						</ul>
 					</div>
 					<div class="col-sm-6 text-center text-sm-right"></div>
-				</div>
+				</div> 
 			</div>
 		</div>
 		<div class="py-3" style="background-color: #1a1a1a;">
@@ -1101,6 +1024,31 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
+		
+	<!-- 카카오 문의하기 모달 -->
+	<div class="modal modal-quick-view fade" id="quick-view-kakako" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div>
+						<h1 class="h1 modal-title mb-1">카카오톡 문의하기</h1>
+					</div>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<!-- Product gallery-->
+						<div class="col-cg-10" align="center">
+							<a href="https://open.kakao.com/o/sStYAar" ><img src="main_img/카카오상담.png" alt="Product"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 카카오 문의하기 모달 끝 -->
 
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>

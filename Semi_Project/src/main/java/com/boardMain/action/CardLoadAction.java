@@ -25,6 +25,7 @@ public class CardLoadAction implements Action {
 		System.out.println("card_load 진입");
 		
 		int rowsize = 8;
+		
 		int block = 5;
 		int totalBoard_main = 0;
 		int allpage = 0;

@@ -5,7 +5,7 @@ $(document).ready(function () {
     url: 'card_load.do',
     dataType: "json",
     success: function (data) {
-     // console.log("AJAX호출 성공");
+    //  console.log("AJAX호출 성공");
     //  console.log("데이터 송신완료 값:" + data);
       var List = JSON.parse(data.List); // 문자열을 JavaScript 객체로 파싱
       var name = List.map(obj => obj.name);
