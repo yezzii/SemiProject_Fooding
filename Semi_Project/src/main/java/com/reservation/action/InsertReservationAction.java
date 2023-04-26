@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 import com.member.action.Action;
 import com.member.action.ActionForward;
 import com.reservation.model.ReservationDAO;
@@ -24,6 +26,7 @@ public class InsertReservationAction implements Action{
 		int people_num = Integer.parseInt(request.getParameter("people_num"));
 		String req_text = request.getParameter("req_text");
 		int idx = Integer.parseInt(request.getParameter("main_idx"));
+		String store_name = request.getParameter("store_name");
 		
 		HttpSession session = request.getSession();
 		
@@ -34,15 +37,19 @@ public class InsertReservationAction implements Action{
 		dto.setMember_id((String) session.getAttribute("id"));
 		dto.setRequest_text(req_text);
 		dto.setD_day(date+" "+time);
-		
+		dto.setStore_name(store_name);
 		
 		ReservationDAO dao = ReservationDAO.getInstance();
 		
 		int result = dao.reservation_insert(dto);
 		
 		PrintWriter out = response.getWriter(); 
+
+		JSONObject json = new JSONObject();
 		
-		out.println(result+"");
+		json.put("result", result);
+		
+		out.println(json);
 		
 		return null;
 	}

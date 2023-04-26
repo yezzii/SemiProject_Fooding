@@ -1,10 +1,16 @@
 package com.reservation.model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 
 public class ReservationDAO {
 
@@ -40,20 +46,15 @@ public class ReservationDAO {
 
 	// DB를 연동하는 작업을 진행하는 메서드.
 	public void openConn() {
-		String driver = "com.mysql.cj.jdbc.Driver";
-
-		String user = "web";
-
-		String password = "tpalvmfhwprxm1010";
-
-		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
 		try {
-			// 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.
-			Class.forName(driver);
+
+			Context init = new InitialContext();
+
+			DataSource dataSource = (DataSource) init.lookup("java:comp/env/jdbc/mysql");
 
 			// 2단계 : 오라클 데이터베이스와 연결 작업 진행.
-			con = DriverManager.getConnection(url, user, password);
+			con = dataSource.getConnection();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -82,43 +83,121 @@ public class ReservationDAO {
 	} // closeConn() 메서드 end
 
 	public int reservation_insert(ReservationDTO dto) {
-		
+
 		int count = 0, result = 0;
-		
+
 		openConn();
-		
+
 		try {
-			
+
 			sql = "select max(booking_idx) from reservation";
-			
+
 			pstmt = con.prepareStatement(sql);
-			
+
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				count = rs.getInt(1)+1;
+
+			if (rs.next()) {
+				count = rs.getInt(1) + 1;
 			}
-			
-			sql = "insert into reservation value(?,?,default,?,?,?,?)";
-			
+
+			sql = "insert into reservation value(?,?,default,?,?,?,?,?)";
+
 			pstmt = con.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, count);
 			pstmt.setString(2, dto.getMember_id());
 			pstmt.setInt(3, dto.getMain_idx());
-			pstmt.setInt(4, dto.getMember_cnt());
-			pstmt.setString(5, dto.getD_day());
-			pstmt.setString(6, dto.getRequest_text());
-			
+			pstmt.setString(4, dto.getStore_name());
+			pstmt.setInt(5, dto.getMember_cnt());
+			pstmt.setString(6, dto.getD_day());
+			pstmt.setString(7, dto.getRequest_text());
+
 			result = pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
-	
-	
+
+	// 회원의 예약내역 행의 갯수를 구하는 메서드
+	public int getReservationCount(String mem_id) {
+
+		int count = 0;
+
+		try {
+			openConn();
+			sql = "select count(*) from reservation where member_id = ? order by d_day desc";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1 , mem_id);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}// getBoardCount() end
+
+	public List<ReservationDTO> reservation_list(int page, int rowsize, String mem_id) {
+
+		List<ReservationDTO> list = new ArrayList<ReservationDTO>();
+
+		ReservationDTO dto = null;
+
+		int startNo = (page * rowsize) - (rowsize - 1);
+
+		int endNo = (page * rowsize);
+
+		try {
+			openConn();
+			
+			sql = "select * from (select row_number() over (order by d_day) rnum ,b.* from reservation b where member_id = ?) a where rnum between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mem_id);
+			
+			pstmt.setInt(2, startNo);
+			
+			pstmt.setInt(3, endNo);
+			
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				
+				dto = new ReservationDTO();
+				
+				dto.setBooking_idx(rs.getInt("booking_idx"));
+				dto.setD_day(rs.getString("d_day"));
+				dto.setDate(rs.getString("date"));
+				dto.setMain_idx(rs.getInt("main_idx"));
+				dto.setMember_cnt(rs.getInt("member_cnt"));
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setRequest_text(rs.getString("request_text"));
+				dto.setStore_name(rs.getString("store_name"));
+				
+				list.add(dto);
+			}
+			System.out.println(list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+
+		return list;
+	}
+
 }

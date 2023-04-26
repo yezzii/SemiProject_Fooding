@@ -11,7 +11,6 @@ import com.boardMain.model.Board_MainDAO;
 import com.boardMain.model.Board_MainDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
-import com.member.model.MemberDAO;
 
 public class Board_mainSearchAction implements Action {
 

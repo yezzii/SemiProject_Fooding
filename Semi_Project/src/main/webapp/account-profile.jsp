@@ -29,8 +29,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
 
-
-
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
 <link rel="stylesheet" media="screen" href="css/vendor.min.css">
 <!-- Main Theme Styles + Bootstrap-->
@@ -38,16 +36,10 @@
 	href="css/theme.min.css">
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 <link rel="stylesheet" media="screen" href="css/Member_Profile.css" />
-<style type="text/css">
-
-
-
-</style>
 <!-- Customizer styles and scripts-->
 </head>
 <!-- Body-->
 <body>
-	<!-- Off-canvas search-->
 	<!-- Success toast -->
 	<div class="toast-container toast-top-center">
 		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="login_success">
@@ -87,7 +79,7 @@
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
-		
+
 	}
 	
 	String thumnail =  (String)session.getAttribute("Thumnail");
@@ -212,15 +204,17 @@
 							<div class="form-group">
 								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
 									class="form-control" type="text" name="member_phone"
-									id="signup-phone" placeholder="Phone" aria-label="Phone" /> <span
-									class="feedback" id="signup-phonechk"></span>
+									id="signup-phone" placeholder="Phone" aria-label="Phone" />
+								<span class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<button class="btn btn-primary btn-block" type="button"
 								onclick="checkAll()">가입하기</button>
 							<button class="btn btn-primary btn-block" type="button"
 								onclick="location.href='company-signup.jsp'">사업자 가입</button>
+
 						</form>
+
 					</div>
 				</div>
 
@@ -500,16 +494,19 @@
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
-									
-										<%
-										if (session.getAttribute("id") != null) {
-										%>
-											<li class="dropdown-divider"></li>
-											<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
-											<li class="dropdown-divider"></li>
-									<%}%>
-									
-									
+
+									<%
+									if (session.getAttribute("id") != null) {
+									%>
+									<li class="dropdown-divider"></li>
+									<li><a class="dropdown-item"
+										href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
+									<li class="dropdown-divider"></li>
+									<%
+									}
+									%>
+
+
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
 									<li class="dropdown-divider"></li>
@@ -647,83 +644,23 @@
 
 
 
-	<div class="container pt-lg-3 pb-5 mb-sm-3">
-		<!-- Toast notifications-->
-		<div class="toast-container toast-bottom-center">
-			<div class="toast mb-3" id="cart-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to cart!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to your cart.</div>
-			</div>
+			<!-- Sidebar-->
 
-			<div class="toast mb-3" id="compare-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-info text-white">
-					<i class="mr-2" data-feather="info"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to comparison!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to comparison
-					table.</div>
-			</div>
+			<div class="col-xl-3 col-lg-4">
 
-			<div class="toast mb-3" id="wishlist-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-info text-white">
-					<i class="mr-2" data-feather="info"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to wishlist!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to your wishlist.</div>
-			</div>
-
-			<div class="toast mb-3" id="address-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Updated!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">Your addresses info updated
-					successfuly.</div>
-			</div>
+				<c:set var="dto" value="${List }" />
 
 
-			<div class="toast mb-3" id="profile-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Updated!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div id="toast-body" class="toast-body">Your profile info
-					updated successfuly.</div>
-			</div>
+				<!-- Customer picture-->
+				<!-- 일반 프로필 -->
 
+				<a class="gallery-item mb-grid-gutter mx-auto"
+					style="max-width: 18.75rem;"> <c:if
+						test="${empty dto.getMember_image()}">
+						<img src="main_img/basic_thumnail.png">
+					</c:if> <c:if test="${!empty dto.getMember_image()}">
+						<img src="${dto.getMember_image() }">
+					</c:if>
 
 			<!-- Warning toast -->
 			<div class="toast" role="alert" aria-live="assertive"
@@ -778,46 +715,48 @@
            					(Manager)
             			</c:if>
 
-							<c:if test="${dto.getMember_type() == 1}">
+						<c:if test="${dto.getMember_type() == 1}">
            					(General Member)
             			</c:if>
 
-							<c:if test="${dto.getMember_type() == 2}">
+						<c:if test="${dto.getMember_type() == 2}">
             				(Business Member)
             			</c:if>
 
-							<c:if test="${dto.getMember_type() == 3}">
+						<c:if test="${dto.getMember_type() == 3}">
             				(Kakako Member)
             			</c:if>
 
 
-						</h6>
+					</h6>
 
 
-						<%-- <c:if
+					<%-- <c:if
 						test="${dto.getMember_type() == 1 || dto.getMember_type() == 3}"> --%>
-						<ul class="list-unstyled">
-							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-								data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
-								class="nav-link-inline" href="${dto.getMember_email()}">${dto.getMember_email()}</a></li>
-							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-								data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
-								class="nav-link-inline" href="${dto.getMember_phone()}">${dto.getMember_phone()}</a></li>
+					<ul class="list-unstyled">
+						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+							data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
+							class="nav-link-inline" href="${dto.getMember_email()}">${dto.getMember_email()}</a></li>
+						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+							data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
+							class="nav-link-inline" href="${dto.getMember_phone()}">${dto.getMember_phone()}</a></li>
 
 						</ul>
 						<%-- </c:if> --%>
 					</div>
 				</div>
-				<!-- Main content-->
+				<!-- Profile info-->
+				<h5 class="mb-4 pt-sm-3">회원정보 수정</h5>
 
 
-				<div class="col-lg-8 offset-xl-1">
-					<!-- Customer details-->
-					<div class="d-flex flex-wrap justify-content-between pb-4">
-						<div class="pt-3 mr-3">
+				<div class="row">
 
-							<h3 class="mb-0">${dto.getMember_name() }</h3>
-							<span class="font-size-sm text-warning">${dto.getMember_email() }</span>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-name">Name</label> <input
+								class="form-control" type="text" id="account-name"
+								name="member_name" value="<%=session.getAttribute("name")%>"
+								disabled>
 						</div>
 						<div class="pt-3">
 							<a class="btn btn-outline-primary btn-sm" data-toggle="modal" href="#modalCentered"
@@ -1048,7 +987,9 @@
 				</div>
 
 			</div>
-		</form>
+
+		</div>
+	</form>
 	</div>
 
 	<!-- 가게 등록 Modal markup -->
@@ -1169,7 +1110,8 @@
 						<div class="select-box">
 							<label for="select-box1" class="label select-box2"> <span
 								class="label-desc">가게 타입</span>
-							</label> <select id="select-box1" class="select" name="main_type" value="${main.getMain_type()}">
+							</label> <select id="select-box1" class="select" name="main_type"
+								value="${main.getMain_type()}">
 								<option value="고기요리">고기요리</option>
 								<option value="일식">일식</option>
 								<option value="한식">한식</option>
@@ -1182,9 +1124,10 @@
 
 						<div class="select-box1">
 
-							<label for="select-box2" class="label select-box2"> 
-							<span class="label-desc1">가게 테마</span>
-							</label> <select id="select-box2" class="select1" name="main_thema" value="${main.getMain_thema()}">
+							<label for="select-box2" class="label select-box2"> <span
+								class="label-desc1">가게 테마</span>
+							</label> <select id="select-box2" class="select1" name="main_thema"
+								value="${main.getMain_thema()}">
 								<option value="데이트 코스">데이트 코스</option>
 								<option value="가족모임">가족모임</option>
 								<option value="뷰가 좋은">뷰가 좋은</option>
@@ -1327,25 +1270,39 @@
 
 
 	<!--회원 탈퇴 Modal markup -->
-	
-	
+
+
 	<div class="modal" tabindex="-1" role="dialog" id="modalCentered">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	    <form method="post"  action="<%=request.getContextPath() %>/member_delete_ok.do">
-	      <div class="modal-header">
-	        <h5 class="modal-title">회원 탈퇴</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	      
-	       <input type="hidden" name="member_id" value="${dto.getMember_id()}">
-	      	<br>
-	        <p align="center">회원 탈퇴를 위해 ${dto.getMember_name()}님의 비밀번호를 입력해주세요.
-	       <div class="textForm">
-				<input name="member_pwd" type="text" class="phone" placeholder="비밀번호">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<form method="post"
+					action="<%=request.getContextPath()%>/member_delete_ok.do">
+					<div class="modal-header">
+						<h5 class="modal-title">회원 탈퇴</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+
+						<input type="hidden" name="member_id"
+							value="${dto.getMember_id()}"> <br>
+						<p align="center">회원 탈퇴를 위해 ${dto.getMember_name()}님의 비밀번호를
+							입력해주세요.
+						<div class="textForm">
+							<input name="member_pwd" type="text" class="phone"
+								placeholder="비밀번호">
+						</div>
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary btn-sm"
+							data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary btn-sm">회원
+							탈퇴</button>
+					</div>
+				</form>
 			</div>
 	        </p>
 	      </div>

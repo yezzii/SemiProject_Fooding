@@ -8,8 +8,9 @@ public class ReservationDTO {
 	private String d_day;
 	private int main_idx;
 	private int member_cnt;
-	private int price;
 	private String request_text;
+	private String store_name;
+	
 	
 	public int getBooking_idx() {
 		return booking_idx;
@@ -47,18 +48,17 @@ public class ReservationDTO {
 	public void setMember_cnt(int member_cnt) {
 		this.member_cnt = member_cnt;
 	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
+
 	public String getRequest_text() {
 		return request_text;
 	}
 	public void setRequest_text(String request_text) {
 		this.request_text = request_text;
 	}
-	
-	
+	public String getStore_name() {
+		return store_name;
+	}
+	public void setStore_name(String store_name) {
+		this.store_name = store_name;
+	}
 }

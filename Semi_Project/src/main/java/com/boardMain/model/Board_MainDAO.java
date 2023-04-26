@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.Restaurant.model.RtDTO;
 
 public class Board_MainDAO {
@@ -43,20 +47,15 @@ public class Board_MainDAO {
 
 	// DB를 연동하는 작업을 진행하는 메서드.
 	public void openConn() {
-		String driver = "com.mysql.cj.jdbc.Driver";
-
-		String user = "web";
-
-		String password = "tpalvmfhwprxm1010";
-
-		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
 		try {
-			// 1단계 : 오라클 드라이버를 메모리로 로딩 작업 진행.
-			Class.forName(driver);
+
+			Context init = new InitialContext();
+
+			DataSource dataSource = (DataSource) init.lookup("java:comp/env/jdbc/mysql");
 
 			// 2단계 : 오라클 데이터베이스와 연결 작업 진행.
-			con = DriverManager.getConnection(url, user, password);
+			con = dataSource.getConnection();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -192,8 +191,7 @@ public class Board_MainDAO {
 				dto.setMain_storenum(rs.getString("main_storenum"));
 				dto.setMain_thema(rs.getString("main_thema"));
 				dto.setMain_img(rs.getString("main_img"));
-				
-				
+
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -204,8 +202,6 @@ public class Board_MainDAO {
 		}
 		return list;
 	}// getBoardMainList() end
-	
-	
 
 	// 가게번호로 상세정보 가져오기
 	public Board_MainDTO getBoardMainSelect(int idx) {
@@ -218,6 +214,7 @@ public class Board_MainDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, idx);
 			rs = pstmt.executeQuery();
+
 			if (rs.next()) {
 				dto = new Board_MainDTO();
 				dto.setMain_idx(rs.getInt("main_idx"));
@@ -311,7 +308,7 @@ public class Board_MainDAO {
 				sql += " where main_memid like ?) l";
 			} else if (field.equals("main_storenum")) {
 				sql += " where main_storenum like ?) h";
-			}else if(field.equals("main_thema")) {
+			} else if (field.equals("main_thema")) {
 				sql += " where main_thema like ?) v";
 			}
 
@@ -354,7 +351,7 @@ public class Board_MainDAO {
 				dto.setMain_memid(rs.getString("main_memid"));
 				dto.setMain_storenum(rs.getString("main_storenum"));
 				dto.setMain_thema(rs.getString("main_thema"));
-				
+
 				searchList.add(dto);
 			}
 		} catch (SQLException e) {
@@ -366,168 +363,160 @@ public class Board_MainDAO {
 		return searchList;
 	}
 
-	public List<RtDTO>TotalMainSearch(String keyword, int page, int rowsize){
-		
+	public List<RtDTO> TotalMainSearch(String keyword, int page, int rowsize) {
+
 		List<RtDTO> searchList = new ArrayList<RtDTO>();
-	
+
 		openConn();
-		
+
 		try {
-			sql = "select bm.*,  mm.* "
-					+ "from semi.board_main bm, semi.main_menu mm "
-					+ "where bm.main_name like ? "
-					+ "or	bm.main_type like ? "
-					+ "or	bm.main_addr like ? "
-					+ "or	bm.main_thema like ? "
-					+ "or	mm.menu_name like ? "
-					+ "group by bm.main_name";
-			
-		    pstmt = con.prepareStatement(sql);
-		 
+			sql = "select bm.*,  mm.* " + "from semi.board_main bm, semi.main_menu mm " + "where bm.main_name like ? "
+					+ "or	bm.main_type like ? " + "or	bm.main_addr like ? " + "or	bm.main_thema like ? "
+					+ "or	mm.menu_name like ? " + "group by bm.main_name";
+
+			pstmt = con.prepareStatement(sql);
+
 			pstmt.setString(1, '%' + keyword + '%');
 			pstmt.setString(2, '%' + keyword + '%');
 			pstmt.setString(3, '%' + keyword + '%');
 			pstmt.setString(4, '%' + keyword + '%');
 			pstmt.setString(5, '%' + keyword + '%');
-			
+
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				RtDTO dto = new RtDTO();
 				dto.setMain_idx(rs.getInt("main_idx"));
 				dto.setMain_name(rs.getString("main_name"));
 				dto.setMain_type(rs.getString("main_type"));
 				dto.setMain_info(rs.getString("main_info"));
-				dto.setMain_opentime(rs.getString("main_opentime"));//5
+				dto.setMain_opentime(rs.getString("main_opentime"));// 5
 				dto.setMain_endtime(rs.getString("main_endtime"));
 				dto.setMain_post(rs.getString("main_post"));
 				dto.setMain_addr(rs.getString("main_addr"));
 				dto.setMain_detailaddr(rs.getString("main_detailaddr"));
-				dto.setMain_phone(rs.getString("main_phone"));//10
+				dto.setMain_phone(rs.getString("main_phone"));// 10
 				dto.setMain_location(rs.getString("main_location"));
 				dto.setMain_memid(rs.getString("main_memid"));
 				dto.setMain_storenum(rs.getString("main_storenum"));
 				dto.setMain_thema(rs.getString("main_thema"));
-				dto.setMain_img(rs.getString("main_img"));//15
+				dto.setMain_img(rs.getString("main_img"));// 15
 				dto.setMenu_name(rs.getString("menu_name"));
 				dto.setMenu_price(rs.getInt("menu_price"));
-				
+
 				searchList.add(dto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			closeConn(rs, pstmt, con);
 		}
 		return searchList;
 	}
-	
-	
-	
+
 	public List<RtDTO> RestaurantKeywordSearch(String keyword, String type) {
 
-	    List<RtDTO> searchList = new ArrayList<RtDTO>();
-	    openConn();
+		List<RtDTO> searchList = new ArrayList<RtDTO>();
+		openConn();
 
-	    try {
-	        if (type.equals("Location")) {
-	            sql = "select bm.*, mm.* from semi.board_main bm, semi.main_menu mm where bm.main_addr like ? group by bm.main_name";
-	        } else if (type.equals("FoodType")) {
-	            sql = "select bm.*, mm.* from semi.board_main bm, semi.main_menu mm where bm.main_type like ? group by bm.main_name";
-	        } else if (type.equals("Thema")) {
-	            sql = "select bm.*, mm.* from semi.board_main bm, semi.main_menu mm where bm.main_thema like ? group by bm.main_name";
-	        }
+		try {
+			if (type.equals("Location")) {
+				sql = "select bm.*, mm.* from semi.board_main bm, semi.main_menu mm where bm.main_addr like ? group by bm.main_name";
+			} else if (type.equals("FoodType")) {
+				sql = "select bm.*, mm.* from semi.board_main bm, semi.main_menu mm where bm.main_type like ? group by bm.main_name";
+			} else if (type.equals("Thema")) {
+				sql = "select bm.*, mm.* from semi.board_main bm, semi.main_menu mm where bm.main_thema like ? group by bm.main_name";
+			}
 
-	        pstmt = con.prepareStatement(sql);
-	        pstmt.setString(1, '%' + keyword + '%');
-	        rs = pstmt.executeQuery();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, '%' + keyword + '%');
+			rs = pstmt.executeQuery();
 
-	        while (rs.next()) {
-	            RtDTO dto = new RtDTO();
-	            dto.setMain_idx(rs.getInt("main_idx"));
-	            dto.setMain_name(rs.getString("main_name"));
-	            dto.setMain_type(rs.getString("main_type"));
-	            dto.setMain_info(rs.getString("main_info"));
-	            dto.setMain_opentime(rs.getString("main_opentime"));
-	            dto.setMain_endtime(rs.getString("main_endtime"));
-	            dto.setMain_post(rs.getString("main_post"));
-	            dto.setMain_addr(rs.getString("main_addr"));
-	            dto.setMain_detailaddr(rs.getString("main_detailaddr"));
-	            dto.setMain_phone(rs.getString("main_phone"));
-	            dto.setMain_location(rs.getString("main_location"));
-	            dto.setMain_memid(rs.getString("main_memid"));
-	            dto.setMain_storenum(rs.getString("main_storenum"));
-	            dto.setMain_thema(rs.getString("main_thema"));
-	            dto.setMain_img(rs.getString("main_img"));
-	            dto.setMenu_name(rs.getString("menu_name"));
-	            dto.setMenu_price(rs.getInt("menu_price"));
+			while (rs.next()) {
+				RtDTO dto = new RtDTO();
+				dto.setMain_idx(rs.getInt("main_idx"));
+				dto.setMain_name(rs.getString("main_name"));
+				dto.setMain_type(rs.getString("main_type"));
+				dto.setMain_info(rs.getString("main_info"));
+				dto.setMain_opentime(rs.getString("main_opentime"));
+				dto.setMain_endtime(rs.getString("main_endtime"));
+				dto.setMain_post(rs.getString("main_post"));
+				dto.setMain_addr(rs.getString("main_addr"));
+				dto.setMain_detailaddr(rs.getString("main_detailaddr"));
+				dto.setMain_phone(rs.getString("main_phone"));
+				dto.setMain_location(rs.getString("main_location"));
+				dto.setMain_memid(rs.getString("main_memid"));
+				dto.setMain_storenum(rs.getString("main_storenum"));
+				dto.setMain_thema(rs.getString("main_thema"));
+				dto.setMain_img(rs.getString("main_img"));
+				dto.setMenu_name(rs.getString("menu_name"));
+				dto.setMenu_price(rs.getInt("menu_price"));
 
-	            searchList.add(dto);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        closeConn(rs, pstmt, con);
-	    }
-	    return searchList;
+				searchList.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return searchList;
 	}
 
-	
 	public List<RtDTO> RestaurantCostSearch(int min, int max) {
 
-	    List<RtDTO> searchList = new ArrayList<RtDTO>();
-	    
-	    openConn();
+		List<RtDTO> searchList = new ArrayList<RtDTO>();
 
-	    try {
-	    	//최저금액, 최대금액 지정해서 메뉴가격비교해서 뽑아오는 sql문 만들기
-	    	sql = "select bm.*,  mm.* from semi.board_main bm, semi.main_menu mm "
-	    			+ "where mm.menu_price >= ? and mm.menu_price <= ? "
-	    			+ "and mm.rst_no = bm.main_idx group by main_name";
-	       
-	    	pstmt = con.prepareStatement(sql);
-	    	
-	        pstmt.setInt(1, min);
-	        pstmt.setInt(2, max);
-	        
-	        rs = pstmt.executeQuery();
+		openConn();
 
-	        while (rs.next()) {
-	        	
-	            RtDTO dto = new RtDTO();
-	            
-	            dto.setMain_idx(rs.getInt("main_idx"));
-	            dto.setMain_name(rs.getString("main_name"));
-	            dto.setMain_type(rs.getString("main_type"));
-	            dto.setMain_info(rs.getString("main_info"));
-	            dto.setMain_opentime(rs.getString("main_opentime"));
-	            
-	            dto.setMain_endtime(rs.getString("main_endtime"));
-	            dto.setMain_post(rs.getString("main_post"));
-	            dto.setMain_addr(rs.getString("main_addr"));
-	            dto.setMain_detailaddr(rs.getString("main_detailaddr"));
-	            dto.setMain_phone(rs.getString("main_phone"));
-	            
-	            dto.setMain_location(rs.getString("main_location"));
-	            dto.setMain_memid(rs.getString("main_memid"));
-	            dto.setMain_storenum(rs.getString("main_storenum"));
-	            dto.setMain_thema(rs.getString("main_thema"));
-	            dto.setMain_img(rs.getString("main_img"));
-	            
-	            dto.setMenu_name(rs.getString("menu_name"));
-	            dto.setMenu_price(rs.getInt("menu_price"));
-	            dto.setMenu_img(rs.getString("menu_img"));
+		try {
+			// 최저금액, 최대금액 지정해서 메뉴가격비교해서 뽑아오는 sql문 만들기
+			sql = "select bm.*,  mm.* from semi.board_main bm, semi.main_menu mm "
+					+ "where mm.menu_price >= ? and mm.menu_price <= ? "
+					+ "and mm.rst_no = bm.main_idx group by main_name";
 
-	            searchList.add(dto);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        closeConn(rs, pstmt, con);
-	    }
-	    return searchList;
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, min);
+			pstmt.setInt(2, max);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				RtDTO dto = new RtDTO();
+
+				dto.setMain_idx(rs.getInt("main_idx"));
+				dto.setMain_name(rs.getString("main_name"));
+				dto.setMain_type(rs.getString("main_type"));
+				dto.setMain_info(rs.getString("main_info"));
+				dto.setMain_opentime(rs.getString("main_opentime"));
+
+				dto.setMain_endtime(rs.getString("main_endtime"));
+				dto.setMain_post(rs.getString("main_post"));
+				dto.setMain_addr(rs.getString("main_addr"));
+				dto.setMain_detailaddr(rs.getString("main_detailaddr"));
+				dto.setMain_phone(rs.getString("main_phone"));
+
+				dto.setMain_location(rs.getString("main_location"));
+				dto.setMain_memid(rs.getString("main_memid"));
+				dto.setMain_storenum(rs.getString("main_storenum"));
+				dto.setMain_thema(rs.getString("main_thema"));
+				dto.setMain_img(rs.getString("main_img"));
+
+				dto.setMenu_name(rs.getString("menu_name"));
+				dto.setMenu_price(rs.getInt("menu_price"));
+				dto.setMenu_img(rs.getString("menu_img"));
+
+				searchList.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return searchList;
 	}
-	
+
 	public int deleteBoardmain(int board_idx) {
 		int result = 0;
 
@@ -593,7 +582,7 @@ public class Board_MainDAO {
 				sql += " where main_memid like ?";
 			} else if (field.equals("main_storenum")) {
 				sql += " where main_storenum like ?";
-			}else if(field.equals("main_thema")) {
+			} else if (field.equals("main_thema")) {
 				sql += " where main_thema like ?";
 			}
 
@@ -622,57 +611,50 @@ public class Board_MainDAO {
 		return count;
 	}
 
-
-	
 	// 검색어에 해당하는 게시물의 수를 조회하는 메서드
-		public int searchRestaurantCount( String keyword) {
-			int count = 0;
+	public int searchRestaurantCount(String keyword) {
+		int count = 0;
 
-			try {
-				openConn();
-
-				sql = "select count(*) from board_main order by main_idx";
-
-				pstmt = con.prepareStatement(sql);
-			
-				rs = pstmt.executeQuery();
-
-				if (rs.next()) {
-					count = rs.getInt(1);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				closeConn(rs, pstmt, con);
-			}
-			return count;
-		}
-
-	
-	
-
-	public int getBoardidx(String storenum) {
-		int result =0;
-		
-		
 		try {
 			openConn();
-			sql ="select main_idx from board_main where main_storenum = ?";
+
+			sql = "select count(*) from board_main order by main_idx";
+
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}
+
+	public int getBoardidx(String storenum) {
+		int result = 0;
+
+		try {
+			openConn();
+			sql = "select main_idx from board_main where main_storenum = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, storenum);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				result = rs.getInt(1);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			closeConn(rs, pstmt, con);
 		}
 		return result;
 	}
-
 
 }
