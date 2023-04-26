@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%
 response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
@@ -764,55 +766,227 @@ if (request.getProtocol().equals("HTTP/1.1"))
               <div class="list-group"><a class="list-group-item list-group-item-action active" href="account-orders.jsp"><i class="mr-2" data-feather="shopping-bag" style="width: 1rem; height: 1rem;"></i>My orders<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">1</span></span></a><a class="list-group-item list-group-item-action" href="account-wishlist.jsp"><i class="mr-2" data-feather="heart" style="width: 1rem; height: 1rem;"></i>Wishlist<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span class="text-primary">3</span></span></a><a class="list-group-item list-group-item-action" href="account-profile.jsp"><i class="mr-2" data-feather="user" style="width: 1rem; height: 1rem;"></i>Profile info</a><a class="list-group-item list-group-item-action" href="account-address.jsp"><i class="mr-2" data-feather="map-pin" style="width: 1rem; height: 1rem;"></i>Addresses</a><a class="list-group-item list-group-item-action" href="account-payment.jsp"><i class="mr-2" data-feather="credit-card" style="width: 1rem; height: 1rem;"></i>Payment methods</a></div>
             </div>
           </div>
+          
+          
           <!-- Orders table-->
-          <div class="d-flex justify-content-end pb-3">
-            <div class="form-inline">
-              <label class="mr-3" for="order-sort">Sort Orders</label>
-              <select class="form-control custom-select" id="order-sort">
-                <option>All</option>
-                <option>Delivered</option>
-                <option>In Progress</option>
-                <option>Delayed</option>
-                <option>Canceled</option>
-              </select>
-            </div>
-          </div>
+                <c:set var="List" value="${ReservationList }" />
           <div class="table-responsive font-size-sm">
             <table class="table table-hover mb-0">
               <thead>
-                <tr>
+                <tr align="center">
                   <th>예약번호</th>
+                  <th>가게이름</th>
                   <th>요청사항</th>
                   <th>인원</th>
                   <th>예약날짜</th>
                 </tr>
               </thead>
               <tbody>
-                
-                <tr>
-                  <td><a class="nav-link-inline" href="#order-details" data-toggle="modal">47H76G09F33</a></td>
-                  <td>March 30, 2018</td>
-                  <td><span class="badge badge-success m-0">Delivered</span></td>
-                  <td>$86.40</td>
+               	
+                <c:forEach items="${List }" var="booking">
+                <tr align="center">
+                  <td>${booking.getBooking_idx() }</td>
+                  <td><a class="nav-link-inline" href="#order-details" data-toggle="modal">${booking.getStore_name() }</a></td>
+                  <td>${booking.getRequest_text() }</td>
+                  <td>${booking.getMember_cnt() } 명</td>
+                  <td>${booking.getD_day().substring(0,11) }&nbsp;${booking.getD_day().substring(11,13) }시 ${booking.getD_day().substring(14,16) }분</td>
                 </tr>
+                </c:forEach>
               </tbody>
             </table>
           </div>
           <hr class="pb-4">
+         
           <!-- Pagination-->
           <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center justify-content-sm-start mb-0">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item d-sm-none"><span class="page-link page-link-static">2 / 5</span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
-              <li class="page-item d-none d-sm-block">...</li>
-              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">10</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
+		<ul
+			class="pagination justify-content-center justify-content-sm-center mb-0">
+			<li class="page-item"><a class="page-link"
+				href="reservation_list.do?page=1">처음</a></li>
+			<li class="page-item"><a class="page-link"
+				href="reservation_list.do?page=${page - 1 }">이전</a></li>
+
+			<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+				<c:if test="${i == page }">
+					<li class="page-item active" aria-current="page"><a
+						class="page-link" href="reservation_list.do?page=${i }">${i }</a></li>
+				</c:if>
+
+				<c:if test="${i != page }">
+					<li class="page-item"><a class="page-link"
+						href="reservation_list.do?page=${i }">${i }</a></li>
+				</c:if>
+			</c:forEach>
+
+			<c:if test="${endBlock < allPage }">
+				<li class="page-item"><a class="page-link"
+					href="reservation_list.do?page=${page + 1 }">다음</a></li>
+
+				<li class="page-item"><a class="page-link"
+					href="reservation_list.do?page=${allPage }">마지막</a></li>
+			</c:if>
+
+		</ul>
+	</nav>
+	div class="modal modal-quick-view fade"
+				id="quick-view${detail.getMain_idx()}" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<input type="hidden" id="detail_idx"
+						value="${detail.getMain_idx()}"> 
+					<div class="modal-content">
+					<input type="hidden"
+						id="store_name" value="${detail.getMain_name()}">
+						<div class="modal-header">
+							<div>
+								<h2 class="h2 modal-title mb-1"
+									style="font-family: 'GmarketSansMedium';">${detail.getMain_name()}</h2>
+								<h5 class="text-primary font-weight-light mb-0"
+									style="font-family: 'GmarketSansMedium';">${detail.getMain_info() }</h5>
+							</div>
+							<button class="close" type="button" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<!-- Product gallery-->
+								<div class="col-lg-7">
+									<div class="owl-carousel"
+										data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
+										<img src="${detail.getMain_img()}"
+											alt="${detail.getMain_img()}"> <img
+											src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
+										<img src="${detail.getMain_img()}"
+											alt="${detail.getMain_img()}"> <img
+											src="${detail.getMain_img()}" alt="${detail.getMain_img()}">
+									</div>
+								</div>
+								<!-- Product details-->
+								<div class="col-lg-5 pt-4 pt-lg-0">
+									<form class="pb-4" method="post">
+										<label for="resvation_date">예약날짜</label>
+
+										<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
+
+										<c:set var="opentime" value="${detail.getMain_opentime()}" />
+										<c:set var="endtime" value="${detail.getMain_endtime()}" />
+										<div class="form-group">
+											<div class="form-inline pb-3" style="float: left;">
+												<input class="form-control" type="date"
+													id="resvation_date${detail.getMain_idx()}"
+													name="resvation_date" min="<%=java.time.LocalDate.now()%>"
+													value="<%=java.time.LocalDate.now()%>">
+											</div>
+											<div class="form-inline pb-3" style="float: left;">
+												<select class="form-control custom-select"
+													id="resvation_time${detail.getMain_idx()}"
+													name="resvation_time" required>
+													<option>예약 시간</option>
+													<c:forEach var="res_time"
+														begin="${fn:substring(opentime,0,2)}"
+														end="${fn:substring(endtime,0,2)}">
+														<option value="${res_time}:${fn:substring(opentime,3,5)}">${res_time}
+															: ${fn:substring(opentime,3,5)}</option>
+													</c:forEach>
+
+												</select>
+											</div>
+
+											<div class="" style="float: right;">
+												<input class="pl-2 form-control pb-3" type="number"
+													id="people-num${detail.getMain_idx()}" name="people-num"
+													style="width: 3.5rem; height: 2.625rem;" value="1" required>
+											</div>
+											<div style="float: right;">
+												<label class="pt-2" for="people-num">인원&nbsp;&nbsp;</label>
+											</div>
+											<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
+
+
+
+										</div>
+										<div class="form-group" style="float: left;">
+											<div class="form-inline pb-2" style="float: right;"></div>
+										</div>
+										<textarea class="form-control"
+											id="request-text${detail.getMain_idx()}" rows="3"
+											name="request-text" style="resize: none;"
+											placeholder="요청사항 혹은 알러지 음식을 작성해주세요"></textarea>
+										<div class="d-flex flex-wrap align-items-center pt-1">
+
+											<div>
+												<button class="reservation-btn btn btn-primary px-5 mr-2"
+													type="button">
+													<i class="mr-2" data-feather="shopping-cart"
+														style="font-family: 'GmarketSansMedium';"></i>예약하기
+												</button>
+
+											</div>
+											<a class="btn box-shadow-0 nav-link-inline my-2" href="#"><i
+												class="align-middle mr-1" data-feather="heart"
+												style="width: 1.1rem; height: 1.1rem;"></i>찜하기</a>
+
+										</div>
+									</form>
+									<div class="card">
+										<div class="card-header py-3 bg-0">
+											<h3 class="h6 mb-0">
+												<span
+													class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i
+													data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>레스토랑
+												상세 정보
+											</h3>
+										</div>
+										<div class="card-body">
+											<ul class="mb-0" style="font-family: 'GmarketSansMedium';">
+												<li>주소 : ${detail.getMain_addr() }
+													${detail.getMain_detailaddr() }<br> 우편번호 :
+													${detail.getMain_post() }
+												</li>
+												<br>
+												<li>전화 : ${detail.getMain_phone() }</li>
+												<br>
+												<li>=======정보=======<br>${detail.getMain_info()}</li>
+												<br>
+												<li>음식 종류 : ${detail.getMain_type() }</li>
+												<br>
+												<li>오픈시간 : ${detail.getMain_opentime()} ~ 마감시간 :
+													${detail.getMain_endtime() }</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+
+								<div class="input-group">
+
+									<div class="starRev" id="starRev">
+										<span class="starR on">⭐</span> <span class="starR">⭐</span> <span
+											class="starR">⭐</span> <span class="starR">⭐</span> <span
+											class="starR">⭐</span>
+									</div>
+									<div class="input-group starInsert-idx">
+										<input type="hidden" id="detail_idx"
+											value="${detail.getMain_idx()}">
+										<textarea name="review" class="form-control" type="text"
+											id="reviewContents${detail.getMain_idx()}"
+											placeholder="리뷰 작성"></textarea>
+
+										<br>
+										<button class="btn btn-primary starInsert" type="button"
+											id="starInsert">등록</button>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	
           <!-- Technical support + Tickets (visible Mobile)-->
           <div class="d-lg-none bg-secondary px-3 py-4 mt-5">
             <h6 class="font-size-sm mb-3 pb-2 border-bottom">Technical support</h6>

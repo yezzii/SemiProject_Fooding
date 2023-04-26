@@ -13,13 +13,14 @@ $(function () {
     let time = $("#resvation_time"+main_idx+" option:selected").val();
     let people_num = $("#people-num"+main_idx).val();
     let req_text = $("#request-text"+main_idx).val();
-    let store_name = $("#store_name").val();
+    let store_name = $(this).parents('.modal-content').find("#store_name").val();
     
 	let res_modal = $("#reservation_result");
 	let fail_modal = $("#reservation_fail");
 
 
     console.log(main_idx);
+    console.log(store_name);
 
     $.ajax({
       type: "POST",

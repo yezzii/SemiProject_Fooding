@@ -1,26 +1,34 @@
-package com.boardMain.action;
+package com.reservation.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.boardMain.model.Board_MainDAO;
-import com.boardMain.model.Board_MainDTO;
 import com.member.action.Action;
 import com.member.action.ActionForward;
+import com.reservation.model.ReservationDAO;
+import com.reservation.model.ReservationDTO;
 
-public class RestaurantListAction implements Action {
+public class ListReservationAction implements Action {
 
-	@Override 
+	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+			throws IOException, ServletException, Exception {
+
+		HttpSession session = request.getSession();
+		
+		String mem_id = (String)session.getAttribute("id");
+		
+		ReservationDAO dao = ReservationDAO.getInstance();
 		
 		int rowsize = 9;
 		int block = 5;
-		int totalBoard_main = 0;
+		int totalReservation = 0;
 		int allpage = 0;
 		int page = 0;
 		
@@ -44,34 +52,33 @@ public class RestaurantListAction implements Action {
 		// 해당 페이지에서 마지막 블럭
 		int endBlock = (((page - 1) / block) * block) + block;
 		
-		Board_MainDAO dao = Board_MainDAO.getInstance();
+		totalReservation = dao.getReservationCount(mem_id);
 		
-		totalBoard_main = dao.getBoardCount();
-		
-		allpage = (int) Math.ceil(totalBoard_main / (double) rowsize);
+		allpage = (int) Math.ceil(totalReservation / (double) rowsize);
 
 		if (endBlock > allpage) {
 			endBlock = allpage;
 		}
+		System.out.println("start : " + startNo);
+		System.out.println("end : " + endNo);
 		
-		List<Board_MainDTO> MainList = dao.getBoardMainList(page, rowsize);
+		List<ReservationDTO> ReservationList = new ArrayList<ReservationDTO>();
+		
+		ReservationList = dao.reservation_list(page, rowsize, mem_id);
 		
 		request.setAttribute("page", page);
-		request.setAttribute("rowsize", rowsize);
-		request.setAttribute("block", block);
-		request.setAttribute("totalBoardmain",totalBoard_main);
 		request.setAttribute("allPage", allpage);
-		request.setAttribute("startNo", startNo);
-		request.setAttribute("endNo", endNo);
 		request.setAttribute("startBlock", startBlock);
 		request.setAttribute("endBlock", endBlock);
 		
-		request.setAttribute("List", MainList);
-	
+		request.setAttribute("ReservationList", ReservationList);
+		
+		
+		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("RestaurantList.jsp");
+		forward.setPath("account-orders.jsp");
 		
 		return forward;
 	}

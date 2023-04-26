@@ -1059,8 +1059,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				id="quick-view${detail.getMain_idx()}" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<input type="hidden" id="detail_idx"
-						value="${detail.getMain_idx()}">
+						value="${detail.getMain_idx()}"> 
 					<div class="modal-content">
+					<input type="hidden"
+						id="store_name" value="${detail.getMain_name()}">
 						<div class="modal-header">
 							<div>
 								<h2 class="h2 modal-title mb-1"
@@ -1090,9 +1092,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<!-- Product details-->
 								<div class="col-lg-5 pt-4 pt-lg-0">
 									<form class="pb-4" method="post">
-										<input type="hidden" name="store_name" id="store_name"
-											value="${detail.getMain_name()}"> <label
-											for="resvation_date">예약날짜</label>
+										<label for="resvation_date">예약날짜</label>
 
 										<%-- 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정 예약 시간 옵션 설정  --%>
 
@@ -1251,8 +1251,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<!-- 예약 실패 화면 -->
 	<div class="modal" tabindex="-1" role="dialog" id="reservation_fail">
 		<div class="modal-dialog modal-sm" role="document">
@@ -1268,10 +1268,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<p align="center">
 						<b>예약이 실패했습니다. </b>
 					</p>
-					
-					
+
+
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
