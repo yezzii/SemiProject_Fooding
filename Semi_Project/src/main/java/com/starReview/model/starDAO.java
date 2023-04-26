@@ -8,9 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 public class starDAO {
@@ -67,7 +66,6 @@ public class starDAO {
 			e.printStackTrace();
 		}
 	} // openConn() 메서드 end
-
 
 	// DB에 연결되어 있던 자원 종료하는 메서드.
 	public void closeConn(ResultSet rs, PreparedStatement pstmt, Connection con) {
@@ -134,45 +132,41 @@ public class starDAO {
 
 	
 	
-	public List<starDTO> starList(){
-		
-		List<starDTO> list = new ArrayList<starDTO>();
-		
-		try {
-			openConn();
-			
-			sql = "select max(star_review_idx) from star_review";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			
-			sql = "select * from star_review order by star_review_idx";
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				starDTO dto = new starDTO();
-				
-				dto.setStar_review_idx(rs.getInt("star_review_idx"));
-				dto.setStore_num(rs.getInt("store_num"));
-				dto.setMember_id(rs.getString("member_id"));
-				dto.setReview(rs.getString("review"));
-				dto.setStar_count(rs.getString("star_count"));
-				
-				list.add(dto);
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-		
-		
+	public JSONArray starList(int idx) {
+	    JSONArray result = new JSONArray();
+	    try {
+	        openConn();
+
+	        sql = "select * from star_review where store_num = ? order by store_num";
+	        
+	        pstmt = con.prepareStatement(sql);
+	        
+	        pstmt.setInt(1, idx);
+	        System.out.println(idx);
+
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            JSONObject obj = new JSONObject();
+	            obj.put("member_id", rs.getString("member_id"));
+	            obj.put("review", rs.getString("review"));
+	            obj.put("star_count", rs.getString("star_count"));
+	            System.out.println(rs.getString("star_count"));
+	            obj.put("store_num", rs.getString("store_num"));
+	            result.put(obj);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        closeConn(rs, pstmt, con);
+	    }
+	    return result;
 	}
+	
+	
+	
+	
 	
 	
 }
