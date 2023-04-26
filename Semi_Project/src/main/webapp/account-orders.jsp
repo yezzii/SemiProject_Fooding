@@ -44,7 +44,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
+<!-- Customizer styles and scripts-->
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+<script src="js/Board_Main.js"></script>	
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="js/sign_upChk.js"></script>
 	
 
 </head>
@@ -822,8 +828,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 		</ul>
 	</nav>
-	div class="modal modal-quick-view fade"
-				id="quick-view${detail.getMain_idx()}" tabindex="-1" role="dialog">
+	<div class="modal modal-quick-view fade" id="quick-view${detail.getMain_idx()}" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<input type="hidden" id="detail_idx"
 						value="${detail.getMain_idx()}"> 
@@ -1158,16 +1163,5 @@ if (request.getProtocol().equals("HTTP/1.1"))
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="js/vendor.min.js"></script>
     <script src="js/theme.min.js"></script>
-    
-    <!-- Customizer styles and scripts-->
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-<script src="js/Board_Main.js"></script>	
-<script src="js/reservation.js"></script>	
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="js/sign_upChk.js"></script>
-
-
   </body>
 </html>
