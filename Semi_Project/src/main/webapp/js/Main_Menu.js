@@ -88,7 +88,7 @@ $(function(){
 		  
 		  var num = $(this).attr("num");
 		$.ajax({
-			url :"menu_delecte.do",
+			url :"menu_delete.do",
 			data: { num: num, rst_no: $(this).closest("tr").find("input[type='hidden']").val() },
 			datatype : "text",
 			success : function(data){

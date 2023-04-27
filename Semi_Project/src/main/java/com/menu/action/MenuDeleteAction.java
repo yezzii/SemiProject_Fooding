@@ -11,7 +11,7 @@ import com.member.action.Action;
 import com.member.action.ActionForward;
 import com.menu.model.MenuDAO;
 
-public class MenuDelecteAction implements Action {
+public class MenuDeleteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)

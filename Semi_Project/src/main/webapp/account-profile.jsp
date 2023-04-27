@@ -26,27 +26,10 @@
 <link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
 <meta name="msapplication-TileColor" content="#111">
 <meta name="theme-color" content="#ffffff">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
 
-<style type="text/css">
-.pwCheck {
-	color: red; /* 예시: 빨간색 텍스트로 표시 */
-	font-size: 12px; /* 예시: 폰트 사이즈 12px로 설정 */
-}
 
-#image_container {
-	width: 550px;
-	margin-left: 0px;
-}
-
-.modal-title {
-	text-align: center;
-}
-
-#modalCentered {
-	margin-top: 350px;
-}
-</style>
 
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
 <link rel="stylesheet" media="screen" href="css/vendor.min.css">
@@ -54,51 +37,65 @@
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css">
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
+<link rel="stylesheet" media="screen" href="css/Member_Profile.css" />
+<style type="text/css">
+
+
+
+</style>
 <!-- Customizer styles and scripts-->
 </head>
 <!-- Body-->
 <body>
 	<!-- Off-canvas search-->
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-		<div
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">푸딩 - 검색</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<form>
-			<div class="offcanvas-body">
-				<div class="offcanvas-body-inner">
-					<div class="input-group pt-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="search-icon"><i
-								data-feather="search"></i></span>
-						</div>
-						<input class="form-control" type="text" id="site-search"
-							name="main_search" placeholder="지역,음식,레스토랑 명 검색"
-							aria-label="Search site" aria-describedby="search-icon"
-							onsubmit="<%=request.getContextPath()%>/main_search.do?keyword=" />
-					</div>
-					<small class="form-text pt-1">원하는 지역, 음식, 레스토랑을 자유럽게
-						검색해보세요!<br> Powered by Fooding.co _Dong
-					</small>
-				</div>
+	<!-- Success toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="login_success">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 성공</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 			</div>
-		</form>
+			<div class="toast-body text-success" id="toast_success_div"></div>
+		</div>
 	</div>
 
-
+	<!-- Warning toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 실패</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning">아이디 혹은 비밀번호를 확인해주세요.</div>
+		</div>
+	</div>
+	<!--   ==============================  네비바  ================================= -->
 
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
-
+		
 	}
+	
+	String thumnail =  (String)session.getAttribute("Thumnail");
+	String profile =  (String)session.getAttribute("member_profile");
+	String name = (String)session.getAttribute("name");
+	
 	%>
+	
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -125,7 +122,7 @@
 						<form class="needs-validation" novalidate method="post"
 							action="<%=request.getContextPath()%>/login.do">
 							<div class="form-group">
-								<label class="sr-only" for="signin-id">ID</label>
+								<label class="sr-only" for="signin-id">아이디</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="signin-id-icon"><i
@@ -138,7 +135,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signin-password">Password</label>
+								<label class="sr-only" for="signin-password">비밀번호</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="signin-password-icon"><i
@@ -156,10 +153,18 @@
 									id="remember-me" checked /> <label
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								로그인</button>
+							<button class="btn btn-primary btn-block" type="button" id="ImLogin"
+								>로그인</button>
+
+							<div class="pt-3" align="center">
+								<a href="account-id-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
+									href="account-password-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">비밀번호 찾기</a>
+							</div>
 						</form>
 					</div>
+
 
 					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
@@ -207,35 +212,35 @@
 							<div class="form-group">
 								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
 									class="form-control" type="text" name="member_phone"
-									id="signup-phone" placeholder="Phone" aria-label="Phone" />
-								<span class="feedback" id="signup-phonechk"></span>
+									id="signup-phone" placeholder="Phone" aria-label="Phone" /> <span
+									class="feedback" id="signup-phonechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<button class="btn btn-primary btn-block" type="button"
 								onclick="checkAll()">가입하기</button>
 							<button class="btn btn-primary btn-block" type="button"
 								onclick="location.href='company-signup.jsp'">사업자 가입</button>
-
 						</form>
-
-
-
-
 					</div>
 				</div>
-				<div class="d-flex align-items-center pt-5">
+
+
+				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
 						로그인</div>
 					<hr class="w-100" />
 				</div>
 				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+					<input type="image" style="width: 320px;" id="kakaoAjax"
+						src="main_img/kakao_login.jpg" 
+						value="카카오 로그인 kakaoLogin();"> <br>
+					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
+						class="flaticon-facebook"></i></a> <a
 						class="social-btn sb-google-plus mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
+						class="flaticon-google-plus"></i></a> <a
 						class="social-btn sb-twitter mx-2 mb-3" href="#"
 						data-toggle="tooltip" title="Twitter"><i
 						class="flaticon-twitter"></i></a>
@@ -249,7 +254,7 @@
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Your cart</h3>
+			<h3 class="offcanvas-title" style="font-family:'GmarketSansMedium'; font-size: 23px; ">찜한 레스토랑</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -257,85 +262,31 @@
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
-				<div class="text-right">
-					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
-						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i>Clear
-						cart</a>
-				</div>
-				<div class="widget widget-featured-entries pt-3">
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
+				
+				<div class="widget widget-featured-entries pt-3" id="marked-list">
+				
+				<%--찜 목록 리스트 (가게정보 출력란) --%>
+				
+						<div class="media" >
+							<div class="featured-entry-thumb mr-3">
+								<a href="#"><img src="" width="64"
+									alt="" /></a>
+							</div>
+							<div class="media-body">
+								<h6 class="featured-entry-title">
+									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
+								</h6>
+								<p cxlass="fe$125.00atured-entry-meta">
+									<span class="text-muted"></span> 
+								</p>
+							</div>
 						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Calvin Klein Jeans Keds</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $125.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">The North Face Hoodie</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $134.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Medicine Chameleon Sunglasses</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $47.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Adidas Performance Hat</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $19.00
-							</p>
-						</div>
-					</div>
-					<hr />
-					<div class="d-flex justify-content-between align-items-center py-3">
-						<div class="font-size-sm">
-							<span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">$325.00</span>
-						</div>
-						<a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand
-							cart<i class="mr-n2" data-feather="chevron-right"></i>
-						</a>
-					</div>
-					<a class="btn btn-primary btn-sm btn-block"
-						href="checkout-details.jsp"><i class="mr-1"
-						data-feather="credit-card"></i>Checkout</a>
+				<hr />
+			
+					<%--찜 목록 리스트 END  --%>
+					
+					
+					
 				</div>
 			</div>
 		</div>
@@ -363,19 +314,22 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=서울"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=경기"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">경기</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=인천"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=대구"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=부산"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=제주"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
 										</ul>
@@ -389,21 +343,21 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=데이트"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">데이트
 														코스</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=가족"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=뷰"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">뷰가
 														좋은</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=전통"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=비지니스"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
 
@@ -418,25 +372,25 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=고기"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">고기요리</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=한식"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">한식</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=양식"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">양식</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=중식"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=일식"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=아시안"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">아시안</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=카페"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">카페,디저트</span></a></li>
 										</ul>
@@ -546,19 +500,16 @@
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-orders.jsp">Orders
 											History</a></li>
-
-									<%
-									if (session.getAttribute("id") != null) {
-									%>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item"
-										href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
-									<li class="dropdown-divider"></li>
-									<%
-									}
-									%>
-
-
+									
+										<%
+										if (session.getAttribute("id") != null) {
+										%>
+											<li class="dropdown-divider"></li>
+											<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member_profile.do">마이페이지</a></li>
+											<li class="dropdown-divider"></li>
+									<%}%>
+									
+									
 									<li><a class="dropdown-item" href="account-address.jsp">Account
 											Addresses</a></li>
 									<li class="dropdown-divider"></li>
@@ -610,57 +561,9 @@
 									Found</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="mr-1" data-feather="file-text"></i>레스토랑</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item"
-								href="<%=request.getContextPath()%>/board_main_list.do">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="file-text"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" data-toggle="modal"
-								href="#modalLong">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 추가 </span>
-										</div>
-									</div>
-							</a></li>
-
-
-
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="RoadRestaurantList.do">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">레스토랑 목록<br>(동현작업중)
-											</span>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item"
-								href="mailto:contact@createx.studio">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="life-buoy"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">Support</span><small
-												class="text-muted">contact@createx.studio</small>
-										</div>
-									</div>
-							</a></li>
-						</ul></li>
+						class="nav-link dropdown-toggle" href="LoadRestaurantList.do" ><i
+							class="mr-1" ></i>레스토랑</a>
+						</li>
 				</ul>
 			</div>
 			<!-- navbar buttons-->
@@ -671,13 +574,13 @@
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
 					<form method="get"
-						action="<%=request.getContextPath()%>/main_search.do">
-						<div class="flex-grow-1 pb-3 pt-sm-3 my-1 pr-lg-4 order-sm-2">
+						action="<%=request.getContextPath()%>/total_main_search.do">
+						<div class="flex-grow-1 pb-3 pt-sm-4 my-1 pr-lg-4 order-sm-2">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
 									<%-- 검색input테그 --%>
 
-									<input class="form-control rounded" type="text"
+									<input class="form-control-dong rounded" type="text"
 										id="site-search" placeholder="통합 검색" name="keyword"
 										aria-label="Search site" aria-describedby="search-icon">
 									<%-- 검색input테그 END --%>
@@ -690,9 +593,11 @@
 
 							</div>
 						</div>
-
-
 					</form>
+
+					
+					
+					
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -706,335 +611,444 @@
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
+					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
+						data-toggle="offcanvas"><span
+						class="d-block position-relative"><span
+							class="navbar-btn-badge bg-primary-Mark text-light" id="ToTalMarkCount"></span><i
+							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
+					
 					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp"><i class="mx-auto mb-1"
-						data-feather="log-out"></i>로그아웃</a>
+						href="member/logout.jsp">
+						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
 
+					<%-- 프로필 정보란 --%>
+				<div class="navbar-btn navbar-collapse-hidden">
+					<div class="kakao_img mx-auto mb-1">
+						<a href="<%=request.getContextPath()%>/member_profile.do"> <img
+							class="profile_img" src="<%=thumnail%>">
+						</a>
+					</div>
+						<span class="mx-auto mb-1" style="font-family:'GmarketSansMedium'; font-size: 12px; "><%=name%> 님 </span>
+					<img src="${profile }">
+				</div>
+
+				<%-- 프로필 정보란 --%>
 					<%
 					}
 					%>
-					<a class="navbar-btn" href="#offcanvas-cart"
-						data-toggle="offcanvas"><span
-						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>관심 레스토랑</span></a>
 				</div>
 			</div>
 		</div>
 	</header>
+	<!--   ==============================  네비바  ================================= -->
 	<!-- Page Content-->
 
-	
-	<form method="post" enctype="multipart/form-data"
-		action="<%=request.getContextPath()%>/MemberProfileUpdate.do">
-		<div class="row pt-5">
-
-			<!-- Sidebar-->
-
-			<div class="col-xl-3 col-lg-4">
-
-				<c:set var="dto" value="${List }" />
 
 
-				<!-- Customer picture-->
-				<!-- 일반 프로필 -->
-
-				<a class="gallery-item mb-grid-gutter mx-auto"
-					style="max-width: 18.75rem;"> <c:if
-						test="${empty dto.getMember_image()}">
-						<img src="main_img/basic_thumnail.png">
-					</c:if> <c:if test="${!empty dto.getMember_image()}">
-						<img src="${dto.getMember_image() }">
-					</c:if>
-
-					<div id="image_container"></div>
-					<div class="gallery-caption">
-						<div class="gallery-indicator">
-							<i class="gallery-indicator-icon" data-feather="refresh-ccw"></i>
-						</div>
-						<span id="Change_Profile">Change profile picture</span>
-					</div>
-				</a> <input type="file" name="fileProfile" style="display: none;"
-					onchange="setThumbnail(event);">
 
 
-				<!-- Technical support + Tickets (visible Desktop)-->
-				<div class="d-none d-lg-block" align="center">
-					<h6 class="font-size-sm mb-3 pb-2 border-bottom">
-						<span>${dto.getMember_id() } 님의 프로필</span>
-						<c:if test="${dto.getMember_type() == 0}">
+	<div class="container pt-lg-3 pb-5 mb-sm-3">
+		<!-- Toast notifications-->
+		<div class="toast-container toast-bottom-center">
+			<div class="toast mb-3" id="cart-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-success text-white">
+					<i class="mr-2" data-feather="check-circle"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Added to cart!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">This item was added to your cart.</div>
+			</div>
+
+			<div class="toast mb-3" id="compare-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-info text-white">
+					<i class="mr-2" data-feather="info"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Added to comparison!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">This item was added to comparison
+					table.</div>
+			</div>
+
+			<div class="toast mb-3" id="wishlist-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-info text-white">
+					<i class="mr-2" data-feather="info"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Added to wishlist!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">This item was added to your wishlist.</div>
+			</div>
+
+			<div class="toast mb-3" id="address-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-success text-white">
+					<i class="mr-2" data-feather="check-circle"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Updated!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">Your addresses info updated
+					successfuly.</div>
+			</div>
+
+
+			<div class="toast mb-3" id="profile-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-success text-white">
+					<i class="mr-2" data-feather="check-circle"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Updated!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="toast-body" class="toast-body">Your profile info
+					updated successfuly.</div>
+			</div>
+
+
+			<!-- Warning toast -->
+			<div class="toast" role="alert" aria-live="assertive"
+				aria-atomic="true" id="my-toast">
+				<div class="toast-header bg-warning text-white">
+					<i class="mr-2" data-feather="alert-circle"
+						style="width: 1.25rem; height: 1.25rem;"></i> <span
+						class="font-weight-semibold mr-auto">Warning toast</span>
+					<button type="button" class="close text-white ml-2 mb-1"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="toast-body2" class="toast-body text-warning">Hello,
+					world! This is a toast message.</div>
+			</div>
+
+
+		</div>
+		<form method="post" enctype="multipart/form-data"
+			action="<%=request.getContextPath()%>/MemberProfileUpdate.do">
+			<div class="row pt-5">
+
+				<!-- Sidebar-->
+
+				<div class="col-xl-3 col-lg-4">
+
+					<c:set var="dto" value="${List }" />
+
+
+					<!-- Customer picture-->
+					<!-- 일반 프로필 -->
+
+					<a class="gallery-item mb-grid-gutter mx-auto" style="max-width: 18.75rem;">
+					  <img src="${empty dto.getMember_image() ? Thumnail : dto.getMember_image()}" id="current-image">
+					  <div id="image_container"></div>
+					  <div class="gallery-caption">
+					    <div class="gallery-indicator">
+					      <i class="gallery-indicator-icon" data-feather="refresh-ccw"></i>
+					    </div>
+					    <span id="Change_Profile">Change profile picture</span>
+					  </div>
+					</a>
+					<input type="file" name="fileProfile" style="display: none;" onchange="setThumbnail(event);">
+
+
+					<!-- Technical support + Tickets (visible Desktop)-->
+					<div class="d-none d-lg-block" align="center">
+						<h6 class="font-size-sm mb-3 pb-2 border-bottom">
+							<span>${dto.getMember_name() } 님의 프로필</span>
+							<c:if test="${dto.getMember_type() == 0}">
            					(Manager)
             			</c:if>
 
-						<c:if test="${dto.getMember_type() == 1}">
+							<c:if test="${dto.getMember_type() == 1}">
            					(General Member)
             			</c:if>
 
-						<c:if test="${dto.getMember_type() == 2}">
+							<c:if test="${dto.getMember_type() == 2}">
             				(Business Member)
             			</c:if>
 
-						<c:if test="${dto.getMember_type() == 3}">
+							<c:if test="${dto.getMember_type() == 3}">
             				(Kakako Member)
             			</c:if>
 
 
-					</h6>
+						</h6>
 
 
-					<%-- <c:if
+						<%-- <c:if
 						test="${dto.getMember_type() == 1 || dto.getMember_type() == 3}"> --%>
-					<ul class="list-unstyled">
-						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-							data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
-							class="nav-link-inline" href="${dto.getMember_email()}">${dto.getMember_email()}</a></li>
-						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-							data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
-							class="nav-link-inline" href="${dto.getMember_phone()}">${dto.getMember_phone()}</a></li>
+						<ul class="list-unstyled">
+							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+								data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
+								class="nav-link-inline" href="${dto.getMember_email()}">${dto.getMember_email()}</a></li>
+							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+								data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
+								class="nav-link-inline" href="${dto.getMember_phone()}">${dto.getMember_phone()}</a></li>
 
-					</ul>
-					<div class="pt-2">
-						<a class="btn btn-outline-secondary btn-sm btn-block"
-							href="account-tickets.html"><i class="mr-1"
-							data-feather="tag"></i>My tickets (1)</a><a
-							class="btn btn-success btn-sm btn-block"
-							href="account-tickets.html" data-toggle="modal"
-							data-target="#open-ticket">Submit new ticket</a>
+						</ul>
+						<%-- </c:if> --%>
 					</div>
-					<%-- </c:if> --%>
 				</div>
-			</div>
-			<!-- Main content-->
+				<!-- Main content-->
 
 
-			<div class="col-lg-8 offset-xl-1">
-				<!-- Customer details-->
-				<div class="d-flex flex-wrap justify-content-between pb-4">
-					<div class="pt-3 mr-3">
+				<div class="col-lg-8 offset-xl-1">
+					<!-- Customer details-->
+					<div class="d-flex flex-wrap justify-content-between pb-4">
+						<div class="pt-3 mr-3">
 
-						<h3 class="mb-0">${dto.getMember_name() }</h3>
-						<span class="font-size-sm text-warning">${dto.getMember_email() }</span>
+							<h3 class="mb-0">${dto.getMember_name() }</h3>
+							<span class="font-size-sm text-warning">${dto.getMember_email() }</span>
+						</div>
+						<div class="pt-3">
+							<a class="btn btn-outline-primary btn-sm" data-toggle="modal" href="#modalCentered"
+								onclick="location.href='#modalCentered?id=${dto.getMember_id()}'">
+								<i class="mr-1" data-feather="log-out"></i>회원 탈퇴
+							</a>
+						</div>
+						
 					</div>
-					<div class="pt-3">
-						<a class="btn btn-outline-primary btn-sm" data-toggle="modal"
-							href="#modalCentered"
-							onclick="location.href='#modalCentered?id=${dto.getMember_id()}'">
-							<i class="mr-1" data-feather="log-out"></i>Sign Out
+					<ul class="list-unstyled border p-3 mb-4">
+						<li class="pb-1"><span class="opacity-80">&ndash;
+								회원 가입일 :</span><span class="font-weight-semibold ml-1">${dto.getMember_joindate().substring(0,10) }</span></li>
+						<li class="pb-1"><span class="opacity-80">&ndash;
+								총 예약 :</span><span class="font-weight-semibold ml-1">15(바꿔야함)</span></li>
+						<li class="pb-1"><span class="opacity-80">&ndash;
+								계좌 잔액 :</span><span class="font-weight-semibold ml-1"> <fmt:formatNumber
+									value="${dto.getMember_account()}" type="number"
+									pattern="#,##0" />원
+						</span></li>
+					</ul>
+					<!-- Navigation (visible sm-up)-->
+
+					<c:if test="${dto.getMember_type() != 2}">
+						<ul class="nav nav-tabs d-none d-sm-flex">
+							<li class="nav-item"><a class="nav-link"
+								href="account-orders.html"> <i data-feather="shopping-bag"></i>&nbsp;예약현황
+									<span class="badge badge-pill badge-secondary bg-0 border ml-2">
+										<span class="text-primary">1</span>
+								</span></a></li>
+					</c:if>
+
+					<c:if test="${dto.getMember_type() == 2}">
+						<ul class="nav nav-tabs d-none d-sm-flex">
+							<li class="nav-item"><a class="nav-link"
+								href="account-orders.html"> <i data-feather="shopping-bag"></i>&nbsp;
+									가게 예약 현황 <span
+									class="badge badge-pill badge-secondary bg-0 border ml-2">
+										<span class="text-primary">1</span>
+								</span></a></li>
+					</c:if>
+
+
+					<!-- 고객한테만 북마크 보이게 작업 -->
+					<c:if
+						test="${dto.getMember_type() == 3 || dto.getMember_type() == 1}">
+						<li class="nav-item" onclick="loadMark();">
+						<a class="nav-link" href="#offcanvas-cart" data-toggle="offcanvas"> 
+						<i data-feather="heart"></i>
+						&nbsp;찜한 레스토랑
+						<span class="badge badge-pill badge-second ary bg-0 border ml-2">
+						<span class="text-primary" id="ToTalMarkCount1"></span>
+						</span>
 						</a>
-					</div>
+						</li>
+					</c:if>
 
-				</div>
-				<ul class="list-unstyled border p-3 mb-4">
-					<li class="pb-1"><span class="opacity-80">&ndash;
-							Joined:</span><span class="font-weight-semibold ml-1">${dto.getMember_joindate().substring(0,10) }</span></li>
-					<li class="pb-1"><span class="opacity-80">&ndash; Total
-							booking:</span><span class="font-weight-semibold ml-1">15(바꿔야함)</span></li>
-					<li class="pb-1"><span class="opacity-80">&ndash; Total
-							Account:</span><span class="font-weight-semibold ml-1"> <fmt:formatNumber
-								value="${dto.getMember_account()}" type="number" pattern="#,##0" />원
-					</span></li>
-				</ul>
-				<!-- Navigation (visible sm-up)-->
+					<c:if test="${dto.getMember_type() == 2}">
+						<li class="nav-item"><a class="nav-link" data-toggle="modal"
+							href="#modalLong"> <i data-feather="shopping-bag"></i>&nbsp;가게
+								등록 <span
+								class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
+					</c:if>
 
-				<c:if test="${dto.getMember_type() != 2}">
-					<ul class="nav nav-tabs d-none d-sm-flex">
-						<li class="nav-item"><a class="nav-link"
-							href="<%=request.getContextPath() %>/reservation_list.do"> <i data-feather="shopping-bag"></i>&nbsp;예약현황
-								<span class="badge badge-pill badge-secondary bg-0 border ml-2">
-									<span class="text-primary">1</span>
-							</span></a></li>
-				</c:if>
+					<c:if test="${dto.getMember_type() == 2}">
+						<li class="nav-item"><a class="nav-link" data-toggle="modal"
+							href="#Board_MainModify"> <i data-feather="shopping-bag"></i>&nbsp;가게
+								정보 수정 <span
+								class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
+					</c:if>
+					
+					
+					<c:if test="${dto.getMember_type() == 2}">
+						<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#MenuInsert" href="">
+						 <i data-feather="shopping-bag"></i>&nbsp;메뉴 등록 
+							<span class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
+					</c:if>
+					
+					
 
-				<c:if test="${dto.getMember_type() == 2}">
-					<ul class="nav nav-tabs d-none d-sm-flex">
-						<li class="nav-item"><a class="nav-link"
-							href="account-orders.html"> <i data-feather="shopping-bag"></i>&nbsp;
-								가게 예약 현황 <span
-								class="badge badge-pill badge-secondary bg-0 border ml-2">
-									<span class="text-primary">1</span>
-							</span></a></li>
-				</c:if>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle active" href="#"
+						data-toggle="dropdown"><i data-feather="settings"></i>&nbsp;회원 수정</a>
 
-
-				<!-- 고객한테만 북마크 보이게 작업 -->
-				<c:if
-					test="${dto.getMember_type() == 3 || dto.getMember_type() == 1}">
-					<li class="nav-item"><a class="nav-link"
-						href="account-wishlist.html"> <i data-feather="heart"></i>&nbsp;북마크<span
-							class="badge badge-pill badge-secondary bg-0 border ml-2">
-								<span class="text-primary">3</span>
-						</span></a></li>
-				</c:if>
-
-				<c:if test="${dto.getMember_type() == 2}">
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"
-						href="#modalLong"> <i data-feather="shopping-bag"></i>&nbsp;가게
-							등록 <span
-							class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
-				</c:if>
-
-				<c:if test="${dto.getMember_type() == 2}">
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"
-						href="#Board_MainModify"> <i data-feather="shopping-bag"></i>&nbsp;가게
-							정보 수정 <span
-							class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
-				</c:if>
-
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle active" href="#"
-					data-toggle="dropdown"><i data-feather="settings"></i>&nbsp;회원수정</a>
-
-					<div class="dropdown-menu">
-						<a class="dropdown-item active" href="account-profile.html">Profile
-							info</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="account-address.html">Addresses</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="account-payment.html">Payment
-							methods</a>
-					</div></li>
-				</ul>
-				<!-- Navigation (visible sm-down)-->
-				<div class="d-sm-none pb-4">
-					<button class="btn btn-primary btn-block mb-2" type="button"
-						data-toggle="collapse" data-target="#account-menu">
-						<i class="mr-2" data-feather="menu"></i>Menu
-					</button>
-					<div class="collapse" id="account-menu">
-						<div class="list-group">
-							<a class="list-group-item list-group-item-action"
-								href="account-orders.html"><i class="mr-2"
-								data-feather="shopping-bag" style="width: 1rem; height: 1rem;"></i>My
-								orders<span
-								class="badge badge-pill badge-secondary bg-0 border ml-2"><span
-									class="text-primary">1</span></span></a><a
-								class="list-group-item list-group-item-action"
-								href="account-wishlist.html"><i class="mr-2"
-								data-feather="heart" style="width: 1rem; height: 1rem;"></i>Wishlist<span
-								class="badge badge-pill badge-secondary bg-0 border ml-2"><span
-									class="text-primary">3</span></span></a><a
-								class="list-group-item list-group-item-action active"
-								href="account-profile.html"><i class="mr-2"
-								data-feather="user" style="width: 1rem; height: 1rem;"></i>Profile
-								info</a><a class="list-group-item list-group-item-action"
-								href="account-address.html"><i class="mr-2"
-								data-feather="map-pin" style="width: 1rem; height: 1rem;"></i>Addresses</a><a
-								class="list-group-item list-group-item-action"
-								href="account-payment.html"><i class="mr-2"
-								data-feather="credit-card" style="width: 1rem; height: 1rem;"></i>Payment
+						<div class="dropdown-menu">
+							<a class="dropdown-item active" href="account-profile.html">Profile
+								info</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="account-address.html">Addresses</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="account-payment.html">Payment
 								methods</a>
-						</div>
-					</div>
-				</div>
-				<!-- Profile info-->
-				<h5 class="mb-4 pt-sm-3">회원정보 수정</h5>
-
-
-				<div class="row">
-
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-name">Name</label> <input
-								class="form-control" type="text" id="account-name"
-								name="member_name" value="<%=session.getAttribute("name")%>"
-								disabled>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-id">User_Id</label> <input
-								class="form-control" type="text" id="account-id"
-								name="member_id" value="${dto.getMember_id() }" disabled>
-						</div>
-					</div>
-
-
-
-
-					<!--비밀번호 유효성 검사 -->
-
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-pass" class="inputpwd">New Password</label> <input
-								name="member_pwd" class="form-control" type="password"
-								id="account-pass">
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-confirm-pass" class="inputpwd">Confirm
-								Password</label> <input class="form-control" type="password"
-								id="account-confirm-pass">
-						</div>
-					</div>
-
-					<div class="pwCheck"></div>
-
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-phone">Phone Number</label> <input
-								class="form-control" type="text" id="account-phone"
-								name="member_phone" value="${dto.getMember_phone() }" required>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-email">Email Address</label> <input
-								class="form-control" type="email" id="account-email"
-								name="member_email" value="${dto.getMember_email() }">
-						</div>
-					</div>
-
-					<div class="col-12">
-						<hr class="mt-2 mb-3">
-						<div
-							class="d-flex flex-wrap justify-content-between align-items-center">
-							<div class="custom-control custom-checkbox d-block">
-								<input class="custom-control-input" type="checkbox"
-									id="subscribe_me" checked> <label
-									class="custom-control-label" for="subscribe_me">Subscribe
-									me to Newsletter</label>
-							</div>
-							<button id="updatebtn123" class="btn btn-primary mt-3 mt-sm-0"
-								type="submit" data-toggle="toast" data-target="#profile-toast">Update
-								profile</button>
-						</div>
-					</div>
-
-				</div>
-
-				<!-- Technical support + Tickets (visible Mobile)-->
-				<div class="d-lg-none bg-secondary px-3 py-4 mt-5">
-					<h6 class="font-size-sm mb-3 pb-2 border-bottom"></h6>
-					<ul class="list-unstyled">
-						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-							data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
-							class="nav-link-inline" href="mailto:support@example.com">support@example.com</a></li>
-						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-							data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
-							class="nav-link-inline" href="tel:+100331697720">+1 00 33 169
-								7720</a></li>
-						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-							data-feather="clock" style="width: .875rem; height: .875rem;"></i>1-2
-							business days</li>
+						</div></li>
+						
+					
+						
+						
 					</ul>
-					<div class="pt-2">
-						<a class="btn btn-outline-secondary btn-sm btn-block"
-							href="account-tickets.html"><i class="mr-1"
-							data-feather="tag"></i>My tickets (1)</a><a
-							class="btn btn-success btn-sm btn-block"
-							href="account-tickets.html" data-toggle="modal"
-							data-target="#open-ticket">Submit new ticket</a>
+					<!-- Navigation (visible sm-down)-->
+					<div class="d-sm-none pb-4">
+						<button class="btn btn-primary btn-block mb-2" type="button"
+							data-toggle="collapse" data-target="#account-menu">
+							<i class="mr-2" data-feather="menu"></i>Menu
+						</button>
+						<div class="collapse" id="account-menu">
+							<div class="list-group">
+								<a class="list-group-item list-group-item-action"
+									href="account-orders.html"><i class="mr-2"
+									data-feather="shopping-bag" style="width: 1rem; height: 1rem;"></i>My
+									orders<span
+									class="badge badge-pill badge-secondary bg-0 border ml-2"><span
+										class="text-primary">1</span></span></a><a
+									class="list-group-item list-group-item-action"
+									href="account-wishlist.html"><i class="mr-2"
+									data-feather="heart" style="width: 1rem; height: 1rem;"></i>Wishlist<span
+									class="badge badge-pill badge-secondary bg-0 border ml-2"><span
+										class="text-primary">3</span></span></a><a
+									class="list-group-item list-group-item-action active"
+									href="account-profile.html"><i class="mr-2"
+									data-feather="user" style="width: 1rem; height: 1rem;"></i>Profile
+									info</a><a class="list-group-item list-group-item-action"
+									href="account-address.html"><i class="mr-2"
+									data-feather="map-pin" style="width: 1rem; height: 1rem;"></i>Addresses</a><a
+									class="list-group-item list-group-item-action"
+									href="account-payment.html"><i class="mr-2"
+									data-feather="credit-card" style="width: 1rem; height: 1rem;"></i>Payment
+									methods</a>
+							</div>
+						</div>
 					</div>
+					<!-- Profile info-->
+					<h5 class="mb-4 pt-sm-3">회원정보 수정</h5>
+
+
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-name">이름</label> <input
+									class="form-control" type="text" id="account-name"
+									name="member_name" value="<%=session.getAttribute("name")%>"
+									disabled>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-id">아이디</label> <input
+									class="form-control" type="text" id="account-id"
+									name="member_id" value="${dto.getMember_id() }" disabled>
+							</div>
+						</div>
+
+
+
+
+						<!--비밀번호 유효성 검사 -->
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-pass" class="inputpwd">새로운 비밀번호</label>
+								<input name="member_pwd" class="form-control" type="password"
+									id="account-pass">
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-confirm-pass" class="inputpwd">비밀번호 확인</label> <input class="form-control" type="password"
+									id="account-confirm-pass">
+							</div>
+						</div>
+
+						<div class="pwCheck"></div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-phone">핸드폰 번호</label> <input
+									class="form-control" type="text" id="account-phone"
+									name="member_phone" value="${dto.getMember_phone() }" required>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-email">이메일 주소</label> <input
+									class="form-control" type="email" id="account-email"
+									name="member_email" value="${dto.getMember_email() }">
+							</div>
+						</div>
+
+						<div class="col-12">
+							<hr class="mt-2 mb-3">
+							<div
+								class="d-flex flex-wrap justify-content-between align-items-center">
+								
+								<button id="updatebtn123" class="btn btn-primary mt-3 mt-sm-0"
+									type="submit" data-toggle="toast" data-target="#profile-toast" style="margin-left:670px">프로필 수정</button>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Technical support + Tickets (visible Mobile)-->
+					<div class="d-lg-none bg-secondary px-3 py-4 mt-5">
+						<h6 class="font-size-sm mb-3 pb-2 border-bottom"></h6>
+						<ul class="list-unstyled">
+							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+								data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
+								class="nav-link-inline" href="mailto:support@example.com">support@example.com</a></li>
+							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+								data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
+								class="nav-link-inline" href="tel:+100331697720">+1 00 33
+									169 7720</a></li>
+							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+								data-feather="clock" style="width: .875rem; height: .875rem;"></i>1-2
+								business days</li>
+						</ul>
+						<div class="pt-2">
+							<a class="btn btn-outline-secondary btn-sm btn-block"
+								href="account-tickets.html"><i class="mr-1"
+								data-feather="tag"></i>My tickets (1)</a><a
+								class="btn btn-success btn-sm btn-block"
+								href="account-tickets.html" data-toggle="modal"
+								data-target="#open-ticket">Submit new ticket</a>
+						</div>
+					</div>
+
 				</div>
 
 			</div>
-
-		</div>
-	</form>
+		</form>
 	</div>
 
 	<!-- 가게 등록 Modal markup -->
@@ -1136,7 +1150,7 @@
 
 	<!-- 가게 수정 Modal markup -->
 	<c:set var="main" value="${boardmain }" />
-	<div class="modal" tabindex="-1" role="dialog" id="Board_MainModify">
+	<div class="modal" tabindex="-1" role="dialog" id="Board_MainModify" >
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -1151,14 +1165,11 @@
 						<%--enctype : 파일을 업로드하기 위한 메서드 --%>
 					<form method="post" enctype="multipart/form-data"
 						action="<%=request.getContextPath()%>/board_mainprofilemodify.do">
-						<input type="hidden" name="main_idx"
-							value="${main.getMain_idx() }">
+						<input type="hidden" class="main_idx" id="main_idx" value="${main.getMain_idx() }">
 						<div class="select-box">
-
 							<label for="select-box1" class="label select-box2"> <span
 								class="label-desc">가게 타입</span>
-							</label> <select id="select-box1" class="select" name="main_type"
-								value="${main.getMain_type()}">
+							</label> <select id="select-box1" class="select" name="main_type" value="${main.getMain_type()}">
 								<option value="고기요리">고기요리</option>
 								<option value="일식">일식</option>
 								<option value="한식">한식</option>
@@ -1171,10 +1182,9 @@
 
 						<div class="select-box1">
 
-							<label for="select-box2" class="label select-box2"> <span
-								class="label-desc1">가게 테마</span>
-							</label> <select id="select-box2" class="select1" name="main_thema"
-								value="${main.getMain_thema()}">
+							<label for="select-box2" class="label select-box2"> 
+							<span class="label-desc1">가게 테마</span>
+							</label> <select id="select-box2" class="select1" name="main_thema" value="${main.getMain_thema()}">
 								<option value="데이트 코스">데이트 코스</option>
 								<option value="가족모임">가족모임</option>
 								<option value="뷰가 좋은">뷰가 좋은</option>
@@ -1236,42 +1246,115 @@
 	<!-- modal end -->
 
 
-	<!--회원 탈퇴 Modal markup -->
 
-
-	<div class="modal" tabindex="-1" role="dialog" id="modalCentered">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<form method="post"
-					action="<%=request.getContextPath()%>/member_delete_ok.do">
-					<div class="modal-header">
-						<h5 class="modal-title">회원 탈퇴</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-
-						<input type="hidden" name="member_id"
-							value="${dto.getMember_id()}"> <br>
-						<p align="center">회원 탈퇴를 위해 ${dto.getMember_name()}님의 비밀번호를
-							입력해주세요.
-						<div class="textForm">
-							<input name="member_pwd" type="text" class="phone"
-								placeholder="비밀번호">
+<!-- 메뉴 Modal markup -->
+	<div class="modal" tabindex="-1" role="dialog" id="MenuInsert">
+  		<div class="modal-dialog modal-lg" role="document">
+    	<div class="modal-content">
+     	 <div class="modal-header">
+					<h5 class="modal-title">메뉴 페이지</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden=true>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>
+						<form method="post" enctype="multipart/form-data" name="inForm" id="inForm" width="100%" >
+						<table cellspacing="0" align="center" width="90%">
+					<tr class="table_bg">
+						<th> </th><th> </th><th> </th> 
+					</tr>
+						
+					<tr>
+						<td class="1">
+						 <input type="text" name="menu_name" id="menu_name" placeholder="메뉴 이름">
+						</td>
+						
+						<td class="menu_price1">
+						 <input type="text" required name="menu_price" id="menu_price" placeholder="메뉴 가격">
+						</td>
+						
+						
+						<td><img id="menu_img_preview" style="width: 100px;"></td>
+						<td><label class='btn btn-secondary btn-sm' for="menu_img" name="menu_img" style="margin-top:7px">
+ 							 사진 선택
+							</label>
+						<td><input type="file" id="menu_img" name="menu_img" style="display:none" accept="image/*" onchange="previewImage(event)"></td>
+							<input type="hidden" name="main_idx" id="main_idx" value="${main.getMain_idx() }">
+						<td align="center">	
+						<input type="button" class="btn btn-primary btn-sm" value="등록하기" id="menubtn">	
+						</td>
+						 	
+					</tr>
+					
+					</table>
+					</form>
+					
+					<br>
+					<form method="post" enctype="multipart/form-data" name="upForm" id="upForm" width="100%" >
+					<br>
+					<span align="center"><h5>메뉴 리스트</h5></span>
+						<table id="listTable" border="1" cellspacing="0" width="90%" bordercolor="#e3e3e3">
+							<tr>
+								
+								<!-- <th>가게 번호</th> -->
+								<th>메뉴 번호</th>
+								<th>메뉴 이름</th>
+								<th>메뉴 가격</th>
+								<th>메뉴 사진</th>
+								<th>수 정</th>
+								<th>삭 제</th>
+							
+							</tr>
+							
+						</table>
+					</form>
+						
+					</p>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary btn-sm"
+								data-dismiss="modal">Close</button>
 						</div>
-						</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary btn-sm"
-							data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary btn-sm">회원
-							탈퇴</button>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
+	</div>
+	<!-- modal end -->
+
+
+
+
+
+	<!--회원 탈퇴 Modal markup -->
+	
+	
+	<div class="modal" tabindex="-1" role="dialog" id="modalCentered">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	    <form method="post"  action="<%=request.getContextPath() %>/member_delete_ok.do">
+	      <div class="modal-header">
+	        <h5 class="modal-title">회원 탈퇴</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      
+	       <input type="hidden" name="member_id" value="${dto.getMember_id()}">
+	      	<br>
+	        <p align="center">회원 탈퇴를 위해 ${dto.getMember_name()}님의 비밀번호를 입력해주세요.
+	       <div class="textForm">
+				<input name="member_pwd" type="text" class="phone" placeholder="비밀번호">
+			</div>
+	        </p>
+	      </div>
+	        
+	        <button type="submit" class="btn btn-primary btn-sm" id="member_del">회원 탈퇴</button>
+	      </div>
+	    </form>
+	    </div>
+	  </div>
 	</div>
 
 	<!-- Footer-->
@@ -1571,89 +1654,15 @@
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
 	<script src="js/Board_Main.js"></script>
+	<script src="js/Main_Menu.js"></script>
+	<script src="js/Member_profile.js"></script>
+	<script src="js/StoreMarked.js"></script>
+	<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
-		$(function() {
-			$('#updatebtn123').on(
-					'click',
-					function() {
-						let password1 = $("#account-pass").val();
-						let password2 = $("#account-confirm-pass").val();
-						let text = "회원수정 완료";
-						let text2 = "비밀번호가 일치하지 않습니다.";
-						{
-							if (password1 != password2) {
-								$(".toast-header").removeClass("bg-success")
-										.removeClass("text-white"); // 기존 클래스 제거
-								$(".toast-header").addClass("bg-warning")
-										.addClass("text-white"); // 클래스 추가
-								$(".font-weight-semibold").text(""); // 텍스트 초기화
-								$(".font-weight-semibold").append("failed"); // 텍스트 지정
-								$("#toast-body").text(""); // 텍스트 초기화
-								$("#toast-body").append(text2); // 텍스트 지정
-								$("#failPwdToast").show(); // 창띄우기
-								return false;
-							}
-						}
-					});
-		});
-
-		$(function() {
-			// 이미지 클릭 시 파일 업로드 창 실행
-			$('#Change_Profile').click(function() {
-				console.log('fileadd');
-				$("input[name='fileProfile']").click();
-			});
-
-			// 파일 선택 시 실행되는 이벤트
-			$("input[name='fileProfile']").on('change', function(e) {
-				// form 데이터 생성
-				var frm = document.getElementById('profile_file_add');
-				frm.method = 'POST';
-				frm.enctype = 'multipart/form-data';
-				var fileData = new FormData(frm);
-
-			});
-		});
-
-		var currentImageSrc = "${empty dto.getMember_image() ? 'main_img/basic_thumnail.png' : dto.getMember_image()}"; // 초기 이미지 소스 설정
-
-		function setThumbnail(event) {
-			var reader = new FileReader();
-			reader.onload = function(event) {
-				var img = document.createElement("img");
-				img.setAttribute("src", event.target.result);
-				img.setAttribute("class", "col-lg-6");
-				document.querySelector("img[src='" + currentImageSrc + "']")
-						.remove(); // 현재 이미지 삭제
-				document.querySelector("div#image_container").appendChild(img); // 새로운 이미지 추가
-				currentImageSrc = event.target.result; // 현재 이미지 소스 업데이트
-			};
-			reader.readAsDataURL(event.target.files[0]);
-		};
-
-		function findAddr() {
-			new daum.Postcode({
-				oncomplete : function(data) {
-					console.log(data);
-
-					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-					// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-					// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-					var roadAddr = data.roadAddress; // 도로명 주소 변수
-					var jibunAddr = data.jibunAddress; // 지번 주소 변수
-					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-					document.getElementById('post').value = data.zonecode;
-					if (roadAddr !== '') {
-						document.getElementById("addr").value = roadAddr;
-					} else if (jibunAddr !== '') {
-						document.getElementById("addr").value = jibunAddr;
-					}
-				}
-			}).open();
-		};
-
+	
+	
 	</script>
 </body>
 </html>
