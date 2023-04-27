@@ -44,15 +44,25 @@ public class MemberKakaoLoginAction implements Action {
 		if(check == 0) {		//회원이 아닌경우 회원가입페이지로 안내
 			
 			
-			request.setAttribute("member_token", kakao_token);
-			request.setAttribute("member_name", kakao_name);
-			request.setAttribute("member_email", kakao_email);
-			request.setAttribute("member_thumnail", kakao_thumnail);
-			request.setAttribute("alert", 1);
-		
-			forward.setRedirect(false);
+			session.setAttribute("member_token", kakao_token);
+			session.setAttribute("member_name", kakao_name);
+			session.setAttribute("member_email", kakao_email);
+			session.setAttribute("member_thumnail", kakao_thumnail);
+			session.setAttribute("alert", 1);
+			System.out.println("카카오회원가입필요메서드");
 			
-			forward.setPath("member_kakao_join.jsp");
+			
+			result = 0;
+			JSONObject jsonObj = new JSONObject();
+			jsonObj.put("result", result);
+			jsonObj.put("name", kakao_name);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(jsonObj.toString());
+			
+			//forward.setRedirect(false);
+			
+			//forward.setPath("member_kakao_join.jsp");
 			
 		
 		}else if(check == 1) {				//회원인 경우 로그인 페이지로 안내
