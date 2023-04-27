@@ -27,9 +27,7 @@
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="css/theme.min.css">
 <!-- Customizer styles and scripts-->
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<script src="js/kakao_joinChk.js"></script>
+
 </head>
 <!-- Body-->
 <body>
@@ -702,21 +700,21 @@
 				<br>
 				<h2 class="h4 mb-3"><b style="color:#ffa768;">카카오 </b>회원가입</h2>
 				<br>
-				<h6>${member_name} 님 환영합니다!<br>
+				<h6>${sessionScope.member_name} 님 환영합니다!<br>
 						회원가입을 위해 추가정보를 입력해주세요.
 				</h6>
 				<form class="needs-validation" id="reg-form" method="post"
 					action="<%=request.getContextPath()%>/member_KakaoOkjoin.do" novalidate>
 					
-					<input type="hidden" name="member_token" value="${member_token}">
-					<input type="hidden" class="M-Type" name="member_type" value="">
+					<input type="hidden" name="member_token" value="${sessionScope.member_token}">
+					<input type="hidden" class="M-Type" name="member_type" value="3">
 					
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="reg-name">이름</label> <input class="form-control"
 									type="text" required id="reg-name" name="member_name" 
-									placeholder="${member_name}"	value="${member_name }"readonly> <span
+									placeholder="${sessionScope.member_name}"	value="${sessionScope.member_name}"readonly> <span
 									class="feedback" id="reg-namechk" ></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -725,7 +723,7 @@
 							<div class="form-group">
 								<label for="reg-email">이메일</label> <input class="form-control"
 									type="email" required id="reg-email" name="member_email"  
-									placeholder="${member_email}" value="${member_email }"	readonly> <span
+									placeholder="${sessionScope.member_name}" value="${sessionScope.member_email}"	readonly> <span
 									class="feedback" id="reg-emailchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -733,7 +731,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="reg-id">아이디</label> <input class="form-control"
-									type="text" required id="reg-id" name="member_id"> <span
+									type="text" required  name="member_id" id="reg-id"> <span
 									class="feedback" id="reg-idchk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -772,33 +770,12 @@
 							<div id="company-info" hidden>
 							<div class="form-group">
 								<label for="reg-storenum">사업자번호(사업자 회원인 경우에만 입력해주세요.)</label> 
-								<input class="form-control" type="text" required id="reg-storenum" name="company_storenum">
+								<input class="form-control" type="text" required id="reg-storenum" name="company_storenum" >
 								<span class="feedback" id="reg-storechk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							</div>
 						</div>
-						
-									<script>
-									
-										  const checkbox = document.querySelector('#is-company');
-										  const companyInfo = document.querySelector('#company-info');
-										
-											  checkbox.addEventListener('change', function() {
-											    if (checkbox.checked) {
-											      companyInfo.hidden = false;
-											      document.querySelector('#reg-storenum').required = true;
-											      $('.M-Type').val('2');
-											    } else {
-											      companyInfo.hidden = true;
-											      document.querySelector('#reg-storenum').required = false;
-											      $('.M-Type').val('3');
-											    }
-											  });
-									</script>
-						
-						
-						
 					</div>
 					<div class="text-right">
 						<button class="btn btn-primary" type="button" onclick="checkAll()">
@@ -1102,8 +1079,27 @@
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script src="js/kakao_joinChk.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
+	<script>
+	
+		  const checkbox = document.querySelector('#is-company');
+		  const companyInfo = document.querySelector('#company-info');
+			  checkbox.addEventListener('change', function() {
+			    if (checkbox.checked) {
+			      companyInfo.hidden = false;
+			      document.querySelector('#reg-storenum').required = true;
+			      $('.M-Type').val('2');
+			    } else {
+			      companyInfo.hidden = true;
+			      document.querySelector('#reg-storenum').required = false;
+			      $('.M-Type').val('3');
+			    }
+			  });
+	</script>
 
 </body>
 </html>

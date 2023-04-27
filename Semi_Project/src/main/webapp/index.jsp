@@ -80,7 +80,24 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="toast-body text-warning">아이디 혹은 비밀번호를 확인해주세요.</div>
+			<div class="toast-body text-warning" >아이디 혹은 비밀번호를 확인해주세요.</div>
+		</div>
+	</div>
+	
+	<!-- 회원가입 카카오 toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail_kakao"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">회원가입이 필요합니다.</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning" id="toast_fail_kakao_div">추가정보를 입력하여 회원가입을 진행해주세요.</div>
 		</div>
 	</div>
 	<!--   ==============================  네비바  ================================= -->

@@ -25,7 +25,7 @@ $(function() {
 				//아이디 중복 여부 확인
 				$.ajax({
 					type: "post",
-					url: "member_join_chk.do",
+					url: "member/member_join_chk.do",
 					data: {
 						paramId: userId
 					},
@@ -45,8 +45,8 @@ $(function() {
 							$("#reg-idchk").append(warningTxt);
 						}
 					},
-					error: function(data) {
-						alert("통신오류");
+					error:function(request,status,error){
+        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
 				});
 

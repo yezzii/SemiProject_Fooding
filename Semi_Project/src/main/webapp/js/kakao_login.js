@@ -9,8 +9,10 @@ $(function () {
     console.log(Kakao.isInitialized()); // sdk초기화여부판단
     
      let success_toast = $("#login_success");
+     let kakao_fail_toast = $("#login_fail_kakao");
     let fail_toast = $("#login_fail");
     let toast_success_div = $("#toast_success_div");
+    let toast_fail_kakao_div = $("#toast_fail_kakao_div");
     
     //카카오로그인
 
@@ -47,7 +49,33 @@ $(function () {
                   setTimeout(function () {
                     location.reload();
                   }, 2000);
-                } else {
+                } else if(data.result == 0){
+					console.log("result:"+data.result);
+                  toast_fail_kakao_div.text(data.name + " 님 추가정보를 입력하여 회원가입을 진행해주세요!")
+                 kakao_fail_toast.toast("show");
+                  setTimeout(function () {
+                  
+					     $.ajax({
+						        url: "member_kakao_join.jsp",
+						        method: "POST",
+						        data: {
+						          member_token: data.member_token,
+						          member_name: data.member_name,
+						          member_email: data.member_email,
+						          member_thumnail: data.member_thumnail,
+						          alert: data.alert
+						        },
+						        success: function() {
+						          window.location = "member_kakao_join.jsp";
+						        },
+						        error: function (jqXHR, textStatus, errorThrown) {
+						          alert("서버 오류: " + jqXHR);
+						        }
+						      });
+
+
+                  }, 2000);
+				}else{
                   fail_toast.toast("show");
                 }
               },
@@ -69,3 +97,5 @@ $(function () {
     })
   });
 });
+
+
