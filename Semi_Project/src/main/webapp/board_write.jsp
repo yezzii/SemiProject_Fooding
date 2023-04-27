@@ -816,7 +816,6 @@
 							data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 							<option value="1">후기</option>
-							<option value="-1">블로그</option>
 							<option value="0">자유</option>
 						</select>
 					</div>

@@ -204,7 +204,9 @@ public class MemberDAO {
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_name(rs.getString("member_name"));
 				dto.setMember_type(rs.getInt("member_type"));
+				dto.setMember_joindate(rs.getString("member_joindate"));
 				dto.setMember_storenum(rs.getString("member_storenum"));
+				dto.setMember_image(rs.getString("member_image"));
 			}
 
 		} catch (SQLException e) {
@@ -730,6 +732,9 @@ public class MemberDAO {
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_name(rs.getString("member_name"));
 				dto.setMember_type(rs.getInt("member_type"));
+				dto.setMember_joindate(rs.getString("member_joindate"));
+				dto.setMember_image(rs.getString("member_image"));
+				
 			}
 
 		} catch (SQLException e) {

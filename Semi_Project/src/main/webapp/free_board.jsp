@@ -858,18 +858,18 @@
     <div class="col-lg-9">
           <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center justify-content-sm-center mb-0">
-              <li class="page-item"><a class="page-link" href="ReviewBoardList.do?page=1">처음</a></li>
-              <li class="page-item"><a class="page-link" href="ReviewBoardList.do?page=${page - 1 }">이전</a></li>
+              <li class="page-item"><a class="page-link" href="free_board.do?page=1">처음</a></li>
+              <li class="page-item"><a class="page-link" href="free_board.do?page=${page - 1 }">이전</a></li>
               
                <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 	      	    <c:if test="${i == page }">
-	      	       <li class="page-item active" aria-current="page"><a class="page-link" href="ReviewBoardList.do?page=${i }">${i }</a></li>
+	      	       <li class="page-item active" aria-current="page"><a class="page-link" href="free_board.do?page=${i }">${i }</a></li>
 	      	    </c:if>
 	      	    
 	      	    <c:if test="${i != page }">
 	      	       <li class="page-item">
 	      	          <a class="page-link"
-	      		   			href="ReviewBoardList.do?page=${i }">${i }</a>
+	      		   			href="free_board.do?page=${i }">${i }</a>
 	      	       </li>
 	      	    </c:if>
 	      	 </c:forEach>
@@ -879,12 +879,12 @@
 	      	  <c:if test="${endBlock < allPage }">
 	      	       <li class="page-item">
 	      	          <a class="page-link"
-	      		   			href="ReviewBoardList.do?page=${page + 1 }">다음</a>
+	      		   			href="free_board.do?page=${page + 1 }">다음</a>
 	      	       </li>
 	      	       
 	      	       <li class="page-item">
 	      	          <a class="page-link"
-	      		   			href="ReviewBoardList.do?page=${allPage }">마지막</a>
+	      		   			href="free_board.do?page=${allPage }">마지막</a>
 	      	       </li>
 	      	 </c:if>
               

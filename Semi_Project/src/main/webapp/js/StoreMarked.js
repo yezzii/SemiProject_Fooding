@@ -93,7 +93,7 @@ $(document).ready(function () {
 
 function CountMark(count){//상단 찜하기 총 갯수
 	   //찜한 가게 총 수
-		const totalMark = document.getElementById('ToTalMarkCount');
+		const totalMark = document.getElementById('totalMarkCount');
 		
 		totalMark.textContent = count;
 	
@@ -101,9 +101,9 @@ function CountMark(count){//상단 찜하기 총 갯수
 };	
 function CountMark1(count){ //마이프로필
 	   //찜한 가게 총 수
-		const totalMark = document.getElementById('ToTalMarkCount1');
+		const totalMark1 = document.getElementById('totalMarkCount1');
 		
-		totalMark.textContent = count;
+		totalMark1.textContent = count;
 		
 };
 
@@ -122,12 +122,13 @@ $('.LoadMenuImg').on('click', function (e) {
             main_idx: main_idx,
         },
         success: function (data) {
+			console.log(data); 
             var img_Elm = $('.carouselMenu');
             var List = JSON.parse(data.List);
             var div_top = '<div class="owl-carousel carouselMenu" data-owl-carousel=\'{ "nav": true, "dots": false, "loop": true, "margin": 15 }\'>';
             var div_end = '</div>';
             var imgHtml = '';
-            var textHtml = '<li class="pb-2" style="list-style: none;">== 메뉴 ==</b>';
+            var textHtml = '<li class="pb-2" style="list-style: none;">==== 메뉴 ====</b>';
             
             if (List.length > 0) {
                 List.forEach(function (obj) {
@@ -162,4 +163,48 @@ $('.LoadMenuImg').on('click', function (e) {
             console.log(error); // 오류 발생시 콘솔에 출력
         }
     });
+    
+     console.log(main_idx);
+
+    $.ajax({
+      url: "starList.do",
+      type: "get",
+      dataType: "json",
+      data: {
+        idx: main_idx
+      },
+      success: function (data) {
+        var List = data.List;
+        var div_top = '<blockquote class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">';
+        var div_end = '</blockquote>';
+        var imgHtml = '';
+        var img_Elm = $('.starjs');
+
+        if (List.length > 0) {
+          List.forEach(function (obj) {
+            imgHtml += `
+              <div class="d-sm-flex align-items-center pb-2">
+                <h6 class="mb-0 member_id_title">${obj.member_id}</h6>
+                <span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
+                <div class="starRev" id="starRev">
+                  <span class="starR ${obj.star_count >= 1 ? 'on' : ''}">⭐</span>
+                  <span class="starR ${obj.star_count >= 2 ? 'on' : ''}">⭐</span>
+                  <span class="starR ${obj.star_count >= 3 ? 'on' : ''}">⭐</span>
+                  <span class="starR ${obj.star_count >= 4 ? 'on' : ''}">⭐</span>
+                  <span class="starR ${obj.star_count >= 5 ? 'on' : ''}">⭐</span>
+                </div>
+              </div>
+              <p class="user_comment">${obj.review}</p>
+            `;
+          });
+          div_top += imgHtml;
+          div_top += div_end;
+          img_Elm.html(div_top);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.log(error);
+      }
+    });
+    
 });

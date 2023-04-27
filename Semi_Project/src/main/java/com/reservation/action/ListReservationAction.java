@@ -31,6 +31,7 @@ public class ListReservationAction implements Action {
 		int totalReservation = 0;
 		int allpage = 0;
 		int page = 0;
+		int dayOverReservation = 0;
 		
 		if(request.getParameter("page")!= null) {
 			page = Integer.parseInt(request.getParameter("page").trim());
@@ -53,6 +54,7 @@ public class ListReservationAction implements Action {
 		int endBlock = (((page - 1) / block) * block) + block;
 		
 		totalReservation = dao.getReservationCount(mem_id);
+		dayOverReservation = dao.getOverReservationCount(mem_id);
 		
 		allpage = (int) Math.ceil(totalReservation / (double) rowsize);
 
@@ -70,6 +72,8 @@ public class ListReservationAction implements Action {
 		request.setAttribute("allPage", allpage);
 		request.setAttribute("startBlock", startBlock);
 		request.setAttribute("endBlock", endBlock);
+		request.setAttribute("totalReservation", totalReservation);
+		request.setAttribute("dayOverReservation", dayOverReservation);
 		
 		request.setAttribute("ReservationList", ReservationList);
 		

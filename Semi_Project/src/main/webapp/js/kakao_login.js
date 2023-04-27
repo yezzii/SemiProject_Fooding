@@ -8,9 +8,8 @@ $(function () {
     Kakao.init('fe3cf4492aa6c561d6c802d57d1418de'); //발급받은 키 중 javascript키를 사용해준다.
     console.log(Kakao.isInitialized()); // sdk초기화여부판단
     
-     let success_toast = $("#login_success");
+    let success_toast = $("#login_success");
     let fail_toast = $("#login_fail");
-    let toast_success_div = $("#toast_success_div");
     
     //카카오로그인
 
@@ -20,9 +19,11 @@ $(function () {
 
         //2. 로그인 성공시, API 호출
         Kakao.API.request({
+			
           url: '/v2/user/me',
+          
           success: function (response) {
-            console.log(response)	//json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
+            console.log(response)   //json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
 
 
             var token = response.id;
@@ -38,22 +39,36 @@ $(function () {
                 member_email : email, 
                 thumbnail : thumbnail
               },
+              
               dataType: "json",
+              
               success: function (data) {
+				  
                 if (data.result == 1) {
-					console.log(data.name);
+					
+               console.log(data.name);
+               
                   toast_success_div.text(data.name + " 님 다시 오신걸 환영합니다.")
                   success_toast.toast("show");
+                  
                   setTimeout(function () {
+					  
                     location.reload();
+                    
                   }, 2000);
+                  
                 } else {
+					
                   fail_toast.toast("show");
+                  
                 }
               },
+              
               error: function (jqXHR, textStatus, errorThrown) {
-                alert("서버 오류: " + jqXHR);
+                alert("서버 오류: " + jqXHR + "\n textStatus : " + textStatus + "\n errorThrown : " + errorThrown);
+                
               }
+              
             });
 
 

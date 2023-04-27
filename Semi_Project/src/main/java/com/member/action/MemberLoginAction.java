@@ -49,8 +49,12 @@ public class MemberLoginAction implements Action {
 			if (memdto.getMember_type() == 0) {
 				
 				session.setAttribute("id", memdto.getMember_id());
+				session.setAttribute("email", memdto.getMember_email());
+				session.setAttribute("phone", memdto.getMember_phone());
 				session.setAttribute("name", memdto.getMember_name());
 				session.setAttribute("type", memdto.getMember_type());
+				session.setAttribute("date", memdto.getMember_joindate());
+				session.setAttribute("img", memdto.getMember_image());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
 				result = 1;
@@ -61,11 +65,7 @@ public class MemberLoginAction implements Action {
 				jsonObj.put("name", memdto.getMember_name());
 				
 				out.println(jsonObj);
-				/*
-				 * out.println("<script>"); out.println("alert('" + session.getAttribute("name")
-				 * + " 관리자님 오늘도 환영합니다.')"); out.println("location.href='index.jsp'");
-				 * out.println("</script>");
-				 */			
+				
 				
 			} else if (memdto.getMember_type() == 1 || memdto.getMember_type() == 3) {
 
@@ -74,6 +74,8 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("phone", memdto.getMember_phone());
 				session.setAttribute("name", memdto.getMember_name());
 				session.setAttribute("type", memdto.getMember_type());
+				session.setAttribute("date", memdto.getMember_joindate());
+				session.setAttribute("img", memdto.getMember_image());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
 				result = 1;
@@ -93,6 +95,8 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("name", memdto.getMember_name());
 				session.setAttribute("type", memdto.getMember_type());
 				session.setAttribute("storenum", memdto.getMember_storenum());
+				session.setAttribute("date", memdto.getMember_joindate());
+				session.setAttribute("img", memdto.getMember_image());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
 
@@ -111,10 +115,6 @@ public class MemberLoginAction implements Action {
 			result = -1;
 			
 			out.println(result + "");
-			/*
-			 * out.println("<script>"); out.println("alert('아이디 및 비밀번호를 확인해주세요')");
-			 * out.println("history.back()"); out.println("</script>");
-			 */
 			
 		}
 		

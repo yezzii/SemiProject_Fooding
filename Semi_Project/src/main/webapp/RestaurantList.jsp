@@ -72,8 +72,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
 
 <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-<script src="js/kakao_login.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 
 </head>
 <!-- Body-->
@@ -815,7 +814,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<div class="row">
 									<!-- Product gallery-->
 									<div class="col-lg-7">
-										<div class="owl-carousel"
+										<div class="owl-carousel carouselMenu"
 											data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;margin&quot;: 15 }">
 											<img src="${detail.getMain_img()}"
 												alt="${detail.getMain_img()}"> <img
@@ -911,12 +910,14 @@ if (request.getProtocol().equals("HTTP/1.1"))
 													<br>
 													<li>전화 : ${detail.getMain_phone() }</li>
 													<br>
-													<li>=======정보=======<br>${detail.getMain_info()}</li>
+													<li class="pb-2" style="list-style: none;">====정보====</li><li>${detail.getMain_info()}</li>
 													<br>
 													<li>음식 종류 : ${detail.getMain_type() }</li>
 													<br>
 													<li>오픈시간 : ${detail.getMain_opentime()} ~ 마감시간 :
 														${detail.getMain_endtime() }</li>
+													<br>
+													<span class="Menu_Info_Text"></span>
 												</ul>
 											</div>
 										</div>
@@ -933,7 +934,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										<div class="input-group starInsert-idx">
 											<input type="hidden" id="detail_idx"
 												value="${detail.getMain_idx()}">
-											<textarea name="review" class="form-control" type="text"
+											<textarea name="review" class="form-control"
 												id="reviewContents${detail.getMain_idx()}"
 												placeholder="리뷰 작성"></textarea>
 
@@ -1207,7 +1208,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- 카카오 문의하기 모달 -->
 	<div class="modal modal-quick-view fade" id="quick-view-kakako"
 		tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-dialog-scrollable" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<div>
@@ -1232,21 +1233,19 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-	<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
+	<script src="js/kakao_login.js"></script>
+	<script src="js/loadMarkedRstAjax.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
 	<script src="js/sign_upChk.js"></script>
 	<script src="js/Board_Main.js"></script>
 	<script src="js/LoginChk.js"></script>
-	<script src="js/kakao_login.js"></script>
 	<script src="js/StoreMarked.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/StarReview.js"></script>
-	z
+	
 	<script>
 		$('.toast').toast({
 			delay : 3000

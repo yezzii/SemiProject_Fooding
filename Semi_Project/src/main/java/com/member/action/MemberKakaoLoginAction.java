@@ -64,6 +64,8 @@ public class MemberKakaoLoginAction implements Action {
 				if (memdto.getMember_type() == 0) {
 					
 					session.setAttribute("id", memdto.getMember_id());
+					session.setAttribute("email", memdto.getMember_email());
+					session.setAttribute("phone", memdto.getMember_phone());
 					session.setAttribute("name", memdto.getMember_name());
 					session.setAttribute("type", memdto.getMember_type());
 					session.setAttribute("Thumnail", kakao_thumnail);

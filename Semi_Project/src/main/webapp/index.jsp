@@ -428,7 +428,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">리뷰	작성 </span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">리뷰
+														작성 </span></a></li>
 										</ul>
 									</div>
 								</div>
@@ -455,22 +456,21 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											No Sidebar</a></li>
 								</ul></li>
 						</ul></li>
-										<%
+					<%
 										if (session.getAttribute("id") != null) {
 										%>
 
-						<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/member_profile.do" ><i
-							class="mr-1" ></i>마이페이지</a>
-						</li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle"
+						href="<%=request.getContextPath()%>/member_profile.do"><i
+							class="mr-1"></i>마이페이지</a></li>
 
 					<%
 					}
 					%>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="LoadRestaurantList.do" ><i
-							class="mr-1" ></i>레스토랑</a>
-						</li>
+						class="nav-link dropdown-toggle" href="LoadRestaurantList.do"><i
+							class="mr-1"></i>레스토랑</a></li>
 				</ul>
 			</div>
 			<!-- navbar buttons-->
@@ -518,31 +518,34 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-					<a class="navbar-btn" href="#offcanvas-cart"	onclick="loadMark();"
+					<a class="navbar-btn" href="#offcanvas-cart" onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary-Mark text-light" id="ToTalMarkCount"></span><i
-							class="mx-auto mb-1" data-feather="heart" ></i>찜한 레스토랑</span></a>
-					
-					<a class="navbar-btn navbar-collapse-hidden"
-						href="member/logout.jsp">
-						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃</a>
+							class="navbar-btn-badge bg-primary-Mark text-light"
+							id="totalMarkCount"></span><i class="mx-auto mb-1"
+							data-feather="heart"></i>찜한 레스토랑</span></a> <a
+						class="navbar-btn navbar-collapse-hidden" href="member/logout.jsp">
+						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃
+					</a>
 
 					<%-- 프로필 정보란 --%>
-				<div class="navbar-btn navbar-collapse-hidden">
-					<div class="kakao_img mx-auto mb-1">
-						<a href="<%=request.getContextPath()%>/member_profile.do"> <img
-							class="profile_img" src="<%=thumnail%>">
-						</a>
-					</div>
+					<div class="navbar-btn navbar-collapse-hidden">
+               <div class="kakao_img mx-auto mb-1">
+                  <a href="<%=request.getContextPath()%>/member_profile.do"> <img
+                     class="profile_img" src="${empty sessionScope.img ? Thumnail : sessionScope.img}">
+                  </a>
+               </div>
+                  <span class="mx-auto mb-1" style="font-family:'GmarketSansMedium'; font-size: 12px; "><%=name%> 님 </span>
+               <img src="${profile }">
+            </div>
 
-					<%-- 프로필 정보란 --%>
-					<%
+						<%-- 프로필 정보란 --%>
+						<%
 					}
 					%>
+					</div>
 				</div>
 			</div>
-		</div>
 	</header>
 		<%--   ======================================상단 네비바 <<END>>======================================= --%>
 	<!-- Hero slider-->
@@ -991,24 +994,22 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- 카카오 문의하기 모달 끝 -->
 
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
-	<script type="text/javascript" src="js/sign_upChk.js"></script>
-	<script src="js/Board_Main.js"></script>
-	<script src="js/kakao_login.js"></script>
-	<script src="js/StoreMarked.js"></script>
-	<script src="js/main_card.js"></script>
-
-	<script src="js/LoginChk.js"></script>
-	
-	<script src="js/vendor.min.js"></script>
-	<script src="js/theme.min.js"></script>
-	<script>
-		$('.toast').toast({
-			delay : 3000
-		});
-	</script>
+   <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+   <script type="text/javascript" src="js/loadMarkedRstAjax.js"></script>
+   <script type="text/javascript" src="js/sign_upChk.js"></script>
+   <script src="js/Board_Main.js"></script>
+   <script src="js/LoginChk.js"></script>
+   <script src="js/kakao_login.js"></script>
+   <script src="js/StoreMarked.js"></script>
+   <script src="js/main_card.js"></script>
+   <script src="js/vendor.min.js"></script>
+   <script src="js/theme.min.js"></script>
+   <script>
+      $('.toast').toast({
+         delay : 3000
+      });
+   </script>
 </body>
 </html>

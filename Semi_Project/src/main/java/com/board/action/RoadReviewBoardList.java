@@ -20,7 +20,7 @@ public class RoadReviewBoardList implements Action {
 		// TODO Auto-generated method stub
 		int rowsize = 9;
 		int block = 5;
-		int totalBoard_main = 0;
+		int reviewBoard_main = 0;
 		int allpage = 0;
 		int page = 0;
 		
@@ -46,20 +46,24 @@ public class RoadReviewBoardList implements Action {
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
-		totalBoard_main = dao.getBoardCount();
+		reviewBoard_main = dao.getBoardCount();
 		
-		allpage = (int) Math.ceil(totalBoard_main / (double) rowsize);
+		allpage = (int) Math.ceil(reviewBoard_main / (double) rowsize);
 
 		if (endBlock > allpage) {
 			endBlock = allpage;
 		}
+		
+		System.out.println("start : " + startNo);
+		System.out.println("end : " + endNo);
+		
 		
 		List<BoardDTO> list = dao.getBoardReviewList(page, rowsize);
 		
 		request.setAttribute("page", page);
 		request.setAttribute("rowsize", rowsize);
 		request.setAttribute("block", block);
-		request.setAttribute("totalBoardmain",totalBoard_main);
+		request.setAttribute("reviewBoard_main",reviewBoard_main);
 		request.setAttribute("allPage", allpage);
 		request.setAttribute("startNo", startNo);
 		request.setAttribute("endNo", endNo);
