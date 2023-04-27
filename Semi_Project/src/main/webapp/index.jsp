@@ -453,26 +453,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div></li>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">예약</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Blog Layout</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
-											Right Sidebar</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Single Post Layout</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
-											No Sidebar</a></li>
-								</ul></li>
-						</ul></li>
 					<%
 										if (session.getAttribute("id") != null) {
 										%>

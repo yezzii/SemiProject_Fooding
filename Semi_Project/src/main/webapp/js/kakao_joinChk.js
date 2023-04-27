@@ -25,7 +25,7 @@ $(function() {
 				//아이디 중복 여부 확인
 				$.ajax({
 					type: "post",
-					url: "member/member_join_chk.do",
+					url: "member_join_chk.do",
 					data: {
 						paramId: userId
 					},

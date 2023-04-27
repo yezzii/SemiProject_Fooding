@@ -54,7 +54,7 @@ $(function () {
                   setTimeout(function () {
                   
                     $.ajax({
-                          url: "member_kakao_join.jsp",
+                          url: "member_join_chk.do",
                           method: "POST",
                           data: {
                             member_token: data.member_token,

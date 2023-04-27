@@ -465,26 +465,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div></li>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">예약</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Blog Layout</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
-											Right Sidebar</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Single Post Layout</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
-											No Sidebar</a></li>
-								</ul></li>
-						</ul></li>
 					<%
 					if (session.getAttribute("id") != null) {
 					%>
@@ -910,7 +890,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 													<br>
 													<li>전화 : ${detail.getMain_phone() }</li>
 													<br>
-													<li class="pb-2" style="list-style: none;">====정보====</li><li>${detail.getMain_info()}</li>
+													<li class="pb-2" style="list-style: none;">====정보====</li>
+													<li>${detail.getMain_info()}</li>
 													<br>
 													<li>음식 종류 : ${detail.getMain_type() }</li>
 													<br>
@@ -1068,8 +1049,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</ul>
 		</nav>
 
-	</div>
-	</div>
 	</div>
 	<%--   ======================================하단 Footer <<START>>======================================= --%>
 	<!-- Footer-->
@@ -1233,7 +1212,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="js/kakao_login.js"></script>
 	<script src="js/loadMarkedRstAjax.js"></script>
@@ -1245,7 +1225,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<script src="js/StoreMarked.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/StarReview.js"></script>
-	
+
 	<script>
 		$('.toast').toast({
 			delay : 3000

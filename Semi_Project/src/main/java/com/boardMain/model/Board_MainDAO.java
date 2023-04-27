@@ -283,102 +283,25 @@ public class Board_MainDAO {
 		return result;
 	}
 
-	public List<Board_MainDTO> getSearchBoardmainList(String field, String keyword, int page, int rowsize) {
+	public List<RtDTO> TotalMainSearch(String keyword, int page, int rowsize) {
 
-		List<Board_MainDTO> searchList = new ArrayList<Board_MainDTO>();
-
+		List<RtDTO> searchList = new ArrayList<RtDTO>();
+		
 		int startNo = (page * rowsize) - (rowsize - 1);
+
 		int endNo = (page * rowsize);
 
 		openConn();
 
 		try {
-			sql = "select * from (select row_number() over (order by main_idx) rnum, b.* from board_main b";
-
-			if (field.equals("main_name")) {
-				sql += " where main_name like ?) g";
-			} else if (field.equals("main_type")) {
-				sql += " where main_type like ?) i";
-			} else if (field.equals("main_info")) {
-				sql += " where main_info like ?) s";
-			} else if (field.equals("main_opentime")) {
-				sql += " where main_opentime like ?) w";
-			} else if (field.equals("main_endtime")) {
-				sql += " where main_endtime like ?) q";
-			} else if (field.equals("main_addr")) {
-				sql += " where main_addr like ? or main_post like ? or main_detailaddr like ?) a";
-			} else if (field.equals("main_phone")) {
-				sql += " where main_phone like ?) k";
-			} else if (field.equals("main_memid")) {
-				sql += " where main_memid like ?) l";
-			} else if (field.equals("main_storenum")) {
-				sql += " where main_storenum like ?) h";
-			} else if (field.equals("main_thema")) {
-				sql += " where main_thema like ?) v";
-			}
-
-			sql += " where rnum between ? and ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			if (field.equals("main_addr")) {
-				pstmt.setString(1, '%' + keyword + '%');
-				pstmt.setString(2, '%' + keyword + '%');
-				pstmt.setString(3, '%' + keyword + '%');
-				pstmt.setInt(4, startNo);
-				pstmt.setInt(5, endNo);
-			} else if (field.equals("main_memid") || field.equals("main_storenum")) {
-				pstmt.setString(1, '%' + keyword + '%');
-				pstmt.setInt(2, startNo);
-				pstmt.setInt(3, endNo);
-			} else {
-				pstmt.setString(1, '%' + keyword + '%');
-				pstmt.setInt(2, startNo);
-				pstmt.setInt(3, endNo);
-			}
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				Board_MainDTO dto = new Board_MainDTO();
-
-				dto.setMain_idx(rs.getInt("main_idx"));
-				dto.setMain_name(rs.getString("main_name"));
-				dto.setMain_type(rs.getString("main_type"));
-				dto.setMain_info(rs.getString("main_info"));
-				dto.setMain_opentime(rs.getString("main_opentime"));
-				dto.setMain_endtime(rs.getString("main_endtime"));
-				dto.setMain_post(rs.getString("main_post"));
-				dto.setMain_addr(rs.getString("main_addr"));
-				dto.setMain_detailaddr(rs.getString("main_detailaddr"));
-				dto.setMain_phone(rs.getString("main_phone"));
-				dto.setMain_location(rs.getString("main_location"));
-				dto.setMain_memid(rs.getString("main_memid"));
-				dto.setMain_storenum(rs.getString("main_storenum"));
-				dto.setMain_thema(rs.getString("main_thema"));
-
-				searchList.add(dto);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return searchList;
-	}
-
-	public List<RtDTO> TotalMainSearch(String keyword, int page, int rowsize) {
-
-		List<RtDTO> searchList = new ArrayList<RtDTO>();
-
-		openConn();
-
-		try {
-			sql = "select bm.*,  mm.* " + "from semi.board_main bm, semi.main_menu mm " + "where bm.main_name like ? "
-					+ "or	bm.main_type like ? " + "or	bm.main_addr like ? " + "or	bm.main_thema like ? "
-					+ "or	mm.menu_name like ? " + "group by bm.main_name";
-
+			sql = "SELECT * FROM ( SELECT ROW_NUMBER() OVER "
+		               + "(ORDER BY main_idx) AS rnum, bm.*, mm.* FROM "
+		               + "board_main bm INNER JOIN main_menu mm ON "
+		               + "bm.main_idx = mm.rst_no WHERE bm.main_name LIKE ?"
+		               + " OR bm.main_type LIKE ? OR bm.main_addr LIKE ?"
+		               + " OR bm.main_thema LIKE ? OR mm.menu_name LIKE ? )"
+		               + " AS sub WHERE sub.rnum BETWEEN ? AND ? group by main_idx";
+			
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, '%' + keyword + '%');
@@ -386,6 +309,8 @@ public class Board_MainDAO {
 			pstmt.setString(3, '%' + keyword + '%');
 			pstmt.setString(4, '%' + keyword + '%');
 			pstmt.setString(5, '%' + keyword + '%');
+			pstmt.setInt(6, startNo);
+			pstmt.setInt(7, endNo);
 
 			rs = pstmt.executeQuery();
 
@@ -623,10 +548,27 @@ public class Board_MainDAO {
 		try {
 			openConn();
 
-			sql = "select count(*) from board_main order by main_idx";
+			sql = "SELECT COUNT(*) FROM ("
+					+ "    SELECT DISTINCT main_idx FROM ("
+					+ "        SELECT ROW_NUMBER() OVER (ORDER BY main_idx) AS rnum, bm.*, mm.*"
+					+ "        FROM board_main bm "
+					+ "        INNER JOIN main_menu mm ON bm.main_idx = mm.rst_no "
+					+ "        WHERE bm.main_name LIKE ?"
+					+ "        OR bm.main_type LIKE ? "
+					+ "        OR bm.main_addr LIKE ?"
+					+ "        OR bm.main_thema LIKE ?"
+					+ "        OR mm.menu_name LIKE ?"
+					+ "    ) AS sub"
+					+ ") AS sub2;";
 
 			pstmt = con.prepareStatement(sql);
-
+			
+			pstmt.setString(1, '%' + keyword + '%');
+			pstmt.setString(2, '%' + keyword + '%');
+			pstmt.setString(3, '%' + keyword + '%');
+			pstmt.setString(4, '%' + keyword + '%');
+			pstmt.setString(5, '%' + keyword + '%');
+			
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {

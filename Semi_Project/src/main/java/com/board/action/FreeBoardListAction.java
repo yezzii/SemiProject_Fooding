@@ -47,7 +47,7 @@ public class FreeBoardListAction implements Action {
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
-		reviewBoard_main = dao.getBoardCount();
+		reviewBoard_main = dao.getFreeBoardCount();
 		
 		allpage = (int) Math.ceil(reviewBoard_main / (double) rowsize);
 
@@ -59,7 +59,7 @@ public class FreeBoardListAction implements Action {
 		System.out.println("end : " + endNo);
 		
 		
-		List<BoardDTO> list = dao.getBoardReviewList(page, rowsize);
+		List<BoardDTO> list = dao.FreeBoardList(page, rowsize);
 		
 		request.setAttribute("page", page);
 		request.setAttribute("rowsize", rowsize);
@@ -71,7 +71,7 @@ public class FreeBoardListAction implements Action {
 		request.setAttribute("startBlock", startBlock);
 		request.setAttribute("endBlock", endBlock);
 		
-		request.setAttribute("review_boardList", list);
+		request.setAttribute("free_boardList", list);
 		
 		ActionForward forward = new ActionForward();
 		

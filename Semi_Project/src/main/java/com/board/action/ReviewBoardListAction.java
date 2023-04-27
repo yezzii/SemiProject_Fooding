@@ -47,7 +47,7 @@ public class ReviewBoardListAction implements Action {
 				
 				BoardDAO dao = BoardDAO.getInstance();
 				
-				reviewBoard_main = dao.getBoardCount();
+				reviewBoard_main = dao.getReviewBoardCount();
 				
 				allpage = (int) Math.ceil(reviewBoard_main / (double) rowsize);
 

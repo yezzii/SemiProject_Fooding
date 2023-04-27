@@ -176,7 +176,7 @@ font-size: 15px;
 color: rgba(98, 98, 98);
 }
 
-<style type="text/css">
+
 .pwCheck {
 	color: red; /* 예시: 빨간색 텍스트로 표시 */
 	font-size: 12px; /* 예시: 폰트 사이즈 12px로 설정 */
@@ -196,7 +196,7 @@ margin-top: 350px;
 }
 
  
-					table += "<td width='70px'><input type='button' class='btn btn-secondary btn-sm' value='수 정' id='mod' num='"+$(this).find("menu_idx").text()+"'></td>";
+					
 .table_bg th {
 text-align: center;
 } 

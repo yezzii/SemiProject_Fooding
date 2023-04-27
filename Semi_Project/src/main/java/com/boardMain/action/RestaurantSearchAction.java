@@ -21,18 +21,23 @@ public class RestaurantSearchAction implements Action {
 		String keyword = request.getParameter("keyword").trim();
 	
 		
-		int rowsize=10000;
+		int rowsize=9;
 		
-		int block = 3;
+		int block = 5;
 		
 		int totalRestaurant = 0;
 		
 		int allPage = 0;
 		
-		int page = 1;
+		int page = 0;
 		
 		if(request.getParameter("page")!= null) {
 			page = Integer.parseInt(request.getParameter("page").trim());
+		}else {
+			page = 1;
+		}
+		if(page==0) {
+			page = 1;
 		}
 		
 		int startNo = (page * rowsize) - (rowsize - 1);
@@ -48,31 +53,36 @@ public class RestaurantSearchAction implements Action {
 		totalRestaurant = dao.searchRestaurantCount(keyword);
 		
 		System.out.println("검색값 :"+keyword);
+		System.out.println("totalRestaurant :"+totalRestaurant);
 		
 		allPage = (int)Math.ceil(totalRestaurant / (double)rowsize);
 		
 		if(endBlock > allPage) {
 			endBlock = allPage;
 		}
+		System.out.println("start : " + startNo);
+		System.out.println("end : " + endNo);
 		
 		List<RtDTO> searchList = dao.TotalMainSearch(keyword,page,rowsize);
 		System.out.println("검색값 >>>"+searchList);
-		request.setAttribute("page", page);
+		System.out.println("page >>>"+page);
+		 request.setAttribute("page", page);
 		 request.setAttribute("rowsize", rowsize);
 		 request.setAttribute("block", block);
-		 request.setAttribute("totalMember", totalRestaurant);
+		 request.setAttribute("totalRestaurant", totalRestaurant);
 		 request.setAttribute("allPage", allPage);
 		 request.setAttribute("startNo", startNo);
 		 request.setAttribute("endNo", endNo);
 		 request.setAttribute("StartBlock", StartBlock);
 		 request.setAttribute("endBlock", endBlock);
+		 
 		 request.setAttribute("keyword", keyword);
 		 request.setAttribute("List", searchList);
 		
 		 ActionForward forward = new ActionForward();
 		 
 		 forward.setRedirect(false);
-		 forward.setPath("RestaurantList.jsp");
+		 forward.setPath("RestaurantSearchList.jsp");
 		
 		 return forward;
 		

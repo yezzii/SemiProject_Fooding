@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%
@@ -40,9 +40,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
 <link rel="stylesheet" media="screen" href="css/vendor.min.css" />
 <!-- Main Theme Styles + Bootstrap-->
-<link rel="stylesheet" media="screen" id="main-styles"
-	href="css/theme.min.css" />
+<link rel="stylesheet" media="screen" id="main-styles" href="css/theme.min.css" />
 <link rel="stylesheet" media="screen" href="css/Board_Main.css" />
+<link rel="stylesheet" media="screen" href="css/Member_Profile.css" />
 
 <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 
@@ -50,7 +50,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 </head>
 <!-- Body-->
 <body>
-	<%--   ======================================상단 네비바 <<START>>======================================= --%>
+<%--   ======================================상단 네비바 <<START>>======================================= --%>
 	<!-- Success toast -->
 	<div class="toast-container toast-top-center">
 		<div class="toast" role="alert" aria-live="assertive"
@@ -81,7 +81,24 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="toast-body text-warning">아이디 혹은 비밀번호를 확인해주세요.</div>
+			<div class="toast-body text-warning" >아이디 혹은 비밀번호를 확인해주세요.</div>
+		</div>
+	</div>
+	
+	<!-- 회원가입 카카오 toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail_kakao"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">회원가입이 필요합니다.</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning" id="toast_fail_kakao_div">추가정보를 입력하여 회원가입을 진행해주세요.</div>
 		</div>
 	</div>
 	<!--   ==============================  네비바  ================================= -->
@@ -145,8 +162,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											data-feather="lock"></i></span>
 									</div>
 									<input class="form-control" type="password"
-										id="signin-password" placeholder="비밀번호" aria-label="Password"
-										name="pwd" aria-describedby="signin-password-icon" required />
+										id="signin-password" placeholder="비밀번호"
+										aria-label="Password" name="pwd"
+										aria-describedby="signin-password-icon" required />
 									<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 								</div>
 							</div>
@@ -192,8 +210,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
 									name="member_pwdchk" id="signup-password-confirm"
-									placeholder="비밀번호 확인" aria-label="Confirm password" /> <span
-									class="feedback" id="signup-pwdconfirm-chk"></span>
+									placeholder="비밀번호 확인" aria-label="Confirm password" />
+								<span class="feedback" id="signup-pwdconfirm-chk"></span>
 								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
@@ -235,15 +253,16 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				</div>
 				<div class="text-center pt-4">
 					<input type="image" style="width: 320px;" id="kakaoAjax"
-						src="main_img/kakao_login.jpg" value="카카오 로그인 kakaoLogin();">
-					<br> <br> <a class="social-btn sb-facebook mx-2 mb-3"
-						href="https://www.facebook.com/" data-toggle="tooltip"
-						title="Facebook"><i class="flaticon-facebook"></i></a> <a
-						class="social-btn sb-google-plus mx-2 mb-3"
-						href="https://www.google.com/" data-toggle="tooltip"
-						title="Google"><i class="flaticon-google-plus"></i></a> <a
-						class="social-btn sb-twitter mx-2 mb-3"
-						href="https://twitter.com/" data-toggle="tooltip" title="Twitter"><i
+						src="main_img/kakao_login.jpg" 
+						value="카카오 로그인 kakaoLogin();"> <br>
+					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="https://www.facebook.com/"
+						data-toggle="tooltip" title="Facebook"><i
+						class="flaticon-facebook"></i></a> <a
+						class="social-btn sb-google-plus mx-2 mb-3" href="https://www.google.com/"
+						data-toggle="tooltip" title="Google"><i
+						class="flaticon-google-plus"></i></a> <a
+						class="social-btn sb-twitter mx-2 mb-3" href="https://twitter.com/"
+						data-toggle="tooltip" title="Twitter"><i
 						class="flaticon-twitter"></i></a>
 				</div>
 			</div>
@@ -255,9 +274,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title"
-				style="font-family: 'GmarketSansMedium'; font-size: 23px;">찜한
-				레스토랑</h3>
+			<h3 class="offcanvas-title" style="font-family:'GmarketSansMedium'; font-size: 23px; ">찜한 레스토랑</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -265,35 +282,35 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
-
+				
 				<div class="widget widget-featured-entries pt-3" id="marked-list">
-
-					<%--찜 목록 리스트 (가게정보 출력란) --%>
-
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="" width="64" alt="" /></a>
+				
+				<%--찜 목록 리스트 (가게정보 출력란) --%>
+				
+						<div class="media" >
+							<div class="featured-entry-thumb mr-3">
+								<a href="#"><img src="" width="64"
+									alt="" /></a>
+							</div>
+							<div class="media-body">
+								<h6 class="featured-entry-title">
+									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
+								</h6>
+								<p cxlass="featured-entry-meta">
+									<span class="text-muted"></span> 
+								</p>
+							</div>
 						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#"
-									style="font-family: 'GmarketSansMedium'; font-size: 18px;">찜한
-									가게 목록 불러오는중...</a>
-							</h6>
-							<p class="featured-entry-meta">
-								<span class="text-muted"></span>
-							</p>
-						</div>
-					</div>
-					<hr />
+				<hr />
 				</div>
 			</div>
 		</div>
 	</div>
-	<%--찜 목록 리스트 END  --%>
-
-
-
+			
+					<%--찜 목록 리스트 END  --%>
+					
+					
+					
 	<!-- Navbar Light-->
 	<header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
 		<div class="container-fluid navbar-inner">
@@ -437,29 +454,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							</div>
 						</div></li>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">예약</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Blog Layout</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
-											Right Sidebar</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Single Post Layout</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
-											No Sidebar</a></li>
-								</ul></li>
-						</ul></li>
 					<%
-					if (session.getAttribute("id") != null) {
-					%>
+										if (session.getAttribute("id") != null) {
+										%>
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle"
@@ -531,24 +528,22 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 					<%-- 프로필 정보란 --%>
 					<div class="navbar-btn navbar-collapse-hidden">
-						<div class="kakao_img mx-auto mb-1">
-							<a href="<%=request.getContextPath()%>/member_profile.do"> <img
-								class="profile_img"
-								src="${empty sessionScope.img ? Thumnail : sessionScope.img}">
-							</a>
-						</div>
-						<span class="mx-auto mb-1"
-							style="font-family: 'GmarketSansMedium'; font-size: 12px;"><%=name%>
-							님 </span> <img src="${profile }">
-					</div>
+               <div class="kakao_img mx-auto mb-1">
+                  <a href="<%=request.getContextPath()%>/member_profile.do"> <img
+                     class="profile_img" src="${empty sessionScope.img ? Thumnail : sessionScope.img}">
+                  </a>
+               </div>
+                  <span class="mx-auto mb-1" style="font-family:'GmarketSansMedium'; font-size: 12px; "><%=name%> 님 </span>
+               <img src="${profile }">
+            </div>
 
-					<%-- 프로필 정보란 --%>
-					<%
+						<%-- 프로필 정보란 --%>
+						<%
 					}
 					%>
+					</div>
 				</div>
 			</div>
-		</div>
 	</header>
 	<!--   ==============================  네비바  ================================= -->
 	<!-- Page Content-->
@@ -656,7 +651,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<ul class="nav nav-tabs d-none d-sm-flex">
 							<li class="nav-item"><a class="nav-link"
 								href="<%=request.getContextPath()%>/reservation_list.do"> <i
-									data-feather="shopping-bag"></i>&nbsp;예약내역</a></li>
+									data-feather="shopping-bag"></i>&nbsp;예약내역
+							</a></li>
 							<li class="nav-item" onclick="loadMark();"><a
 								class="nav-link" href="#offcanvas-cart" data-toggle="offcanvas">
 									<i data-feather="heart"></i> &nbsp;찜한 레스토랑 <span
@@ -1090,13 +1086,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<input name="member_pwd" type="text" class="phone"
 								placeholder="비밀번호">
 						</div>
-						<div align="right">
-							<button type="submit" class="btn btn-primary btn-md"
-								id="member_del">회원 탈퇴</button>
-						</div>
+
 					</div>
 
-				</form>
+					<button type="submit" class="btn btn-primary btn-md"
+						id="member_del">회원 탈퇴</button>
+			</form>
 			</div>
 		</div>
 	</div>

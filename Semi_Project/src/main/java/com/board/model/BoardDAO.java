@@ -318,7 +318,7 @@ public class BoardDAO {
 
 	}
 
-	public int getBoardCount() {
+	public int getReviewBoardCount() {
 
 		int count = 0;
 
@@ -327,6 +327,28 @@ public class BoardDAO {
 			sql = "select count(*) from board where board_type = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, 1);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}// getBoardCount() end
+	
+	public int getFreeBoardCount() {
+		
+		int count = 0;
+		
+		try {
+			openConn();
+			sql = "select count(*) from board where board_type = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 0);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				count = rs.getInt(1) + 1;
