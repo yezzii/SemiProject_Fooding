@@ -11,6 +11,7 @@ import com.boardMain.model.Board_MainDAO;
 import com.boardMain.model.Board_MainDTO;
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
+import com.reservation.model.ReservationDAO;
 
 public class MemberProfileAction implements Action {
 
@@ -39,7 +40,10 @@ public class MemberProfileAction implements Action {
       // 가게정보 수정 액션 페이지
       Board_MainDAO a = Board_MainDAO.getInstance();
       int main_idx = a.getBoardidx(storenum);
-      
+  
+      ReservationDAO booking = ReservationDAO.getInstance();
+      int total_booking = booking.getReservationCount(id);
+      request.setAttribute("total_booking", total_booking);
       
       Board_MainDTO dto  = a.getBoardMainSelect(main_idx);
       request.setAttribute("boardmain", dto);

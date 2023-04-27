@@ -155,7 +155,7 @@ public class ReservationDAO {
 		return count;
 	}// getBoardCount() end
 
-	public List<ReservationDTO> reservation_list(int page, int rowsize, String mem_id) {
+	public List<ReservationDTO> reservation_list(int page, int rowsize, int main_idx) {
 
 		List<ReservationDTO> list = new ArrayList<ReservationDTO>();
 
@@ -168,10 +168,10 @@ public class ReservationDAO {
 		try {
 			openConn();
 
-			sql = "select * from (select row_number() over (order by d_day) rnum ,b.* from reservation b where member_id = ?) a where rnum between ? and ?";
+			sql = "select * from (select row_number() over (order by d_day) rnum ,b.* from reservation b where main_idx = ?) a where rnum between ? and ?";
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setString(1, mem_id);
+			pstmt.setInt(1, main_idx);
 
 			pstmt.setInt(2, startNo);
 
@@ -215,6 +215,61 @@ public class ReservationDAO {
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, mem_id);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			System.out.println(count);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}// getBoardCount() end
+
+	
+	// 가게의 전예약 카운트
+	public int getStoreReservationCount(int main_idx) {
+		int count = 0;
+
+		try {
+			openConn();
+			sql = "select count(*) from reservation where main_idx = ? order by d_day desc";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, main_idx);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			System.out.println(count);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}// getBoardCount() end
+
+	public int getOverStoreReservationCount(int main_idx) {
+		
+		int count = 0;
+		try {
+			openConn();
+			
+			sql = "select count(*) from reservation where main_idx = ? and d_day > now() order by d_day desc";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, main_idx);
 
 			rs = pstmt.executeQuery();
 

@@ -294,13 +294,14 @@ public class Board_MainDAO {
 		openConn();
 
 		try {
-			sql = "SELECT * FROM ( SELECT ROW_NUMBER() OVER "
-		               + "(ORDER BY main_idx) AS rnum, bm.*, mm.* FROM "
-		               + "board_main bm INNER JOIN main_menu mm ON "
-		               + "bm.main_idx = mm.rst_no WHERE bm.main_name LIKE ?"
-		               + " OR bm.main_type LIKE ? OR bm.main_addr LIKE ?"
-		               + " OR bm.main_thema LIKE ? OR mm.menu_name LIKE ? )"
-		               + " AS sub WHERE sub.rnum BETWEEN ? AND ? group by main_idx";
+			sql = "SELECT sub.*"
+					+ "FROM ("
+					+ "    SELECT ROW_NUMBER() OVER (ORDER BY bm.main_idx) AS rnum, bm.*, mm.*"
+					+ "    FROM board_main bm "
+					+ "    INNER JOIN main_menu mm ON bm.main_idx = mm.rst_no"
+					+ "    WHERE bm.main_name LIKE ? OR bm.main_type LIKE ? OR bm.main_addr LIKE ? OR bm.main_thema LIKE ? OR mm.menu_name LIKE ?"
+					+ "    GROUP BY bm.main_idx"
+					+ ") AS sub WHERE sub.rnum BETWEEN ? AND ?";
 			
 			pstmt = con.prepareStatement(sql);
 
@@ -333,7 +334,8 @@ public class Board_MainDAO {
 				dto.setMain_img(rs.getString("main_img"));// 15
 				dto.setMenu_name(rs.getString("menu_name"));
 				dto.setMenu_price(rs.getInt("menu_price"));
-
+				
+				
 				searchList.add(dto);
 			}
 		} catch (SQLException e) {

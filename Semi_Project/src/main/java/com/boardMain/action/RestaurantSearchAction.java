@@ -44,9 +44,10 @@ public class RestaurantSearchAction implements Action {
 		
 		int endNo = (page * rowsize);
 		
-		int StartBlock = (((page-1)/block) * block) +1;
-		
-		int endBlock = (((page-1)/ block)*block)+block;
+		// 해당 페이지에서 시작 블럭
+		int startBlock = (((page - 1) / block) * block) + 1;
+		// 해당 페이지에서 마지막 블럭
+		int endBlock = (((page - 1) / block) * block) + block;
 		
 		Board_MainDAO dao = Board_MainDAO.getInstance();
 		
@@ -73,7 +74,7 @@ public class RestaurantSearchAction implements Action {
 		 request.setAttribute("allPage", allPage);
 		 request.setAttribute("startNo", startNo);
 		 request.setAttribute("endNo", endNo);
-		 request.setAttribute("StartBlock", StartBlock);
+		 request.setAttribute("startBlock", startBlock);
 		 request.setAttribute("endBlock", endBlock);
 		 
 		 request.setAttribute("keyword", keyword);

@@ -690,7 +690,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							<thead>
 								<tr align="center">
 									<th>예약번호</th>
-									<th>가게이름</th>
+									<th>예약자명</th>
 									<th>요청사항</th>
 									<th>인원</th>
 									<th>예약날짜</th>
@@ -703,8 +703,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									<c:if test="${booking.getD_day() < now }">
 										<tr align="center">
 											<td>${booking.getBooking_idx() }</td>
-											<td><a class="nav-link-inline" href="total_main_search.do?keyword=${booking.getStore_name() }"
-												>${booking.getStore_name() }</a></td>
+											<td>${booking.getMember_id() }</td>
 											<td>${booking.getRequest_text() }</td>
 											<td>${booking.getMember_cnt() }명</td>
 											<td>${booking.getD_day().substring(2,11) }&nbsp;${booking.getD_day().substring(11,13) }시
@@ -715,8 +714,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									<c:if test="${booking.getD_day() > now }">
 										<tr align="center">
 											<td>${booking.getBooking_idx() }</td>
-											<td><a class="nav-link-inline" href="#order-details"
-												data-toggle="modal">${booking.getStore_name() }</a></td>
+											<td>${booking.getMember_id() }</td>
 											<td>${booking.getRequest_text() }</td>
 											<td>${booking.getMember_cnt() }명</td>
 											<td>${booking.getD_day().substring(2,11) }&nbsp;${booking.getD_day().substring(11,13) }시

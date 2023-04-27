@@ -611,13 +611,17 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 				<br>
 
+				<c:set var="loginMemId" value='<%=session.getAttribute("id")%>' />
 				<!-- Solid button group -->
 				<div class="btn-group10" role="group"
 					aria-label="Solid button group" align="center">
+					<c:if test="${loginMemId == dto.getBoard_writer()}">
 					<button type="button" class="btn btn-primary"
 						onclick="location.href='<%=request.getContextPath() %>/board_delete.do?no=${dto.getBoard_idx()}&type=${dto.getBoard_type() }'">삭제</button>
 					<button type="button" class="btn btn-primary"
 						onclick="location.href='<%=request.getContextPath() %>/board_modify.do?no=${dto.getBoard_idx()}'">수정</button>
+					</c:if>
+					
 					<button type="button" class="btn btn-primary"
 						onclick="history.back()">목록</button>
 				</div>

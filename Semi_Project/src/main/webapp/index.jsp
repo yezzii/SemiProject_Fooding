@@ -855,9 +855,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">가게
 											검색</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">가게 등록(사장님)</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="LoadRestaurantList.do"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">가격으로 검색</span></a></li>

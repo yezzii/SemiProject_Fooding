@@ -1020,8 +1020,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 		<!-- Pagination-->
 		<nav aria-label="Page navigation">
-			<ul
-				class="pagination justify-content-center justify-content-sm-center mb-0">
+			<ul class="pagination justify-content-center justify-content-sm-center mb-0">
 				<li class="page-item"><a class="page-link"
 					href="total_main_search.do?page=1&keyword=${keyword }">처음</a></li>
 				<li class="page-item"><a class="page-link"

@@ -813,12 +813,14 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 											<c:set var="opentime" value="${detail.getMain_opentime()}" />
 											<c:set var="endtime" value="${detail.getMain_endtime()}" />
+											<c:set var="now" value="<%=java.time.LocalDate.now()%>" />
+											
 											<div class="form-group">
 												<div class="form-inline pb-3" style="float: left;">
 													<input class="form-control" type="date"
 														id="resvation_date${detail.getMain_idx()}"
-														name="resvation_date" min="<%=java.time.LocalDate.now()%>"
-														value="<%=java.time.LocalDate.now()%>">
+														name="resvation_date" min="${now}"
+														value="${now}">
 												</div>
 												<div class="form-inline pb-3" style="float: left;">
 													<select class="form-control custom-select"
@@ -828,8 +830,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 														<c:forEach var="res_time"
 															begin="${fn:substring(opentime,0,2)}"
 															end="${fn:substring(endtime,0,2)}">
-															<option value="${res_time}:${fn:substring(opentime,3,5)}">${res_time}
-																: ${fn:substring(opentime,3,5)}</option>
+															
+															<option value="${res_time}:${fn:substring(now,0,10)}">${res_time} : ${fn:substring(opentime,3,5)}</option>
+															
 														</c:forEach>
 
 													</select>
@@ -915,7 +918,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										<div class="input-group starInsert-idx">
 											<input type="hidden" id="detail_idx"
 												value="${detail.getMain_idx()}">
-											<textarea name="review" class="form-control"
+											<textarea name="review" class="form-control" style="resize: none; background-color: transparent;"
 												id="reviewContents${detail.getMain_idx()}"
 												placeholder="리뷰 작성"></textarea>
 

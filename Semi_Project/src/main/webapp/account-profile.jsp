@@ -551,7 +551,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 
 
-
+<c:set var="main" value="${boardmain }" />
 	<div class="container pt-lg-3 pb-5 mb-sm-3">
 
 		<form method="post" enctype="multipart/form-data"
@@ -642,11 +642,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						<li class="pb-1"><span class="opacity-80">&ndash; 회원
 								가입일 :</span><span class="font-weight-semibold ml-1">${dto.getMember_joindate().substring(0,10) }</span></li>
 						<li class="pb-1"><span class="opacity-80">&ndash; 총 예약
-								:</span><span class="font-weight-semibold ml-1">${totalReservation}</span></li>
+								:</span><span class="font-weight-semibold ml-1">${total_booking} 회</span></li>
 
 					</ul>
 					<!-- Navigation (visible sm-up)-->
-
 					<c:if test="${dto.getMember_type() != 2}">
 						<ul class="nav nav-tabs d-none d-sm-flex">
 							<li class="nav-item"><a class="nav-link"
@@ -668,11 +667,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<c:if test="${dto.getMember_type() == 2}">
 						<ul class="nav nav-tabs d-none d-sm-flex">
 							<li class="nav-item"><a class="nav-link"
-								href="account-orders.html"> <i data-feather="shopping-bag"></i>&nbsp;
-									가게 예약 현황 <span
-									class="badge badge-pill badge-secondary bg-0 border ml-2">
-										<span class="text-primary">1</span>
-								</span></a></li>
+								href="reservation_store_list.do?main_idx=${main.getMain_idx() }"> <i data-feather="shopping-bag"></i>&nbsp;
+									가게 예약 현황</a></li>
 							<li class="nav-item"><a class="nav-link" data-toggle="modal"
 								href="#modalLong"> <i data-feather="shopping-bag"></i>&nbsp;가게
 									등록 <span
@@ -876,7 +872,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	<!-- modal end -->
 
 	<!-- 가게 수정 Modal markup -->
-	<c:set var="main" value="${boardmain }" />
 	<div class="modal" tabindex="-1" role="dialog" id="Board_MainModify">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
