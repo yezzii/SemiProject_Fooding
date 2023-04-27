@@ -1,6 +1,4 @@
 
-
-
 $(function () {
 
   $("#kakaoAjax").on("click", function () {
@@ -22,9 +20,7 @@ $(function () {
 
         //2. 로그인 성공시, API 호출
         Kakao.API.request({
-			
           url: '/v2/user/me',
-          
           success: function (response) {
             console.log(response)   //json형식 >> String 변환 후 벨류값을 변수에 넣어서 이걸 db로 넣어서 회원관리하기.
 
@@ -42,60 +38,48 @@ $(function () {
                 member_email : email, 
                 thumbnail : thumbnail
               },
-              
               dataType: "json",
-              
               success: function (data) {
-				  
                 if (data.result == 1) {
-					
                console.log(data.name);
-               
                   toast_success_div.text(data.name + " 님 다시 오신걸 환영합니다.")
                   success_toast.toast("show");
-                  
                   setTimeout(function () {
-					  
                     location.reload();
-                    
                   }, 2000);
                 } else if(data.result == 0){
-					console.log("result:"+data.result);
+               console.log("result:"+data.result);
                   toast_fail_kakao_div.text(data.name + " 님 추가정보를 입력하여 회원가입을 진행해주세요!")
                  kakao_fail_toast.toast("show");
                   setTimeout(function () {
                   
-					     $.ajax({
-						        url: "member_kakao_join.jsp",
-						        method: "POST",
-						        data: {
-						          member_token: data.member_token,
-						          member_name: data.member_name,
-						          member_email: data.member_email,
-						          member_thumnail: data.member_thumnail,
-						          alert: data.alert
-						        },
-						        success: function() {
-						          window.location = "member_kakao_join.jsp";
-						        },
-						        error: function (jqXHR, textStatus, errorThrown) {
-						          alert("서버 오류: " + jqXHR);
-						        }
-						      });
+                    $.ajax({
+                          url: "member_kakao_join.jsp",
+                          method: "POST",
+                          data: {
+                            member_token: data.member_token,
+                            member_name: data.member_name,
+                            member_email: data.member_email,
+                            member_thumnail: data.member_thumnail,
+                            alert: data.alert
+                          },
+                          success: function() {
+                            window.location = "member_kakao_join.jsp";
+                          },
+                          error: function (jqXHR, textStatus, errorThrown) {
+                            alert("서버 오류: " + jqXHR);
+                          }
+                        });
 
 
                   }, 2000);
-				}else{
+            }else{
                   fail_toast.toast("show");
-                  
                 }
               },
-              
               error: function (jqXHR, textStatus, errorThrown) {
-                alert("서버 오류: " + jqXHR + "\n textStatus : " + textStatus + "\n errorThrown : " + errorThrown);
-                
+                alert("서버 오류: " + jqXHR);
               }
-              
             });
 
 
@@ -111,5 +95,4 @@ $(function () {
     })
   });
 });
-
 
