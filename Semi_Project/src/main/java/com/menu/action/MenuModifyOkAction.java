@@ -25,7 +25,7 @@ public class MenuModifyOkAction implements Action {
 		MenuDTO dto = new MenuDTO();
 		
 		String saveFolder = 
-				"D:\\workspace(WEB)\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp4\\wtpwebapps\\Semi_Project\\Main_menu_img";
+				"/home/tomcat/apache-tomcat-9.0.74/webapps/Semi_Project/Main_menu_img";
 		
 		int fileSize = 10 * 1024 * 1024;
 		

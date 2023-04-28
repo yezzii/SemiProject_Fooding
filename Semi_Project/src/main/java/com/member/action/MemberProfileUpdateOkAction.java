@@ -25,7 +25,7 @@ public class MemberProfileUpdateOkAction implements Action {
 		MemberDTO dto = new MemberDTO();
 		
 		String saveFolder = 
-				"D:\\workspace(WEB)\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp4\\wtpwebapps\\Semi_Project\\Member_profile";
+				"/home/tomcat/apache-tomcat-9.0.74/webapps/Semi_Project/Member_profile";
 		
 		int fileSize = 10 * 1024 * 1024;
 		

@@ -100,7 +100,7 @@ public class MemberDAO {
 
 		try {
 
-			sql = "select max(member_idx) from member";
+			sql = "select max(member_no) from member";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -142,7 +142,7 @@ public class MemberDAO {
 
 		try {
 
-			sql = "select max(*) from member";
+			sql = "select max(member_no) from member";
 
 			pstmt = con.prepareStatement(sql);
 
