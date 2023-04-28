@@ -155,7 +155,7 @@ public class ReservationDAO {
 		return count;
 	}// getBoardCount() end
 
-	public List<ReservationDTO> reservation_list(int page, int rowsize, int main_idx) {
+	public List<ReservationDTO> reservation_list(int page, int rowsize, String mem_id) {
 
 		List<ReservationDTO> list = new ArrayList<ReservationDTO>();
 
@@ -168,10 +168,10 @@ public class ReservationDAO {
 		try {
 			openConn();
 
-			sql = "select * from (select row_number() over (order by d_day) rnum ,b.* from reservation b where main_idx = ?) a where rnum between ? and ?";
+			sql = "select * from (select row_number() over (order by d_day) rnum ,b.* from reservation b where mem_id = ?) a where rnum between ? and ?";
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, main_idx);
+			pstmt.setString(1, mem_id);
 
 			pstmt.setInt(2, startNo);
 
@@ -202,6 +202,55 @@ public class ReservationDAO {
 			closeConn(rs, pstmt, con);
 		}
 
+		return list;
+	}
+	public List<ReservationDTO> store_reservation_list(int page, int rowsize, int main_idx) {
+		
+		List<ReservationDTO> list = new ArrayList<ReservationDTO>();
+		
+		ReservationDTO dto = null;
+		
+		int startNo = (page * rowsize) - (rowsize - 1);
+		
+		int endNo = (page * rowsize);
+		
+		try {
+			openConn();
+			
+			sql = "select * from (select row_number() over (order by d_day) rnum ,b.* from reservation b where main_idx = ?) a where rnum between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, main_idx);
+			
+			pstmt.setInt(2, startNo);
+			
+			pstmt.setInt(3, endNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				dto = new ReservationDTO();
+				
+				dto.setBooking_idx(rs.getInt("booking_idx"));
+				dto.setD_day(rs.getString("d_day"));
+				dto.setDate(rs.getString("date"));
+				dto.setMain_idx(rs.getInt("main_idx"));
+				dto.setMember_cnt(rs.getInt("member_cnt"));
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setRequest_text(rs.getString("request_text"));
+				dto.setStore_name(rs.getString("store_name"));
+				
+				list.add(dto);
+			}
+			System.out.println(list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
 		return list;
 	}
 

@@ -67,7 +67,7 @@ public class ListStoreReservationAction implements Action {
 		
 		List<ReservationDTO> StoreReservationList = new ArrayList<ReservationDTO>();
 		
-		StoreReservationList = dao.reservation_list(page, rowsize, main_idx);
+		StoreReservationList = dao.store_reservation_list(page, rowsize, main_idx);
 		
 		request.setAttribute("page", page);
 		request.setAttribute("allPage", allpage);
