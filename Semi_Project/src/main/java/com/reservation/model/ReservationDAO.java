@@ -168,7 +168,7 @@ public class ReservationDAO {
 		try {
 			openConn();
 
-			sql = "select * from (select row_number() over (order by d_day) rnum ,b.* from reservation b where mem_id = ?) a where rnum between ? and ?";
+			sql = "select * from (select row_number() over (order by d_day) rnum ,b.* from reservation b where member_id = ?) a where rnum between ? and ?";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, mem_id);
