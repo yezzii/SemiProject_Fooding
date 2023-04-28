@@ -204,6 +204,8 @@ public class ReservationDAO {
 
 		return list;
 	}
+	
+	
 	public List<ReservationDTO> store_reservation_list(int page, int rowsize, int main_idx) {
 		
 		List<ReservationDTO> list = new ArrayList<ReservationDTO>();

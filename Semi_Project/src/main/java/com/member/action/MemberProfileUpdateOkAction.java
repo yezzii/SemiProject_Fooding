@@ -83,6 +83,15 @@ public class MemberProfileUpdateOkAction implements Action {
 		PrintWriter out = response.getWriter();
 			
 			if(check > 0) {
+				
+				session.removeAttribute("Thumnail");
+	            session.removeAttribute("Thumbnail");
+	            session.removeAttribute("thumbnail");
+	            session.removeAttribute("thumnail");
+	            session.removeAttribute("img");
+	            session.setAttribute("Thumnail", dto.getMember_image());
+	            session.setAttribute("img", dto.getMember_image());
+	            
 				out.println("<script>");
 				out.println("alert('회원 정보 수정 완료')");
 				out.println("location.href='member_profile.do?uno="+member_id+"'");

@@ -24,7 +24,7 @@ public class Board_mainInsertAction implements Action {
 		
 		Board_MainDTO dto = new Board_MainDTO();
 		
-		String saveFolder = "C:\\Users\\rnjsd\\Documents\\GitHub\\Semi_project\\Semi_Project\\src\\main\\webapp\\Board_Main_img";
+		String saveFolder = "C:\\Users\\ll001\\Documents\\GitHub\\Semi_project\\Semi_Project\\src\\main\\webapp\\Board_Main_img";
 		
 		int fileSize = 10*1024*1024; //10MB
 		
