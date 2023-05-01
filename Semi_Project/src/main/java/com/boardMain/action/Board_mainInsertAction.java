@@ -3,7 +3,6 @@ package com.boardMain.action;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +24,7 @@ public class Board_mainInsertAction implements Action {
 		
 		Board_MainDTO dto = new Board_MainDTO();
 		
-		String saveFolder = "C:\\Users\\rnjsd\\Documents\\GitHub\\Semi_project\\Semi_Project\\src\\main\\webapp\\Board_Main_img";
+		String saveFolder = "/home/tomcat/apache-tomcat-9.0.74/webapps/Semi_Project/Board_Main_img";
 		
 		int fileSize = 10*1024*1024; //10MB
 		

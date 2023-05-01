@@ -67,7 +67,7 @@ public class RestaurantListAction implements Action {
 		request.setAttribute("endBlock", endBlock);
 		
 		request.setAttribute("List", MainList);
-		
+	
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);

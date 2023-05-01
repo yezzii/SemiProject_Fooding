@@ -8,6 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.boardMain.model.Board_MainDTO;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+
+
 public class MemberDAO {
 
 	Connection con = null;
@@ -38,6 +45,7 @@ public class MemberDAO {
 		}
 
 		return instance;
+		
 	} // getInstance() 메서드 end
 
 	// DB를 연동하는 작업을 진행하는 메서드.
@@ -46,7 +54,7 @@ public class MemberDAO {
 
 		String user = "web";
 
-		String password = "12345678";
+		String password = "tpalvmfhwprxm1010";
 
 		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
@@ -62,6 +70,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	} // openConn() 메서드 end
+
 
 	// DB에 연결되어 있던 자원 종료하는 메서드.
 	public void closeConn(ResultSet rs, PreparedStatement pstmt, Connection con) {
@@ -91,7 +100,7 @@ public class MemberDAO {
 
 		try {
 
-			sql = "select max(*) from member";
+			sql = "select max(member_no) from member";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -133,7 +142,7 @@ public class MemberDAO {
 
 		try {
 
-			sql = "select max(*) from member";
+			sql = "select max(member_no) from member";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -187,7 +196,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println(rs.getString("member_id"));
+
 				dto = new MemberDTO();
 
 				dto.setMember_id(rs.getString("member_id"));
@@ -195,6 +204,9 @@ public class MemberDAO {
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_name(rs.getString("member_name"));
 				dto.setMember_type(rs.getInt("member_type"));
+				dto.setMember_joindate(rs.getString("member_joindate"));
+				dto.setMember_storenum(rs.getString("member_storenum"));
+				dto.setMember_image(rs.getString("member_image"));
 			}
 
 		} catch (SQLException e) {
@@ -292,7 +304,7 @@ public class MemberDAO {
 
 			pstmt.setInt(2, no);
 
-			int result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -329,9 +341,7 @@ public class MemberDAO {
 		return count;
 	} // getBoardCount 메서드 end
 
-	// board 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드
-
-	// board 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
+	// member 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메서드.
 	public List<MemberDTO> getMemberList(int page, int rowsize) {
 
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
@@ -387,7 +397,7 @@ public class MemberDAO {
 		try {
 			openConn();
 
-			sql = "select count(member_id) from member where member_id = ?";
+			sql = "select * from member where member_id = ?";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -397,7 +407,7 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				res = -1;
-			}else {
+			} else {
 				res = 1;
 			}
 
@@ -667,7 +677,7 @@ public class MemberDAO {
 			}
 
 			sql = "insert into member(member_id, member_name, member_pwd, member_email, member_phone,"
-					+ " member_type,member_no,member_token) values(?,?,?,?,?,?,?,?)";
+					+ " member_type,member_no,member_token,member_storenum) values(?,?,?,?,?,?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -679,6 +689,7 @@ public class MemberDAO {
 			pstmt.setInt(6, dto.getMember_type());
 			pstmt.setInt(7, count + 1);
 			pstmt.setString(8, dto.getMember_token());
+			pstmt.setString(9, dto.getMember_storenum());
 
 			result = pstmt.executeUpdate();
 
@@ -721,6 +732,9 @@ public class MemberDAO {
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_name(rs.getString("member_name"));
 				dto.setMember_type(rs.getInt("member_type"));
+				dto.setMember_joindate(rs.getString("member_joindate"));
+				dto.setMember_image(rs.getString("member_image"));
+				
 			}
 
 		} catch (SQLException e) {
@@ -783,11 +797,11 @@ public class MemberDAO {
 				dto.setMember_email(rs.getString("member_email"));
 				dto.setMember_phone(rs.getString("member_phone"));
 				dto.setMember_account(rs.getInt("member_account"));
-				dto.setMember_mark(rs.getString("member_mark"));
 				dto.setMember_storenum(rs.getString("member_storenum"));
 				dto.setMember_type(rs.getInt("member_type"));
 				dto.setMember_token(rs.getString("member_token"));
 				dto.setMember_joindate(rs.getString("member_joindate"));
+				dto.setMember_image(rs.getString("member_image"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -797,5 +811,290 @@ public class MemberDAO {
 		}
 		return dto;
 	}// end
+	
+	
+	
+	
+	
+	public int checkMarking(MemberMarkDTO dto) {
+
+		openConn();
+
+		int result = 0;
+
+		try {
+
+			sql = "select * from member_marking where marked_storeidx = ? and mem_id = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1, dto.getMarked_storeidx());
+			pstmt.setString(2, dto.getMem_id());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+
+				result = 1;
+			} else {
+				result = 0;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
+
+	public int addMarking(MemberMarkDTO dto) {
+
+		openConn();
+
+		int count = 0;
+
+		int result = 0;
+
+
+		try {
+
+				sql = "select max(idx) from member_marking";
+
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					count = rs.getInt(1) + 1;
+				}
+
+				sql = "insert into member_marking value(?,?,?)";
+
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setInt(1, count);
+				pstmt.setString(2, dto.getMem_id());
+				pstmt.setInt(3, dto.getMarked_storeidx());
+
+				result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
+
+	public int deleteMarking(MemberMarkDTO dto) {
+
+		openConn();
+
+		int result = 0;
+
+		try {
+			
+			sql = "delete from member_marking where mem_id = ? and marked_storeidx = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getMem_id());
+			
+			pstmt.setInt(2, dto.getMarked_storeidx());
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
+	
+	
+	public void updateSequence(int num) {
+		
+		try {
+			openConn();
+			
+			sql = "update member_marking set idx = idx - 1 where idx > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+	}  // updateSequence() 메서드 end
+	
+	
+	
+
+	public int updateProfileMember(MemberDTO dto) {
+		// 마이페이지에 있는 회원의 정보수정을 하는 메서드
+		int result = 0;
+
+		try {
+			openConn();
+			sql = "select * from member where member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getMember_id());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				if (dto.getMember_image() == null) {
+					sql = "update member set member_pwd = ?, member_email = ?, member_phone = ? where member_id = ? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getMember_pwd());
+					pstmt.setString(2, dto.getMember_email());
+					pstmt.setString(3, dto.getMember_phone());
+					pstmt.setString(4, dto.getMember_id());
+				} else {
+					sql = "update member set member_pwd = ?, member_email = ?, member_phone = ?,member_image = ? where member_id = ? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getMember_pwd());
+					pstmt.setString(2, dto.getMember_email());
+					pstmt.setString(3, dto.getMember_phone());
+					pstmt.setString(4, dto.getMember_image());
+					pstmt.setString(5, dto.getMember_id());
+				}
+
+				result = pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}// updateProfileMember() 메서드 end
+
+	public List<MemberMarkDTO> loadMark(String id) {
+		
+		List<MemberMarkDTO> list = new ArrayList<MemberMarkDTO>();
+		
+		openConn();
+		
+		sql = "select * from member_marking where mem_id = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberMarkDTO dto = new MemberMarkDTO();
+				
+				dto.setIdx(rs.getInt("idx"));
+				dto.setMem_id(rs.getString("mem_id"));
+				dto.setMarked_storeidx(rs.getInt("marked_storeidx"));
+				
+				list.add(dto);
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	public List<Board_MainDTO> loadMarkRst(String member_id) {
+	    List<Board_MainDTO> list = new ArrayList<Board_MainDTO>();
+	    openConn();
+
+	    try {
+	        // 첫 번째 쿼리 실행
+	        String sql = "SELECT board_main.main_idx FROM board_main " +
+	                     "INNER JOIN member_marking ON " +
+	                     "member_marking.marked_storeidx = board_main.main_idx " +
+	                     "WHERE member_marking.mem_id = ?";
+	        PreparedStatement pstmt1 = con.prepareStatement(sql);
+	        pstmt1.setString(1, member_id);
+	        ResultSet rs1 = pstmt1.executeQuery();
+
+	        List<Integer> mainIdxList = new ArrayList<Integer>();
+	        while(rs1.next()) {
+	            mainIdxList.add(rs1.getInt("main_idx"));
+	        }
+	        rs1.close();
+	        pstmt1.close();
+
+	        // 두 번째 쿼리 실행
+	        for(int main_idx : mainIdxList) {
+	            Board_MainDTO dto = new Board_MainDTO();
+	            sql = "SELECT * FROM board_main WHERE main_idx = ?";
+	            PreparedStatement pstmt2 = con.prepareStatement(sql);
+	            pstmt2.setInt(1, main_idx);
+	            ResultSet rs2 = pstmt2.executeQuery();
+
+	            if(rs2.next()) {
+	                dto.setMain_idx(rs2.getInt("main_idx"));
+	                dto.setMain_name(rs2.getString("main_name"));
+	                dto.setMain_type(rs2.getString("main_type"));
+	                dto.setMain_info(rs2.getString("main_info"));
+	                dto.setMain_opentime(rs2.getString("main_opentime"));
+	                dto.setMain_endtime(rs2.getString("main_endtime"));
+	                dto.setMain_post(rs2.getString("main_post"));
+	                dto.setMain_addr(rs2.getString("main_addr"));
+	                dto.setMain_detailaddr(rs2.getString("main_detailaddr"));
+	                dto.setMain_phone(rs2.getString("main_phone"));
+	                dto.setMain_location(rs2.getString("main_location"));
+	                dto.setMain_memid(rs2.getString("main_memid"));
+	                dto.setMain_storenum(rs2.getString("main_storenum"));
+	                dto.setMain_thema(rs2.getString("main_thema"));
+	                dto.setMain_img(rs2.getString("main_img"));
+	                list.add(dto);
+	            }
+
+	            rs2.close();
+	            pstmt2.close();
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	    	closeConn(rs, pstmt, con);
+	    }
+
+	    return list;
+	}
+
+	 public int markCount(String member_id) {
+		 	
+		 	openConn();
+
+			int count = 0;
+
+			try {
+
+					sql = "select count(idx) from member_marking where mem_id = ?";
+
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, member_id);
+					
+					rs = pstmt.executeQuery();
+
+					if (rs.next()) {
+						count = rs.getInt(1);
+					}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return count;
+		}
 
 }

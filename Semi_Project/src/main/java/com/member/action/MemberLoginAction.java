@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 import com.member.model.MemberDAO;
 import com.member.model.MemberDTO;
 
@@ -19,12 +21,20 @@ public class MemberLoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException ,ServletException {
 
+		response.setContentType("application/json;charset=UTF-8");
+		//한글처리 작업 진행.
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		
 		MemberDAO dao = MemberDAO.getInstance();
 		
 		String id = request.getParameter("id");
 		String Raw_pwd = request.getParameter("pwd");
 		String pwd = Encryption.encodeSha256(Raw_pwd);
-		String basic_thumnail = "main_img/user.png";
+		String basic_thumnail = "main_img/basic_thumnail.png";
+		
+		int result = 0;
 		
 		HttpSession session = request.getSession();
 
@@ -39,28 +49,43 @@ public class MemberLoginAction implements Action {
 			if (memdto.getMember_type() == 0) {
 				
 				session.setAttribute("id", memdto.getMember_id());
+				session.setAttribute("email", memdto.getMember_email());
+				session.setAttribute("phone", memdto.getMember_phone());
 				session.setAttribute("name", memdto.getMember_name());
 				session.setAttribute("type", memdto.getMember_type());
+				session.setAttribute("date", memdto.getMember_joindate());
+				session.setAttribute("img", memdto.getMember_image());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
-				out.println("<script>");
-				out.println("alert('" + session.getAttribute("name") + " 관리자님 오늘도 환영합니다.')");
-				out.println("location.href='index.jsp'");
-				out.println("</script>");
+				result = 1;
 				
-			} else if (memdto.getMember_type() == 1) {
+				JSONObject jsonObj = new JSONObject();
+				 
+				jsonObj.put("result", result);
+				jsonObj.put("name", memdto.getMember_name());
+				
+				out.println(jsonObj);
+				
+				
+			} else if (memdto.getMember_type() == 1 || memdto.getMember_type() == 3) {
 
 				session.setAttribute("id", memdto.getMember_id());
 				session.setAttribute("email", memdto.getMember_email());
 				session.setAttribute("phone", memdto.getMember_phone());
 				session.setAttribute("name", memdto.getMember_name());
 				session.setAttribute("type", memdto.getMember_type());
+				session.setAttribute("date", memdto.getMember_joindate());
+				session.setAttribute("img", memdto.getMember_image());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
-				out.println("<script>");
-				out.println("alert('" + session.getAttribute("name") + " 회원님 다시 오신걸 환영합니다.')");
-				out.println("location.href='index.jsp'");
-				out.println("</script>");
+				result = 1;
+				
+				JSONObject jsonObj = new JSONObject();
+				 
+				jsonObj.put("result", result);
+				jsonObj.put("name", memdto.getMember_name());
+				
+				out.println(jsonObj);
 
 			} else if (memdto.getMember_type() == 2) {
 
@@ -70,21 +95,30 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("name", memdto.getMember_name());
 				session.setAttribute("type", memdto.getMember_type());
 				session.setAttribute("storenum", memdto.getMember_storenum());
+				session.setAttribute("date", memdto.getMember_joindate());
+				session.setAttribute("img", memdto.getMember_image());
 				session.setAttribute("Thumnail", basic_thumnail);
 				
-				out.println("<script>");
-				out.println("alert('" + session.getAttribute("name") + " 사장님 다시 오신걸 환영합니다.')");
-				out.println("location.href='index.jsp'");
-				out.println("</script>");
+
+				result = 1;
+				
+				JSONObject jsonObj = new JSONObject();
+				 
+				jsonObj.put("result", result);
+				jsonObj.put("name", memdto.getMember_name());
+				
+				out.println(jsonObj);
+
 			}
 		}else {
 			
-				out.println("<script>");
-				out.println("alert('아이디 및 비밀번호를 확인해주세요')");
-				out.println("history.back()");
-				out.println("</script>");
+			result = -1;
+			
+			out.println(result + "");
 			
 		}
+		
+		out.close();
 
 		return null;
 	}

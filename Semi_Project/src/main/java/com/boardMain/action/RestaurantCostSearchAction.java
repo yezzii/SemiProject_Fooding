@@ -9,10 +9,8 @@
 
 	import com.Restaurant.model.RtDTO;
 	import com.boardMain.model.Board_MainDAO;
-	import com.boardMain.model.Board_MainDTO;
 	import com.member.action.Action;
 	import com.member.action.ActionForward;
-	import com.member.model.MemberDAO;
 
 	public class RestaurantCostSearchAction implements Action {
 
@@ -24,6 +22,7 @@
 			int costMin = Integer.parseInt(request.getParameter("min").trim());
 			int costMax = Integer.parseInt(request.getParameter("max").trim());
 
+			String costVal = Integer.toString(costMin)+"원 ~ "+ Integer.toString(costMax)+"원";
 			Board_MainDAO dao = Board_MainDAO.getInstance();
 			
 			System.out.println(costMin);
@@ -33,6 +32,8 @@
 			List<RtDTO> searchList = dao.RestaurantCostSearch(costMin,costMax);
 			
 			request.setAttribute("List", searchList);
+			request.setAttribute("keyword", costVal);
+			
 			
 			ActionForward forward = new ActionForward();
 			 

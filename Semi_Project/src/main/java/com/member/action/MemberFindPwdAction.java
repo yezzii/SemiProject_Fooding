@@ -65,8 +65,8 @@ public class MemberFindPwdAction implements Action {
 
 			// mail server 설정
 			String host = "smtp.gmail.com";
-			String user = "hujik1234@gmail.com"; // 자신의 네이버 계정
-			String password = "ozgsnxegszmhsyyd";// 자신의 네이버 패스워드
+			String user = "maxilashalimasa1@gmail.com"; // 자신의 구글 계정
+			String password = "nmoqpkfreztcgajo";// 자신의 구글 패스워드
 
 			// 메일 받을 주소
 			/* String to_email = m.getEmail(); */

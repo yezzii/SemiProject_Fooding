@@ -1,94 +1,121 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
+<%
+response.setHeader("Cache-Control", "no-store"); // HTTP 1.1
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+response.setDateHeader("Expires", 0); // Proxies
+if (request.getProtocol().equals("HTTP/1.1"))
+	response.setHeader("Cache-Control", "no-cache");
+%>
 
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
-<meta charset="utf-8">
-<title>MStore | Modern Bootstrap E-commerce Template</title>
+<meta charset="utf-8" />
+<title>Fooding</title>
 <!-- SEO Meta Tags-->
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
 <meta name="description"
-   content="MStore - Modern Bootstrap E-commerce Template">
+	content="MStore - Modern Bootstrap E-commerce Template" />
+
 <meta name="keywords"
-   content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-<meta name="author" content="Createx Studio">
+	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean" />
+<meta name="author" content="Createx Studio" />
 <!-- Viewport-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- Favicon and Touch Icons-->
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
-<meta name="msapplication-TileColor" content="#111">
-<meta name="theme-color" content="#ffffff">
-
-
-<style type="text/css">
-.pwCheck {
-    color: red; /* 예시: 빨간색 텍스트로 표시 */
-    font-size: 12px; /* 예시: 폰트 사이즈 12px로 설정 */
-}
-
-</style>
-
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg" />
+<meta name="msapplication-TileColor" content="#111" />
+<meta name="theme-color" content="#ffffff" />
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen" href="css/vendor.min.css">
+<link rel="stylesheet" media="screen" href="css/vendor.min.css" />
 <!-- Main Theme Styles + Bootstrap-->
-<link rel="stylesheet" media="screen" id="main-styles"
-   href="css/theme.min.css">
-<!-- Customizer styles and scripts-->
+<link rel="stylesheet" media="screen" id="main-styles" href="css/theme.min.css" />
+<link rel="stylesheet" media="screen" href="css/Board_Main.css" />
+<link rel="stylesheet" media="screen" href="css/Member_Profile.css" />
+
+<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+
+
 </head>
 <!-- Body-->
 <body>
+<%--   ======================================상단 네비바 <<START>>======================================= --%>
+	<!-- Success toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive"
+			aria-atomic="true" id="login_success">
+			<div class="toast-header bg-success text-white">
+				<i class="mr-2" data-feather="check-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 성공</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-success" id="toast_success_div"></div>
+		</div>
+	</div>
+
+	<!-- Warning toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">로그인 실패</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning" >아이디 혹은 비밀번호를 확인해주세요.</div>
+		</div>
+	</div>
+	
+	<!-- 회원가입 카카오 toast -->
+	<div class="toast-container toast-top-center">
+		<div class="toast" role="alert" aria-live="assertive" id="login_fail_kakao"
+			aria-atomic="true">
+			<div class="toast-header bg-warning text-white">
+				<i class="mr-2" data-feather="alert-circle"
+					style="width: 1.75rem; height: 1.75rem;"></i> <span
+					class="font-weight-semibold mr-auto">회원가입이 필요합니다.</span>
+				<button type="button" class="close text-white ml-2 mb-1"
+					data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body text-warning" id="toast_fail_kakao_div">추가정보를 입력하여 회원가입을 진행해주세요.</div>
+		</div>
+	</div>
+	<!--   ==============================  네비바  ================================= -->
+
 
 	<%
 	String userID = null; // 로그인이 된 사람들은 로그인정보를 담을 수 있도록한다
 	if (session.getAttribute("id") != null) {
 		userID = (String) session.getAttribute("id");
+
 	}
 
 	String thumnail = (String) session.getAttribute("Thumnail");
+	String profile = (String) session.getAttribute("member_profile");
+	String name = (String) session.getAttribute("name");
 	%>
 
-	<!-- Off-canvas search-->
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-search">
-		<div
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Search site</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="offcanvas-body">
-			<div class="offcanvas-body-inner">
-				<div class="input-group pt-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="search-icon"><i
-							data-feather="search"></i></span>
-					</div>
-					<input class="form-control" type="text" id="site-search"
-						placeholder="Search site" aria-label="Search site"
-						aria-describedby="search-icon" />
-				</div>
-				<small class="form-text pt-1">Type A or C to see
-					suggestions. Powered by Easy autocomplete plugin via separate JSON
-					file.</small>
-			</div>
-		</div>
-	</div>
-
-
-
-	<%
-	// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
-	if (userID == null) {
-	%>
 
 	<!-- Off-canvas account-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
@@ -100,120 +127,8 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-		<div class="offcanvas-body">
-			<div class="offcanvas-body-inner">
-				<ul class="nav nav-tabs nav-justified" role="tablist">
-					<li class="nav-item"><a class="nav-link active" href="#signin"
-						data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="#signup"
-						data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;회원가입</a></li>
-				</ul>
-				<div class="tab-content pt-1">
-					<div class="tab-pane fade show active" id="signin" role="tabpanel">
-						<form class="needs-validation" novalidate method="post"
-							action="<%=request.getContextPath()%>/login.do">
-							<div class="form-group">
-								<label class="sr-only" for="signin-id">ID</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="signin-id-icon"><i
-											data-feather="mail"></i></span>
-									</div>
-									<input class="form-control" type="text" id="signin-id"
-										placeholder="ID" aria-label="ID" name="id"
-										aria-describedby="signin-id-icon" required />
-									<div class="invalid-feedback">아이디를 입력해주세요.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signin-password">Password</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="signin-password-icon"><i
-											data-feather="lock"></i></span>
-									</div>
-									<input class="form-control" type="password"
-										id="signin-password" placeholder="Password"
-										aria-label="Password" name="pwd"
-										aria-describedby="signin-password-icon" required />
-									<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
-								</div>
-							</div>
-							<div class="custom-control custom-checkbox mb-3">
-								<input class="custom-control-input" type="checkbox"
-									id="remember-me" checked /> <label
-									class="custom-control-label" for="remember-me">아이디 저장</label>
-							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								로그인</button>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form class="needs-validation" novalidate>
-							<div class="form-group">
-								<label class="sr-only" for="signup-name">Full name</label> <input
-									class="form-control" type="text" id="signup-name"
-									placeholder="이름" aria-label="Full name" required />
-								<div class="invalid-feedback">이름을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-email">이메일</label> <input
-									class="form-control" type="email" id="signup-email"
-									placeholder="Email" aria-label="Email address" required />
-								<div class="invalid-feedback">이메일을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password">Password</label> <input
-									class="form-control" type="password" id="signup-password"
-									placeholder="Password" aria-label="Password" required />
-								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password-confirm">비밀번호
-									확인</label> <input class="form-control" type="password"
-									id="signup-password-confirm" placeholder="Confirm password"
-									aria-label="Confirm password" required />
-								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
-							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								가입하기</button>
-						</form>
-					</div>
-				</div>
-				<div class="d-flex align-items-center pt-5">
-					<hr class="w-100" />
-					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
-						로그인</div>
-					<hr class="w-100" />
-				</div>
-				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
-						class="social-btn sb-google-plus mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
-						class="social-btn sb-twitter mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Twitter"><i
-						class="flaticon-twitter"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<%
-	// 로그인이 되어있는 사람만 볼수 있는 화면
-	} else {
-	%>
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
-		<div
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">로그인 / 회원가입</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
+		<%-- 로그인 --%>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<ul class="nav nav-tabs nav-justified" role="tablist">
@@ -227,27 +142,27 @@
 						<form class="needs-validation" novalidate method="post"
 							action="<%=request.getContextPath()%>/login.do">
 							<div class="form-group">
-								<label class="sr-only" for="signin-id">ID</label>
+								<label class="sr-only" for="signin-id">아이디</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="signin-id-icon"><i
 											data-feather="mail"></i></span>
 									</div>
 									<input class="form-control" type="text" id="signin-id"
-										placeholder="ID" aria-label="ID" name="id"
+										placeholder="아이디" aria-label="ID" name="id"
 										aria-describedby="signin-id-icon" required />
 									<div class="invalid-feedback">아이디를 입력해주세요.</div>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signin-password">Password</label>
+								<label class="sr-only" for="signin-password">비밀번호</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="signin-password-icon"><i
 											data-feather="lock"></i></span>
 									</div>
 									<input class="form-control" type="password"
-										id="signin-password" placeholder="Password"
+										id="signin-password" placeholder="비밀번호"
 										aria-label="Password" name="pwd"
 										aria-describedby="signin-password-icon" required />
 									<div class="invalid-feedback">비밀번호를 입력해주세요.</div>
@@ -259,55 +174,94 @@
 									class="custom-control-label" for="remember-me">아이디 저장</label>
 							</div>
 							<button class="btn btn-primary btn-block" type="button"
-								onclick="location.href='../member/logout.jsp'">로그아웃</button>
+								id="ImLogin">로그인</button>
+
+							<div class="pt-3" align="center">
+								<a href="account-id-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">아이디 찾기</a><a
+									href="account-password-recovery.jsp"
+									class="a-cssIdPwd font-size-xs">비밀번호 찾기</a>
+							</div>
 						</form>
 					</div>
+
+
+					<%-- 회원가입 --%>
 					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form class="needs-validation" novalidate>
+						<form method="post" class="needs-validation" novalidate
+							action="<%=request.getContextPath()%>/member_join.do"
+							id="signup-form" name="signup-form">
 							<div class="form-group">
-								<label class="sr-only" for="signup-name">Full name</label> <input
-									class="form-control" type="text" id="signup-name"
-									placeholder="이름" aria-label="Full name" required />
-								<div class="invalid-feedback">이름을 작성해주세요</div>
+								<label class="sr-only" for="singup-id">아이디</label> <input
+									class="form-control" type="text" id="signup-id"
+									name="member_id" placeholder="아이디" aria-label="아이디" /> <span
+									class="feedback" id="signup-idchk"></span>
+								<div class="invalid-feedback"></div>
+
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="signup-email">이메일</label> <input
-									class="form-control" type="email" id="signup-email"
-									placeholder="Email" aria-label="Email address" required />
-								<div class="invalid-feedback">이메일을 작성해주세요</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password">Password</label> <input
+								<label class="sr-only" for="signup-password">비밀번호</label> <input
 									class="form-control" type="password" id="signup-password"
-									placeholder="Password" aria-label="Password" required />
-								<div class="invalid-feedback">비밀번호를 작성해주세요</div>
+									name="member_pwd" placeholder="비밀번호" aria-label="Password" />
+								<span class="feedback" id="signup-pwdchk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="signup-password-confirm">비밀번호
 									확인</label> <input class="form-control" type="password"
-									id="signup-password-confirm" placeholder="Confirm password"
-									aria-label="Confirm password" required />
-								<div class="invalid-feedback">비밀번호 확인을 작성해주세요</div>
+									name="member_pwdchk" id="signup-password-confirm"
+									placeholder="비밀번호 확인" aria-label="Confirm password" />
+								<span class="feedback" id="signup-pwdconfirm-chk"></span>
+								<div class="invalid-feedback"></div>
 							</div>
-							<button class="btn btn-primary btn-block" type="submit">
-								가입하기</button>
+							<div class="form-group">
+								<label class="sr-only" for="signup-name">이름</label> <input
+									class="form-control" type="text" id="signup-name"
+									name="member_name" placeholder="이름" aria-label="Full name" />
+								<span class="feedback" id="signup-namechk"></span>
+								<div class="invalid-feedback"></div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-email">이메일</label> <input
+									class="form-control" type="email" id="signup-email"
+									name="member_email" placeholder="이메일"
+									aria-label="Email address" /> <span class="feedback"
+									id="signup-emailchk"></span>
+								<div class="invalid-feedback"></div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-phone">연락처 확인</label> <input
+									class="form-control" type="text" name="member_phone"
+									id="signup-phone" placeholder="연락처" aria-label="Phone" /> <span
+									class="feedback" id="signup-phonechk"></span>
+								<div class="invalid-feedback"></div>
+							</div>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="checkAll()">가입하기</button>
+							<button class="btn btn-primary btn-block" type="button"
+								onclick="location.href='company-signup.jsp'">사업자 가입</button>
 						</form>
 					</div>
 				</div>
-				<div class="d-flex align-items-center pt-5">
+
+
+				<div class="d-flex align-items-center pt-4">
 					<hr class="w-100" />
 					<div class="px-3 w-100 text-nowrap font-weight-semibold">소셜
 						로그인</div>
 					<hr class="w-100" />
 				</div>
 				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+					<input type="image" style="width: 320px;" id="kakaoAjax"
+						src="main_img/kakao_login.jpg" 
+						value="카카오 로그인 kakaoLogin();"> <br>
+					<br> <a class="social-btn sb-facebook mx-2 mb-3" href="https://www.facebook.com/"
 						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
-						class="social-btn sb-google-plus mx-2 mb-3" href="#"
+						class="flaticon-facebook"></i></a> <a
+						class="social-btn sb-google-plus mx-2 mb-3" href="https://www.google.com/"
 						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
-						class="social-btn sb-twitter mx-2 mb-3" href="#"
+						class="flaticon-google-plus"></i></a> <a
+						class="social-btn sb-twitter mx-2 mb-3" href="https://twitter.com/"
 						data-toggle="tooltip" title="Twitter"><i
 						class="flaticon-twitter"></i></a>
 				</div>
@@ -315,15 +269,12 @@
 		</div>
 	</div>
 
-	<%
-	}
-	%>
-	<!-- Off-canvas cart-->
 
+	<!-- Off-canvas cart-->
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div
 			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Your cart</h3>
+			<h3 class="offcanvas-title" style="font-family:'GmarketSansMedium'; font-size: 23px; ">찜한 레스토랑</h3>
 			<button class="close" type="button" data-dismiss="offcanvas"
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -331,101 +282,47 @@
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
-				<div class="text-right">
-					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
-						data-feather="x" style="width: 0.85rem; height: 0.85rem"></i>Clear
-						cart</a>
-				</div>
-				<div class="widget widget-featured-entries pt-3">
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
+				
+				<div class="widget widget-featured-entries pt-3" id="marked-list">
+				
+				<%--찜 목록 리스트 (가게정보 출력란) --%>
+				
+						<div class="media" >
+							<div class="featured-entry-thumb mr-3">
+								<a href="#"><img src="" width="64"
+									alt="" /></a>
+							</div>
+							<div class="media-body">
+								<h6 class="featured-entry-title">
+									<a href="#" style="font-family:'GmarketSansMedium'; font-size: 18px; ">찜한 가게 목록 불러오는중...</a>
+								</h6>
+								<p cxlass="featured-entry-meta">
+									<span class="text-muted"></span> 
+								</p>
+							</div>
 						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Calvin Klein Jeans Keds</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $125.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">The North Face Hoodie</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $134.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Medicine Chameleon Sunglasses</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $47.00
-							</p>
-						</div>
-					</div>
-					<div class="media">
-						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
-								alt="Product thumb" /></a><span class="item-remove-btn"><i
-								data-feather="x"></i></span>
-						</div>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="#">Adidas Performance Hat</a>
-							</h6>
-							<p class="featured-entry-meta">
-								1 <span class="text-muted">x</span> $19.00
-							</p>
-						</div>
-					</div>
-					<hr />
-					<div class="d-flex justify-content-between align-items-center py-3">
-						<div class="font-size-sm">
-							<span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">$325.00</span>
-						</div>
-						<a class="btn btn-outline-secondary btn-sm" href="cart.jsp">Expand
-							cart<i class="mr-n2" data-feather="chevron-right"></i>
-						</a>
-					</div>
-					<a class="btn btn-primary btn-sm btn-block"
-						href="checkout-details.jsp"><i class="mr-1"
-						data-feather="credit-card"></i>Checkout</a>
+				<hr />
 				</div>
 			</div>
 		</div>
 	</div>
+			
+					<%--찜 목록 리스트 END  --%>
+					
+					
+					
 	<!-- Navbar Light-->
 	<header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
 		<div class="container-fluid navbar-inner">
 			<!-- navbar brand-->
 			<a class="navbar-brand" style="min-width: 100px" href="index.jsp"><img
-				width="100" src="img/logo-dark.png" alt="MStore" /></a>
+				width="250" src="img/logo-fooding.png" alt="Fooding" /></a>
 			<!-- navbar collapse area-->
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown mega-dropdown dropdown-more"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">카테고리<i
 							data-feather="more-horizontal"></i></a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
@@ -437,25 +334,22 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=서울"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">서울</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=경기"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">경기/인천</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">경기</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=인천"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">수원</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">인천</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=대구"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">충남</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">대구</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=부산"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">부산</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">광주</span></a></li>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=제주"><i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"></i><span class="font-size-sm">제주</span></a></li>
 										</ul>
@@ -469,33 +363,24 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=데이트"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Computers
-														&amp; Accessories</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">데이트
+														코스</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=가족"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">TV,
-														Video &amp; Audio</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">가족모임</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=뷰"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
-														&amp; Tablets</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">뷰가
+														좋은</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=전통"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
-														Photo &amp; Video</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">전통적인</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=비지니스"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Wearable
-														Electronics</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Video
-														Games</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">비지니스미팅</span></a></li>
+
 										</ul>
 									</div>
 								</div>
@@ -507,234 +392,83 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
+											<li><a href="SearchKeyRestaurant.do?keyword=고기"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Lounge
-														Seating</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">고기요리</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=한식"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">File
-														Cabinets</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">한식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=양식"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Tables</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">양식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=중식"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Indoor
-														Lighting</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">중식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=일식"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Office
-														Chairs</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">일식</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=아시안"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Adjustable
-														Height Desks</span></a></li>
-											<li><a href="#"><i
+													data-feather="chevron-right"></i><span class="font-size-sm">아시안</span></a></li>
+											<li><a href="SearchKeyRestaurant.do?keyword=카페"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Storage
-														Units</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">카페,디저트</span></a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div></li>
 					<li class="nav-item dropdown mega-dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">게시판</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop layouts</h3>
+										<h3 class="widget-title">게시판</h3>
 										<ul>
-											<li><a href="shop-style1-ls.jsp"> <i
+											<li><a
+												href="<%=request.getContextPath()%>/review_board.do"> <i
 													class="widget-categories-indicator"
 													data-feather="chevron-right"> </i><span
-													class="font-size-sm">Shop Style 1 - Left Sidebar</span></a></li>
+													class="font-size-sm">후기 게시판</span></a></li>
+											<li><a
+												href="<%=request.getContextPath()%>/free_board.do"> <i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"> </i><span
+													class="font-size-sm">자유 게시판</span></a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="dropdown-column">
 									<div class="widget widget-links">
-										<h3 class="widget-title">Shop pages</h3>
+										<h3 class="widget-title">리뷰 남기기</h3>
 										<ul>
-											<li><a href="shop-categories-apparel.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Shop
-														Categories - Apparel</span></a></li>
 
-											<li><a href="shop-single-apparel.jsp"><i
+											<li><a href="board_write.jsp"><i
 													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Product
-														Page #1 - Apparel</span></a></li>
-
-											<li><a href="cart.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Cart</span></a></li>
-											<li><a href="checkout-details.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Details</span></a></li>
-											<li><a href="checkout-shipping.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Shipping</span></a></li>
-											<li><a href="checkout-payment.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Payment</span></a></li>
-											<li><a href="checkout-review.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Review</span></a></li>
-											<li><a href="checkout-complete.jsp"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Checkout
-														- Complete</span></a></li>
+													data-feather="chevron-right"></i><span class="font-size-sm">리뷰
+														작성 </span></a></li>
 										</ul>
 									</div>
 								</div>
-								<div class="dropdown-column">
-									<a class="d-block mx-auto" href="#" style="max-width: 228px"><img
-										class="d-block" src="img/megamenu/promo-banner.jpg"
-										alt="Promo banner" /></a>
-								</div>
 							</div>
 						</div></li>
+
+					<%
+										if (session.getAttribute("id") != null) {
+										%>
+
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">User Account</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="account-orders.jsp">Orders
-											History</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-profile.jsp">Profile
-											Settings</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-address.jsp">Account
-											Addresses</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-payment.jsp">Payment
-											Methods</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-wishlist.jsp">Wishlist</a>
-									</li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-tickets.jsp">My
-											Tickets</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item"
-										href="account-single-ticket.jsp">Single Ticket</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="account-signin.jsp">Sign
-											In / Sign Up Page</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item"
-										href="word-recovery.jsp">Password Recovery</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="about.jsp">About Us</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="contacts.jsp">Contacts</a>
-							</li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Help Center</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="help-topics.jsp">Help
-											Topics</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="help-single-topic.jsp">Single
-											Topic</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item"
-										href="help-submit-request.jsp">Submit a Request</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="product-comparison.jsp">Product
-									Comparison</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="order-tracking.jsp">Order
-									Tracking</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="404.jsp">404 Not
-									Found</a></li>
-						</ul></li>
+						class="nav-link dropdown-toggle"
+						href="<%=request.getContextPath()%>/member_profile.do"><i
+							class="mr-1"></i>마이페이지</a></li>
+
+					<%
+					}
+					%>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Blog Layout</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="blog-rs.jsp">Blog
-											Right Sidebar</a></li>
-								</ul></li>
-							<li class="dropdown-divider"></li>
-							<li class="dropdown"><a
-								class="dropdown-item dropdown-toggle" href="#"
-								data-toggle="dropdown">Single Post Layout</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="blog-single-ns.jsp">Post
-											No Sidebar</a></li>
-								</ul></li>
-						</ul></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="mr-1" data-feather="file-text"></i>Docs</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="docs/dev-setup.jsp">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="file-text"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">Documentation</span><small
-												class="text-muted">Kick-start customization</small>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="components/alerts.jsp">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="grid"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">Components <span
-												class="badge badge-pill badge-success">40+</span>
-											</span><small class="text-muted">Faster page building</small>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="docs/changelog.jsp">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="edit"
-											style="width: 1.375rem; height: 1.375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">Changelog <span
-												class="badge badge-pill badge-warning">v2.0</span>
-											</span><small class="text-muted">Regular updates</small>
-										</div>
-									</div>
-							</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a class="dropdown-item"
-								href="mailto:contact@createx.studio">
-									<div class="d-flex py-1">
-										<i class="mt-1 ml-n2" data-feather="life-buoy"
-											style="width: 1.4375rem; height: 1.4375rem"></i>
-										<div class="ml-2">
-											<span class="d-block mb-n1">Support</span><small
-												class="text-muted">contact@createx.studio</small>
-										</div>
-									</div>
-							</a></li>
-						</ul></li>
+						class="nav-link dropdown-toggle" href="LoadRestaurantList.do"><i
+							class="mr-1"></i>레스토랑</a></li>
 				</ul>
 			</div>
 			<!-- navbar buttons-->
@@ -744,9 +478,31 @@
 						data-toggle="collapse" data-target="#menu">
 						<i class="mx-auto mb-1" data-feather="menu"></i>Menu
 					</div>
-					<a class="navbar-btn" href="#offcanvas-search"
-						data-toggle="offcanvas"><i class="mx-auto mb-1"
-						data-feather="search"></i>Search</a>
+					<form method="get"
+						action="<%=request.getContextPath()%>/total_main_search.do">
+						<div class="flex-grow-1 pb-3 pt-sm-4 my-1 pr-lg-4 order-sm-2">
+							<div class="input-group flex-nowrap">
+								<div class="input-group-prepend">
+									<%-- 검색input테그 --%>
+
+									<input class="form-control-dong rounded" type="text"
+										id="site-search" placeholder="통합 검색" name="keyword"
+										aria-label="Search site" aria-describedby="search-icon">
+									<%-- 검색input테그 END --%>
+
+									<%-- 검색버튼 --%>
+
+
+									<%-- 검색버튼 END--%>
+								</div>
+
+							</div>
+						</div>
+					</form>
+
+
+
+
 					<%
 					// 접속하기는 로그인이 되어있지 않은 경우만 나오게한다
 					if (userID == null) {
@@ -760,356 +516,581 @@
 					// 로그인이 되어있는 사람만 볼수 있는 화면
 					} else {
 					%>
-					<a class="navbar-btn navbar-collapse-hidden"
-						href="#offcanvas-account" data-toggle="offcanvas"><i
-						class="mx-auto mb-1" data-feather="log-out"></i>내정보</a>
-
-					<%
-					}
-					%>
-					<a class="navbar-btn" href="#offcanvas-cart"
+					<a class="navbar-btn" href="#offcanvas-cart" onclick="loadMark();"
 						data-toggle="offcanvas"><span
 						class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
+							class="navbar-btn-badge bg-primary-Mark text-light"
+							id="totalMarkCount"></span><i class="mx-auto mb-1"
+							data-feather="heart"></i>찜한 레스토랑</span></a> <a
+						class="navbar-btn navbar-collapse-hidden" href="member/logout.jsp">
+						<i class="mx-auto mb-1" data-feather="log-out"></i>로그아웃
+					</a>
+
+					<%-- 프로필 정보란 --%>
+					<div class="navbar-btn navbar-collapse-hidden">
+               <div class="kakao_img mx-auto mb-1">
+                  <a href="<%=request.getContextPath()%>/member_profile.do"> <img
+                     class="profile_img" src="${empty sessionScope.img ? Thumnail : sessionScope.img}">
+                  </a>
+               </div>
+                  <span class="mx-auto mb-1" style="font-family:'GmarketSansMedium'; font-size: 12px; "><%=name%> 님 </span>
+               <img src="${profile }">
+            </div>
+
+						<%-- 프로필 정보란 --%>
+						<%
+					}
+					%>
+					</div>
 				</div>
 			</div>
-		</div>
 	</header>
+	<!--   ==============================  네비바  ================================= -->
 	<!-- Page Content-->
+
+
+
+
+<c:set var="main" value="${boardmain }" />
 	<div class="container pt-lg-3 pb-5 mb-sm-3">
-		<!-- Toast notifications-->
-		<div class="toast-container toast-bottom-center">
-			<div class="toast mb-3" id="cart-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to cart!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to your cart.</div>
-			</div>
-			
-			<div class="toast mb-3" id="compare-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-info text-white">
-					<i class="mr-2" data-feather="info"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to comparison!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to comparison
-					table.</div>
-			</div>
-			
-			<div class="toast mb-3" id="wishlist-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-info text-white">
-					<i class="mr-2" data-feather="info"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to wishlist!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to your wishlist.</div>
-			</div>
-			
-			<div class="toast mb-3" id="address-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Updated!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					</div>
-				<div class="toast-body">Your addresses info updated successfuly.</div>
-			</div>			
+
+		<form method="post" enctype="multipart/form-data"
+			action="<%=request.getContextPath()%>/MemberProfileUpdate.do">
+			<div class="row pt-5">
+
+				<!-- Sidebar-->
+
+				<div class="col-xl-3 col-lg-4">
+
+					<c:set var="dto" value="${List }" />
 
 
-			<div class="toast mb-3" id="profile-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Updated!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-					<div id="toast-body" class="toast-body">Your profile info updated successfuly.</div>	
-			</div>
-			
-			
-			<!-- Warning toast -->
-				<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="my-toast">
-					<div class="toast-header bg-warning text-white">
-						<i class="mr-2" data-feather="alert-circle"style="width: 1.25rem; height: 1.25rem;"></i>
-						 <span class="font-weight-semibold mr-auto">Warning toast</span>
-							<button type="button" class="close text-white ml-2 mb-1"data-dismiss="toast" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				<div id="toast-body2"class="toast-body text-warning" >
-				Hello, world! This is a toast message.
-				</div>
-			</div>
+					<!-- Customer picture-->
+					<!-- 일반 프로필 -->
 
-			
-		</div>
-		<div class="row pt-5">
-			<!-- Sidebar-->
-			<c:set var="dto" value="${List }" />
-			<div class="col-xl-3 col-lg-4">
-				<!-- Customer picture-->
-
-				<!-- 일반 프로필 -->
-
-				<a class="gallery-item mb-grid-gutter mx-auto"
-					style="max-width: 18.75rem;"><img src="<%=thumnail%>">
-					<div class="gallery-caption">
-						<div class="gallery-indicator">
-							<i class="gallery-indicator-icon" data-feather="refresh-ccw"></i>
+					<a class="gallery-item mb-grid-gutter mx-auto"
+						style="max-width: 18.75rem;"> <img
+						src="${empty dto.getMember_image() ? Thumnail : dto.getMember_image()}"
+						id="current-image">
+						<div id="image_container"></div>
+						<div class="gallery-caption">
+							<div class="gallery-indicator">
+								<i class="gallery-indicator-icon" data-feather="refresh-ccw"></i>
+							</div>
+							<span id="Change_Profile">프로필 사진 변경</span>
 						</div>
-						Change profile picture
-					</div></a>
+					</a> <input type="file" name="fileProfile" style="display: none;"
+						onchange="setThumbnail(event);">
 
 
-				<!-- Technical support + Tickets (visible Desktop)-->
-				<div class="d-none d-lg-block" align="center">
-					<h6 class="font-size-sm mb-3 pb-2 border-bottom">
+					<!-- Technical support + Tickets (visible Desktop)-->
+					<div class="d-none d-lg-block" align="center">
+						<h6 class="font-size-sm mb-3 pb-2 border-bottom">
+							<span>${dto.getMember_name() } 님의 프로필</span>
+							<c:if test="${dto.getMember_type() == 0}">
+           					(Manager)
+            			</c:if>
 
-						<c:if test="${dto.getMember_type() == 0}">
-           		Manager
-            </c:if>
+							<c:if test="${dto.getMember_type() == 1}">
+           					(General Member)
+            			</c:if>
 
-						<c:if test="${dto.getMember_type() == 1}">
-           		General Member
-            </c:if>
+							<c:if test="${dto.getMember_type() == 2}">
+            				(Business Member)
+            			</c:if>
 
-						<c:if test="${dto.getMember_type() == 2}">
-            	Business Member
-            </c:if>
+							<c:if test="${dto.getMember_type() == 3}">
+            				(Kakako Member)
+            			</c:if>
 
-						<c:if test="${dto.getMember_type() == 3}">
-            	Kakako Member
-            </c:if>
 
-					</h6>
+						</h6>
 
-					<!-- 일반회원 메일과 번호만 조회 -->
-					<c:if
-						test="${dto.getMember_type() == 1 || dto.getMember_type() == 3}">
+
 						<ul class="list-unstyled">
 							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
 								data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
-								class="nav-link-inline" href="${dto.getMember_email()}">${dto.getMember_email()}</a></li>
+								class="nav-link-inline">${dto.getMember_email()}</a></li>
 							<li class="font-size-sm mb-2"><i class="text-muted mr-2"
 								data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
-								class="nav-link-inline" href="${dto.getMember_phone()}">${dto.getMember_phone()}</a></li>
+								class="nav-link-inline">${dto.getMember_phone()}</a></li>
 
 						</ul>
-						<div class="pt-2">
-							<a class="btn btn-outline-secondary btn-sm btn-block"
-								href="account-tickets.html"><i class="mr-1"
-								data-feather="tag"></i>My tickets (1)</a><a
-								class="btn btn-success btn-sm btn-block"
-								href="account-tickets.html" data-toggle="modal"
-								data-target="#open-ticket">Submit new ticket</a>
+					</div>
+				</div>
+				<!-- Main content-->
+
+
+				<div class="col-lg-8 offset-xl-1">
+					<!-- Customer details-->
+					<div class="d-flex flex-wrap justify-content-between pb-4">
+						<div class="pt-3 mr-3">
+
+							<h3 class="mb-0">${dto.getMember_name() }</h3>
+							<span class="font-size-sm text-warning">${dto.getMember_email() }</span>
 						</div>
+						<div class="pt-3">
+							<a class="btn btn-outline-primary btn-sm" data-toggle="modal"
+								href="#modalCentered"
+								onclick="location.href='#modalCentered?id=${dto.getMember_id()}'">
+								<i class="mr-1" data-feather="log-out"></i>회원 탈퇴
+							</a>
+						</div>
+
+					</div>
+					<ul class="list-unstyled border p-3 mb-4">
+						<li class="pb-1"><span class="opacity-80">&ndash; 회원
+								가입일 :</span><span class="font-weight-semibold ml-1">${dto.getMember_joindate().substring(0,10) }</span></li>
+						<li class="pb-1"><span class="opacity-80">&ndash; 총 예약
+								:</span><span class="font-weight-semibold ml-1">${total_booking} 회</span></li>
+
+					</ul>
+					<!-- Navigation (visible sm-up)-->
+					<c:if test="${dto.getMember_type() != 2}">
+						<ul class="nav nav-tabs d-none d-sm-flex">
+							<li class="nav-item"><a class="nav-link"
+								href="<%=request.getContextPath()%>/reservation_list.do"> <i
+									data-feather="shopping-bag"></i>&nbsp;예약내역
+							</a></li>
+							<li class="nav-item" onclick="loadMark();"><a
+								class="nav-link" href="#offcanvas-cart" data-toggle="offcanvas">
+									<i data-feather="heart"></i> &nbsp;찜한 레스토랑 <span
+									class="badge badge-pill badge-second ary bg-0 border ml-2">
+										<span class="text-primary" id="totalMarkCount1"></span>
+								</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link active" href="#"><i
+									data-feather="settings"></i>&nbsp;회원 수정</a></li>
+						</ul>
 					</c:if>
+
+					<c:if test="${dto.getMember_type() == 2}">
+						<ul class="nav nav-tabs d-none d-sm-flex">
+							<li class="nav-item"><a class="nav-link"
+								href="reservation_store_list.do?main_idx=${main.getMain_idx() }"> <i data-feather="shopping-bag"></i>&nbsp;
+									가게 예약 현황</a></li>
+							<li class="nav-item"><a class="nav-link" data-toggle="modal"
+								href="#modalLong"> <i data-feather="shopping-bag"></i>&nbsp;가게
+									등록 <span
+									class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
+							<li class="nav-item"><a class="nav-link" data-toggle="modal"
+								href="#Board_MainModify"> <i data-feather="shopping-bag"></i>&nbsp;가게
+									정보 수정 <span
+									class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
+							<li class="nav-item"><a class="nav-link" data-toggle="modal"
+								data-target="#MenuInsert" href=""> <i
+									data-feather="shopping-bag"></i>&nbsp;메뉴 등록 <span
+									class="badge badge-pill badge-secondary bg-0 border ml-2"></span></a></li>
+							<li class="nav-item"><a
+								class="nav-link dropdown-toggle active" href="#"><i
+									data-feather="settings"></i>&nbsp;회원 수정</a></li>
+						</ul>
+					</c:if>
+
+
+
+
+
+
+
+					<!-- Profile info-->
+					<h5 class="mb-4 pt-sm-3">회원정보 수정</h5>
+
+
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-name">이름</label> <input class="form-control"
+									type="text" id="account-name" name="member_name"
+									value="<%=session.getAttribute("name")%>" disabled>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-id">아이디</label> <input class="form-control"
+									type="text" id="account-id" name="member_id"
+									value="${dto.getMember_id() }" disabled>
+							</div>
+						</div>
+
+
+
+
+						<!--비밀번호 유효성 검사 -->
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-pass" class="inputpwd">새로운 비밀번호</label> <input
+									name="member_pwd" class="form-control" type="password"
+									id="account-pass">
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-confirm-pass" class="inputpwd">비밀번호
+									확인</label> <input class="form-control" type="password"
+									id="account-confirm-pass">
+							</div>
+						</div>
+
+						<div class="pwCheck"></div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-phone">핸드폰 번호</label> <input
+									class="form-control" type="text" id="account-phone"
+									name="member_phone" value="${dto.getMember_phone() }" required>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="account-email">이메일 주소</label> <input
+									class="form-control" type="email" id="account-email"
+									name="member_email" value="${dto.getMember_email() }">
+							</div>
+						</div>
+
+						<div class="col-12">
+							<hr class="mt-2 mb-3">
+							<div
+								class="d-flex flex-wrap justify-content-between align-items-center">
+
+								<button id="updatebtn123" class="btn btn-primary mt-3 mt-sm-0"
+									type="submit" data-toggle="toast" data-target="#profile-toast"
+									style="margin-left: 670px">프로필 수정</button>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+		</form>
+	</div>
+
+	<!-- 가게 등록 Modal markup -->
+	<div class="modal" tabindex="-1" role="dialog" id="modalLong">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">가게 등록</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden=true>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<%--enctype : 파일을 업로드하기 위한 메서드 --%>
+					<form method="post" enctype="multipart/form-data"
+						action="<%=request.getContextPath()%>/board_signUp_ok.do">
+
+						<div class="select-box">
+
+							<label for="select-box1" class="label select-box2"> <span
+								class="label-desc">가게 타입</span>
+							</label> <select id="select-box1" class="select" name="main_type">
+								<option value="고기요리">고기요리</option>
+								<option value="일식">일식</option>
+								<option value="한식">한식</option>
+								<option value="중식">중식</option>
+								<option value="양식">양식</option>
+								<option value="이탈리아">이탈리아</option>
+								<option value="카페,디저트">카페,디저트</option>
+							</select>
+						</div>
+
+						<div class="select-box1">
+
+							<label for="select-box2" class="label select-box2"> <span
+								class="label-desc1">가게 테마</span>
+							</label> <select id="select-box2" class="select1" name="main_thema">
+								<option value="데이트 코스">데이트 코스</option>
+								<option value="가족모임">가족모임</option>
+								<option value="뷰가 좋은">뷰가 좋은</option>
+								<option value="전통적인">전통적인</option>
+								<option value="비지니스미팅">비지니스미팅</option>
+							</select>
+						</div>
+
+						<div class="textForm">
+							<input name="main_name" type="text" class="name"
+								placeholder="가게이름">
+						</div>
+
+						<div class="textForm">
+							<textarea class="cont" rows="5" cols="25" name="main_info"
+								placeholder="가게정보"></textarea>
+						</div>
+
+
+						<div class="time_textForm" align="center">
+
+							<label for="main_opentime" style="color: #636e72">영업시작시간</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="time" id="main_opentime" name="main_opentime"
+								value="10:00"> <br> <br> <label
+								for="main_endtime" style="color: #636e72">영업종료시간</label>
+							&nbsp;&nbsp;&nbsp; <input type="time" id="main_endtime"
+								name="main_endtime" value="21:00">
+						</div>
+
+						<div class="textForm">
+							<input name="main_post" id="post" type="text" class="location"
+								placeholder="우편번호" readonly onclick="findAddr()"> <input
+								name="main_addr" id="addr" type="text" class="location"
+								placeholder="주소" readonly> <input name="main_detailaddr"
+								type="text" class="location" placeholder="상세 주소">
+						</div>
+
+						<div class="textForm">
+							<input name="main_phone" type="text" class="phone"
+								placeholder="전화번호">
+						</div>
+
+						<div class="image">
+							<span class="pic_txt">가게등록 사진</span> <input class="main_file"
+								type="file" name="main_img">
+						</div>
+						<br>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary btn-sm"
+								data-dismiss="modal">Close</button>
+							<input type="submit" class="btn btn-primary btn-sm" value="가입하기" />
+						</div>
+					</form>
 				</div>
 			</div>
-			<!-- Main content-->
+		</div>
+	</div>
+	<!-- modal end -->
 
-
-			<div class="col-lg-8 offset-xl-1">
-				<!-- Customer details-->
-				<div class="d-flex flex-wrap justify-content-between pb-4">
-					<div class="pt-3 mr-3">
-
-						<h3 class="mb-0">${dto.getMember_name() }</h3>
-						<span class="font-size-sm text-warning">${dto.getMember_email() }</span>
-					</div>
-					<div class="pt-3">
-						<a class="btn btn-outline-primary btn-sm"
-							href="account-signin.html"><i class="mr-1"
-							data-feather="log-out"></i>Sign Out</a>
-					</div>
-				</div>
-				<ul class="list-unstyled border p-3 mb-4">
-					<li class="pb-1"><span class="opacity-80">&ndash;
-							Joined:</span><span class="font-weight-semibold ml-1">${dto.getMember_joindate() }</span></li>
-					<li class="pb-1"><span class="opacity-80">&ndash; Total
-							booking:</span><span class="font-weight-semibold ml-1">15(바꿔야함)</span></li>
-					<li class="pb-1"><span class="opacity-80">&ndash; Total
-							Account:</span><span class="font-weight-semibold ml-1"> <fmt:formatNumber
-								value="${dto.getMember_account()}" type="number" pattern="#,##0" />원
-					</span></li>
-				</ul>
-				<!-- Navigation (visible sm-up)-->
-				<ul class="nav nav-tabs d-none d-sm-flex">
-					<li class="nav-item"><a class="nav-link"
-						href="account-orders.html"><i data-feather="shopping-bag"></i>&nbsp;나의
-							예약<span class="badge badge-pill badge-secondary bg-0 border ml-2"><span
-								class="text-primary">1</span></span></a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="account-wishlist.html"><i data-feather="heart"></i>&nbsp;북마크<span
-							class="badge badge-pill badge-secondary bg-0 border ml-2"><span
-								class="text-primary">3</span></span></a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle active" href="#"
-						data-toggle="dropdown"><i data-feather="settings"></i>&nbsp;Account
-							settings</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item active" href="account-profile.html">Profile
-								info</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="account-address.html">Addresses</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="account-payment.html">Payment
-								methods</a>
-						</div></li>
-				</ul>
-				<!-- Navigation (visible sm-down)-->
-				<div class="d-sm-none pb-4">
-					<button class="btn btn-primary btn-block mb-2" type="button"
-						data-toggle="collapse" data-target="#account-menu">
-						<i class="mr-2" data-feather="menu"></i>Menu
+	<!-- 가게 수정 Modal markup -->
+	<div class="modal" tabindex="-1" role="dialog" id="Board_MainModify">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">가게 수정</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden=true>&times;</span>
 					</button>
-					<div class="collapse" id="account-menu">
-						<div class="list-group">
-							<a class="list-group-item list-group-item-action"
-								href="account-orders.html"><i class="mr-2"
-								data-feather="shopping-bag" style="width: 1rem; height: 1rem;"></i>My
-								orders<span
-								class="badge badge-pill badge-secondary bg-0 border ml-2"><span
-									class="text-primary">1</span></span></a><a
-								class="list-group-item list-group-item-action"
-								href="account-wishlist.html"><i class="mr-2"
-								data-feather="heart" style="width: 1rem; height: 1rem;"></i>Wishlist<span
-								class="badge badge-pill badge-secondary bg-0 border ml-2"><span
-									class="text-primary">3</span></span></a><a
-								class="list-group-item list-group-item-action active"
-								href="account-profile.html"><i class="mr-2"
-								data-feather="user" style="width: 1rem; height: 1rem;"></i>Profile
-								info</a><a class="list-group-item list-group-item-action"
-								href="account-address.html"><i class="mr-2"
-								data-feather="map-pin" style="width: 1rem; height: 1rem;"></i>Addresses</a><a
-								class="list-group-item list-group-item-action"
-								href="account-payment.html"><i class="mr-2"
-								data-feather="credit-card" style="width: 1rem; height: 1rem;"></i>Payment
-								methods</a>
-						</div>
-					</div>
 				</div>
-				<!-- Profile info-->
-				<h5 class="mb-4 pt-sm-3">Profile info</h5>
-				
-				<form id="memberInsertForm" method="POST"  onsubmit="return mySubmit()">
-				<div class="row" >
-				
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-fn">Name</label> <input class="form-control"
-								type="text" id="account-fn" value="${dto.getMember_name() }"
-								disabled>
+				<div class="modal-body">
+					<p>
+						<%--enctype : 파일을 업로드하기 위한 메서드 --%>
+					<form method="post" enctype="multipart/form-data"
+						action="<%=request.getContextPath()%>/board_mainprofilemodify.do">
+						<input type="hidden" class="main_idx" id="main_idx"
+							value="${main.getMain_idx() }">
+						<div class="select-box">
+							<label for="select-box1" class="label select-box2"> <span
+								class="label-desc">가게 타입</span>
+							</label> <select id="select-box1" class="select" name="main_type"
+								value="${main.getMain_type()}">
+								<option value="고기요리">고기요리</option>
+								<option value="일식">일식</option>
+								<option value="한식">한식</option>
+								<option value="중식">중식</option>
+								<option value="양식">양식</option>
+								<option value="이탈리아">이탈리아</option>
+								<option value="카페,디저트">카페,디저트</option>
+							</select>
 						</div>
-					</div>
 
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-email">Email Address</label> <input
-								class="form-control" type="email" id="account-email"
-								name="member_email" value="${dto.getMember_email() }">
-						</div>
-					</div>
+						<div class="select-box1">
 
-				
-					<!--비밀번호 유효성 검사 -->
-					
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-pass" class="inputpwd">New Password</label> <input
-								class="form-control" type="password" id="account-pass">
+							<label for="select-box2" class="label select-box2"> <span
+								class="label-desc1">가게 테마</span>
+							</label> <select id="select-box2" class="select1" name="main_thema"
+								value="${main.getMain_thema()}">
+								<option value="데이트 코스">데이트 코스</option>
+								<option value="가족모임">가족모임</option>
+								<option value="뷰가 좋은">뷰가 좋은</option>
+								<option value="전통적인">전통적인</option>
+								<option value="비지니스미팅">비지니스미팅</option>
+							</select>
 						</div>
-					</div>
 
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-confirm-pass" class="inputpwd">Confirm
-								Password</label> <input class="form-control" type="password"
-								id="account-confirm-pass">
+						<div class="textForm">
+							<input name="main_name" type="text" class="name"
+								value="${main.getMain_name()}" readonly>
 						</div>
-					</div>
-					
-					<div class="pwCheck"></div>
 
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-phone">Phone Number</label> <input
-								class="form-control" type="text" id="account-phone"
-								name="member_number" value="${dto.getMember_phone() }" required>
+						<div class="textForm">
+							<textarea class="cont" rows="5" cols="25" name="main_info">${main.getMain_info() }</textarea>
 						</div>
-					</div>
 
-					<div class="col-12">
-						<hr class="mt-2 mb-3">
-						<div
-							class="d-flex flex-wrap justify-content-between align-items-center">
-							<div class="custom-control custom-checkbox d-block">
-								<input class="custom-control-input" type="checkbox"
-									id="subscribe_me" checked> <label
-									class="custom-control-label" for="subscribe_me">Subscribe
-									me to Newsletter</label>
-							</div>
-							<button id="updatebtn123" class="btn btn-primary mt-3 mt-sm-0"
-								type="button" data-toggle="toast" data-target="#profile-toast">Update
-								profile</button>
+
+						<div class="time_textForm" align="center">
+
+							<label for="main_opentime" style="color: #636e72">영업시작시간</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="time" id="main_opentime" name="main_opentime"
+								value="${main.getMain_opentime() }"> <br> <br>
+							<label for="main_endtime" style="color: #636e72">영업종료시간</label>
+							&nbsp;&nbsp;&nbsp; <input type="time" id="main_endtime"
+								name="main_endtime" value="${main.getMain_endtime() }">
 						</div>
-					</div>
-					
+
+						<div class="textForm">
+							<input name="main_post" id="post" type="text" class="location"
+								value="${main.getMain_post() }" readonly onclick="findAddr()">
+							<input name="main_addr" id="addr" type="text" class="location"
+								value="${main.getMain_addr() }" readonly> <input
+								name="main_detailaddr" type="text" class="location"
+								value="${main.getMain_detailaddr() }">
+						</div>
+
+						<div class="textForm">
+							<input name="main_phone" type="text" class="phone"
+								value="${main.getMain_phone() }">
+						</div>
+
+						<div class="image">
+							<span class="pic_txt">가게등록 사진</span> <input class="main_file"
+								type="file" name="main_img">
+						</div>
+
+						</p>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary btn-sm"
+								data-dismiss="modal">Close</button>
+							<input type="submit" class="btn btn-primary btn-sm" value="수정하기" />
+						</div>
+					</form>
 				</div>
-				</form>
-				<!-- Technical support + Tickets (visible Mobile)-->
-				<div class="d-lg-none bg-secondary px-3 py-4 mt-5">
-					<h6 class="font-size-sm mb-3 pb-2 border-bottom"></h6>
-					<ul class="list-unstyled">
-						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-							data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
-							class="nav-link-inline" href="mailto:support@example.com">support@example.com</a></li>
-						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-							data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
-							class="nav-link-inline" href="tel:+100331697720">+1 00 33 169
-								7720</a></li>
-						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
-							data-feather="clock" style="width: .875rem; height: .875rem;"></i>1-2
-							business days</li>
-					</ul>
-					<div class="pt-2">
-						<a class="btn btn-outline-secondary btn-sm btn-block"
-							href="account-tickets.html"><i class="mr-1"
-							data-feather="tag"></i>My tickets (1)</a><a
-							class="btn btn-success btn-sm btn-block"
-							href="account-tickets.html" data-toggle="modal"
-							data-target="#open-ticket">Submit new ticket</a>
+			</div>
+		</div>
+	</div>
+	<!-- modal end -->
+
+
+
+	<!-- 메뉴 Modal markup -->
+	<div class="modal" tabindex="-1" role="dialog" id="MenuInsert">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">메뉴 페이지</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden=true>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<form method="post" enctype="multipart/form-data" name="inForm"
+						id="inForm" width="100%">
+						<table cellspacing="0" align="center" width="90%">
+							<tr class="table_bg">
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+
+							<tr>
+								<td class="1"><input type="text" name="menu_name"
+									id="menu_name" placeholder="메뉴 이름"></td>
+
+								<td class="menu_price1"><input type="text" required
+									name="menu_price" id="menu_price" placeholder="메뉴 가격">
+								</td>
+
+
+								<td><img id="menu_img_preview" style="width: 100px;"></td>
+								<td><label class='btn btn-secondary btn-sm' for="menu_img"
+									name="menu_img" style="margin-top: 7px"> 사진 선택 </label>
+								<td><input type="file" id="menu_img" name="menu_img"
+									style="display: none" accept="image/*"
+									onchange="previewImage(event)"></td>
+								<input type="hidden" name="main_idx" id="main_idx"
+									value="${main.getMain_idx() }">
+								<td align="center"><input type="button"
+									class="btn btn-primary btn-sm" value="등록하기" id="menubtn">
+								</td>
+
+							</tr>
+
+						</table>
+					</form>
+
+					<br>
+					<form method="post" enctype="multipart/form-data" name="upForm"
+						id="upForm" width="100%">
+						<br> <span align="center"><h5>메뉴 리스트</h5></span>
+						<table id="listTable" border="1" cellspacing="0" width="90%"
+							bordercolor="#e3e3e3">
+							<tr>
+
+								<!-- <th>가게 번호</th> -->
+								<th>메뉴 번호</th>
+								<th>메뉴 이름</th>
+								<th>메뉴 가격</th>
+								<th>메뉴 사진</th>
+								<th>수 정</th>
+								<th>삭 제</th>
+
+							</tr>
+
+						</table>
+					</form>
+
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary btn-sm"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- modal end -->
+
+
+
+
+
+	<!--회원 탈퇴 Modal markup -->
+
+
+	<div class="modal" tabindex="-1" role="dialog" id="modalCentered">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<form method="post"
+					action="<%=request.getContextPath()%>/member_delete_ok.do">
+					<div class="modal-header">
+						<h5 class="modal-title">회원 탈퇴</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+
+						<input type="hidden" name="member_id"
+							value="${dto.getMember_id()}"> <br>
+						<p align="center">회원 탈퇴를 위해 ${dto.getMember_name()}님의 비밀번호를
+							입력해주세요.</p>
+						<div class="textForm">
+							<input name="member_pwd" type="text" class="phone"
+								placeholder="비밀번호">
+						</div>
+
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-md"
+						id="member_del">회원 탈퇴</button>
+			</form>
+			</div>
+		</div>
+	</div>
+
 	<!-- Footer-->
 	<footer class="page-footer bg-dark">
 		<!-- first row-->
@@ -1118,149 +1099,63 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-6">
 						<div class="widget widget-links pb-4">
-							<h3 class="widget-title text-white border-light">Shop
-								departments</h3>
+							<h3 class="widget-title text-white border-light">Fooding 기능</h3>
 							<ul>
+								<li><a class="nav-link-inline nav-link-light"
+									href="LoadRestaurantList.do"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">가게
+											검색</span></a></li>
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Apparel
-											&amp; Shoes</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										data-feather="chevron-right"></i><span class="font-size-sm">가게
+											등록(사장님)</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="LoadRestaurantList.do"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Glasses
-											&amp; Accessories</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										data-feather="chevron-right"></i><span class="font-size-sm">가격으로
+											검색</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="#quick-view-kakako" data-toggle="modal"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Handbags
-											&amp; Backpacks</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Computers
-											&amp; Accessories</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Smartphones
-											&amp; Tablets</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">TV,
-											Video &amp; Audio</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Cameras,
-											Photo &amp; Video</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Wearable
-											Electronics</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Printers
-											&amp; Ink</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Video
-											Games</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Car
-											Electronics</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Smart
-											Home, IoT</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">문의</span></a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="widget widget-links pb-4">
-							<h3 class="widget-title text-white border-light">Account
-								&amp; shipping info</h3>
+							<h3 class="widget-title text-white border-light">계정 관리</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+								<li><a class="nav-link-inline nav-link-light"
+									href="<%=request.getContextPath()%>/member_profile.do"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Your
-											account</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										data-feather="chevron-right"></i><span class="font-size-sm">계정
+											자세히</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="<%=request.getContextPath()%>/member_profile.do"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Shipping
-											rates &amp; policies</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Refunds
-											&amp; replacements</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Taxes</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Delivery
-											info</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">회원탈퇴</span></a></li>
 							</ul>
 						</div>
 						<div class="widget widget-links pb-4">
-							<h3 class="widget-title text-white border-light">About us</h3>
+							<h3 class="widget-title text-white border-light">Fooding
+								Info</h3>
 							<ul>
+
 								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Careers</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">About
-											shop</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Our
-											stores</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Services</span></a></li>
-								<li><a class="nav-link-inline nav-link-light" href="#"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">News</span></a></li>
+										data-feather="chevron-right"></i><span class="font-size-sm">About_
+											Project</span></a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-xl-4 offset-xl-1 col-md-5">
 						<div class="widget">
-							<!-- Subscription form (MailChimp)-->
-							<h3 class="widget-title text-white border-light">Stay
-								informed</h3>
-							<form class="validate pb-4"
-								action="https://studio.us12.list-manage.com/subscribe/post-json?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126&amp;c=?"
-								method="get" name="mc-embedded-subscribe-form"
-								id="mc-embedded-subscribe-form">
-								<div class="input-group mb-2">
-									<div class="input-group-prepend">
-										<span class="input-group-text"
-											style="background-color: #e8e8e8;"><i
-											data-feather="mail"></i></span>
-									</div>
-									<input class="form-control border-0 box-shadow-0 bg-secondary"
-										type="email" name="EMAIL" id="mce-EMAIL" value=""
-										placeholder="Your email" required>
-								</div>
-								<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-								<div style="position: absolute; left: -5000px;"
-									aria-hidden="true">
-									<input type="text"
-										name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
-								</div>
-								<button class="btn btn-primary btn-block" type="submit"
-									name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
-								<p class="font-size-xs text-white opacity-60 pt-2 mb-2"
-									id="mc-helper">*Subscribe to our newsletter to receive
-									early discount offers, updates and new products info.</p>
-								<!-- Subscription status-->
-								<div class="subscribe-status"></div>
-							</form>
+
 							<!-- Mobile app download-->
 							<div class="widget pb-4">
-								<h3 class="widget-title text-white border-light">Download
-									our app</h3>
+								<h3 class="widget-title text-white border-light">다운로드
+									Fooding 앱</h3>
 								<a class="market-btn market-btn-light apple-btn mr-2 mb-2"
 									href="#" role="button"><span class="market-button-subtitle">Download
 										on the</span><span class="market-button-title">App Store</span></a><a
@@ -1273,88 +1168,16 @@
 				</div>
 			</div>
 		</div>
-		
-		<!-- shop features-->
-		<div class="pt-5 pb-0 pb-md-5 border-bottom border-light"
-			id="shop-features" style="background-color: #1f1f1f;">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6 border-right border-light">
-						<div class="icon-box text-center mb-5 mb-md-0">
-							<div class="icon-box-icon">
-								<i data-feather="truck"></i>
-							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">Free
-								local delivery</h3>
-							<p class="icon-box-text">Free delivery for all orders over
-								$100</p>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 border-right border-light">
-						<div class="icon-box text-center mb-5 mb-md-0">
-							<div class="icon-box-icon">
-								<i data-feather="refresh-cw"></i>
-							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">Money
-								back guarantee</h3>
-							<p class="icon-box-text">Free delivery for all orders over
-								$100</p>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 border-right border-light">
-						<div class="icon-box text-center mb-5 mb-md-0">
-							<div class="icon-box-icon">
-								<i data-feather="life-buoy"></i>
-							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">24/7
-								customer support</h3>
-							<p class="icon-box-text">Friendly 24/7 customer support</p>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="icon-box text-center mb-5 mb-md-0">
-							<div class="icon-box-icon">
-								<i data-feather="credit-card"></i>
-							</div>
-							<h3 class="icon-box-title font-weight-semibold text-white">Secure
-								online payment</h3>
-							<p class="icon-box-text">We posess SSL / Secure сertificate</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
 		<!-- third row-->
 		<div class="pt-5 pb-4" style="background-color: #1f1f1f;">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 text-center text-sm-left">
 						<div class="mb-4 mb-sm-0">
-							<a class="d-inline-block" href="index.html"><img width="100"
-								src="img/logo-light.png" alt="MStore" /></a>
-							<div
-								class="navbar-lang-switcher dropdown border-light mt-3 mb-0 mt-sm-0">
-								<div class="dropdown-toggle text-white" data-toggle="dropdown">
-									<img width="20" src="img/flags/en.png" alt="English" /><span>USD</span>
-								</div>
-								<ul class="dropdown-menu" style="width: 150px;">
-									<li class="dropdown-item"><select
-										class="custom-select custom-select-sm">
-											<option value="usd">$ USD</option>
-											<option value="usd">€ EUR</option>
-											<option value="usd">£ UKP</option>
-											<option value="usd">¥ JPY</option>
-									</select></li>
-									<li><a class="dropdown-item" href="index.html"><img
-											class="mr-2" width="20" src="img/flags/fr.png" alt="Français" />Français</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="#"><img
-											class="mr-2" width="20" src="img/flags/de.png" alt="Deutsch" />Deutsch</a></li>
-									<li class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="#"><img
-											class="mr-2" width="20" src="img/flags/it.png" alt="Italiano" />Italiano</a></li>
-								</ul>
-							</div>
+							<a class="d-inline-block" href="index.jsp"><img width="200"
+								src="img/logo-fooding.png" alt="Fooding" /></a>
+
 						</div>
 					</div>
 					<div class="col-sm-6 text-center text-sm-right">
@@ -1372,22 +1195,19 @@
 					<div class="col-sm-6 text-center text-sm-left">
 						<ul class="list-inline font-size-sm">
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Outlets</a></li>
+								class="nav-link-inline nav-link-light"
+								href="LoadRestaurantList.do">가게</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Affiliates</a></li>
+								class="nav-link-inline nav-link-light" href="#brandSlide">브랜드관</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Support</a></li>
+								class="nav-link-inline nav-link-light" href="#">고객센터</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Privacy</a></li>
+								class="nav-link-inline nav-link-light" href="#">개인정보 보호</a></li>
 							<li class="list-inline-item mr-3"><a
-								class="nav-link-inline nav-link-light" href="#">Terms of use</a></li>
+								class="nav-link-inline nav-link-light" href="#">이용약관</a></li>
 						</ul>
 					</div>
-					<div class="col-sm-6 text-center text-sm-right">
-						<div class="d-inline-block">
-							<img width="187" src="img/cards.png" alt="Payment methods" />
-						</div>
-					</div>
+					<div class="col-sm-6 text-center text-sm-right"></div>
 				</div>
 			</div>
 		</div>
@@ -1396,77 +1216,58 @@
 				aria-label="Copyright">
 				<span class="text-white opacity-60 mr-1">© All rights
 					reserved. Made by</span><a class="nav-link-inline nav-link-light"
-					href="https://createx.studio/" target="_blank">Createx Studio</a>
+					href="https://createx.studio/" target="_blank">Fooding .co</a>
 			</div>
 		</div>
 	</footer>
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
+
+	<!-- 카카오 문의하기 모달 -->
+	<div class="modal modal-quick-view fade" id="quick-view-kakako"
+		tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div>
+						<h1 class="h1 modal-title mb-1">카카오톡 문의하기</h1>
+					</div>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- Product gallery-->
+					<div class="col-cg-10" align="center">
+						<a href="https://open.kakao.com/o/sStYAar"><img
+							src="main_img/카카오상담.png" alt="Product"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 카카오 문의하기 모달 끝 -->
+
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="js/loadMarkedRstAjax.js"></script>
+	<script src="js/sign_upChk.js"></script>
+	<script src="js/Board_Main.js"></script>
+	<script src="js/kakao_login.js"></script>
+	<script src="js/StoreMarked.js"></script>
+	<script src="js/Main_Menu.js"></script>
+	<script src="js/Member_profile.js"></script>
 	<script src="js/vendor.min.js"></script>
 	<script src="js/theme.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
-	<script type="text/javascript">
-	
-	$(function() {
-	    $('#updatebtn123').on('click', function() {
-	        let password1 = $("#account-pass").val();
-	        let password2 = $("#account-confirm-pass").val();
-	        let text = "비밀번호가 일치합니다.";
-	        let text2 = "비밀번호가 일치하지 않습니다.";
-	        if (password1 !== "" || password2 !== "") {
-	            if (password1 === password2) {
-	                $(".toast-header").removeClass("bg-warning").removeClass("text-white"); // 기존 클래스 제거
-	                $(".toast-header").addClass("bg-success").addClass("text-white"); // 클래스 추가
-	                $(".font-weight-semibold").text(""); // 텍스트 초기화
-	                $(".font-weight-semibold").append("success"); // 텍스트 지정
-	                $("#toast-body").text(""); // 텍스트 초기화
-	                $("#toast-body").append(text); // 텍스트 지정
-	                $("#successPwdToast").show(); // 창띄우기
-	                return false;
-	            } else {
-	                $(".toast-header").removeClass("bg-success").removeClass("text-white"); // 기존 클래스 제거
-	                $(".toast-header").addClass("bg-warning").addClass("text-white"); // 클래스 추가
-	                $(".font-weight-semibold").text(""); // 텍스트 초기화
-	                $(".font-weight-semibold").append("failed"); // 텍스트 지정
-	                $("#toast-body").text(""); // 텍스트 초기화
-	                $("#toast-body").append(text2); // 텍스트 지정
-	                $("#failPwdToast").show(); // 창띄우기
-	                return false;
-	            }
-	        }
-	    });
-	});
-	
-	function mySubmit() {
-
-	   
-	    let member_pw = $('#account-pass').val();
-	    let check_pw = RegExp(/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{4,20}$/); // 비밀번호 유효성 검사 (영문 및 숫자 4-20글자)
-	    //let memberInsertForm = $('#memberInsertForm');
-
-	    $('#account-pass').on('keyup', function() {
-			let input_pw = $(this).val();
-
-			// 비밀번호 공백 확인
-			if (input_pw == "" || input_pw == null) {
-				$('.pwCheck').html('비밀번호를 입력해주세요.');
-				return false;
-			}
-
-			// 비밀번호 유효성 체크
-			if (!check_pw.test(input_pw)) {
-				$('.pwCheck').html('영문 및 숫자, 특수문자를 포함한 비밀번호를 입력해주세요.');
-				return false;
-			}
-
-			// 비밀번호가 유효하면 메시지 삭제
-			$('.pwCheck').html('');
+	<script>
+		$('.toast').toast({
+			delay : 3000
 		});
-	    });
-	}
-    </script>
-
+	</script>
 </body>
 </html>

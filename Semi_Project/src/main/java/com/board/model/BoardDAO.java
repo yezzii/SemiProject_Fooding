@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 public class BoardDAO {
 
 	Connection con = null;
@@ -46,7 +50,7 @@ public class BoardDAO {
 
 		String user = "web";
 
-		String password = "12345678";
+		String password = "tpalvmfhwprxm1010";
 
 		String url = "jdbc:mysql://semi-project1.crerb4qztgxj.ap-northeast-2.rds.amazonaws.com:3306/semi";
 
@@ -123,38 +127,50 @@ public class BoardDAO {
 		return result;
 	}
 
-	public List<BoardDTO> FreeBoardList() {
-
-		openConn();
-
+	public List<BoardDTO> FreeBoardList(int page, int rowsize) {
 		BoardDTO dto = null;
-
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
+		int count = 0;
+		int startNo = (page * rowsize) - (rowsize - 1);
+
+		int endNo = (page * rowsize);
 
 		try {
-
-			sql = "select * from board where board_type = ? order by board_idx";
+			openConn();
+			sql = "select count(*) from board where board_type = ?";
 
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 0);
+			rs = pstmt.executeQuery();
 
-			pstmt.setString(1, "0");
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+			sql = "select * from (select row_number() over (order by board_num) rnum ,b.* from board b where board_type = ?) a where rnum between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 0);
+			pstmt.setInt(2, startNo);
+			pstmt.setInt(3, endNo);
 
 			rs = pstmt.executeQuery();
 
+			int i = (page-1)*12 + 1;
+			
 			while (rs.next()) {
-
-				dto = new BoardDTO();
-
-				dto.setBoard_idx(rs.getInt("board_idx"));
-				dto.setBoard_title(rs.getString("board_title"));
-				dto.setBoard_writer(rs.getString("board_writer"));
-				dto.setBoard_content(rs.getString("board_content"));
-				dto.setBoard_image(rs.getString("board_image"));
-				dto.setBoard_date(rs.getString("board_date"));
-				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
-				dto.setBoard_type(rs.getInt("board_type"));
-
-				list.add(dto);
+				if (i <= count) {
+					dto = new BoardDTO();
+					dto.setBoard_idx(rs.getInt("board_idx"));
+					dto.setBoard_num(i++);
+					dto.setBoard_title(rs.getString("board_title"));
+					dto.setBoard_writer(rs.getString("board_writer"));
+					dto.setBoard_content(rs.getString("board_content"));
+					dto.setBoard_image(rs.getString("board_image"));
+					dto.setBoard_date(rs.getString("board_date"));
+					dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+					dto.setBoard_type(rs.getInt("board_type"));
+					list.add(dto);
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -162,52 +178,9 @@ public class BoardDAO {
 		} finally {
 			closeConn(rs, pstmt, con);
 		}
-
 		return list;
 	}
 
-	public List<BoardDTO> ReviewBoardList() {
-
-		openConn();
-
-		BoardDTO dto = null;
-
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
-
-		try {
-
-			sql = "select * from board where board_type = ? order by board_idx";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setString(1, "1");
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-
-				dto = new BoardDTO();
-
-				dto.setBoard_idx(rs.getInt("board_idx"));
-				dto.setBoard_title(rs.getString("board_title"));
-				dto.setBoard_writer(rs.getString("board_writer"));
-				dto.setBoard_content(rs.getString("board_content"));
-				dto.setBoard_image(rs.getString("board_image"));
-				dto.setBoard_date(rs.getString("board_date"));
-				dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
-				dto.setBoard_type(rs.getInt("board_type"));
-
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-
-		return list;
-	}
 
 	public int deleteBoard(int no) {
 
@@ -216,15 +189,13 @@ public class BoardDAO {
 		try {
 			openConn();
 
-			
 			sql = "delete from board where board_idx = ?";
 
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, no);
-			
-			result = pstmt.executeUpdate();
 
+			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -326,7 +297,7 @@ public class BoardDAO {
 				count = rs.getInt(1) + 1;
 			}
 
-			sql = "insert into board values(?,?,?,?,default,default,?,?,1)";
+			sql = "insert into board values(?,?,?,?,default,default,?,?,default)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -346,5 +317,103 @@ public class BoardDAO {
 		return result;
 
 	}
+
+	public int getReviewBoardCount() {
+
+		int count = 0;
+
+		try {
+			openConn();
+			sql = "select count(*) from board where board_type = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}// getBoardCount() end
+	
+	public int getFreeBoardCount() {
+		
+		int count = 0;
+		
+		try {
+			openConn();
+			sql = "select count(*) from board where board_type = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 0);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}// getBoardCount() end
+
+	public List<BoardDTO> getBoardReviewList(int page, int rowsize) {
+		BoardDTO dto = null;
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+		int count = 0;
+		int startNo = (page * rowsize) - (rowsize - 1);
+
+		int endNo = (page * rowsize);
+
+		try {
+			openConn();
+			sql = "select count(*) from board where board_type = ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "1");
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+			sql = "select * from (select row_number() over (order by board_num) rnum ,b.* from board b where board_type = ?) a where rnum between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			pstmt.setInt(2, startNo);
+			pstmt.setInt(3, endNo);
+
+			rs = pstmt.executeQuery();
+
+			int i = (page-1)*12 + 1;
+			
+			while (rs.next()) {
+				if (i <= count) {
+					dto = new BoardDTO();
+					dto.setBoard_idx(rs.getInt("board_idx"));
+					dto.setBoard_num(i++);
+					dto.setBoard_title(rs.getString("board_title"));
+					dto.setBoard_writer(rs.getString("board_writer"));
+					dto.setBoard_content(rs.getString("board_content"));
+					dto.setBoard_image(rs.getString("board_image"));
+					dto.setBoard_date(rs.getString("board_date"));
+					dto.setBoard_viewcnt(rs.getInt("board_viewcnt"));
+					dto.setBoard_type(rs.getInt("board_type"));
+					list.add(dto);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}// getBoardMainList() end
 
 }

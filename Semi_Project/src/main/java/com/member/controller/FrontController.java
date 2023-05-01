@@ -4,12 +4,16 @@ import com.member.action.Action;
 import com.member.action.ActionForward;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,16 +36,13 @@ public class FrontController extends HttpServlet {
 		String command = uri.substring(path.length() + 1);
 		System.out.println("Command >>> " + command);
 
+		ServletContext sc = request.getServletContext();
+
 		Action action = null;
 		ActionForward forward = null;
 		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream(
-				"C:\\Users\\ll001\\OneDrive\\문서\\GitHub\\Semi_project\\Semi_Project\\src\\main\\java\\com\\member\\controller\\mapping.properties");
 
-
-
-
-		prop.load(fis);
+		prop.load(new FileReader(sc.getRealPath(sc.getInitParameter("contextConfigLocation"))));
 
 		String value = prop.getProperty(command);
 		System.out.println("value >>> " + value);

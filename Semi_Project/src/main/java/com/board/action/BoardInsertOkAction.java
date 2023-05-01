@@ -1,6 +1,5 @@
 package com.board.action;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -57,6 +56,8 @@ public class BoardInsertOkAction implements Action {
 	         forward.setPath("free_board.do");
 	      } else if (type == 1) {
 	         forward.setPath("review_board.do");
+	      }else if(type == -1) {
+	    	  forward.setPath("blog_list.do");
 	      }
 	      return forward;
 	      }else {

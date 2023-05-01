@@ -20,7 +20,7 @@ public class MemberJoinChkAction implements Action {
 		MemberDAO dao = MemberDAO.getInstance();
 		//한글처리 작업 진행.
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		String member_id = request.getParameter("paramId").trim();
 		System.out.println(member_id);
