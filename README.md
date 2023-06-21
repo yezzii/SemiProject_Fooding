@@ -96,29 +96,22 @@
 
 <h1>👪팀원소개</h1>
 <br>
-<table>
 
-      <tr>
-        <th align="center" width="200px"><img src="https://github.com/Grumvle/Semi_project/assets/122771632/63dfbadb-2b8e-4255-b07b-cc42b49716e5" width="100px;" alt=""/><br /><sub><b>팀장 : 이건민</b></sub><br /></th>
-        <th align="center" width="200px"><img src="https://github.com/Grumvle/Semi_project/assets/122771632/0be1857b-ffdc-4ba4-93a6-595389eb4daa" width="100px;" alt=""/><br /><sub><b>팀원 : 김동현</b></sub><br /></th>
-        <th align="center" width="200px"><img src="https://github.com/Grumvle/Semi_project/assets/122771632/2a71979c-5eca-4a57-8ad9-91d579ecc856" width="100px;" alt=""/><br /><sub><b>팀원 : 권예지</b></sub><br /></th>
-        <th align="center" width="200px"><img src="https://github.com/Grumvle/Semi_project/assets/122771632/ccfd0a43-54bc-4d97-937e-32fe0dd830db" width="100px;" alt=""/><br /><sub><b>팀원 : 황강연</b></sub><br /></th>
-      </tr>
-      <tr>
-        <th align="center"> 로그인, 회원, 예약 <br> 프로젝트 총괄 </th>
-        <th align="center"> 메인, 레스토랑 페이지</th>
-        <th align="center"> 마이페이지(회원 및 사업자) </th>
-        <th align="center"> 게시판 / 컬럼<br> 별점리뷰 </th>
-      </tr>
-      <tr>
-        <th align="center"><a href="https://github.com/Grumvle">@Grumvle</th>
-        <th align="center"><a href="https://github.com/OkayDonkey">@OkayDonkey</th>
-        <th align="center"><a href="https://github.com/yezzii">@yezzii</th>
-        <th align="center"><a href="https://github.com/hgy0917">@hgy0917</th>
-      </tr>
-    
- 
-  </table>
+<img src="https://github.com/Grumvle/Semi_project/assets/122771632/63dfbadb-2b8e-4255-b07b-cc42b49716e5" width="100px;" alt=""/><br /><sub><b>팀장 : 이건민</b></sub><br />
+
+<img src="https://github.com/Grumvle/Semi_project/assets/122771632/0be1857b-ffdc-4ba4-93a6-595389eb4daa" width="100px;" alt=""/><br /><sub><b>팀원 : 김동현</b></sub><br />
+<img src="https://github.com/Grumvle/Semi_project/assets/122771632/2a71979c-5eca-4a57-8ad9-91d579ecc856" width="100px;" alt=""/><br /><sub><b>팀원 : 권예지</b></sub><br />
+<img src="https://github.com/Grumvle/Semi_project/assets/122771632/ccfd0a43-54bc-4d97-937e-32fe0dd830db" width="100px;" alt=""/><br /><sub><b>팀원 : 황강연</b></sub><br />
+
+  로그인, 회원, 예약 <br> 프로젝트 총괄
+메인, 레스토랑 페이지
+마이페이지(회원 및 사업자) 
+게시판 / 컬럼<br> 별점리뷰 
+<a href="https://github.com/Grumvle">@Grumvle
+<a href="https://github.com/OkayDonkey">@OkayDonkey
+<a href="https://github.com/yezzii">@yezzii
+<a href="https://github.com/hgy0917">@hgy0917
+
   <br><br><br>
 
   <p><h3>🗨️ 프로젝트 소감</h2></p>
