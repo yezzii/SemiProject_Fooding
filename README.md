@@ -97,7 +97,7 @@
 <h1>👪팀원소개</h1>
 <br>
 
-<div>
+<div align="center">
 <div>
 <img src="https://github.com/Grumvle/Semi_project/assets/122771632/63dfbadb-2b8e-4255-b07b-cc42b49716e5" width="100px;" alt=""/><br /><sub><b>팀장 : 이건민</b></sub><br />
     로그인, 회원, 예약 <br> 프로젝트 총괄<br>
