@@ -90,28 +90,43 @@
     게시판 페이지 (자유/후기게시판, 게시글 작성/수정/삭제, 검색 기능, 매거진/음식컬럼 열람)
 </p>
 <p>
-    <img src="[https://github.com/Grumvle/Semi_project/assets/124012244/c7e26f8c-0b01-42ed-a8f9-5c755d6fbe19](https://github-production-user-asset-6210df.s3.amazonaws.com/124012244/247486910-f82e2eac-8478-46be-8036-eb6669a6fec2.png)" /><br>
+    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/f82e2eac-8478-46be-8036-eb6669a6fec2" /><br>
     마이페이지 (프로필 사진 수정, 회원 정보 수정, 비밀번호 수정, 회원 탈퇴, 나의 예약 현황, 찜한 레스토랑, 가게등록, 가게수정, 가게메뉴 등록/수정/삭제 )
 </p>
 
 <h1>👪팀원소개</h1>
 <br>
+
+<div>
 <div>
 <img src="https://github.com/Grumvle/Semi_project/assets/122771632/63dfbadb-2b8e-4255-b07b-cc42b49716e5" width="100px;" alt=""/><br /><sub><b>팀장 : 이건민</b></sub><br />
     로그인, 회원, 예약 <br> 프로젝트 총괄
-</div>
-<img src="https://github.com/Grumvle/Semi_project/assets/122771632/0be1857b-ffdc-4ba4-93a6-595389eb4daa" width="100px;" alt=""/><br /><sub><b>팀원 : 김동현</b></sub><br />
-<img src="https://github.com/Grumvle/Semi_project/assets/122771632/2a71979c-5eca-4a57-8ad9-91d579ecc856" width="100px;" alt=""/><br /><sub><b>팀원 : 권예지</b></sub><br />
-<img src="https://github.com/Grumvle/Semi_project/assets/122771632/ccfd0a43-54bc-4d97-937e-32fe0dd830db" width="100px;" alt=""/><br /><sub><b>팀원 : 황강연</b></sub><br />
-
-  
-메인, 레스토랑 페이지
-마이페이지(회원 및 사업자) 
-게시판 / 컬럼<br> 별점리뷰 
 <a href="https://github.com/Grumvle">@Grumvle
-<a href="https://github.com/OkayDonkey">@OkayDonkey
-<a href="https://github.com/yezzii">@yezzii
-<a href="https://github.com/hgy0917">@hgy0917
+    </div>
+    <div>
+<img src="https://github.com/Grumvle/Semi_project/assets/122771632/0be1857b-ffdc-4ba4-93a6-595389eb4daa" width="100px;" alt=""/><br /><sub><b>팀원 : 김동현</b></sub><br />
+        메인, 레스토랑 페이지
+    <a href="https://github.com/OkayDonkey">@OkayDonkey
+        </div>
+        <div>
+<img src="https://github.com/Grumvle/Semi_project/assets/122771632/2a71979c-5eca-4a57-8ad9-91d579ecc856" width="100px;" alt=""/><br /><sub><b>팀원 : 권예지</b></sub><br />
+            마이페이지(회원 및 사업자) 
+        <a href="https://github.com/yezzii">@yezzii
+            </div>
+            <div>
+<img src="https://github.com/Grumvle/Semi_project/assets/122771632/ccfd0a43-54bc-4d97-937e-32fe0dd830db" width="100px;" alt=""/><br /><sub><b>팀원 : 황강연</b></sub><br />
+                게시판 / 컬럼<br> 별점리뷰 
+            <a href="https://github.com/hgy0917">@hgy0917
+                </div>
+
+            </div>
+
+
+
+
+
+
+
 
   <br><br><br>
 
