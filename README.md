@@ -97,7 +97,7 @@
 <h1>👪팀원소개</h1>
 <br>
 <table>
-    <tbody>
+
       <tr>
         <th align="center" width="200px"><img src="https://github.com/Grumvle/Semi_project/assets/122771632/63dfbadb-2b8e-4255-b07b-cc42b49716e5" width="100px;" alt=""/><br /><sub><b>팀장 : 이건민</b></sub><br /></th>
         <th align="center" width="200px"><img src="https://github.com/Grumvle/Semi_project/assets/122771632/0be1857b-ffdc-4ba4-93a6-595389eb4daa" width="100px;" alt=""/><br /><sub><b>팀원 : 김동현</b></sub><br /></th>
@@ -117,7 +117,7 @@
         <th align="center"><a href="https://github.com/hgy0917">@hgy0917</th>
       </tr>
     
-    </tbody>
+ 
   </table>
   <br><br><br>
 
@@ -125,24 +125,15 @@
 
    
     
-        <p>#### 이건민</p>
-        <span>협업 시의 프로젝트 형상관리의 중요성과 팀원 들과의 소통으로 프로젝트 진행도를 수시로 알려줘야 함을 깨닫게 되어 반성의 시간이 되었습니다.</span>
-        <p>#### 김동현</p>
-       <span>프로젝트를 통해
-        비즈니스 로직과
-        관련 메서드, SQL 문, Ajax 등 기능에 대한 이해도를
-        높일 수 있었던
-        의미 깊은 시간이었습니다.</span> 
-        <p>#### 황강연</p>
-        <span>실제 사이트를 설계할 때
-            일련의 과정을 알 수 있었고
-            기능을 구현하면서 
-            다양한 기술들을
-            알아갈 수 있어서
-            유익한 시간이었습니다.</span>
-
-        <p>#### 권예지</p>
-        <span>프로젝트를 통하여 
+<p>#### 이건민</p>
+<span>협업 시의 프로젝트 형상관리의 중요성과 팀원 들과의 소통으로 프로젝트 진행도를 수시로 알려줘야 함을 깨닫게 되어 반성의 시간이 되었습니다.</span>
+<p>#### 김동현</p>
+<span>프로젝트를 통해
+비즈니스 로직과관련 메서드, SQL 문, Ajax 등 기능에 대한 이해도를높일 수 있었던 의미 깊은 시간이었습니다.</span> 
+<p>#### 황강연</p>
+<span>실제 사이트를 설계할 때 일련의 과정을 알 수 있었고 기능을 구현하면서 다양한 기술들을 알아갈 수 있어서 유익한 시간이었습니다.</span>
+<p>#### 권예지</p>
+<span>프로젝트를 통하여 
             팀원들과 협업 시 어떤 식으로 진행을 해야 수월할지 느꼈고, 다양한 
             기술을 많이 배울 수
              있어서 좋았습니다. </span>
