@@ -74,23 +74,23 @@
 
 <h1>📌기능소개</h1>
 <p>
-    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/dfc725a6-b56e-46c8-bd6c-01cff7e3ceba" width="600" /><br>
+    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/dfc725a6-b56e-46c8-bd6c-01cff7e3ceba" width="800" /><br>
     메인페이지
 </p>
 <p>
-    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/3ff3fd10-f4be-432f-9e5d-9088f5a22345" width="600" /><br>
+    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/3ff3fd10-f4be-432f-9e5d-9088f5a22345" width="800" /><br>
     로그인/회원가입 페이지 (카카오로그인, 아이디 찾기, 비밀번호 찾기)
 </p>
 <p>
-    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/e934bfd1-c400-4832-808f-0ca663bf31b0" width="600" /><br>
+    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/e934bfd1-c400-4832-808f-0ca663bf31b0" width="800" /><br>
     레스토랑 페이지 (레스토랑 통합 검색, 카테고리별 정렬, 가게 리뷰/평점기능, 가격 범위 검색, 예약/찜(좋아요) 기능)
 </p>
 <p>
-    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/ebe110ac-e659-4318-a255-66168ca2ac32" width="600" /><br>
+    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/ebe110ac-e659-4318-a255-66168ca2ac32" width="800" /><br>
     게시판 페이지 (자유/후기게시판, 게시글 작성/수정/삭제, 검색 기능, 매거진/음식컬럼 열람)
 </p>
 <p>
-    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/f82e2eac-8478-46be-8036-eb6669a6fec2" width="600" /><br>
+    <img src="https://github.com/Grumvle/Semi_project/assets/124012244/f82e2eac-8478-46be-8036-eb6669a6fec2" width="800" /><br>
     마이페이지 (프로필 사진 수정, 회원 정보 수정, 비밀번호 수정, 회원 탈퇴, 나의 예약 현황, 찜한 레스토랑, 가게등록, 가게수정, 가게메뉴 등록/수정/삭제 )
 </p>
 
